@@ -47,7 +47,7 @@ SUBDIRS   = \
     todo \
 #    qnx \          #ROOPAK
     clearcase \
-    baremetal \
+#    baremetal \    #ROOPAK
 #    ios \          #ROOPAK
     beautifier
 
