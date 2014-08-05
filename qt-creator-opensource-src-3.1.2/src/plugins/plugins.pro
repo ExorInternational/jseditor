@@ -38,17 +38,17 @@ SUBDIRS   = \
     bazaar \
     classview \
     tasklist \
-    analyzerbase \
+#    analyzerbase \ #ROOPAK
     qmljstools \
     macros \
-    remotelinux \
-    android \
-    valgrind \
+#    remotelinux \  #ROOPAK
+#    android \      #ROOPAK
+#    valgrind \     #ROOPAK
     todo \
-    qnx \
+#    qnx \          #ROOPAK
     clearcase \
     baremetal \
-    ios \
+#    ios \          #ROOPAK
     beautifier
 
 minQtVersion(5, 0, 0) {
@@ -75,17 +75,17 @@ isEmpty(IDE_PACKAGE_MODE) {
         updateinfo
 }
 
-minQtVersion(5, 2, 0) {
-    SUBDIRS += \
-        qmldesigner \
-        qmlprofiler \
-        welcome
-} else {
-     warning("QmlDesigner plugin has been disabled.")
-     warning("QmlProfiler plugin has been disabled.")
-     warning("Welcome plugin has been disabled.")
-     warning("These plugins need at least Qt 5.2.")
-}
+#minQtVersion(5, 2, 0) {                                #ROOPAK - START
+#    SUBDIRS += \
+#        qmldesigner \
+#        qmlprofiler \
+#        welcome
+#} else {
+#     warning("QmlDesigner plugin has been disabled.")
+#     warning("QmlProfiler plugin has been disabled.")
+#     warning("Welcome plugin has been disabled.")
+#     warning("These plugins need at least Qt 5.2.")
+#}                                                      #ROOPAK - END
 
 for(p, SUBDIRS) {
     QTC_PLUGIN_DEPENDS =
