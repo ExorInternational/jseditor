@@ -6,7 +6,7 @@ include(qtcreator.pri)
     error("Use at least Qt 4.8.0.")
 }
 
-include(doc/doc.pri)
+#include(doc/doc.pri)
 
 TEMPLATE  = subdirs
 CONFIG   += ordered
