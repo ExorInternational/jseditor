@@ -22,7 +22,7 @@ SUBDIRS   = \
     qmakeprojectmanager \
     locator \
     debugger \
-    help \
+#    help \     #ROOPAK
     cpaster \
     cmakeprojectmanager \
     autotoolsprojectmanager \
