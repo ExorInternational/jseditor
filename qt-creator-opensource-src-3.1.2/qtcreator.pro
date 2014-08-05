@@ -6,24 +6,24 @@ include(qtcreator.pri)
     error("Use at least Qt 4.8.0.")
 }
 
-#include(doc/doc.pri)
+#include(doc/doc.pri)   #ROOPAK
 
 TEMPLATE  = subdirs
 CONFIG   += ordered
 
 SUBDIRS = src share
 unix:!macx:!isEmpty(copydata):SUBDIRS += bin
-!isEmpty(BUILD_TESTS):SUBDIRS += tests
+#!isEmpty(BUILD_TESTS):SUBDIRS += tests #ROOPAK
 
-OTHER_FILES += dist/copyright_template.txt \
-    $$files(dist/changes-*) \
+OTHER_FILES +=\# dist/copyright_template.txt \  #ROOPAK - START
+    #$$files(dist/changes-*) \                  #ROOPAK - END
     qtcreator.qbs \
     qbs/pluginspec/pluginspec.qbs \
     $$files(dist/installer/ifw/config/config-*) \
-    dist/installer/ifw/packages/org.qtproject.qtcreator/meta/package.xml.in \
-    dist/installer/ifw/packages/org.qtproject.qtcreator.application/meta/installscript.qs \
-    dist/installer/ifw/packages/org.qtproject.qtcreator.application/meta/package.xml.in \
-    dist/installer/ifw/packages/org.qtproject.qtcreator.application/meta/license.txt \
+    #dist/installer/ifw/packages/org.qtproject.qtcreator/meta/package.xml.in \              #ROOPAK - START
+    #dist/installer/ifw/packages/org.qtproject.qtcreator.application/meta/installscript.qs \
+    #dist/installer/ifw/packages/org.qtproject.qtcreator.application/meta/package.xml.in \
+    #dist/installer/ifw/packages/org.qtproject.qtcreator.application/meta/license.txt \     #ROOPAK - END
     $$files(scripts/*.py) \
     $$files(scripts/*.sh) \
     $$files(scripts/*.pl)
