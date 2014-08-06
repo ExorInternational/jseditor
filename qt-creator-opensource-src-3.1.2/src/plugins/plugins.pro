@@ -12,11 +12,11 @@ SUBDIRS   = \
     imageviewer \
     bookmarks \
     projectexplorer \
-    vcsbase \
-    perforce \
-    subversion \
-    git \
-    cvs \
+#    vcsbase \     #ROOPAK
+#    perforce \     #ROOPAK
+#    subversion \   #ROOPAK
+#    git \       #ROOPAK
+#    cvs \       #ROOPAK
     cpptools \
     qtsupport \
     qmakeprojectmanager \
@@ -34,8 +34,8 @@ SUBDIRS   = \
     qmlprojectmanager \
     glsleditor \
     pythoneditor \
-    mercurial \
-    bazaar \
+#    mercurial \     #ROOPAK
+#    bazaar \     #ROOPAK
     classview \
     tasklist \
 #    analyzerbase \ #ROOPAK
@@ -46,7 +46,7 @@ SUBDIRS   = \
 #    valgrind \     #ROOPAK
     todo \
 #    qnx \          #ROOPAK
-    clearcase \
+#    clearcase \     #ROOPAK
 #    baremetal \    #ROOPAK
 #    ios \          #ROOPAK
     beautifier
