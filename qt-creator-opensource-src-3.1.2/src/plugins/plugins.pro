@@ -23,10 +23,10 @@ SUBDIRS   = \
     locator \
     debugger \
 #    help \     #ROOPAK
-    cpaster \
+#    cpaster \     #ROOPAK
     cmakeprojectmanager \
     autotoolsprojectmanager \
-    fakevim \
+#    fakevim \     #ROOPAK
     designer \
     resourceeditor \
     genericprojectmanager \
@@ -37,14 +37,14 @@ SUBDIRS   = \
 #    mercurial \     #ROOPAK
 #    bazaar \     #ROOPAK
     classview \
-    tasklist \
+#    tasklist \     #ROOPAK
 #    analyzerbase \ #ROOPAK
     qmljstools \
     macros \
 #    remotelinux \  #ROOPAK
 #    android \      #ROOPAK
 #    valgrind \     #ROOPAK
-    todo \
+#    todo \         #ROOPAK
 #    qnx \          #ROOPAK
 #    clearcase \     #ROOPAK
 #    baremetal \    #ROOPAK
@@ -68,7 +68,7 @@ exists(../shared/qbs/qbs.pro)|!isEmpty(QBS_INSTALL_DIR): \
 
 isEmpty(IDE_PACKAGE_MODE) {
     SUBDIRS += \
-        helloworld \
+#        helloworld \     #ROOPAK
         updateinfo
 } else:!isEmpty(UPDATEINFO_ENABLE) {
     SUBDIRS += \

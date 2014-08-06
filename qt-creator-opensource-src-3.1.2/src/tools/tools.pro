@@ -2,7 +2,7 @@ TEMPLATE = subdirs
 
 SUBDIRS = qtpromaker \
      qmlpuppet \
-     ../plugins/cpaster/frontend \
+#     ../plugins/cpaster/frontend \ #ROOPAK
      sdktool \
      valgrindfake \
      3rdparty \
