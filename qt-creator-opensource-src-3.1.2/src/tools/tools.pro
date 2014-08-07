@@ -1,11 +1,11 @@
 TEMPLATE = subdirs
 
-SUBDIRS = qtpromaker \
+SUBDIRS = \#qtpromaker \    #ROOPAK
      qmlpuppet \
 #     ../plugins/cpaster/frontend \ #ROOPAK
-     sdktool \
+#     sdktool \     #ROOPAK
      valgrindfake \
-     3rdparty \
+#     3rdparty \    #ROOPAK
      buildoutputparser
 
 win32 {
@@ -14,7 +14,7 @@ win32 {
 }
 
 mac {
-    SUBDIRS += iostool
+#    SUBDIRS += iostool    #ROOPAK
 }
 
 QT_BREAKPAD_ROOT_PATH = $$(QT_BREAKPAD_ROOT_PATH)
