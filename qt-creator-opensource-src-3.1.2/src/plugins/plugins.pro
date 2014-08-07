@@ -32,8 +32,8 @@ SUBDIRS   = \
     genericprojectmanager \
     qmljseditor \
     qmlprojectmanager \
-    glsleditor \
-    pythoneditor \
+#    glsleditor \     #ROOPAK
+#    pythoneditor \     #ROOPAK
 #    mercurial \     #ROOPAK
 #    bazaar \     #ROOPAK
     classview \
