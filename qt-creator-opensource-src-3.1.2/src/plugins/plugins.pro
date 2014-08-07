@@ -25,7 +25,7 @@ SUBDIRS   = \
 #    help \     #ROOPAK
 #    cpaster \     #ROOPAK
     cmakeprojectmanager \
-    autotoolsprojectmanager \
+#    autotoolsprojectmanager \     #ROOPAK
 #    fakevim \     #ROOPAK
     designer \
     resourceeditor \
@@ -49,7 +49,7 @@ SUBDIRS   = \
 #    clearcase \     #ROOPAK
 #    baremetal \    #ROOPAK
 #    ios \          #ROOPAK
-    beautifier
+#    beautifier     #ROOPAK
 
 minQtVersion(5, 0, 0) {
     SUBDIRS += winrt
@@ -61,19 +61,19 @@ isEmpty(LLVM_INSTALL_DIR):LLVM_INSTALL_DIR=$$(LLVM_INSTALL_DIR)
     SUBDIRS += clangcodemodel
 }
 
-isEmpty(QBS_INSTALL_DIR): QBS_INSTALL_DIR = $$(QBS_INSTALL_DIR)
-exists(../shared/qbs/qbs.pro)|!isEmpty(QBS_INSTALL_DIR): \
-    SUBDIRS += \
-        qbsprojectmanager
+#isEmpty(QBS_INSTALL_DIR): QBS_INSTALL_DIR = $$(QBS_INSTALL_DIR)    #ROOPAK - START
+#exists(../shared/qbs/qbs.pro)|!isEmpty(QBS_INSTALL_DIR): \
+#    SUBDIRS += \
+#        qbsprojectmanager
 
-isEmpty(IDE_PACKAGE_MODE) {
-    SUBDIRS += \
-#        helloworld \     #ROOPAK
-        updateinfo
-} else:!isEmpty(UPDATEINFO_ENABLE) {
-    SUBDIRS += \
-        updateinfo
-}
+#isEmpty(IDE_PACKAGE_MODE) {
+#    SUBDIRS += \
+##        helloworld \     #ROOPAK
+#        updateinfo
+#} else:!isEmpty(UPDATEINFO_ENABLE) {
+#    SUBDIRS += \
+#        updateinfo
+#}                                                                   #ROOPAK - END
 
 #minQtVersion(5, 2, 0) {                                #ROOPAK - START
 #    SUBDIRS += \
