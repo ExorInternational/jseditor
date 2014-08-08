@@ -9,7 +9,7 @@ SUBDIRS   = \
     cppeditor \
 #    bineditor \    #ROOPAK
 #    diffeditor \   #ROOPAK
-    imageviewer \
+#    imageviewer \  #ROOPAK
 #    bookmarks \    #ROOPAK
     projectexplorer \
 #    vcsbase \     #ROOPAK
