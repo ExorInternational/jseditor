@@ -4,9 +4,9 @@ SUBDIRS = \#qtpromaker \    #ROOPAK
      qmlpuppet \
 #     ../plugins/cpaster/frontend \ #ROOPAK
 #     sdktool \     #ROOPAK
-     valgrindfake \
+#     valgrindfake \ #ROOPAK
 #     3rdparty \    #ROOPAK
-     buildoutputparser
+#     buildoutputparser #ROOPAK
 
 win32 {
     SUBDIRS += qtcdebugger
