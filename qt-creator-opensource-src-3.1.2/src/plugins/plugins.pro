@@ -7,10 +7,10 @@ SUBDIRS   = \
     find \
     texteditor \
     cppeditor \
-    bineditor \
-    diffeditor \
+#    bineditor \    #ROOPAK
+#    diffeditor \   #ROOPAK
     imageviewer \
-    bookmarks \
+#    bookmarks \    #ROOPAK
     projectexplorer \
 #    vcsbase \     #ROOPAK
 #    perforce \     #ROOPAK
@@ -27,7 +27,7 @@ SUBDIRS   = \
     cmakeprojectmanager \
 #    autotoolsprojectmanager \     #ROOPAK
 #    fakevim \     #ROOPAK
-    designer \
+#    designer \     #ROOPAK
     resourceeditor \
     genericprojectmanager \
     qmljseditor \
@@ -40,7 +40,7 @@ SUBDIRS   = \
 #    tasklist \     #ROOPAK
 #    analyzerbase \ #ROOPAK
     qmljstools \
-    macros \
+#    macros \       #ROOPAK
 #    remotelinux \  #ROOPAK
 #    android \      #ROOPAK
 #    valgrind \     #ROOPAK
