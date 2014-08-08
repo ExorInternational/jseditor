@@ -36,7 +36,7 @@ SUBDIRS   = \
 #    pythoneditor \     #ROOPAK
 #    mercurial \     #ROOPAK
 #    bazaar \     #ROOPAK
-    classview \
+#    classview \    #ROOPAK
 #    tasklist \     #ROOPAK
 #    analyzerbase \ #ROOPAK
     qmljstools \
