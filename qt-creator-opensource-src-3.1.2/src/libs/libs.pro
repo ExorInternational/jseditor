@@ -23,17 +23,17 @@ for(l, SUBDIRS) {
 #SUBDIRS += \               #ROOPAK
 #    utils/process_stub.pro
 
-QBS_DIRS = \
-    corelib \
-    qtprofilesetup \
-    ../shared/qbs/src/plugins \
-    ../shared/qbs/static.pro
-corelib.subdir = ../shared/qbs/src/lib/corelib
-qtprofilesetup.subdir = ../shared/qbs/src/lib/qtprofilesetup
-qtprofilesetup.depends = corelib
+#QBS_DIRS = \                                       #ROOPAK - START
+#    corelib \
+#    qtprofilesetup \
+#    ../shared/qbs/src/plugins \
+#    ../shared/qbs/static.pro
+#corelib.subdir = ../shared/qbs/src/lib/corelib
+#qtprofilesetup.subdir = ../shared/qbs/src/lib/qtprofilesetup
+#qtprofilesetup.depends = corelib
 
-exists(../shared/qbs/qbs.pro): SUBDIRS += $$QBS_DIRS
-TR_EXCLUDE = $$QBS_DIRS
+#exists(../shared/qbs/qbs.pro): SUBDIRS += $$QBS_DIRS
+#TR_EXCLUDE = $$QBS_DIRS                            #ROOPAK - END
 
 #win32:SUBDIRS += utils/process_ctrlc_stub.pro  #ROOPAK
 
