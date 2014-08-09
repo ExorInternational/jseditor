@@ -28,7 +28,7 @@ SUBDIRS   = \
 #    autotoolsprojectmanager \     #ROOPAK
 #    fakevim \     #ROOPAK
 #    designer \     #ROOPAK
-    resourceeditor \
+#    resourceeditor \   #ROOPAK
 #    genericprojectmanager \    #ROOPAK
     qmljseditor \
     qmlprojectmanager \
