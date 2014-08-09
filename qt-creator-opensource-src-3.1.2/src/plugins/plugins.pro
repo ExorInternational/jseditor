@@ -19,17 +19,17 @@ SUBDIRS   = \
 #    cvs \       #ROOPAK
     cpptools \
     qtsupport \
-    qmakeprojectmanager \
+#    qmakeprojectmanager \  #ROOPAK
     locator \
     debugger \
 #    help \     #ROOPAK
 #    cpaster \     #ROOPAK
-    cmakeprojectmanager \
+#    cmakeprojectmanager \  #ROOPAK
 #    autotoolsprojectmanager \     #ROOPAK
 #    fakevim \     #ROOPAK
 #    designer \     #ROOPAK
     resourceeditor \
-    genericprojectmanager \
+#    genericprojectmanager \    #ROOPAK
     qmljseditor \
     qmlprojectmanager \
 #    glsleditor \     #ROOPAK
