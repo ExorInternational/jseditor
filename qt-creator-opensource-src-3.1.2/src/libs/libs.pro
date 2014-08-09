@@ -9,7 +9,7 @@ SUBDIRS   = \
     qmljs \
     qmldebug \
     qmleditorwidgets \
-    glsl \
+#    glsl \ #ROOPAK
     ssh \
     zeroconf
 
