@@ -11,7 +11,7 @@ SUBDIRS   = \
     qmleditorwidgets \
 #    glsl \ #ROOPAK
     ssh \
-    zeroconf
+#    zeroconf #ROOPAK
 
 for(l, SUBDIRS) {
     QTC_LIB_DEPENDS =
