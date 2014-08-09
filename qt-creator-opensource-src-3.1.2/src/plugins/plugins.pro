@@ -6,7 +6,7 @@ SUBDIRS   = \
     coreplugin \
     find \
     texteditor \
-    cppeditor \
+#    cppeditor \    #ROOPAK
 #    bineditor \    #ROOPAK
 #    diffeditor \   #ROOPAK
 #    imageviewer \  #ROOPAK
