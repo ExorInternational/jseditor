@@ -1410,8 +1410,8 @@ static inline QString getPlatformName()
     default:
         break;
     }
-    if (QSysInfo::WindowsVersion >= QSysInfo::WV_WINDOWS8)
-        result += QLatin1String(" 8");
+//    if (QSysInfo::WindowsVersion >= QSysInfo::WV_WINDOWS8)//ROOPAK - START
+//        result += QLatin1String(" 8");                    //ROOPAK - END
     return result;
 #endif // Q_OS_WIN
     return QLatin1String("Unknown");
