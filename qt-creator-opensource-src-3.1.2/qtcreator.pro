@@ -123,3 +123,7 @@ win32 {
 }
 
 QMAKE_EXTRA_TARGETS += deployqt bindist bindist_installer installer
+
+unix {
+    QMAKE_CXX = ccache g++#ROOPAK ADDED BY ROOPAK TO IMPROVE COMPILE TIME
+}
