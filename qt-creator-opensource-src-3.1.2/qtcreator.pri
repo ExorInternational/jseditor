@@ -99,22 +99,22 @@ defineReplace(stripSrcDir) {
 
 } # qt5
 
-!isEmpty(BUILD_TESTS):TEST = 1
+#!isEmpty(BUILD_TESTS):TEST = 1
 
-isEmpty(TEST):CONFIG(debug, debug|release) {
-    !debug_and_release|build_pass {
-        TEST = 1
-    }
-}
+#isEmpty(TEST):CONFIG(debug, debug|release) {
+#    !debug_and_release|build_pass {
+#        TEST = 1
+#    }
+#}
 
 isEmpty(IDE_LIBRARY_BASENAME) {
     IDE_LIBRARY_BASENAME = lib
 }
 
-equals(TEST, 1) {
-    QT +=testlib
-    DEFINES += WITH_TESTS
-}
+#equals(TEST, 1) {
+#    QT +=testlib
+#    DEFINES += WITH_TESTS
+#}
 
 IDE_SOURCE_TREE = $$PWD
 isEmpty(IDE_BUILD_TREE) {
