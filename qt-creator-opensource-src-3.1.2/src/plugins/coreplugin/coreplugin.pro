@@ -21,7 +21,7 @@ SOURCES += mainwindow.cpp \
     id.cpp \
     icontext.cpp \
     messagemanager.cpp \
-    messageoutputwindow.cpp \
+#    messageoutputwindow.cpp \#ROOPAK
     outputpane.cpp \
     outputwindow.cpp \
     vcsmanager.cpp \
@@ -107,7 +107,7 @@ HEADERS += mainwindow.h \
     generalsettings.h \
     id.h \
     messagemanager.h \
-    messageoutputwindow.h \
+#    messageoutputwindow.h \#ROOPAK
     outputpane.h \
     outputwindow.h \
     vcsmanager.h \

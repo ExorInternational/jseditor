@@ -28,14 +28,14 @@
 ****************************************************************************/
 
 #include "messagemanager.h"
-#include "messageoutputwindow.h"
+//#include "messageoutputwindow.h"//ROOPAK
 
 #include <extensionsystem/pluginmanager.h>
 
 using namespace Core;
 
 static MessageManager *m_instance = 0;
-Internal::MessageOutputWindow *m_messageOutputWindow = 0;
+//Internal::MessageOutputWindow *m_messageOutputWindow = 0;//ROOPAK
 
 QObject *MessageManager::instance()
 {
@@ -45,29 +45,29 @@ QObject *MessageManager::instance()
 MessageManager::MessageManager()
 {
     m_instance = this;
-    m_messageOutputWindow = 0;
+//    m_messageOutputWindow = 0;//ROOPAK
     qRegisterMetaType<Core::MessageManager::PrintToOutputPaneFlags>();
 }
 
 MessageManager::~MessageManager()
 {
-    if (m_messageOutputWindow) {
-        ExtensionSystem::PluginManager::removeObject(m_messageOutputWindow);
-        delete m_messageOutputWindow;
-    }
+//    if (m_messageOutputWindow) {//ROOPAK - START
+//        ExtensionSystem::PluginManager::removeObject(m_messageOutputWindow);
+//        delete m_messageOutputWindow;
+//    }//ROOPAK - END
     m_instance = 0;
 }
 
 void MessageManager::init()
 {
-    m_messageOutputWindow = new Internal::MessageOutputWindow;
-    ExtensionSystem::PluginManager::addObject(m_messageOutputWindow);
+//    m_messageOutputWindow = new Internal::MessageOutputWindow;//ROOPAK
+//    ExtensionSystem::PluginManager::addObject(m_messageOutputWindow);//ROOPAK
 }
 
 void MessageManager::showOutputPane()
 {
-    if (m_messageOutputWindow)
-        m_messageOutputWindow->popup(IOutputPane::ModeSwitch);
+//    if (m_messageOutputWindow)//ROOPAK
+//        m_messageOutputWindow->popup(IOutputPane::ModeSwitch);//ROOPAK
 }
 
 void MessageManager::write(const QString &text)
@@ -77,16 +77,16 @@ void MessageManager::write(const QString &text)
 
 void MessageManager::write(const QString &text, PrintToOutputPaneFlags flags)
 {
-    if (!m_messageOutputWindow)
-        return;
-    if (flags & Flash) {
-        m_messageOutputWindow->flash();
-    } else if (flags & Silent) {
-        // Do nothing
-    } else {
-        m_messageOutputWindow->popup(Core::IOutputPane::Flag(int(flags)));
-    }
+//    if (!m_messageOutputWindow)//ROOPAK - START
+//        return;
+//    if (flags & Flash) {
+//        m_messageOutputWindow->flash();
+//    } else if (flags & Silent) {
+//        // Do nothing
+//    } else {
+//        m_messageOutputWindow->popup(Core::IOutputPane::Flag(int(flags)));
+//    }
 
-    m_messageOutputWindow->append(text + QLatin1Char('\n'));
+//    m_messageOutputWindow->append(text + QLatin1Char('\n'));//ROOPAK - END
 }
 
