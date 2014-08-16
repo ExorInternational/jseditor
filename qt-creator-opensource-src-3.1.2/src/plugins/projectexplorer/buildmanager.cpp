@@ -31,7 +31,7 @@
 
 #include "buildprogress.h"
 #include "buildsteplist.h"
-#include "compileoutputwindow.h"
+//#include "compileoutputwindow.h"//ROOPAK
 #include "project.h"
 #include "projectexplorer.h"
 #include "projectexplorersettings.h"
@@ -70,7 +70,7 @@ struct BuildManagerPrivate
 {
     BuildManagerPrivate();
 
-    Internal::CompileOutputWindow *m_outputWindow;
+//    Internal::CompileOutputWindow *m_outputWindow;//ROOPAK
     TaskHub *m_taskHub;
     Internal::TaskWindow *m_taskWindow;
 
@@ -133,8 +133,8 @@ BuildManager::BuildManager(QObject *parent, QAction *cancelBuildAction)
     connect(SessionManager::instance(), SIGNAL(aboutToRemoveProject(ProjectExplorer::Project*)),
             this, SLOT(aboutToRemoveProject(ProjectExplorer::Project*)));
 
-    d->m_outputWindow = new Internal::CompileOutputWindow(cancelBuildAction);
-    ExtensionSystem::PluginManager::addObject(d->m_outputWindow);
+//    d->m_outputWindow = new Internal::CompileOutputWindow(cancelBuildAction);//ROOPAK
+//    ExtensionSystem::PluginManager::addObject(d->m_outputWindow);//ROOPAK
 
     d->m_taskWindow = new Internal::TaskWindow;
     ExtensionSystem::PluginManager::addObject(d->m_taskWindow);
@@ -176,8 +176,8 @@ BuildManager::~BuildManager()
     ExtensionSystem::PluginManager::removeObject(d->m_taskWindow);
     delete d->m_taskWindow;
 
-    ExtensionSystem::PluginManager::removeObject(d->m_outputWindow);
-    delete d->m_outputWindow;
+//    ExtensionSystem::PluginManager::removeObject(d->m_outputWindow);//ROOPAK
+//    delete d->m_outputWindow;//ROOPAK
 
     delete d;
 }
@@ -277,7 +277,7 @@ void BuildManager::clearBuildQueue()
 
 void BuildManager::toggleOutputWindow()
 {
-    d->m_outputWindow->toggle(IOutputPane::ModeSwitch);
+//    d->m_outputWindow->toggle(IOutputPane::ModeSwitch);//ROOPAK
 }
 
 void BuildManager::showTaskWindow()
@@ -347,7 +347,7 @@ void BuildManager::showBuildResults()
 
 void BuildManager::addToTaskWindow(const ProjectExplorer::Task &task)
 {
-    d->m_outputWindow->registerPositionOf(task);
+//    d->m_outputWindow->registerPositionOf(task);//ROOPAK
     // Distribute to all others
     TaskHub::addTask(task);
 }
@@ -363,7 +363,7 @@ void BuildManager::addToOutputWindow(const QString &string, BuildStep::OutputFor
     stringToWrite += string;
     if (newLineSetting == BuildStep::DoAppendNewline)
         stringToWrite += QLatin1Char('\n');
-    d->m_outputWindow->appendText(stringToWrite, format);
+//    d->m_outputWindow->appendText(stringToWrite, format);//ROOPAK
 }
 
 void BuildManager::buildStepFinishedAsync()
@@ -376,7 +376,7 @@ void BuildManager::buildStepFinishedAsync()
 
 void BuildManager::nextBuildQueue()
 {
-    d->m_outputWindow->flush();
+//    d->m_outputWindow->flush();//ROOPAK
     if (d->m_canceling) {
         d->m_canceling = false;
         QTimer::singleShot(0, m_instance, SLOT(emitCancelMessage()));
@@ -485,7 +485,7 @@ void BuildManager::nextStep()
 
 bool BuildManager::buildQueueAppend(QList<BuildStep *> steps, QStringList names)
 {
-    d->m_outputWindow->clearContents();
+//    d->m_outputWindow->clearContents();//ROOPAK
     int count = steps.size();
     bool init = true;
     int i = 0;
@@ -551,12 +551,12 @@ bool BuildManager::buildLists(QList<BuildStepList *> bsls, const QStringList &st
 
     bool success = buildQueueAppend(steps, names);
     if (!success) {
-        d->m_outputWindow->popup(IOutputPane::NoModeSwitch);
+//        d->m_outputWindow->popup(IOutputPane::NoModeSwitch);//ROOPAK
         return false;
     }
 
-    if (ProjectExplorerPlugin::projectExplorerSettings().showCompilerOutput)
-        d->m_outputWindow->popup(IOutputPane::NoModeSwitch);
+//    if (ProjectExplorerPlugin::projectExplorerSettings().showCompilerOutput)//ROOPAK
+//        d->m_outputWindow->popup(IOutputPane::NoModeSwitch);//ROOPAK
     startBuildQueue(preambelMessage);
     return true;
 }
@@ -565,11 +565,11 @@ void BuildManager::appendStep(BuildStep *step, const QString &name)
 {
     bool success = buildQueueAppend(QList<BuildStep *>() << step, QStringList() << name);
     if (!success) {
-        d->m_outputWindow->popup(IOutputPane::NoModeSwitch);
+//        d->m_outputWindow->popup(IOutputPane::NoModeSwitch);//ROOPAK
         return;
     }
-    if (ProjectExplorerPlugin::projectExplorerSettings().showCompilerOutput)
-        d->m_outputWindow->popup(IOutputPane::NoModeSwitch);
+//    if (ProjectExplorerPlugin::projectExplorerSettings().showCompilerOutput)//ROOPAK
+//        d->m_outputWindow->popup(IOutputPane::NoModeSwitch);//ROOPAK
     startBuildQueue();
 }
 

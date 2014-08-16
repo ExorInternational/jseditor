@@ -50,7 +50,7 @@ class Task;
 
 namespace Internal {
 
-class ShowOutputTaskHandler;
+//class ShowOutputTaskHandler;//ROOPAK
 class CompileOutputTextEdit;
 
 class CompileOutputWindow : public Core::IOutputPane
@@ -90,7 +90,7 @@ private slots:
 private:
     CompileOutputTextEdit *m_outputWindow;
     QHash<unsigned int, int> m_taskPositions;
-    ShowOutputTaskHandler * m_handler;
+//    ShowOutputTaskHandler * m_handler;//ROOPAK
     QToolButton *m_cancelBuildButton;
     Utils::AnsiEscapeCodeHandler *m_escapeCodeHandler;
 };

@@ -33,7 +33,7 @@ HEADERS += projectexplorer.h \
     kitoptionspage.h \
     buildmanager.h \
     buildsteplist.h \
-    compileoutputwindow.h \
+#    compileoutputwindow.h \#ROOPAK
     deployconfiguration.h \
     deployconfigurationmodel.h \
     namedwidget.h \
@@ -43,7 +43,7 @@ HEADERS += projectexplorer.h \
     itaskhandler.h \
     copytaskhandler.h \
     showineditortaskhandler.h \
-    showoutputtaskhandler.h \
+#    showoutputtaskhandler.h \#ROOPAK
     vcsannotatetaskhandler.h \
     taskwindow.h \
     taskmodel.h \
@@ -175,7 +175,7 @@ SOURCES += projectexplorer.cpp \
     kitoptionspage.cpp \
     buildmanager.cpp \
     buildsteplist.cpp \
-    compileoutputwindow.cpp \
+#    compileoutputwindow.cpp \#ROOPAK
     deployconfiguration.cpp \
     deployconfigurationmodel.cpp \
     namedwidget.cpp \
@@ -187,7 +187,7 @@ SOURCES += projectexplorer.cpp \
     task.cpp \
     copytaskhandler.cpp \
     showineditortaskhandler.cpp \
-    showoutputtaskhandler.cpp \
+#    showoutputtaskhandler.cpp \#ROOPAK
     vcsannotatetaskhandler.cpp \
     taskwindow.cpp \
     taskmodel.cpp \

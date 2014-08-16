@@ -29,7 +29,7 @@
 
 #include "compileoutputwindow.h"
 #include "buildmanager.h"
-#include "showoutputtaskhandler.h"
+//#include "showoutputtaskhandler.h"//ROOPAK
 #include "task.h"
 #include "projectexplorer.h"
 #include "projectexplorersettings.h"
@@ -131,7 +131,7 @@ CompileOutputWindow::CompileOutputWindow(QAction *cancelBuildAction) :
 
     qRegisterMetaType<QTextCharFormat>("QTextCharFormat");
 
-    m_handler = new ShowOutputTaskHandler(this);
+//    m_handler = new ShowOutputTaskHandler(this);//ROOPAK
     ExtensionSystem::PluginManager::addObject(m_handler);
     connect(ProjectExplorerPlugin::instance(), SIGNAL(settingsChanged()),
             this, SLOT(updateWordWrapMode()));
@@ -141,7 +141,7 @@ CompileOutputWindow::CompileOutputWindow(QAction *cancelBuildAction) :
 CompileOutputWindow::~CompileOutputWindow()
 {
     ExtensionSystem::PluginManager::removeObject(m_handler);
-    delete m_handler;
+//    delete m_handler;//ROOPAK
     delete m_cancelBuildButton;
     delete m_escapeCodeHandler;
 }
