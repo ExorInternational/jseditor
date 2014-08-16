@@ -45,7 +45,7 @@ HEADERS += projectexplorer.h \
     showineditortaskhandler.h \
 #    showoutputtaskhandler.h \#ROOPAK
     vcsannotatetaskhandler.h \
-    taskwindow.h \
+#    taskwindow.h \//ROOPAK
     taskmodel.h \
     projectfilewizardextension.h \
     session.h \
@@ -75,7 +75,7 @@ HEADERS += projectexplorer.h \
     runsettingspropertiespage.h \
     projecttreewidget.h \
     foldernavigationwidget.h \
-    buildprogress.h \
+#    buildprogress.h \#ROOPAK
     projectnodes.h \
     sessiondialog.h \
     projectwizardpage.h \
@@ -189,7 +189,7 @@ SOURCES += projectexplorer.cpp \
     showineditortaskhandler.cpp \
 #    showoutputtaskhandler.cpp \#ROOPAK
     vcsannotatetaskhandler.cpp \
-    taskwindow.cpp \
+#    taskwindow.cpp \//ROOPAK
     taskmodel.cpp \
     projectfilewizardextension.cpp \
     session.cpp \
@@ -212,7 +212,7 @@ SOURCES += projectexplorer.cpp \
     runsettingspropertiespage.cpp \
     projecttreewidget.cpp \
     foldernavigationwidget.cpp \
-    buildprogress.cpp \
+#    buildprogress.cpp \#ROOPAK
     projectnodes.cpp \
     sessiondialog.cpp \
     projectwizardpage.cpp \

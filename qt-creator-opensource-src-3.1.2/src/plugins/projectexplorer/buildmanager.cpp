@@ -29,14 +29,14 @@
 
 #include "buildmanager.h"
 
-#include "buildprogress.h"
+//#include "buildprogress.h"//ROOPAK
 #include "buildsteplist.h"
 //#include "compileoutputwindow.h"//ROOPAK
 #include "project.h"
 #include "projectexplorer.h"
 #include "projectexplorersettings.h"
 #include "target.h"
-#include "taskwindow.h"
+//#include "taskwindow.h"//ROOPAK
 #include "taskhub.h"
 
 #include <coreplugin/icore.h>
@@ -72,7 +72,7 @@ struct BuildManagerPrivate
 
 //    Internal::CompileOutputWindow *m_outputWindow;//ROOPAK
     TaskHub *m_taskHub;
-    Internal::TaskWindow *m_taskWindow;
+//    Internal::TaskWindow *m_taskWindow;//ROOPAK
 
     QList<BuildStep *> m_buildQueue;
     QList<bool> m_enabledState;
@@ -136,17 +136,17 @@ BuildManager::BuildManager(QObject *parent, QAction *cancelBuildAction)
 //    d->m_outputWindow = new Internal::CompileOutputWindow(cancelBuildAction);//ROOPAK
 //    ExtensionSystem::PluginManager::addObject(d->m_outputWindow);//ROOPAK
 
-    d->m_taskWindow = new Internal::TaskWindow;
-    ExtensionSystem::PluginManager::addObject(d->m_taskWindow);
+//    d->m_taskWindow = new Internal::TaskWindow;//ROOPAK
+//    ExtensionSystem::PluginManager::addObject(d->m_taskWindow);//ROOPAK
 
     qRegisterMetaType<ProjectExplorer::BuildStep::OutputFormat>();
     qRegisterMetaType<ProjectExplorer::BuildStep::OutputNewlineSetting>();
 
-    connect(d->m_taskWindow, SIGNAL(tasksChanged()),
-            this, SLOT(updateTaskCount()));
+//    connect(d->m_taskWindow, SIGNAL(tasksChanged()),//ROOPAK - START
+//            this, SLOT(updateTaskCount()));
 
-    connect(d->m_taskWindow, SIGNAL(tasksCleared()),
-            this,SIGNAL(tasksCleared()));
+//    connect(d->m_taskWindow, SIGNAL(tasksCleared()),
+//            this,SIGNAL(tasksCleared()));//ROOPAK - END
 
     connect(&d->m_progressWatcher, SIGNAL(canceled()),
             this, SLOT(cancel()));
@@ -173,8 +173,8 @@ BuildManager::~BuildManager()
 {
     cancel();
     m_instance = 0;
-    ExtensionSystem::PluginManager::removeObject(d->m_taskWindow);
-    delete d->m_taskWindow;
+//    ExtensionSystem::PluginManager::removeObject(d->m_taskWindow);//ROOPAK
+//    delete d->m_taskWindow;//ROOPAK
 
 //    ExtensionSystem::PluginManager::removeObject(d->m_outputWindow);//ROOPAK
 //    delete d->m_outputWindow;//ROOPAK
@@ -202,11 +202,12 @@ bool BuildManager::isBuilding()
 
 int BuildManager::getErrorTaskCount()
 {
-    const int errors =
-            d->m_taskWindow->errorTaskCount(Constants::TASK_CATEGORY_BUILDSYSTEM)
-            + d->m_taskWindow->errorTaskCount(Constants::TASK_CATEGORY_COMPILE)
-            + d->m_taskWindow->errorTaskCount(Constants::TASK_CATEGORY_DEPLOYMENT);
-    return errors;
+//    const int errors =    //ROOPAK - START
+//            d->m_taskWindow->errorTaskCount(Constants::TASK_CATEGORY_BUILDSYSTEM)
+//            + d->m_taskWindow->errorTaskCount(Constants::TASK_CATEGORY_COMPILE)
+//            + d->m_taskWindow->errorTaskCount(Constants::TASK_CATEGORY_DEPLOYMENT);
+//    return errors;//ROOPAK - END
+      return 0;//ROOPAK
 }
 
 void BuildManager::cancel()
@@ -282,21 +283,22 @@ void BuildManager::toggleOutputWindow()
 
 void BuildManager::showTaskWindow()
 {
-    d->m_taskWindow->popup(IOutputPane::NoModeSwitch);
+//    d->m_taskWindow->popup(IOutputPane::NoModeSwitch);//ROOPAK
 }
 
 void BuildManager::toggleTaskWindow()
 {
-    d->m_taskWindow->toggle(IOutputPane::ModeSwitch);
+//    d->m_taskWindow->toggle(IOutputPane::ModeSwitch);//ROOPAK
 }
 
 bool BuildManager::tasksAvailable()
 {
-    const int count =
-            d->m_taskWindow->taskCount(Constants::TASK_CATEGORY_BUILDSYSTEM)
-            + d->m_taskWindow->taskCount(Constants::TASK_CATEGORY_COMPILE)
-            + d->m_taskWindow->taskCount(Constants::TASK_CATEGORY_DEPLOYMENT);
-    return count > 0;
+//    const int count = //ROOPAK - START
+//            d->m_taskWindow->taskCount(Constants::TASK_CATEGORY_BUILDSYSTEM)
+//            + d->m_taskWindow->taskCount(Constants::TASK_CATEGORY_COMPILE)
+//            + d->m_taskWindow->taskCount(Constants::TASK_CATEGORY_DEPLOYMENT);
+//    return count > 0;//ROOPAK - END
+      return 0;//ROOPAK
 }
 
 void BuildManager::startBuildQueue(const QStringList &preambleMessage)
@@ -320,9 +322,9 @@ void BuildManager::startBuildQueue(const QStringList &preambleMessage)
               QString(), "ProjectExplorer.Task.Build",
               ProgressManager::KeepOnFinish | ProgressManager::ShowInApplicationIcon);
         connect(d->m_futureProgress.data(), SIGNAL(clicked()), m_instance, SLOT(showBuildResults()));
-        d->m_futureProgress.data()->setWidget(new Internal::BuildProgress(d->m_taskWindow));
-        d->m_futureProgress.data()->setStatusBarWidget(new Internal::BuildProgress(d->m_taskWindow,
-                                                                                   Qt::Horizontal));
+//        d->m_futureProgress.data()->setWidget(new Internal::BuildProgress(d->m_taskWindow));//ROOPAK
+//        d->m_futureProgress.data()->setStatusBarWidget(new Internal::BuildProgress(d->m_taskWindow,
+//                                                                                   Qt::Horizontal));//ROOPAK
         d->m_progress = 0;
         d->m_progressFutureInterface->setProgressRange(0, d->m_maxProgress * 100);
 
