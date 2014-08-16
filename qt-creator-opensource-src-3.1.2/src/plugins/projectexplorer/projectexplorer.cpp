@@ -60,7 +60,7 @@
 #include "foldernavigationwidget.h"
 #include "iprojectmanager.h"
 #include "nodesvisitor.h"
-#include "appoutputpane.h"
+//#include "appoutputpane.h"//ROOPAK
 #include "pluginfilefactory.h"
 #include "processstep.h"
 #include "kitinformation.h"
@@ -227,7 +227,7 @@ struct ProjectExplorerPluginPrivate {
 
     QList<Internal::ProjectFileFactory*> m_fileFactories;
     QStringList m_profileMimeTypes;
-    Internal::AppOutputPane *m_outputPane;
+//    Internal::AppOutputPane *m_outputPane;//ROOPAK
 
     QList<QPair<QString, QString> > m_recentProjects; // pair of filename, displayname
     static const int m_maxRecentProjects = 25;
@@ -419,15 +419,15 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
     addAutoReleasedObject(new RemoveTaskHandler);
     addAutoReleasedObject(new CoreListener);
 
-    d->m_outputPane = new AppOutputPane;
-    addAutoReleasedObject(d->m_outputPane);
-    connect(SessionManager::instance(), SIGNAL(projectRemoved(ProjectExplorer::Project*)),
-            d->m_outputPane, SLOT(projectRemoved()));
+//    d->m_outputPane = new AppOutputPane;      //ROOPAK - START
+//    addAutoReleasedObject(d->m_outputPane);
+//    connect(SessionManager::instance(), SIGNAL(projectRemoved(ProjectExplorer::Project*)),
+//            d->m_outputPane, SLOT(projectRemoved()));
 
-    connect(d->m_outputPane, SIGNAL(runControlStarted(ProjectExplorer::RunControl*)),
-            this, SIGNAL(runControlStarted(ProjectExplorer::RunControl*)));
-    connect(d->m_outputPane, SIGNAL(runControlFinished(ProjectExplorer::RunControl*)),
-            this, SIGNAL(runControlFinished(ProjectExplorer::RunControl*)));
+//    connect(d->m_outputPane, SIGNAL(runControlStarted(ProjectExplorer::RunControl*)),
+//            this, SIGNAL(runControlStarted(ProjectExplorer::RunControl*)));
+//    connect(d->m_outputPane, SIGNAL(runControlFinished(ProjectExplorer::RunControl*)),
+//            this, SIGNAL(runControlFinished(ProjectExplorer::RunControl*)));//ROOPAK - END
 
     addAutoReleasedObject(new AllProjectsFilter);
     addAutoReleasedObject(new CurrentProjectFilter);
@@ -1224,10 +1224,10 @@ ExtensionSystem::IPlugin::ShutdownFlag ProjectExplorerPlugin::aboutToShutdown()
     // Attempt to synchronously shutdown all run controls.
     // If that fails, fall back to asynchronous shutdown (Debugger run controls
     // might shutdown asynchronously).
-    if (d->m_outputPane->closeTabs(AppOutputPane::CloseTabNoPrompt /* No prompt any more */))
-        return SynchronousShutdown;
-    connect(d->m_outputPane, SIGNAL(allRunControlsFinished()),
-            this, SIGNAL(asynchronousShutdownFinished()));
+//    if (d->m_outputPane->closeTabs(AppOutputPane::CloseTabNoPrompt /* No prompt any more */))//ROOPAK - START
+//        return SynchronousShutdown;//ROOPAK
+//    connect(d->m_outputPane, SIGNAL(allRunControlsFinished()),
+//            this, SIGNAL(asynchronousShutdownFinished()));//ROOPAK - END
     return AsynchronousShutdown;
 }
 
@@ -1721,13 +1721,13 @@ void ProjectExplorerPlugin::showRunErrorMessage(const QString &errorMessage)
 
 void ProjectExplorerPlugin::startRunControl(RunControl *runControl, RunMode runMode)
 {
-    d->m_outputPane->createNewOutputWindow(runControl);
-    d->m_outputPane->flash(); // one flash for starting
-    d->m_outputPane->showTabFor(runControl);
-    bool popup = (runMode == NormalRunMode && d->m_projectExplorerSettings.showRunOutput)
-            || ((runMode == DebugRunMode || runMode == DebugRunModeWithBreakOnMain)
-                && d->m_projectExplorerSettings.showDebugOutput);
-    d->m_outputPane->setBehaviorOnOutput(runControl, popup ? AppOutputPane::Popup : AppOutputPane::Flash);
+//    d->m_outputPane->createNewOutputWindow(runControl);//ROOPAK - START
+//    d->m_outputPane->flash(); // one flash for starting
+//    d->m_outputPane->showTabFor(runControl);
+//    bool popup = (runMode == NormalRunMode && d->m_projectExplorerSettings.showRunOutput)
+//            || ((runMode == DebugRunMode || runMode == DebugRunModeWithBreakOnMain)
+//                && d->m_projectExplorerSettings.showDebugOutput);
+//    d->m_outputPane->setBehaviorOnOutput(runControl, popup ? AppOutputPane::Popup : AppOutputPane::Flash);//ROOPAK - END
     connect(runControl, SIGNAL(finished()), this, SLOT(runControlFinished()));
     runControl->start();
     emit updateRunActions();
@@ -1735,7 +1735,9 @@ void ProjectExplorerPlugin::startRunControl(RunControl *runControl, RunMode runM
 
 QList<RunControl *> ProjectExplorerPlugin::runControls() const
 {
-    return d->m_outputPane->runControls();
+//    return d->m_outputPane->runControls();//ROOPAK
+      QList<RunControl *> result;
+      return result;
 }
 
 void ProjectExplorerPlugin::initiateInlineRenaming()
@@ -2289,8 +2291,8 @@ bool ProjectExplorerPlugin::coreAboutToClose()
         if (box.clickedButton() != closeAnyway)
             return false;
     }
-    if (!d->m_outputPane->aboutToClose())
-        return false;
+//    if (!d->m_outputPane->aboutToClose())//ROOPAK
+//        return false;//ROOPAK
     return true;
 }
 

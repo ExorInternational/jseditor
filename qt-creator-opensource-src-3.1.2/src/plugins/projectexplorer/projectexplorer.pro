@@ -107,7 +107,7 @@ HEADERS += projectexplorer.h \
     metatypedeclarations.h \
     headerpath.h \
     gcctoolchainfactories.h \
-    appoutputpane.h \
+#    appoutputpane.h \#ROOPAK
     codestylesettingspropertiespage.h \
     settingsaccessor.h \
     environmentitemswidget.h \
@@ -241,7 +241,7 @@ SOURCES += projectexplorer.cpp \
     taskhub.cpp \
     processparameters.cpp \
     localapplicationruncontrol.cpp \
-    appoutputpane.cpp \
+#    appoutputpane.cpp \#ROOPAK
     codestylesettingspropertiespage.cpp \
     settingsaccessor.cpp \
     environmentitemswidget.cpp \
