@@ -17,8 +17,8 @@ unix:!macx:!isEmpty(copydata):SUBDIRS += bin
 
 OTHER_FILES +=\# dist/copyright_template.txt \  #ROOPAK - START
     #$$files(dist/changes-*) \                  #ROOPAK - END
-    qtcreator.qbs \
-    qbs/pluginspec/pluginspec.qbs \
+#    qtcreator.qbs \#ROOPAK
+#    qbs/pluginspec/pluginspec.qbs \#ROOPAK
     $$files(dist/installer/ifw/config/config-*) \
     #dist/installer/ifw/packages/org.qtproject.qtcreator/meta/package.xml.in \              #ROOPAK - START
     #dist/installer/ifw/packages/org.qtproject.qtcreator.application/meta/installscript.qs \
