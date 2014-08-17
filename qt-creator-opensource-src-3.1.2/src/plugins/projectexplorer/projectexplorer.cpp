@@ -57,7 +57,7 @@
 #include "editorsettingspropertiespage.h"
 #include "codestylesettingspropertiespage.h"
 #include "dependenciespanel.h"
-#include "foldernavigationwidget.h"
+//#include "foldernavigationwidget.h"//ROOPAK
 #include "iprojectmanager.h"
 #include "nodesvisitor.h"
 //#include "appoutputpane.h"//ROOPAK
@@ -909,7 +909,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
         this, SLOT(savePersistentSettings()));
 
     addAutoReleasedObject(new ProjectTreeWidgetFactory);
-    addAutoReleasedObject(new FolderNavigationWidgetFactory);
+//    addAutoReleasedObject(new FolderNavigationWidgetFactory);//ROOPAK
     addAutoReleasedObject(new DeployConfigurationFactory);
 
     QSettings *s = ICore::settings();

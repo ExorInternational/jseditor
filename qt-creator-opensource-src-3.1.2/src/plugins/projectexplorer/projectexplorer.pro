@@ -74,7 +74,7 @@ HEADERS += projectexplorer.h \
     applicationlauncher.h \
     runsettingspropertiespage.h \
     projecttreewidget.h \
-    foldernavigationwidget.h \
+#    foldernavigationwidget.h \#ROOPAK
 #    buildprogress.h \#ROOPAK
     projectnodes.h \
     sessiondialog.h \
@@ -211,7 +211,7 @@ SOURCES += projectexplorer.cpp \
     applicationlauncher.cpp \
     runsettingspropertiespage.cpp \
     projecttreewidget.cpp \
-    foldernavigationwidget.cpp \
+#    foldernavigationwidget.cpp \#ROOPAK
 #    buildprogress.cpp \#ROOPAK
     projectnodes.cpp \
     sessiondialog.cpp \
