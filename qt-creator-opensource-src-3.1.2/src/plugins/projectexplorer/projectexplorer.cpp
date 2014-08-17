@@ -65,7 +65,7 @@
 #include "processstep.h"
 #include "kitinformation.h"
 #include "projectfilewizardextension.h"
-#include "projecttreewidget.h"
+//#include "projecttreewidget.h"//ROOPAK
 #include "projectwindow.h"
 #include "runsettingspropertiespage.h"
 #include "session.h"
@@ -908,7 +908,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
     connect(ICore::instance(), SIGNAL(saveSettingsRequested()),
         this, SLOT(savePersistentSettings()));
 
-    addAutoReleasedObject(new ProjectTreeWidgetFactory);
+//    addAutoReleasedObject(new ProjectTreeWidgetFactory);//ROOPAK
 //    addAutoReleasedObject(new FolderNavigationWidgetFactory);//ROOPAK
     addAutoReleasedObject(new DeployConfigurationFactory);
 
@@ -3001,15 +3001,15 @@ void ProjectExplorerPlugin::deleteFile()
 
 void ProjectExplorerPlugin::renameFile()
 {
-    QWidget *focusWidget = QApplication::focusWidget();
-    while (focusWidget) {
-        ProjectTreeWidget *treeWidget = qobject_cast<ProjectTreeWidget*>(focusWidget);
-        if (treeWidget) {
-            treeWidget->editCurrentItem();
-            return;
-        }
-        focusWidget = focusWidget->parentWidget();
-    }
+//    QWidget *focusWidget = QApplication::focusWidget();//ROOPAK - START
+//    while (focusWidget) {
+//        ProjectTreeWidget *treeWidget = qobject_cast<ProjectTreeWidget*>(focusWidget);
+//        if (treeWidget) {
+//            treeWidget->editCurrentItem();
+//            return;
+//        }
+//        focusWidget = focusWidget->parentWidget();
+//    }//ROOPAK - END
 }
 
 void ProjectExplorerPlugin::renameFile(Node *node, const QString &to)
