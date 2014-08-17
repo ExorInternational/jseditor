@@ -56,10 +56,10 @@ SUBDIRS   = \
 #}
 
 # prefer qmake variable set on command line over env var
-isEmpty(LLVM_INSTALL_DIR):LLVM_INSTALL_DIR=$$(LLVM_INSTALL_DIR)
-!isEmpty(LLVM_INSTALL_DIR) {
-    SUBDIRS += clangcodemodel
-}
+#isEmpty(LLVM_INSTALL_DIR):LLVM_INSTALL_DIR=$$(LLVM_INSTALL_DIR)
+#!isEmpty(LLVM_INSTALL_DIR) {
+#    SUBDIRS += clangcodemodel
+#}
 
 #isEmpty(QBS_INSTALL_DIR): QBS_INSTALL_DIR = $$(QBS_INSTALL_DIR)    #ROOPAK - START
 #exists(../shared/qbs/qbs.pro)|!isEmpty(QBS_INSTALL_DIR): \
