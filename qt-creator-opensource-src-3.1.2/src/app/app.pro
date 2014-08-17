@@ -5,8 +5,8 @@ TEMPLATE = app
 TARGET = $$IDE_APP_TARGET
 DESTDIR = $$IDE_APP_PATH
 
-HEADERS += ../tools/qtcreatorcrashhandler/crashhandlersetup.h
-SOURCES += main.cpp ../tools/qtcreatorcrashhandler/crashhandlersetup.cpp
+#HEADERS += ../tools/qtcreatorcrashhandler/crashhandlersetup.h #ROOPAK
+SOURCES += main.cpp #../tools/qtcreatorcrashhandler/crashhandlersetup.cpp#ROOPAK
 
 include(../rpath.pri)
 

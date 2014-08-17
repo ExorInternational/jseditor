@@ -27,7 +27,7 @@
 **
 ****************************************************************************/
 
-#include "../tools/qtcreatorcrashhandler/crashhandlersetup.h"
+//#include "../tools/qtcreatorcrashhandler/crashhandlersetup.h"//ROOPAK
 
 #include <app/app_version.h>
 #include <extensionsystem/iplugin.h>
@@ -305,7 +305,7 @@ int main(int argc, char **argv)
     const int threadCount = QThreadPool::globalInstance()->maxThreadCount();
     QThreadPool::globalInstance()->setMaxThreadCount(qMax(4, 2 * threadCount));
 
-    setupCrashHandler(); // Display a backtrace once a serious signal is delivered.
+//    setupCrashHandler(); // Display a backtrace once a serious signal is delivered.//ROOPAK
 
 #ifdef ENABLE_QT_BREAKPAD
     QtSystemExceptionHandler systemExceptionHandler;
@@ -531,6 +531,6 @@ int main(int argc, char **argv)
     QObject::connect(&app, SIGNAL(aboutToQuit()), &pluginManager, SLOT(shutdown()));
 
     const int r = app.exec();
-    cleanupCrashHandler();
+//    cleanupCrashHandler();//ROOPAK
     return r;
 }

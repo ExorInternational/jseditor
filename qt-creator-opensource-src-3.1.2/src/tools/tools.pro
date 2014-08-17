@@ -24,7 +24,7 @@ QT_BREAKPAD_ROOT_PATH = $$(QT_BREAKPAD_ROOT_PATH)
     linux-* {
         # Build only in debug mode.
         debug_and_release|CONFIG(debug, debug|release) {
-            SUBDIRS += qtcreatorcrashhandler
+#            SUBDIRS += qtcreatorcrashhandler #ROOPAK
         }
     }
 }
