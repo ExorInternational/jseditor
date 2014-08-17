@@ -21,7 +21,7 @@ SUBDIRS   = \
     qtsupport \
 #    qmakeprojectmanager \  #ROOPAK
     locator \
-    debugger \
+#    debugger \#ROOPAK
 #    help \     #ROOPAK
 #    cpaster \     #ROOPAK
 #    cmakeprojectmanager \  #ROOPAK
