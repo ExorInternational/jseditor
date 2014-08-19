@@ -9,8 +9,8 @@ SUBDIRS = \#qtpromaker \    #ROOPAK
 #     buildoutputparser #ROOPAK
 
 win32 {
-#    SUBDIRS += qtcdebugger
-#    SUBDIRS += wininterrupt
+#    SUBDIRS += qtcdebugger     #ROOPAK
+#    SUBDIRS += wininterrupt    #ROOPAK
 }
 
 mac {
@@ -19,7 +19,7 @@ mac {
 
 QT_BREAKPAD_ROOT_PATH = $$(QT_BREAKPAD_ROOT_PATH)
 !isEmpty(QT_BREAKPAD_ROOT_PATH) {
-    #SUBDIRS += qtcrashhandler
+    #SUBDIRS += qtcrashhandler  #ROOPAK
 } else {
     linux-* {
         # Build only in debug mode.
