@@ -35,7 +35,7 @@ DATA_DIRS = \
     debugger \
     qmldesigner \
     qmlicons \
-    qml \
+    #qml \  #ROOPAK
     qml-type-descriptions \
     generic-highlighter \
     glsl \

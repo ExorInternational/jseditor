@@ -5,4 +5,4 @@ SUBDIRS = \
     libs \
     app \
     plugins \
-    tools
+#    tools      #ROOPAK
