@@ -35,23 +35,23 @@ qmake_cache = $$targetPath($$IDE_BUILD_TREE/.qmake.cache)
 }
 system("echo $${maybe_quote}$${LITERAL_HASH} config for qmake$${maybe_quote} > $$qmake_cache")
 # Make sure the qbs dll ends up alongside the Creator executable.
-exists(src/shared/qbs/qbs.pro) {
-    system("echo QBS_DLLDESTDIR = $${IDE_BUILD_TREE}/bin >> $$qmake_cache")
-    system("echo QBS_DESTDIR = $${maybe_backslash}\"$${IDE_LIBRARY_PATH}$${maybe_backslash}\" >> $$qmake_cache")
-    system("echo QBSLIBDIR = $${maybe_backslash}\"$${IDE_LIBRARY_PATH}$${maybe_backslash}\" >> $$qmake_cache")
-    system("echo QBS_INSTALL_PREFIX = $${QTC_PREFIX} >> $$qmake_cache")
-    system("echo QBS_LIB_INSTALL_DIR = $${QTC_PREFIX}/$${IDE_LIBRARY_BASENAME}/qtcreator >> $$qmake_cache")
-    system("echo QBS_RESOURCES_BUILD_DIR = $${maybe_backslash}\"$${IDE_DATA_PATH}/qbs$${maybe_backslash}\" >> $$qmake_cache")
-    system("echo QBS_RESOURCES_INSTALL_DIR = $${QTC_PREFIX}/share/qtcreator/qbs >> $$qmake_cache")
-    macx {
-        system("echo QBS_PLUGINS_BUILD_DIR = $${maybe_backslash}\"$${IDE_LIBRARY_PATH}$${maybe_backslash}\" >> $$qmake_cache")
-    } else {
-        system("echo QBS_PLUGINS_BUILD_DIR = $${maybe_backslash}\"$${IDE_BUILD_TREE}/$${IDE_LIBRARY_BASENAME}/qtcreator/$${maybe_backslash}\" >> $$qmake_cache")
-    }
-    system("echo QBS_PLUGINS_INSTALL_DIR = $${QTC_PREFIX}/$${IDE_LIBRARY_BASENAME}/qtcreator >> $$qmake_cache")
-    system("echo QBS_LIBRARY_DIRNAME = $${IDE_LIBRARY_BASENAME} >> $$qmake_cache")
-    system("echo CONFIG += qbs_no_dev_install >> $$qmake_cache")
-}
+#exists(src/shared/qbs/qbs.pro) {
+#    system("echo QBS_DLLDESTDIR = $${IDE_BUILD_TREE}/bin >> $$qmake_cache")
+#    system("echo QBS_DESTDIR = $${maybe_backslash}\"$${IDE_LIBRARY_PATH}$${maybe_backslash}\" >> $$qmake_cache")
+#    system("echo QBSLIBDIR = $${maybe_backslash}\"$${IDE_LIBRARY_PATH}$${maybe_backslash}\" >> $$qmake_cache")
+#    system("echo QBS_INSTALL_PREFIX = $${QTC_PREFIX} >> $$qmake_cache")
+#    system("echo QBS_LIB_INSTALL_DIR = $${QTC_PREFIX}/$${IDE_LIBRARY_BASENAME}/qtcreator >> $$qmake_cache")
+#    system("echo QBS_RESOURCES_BUILD_DIR = $${maybe_backslash}\"$${IDE_DATA_PATH}/qbs$${maybe_backslash}\" >> $$qmake_cache")
+#    system("echo QBS_RESOURCES_INSTALL_DIR = $${QTC_PREFIX}/share/qtcreator/qbs >> $$qmake_cache")
+#    macx {
+#        system("echo QBS_PLUGINS_BUILD_DIR = $${maybe_backslash}\"$${IDE_LIBRARY_PATH}$${maybe_backslash}\" >> $$qmake_cache")
+#    } else {
+#        system("echo QBS_PLUGINS_BUILD_DIR = $${maybe_backslash}\"$${IDE_BUILD_TREE}/$${IDE_LIBRARY_BASENAME}/qtcreator/$${maybe_backslash}\" >> $$qmake_cache")
+#    }
+#    system("echo QBS_PLUGINS_INSTALL_DIR = $${QTC_PREFIX}/$${IDE_LIBRARY_BASENAME}/qtcreator >> $$qmake_cache")
+#    system("echo QBS_LIBRARY_DIRNAME = $${IDE_LIBRARY_BASENAME} >> $$qmake_cache")
+#    system("echo CONFIG += qbs_no_dev_install >> $$qmake_cache")
+#}
 
 _QMAKE_CACHE_ = $$qmake_cache # Qt 4 support prevents us from using cache(), so tell Qt 5 about the cache
 
