@@ -95,5 +95,5 @@ for(p, SUBDIRS) {
 }
 
 linux-* {
-     SUBDIRS += debugger/ptracepreload.pro
+#     SUBDIRS += debugger/ptracepreload.pro #ROOPAK
 }
