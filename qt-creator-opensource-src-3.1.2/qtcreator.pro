@@ -11,7 +11,7 @@ include(qtcreator.pri)
 TEMPLATE  = subdirs
 CONFIG   += ordered
 
-SUBDIRS = src share
+SUBDIRS = src #share #ROOPAK
 unix:!macx:!isEmpty(copydata):SUBDIRS += bin
 #!isEmpty(BUILD_TESTS):SUBDIRS += tests #ROOPAK
 
