@@ -19,14 +19,14 @@ OTHER_FILES +=\# dist/copyright_template.txt \  #ROOPAK - START
     #$$files(dist/changes-*) \                  #ROOPAK - END
 #    qtcreator.qbs \#ROOPAK
 #    qbs/pluginspec/pluginspec.qbs \#ROOPAK
-    $$files(dist/installer/ifw/config/config-*) \
+#    $$files(dist/installer/ifw/config/config-*) \ #ROOPAK
     #dist/installer/ifw/packages/org.qtproject.qtcreator/meta/package.xml.in \              #ROOPAK - START
     #dist/installer/ifw/packages/org.qtproject.qtcreator.application/meta/installscript.qs \
     #dist/installer/ifw/packages/org.qtproject.qtcreator.application/meta/package.xml.in \
     #dist/installer/ifw/packages/org.qtproject.qtcreator.application/meta/license.txt \     #ROOPAK - END
-    $$files(scripts/*.py) \
-    $$files(scripts/*.sh) \
-    $$files(scripts/*.pl)
+#    $$files(scripts/*.py) \        #ROOPAK - START
+#    $$files(scripts/*.sh) \
+#    $$files(scripts/*.pl)          #ROOPAK - END
 
 qmake_cache = $$targetPath($$IDE_BUILD_TREE/.qmake.cache)
 !equals(QMAKE_HOST.os, Windows) {
