@@ -31,7 +31,7 @@ SUBDIRS   = \
 #    resourceeditor \   #ROOPAK
 #    genericprojectmanager \    #ROOPAK
     qmljseditor \
-    qmlprojectmanager \
+#    qmlprojectmanager \ #ROOPAK
 #    glsleditor \     #ROOPAK
 #    pythoneditor \     #ROOPAK
 #    mercurial \     #ROOPAK
