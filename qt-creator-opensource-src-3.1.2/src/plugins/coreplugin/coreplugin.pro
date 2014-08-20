@@ -75,7 +75,7 @@ SOURCES += mainwindow.cpp \
     settingsdatabase.cpp \
     imode.cpp \
     editormanager/systemeditor.cpp \
-    designmode.cpp \
+#    designmode.cpp \                        #ROOPAK
     editortoolbar.cpp \
     helpmanager.cpp \
     outputpanemanager.cpp \
@@ -172,7 +172,7 @@ HEADERS += mainwindow.h \
     mimedatabase.h \
     settingsdatabase.h \
     editormanager/systemeditor.h \
-    designmode.h \
+#    designmode.h \                 #ROOPAK
     editortoolbar.h \
     helpmanager.h \
     outputpanemanager.h \

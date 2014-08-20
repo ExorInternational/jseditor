@@ -28,7 +28,7 @@
 ****************************************************************************/
 
 #include "coreplugin.h"
-#include "designmode.h"
+//#include "designmode.h"   //ROOPAK
 #include "editmode.h"
 #include "helpmanager.h"
 #include "mainwindow.h"
@@ -50,7 +50,7 @@
 using namespace Core;
 using namespace Core::Internal;
 
-CorePlugin::CorePlugin() : m_editMode(0), m_designMode(0)
+CorePlugin::CorePlugin() : m_editMode(0)/*, m_designMode(0)*/ //ROOPAK
 {
     qRegisterMetaType<Core::Id>();
     m_mainWindow = new MainWindow;
@@ -68,11 +68,11 @@ CorePlugin::~CorePlugin()
         delete m_editMode;
     }
 
-    if (m_designMode) {
-        if (m_designMode->designModeIsRequired())
-            removeObject(m_designMode);
-        delete m_designMode;
-    }
+//    if (m_designMode) {                                   //ROOPAK - START
+//        if (m_designMode->designModeIsRequired())
+//            removeObject(m_designMode);
+//        delete m_designMode;
+//    }                                                     //ROOPAK - END
 
     delete m_mainWindow;
 }
@@ -99,7 +99,7 @@ bool CorePlugin::initialize(const QStringList &arguments, QString *errorMessage)
         m_editMode = new EditMode;
         addObject(m_editMode);
         ModeManager::activateMode(m_editMode->id());
-        m_designMode = new DesignMode;
+//        m_designMode = new DesignMode;            //ROOPAK
         InfoBar::initializeGloballySuppressed();
     }
 
@@ -115,8 +115,8 @@ bool CorePlugin::initialize(const QStringList &arguments, QString *errorMessage)
 void CorePlugin::extensionsInitialized()
 {
     MimeDatabase::syncUserModifiedMimeTypes();
-    if (m_designMode->designModeIsRequired())
-        addObject(m_designMode);
+//    if (m_designMode->designModeIsRequired()) //ROOPAK
+//        addObject(m_designMode);              //ROOPAK
     m_findPlugin->extensionsInitialized();
     m_locator->extensionsInitialized();
     m_mainWindow->extensionsInitialized();

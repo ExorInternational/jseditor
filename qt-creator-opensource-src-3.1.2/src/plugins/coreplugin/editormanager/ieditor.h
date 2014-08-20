@@ -65,7 +65,7 @@ public:
 
     virtual QWidget *toolBar() = 0;
 
-    virtual bool isDesignModePreferred() const { return false; }
+//    virtual bool isDesignModePreferred() const { return false; } //ROOPAK
 
 private:
     Core::Id m_id;

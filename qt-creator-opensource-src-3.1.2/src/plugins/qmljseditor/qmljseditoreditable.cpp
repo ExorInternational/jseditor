@@ -38,7 +38,7 @@
 
 #include <coreplugin/mimedatabase.h>
 #include <coreplugin/icore.h>
-#include <coreplugin/designmode.h>
+//#include <coreplugin/designmode.h> //ROOPAK
 #include <coreplugin/modemanager.h>
 #include <coreplugin/coreconstants.h>
 
@@ -56,14 +56,14 @@ QmlJSEditor::QmlJSEditor(QmlJSTextEditorWidget *editor)
     m_context.add(ProjectExplorer::Constants::LANG_QMLJS);
 }
 
-bool QmlJSEditor::isDesignModePreferred() const
-{
-    // stay in design mode if we are there
-    Core::IMode *mode = Core::ModeManager::currentMode();
-    if (mode && mode->id() == Core::Constants::MODE_DESIGN)
-        return true;
-    return false;
-}
+//bool QmlJSEditor::isDesignModePreferred() const               //ROOPAK - START
+//{
+//    // stay in design mode if we are there
+//    Core::IMode *mode = Core::ModeManager::currentMode();
+//    if (mode && mode->id() == Core::Constants::MODE_DESIGN)
+//        return true;
+//    return false;
+//}                                                             //ROOPAK - END
 
 const Utils::CommentDefinition *QmlJSEditor::commentDefinition() const
 {

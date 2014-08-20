@@ -49,7 +49,7 @@ public:
     bool duplicateSupported() const { return true; }
     Core::IEditor *duplicate();
     bool open(QString *errorString, const QString &fileName, const QString &realFileName);
-    bool isDesignModePreferred() const;
+//    bool isDesignModePreferred() const;   //ROOPAK
 
     const Utils::CommentDefinition *commentDefinition() const;
 

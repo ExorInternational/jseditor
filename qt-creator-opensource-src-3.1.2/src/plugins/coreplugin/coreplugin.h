@@ -34,7 +34,7 @@
 
 namespace Core {
 
-class DesignMode;
+//class DesignMode; //ROOPAK
 class FindPlugin;
 
 namespace Internal {
@@ -75,7 +75,7 @@ private:
 
     MainWindow *m_mainWindow;
     EditMode *m_editMode;
-    DesignMode *m_designMode;
+//    DesignMode *m_designMode; //ROOPAK
     FindPlugin *m_findPlugin;
     Locator *m_locator;
 };

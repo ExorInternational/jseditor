@@ -269,7 +269,7 @@ EditorManager::EditorManager(QWidget *parent) :
 
     const Context editManagerContext(Constants::C_EDITORMANAGER);
     // combined context for edit & design modes
-    const Context editDesignContext(Constants::C_EDITORMANAGER, Constants::C_DESIGN_MODE);
+    const Context editDesignContext(Constants::C_EDITORMANAGER/*, Constants::C_DESIGN_MODE*/);//ROOPAK
 
     ActionContainer *mfile = ActionManager::actionContainer(Constants::M_FILE);
 
@@ -1287,10 +1287,10 @@ Core::IEditor *EditorManager::activateEditor(Core::Internal::EditorView *view, C
         setCurrentEditor(editor, (flags & IgnoreNavigationHistory));
         if (!(flags & DoNotMakeVisible)) {
             // switch to design mode?
-            if (editor->isDesignModePreferred()) {
+            /*if (editor->isDesignModePreferred()) {                        //ROOPAK - START
                 ModeManager::activateMode(Core::Constants::MODE_DESIGN);
                 ModeManager::setFocusToCurrentMode();
-            } else {
+            } else*/ {                                                      //ROOPAK - END
                 int rootIndex;
                 findRoot(view, &rootIndex);
                 if (rootIndex == 0) // main window --> we might need to switch mode
