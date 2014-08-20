@@ -7,7 +7,7 @@ SUBDIRS   = \
     languageutils \
     cplusplus \
     qmljs \
-    qmldebug \
+#    qmldebug \ #ROOPAK
     qmleditorwidgets \
 #    glsl \ #ROOPAK
     ssh \
