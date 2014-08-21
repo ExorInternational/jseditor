@@ -72,7 +72,7 @@ class FancyTabWidget;
 class GeneralSettings;
 class ProgressManagerPrivate;
 class ShortcutSettings;
-class ToolSettings;
+//class ToolSettings;//ROOPAK
 class MimeTypeSettings;
 class StatusBarManager;
 class VersionDialog;
@@ -187,7 +187,7 @@ private:
 
     GeneralSettings *m_generalSettings;
     ShortcutSettings *m_shortcutSettings;
-    ToolSettings *m_toolSettings;
+//    ToolSettings *m_toolSettings;//ROOPAK
     MimeTypeSettings *m_mimeTypeSettings;
     SystemEditor *m_systemEditor;
 

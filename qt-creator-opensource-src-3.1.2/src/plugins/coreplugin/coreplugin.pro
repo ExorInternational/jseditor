@@ -82,8 +82,8 @@ SOURCES += mainwindow.cpp \
     navigationsubwidget.cpp \
     sidebarwidget.cpp \
     externaltool.cpp \
-    dialogs/externaltoolconfig.cpp \
-    toolsettings.cpp \
+#    dialogs/externaltoolconfig.cpp \ #ROOPAK
+#    toolsettings.cpp \#ROOPAK
     variablechooser.cpp \
     mimetypemagicdialog.cpp \
     mimetypesettings.cpp \
@@ -179,8 +179,8 @@ HEADERS += mainwindow.h \
     navigationsubwidget.h \
     sidebarwidget.h \
     externaltool.h \
-    dialogs/externaltoolconfig.h \
-    toolsettings.h \
+#    dialogs/externaltoolconfig.h \ #ROOPAK
+#    toolsettings.h \ #ROOPAK
     variablechooser.h \
     mimetypemagicdialog.h \
     mimetypesettings.h \
@@ -201,7 +201,7 @@ FORMS += \#dialogs/newdialog.ui \ #ROOPAK
     dialogs/readonlyfilesdialog.ui \
     dialogs/openwithdialog.ui \
     generalsettings.ui \
-    dialogs/externaltoolconfig.ui \
+#    dialogs/externaltoolconfig.ui \ #ROOPAK
     variablechooser.ui \
     mimetypesettingspage.ui \
     mimetypemagicdialog.ui \

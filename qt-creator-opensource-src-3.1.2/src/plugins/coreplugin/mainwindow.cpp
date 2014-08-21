@@ -30,7 +30,7 @@
 #include "mainwindow.h"
 #include "icore.h"
 #include "coreconstants.h"
-#include "toolsettings.h"
+//#include "toolsettings.h"//ROOPAK
 #include "mimetypesettings.h"
 #include "fancytabwidget.h"
 #include "documentmanager.h"
@@ -134,7 +134,7 @@ MainWindow::MainWindow() :
     m_versionDialog(0),
     m_generalSettings(new GeneralSettings),
     m_shortcutSettings(new ShortcutSettings),
-    m_toolSettings(new ToolSettings),
+//    m_toolSettings(new ToolSettings),//ROOPAK
     m_mimeTypeSettings(new MimeTypeSettings),
     m_systemEditor(new SystemEditor),
     m_focusToEditor(0),
@@ -256,7 +256,7 @@ MainWindow::~MainWindow()
 {
     ExtensionSystem::PluginManager::removeObject(m_shortcutSettings);
     ExtensionSystem::PluginManager::removeObject(m_generalSettings);
-    ExtensionSystem::PluginManager::removeObject(m_toolSettings);
+//    ExtensionSystem::PluginManager::removeObject(m_toolSettings);//ROOPAK
     ExtensionSystem::PluginManager::removeObject(m_mimeTypeSettings);
     ExtensionSystem::PluginManager::removeObject(m_systemEditor);
     delete m_externalToolManager;
@@ -267,8 +267,8 @@ MainWindow::~MainWindow()
     m_shortcutSettings = 0;
     delete m_generalSettings;
     m_generalSettings = 0;
-    delete m_toolSettings;
-    m_toolSettings = 0;
+//    delete m_toolSettings;//ROOPAK
+//    m_toolSettings = 0;   //ROOPAK
     delete m_mimeTypeSettings;
     m_mimeTypeSettings = 0;
     delete m_systemEditor;
@@ -325,7 +325,7 @@ bool MainWindow::init(QString *errorMessage)
 
     ExtensionSystem::PluginManager::addObject(m_generalSettings);
     ExtensionSystem::PluginManager::addObject(m_shortcutSettings);
-    ExtensionSystem::PluginManager::addObject(m_toolSettings);
+//    ExtensionSystem::PluginManager::addObject(m_toolSettings);//ROOPAK
     ExtensionSystem::PluginManager::addObject(m_mimeTypeSettings);
     ExtensionSystem::PluginManager::addObject(m_systemEditor);
 
