@@ -64,7 +64,7 @@
 #include <coreplugin/actionmanager/actionmanager.h>
 #include <coreplugin/actionmanager/actionmanager_p.h>
 #include <coreplugin/actionmanager/command.h>
-#include <coreplugin/dialogs/newdialog.h>
+//#include <coreplugin/dialogs/newdialog.h>//ROOPAK
 #include <coreplugin/dialogs/settingsdialog.h>
 #include <coreplugin/dialogs/shortcutsettings.h>
 #include <coreplugin/editormanager/editormanager.h>
@@ -99,6 +99,9 @@
 #include <QMenuBar>
 #include <QPushButton>
 #include <QStyleFactory>
+
+//ADDED BY ROOPAK
+#include "dialogs/iwizard.h"
 
 using namespace ExtensionSystem;
 
@@ -885,11 +888,11 @@ void MainWindow::showNewItemDialog(const QString &title,
         wizard = wizards.front();
         break;
     default: {
-        NewDialog dlg(this);
-        dlg.setWizards(wizards);
-        dlg.setWindowTitle(title);
-        wizard = dlg.showDialog();
-        selectedPlatform = dlg.selectedPlatform();
+//        NewDialog dlg(this);                      //ROOPAK - START
+//        dlg.setWizards(wizards);
+//        dlg.setWindowTitle(title);
+//        wizard = dlg.showDialog();
+//        selectedPlatform = dlg.selectedPlatform();//ROOPAK - END
     }
         break;
     }

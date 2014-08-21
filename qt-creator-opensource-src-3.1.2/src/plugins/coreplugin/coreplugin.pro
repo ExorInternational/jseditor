@@ -40,7 +40,7 @@ SOURCES += mainwindow.cpp \
     actionmanager/actioncontainer.cpp \
     actionmanager/commandsfile.cpp \
     dialogs/saveitemsdialog.cpp \
-    dialogs/newdialog.cpp \
+#    dialogs/newdialog.cpp \#ROOPAK
     dialogs/settingsdialog.cpp \
     actionmanager/commandmappings.cpp \
     dialogs/shortcutsettings.cpp \
@@ -129,7 +129,7 @@ HEADERS += mainwindow.h \
     actionmanager/actioncontainer_p.h \
     actionmanager/commandsfile.h \
     dialogs/saveitemsdialog.h \
-    dialogs/newdialog.h \
+#    dialogs/newdialog.h \#ROOPAK
     dialogs/settingsdialog.h \
     actionmanager/commandmappings.h \
     dialogs/readonlyfilesdialog.h \
@@ -196,7 +196,7 @@ HEADERS += mainwindow.h \
     removefiledialog.h \
     dialogs/addtovcsdialog.h
 
-FORMS += dialogs/newdialog.ui \
+FORMS += \#dialogs/newdialog.ui \ #ROOPAK
     dialogs/saveitemsdialog.ui \
     dialogs/readonlyfilesdialog.ui \
     dialogs/openwithdialog.ui \
