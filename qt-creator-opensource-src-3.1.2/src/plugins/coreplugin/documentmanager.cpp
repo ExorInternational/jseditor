@@ -35,7 +35,7 @@
 #include "coreconstants.h"
 
 #include <coreplugin/dialogs/readonlyfilesdialog.h>
-#include <coreplugin/dialogs/saveitemsdialog.h>
+//#include <coreplugin/dialogs/saveitemsdialog.h> //ROOPAK
 #include <coreplugin/editormanager/editormanager.h>
 #include <coreplugin/editormanager/ieditor.h>
 #include <coreplugin/editormanager/ieditorfactory.h>
@@ -60,6 +60,8 @@
 #include <QMenu>
 #include <QMessageBox>
 
+#include <QSet>//ADDED BY ROOPAK
+#include <QApplication>//ADDED BY ROOPAK
 /*!
   \class Core::DocumentManager
   \mainclass
@@ -578,23 +580,23 @@ static bool saveModifiedFilesHelper(const QList<IDocument *> &documents,
         if (silently) {
             documentsToSave = modifiedDocuments;
         } else {
-            SaveItemsDialog dia(ICore::dialogParent(), modifiedDocuments);
-            if (!message.isEmpty())
-                dia.setMessage(message);
-            if (!alwaysSaveMessage.isNull())
-                dia.setAlwaysSaveMessage(alwaysSaveMessage);
-            if (dia.exec() != QDialog::Accepted) {
-                if (cancelled)
-                    (*cancelled) = true;
-                if (alwaysSave)
-                    (*alwaysSave) = dia.alwaysSaveChecked();
-                if (failedToSave)
-                    (*failedToSave) = modifiedDocuments;
-                return false;
-            }
-            if (alwaysSave)
-                *alwaysSave = dia.alwaysSaveChecked();
-            documentsToSave = dia.itemsToSave();
+//            SaveItemsDialog dia(ICore::dialogParent(), modifiedDocuments);//ROOPAK - START
+//            if (!message.isEmpty())
+//                dia.setMessage(message);
+//            if (!alwaysSaveMessage.isNull())
+//                dia.setAlwaysSaveMessage(alwaysSaveMessage);
+//            if (dia.exec() != QDialog::Accepted) {
+//                if (cancelled)
+//                    (*cancelled) = true;
+//                if (alwaysSave)
+//                    (*alwaysSave) = dia.alwaysSaveChecked();
+//                if (failedToSave)
+//                    (*failedToSave) = modifiedDocuments;
+//                return false;
+//            }
+//            if (alwaysSave)
+//                *alwaysSave = dia.alwaysSaveChecked();
+//            documentsToSave = dia.itemsToSave();                      //ROOPAK - END
         }
         // Check for files without write permissions.
         QList<IDocument *> roDocuments;
