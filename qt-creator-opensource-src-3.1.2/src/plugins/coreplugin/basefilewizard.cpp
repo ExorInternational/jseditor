@@ -32,7 +32,7 @@
 #include "ifilewizardextension.h"
 #include "mimedatabase.h"
 #include "editormanager/editormanager.h"
-#include "dialogs/promptoverwritedialog.h"
+//#include "dialogs/promptoverwritedialog.h"
 #include <extensionsystem/pluginmanager.h>
 #include <utils/filewizarddialog.h>
 #include <utils/qtcassert.h>
@@ -390,78 +390,79 @@ bool BaseFileWizard::postGenerateOpenEditors(const GeneratedFiles &l, QString *e
 BaseFileWizard::OverwriteResult BaseFileWizard::promptOverwrite(GeneratedFiles *files,
                                                                 QString *errorMessage) const
 {
-    if (debugWizard)
-        qDebug() << Q_FUNC_INFO << files;
+//    if (debugWizard)                                                      //ROOPAK - START
+//        qDebug() << Q_FUNC_INFO << files;
 
-    QStringList existingFiles;
-    bool oddStuffFound = false;
+//    QStringList existingFiles;
+//    bool oddStuffFound = false;
 
-    static const QString readOnlyMsg = tr("[read only]");
-    static const QString directoryMsg = tr("[folder]");
-    static const QString symLinkMsg = tr("[symbolic link]");
+//    static const QString readOnlyMsg = tr("[read only]");
+//    static const QString directoryMsg = tr("[folder]");
+//    static const QString symLinkMsg = tr("[symbolic link]");
 
-    foreach (const GeneratedFile &file, *files) {
-        const QFileInfo fi(file.path());
-        if (fi.exists())
-            existingFiles.append(file.path());
-    }
-    if (existingFiles.isEmpty())
-        return OverwriteOk;
-    // Before prompting to overwrite existing files, loop over files and check
-    // if there is anything blocking overwriting them (like them being links or folders).
-    // Format a file list message as ( "<file1> [readonly], <file2> [folder]").
-    const QString commonExistingPath = Utils::commonPath(existingFiles);
-    QString fileNamesMsgPart;
-    foreach (const QString &fileName, existingFiles) {
-        const QFileInfo fi(fileName);
-        if (fi.exists()) {
-            if (!fileNamesMsgPart.isEmpty())
-                fileNamesMsgPart += QLatin1String(", ");
-            fileNamesMsgPart += QDir::toNativeSeparators(fileName.mid(commonExistingPath.size() + 1));
-            do {
-                if (fi.isDir()) {
-                    oddStuffFound = true;
-                    fileNamesMsgPart += QLatin1Char(' ') + directoryMsg;
-                    break;
-                }
-                if (fi.isSymLink()) {
-                    oddStuffFound = true;
-                    fileNamesMsgPart += QLatin1Char(' ') + symLinkMsg;
-                    break;
-            }
-                if (!fi.isWritable()) {
-                    oddStuffFound = true;
-                    fileNamesMsgPart += QLatin1Char(' ') + readOnlyMsg;
-                }
-            } while (false);
-        }
-    }
+//    foreach (const GeneratedFile &file, *files) {
+//        const QFileInfo fi(file.path());
+//        if (fi.exists())
+//            existingFiles.append(file.path());
+//    }
+//    if (existingFiles.isEmpty())
+//        return OverwriteOk;
+//    // Before prompting to overwrite existing files, loop over files and check
+//    // if there is anything blocking overwriting them (like them being links or folders).
+//    // Format a file list message as ( "<file1> [readonly], <file2> [folder]").
+//    const QString commonExistingPath = Utils::commonPath(existingFiles);
+//    QString fileNamesMsgPart;
+//    foreach (const QString &fileName, existingFiles) {
+//        const QFileInfo fi(fileName);
+//        if (fi.exists()) {
+//            if (!fileNamesMsgPart.isEmpty())
+//                fileNamesMsgPart += QLatin1String(", ");
+//            fileNamesMsgPart += QDir::toNativeSeparators(fileName.mid(commonExistingPath.size() + 1));
+//            do {
+//                if (fi.isDir()) {
+//                    oddStuffFound = true;
+//                    fileNamesMsgPart += QLatin1Char(' ') + directoryMsg;
+//                    break;
+//                }
+//                if (fi.isSymLink()) {
+//                    oddStuffFound = true;
+//                    fileNamesMsgPart += QLatin1Char(' ') + symLinkMsg;
+//                    break;
+//            }
+//                if (!fi.isWritable()) {
+//                    oddStuffFound = true;
+//                    fileNamesMsgPart += QLatin1Char(' ') + readOnlyMsg;
+//                }
+//            } while (false);
+//        }
+//    }
 
-    if (oddStuffFound) {
-        *errorMessage = tr("The project directory %1 contains files which cannot be overwritten:\n%2.")
-                .arg(QDir::toNativeSeparators(commonExistingPath)).arg(fileNamesMsgPart);
-        return OverwriteError;
-    }
-    // Prompt to overwrite existing files.
-    Internal::PromptOverwriteDialog overwriteDialog;
-    // Scripts cannot handle overwrite
-    overwriteDialog.setFiles(existingFiles);
-    foreach (const GeneratedFile &file, *files)
-        if (file.attributes() & GeneratedFile::CustomGeneratorAttribute)
-            overwriteDialog.setFileEnabled(file.path(), false);
-    if (overwriteDialog.exec() != QDialog::Accepted)
-        return OverwriteCanceled;
-    const QStringList existingFilesToKeep = overwriteDialog.uncheckedFiles();
-    if (existingFilesToKeep.size() == files->size()) // All exist & all unchecked->Cancel.
-        return OverwriteCanceled;
-    // Set 'keep' attribute in files
-    foreach (const QString &keepFile, existingFilesToKeep) {
-        const int i = indexOfFile(*files, keepFile);
-        QTC_ASSERT(i != -1, return OverwriteCanceled);
-        GeneratedFile &file = (*files)[i];
-        file.setAttributes(file.attributes() | GeneratedFile::KeepExistingFileAttribute);
-    }
-    return OverwriteOk;
+//    if (oddStuffFound) {
+//        *errorMessage = tr("The project directory %1 contains files which cannot be overwritten:\n%2.")
+//                .arg(QDir::toNativeSeparators(commonExistingPath)).arg(fileNamesMsgPart);
+//        return OverwriteError;
+//    }
+//    // Prompt to overwrite existing files.
+//    Internal::PromptOverwriteDialog overwriteDialog;
+//    // Scripts cannot handle overwrite
+//    overwriteDialog.setFiles(existingFiles);
+//    foreach (const GeneratedFile &file, *files)
+//        if (file.attributes() & GeneratedFile::CustomGeneratorAttribute)
+//            overwriteDialog.setFileEnabled(file.path(), false);
+//    if (overwriteDialog.exec() != QDialog::Accepted)
+//        return OverwriteCanceled;
+//    const QStringList existingFilesToKeep = overwriteDialog.uncheckedFiles();
+//    if (existingFilesToKeep.size() == files->size()) // All exist & all unchecked->Cancel.
+//        return OverwriteCanceled;
+//    // Set 'keep' attribute in files
+//    foreach (const QString &keepFile, existingFilesToKeep) {
+//        const int i = indexOfFile(*files, keepFile);
+//        QTC_ASSERT(i != -1, return OverwriteCanceled);
+//        GeneratedFile &file = (*files)[i];
+//        file.setAttributes(file.attributes() | GeneratedFile::KeepExistingFileAttribute);
+//    }
+//    return OverwriteOk;
+    return OverwriteCanceled;                                               //ROOPAK - END
 }
 
 /*!

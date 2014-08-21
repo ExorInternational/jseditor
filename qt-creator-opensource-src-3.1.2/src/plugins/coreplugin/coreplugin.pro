@@ -87,7 +87,7 @@ SOURCES += mainwindow.cpp \
     variablechooser.cpp \
     mimetypemagicdialog.cpp \
     mimetypesettings.cpp \
-    dialogs/promptoverwritedialog.cpp \
+#    dialogs/promptoverwritedialog.cpp \ #ROOPAK
     fileutils.cpp \
     featureprovider.cpp \
     idocument.cpp \
@@ -184,7 +184,7 @@ HEADERS += mainwindow.h \
     variablechooser.h \
     mimetypemagicdialog.h \
     mimetypesettings.h \
-    dialogs/promptoverwritedialog.h \
+#    dialogs/promptoverwritedialog.h \ #ROOPAK
     fileutils.h \
     externaltoolmanager.h \
     generatedfile.h \
