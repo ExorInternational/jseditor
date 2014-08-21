@@ -200,8 +200,8 @@ qt:greaterThan(QT_MAJOR_VERSION, 4) {
     DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x040900
 }
 
-QBSFILE = $$replace(_PRO_FILE_, \\.pro$, .qbs)
-exists($$QBSFILE):OTHER_FILES += $$QBSFILE
+#QBSFILE = $$replace(_PRO_FILE_, \\.pro$, .qbs) #ROOPAK
+#exists($$QBSFILE):OTHER_FILES += $$QBSFILE     #ROOPAK
 
 # recursively resolve plugin deps
 done_plugins =
