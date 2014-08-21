@@ -45,7 +45,7 @@ SOURCES += mainwindow.cpp \
     actionmanager/commandmappings.cpp \
     dialogs/shortcutsettings.cpp \
     dialogs/readonlyfilesdialog.cpp \
-    dialogs/openwithdialog.cpp \
+#    dialogs/openwithdialog.cpp \ #ROOPAK
     progressmanager/progressmanager.cpp \
     progressmanager/progressview.cpp \
     progressmanager/progressbar.cpp \
@@ -134,7 +134,7 @@ HEADERS += mainwindow.h \
     actionmanager/commandmappings.h \
     dialogs/readonlyfilesdialog.h \
     dialogs/shortcutsettings.h \
-    dialogs/openwithdialog.h \
+#    dialogs/openwithdialog.h \#ROOPAK
     dialogs/iwizard.h \
     dialogs/ioptionspage.h \
     progressmanager/progressmanager_p.h \
@@ -199,7 +199,7 @@ HEADERS += mainwindow.h \
 FORMS += \#dialogs/newdialog.ui \ #ROOPAK
     dialogs/saveitemsdialog.ui \
     dialogs/readonlyfilesdialog.ui \
-    dialogs/openwithdialog.ui \
+#    dialogs/openwithdialog.ui \#ROOPAK
     generalsettings.ui \
 #    dialogs/externaltoolconfig.ui \ #ROOPAK
     variablechooser.ui \

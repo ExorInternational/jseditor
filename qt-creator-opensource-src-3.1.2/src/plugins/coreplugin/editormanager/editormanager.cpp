@@ -37,7 +37,7 @@
 #include <coreplugin/actionmanager/actioncontainer.h>
 #include <coreplugin/actionmanager/actionmanager.h>
 #include <coreplugin/coreconstants.h>
-#include <coreplugin/dialogs/openwithdialog.h>
+//#include <coreplugin/dialogs/openwithdialog.h>//ROOPAK
 #include <coreplugin/dialogs/readonlyfilesdialog.h>
 #include <coreplugin/documentmanager.h>
 #include <coreplugin/editormanager/ieditorfactory.h>
@@ -80,6 +80,9 @@
 #include <QMessageBox>
 #include <QPushButton>
 #include <QSplitter>
+
+//ADDED BY ROOPAK
+#include <QVBoxLayout>
 
 enum { debugEditorManager=0 };
 
@@ -1454,42 +1457,44 @@ void EditorManager::addEditor(IEditor *editor)
 Core::Id EditorManager::getOpenWithEditorId(const QString &fileName,
                                            bool *isExternalEditor)
 {
-    // Collect editors that can open the file
-    MimeType mt = MimeDatabase::findByFile(fileName);
-    //Unable to determine mime type of fileName. Falling back to text/plain",
-    if (!mt)
-        mt = MimeDatabase::findByType(QLatin1String("text/plain"));
-    QList<Id> allEditorIds;
-    QStringList allEditorDisplayNames;
-    QList<Id> externalEditorIds;
-    // Built-in
-    const EditorFactoryList editors = editorFactories(mt, false);
-    const int size = editors.size();
-    for (int i = 0; i < size; i++) {
-        allEditorIds.push_back(editors.at(i)->id());
-        allEditorDisplayNames.push_back(editors.at(i)->displayName());
-    }
-    // External editors
-    const ExternalEditorList exEditors = externalEditors(mt, false);
-    const int esize = exEditors.size();
-    for (int i = 0; i < esize; i++) {
-        externalEditorIds.push_back(exEditors.at(i)->id());
-        allEditorIds.push_back(exEditors.at(i)->id());
-        allEditorDisplayNames.push_back(exEditors.at(i)->displayName());
-    }
-    if (allEditorIds.empty())
-        return Id();
-    QTC_ASSERT(allEditorIds.size() == allEditorDisplayNames.size(), return Id());
-    // Run dialog.
-    OpenWithDialog dialog(fileName, ICore::mainWindow());
-    dialog.setEditors(allEditorDisplayNames);
-    dialog.setCurrentEditor(0);
-    if (dialog.exec() != QDialog::Accepted)
-        return Id();
-    const Id selectedId = allEditorIds.at(dialog.editor());
-    if (isExternalEditor)
-        *isExternalEditor = externalEditorIds.contains(selectedId);
-    return selectedId;
+//    // Collect editors that can open the file         //ROOPAK - START
+//    MimeType mt = MimeDatabase::findByFile(fileName);
+//    //Unable to determine mime type of fileName. Falling back to text/plain",
+//    if (!mt)
+//        mt = MimeDatabase::findByType(QLatin1String("text/plain"));
+//    QList<Id> allEditorIds;
+//    QStringList allEditorDisplayNames;
+//    QList<Id> externalEditorIds;
+//    // Built-in
+//    const EditorFactoryList editors = editorFactories(mt, false);
+//    const int size = editors.size();
+//    for (int i = 0; i < size; i++) {
+//        allEditorIds.push_back(editors.at(i)->id());
+//        allEditorDisplayNames.push_back(editors.at(i)->displayName());
+//    }
+//    // External editors
+//    const ExternalEditorList exEditors = externalEditors(mt, false);
+//    const int esize = exEditors.size();
+//    for (int i = 0; i < esize; i++) {
+//        externalEditorIds.push_back(exEditors.at(i)->id());
+//        allEditorIds.push_back(exEditors.at(i)->id());
+//        allEditorDisplayNames.push_back(exEditors.at(i)->displayName());
+//    }
+//    if (allEditorIds.empty())
+//        return Id();
+//    QTC_ASSERT(allEditorIds.size() == allEditorDisplayNames.size(), return Id());
+//    // Run dialog.
+//    OpenWithDialog dialog(fileName, ICore::mainWindow());
+//    dialog.setEditors(allEditorDisplayNames);
+//    dialog.setCurrentEditor(0);
+//    if (dialog.exec() != QDialog::Accepted)
+//        return Id();
+//    const Id selectedId = allEditorIds.at(dialog.editor());
+//    if (isExternalEditor)
+//        *isExternalEditor = externalEditorIds.contains(selectedId);
+//    return selectedId;
+
+    return Id();//ROOPAK - END
 }
 
 IEditor *EditorManager::openEditor(const QString &fileName, const Id &editorId,
