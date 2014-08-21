@@ -95,7 +95,7 @@ SOURCES += mainwindow.cpp \
     documentmanager.cpp \
     removefiledialog.cpp \
     iversioncontrol.cpp \
-    dialogs/addtovcsdialog.cpp \
+#    dialogs/addtovcsdialog.cpp \    #ROOPAK
     icorelistener.cpp \
     ioutputpane.cpp
 
@@ -194,7 +194,7 @@ HEADERS += mainwindow.h \
     textdocument.h \
     documentmanager.h \
     removefiledialog.h \
-    dialogs/addtovcsdialog.h
+#    dialogs/addtovcsdialog.h  #ROOPAK
 
 FORMS += \#dialogs/newdialog.ui \ #ROOPAK
     dialogs/saveitemsdialog.ui \
@@ -206,7 +206,7 @@ FORMS += \#dialogs/newdialog.ui \ #ROOPAK
     mimetypesettingspage.ui \
     mimetypemagicdialog.ui \
     removefiledialog.ui \
-   dialogs/addtovcsdialog.ui
+#   dialogs/addtovcsdialog.ui   #ROOPAK
 
 RESOURCES += core.qrc \
     fancyactionbar.qrc

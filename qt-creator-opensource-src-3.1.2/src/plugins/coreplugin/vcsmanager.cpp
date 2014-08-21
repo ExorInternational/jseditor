@@ -34,7 +34,7 @@
 #include "idocument.h"
 #include "infobar.h"
 
-#include <coreplugin/dialogs/addtovcsdialog.h>
+//#include <coreplugin/dialogs/addtovcsdialog.h>//ROOPAK
 #include <coreplugin/editormanager/editormanager.h>
 #include <coreplugin/editormanager/ieditor.h>
 
@@ -441,21 +441,21 @@ void VcsManager::promptToAdd(const QString &directory, const QStringList &fileNa
     }
     if (unmanagedFiles.isEmpty())
         return;
+//      ROOPAK - START
+//    Internal::AddToVcsDialog dlg(Core::ICore::mainWindow(), VcsManager::msgAddToVcsTitle(),
+//                                 unmanagedFiles, vc->displayName());
+//    if (dlg.exec() == QDialog::Accepted) {
+//        QStringList notAddedToVc;
+//        foreach (const QString &file, unmanagedFiles) {
+//            if (!vc->vcsAdd(file))
+//                notAddedToVc << file;
+//        }
 
-    Internal::AddToVcsDialog dlg(Core::ICore::mainWindow(), VcsManager::msgAddToVcsTitle(),
-                                 unmanagedFiles, vc->displayName());
-    if (dlg.exec() == QDialog::Accepted) {
-        QStringList notAddedToVc;
-        foreach (const QString &file, unmanagedFiles) {
-            if (!vc->vcsAdd(file))
-                notAddedToVc << file;
-        }
-
-        if (!notAddedToVc.isEmpty()) {
-            QMessageBox::warning(Core::ICore::mainWindow(), VcsManager::msgAddToVcsFailedTitle(),
-                                 VcsManager::msgToAddToVcsFailed(notAddedToVc, vc));
-        }
-    }
+//        if (!notAddedToVc.isEmpty()) {
+//            QMessageBox::warning(Core::ICore::mainWindow(), VcsManager::msgAddToVcsFailedTitle(),
+//                                 VcsManager::msgToAddToVcsFailed(notAddedToVc, vc));
+//        }
+//    } //ROOPAK - END
 }
 
 void VcsManager::emitRepositoryChanged(const QString &repository)
