@@ -71,7 +71,7 @@ class ActionManagerPrivate;
 class FancyTabWidget;
 class GeneralSettings;
 class ProgressManagerPrivate;
-class ShortcutSettings;
+//class ShortcutSettings;
 //class ToolSettings;//ROOPAK
 class MimeTypeSettings;
 class StatusBarManager;
@@ -186,7 +186,7 @@ private:
     QMap<QWidget *, IContext *> m_contextWidgets;
 
     GeneralSettings *m_generalSettings;
-    ShortcutSettings *m_shortcutSettings;
+//    ShortcutSettings *m_shortcutSettings;//ROOPAK
 //    ToolSettings *m_toolSettings;//ROOPAK
     MimeTypeSettings *m_mimeTypeSettings;
     SystemEditor *m_systemEditor;

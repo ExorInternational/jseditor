@@ -66,7 +66,7 @@
 #include <coreplugin/actionmanager/command.h>
 //#include <coreplugin/dialogs/newdialog.h>//ROOPAK
 #include <coreplugin/dialogs/settingsdialog.h>
-#include <coreplugin/dialogs/shortcutsettings.h>
+//#include <coreplugin/dialogs/shortcutsettings.h>//ROOPAK
 #include <coreplugin/editormanager/editormanager.h>
 #include <coreplugin/editormanager/ieditor.h>
 #include <coreplugin/icorelistener.h>
@@ -133,7 +133,7 @@ MainWindow::MainWindow() :
     m_rightPaneWidget(0),
     m_versionDialog(0),
     m_generalSettings(new GeneralSettings),
-    m_shortcutSettings(new ShortcutSettings),
+//    m_shortcutSettings(new ShortcutSettings),//ROOPAK
 //    m_toolSettings(new ToolSettings),//ROOPAK
     m_mimeTypeSettings(new MimeTypeSettings),
     m_systemEditor(new SystemEditor),
@@ -254,7 +254,7 @@ void MainWindow::setIsFullScreen(bool fullScreen)
 
 MainWindow::~MainWindow()
 {
-    ExtensionSystem::PluginManager::removeObject(m_shortcutSettings);
+//    ExtensionSystem::PluginManager::removeObject(m_shortcutSettings);//ROOPAK
     ExtensionSystem::PluginManager::removeObject(m_generalSettings);
 //    ExtensionSystem::PluginManager::removeObject(m_toolSettings);//ROOPAK
     ExtensionSystem::PluginManager::removeObject(m_mimeTypeSettings);
@@ -263,8 +263,8 @@ MainWindow::~MainWindow()
     m_externalToolManager = 0;
     delete m_messageManager;
     m_messageManager = 0;
-    delete m_shortcutSettings;
-    m_shortcutSettings = 0;
+//    delete m_shortcutSettings;//ROOPAK
+//    m_shortcutSettings = 0;//ROOPAK
     delete m_generalSettings;
     m_generalSettings = 0;
 //    delete m_toolSettings;//ROOPAK
@@ -324,7 +324,7 @@ bool MainWindow::init(QString *errorMessage)
     m_progressManager->init(); // needs the status bar manager
 
     ExtensionSystem::PluginManager::addObject(m_generalSettings);
-    ExtensionSystem::PluginManager::addObject(m_shortcutSettings);
+//    ExtensionSystem::PluginManager::addObject(m_shortcutSettings);//ROOPAK
 //    ExtensionSystem::PluginManager::addObject(m_toolSettings);//ROOPAK
     ExtensionSystem::PluginManager::addObject(m_mimeTypeSettings);
     ExtensionSystem::PluginManager::addObject(m_systemEditor);

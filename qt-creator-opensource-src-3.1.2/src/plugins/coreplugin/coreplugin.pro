@@ -38,12 +38,12 @@ SOURCES += mainwindow.cpp \
     actionmanager/command.cpp \
     actionmanager/commandbutton.cpp \
     actionmanager/actioncontainer.cpp \
-    actionmanager/commandsfile.cpp \
+#    actionmanager/commandsfile.cpp \#ROOPAK
 #    dialogs/saveitemsdialog.cpp \#ROOPAK
 #    dialogs/newdialog.cpp \#ROOPAK
     dialogs/settingsdialog.cpp \
-    actionmanager/commandmappings.cpp \
-    dialogs/shortcutsettings.cpp \
+#    actionmanager/commandmappings.cpp \#ROOPAK
+#    dialogs/shortcutsettings.cpp \ #ROOPAK
 #    dialogs/readonlyfilesdialog.cpp \ #ROOPAK
 #    dialogs/openwithdialog.cpp \ #ROOPAK
     progressmanager/progressmanager.cpp \
@@ -127,13 +127,13 @@ HEADERS += mainwindow.h \
     actionmanager/actionmanager_p.h \
     actionmanager/command_p.h \
     actionmanager/actioncontainer_p.h \
-    actionmanager/commandsfile.h \
+#    actionmanager/commandsfile.h \#ROOPAK
 #    dialogs/saveitemsdialog.h \#ROOPAK
 #    dialogs/newdialog.h \#ROOPAK
     dialogs/settingsdialog.h \
-    actionmanager/commandmappings.h \
+#    actionmanager/commandmappings.h \#ROOPAK
 #    dialogs/readonlyfilesdialog.h \ #ROOPAK
-    dialogs/shortcutsettings.h \
+#    dialogs/shortcutsettings.h \ //ROOPAK
 #    dialogs/openwithdialog.h \#ROOPAK
     dialogs/iwizard.h \
     dialogs/ioptionspage.h \
