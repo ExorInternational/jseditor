@@ -31,7 +31,7 @@
 #include "basetexteditor.h"
 
 #include <coreplugin/icore.h>
-#include <coreplugin/dialogs/readonlyfilesdialog.h>
+//#include <coreplugin/dialogs/readonlyfilesdialog.h>//ROOPAK
 #include <utils/qtcassert.h>
 #include <utils/fileutils.h>
 
@@ -319,15 +319,15 @@ void RefactoringFile::setOpenEditor(bool activate, int pos)
 void RefactoringFile::apply()
 {
     // test file permissions
-    if (!QFileInfo(fileName()).isWritable()) {
-        const QString &path = fileName();
-        Core::Internal::ReadOnlyFilesDialog roDialog(path, Core::ICore::mainWindow());
-        const QString &failDetailText = QApplication::translate("RefactoringFile::apply",
-                                                                "Refactoring cannot be applied.");
-        roDialog.setShowFailWarning(true, failDetailText);
-        if (roDialog.exec() == Core::Internal::ReadOnlyFilesDialog::RO_Cancel)
-            return;
-    }
+//    if (!QFileInfo(fileName()).isWritable()) {    //ROOPAK - START
+//        const QString &path = fileName();
+//        Core::Internal::ReadOnlyFilesDialog roDialog(path, Core::ICore::mainWindow());
+//        const QString &failDetailText = QApplication::translate("RefactoringFile::apply",
+//                                                                "Refactoring cannot be applied.");
+//        roDialog.setShowFailWarning(true, failDetailText);
+//        if (roDialog.exec() == Core::Internal::ReadOnlyFilesDialog::RO_Cancel)
+//            return;
+//    }                                             //ROOPAK - END
 
     // open / activate / goto position
     if (m_openEditor && !m_fileName.isEmpty()) {

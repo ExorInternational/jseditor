@@ -38,7 +38,7 @@
 #include <coreplugin/actionmanager/actionmanager.h>
 #include <coreplugin/coreconstants.h>
 //#include <coreplugin/dialogs/openwithdialog.h>//ROOPAK
-#include <coreplugin/dialogs/readonlyfilesdialog.h>
+//#include <coreplugin/dialogs/readonlyfilesdialog.h>//ROOPAK
 #include <coreplugin/documentmanager.h>
 #include <coreplugin/editormanager/ieditorfactory.h>
 #include <coreplugin/editormanager/iexternaleditor.h>
@@ -1814,16 +1814,17 @@ MakeWritableResult EditorManager::makeFileWritable(IDocument *document)
     if (!document)
         return Failed;
 
-    ReadOnlyFilesDialog roDialog(document, ICore::mainWindow(), document->isSaveAsAllowed());
-    switch (roDialog.exec()) {
-    case ReadOnlyFilesDialog::RO_MakeWritable:
-    case ReadOnlyFilesDialog::RO_OpenVCS:
-        return MadeWritable;
-    case ReadOnlyFilesDialog::RO_SaveAs:
-        return SavedAs;
-    default:
-        return Failed;
-    }
+//    ReadOnlyFilesDialog roDialog(document, ICore::mainWindow(), document->isSaveAsAllowed());//ROOPAK - START
+//    switch (roDialog.exec()) {
+//    case ReadOnlyFilesDialog::RO_MakeWritable:
+//    case ReadOnlyFilesDialog::RO_OpenVCS:
+//        return MadeWritable;
+//    case ReadOnlyFilesDialog::RO_SaveAs:
+//        return SavedAs;
+//    default:
+//        return Failed;
+//    }
+    return Failed;//ROOPAK - END
 }
 
 bool EditorManager::saveDocumentAs(IDocument *documentParam)

@@ -34,7 +34,7 @@
 #include <coreplugin/icore.h>
 #include <coreplugin/progressmanager/progressmanager.h>
 #include <coreplugin/progressmanager/futureprogress.h>
-#include <coreplugin/dialogs/readonlyfilesdialog.h>
+//#include <coreplugin/dialogs/readonlyfilesdialog.h>//ROOPAK
 #include <coreplugin/documentmanager.h>
 #include <coreplugin/find/ifindsupport.h>
 #include <texteditor/itexteditor.h>
@@ -375,12 +375,12 @@ QStringList BaseFileFind::replaceAll(const QString &text,
     }
 
     // Query the user for permissions
-    if (!roFiles.isEmpty()) {
-        Core::Internal::ReadOnlyFilesDialog roDialog(roFiles.toList(), ICore::mainWindow());
-        roDialog.setShowFailWarning(true, tr("Aborting replace."));
-        if (roDialog.exec() == Core::Internal::ReadOnlyFilesDialog::RO_Cancel)
-            return QStringList();
-    }
+//    if (!roFiles.isEmpty()) { //ROOPAK - START
+//        Core::Internal::ReadOnlyFilesDialog roDialog(roFiles.toList(), ICore::mainWindow());
+//        roDialog.setShowFailWarning(true, tr("Aborting replace."));
+//        if (roDialog.exec() == Core::Internal::ReadOnlyFilesDialog::RO_Cancel)
+//            return QStringList();
+//    }                         //ROOPAK - END
 
     it.toFront();
     while (it.hasNext()) {

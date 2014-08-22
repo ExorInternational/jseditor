@@ -34,7 +34,7 @@
 #include "mimedatabase.h"
 #include "coreconstants.h"
 
-#include <coreplugin/dialogs/readonlyfilesdialog.h>
+//#include <coreplugin/dialogs/readonlyfilesdialog.h> //ROOPAK
 //#include <coreplugin/dialogs/saveitemsdialog.h> //ROOPAK
 #include <coreplugin/editormanager/editormanager.h>
 #include <coreplugin/editormanager/ieditor.h>
@@ -604,19 +604,19 @@ static bool saveModifiedFilesHelper(const QList<IDocument *> &documents,
             if (document->isFileReadOnly())
                 roDocuments << document;
         }
-        if (!roDocuments.isEmpty()) {
-            ReadOnlyFilesDialog roDialog(roDocuments, ICore::dialogParent());
-            roDialog.setShowFailWarning(true, DocumentManager::tr(
-                                            "Could not save the files.",
-                                            "error message"));
-            if (roDialog.exec() == Core::Internal::ReadOnlyFilesDialog::RO_Cancel) {
-                if (cancelled)
-                    (*cancelled) = true;
-                if (failedToSave)
-                    (*failedToSave) = modifiedDocuments;
-                return false;
-            }
-        }
+//        if (!roDocuments.isEmpty()) {     #ROOPAK - START
+//            ReadOnlyFilesDialog roDialog(roDocuments, ICore::dialogParent());
+//            roDialog.setShowFailWarning(true, DocumentManager::tr(
+//                                            "Could not save the files.",
+//                                            "error message"));
+//            if (roDialog.exec() == Core::Internal::ReadOnlyFilesDialog::RO_Cancel) {
+//                if (cancelled)
+//                    (*cancelled) = true;
+//                if (failedToSave)
+//                    (*failedToSave) = modifiedDocuments;
+//                return false;
+//            }
+//        }                                 #ROOPAK - END
         foreach (IDocument *document, documentsToSave) {
             if (!EditorManager::saveDocument(document)) {
                 if (cancelled)
