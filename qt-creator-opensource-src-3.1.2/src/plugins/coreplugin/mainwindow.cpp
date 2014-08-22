@@ -31,7 +31,7 @@
 #include "icore.h"
 #include "coreconstants.h"
 //#include "toolsettings.h"//ROOPAK
-#include "mimetypesettings.h"
+//#include "mimetypesettings.h"//ROOPAK
 #include "fancytabwidget.h"
 #include "documentmanager.h"
 #include "generalsettings.h"
@@ -135,7 +135,7 @@ MainWindow::MainWindow() :
     m_generalSettings(new GeneralSettings),
 //    m_shortcutSettings(new ShortcutSettings),//ROOPAK
 //    m_toolSettings(new ToolSettings),//ROOPAK
-    m_mimeTypeSettings(new MimeTypeSettings),
+//    m_mimeTypeSettings(new MimeTypeSettings),//ROOPAK
     m_systemEditor(new SystemEditor),
     m_focusToEditor(0),
     m_newAction(0),
@@ -257,7 +257,7 @@ MainWindow::~MainWindow()
 //    ExtensionSystem::PluginManager::removeObject(m_shortcutSettings);//ROOPAK
     ExtensionSystem::PluginManager::removeObject(m_generalSettings);
 //    ExtensionSystem::PluginManager::removeObject(m_toolSettings);//ROOPAK
-    ExtensionSystem::PluginManager::removeObject(m_mimeTypeSettings);
+//    ExtensionSystem::PluginManager::removeObject(m_mimeTypeSettings);//ROOPAK
     ExtensionSystem::PluginManager::removeObject(m_systemEditor);
     delete m_externalToolManager;
     m_externalToolManager = 0;
@@ -269,8 +269,8 @@ MainWindow::~MainWindow()
     m_generalSettings = 0;
 //    delete m_toolSettings;//ROOPAK
 //    m_toolSettings = 0;   //ROOPAK
-    delete m_mimeTypeSettings;
-    m_mimeTypeSettings = 0;
+//    delete m_mimeTypeSettings;//ROOPAK
+//    m_mimeTypeSettings = 0;//ROOPAK
     delete m_systemEditor;
     m_systemEditor = 0;
     delete m_printer;
@@ -326,7 +326,7 @@ bool MainWindow::init(QString *errorMessage)
     ExtensionSystem::PluginManager::addObject(m_generalSettings);
 //    ExtensionSystem::PluginManager::addObject(m_shortcutSettings);//ROOPAK
 //    ExtensionSystem::PluginManager::addObject(m_toolSettings);//ROOPAK
-    ExtensionSystem::PluginManager::addObject(m_mimeTypeSettings);
+//    ExtensionSystem::PluginManager::addObject(m_mimeTypeSettings);//ROOPAK
     ExtensionSystem::PluginManager::addObject(m_systemEditor);
 
     // Add widget to the bottom, we create the view here instead of inside the

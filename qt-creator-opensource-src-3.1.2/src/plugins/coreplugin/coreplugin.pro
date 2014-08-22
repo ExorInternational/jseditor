@@ -86,7 +86,7 @@ SOURCES += mainwindow.cpp \
 #    toolsettings.cpp \#ROOPAK
     variablechooser.cpp \
     mimetypemagicdialog.cpp \
-    mimetypesettings.cpp \
+#    mimetypesettings.cpp \#ROOPAK
 #    dialogs/promptoverwritedialog.cpp \ #ROOPAK
     fileutils.cpp \
     featureprovider.cpp \
@@ -183,7 +183,7 @@ HEADERS += mainwindow.h \
 #    toolsettings.h \ #ROOPAK
     variablechooser.h \
     mimetypemagicdialog.h \
-    mimetypesettings.h \
+#    mimetypesettings.h \#ROOPAK
 #    dialogs/promptoverwritedialog.h \ #ROOPAK
     fileutils.h \
     externaltoolmanager.h \
@@ -203,7 +203,7 @@ FORMS += \#dialogs/newdialog.ui \ #ROOPAK
     generalsettings.ui \
 #    dialogs/externaltoolconfig.ui \ #ROOPAK
     variablechooser.ui \
-    mimetypesettingspage.ui \
+#    mimetypesettingspage.ui \#ROOPAK
     mimetypemagicdialog.ui \
     removefiledialog.ui \
 #   dialogs/addtovcsdialog.ui   #ROOPAK
