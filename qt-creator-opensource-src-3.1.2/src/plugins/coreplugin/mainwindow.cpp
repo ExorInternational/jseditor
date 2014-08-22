@@ -34,7 +34,7 @@
 //#include "mimetypesettings.h"//ROOPAK
 #include "fancytabwidget.h"
 #include "documentmanager.h"
-#include "generalsettings.h"
+//#include "generalsettings.h"//ROOPAK
 #include "helpmanager.h"
 #include "idocumentfactory.h"
 #include "messagemanager.h"
@@ -132,7 +132,7 @@ MainWindow::MainWindow() :
     m_navigationWidget(0),
     m_rightPaneWidget(0),
     m_versionDialog(0),
-    m_generalSettings(new GeneralSettings),
+//    m_generalSettings(new GeneralSettings),//ROOPAK
 //    m_shortcutSettings(new ShortcutSettings),//ROOPAK
 //    m_toolSettings(new ToolSettings),//ROOPAK
 //    m_mimeTypeSettings(new MimeTypeSettings),//ROOPAK
@@ -255,7 +255,7 @@ void MainWindow::setIsFullScreen(bool fullScreen)
 MainWindow::~MainWindow()
 {
 //    ExtensionSystem::PluginManager::removeObject(m_shortcutSettings);//ROOPAK
-    ExtensionSystem::PluginManager::removeObject(m_generalSettings);
+//    ExtensionSystem::PluginManager::removeObject(m_generalSettings);//ROOPAK
 //    ExtensionSystem::PluginManager::removeObject(m_toolSettings);//ROOPAK
 //    ExtensionSystem::PluginManager::removeObject(m_mimeTypeSettings);//ROOPAK
 //    ExtensionSystem::PluginManager::removeObject(m_systemEditor);//ROOPAK
@@ -265,8 +265,8 @@ MainWindow::~MainWindow()
     m_messageManager = 0;
 //    delete m_shortcutSettings;//ROOPAK
 //    m_shortcutSettings = 0;//ROOPAK
-    delete m_generalSettings;
-    m_generalSettings = 0;
+//    delete m_generalSettings;//ROOPAK
+//    m_generalSettings = 0;//ROOPAK
 //    delete m_toolSettings;//ROOPAK
 //    m_toolSettings = 0;   //ROOPAK
 //    delete m_mimeTypeSettings;//ROOPAK
@@ -323,7 +323,7 @@ bool MainWindow::init(QString *errorMessage)
     m_modeManager->init();
     m_progressManager->init(); // needs the status bar manager
 
-    ExtensionSystem::PluginManager::addObject(m_generalSettings);
+//    ExtensionSystem::PluginManager::addObject(m_generalSettings);//ROOPAK
 //    ExtensionSystem::PluginManager::addObject(m_shortcutSettings);//ROOPAK
 //    ExtensionSystem::PluginManager::addObject(m_toolSettings);//ROOPAK
 //    ExtensionSystem::PluginManager::addObject(m_mimeTypeSettings);//ROOPAK

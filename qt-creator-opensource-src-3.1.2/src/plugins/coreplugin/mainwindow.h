@@ -69,7 +69,7 @@ namespace Internal {
 
 class ActionManagerPrivate;
 class FancyTabWidget;
-class GeneralSettings;
+//class GeneralSettings;//ROOPAK
 class ProgressManagerPrivate;
 //class ShortcutSettings;//ROOPAK
 //class ToolSettings;//ROOPAK
@@ -185,7 +185,7 @@ private:
 
     QMap<QWidget *, IContext *> m_contextWidgets;
 
-    GeneralSettings *m_generalSettings;
+//    GeneralSettings *m_generalSettings;//ROOPAK
 //    ShortcutSettings *m_shortcutSettings;//ROOPAK
 //    ToolSettings *m_toolSettings;//ROOPAK
 //    MimeTypeSettings *m_mimeTypeSettings;//ROOPAK

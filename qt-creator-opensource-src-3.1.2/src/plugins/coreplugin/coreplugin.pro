@@ -17,7 +17,7 @@ SOURCES += mainwindow.cpp \
     tabpositionindicator.cpp \
     fancyactionbar.cpp \
     fancytabwidget.cpp \
-    generalsettings.cpp \
+#    generalsettings.cpp \#ROOPAK
     id.cpp \
     icontext.cpp \
     messagemanager.cpp \
@@ -104,7 +104,7 @@ HEADERS += mainwindow.h \
     tabpositionindicator.h \
     fancyactionbar.h \
     fancytabwidget.h \
-    generalsettings.h \
+#    generalsettings.h \#ROOPAK
     id.h \
     messagemanager.h \
 #    messageoutputwindow.h \#ROOPAK
@@ -200,7 +200,7 @@ FORMS += \#dialogs/newdialog.ui \ #ROOPAK
 #    dialogs/saveitemsdialog.ui \ #ROOPAK
 #    dialogs/readonlyfilesdialog.ui \ #ROOPAK
 #    dialogs/openwithdialog.ui \#ROOPAK
-    generalsettings.ui \
+#    generalsettings.ui \#ROOPAK
 #    dialogs/externaltoolconfig.ui \ #ROOPAK
     variablechooser.ui \
 #    mimetypesettingspage.ui \#ROOPAK
