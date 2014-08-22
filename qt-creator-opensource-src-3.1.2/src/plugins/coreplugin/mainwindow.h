@@ -76,7 +76,7 @@ class ProgressManagerPrivate;
 //class MimeTypeSettings;//ROOPAK
 class StatusBarManager;
 class VersionDialog;
-class SystemEditor;
+//class SystemEditor;//ROOPAK
 
 class MainWindow : public Utils::AppMainWindow
 {
@@ -189,7 +189,7 @@ private:
 //    ShortcutSettings *m_shortcutSettings;//ROOPAK
 //    ToolSettings *m_toolSettings;//ROOPAK
 //    MimeTypeSettings *m_mimeTypeSettings;//ROOPAK
-    SystemEditor *m_systemEditor;
+//    SystemEditor *m_systemEditor;//ROOPAK
 
     // actions
     QShortcut *m_focusToEditor;

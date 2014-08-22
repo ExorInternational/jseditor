@@ -74,7 +74,7 @@ SOURCES += mainwindow.cpp \
     dialogs/iwizard.cpp \
     settingsdatabase.cpp \
     imode.cpp \
-    editormanager/systemeditor.cpp \
+#    editormanager/systemeditor.cpp \ #ROOPAK
 #    designmode.cpp \                        #ROOPAK
     editortoolbar.cpp \
     helpmanager.cpp \
@@ -171,7 +171,7 @@ HEADERS += mainwindow.h \
     fileiconprovider.h \
     mimedatabase.h \
     settingsdatabase.h \
-    editormanager/systemeditor.h \
+#    editormanager/systemeditor.h \ #ROOPAK
 #    designmode.h \                 #ROOPAK
     editortoolbar.h \
     helpmanager.h \

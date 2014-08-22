@@ -53,7 +53,7 @@
 #include "editormanager/ieditorfactory.h"
 #include "statusbarwidget.h"
 #include "externaltoolmanager.h"
-#include "editormanager/systemeditor.h"
+//#include "editormanager/systemeditor.h"//ROOPAK
 
 #if defined(Q_OS_MAC)
 #include "macfullscreen.h"
@@ -136,7 +136,7 @@ MainWindow::MainWindow() :
 //    m_shortcutSettings(new ShortcutSettings),//ROOPAK
 //    m_toolSettings(new ToolSettings),//ROOPAK
 //    m_mimeTypeSettings(new MimeTypeSettings),//ROOPAK
-    m_systemEditor(new SystemEditor),
+//    m_systemEditor(new SystemEditor),//ROOPAK
     m_focusToEditor(0),
     m_newAction(0),
     m_openAction(0),
@@ -258,7 +258,7 @@ MainWindow::~MainWindow()
     ExtensionSystem::PluginManager::removeObject(m_generalSettings);
 //    ExtensionSystem::PluginManager::removeObject(m_toolSettings);//ROOPAK
 //    ExtensionSystem::PluginManager::removeObject(m_mimeTypeSettings);//ROOPAK
-    ExtensionSystem::PluginManager::removeObject(m_systemEditor);
+//    ExtensionSystem::PluginManager::removeObject(m_systemEditor);//ROOPAK
     delete m_externalToolManager;
     m_externalToolManager = 0;
     delete m_messageManager;
@@ -271,8 +271,8 @@ MainWindow::~MainWindow()
 //    m_toolSettings = 0;   //ROOPAK
 //    delete m_mimeTypeSettings;//ROOPAK
 //    m_mimeTypeSettings = 0;//ROOPAK
-    delete m_systemEditor;
-    m_systemEditor = 0;
+//    delete m_systemEditor;//ROOPAK
+//    m_systemEditor = 0;//ROOPAK
     delete m_printer;
     m_printer = 0;
     delete m_vcsManager;
@@ -327,7 +327,7 @@ bool MainWindow::init(QString *errorMessage)
 //    ExtensionSystem::PluginManager::addObject(m_shortcutSettings);//ROOPAK
 //    ExtensionSystem::PluginManager::addObject(m_toolSettings);//ROOPAK
 //    ExtensionSystem::PluginManager::addObject(m_mimeTypeSettings);//ROOPAK
-    ExtensionSystem::PluginManager::addObject(m_systemEditor);
+//    ExtensionSystem::PluginManager::addObject(m_systemEditor);//ROOPAK
 
     // Add widget to the bottom, we create the view here instead of inside the
     // OutputPaneManager, since the StatusBarManager needs to be initialized before
