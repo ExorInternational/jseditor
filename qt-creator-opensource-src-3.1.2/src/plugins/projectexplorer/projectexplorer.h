@@ -174,7 +174,7 @@ private slots:
     void loadAction();
     void unloadProject();
     void closeAllProjects();
-    void newProject();
+//    void newProject();//ROOPAK
     void showSessionManager();
     void populateOpenWithMenu();
     void updateSessionMenu();

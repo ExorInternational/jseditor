@@ -175,7 +175,7 @@ struct ProjectExplorerPluginPrivate {
 
     QMultiMap<int, QObject*> m_actionMap;
     QAction *m_sessionManagerAction;
-    QAction *m_newAction;
+//    QAction *m_newAction;//ROOPAK
     QAction *m_loadAction;
     Utils::ParameterAction *m_unloadAction;
     QAction *m_closeAllProjects;
@@ -574,10 +574,10 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
     //
 
     // new action
-    d->m_newAction = new QAction(tr("New Project..."), this);
-    cmd = ActionManager::registerAction(d->m_newAction, Constants::NEWPROJECT, globalcontext);
-    cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+Shift+N")));
-    msessionContextMenu->addAction(cmd, Constants::G_SESSION_FILES);
+//    d->m_newAction = new QAction(tr("New Project..."), this);     //ROOPAK - START
+//    cmd = ActionManager::registerAction(d->m_newAction, Constants::NEWPROJECT, globalcontext);
+//    cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+Shift+N")));
+//    msessionContextMenu->addAction(cmd, Constants::G_SESSION_FILES);//ROOPAK - END
 
     // open action
     d->m_loadAction = new QAction(tr("Load Project..."), this);
@@ -956,7 +956,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
         d->m_projectExplorerSettings.environmentId = QUuid::createUuid();
 
     connect(d->m_sessionManagerAction, SIGNAL(triggered()), this, SLOT(showSessionManager()));
-    connect(d->m_newAction, SIGNAL(triggered()), this, SLOT(newProject()));
+//    connect(d->m_newAction, SIGNAL(triggered()), this, SLOT(newProject()));
     connect(d->m_loadAction, SIGNAL(triggered()), this, SLOT(loadAction()));
     connect(d->m_buildProjectOnlyAction, SIGNAL(triggered()), this, SLOT(buildProjectOnly()));
     connect(d->m_buildAction, SIGNAL(triggered()), this, SLOT(buildProject()));
@@ -1231,15 +1231,15 @@ ExtensionSystem::IPlugin::ShutdownFlag ProjectExplorerPlugin::aboutToShutdown()
     return AsynchronousShutdown;
 }
 
-void ProjectExplorerPlugin::newProject()
-{
-    if (debug)
-        qDebug() << "ProjectExplorerPlugin::newProject";
+//void ProjectExplorerPlugin::newProject()//ROOPAK
+//{
+//    if (debug)
+//        qDebug() << "ProjectExplorerPlugin::newProject";
 
-    ICore::showNewItemDialog(tr("New Project", "Title of dialog"),
-                              IWizard::wizardsOfKind(IWizard::ProjectWizard));
-    updateActions();
-}
+//    ICore::showNewItemDialog(tr("New Project", "Title of dialog"),
+//                              IWizard::wizardsOfKind(IWizard::ProjectWizard));
+//    updateActions();
+//}//ROOPAK
 
 void ProjectExplorerPlugin::showSessionManager()
 {

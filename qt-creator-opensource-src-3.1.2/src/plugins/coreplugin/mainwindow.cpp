@@ -138,7 +138,7 @@ MainWindow::MainWindow() :
 //    m_mimeTypeSettings(new MimeTypeSettings),//ROOPAK
 //    m_systemEditor(new SystemEditor),//ROOPAK
     m_focusToEditor(0),
-    m_newAction(0),
+//    m_newAction(0),//ROOPAK
     m_openAction(0),
     m_openWithAction(0),
     m_saveAllAction(0),
@@ -544,11 +544,11 @@ void MainWindow::registerDefaultActions()
 
     // New File Action
     QIcon icon = QIcon::fromTheme(QLatin1String("document-new"), QIcon(QLatin1String(Constants::ICON_NEWFILE)));
-    m_newAction = new QAction(icon, tr("&New File or Project..."), this);
-    cmd = ActionManager::registerAction(m_newAction, Constants::NEW, globalContext);
-    cmd->setDefaultKeySequence(QKeySequence::New);
-    mfile->addAction(cmd, Constants::G_FILE_NEW);
-    connect(m_newAction, SIGNAL(triggered()), this, SLOT(newFile()));
+//    m_newAction = new QAction(icon, tr("&New File or Project..."), this);//ROOPAK - START
+//    cmd = ActionManager::registerAction(m_newAction, Constants::NEW, globalContext);
+//    cmd->setDefaultKeySequence(QKeySequence::New);
+//    mfile->addAction(cmd, Constants::G_FILE_NEW);
+//    connect(m_newAction, SIGNAL(triggered()), this, SLOT(newFile()));//ROOPAK - END
 
     // Open Action
     icon = QIcon::fromTheme(QLatin1String("document-open"), QIcon(QLatin1String(Constants::ICON_OPENFILE)));
@@ -787,10 +787,10 @@ void MainWindow::registerDefaultActions()
     }
 }
 
-void MainWindow::newFile()
-{
-    showNewItemDialog(tr("New", "Title of dialog"), IWizard::allWizards(), QString());
-}
+//void MainWindow::newFile()//ROOPAK - START
+//{
+//    showNewItemDialog(tr("New", "Title of dialog"), IWizard::allWizards(), QString());
+//}//ROOPAK - END
 
 void MainWindow::openFile()
 {

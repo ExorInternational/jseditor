@@ -112,7 +112,7 @@ signals:
     void windowActivated();
 
 public slots:
-    void newFile();
+//    void newFile();//ROOPAK
     void openFileWith();
     void exit();
     void setFullScreen(bool on);
@@ -193,7 +193,7 @@ private:
 
     // actions
     QShortcut *m_focusToEditor;
-    QAction *m_newAction;
+//    QAction *m_newAction;//ROOPAK
     QAction *m_openAction;
     QAction *m_openWithAction;
     QAction *m_saveAllAction;
