@@ -32,7 +32,7 @@
 #include "session.h"
 #include "projectnodes.h"
 #include "nodesvisitor.h"
-#include "projectwizardpage.h"
+//#include "projectwizardpage.h"//ROOPAK
 
 #include <utils/qtcassert.h>
 #include <utils/stringutils.h>
@@ -224,14 +224,14 @@ struct ProjectWizardContext
     QList<IVersionControl*> versionControls;
     QList<IVersionControl*> activeVersionControls;
     QList<FolderEntry> projects;
-    QPointer<ProjectWizardPage> page; // this is managed by the wizard!
+//    QPointer<ProjectWizardPage> page; // this is managed by the wizard!//ROOPAK
     bool repositoryExists; // Is VCS 'add' sufficient, or should a repository be created?
     QString commonDirectory;
     const IWizard *wizard;
 };
 
 ProjectWizardContext::ProjectWizardContext() :
-    page(0),
+//    page(0),//ROOPAK
     repositoryExists(false),
     wizard(0)
 {
@@ -242,7 +242,7 @@ void ProjectWizardContext::clear()
     activeVersionControls.clear();
     projects.clear();
     commonDirectory.clear();
-    page = 0;
+//    page = 0;//ROOPAK
     repositoryExists = false;
     wizard = 0;
 }
@@ -329,7 +329,7 @@ void ProjectFileWizardExtension::firstExtensionPageShown(
     foreach (const GeneratedFile &f, files)
         fileNames.push_back(f.path());
     m_context->commonDirectory = Utils::commonPath(fileNames);
-    m_context->page->setFilesDisplay(m_context->commonDirectory, fileNames);
+//    m_context->page->setFilesDisplay(m_context->commonDirectory, fileNames);//ROOPAK
     // Find best project (Entry at 0 is 'None').
 
     int bestProjectIndex = -1;
@@ -340,7 +340,7 @@ void ProjectFileWizardExtension::firstExtensionPageShown(
         // then the best match is NONE
         // We display a label explaining that and rename <None> to
         // <Implicitly Add>
-        m_context->page->setNoneLabel(tr("<Implicitly Add>"));
+//        m_context->page->setNoneLabel(tr("<Implicitly Add>"));//ROOPAK
 
         QString text = tr("The files are implicitly added to the projects:");
         text += QLatin1Char('\n');
@@ -349,17 +349,17 @@ void ProjectFileWizardExtension::firstExtensionPageShown(
             text += QLatin1Char('\n');
         }
 
-        m_context->page->setAdditionalInfo(text);
+//        m_context->page->setAdditionalInfo(text);//ROOPAK
         bestProjectIndex = -1;
     } else {
         bestProjectIndex = findMatchingProject(m_context->projects, m_context->commonDirectory);
-        m_context->page->setNoneLabel(tr("<None>"));
+//        m_context->page->setNoneLabel(tr("<None>"));//ROOPAK
     }
 
-    if (bestProjectIndex == -1)
-        m_context->page->setCurrentProjectIndex(0);
-    else
-        m_context->page->setCurrentProjectIndex(bestProjectIndex + 1);
+//    if (bestProjectIndex == -1)//ROOPAK - START
+//        m_context->page->setCurrentProjectIndex(0);
+//    else
+//        m_context->page->setCurrentProjectIndex(bestProjectIndex + 1);//ROOPAK - END
 
     // Store all version controls for later use:
     if (m_context->versionControls.isEmpty()) {
@@ -374,18 +374,18 @@ void ProjectFileWizardExtension::firstExtensionPageShown(
 
 void ProjectFileWizardExtension::initializeVersionControlChoices()
 {
-    if (m_context->page.isNull())
-        return;
+//    if (m_context->page.isNull())//ROOPAK
+//        return;//ROOPAK
 
     // Figure out version control situation:
     // 1) Directory is managed and VCS supports "Add" -> List it
     // 2) Directory is managed and VCS does not support "Add" -> None available
     // 3) Directory is not managed -> Offer all VCS that support "CreateRepository"
 
-    IVersionControl *currentSelection = 0;
-    int currentIdx = m_context->page->versionControlIndex() - 1;
-    if (currentIdx >= 0 && currentIdx <= m_context->activeVersionControls.size() - 1)
-        currentSelection = m_context->activeVersionControls.at(currentIdx);
+//    IVersionControl *currentSelection = 0;//ROOPAK - START
+//    int currentIdx = m_context->page->versionControlIndex() - 1;
+//    if (currentIdx >= 0 && currentIdx <= m_context->activeVersionControls.size() - 1)
+//        currentSelection = m_context->activeVersionControls.at(currentIdx);//ROOPAK - END
 
     m_context->activeVersionControls.clear();
 
@@ -410,14 +410,14 @@ void ProjectFileWizardExtension::initializeVersionControlChoices()
         }
     } // has a common root.
 
-    m_context->page->setVersionControls(versionControlChoices);
-    // Enable adding to version control by default.
-    if (m_context->repositoryExists && versionControlChoices.size() >= 2)
-        m_context->page->setVersionControlIndex(1);
-    if (!m_context->repositoryExists) {
-        int newIdx = m_context->activeVersionControls.indexOf(currentSelection) + 1;
-        m_context->page->setVersionControlIndex(newIdx);
-    }
+//    m_context->page->setVersionControls(versionControlChoices);//ROOPAK - START
+//    // Enable adding to version control by default.
+//    if (m_context->repositoryExists && versionControlChoices.size() >= 2)
+//        m_context->page->setVersionControlIndex(1);
+//    if (!m_context->repositoryExists) {
+//        int newIdx = m_context->activeVersionControls.indexOf(currentSelection) + 1;
+//        m_context->page->setVersionControlIndex(newIdx);
+//    }//ROOPAK - END
 }
 
 QList<QWizardPage *> ProjectFileWizardExtension::extensionPages(const IWizard *wizard)
@@ -427,9 +427,9 @@ QList<QWizardPage *> ProjectFileWizardExtension::extensionPages(const IWizard *w
     else
         m_context->clear();
     // Init context with page and projects
-    m_context->page = new ProjectWizardPage;
+//    m_context->page = new QWizardPage;//new ProjectWizardPage;//ROOPAK
     m_context->wizard = wizard;
-    return QList<QWizardPage *>() << m_context->page;
+    return QList<QWizardPage *>();// << m_context->page;
 }
 
 
@@ -493,9 +493,9 @@ void ProjectFileWizardExtension::initProjectChoices(const QList<GeneratedFile> g
                                  generatedFiles, m_context,
                                  extraValues.value(QLatin1String(Constants::PREFERED_PROJECT_NODE)).value<Node *>());
 
-    m_context->page->setProjects(projectChoices);
-    m_context->page->setProjectToolTips(projectToolTips);
-    m_context->page->setAddingSubProject(projectAction == ProjectExplorer::AddSubProject);
+//    m_context->page->setProjects(projectChoices);//ROOPAK - START
+//    m_context->page->setProjectToolTips(projectToolTips);
+//    m_context->page->setAddingSubProject(projectAction == ProjectExplorer::AddSubProject);//ROOPAK - END
 }
 
 bool ProjectFileWizardExtension::processFiles(
@@ -529,55 +529,55 @@ bool ProjectFileWizardExtension::processProject(
     QString generatedProject = generatedProjectFilePath(files);
 
     // Add files to folder (Entry at 0 is 'None').
-    const int folderIndex = m_context->page->currentProjectIndex() - 1;
-    if (folderIndex < 0 || folderIndex >= m_context->projects.size())
-        return true;
-    FolderNode *folder = m_context->projects.at(folderIndex).node;
-    if (m_context->wizard->kind() == IWizard::ProjectWizard) {
-        if (!static_cast<ProjectNode *>(folder)->addSubProjects(QStringList(generatedProject))) {
-            *errorMessage = tr("Failed to add subproject '%1'\nto project '%2'.")
-                            .arg(generatedProject).arg(folder->path());
-            return false;
-        }
-        *removeOpenProjectAttribute = true;
-    } else {
-        QStringList filePaths;
-        foreach (const GeneratedFile &generatedFile, files)
-            filePaths << generatedFile.path();
-        if (!folder->addFiles(filePaths)) {
-            *errorMessage = tr("Failed to add one or more files to project\n'%1' (%2).").
-                    arg(folder->path(), filePaths.join(QString(QLatin1Char(','))));
-            return false;
-        }
-    }
+//    const int folderIndex = m_context->page->currentProjectIndex() - 1;//ROOPAK - START
+//    if (folderIndex < 0 || folderIndex >= m_context->projects.size())
+//        return true;
+//    FolderNode *folder = m_context->projects.at(folderIndex).node;
+//    if (m_context->wizard->kind() == IWizard::ProjectWizard) {
+//        if (!static_cast<ProjectNode *>(folder)->addSubProjects(QStringList(generatedProject))) {
+//            *errorMessage = tr("Failed to add subproject '%1'\nto project '%2'.")
+//                            .arg(generatedProject).arg(folder->path());
+//            return false;
+//        }
+//        *removeOpenProjectAttribute = true;
+//    } else {
+//        QStringList filePaths;
+//        foreach (const GeneratedFile &generatedFile, files)
+//            filePaths << generatedFile.path();
+//        if (!folder->addFiles(filePaths)) {
+//            *errorMessage = tr("Failed to add one or more files to project\n'%1' (%2).").
+//                    arg(folder->path(), filePaths.join(QString(QLatin1Char(','))));
+//            return false;
+//        }
+//    }//ROOPAK - END
     return true;
 }
 
 bool ProjectFileWizardExtension::processVersionControl(const QList<GeneratedFile> &files, QString *errorMessage)
 {
     // Add files to  version control (Entry at 0 is 'None').
-    const int vcsIndex = m_context->page->versionControlIndex() - 1;
-    if (vcsIndex < 0 || vcsIndex >= m_context->activeVersionControls.size())
-        return true;
-    QTC_ASSERT(!m_context->commonDirectory.isEmpty(), return false);
-    IVersionControl *versionControl = m_context->activeVersionControls.at(vcsIndex);
-    // Create repository?
-    if (!m_context->repositoryExists) {
-        QTC_ASSERT(versionControl->supportsOperation(IVersionControl::CreateRepositoryOperation), return false);
-        if (!versionControl->vcsCreateRepository(m_context->commonDirectory)) {
-            *errorMessage = tr("A version control system repository could not be created in '%1'.").arg(m_context->commonDirectory);
-            return false;
-        }
-    }
+//    const int vcsIndex = m_context->page->versionControlIndex() - 1;//ROOPAK - START
+//    if (vcsIndex < 0 || vcsIndex >= m_context->activeVersionControls.size())
+//        return true;
+//    QTC_ASSERT(!m_context->commonDirectory.isEmpty(), return false);
+//    IVersionControl *versionControl = m_context->activeVersionControls.at(vcsIndex);
+//    // Create repository?
+//    if (!m_context->repositoryExists) {
+//        QTC_ASSERT(versionControl->supportsOperation(IVersionControl::CreateRepositoryOperation), return false);
+//        if (!versionControl->vcsCreateRepository(m_context->commonDirectory)) {
+//            *errorMessage = tr("A version control system repository could not be created in '%1'.").arg(m_context->commonDirectory);
+//            return false;
+//        }
+//    }
     // Add files if supported.
-    if (versionControl->supportsOperation(IVersionControl::AddOperation)) {
-        foreach (const GeneratedFile &generatedFile, files) {
-            if (!versionControl->vcsAdd(generatedFile.path())) {
-                *errorMessage = tr("Failed to add '%1' to the version control system.").arg(generatedFile.path());
-                return false;
-            }
-        }
-    }
+//    if (versionControl->supportsOperation(IVersionControl::AddOperation)) {
+//        foreach (const GeneratedFile &generatedFile, files) {
+//            if (!versionControl->vcsAdd(generatedFile.path())) {
+//                *errorMessage = tr("Failed to add '%1' to the version control system.").arg(generatedFile.path());
+//                return false;
+//            }
+//        }
+//    }//ROOPAK - END
     return true;
 }
 
@@ -604,9 +604,9 @@ void ProjectFileWizardExtension::applyCodeStyle(GeneratedFile *file) const
         return; // don't modify files like *.ui *.pro
 
     FolderNode *folder = 0;
-    const int projectIndex = m_context->page->currentProjectIndex() - 1;
-    if (projectIndex >= 0 && projectIndex < m_context->projects.size())
-        folder = m_context->projects.at(projectIndex).node;
+//    const int projectIndex = m_context->page->currentProjectIndex() - 1;//ROOPAK - START
+//    if (projectIndex >= 0 && projectIndex < m_context->projects.size())
+//        folder = m_context->projects.at(projectIndex).node;//ROOPAK - END
 
     Project *baseProject = SessionManager::projectForNode(folder);
 
@@ -637,12 +637,12 @@ void ProjectFileWizardExtension::applyCodeStyle(GeneratedFile *file) const
 
 void ProjectFileWizardExtension::hideProjectComboBox()
 {
-    m_context->page->setProjectComoBoxVisible(false);
+//    m_context->page->setProjectComoBoxVisible(false);//ROOPAK
 }
 
 void ProjectFileWizardExtension::setProjectIndex(int i)
 {
-    m_context->page->setCurrentProjectIndex(i);
+//    m_context->page->setCurrentProjectIndex(i);//ROOPAK
 }
 
 } // namespace Internal

@@ -78,7 +78,7 @@ HEADERS += projectexplorer.h \
 #    buildprogress.h \#ROOPAK
     projectnodes.h \
     sessiondialog.h \
-    projectwizardpage.h \
+#    projectwizardpage.h \#ROOPAK
     buildstepspage.h \
     nodesvisitor.h \
     projectmodels.h \
@@ -215,7 +215,7 @@ SOURCES += projectexplorer.cpp \
 #    buildprogress.cpp \#ROOPAK
     projectnodes.cpp \
     sessiondialog.cpp \
-    projectwizardpage.cpp \
+#    projectwizardpage.cpp \#ROOPAK
     buildstepspage.cpp \
     nodesvisitor.cpp \
     projectmodels.cpp \
@@ -280,7 +280,7 @@ SOURCES += projectexplorer.cpp \
 FORMS += \#processstep.ui \#ROOPAK
 #    editorsettingspropertiespage.ui \#ROOPAK
     sessiondialog.ui \
-    projectwizardpage.ui \
+#    projectwizardpage.ui \#ROOPAK
 #    projectexplorersettingspage.ui \#ROOPAK
     targetsettingswidget.ui \
 #    doubletabwidget.ui \ #ROOPAK
