@@ -62,7 +62,7 @@
 #include "nodesvisitor.h"
 //#include "appoutputpane.h"//ROOPAK
 #include "pluginfilefactory.h"
-#include "processstep.h"
+//#include "processstep.h"//ROOPAK
 #include "kitinformation.h"
 #include "projectfilewizardextension.h"
 //#include "projecttreewidget.h"//ROOPAK
@@ -439,7 +439,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
 //    addAutoReleasedObject(new CodeStyleSettingsPanelFactory);//ROOPAK
     addAutoReleasedObject(new DependenciesPanelFactory);
 
-    addAutoReleasedObject(new ProcessStepFactory);
+//    addAutoReleasedObject(new ProcessStepFactory);//ROOPAK
     addAutoReleasedObject(new UnconfiguredProjectPanel);
 
     addAutoReleasedObject(new AllProjectsFind);
