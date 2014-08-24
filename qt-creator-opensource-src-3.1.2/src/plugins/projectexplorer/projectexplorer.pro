@@ -94,7 +94,7 @@ HEADERS += projectexplorer.h \
     miniprojecttargetselector.h \
     targetselector.h \
     targetsettingswidget.h \
-    doubletabwidget.h \
+#    doubletabwidget.h \#ROOPAK
     buildenvironmentwidget.h \
     ldparser.h \
     linuxiccparser.h \
@@ -141,7 +141,7 @@ HEADERS += projectexplorer.h \
     customtoolchain.h \
     projectmacroexpander.h \
     customparser.h \
-    customparserconfigdialog.h \
+#    customparserconfigdialog.h \#ROOPAK
     ipotentialkit.h \
     selectablefilesmodel.h \
     xcodebuildparser.h
@@ -232,7 +232,7 @@ SOURCES += projectexplorer.cpp \
     miniprojecttargetselector.cpp \
     targetselector.cpp \
     targetsettingswidget.cpp \
-    doubletabwidget.cpp \
+#    doubletabwidget.cpp \#ROOPAK
     buildenvironmentwidget.cpp \
     ldparser.cpp \
     linuxiccparser.cpp \
@@ -272,7 +272,7 @@ SOURCES += projectexplorer.cpp \
     customtoolchain.cpp \
     projectmacroexpander.cpp \
     customparser.cpp \
-    customparserconfigdialog.cpp \
+#    customparserconfigdialog.cpp \#ROOPAK
     ipotentialkit.cpp \
     selectablefilesmodel.cpp \
     xcodebuildparser.cpp
@@ -283,13 +283,13 @@ FORMS += processstep.ui \
     projectwizardpage.ui \
     projectexplorersettingspage.ui \
     targetsettingswidget.ui \
-    doubletabwidget.ui \
+#    doubletabwidget.ui \ #ROOPAK
 #    codestylesettingspropertiespage.ui \#ROOPAK
     devicesupport/devicefactoryselectiondialog.ui \
     devicesupport/devicesettingswidget.ui \
     devicesupport/devicetestdialog.ui \
     devicesupport/desktopdeviceconfigurationwidget.ui \
-    customparserconfigdialog.ui
+#    customparserconfigdialog.ui#ROOPAK
 
 WINSOURCES += \
     windebuginterface.cpp \

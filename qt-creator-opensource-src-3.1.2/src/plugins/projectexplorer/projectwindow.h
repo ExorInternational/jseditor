@@ -69,7 +69,7 @@ private:
 
 namespace Internal {
 
-class DoubleTabWidget;
+//class DoubleTabWidget;//ROOPAK
 
 class ProjectWindow : public QWidget
 {
@@ -97,7 +97,7 @@ private:
     bool hasTarget(ProjectExplorer::Project *project);
     void removeCurrentWidget();
 
-    DoubleTabWidget *m_tabWidget;
+//    DoubleTabWidget *m_tabWidget;//ROOPAK
     QStackedWidget *m_centralWidget;
     QWidget *m_currentWidget;
     QList<ProjectExplorer::Project *> m_tabIndexToProject;

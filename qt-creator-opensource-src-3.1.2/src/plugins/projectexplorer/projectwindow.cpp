@@ -29,7 +29,7 @@
 
 #include "projectwindow.h"
 
-#include "doubletabwidget.h"
+//#include "doubletabwidget.h"//ROOPAK
 
 #include "kitmanager.h"
 #include "project.h"
@@ -233,16 +233,16 @@ ProjectWindow::ProjectWindow(QWidget *parent)
     viewLayout->setMargin(0);
     viewLayout->setSpacing(0);
 
-    m_tabWidget = new DoubleTabWidget(this);
-    viewLayout->addWidget(m_tabWidget);
+//    m_tabWidget = new DoubleTabWidget(this);//ROOPAK
+//    viewLayout->addWidget(m_tabWidget);//ROOPAK
 
     // Setup our container for the contents:
     m_centralWidget = new QStackedWidget(this);
     viewLayout->addWidget(m_centralWidget);
 
     // Connections
-    connect(m_tabWidget, SIGNAL(currentIndexChanged(int,int)),
-            this, SLOT(showProperties(int,int)));
+//    connect(m_tabWidget, SIGNAL(currentIndexChanged(int,int)),
+//            this, SLOT(showProperties(int,int)));//ROOPAK
 
     QObject *sessionManager = SessionManager::instance();
     connect(sessionManager, SIGNAL(projectAdded(ProjectExplorer::Project*)),
@@ -288,16 +288,16 @@ void ProjectWindow::removedTarget(Target *)
 void ProjectWindow::projectUpdated(Project *p)
 {
     // Called after a project was configured
-    int index = m_tabWidget->currentIndex();
+//    int index = m_tabWidget->currentIndex();//ROOPAK
     deregisterProject(p);
     registerProject(p);
-    m_tabWidget->setCurrentIndex(index);
+//    m_tabWidget->setCurrentIndex(index);//ROOPAK
 }
 
 void ProjectWindow::handleKitChanges()
 {
     bool changed = false;
-    int index = m_tabWidget->currentIndex();
+//    int index = m_tabWidget->currentIndex();//ROOPAK
     QList<Project *> projects = m_tabIndexToProject;
     foreach (ProjectExplorer::Project *project, projects) {
         if (m_hasTarget.value(project) != hasTarget(project)) {
@@ -306,8 +306,8 @@ void ProjectWindow::handleKitChanges()
             registerProject(project);
         }
     }
-    if (changed)
-        m_tabWidget->setCurrentIndex(index);
+//    if (changed)//ROOPAK
+//        m_tabWidget->setCurrentIndex(index);//ROOPAK
 }
 
 bool ProjectWindow::hasTarget(ProjectExplorer::Project *project)
@@ -347,7 +347,7 @@ void ProjectWindow::registerProject(ProjectExplorer::Project *project)
     }
 
     m_tabIndexToProject.insert(index, project);
-    m_tabWidget->insertTab(index, project->displayName(), project->projectFilePath(), subtabs);
+//    m_tabWidget->insertTab(index, project->displayName(), project->projectFilePath(), subtabs);//ROOPAK
 
     connect(project, SIGNAL(removedTarget(ProjectExplorer::Target*)),
             this, SLOT(removedTarget(ProjectExplorer::Target*)));
@@ -360,16 +360,16 @@ void ProjectWindow::deregisterProject(ProjectExplorer::Project *project)
         return;
 
     m_tabIndexToProject.removeAt(index);
-    m_tabWidget->removeTab(index);
+//    m_tabWidget->removeTab(index);//ROOPAK
     disconnect(project, SIGNAL(removedTarget(ProjectExplorer::Target*)),
             this, SLOT(removedTarget(ProjectExplorer::Target*)));
 }
 
 void ProjectWindow::startupProjectChanged(ProjectExplorer::Project *p)
 {
-    int index = m_tabIndexToProject.indexOf(p);
-    if (index != -1)
-        m_tabWidget->setCurrentIndex(index);
+//    int index = m_tabIndexToProject.indexOf(p);//ROOPAK - START
+//    if (index != -1)
+//        m_tabWidget->setCurrentIndex(index);//ROOPAK - END
 }
 
 void ProjectWindow::showProperties(int index, int subIndex)
