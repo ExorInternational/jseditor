@@ -69,7 +69,7 @@ HEADERS += projectexplorer.h \
     environmentwidget.h \
     processstep.h \
     editorconfiguration.h \
-    editorsettingspropertiespage.h \
+#    editorsettingspropertiespage.h \#ROOPAK
     runconfiguration.h \
     applicationlauncher.h \
     runsettingspropertiespage.h \
@@ -206,7 +206,7 @@ SOURCES += projectexplorer.cpp \
     processstep.cpp \
     abstractprocessstep.cpp \
     editorconfiguration.cpp \
-    editorsettingspropertiespage.cpp \
+#    editorsettingspropertiespage.cpp \#ROOPAK
     runconfiguration.cpp \
     applicationlauncher.cpp \
     runsettingspropertiespage.cpp \
@@ -278,7 +278,7 @@ SOURCES += projectexplorer.cpp \
     xcodebuildparser.cpp
 
 FORMS += processstep.ui \
-    editorsettingspropertiespage.ui \
+#    editorsettingspropertiespage.ui \#ROOPAK
     sessiondialog.ui \
     projectwizardpage.ui \
     projectexplorersettingspage.ui \
