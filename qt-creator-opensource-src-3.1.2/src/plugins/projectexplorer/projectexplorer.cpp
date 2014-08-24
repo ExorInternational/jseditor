@@ -55,7 +55,7 @@
 #include "currentprojectfind.h"
 #include "currentprojectfilter.h"
 #include "editorsettingspropertiespage.h"
-#include "codestylesettingspropertiespage.h"
+//#include "codestylesettingspropertiespage.h"//ROOPAK
 #include "dependenciespanel.h"
 //#include "foldernavigationwidget.h"//ROOPAK
 #include "iprojectmanager.h"
@@ -436,7 +436,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
     addAutoReleasedObject(new BuildSettingsPanelFactory);
     addAutoReleasedObject(new RunSettingsPanelFactory);
     addAutoReleasedObject(new EditorSettingsPanelFactory);
-    addAutoReleasedObject(new CodeStyleSettingsPanelFactory);
+//    addAutoReleasedObject(new CodeStyleSettingsPanelFactory);//ROOPAK
     addAutoReleasedObject(new DependenciesPanelFactory);
 
     addAutoReleasedObject(new ProcessStepFactory);

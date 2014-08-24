@@ -108,7 +108,7 @@ HEADERS += projectexplorer.h \
     headerpath.h \
     gcctoolchainfactories.h \
 #    appoutputpane.h \#ROOPAK
-    codestylesettingspropertiespage.h \
+#    codestylesettingspropertiespage.h \ #ROOPAK
     settingsaccessor.h \
     environmentitemswidget.h \
     deployablefile.h \
@@ -242,7 +242,7 @@ SOURCES += projectexplorer.cpp \
     processparameters.cpp \
     localapplicationruncontrol.cpp \
 #    appoutputpane.cpp \#ROOPAK
-    codestylesettingspropertiespage.cpp \
+#    codestylesettingspropertiespage.cpp \#ROOPAK
     settingsaccessor.cpp \
     environmentitemswidget.cpp \
     devicesupport/idevice.cpp \
@@ -284,7 +284,7 @@ FORMS += processstep.ui \
     projectexplorersettingspage.ui \
     targetsettingswidget.ui \
     doubletabwidget.ui \
-    codestylesettingspropertiespage.ui \
+#    codestylesettingspropertiespage.ui \#ROOPAK
     devicesupport/devicefactoryselectiondialog.ui \
     devicesupport/devicesettingswidget.ui \
     devicesupport/devicetestdialog.ui \

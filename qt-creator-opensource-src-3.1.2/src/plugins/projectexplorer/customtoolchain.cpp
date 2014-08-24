@@ -34,7 +34,7 @@
 #include "linuxiccparser.h"
 #include "msvcparser.h"
 #include "customparser.h"
-#include "customparserconfigdialog.h"
+//#include "customparserconfigdialog.h"//ROOPAK
 #include "projectexplorerconstants.h"
 #include "toolchainmanager.h"
 
@@ -551,14 +551,14 @@ void CustomToolChainConfigWidget::errorParserChanged(int index)
 
 void CustomToolChainConfigWidget::openCustomParserSettingsDialog()
 {
-    CustomParserConfigDialog dialog;
-    dialog.setSettings(m_customParserSettings);
+//    CustomParserConfigDialog dialog;//ROOPAK - START
+//    dialog.setSettings(m_customParserSettings);
 
-    if (dialog.exec() == QDialog::Accepted) {
-        m_customParserSettings = dialog.settings();
-        if (dialog.isDirty())
-            emit dirty();
-    }
+//    if (dialog.exec() == QDialog::Accepted) {
+//        m_customParserSettings = dialog.settings();
+//        if (dialog.isDirty())
+//            emit dirty();
+//    }//ROOPAK - END
 }
 
 void CustomToolChainConfigWidget::applyImpl()
