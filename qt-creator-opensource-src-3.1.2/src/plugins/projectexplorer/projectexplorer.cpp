@@ -66,7 +66,7 @@
 #include "kitinformation.h"
 #include "projectfilewizardextension.h"
 //#include "projecttreewidget.h"//ROOPAK
-#include "projectwindow.h"
+//#include "projectwindow.h"//ROOPAK
 #include "runsettingspropertiespage.h"
 #include "session.h"
 #include "projectnodes.h"
@@ -222,7 +222,7 @@ struct ProjectExplorerPluginPrivate {
     QAction *m_projectSelectorActionQuick;
     QAction *m_runSubProject;
 
-    Internal::ProjectWindow *m_proWindow;
+//    Internal::ProjectWindow *m_proWindow;//ROOPAK
     QString m_sessionToRestoreAtStartup;
 
     Project *m_currentProject;
@@ -407,16 +407,16 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
     addAutoReleasedObject(new CustomWizardFactory<CustomWizard>(Core::IWizard::FileWizard));
     addAutoReleasedObject(new CustomWizardFactory<CustomWizard>(Core::IWizard::ClassWizard));
 
-    d->m_proWindow = new ProjectWindow;
-    addAutoReleasedObject(d->m_proWindow);
+//    d->m_proWindow = new ProjectWindow;//ROOPAK
+//    addAutoReleasedObject(d->m_proWindow);//ROOPAK
 
     Context globalcontext(Core::Constants::C_GLOBAL);
     Context projecTreeContext(Constants::C_PROJECT_TREE);
 
-    d->m_projectsMode = new ProjectsMode(d->m_proWindow);
+    d->m_projectsMode = new ProjectsMode(new QWidget/*d->m_proWindow*/);//ROOPAK
     d->m_projectsMode->setEnabled(false);
     addAutoReleasedObject(d->m_projectsMode);
-    d->m_proWindow->layout()->addWidget(new FindToolBarPlaceHolder(d->m_proWindow));
+//    d->m_proWindow->layout()->addWidget(new FindToolBarPlaceHolder(d->m_proWindow));//ROOPAK
 
     addAutoReleasedObject(new CopyTaskHandler);
     addAutoReleasedObject(new ShowInEditorTaskHandler);
@@ -1128,7 +1128,7 @@ void ProjectExplorerPlugin::closeAllProjects()
 
 void ProjectExplorerPlugin::extensionsInitialized()
 {
-    d->m_proWindow->extensionsInitialized();
+//    d->m_proWindow->extensionsInitialized();//ROOPAK
     d->m_fileFactories = ProjectFileFactory::createFactories(&d->m_projectFilterString);
     foreach (ProjectFileFactory *pf, d->m_fileFactories) {
         d->m_profileMimeTypes += pf->mimeTypes();
@@ -1222,7 +1222,7 @@ void ProjectExplorerPlugin::updateRunWithoutDeployMenu()
 
 ExtensionSystem::IPlugin::ShutdownFlag ProjectExplorerPlugin::aboutToShutdown()
 {
-    d->m_proWindow->aboutToShutdown(); // disconnect from session
+//    d->m_proWindow->aboutToShutdown(); // disconnect from session//ROOPAK
     SessionManager::closeAllProjects();
     d->m_projectsMode = 0;
     d->m_shuttingDown = true;
@@ -2094,7 +2094,7 @@ void ProjectExplorerPlugin::buildProject(Project *p)
 
 void ProjectExplorerPlugin::requestProjectModeUpdate(Project *p)
 {
-    d->m_proWindow->projectUpdated(p);
+//    d->m_proWindow->projectUpdated(p);//ROOPAK
 }
 
 void ProjectExplorerPlugin::buildProject()
