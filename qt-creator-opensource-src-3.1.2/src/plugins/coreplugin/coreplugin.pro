@@ -93,7 +93,7 @@ SOURCES += mainwindow.cpp \
     idocument.cpp \
     textdocument.cpp \
     documentmanager.cpp \
-    removefiledialog.cpp \
+#    removefiledialog.cpp \#ROOPAK
     iversioncontrol.cpp \
 #    dialogs/addtovcsdialog.cpp \    #ROOPAK
     icorelistener.cpp \
@@ -193,7 +193,7 @@ HEADERS += mainwindow.h \
     idocumentfactory.h \
     textdocument.h \
     documentmanager.h \
-    removefiledialog.h \
+#    removefiledialog.h \#ROOPAK
 #    dialogs/addtovcsdialog.h  #ROOPAK
 
 FORMS += \#dialogs/newdialog.ui \ #ROOPAK
@@ -205,7 +205,7 @@ FORMS += \#dialogs/newdialog.ui \ #ROOPAK
     variablechooser.ui \
 #    mimetypesettingspage.ui \#ROOPAK
     mimetypemagicdialog.ui \
-    removefiledialog.ui \
+#    removefiledialog.ui \ #ROOPAK
 #   dialogs/addtovcsdialog.ui   #ROOPAK
 
 RESOURCES += core.qrc \

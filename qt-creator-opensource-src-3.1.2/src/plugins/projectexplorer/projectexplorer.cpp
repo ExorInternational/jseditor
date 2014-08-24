@@ -115,7 +115,7 @@
 #include <coreplugin/iversioncontrol.h>
 #include <coreplugin/variablemanager.h>
 #include <coreplugin/fileutils.h>
-#include <coreplugin/removefiledialog.h>
+//#include <coreplugin/removefiledialog.h>//ROOPAK
 #include <texteditor/findinfiles.h>
 #include <utils/fileutils.h>
 #include <utils/parameteraction.h>
@@ -2906,10 +2906,10 @@ void ProjectExplorerPlugin::removeProject()
     ProjectNode *subProjectNode = qobject_cast<ProjectNode*>(d->m_currentNode->projectNode());
     ProjectNode *projectNode = qobject_cast<ProjectNode *>(subProjectNode->parentFolderNode());
     if (projectNode) {
-        RemoveFileDialog removeFileDialog(subProjectNode->path(), ICore::mainWindow());
-        removeFileDialog.setDeleteFileVisible(false);
-        if (removeFileDialog.exec() == QDialog::Accepted)
-            projectNode->removeSubProjects(QStringList() << subProjectNode->path());
+//        RemoveFileDialog removeFileDialog(subProjectNode->path(), ICore::mainWindow());//ROOPAK - START
+//        removeFileDialog.setDeleteFileVisible(false);
+//        if (removeFileDialog.exec() == QDialog::Accepted)
+//            projectNode->removeSubProjects(QStringList() << subProjectNode->path());//ROOPAK - END
     }
 }
 
@@ -2944,26 +2944,26 @@ void ProjectExplorerPlugin::removeFile()
 
     FileNode *fileNode = qobject_cast<FileNode*>(d->m_currentNode);
 
-    QString filePath = d->m_currentNode->path();
-    RemoveFileDialog removeFileDialog(filePath, ICore::mainWindow());
+//    QString filePath = d->m_currentNode->path();  //ROOPAK - START
+//    RemoveFileDialog removeFileDialog(filePath, ICore::mainWindow());
 
-    if (removeFileDialog.exec() == QDialog::Accepted) {
-        const bool deleteFile = removeFileDialog.isDeleteFileChecked();
+//    if (removeFileDialog.exec() == QDialog::Accepted) {
+//        const bool deleteFile = removeFileDialog.isDeleteFileChecked();
 
-        // remove from project
-        FolderNode *folderNode = fileNode->parentFolderNode();
-        Q_ASSERT(folderNode);
+//        // remove from project
+//        FolderNode *folderNode = fileNode->parentFolderNode();
+//        Q_ASSERT(folderNode);
 
-        if (!folderNode->removeFiles(QStringList(filePath))) {
-            QMessageBox::warning(ICore::mainWindow(), tr("Removing File Failed"),
-                                 tr("Could not remove file %1 from project %2.").arg(filePath).arg(folderNode->projectNode()->displayName()));
-            return;
-        }
+//        if (!folderNode->removeFiles(QStringList(filePath))) {
+//            QMessageBox::warning(ICore::mainWindow(), tr("Removing File Failed"),
+//                                 tr("Could not remove file %1 from project %2.").arg(filePath).arg(folderNode->projectNode()->displayName()));
+//            return;
+//        }
 
-        DocumentManager::expectFileChange(filePath);
-        Core::FileUtils::removeFile(filePath, deleteFile);
-        DocumentManager::unexpectFileChange(filePath);
-    }
+//        DocumentManager::expectFileChange(filePath);
+//        Core::FileUtils::removeFile(filePath, deleteFile);
+//        DocumentManager::unexpectFileChange(filePath);
+//    }//ROOPAK - END
 }
 
 void ProjectExplorerPlugin::deleteFile()
