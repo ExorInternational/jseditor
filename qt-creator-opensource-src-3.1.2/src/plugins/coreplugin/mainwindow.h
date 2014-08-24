@@ -50,7 +50,7 @@ namespace Core {
 class ActionManager;
 class StatusBarWidget;
 class EditorManager;
-class ExternalToolManager;
+//class ExternalToolManager;//ROOPAK
 class DocumentManager;
 class HelpManager;
 class IDocument;
@@ -166,7 +166,7 @@ private:
     mutable QPrinter *m_printer;
     ActionManager *m_actionManager;
     EditorManager *m_editorManager;
-    ExternalToolManager *m_externalToolManager;
+//    ExternalToolManager *m_externalToolManager;//ROOPAK
     MessageManager *m_messageManager;
     ProgressManagerPrivate *m_progressManager;
     VariableManager *m_variableManager;

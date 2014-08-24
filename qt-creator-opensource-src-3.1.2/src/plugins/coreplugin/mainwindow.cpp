@@ -52,7 +52,7 @@
 #include "rightpane.h"
 #include "editormanager/ieditorfactory.h"
 #include "statusbarwidget.h"
-#include "externaltoolmanager.h"
+//#include "externaltoolmanager.h"//ROOPAK
 //#include "editormanager/systemeditor.h"//ROOPAK
 
 #if defined(Q_OS_MAC)
@@ -120,7 +120,7 @@ MainWindow::MainWindow() :
     m_printer(0),
     m_actionManager(new ActionManager(this)),
     m_editorManager(0),
-    m_externalToolManager(0),
+//    m_externalToolManager(0),//ROOPAK
     m_progressManager(new ProgressManagerPrivate),
     m_variableManager(new VariableManager),
     m_vcsManager(new VcsManager),
@@ -198,7 +198,7 @@ MainWindow::MainWindow() :
     m_messageManager = new MessageManager;
     m_editorManager = new EditorManager(this);
     m_editorManager->hide();
-    m_externalToolManager = new ExternalToolManager();
+//    m_externalToolManager = new ExternalToolManager();//ROOPAK
     setCentralWidget(m_modeStack);
 
     m_progressManager->progressView()->setParent(this);
@@ -259,8 +259,8 @@ MainWindow::~MainWindow()
 //    ExtensionSystem::PluginManager::removeObject(m_toolSettings);//ROOPAK
 //    ExtensionSystem::PluginManager::removeObject(m_mimeTypeSettings);//ROOPAK
 //    ExtensionSystem::PluginManager::removeObject(m_systemEditor);//ROOPAK
-    delete m_externalToolManager;
-    m_externalToolManager = 0;
+//    delete m_externalToolManager;//ROOPAK
+//    m_externalToolManager = 0;//ROOPAK
     delete m_messageManager;
     m_messageManager = 0;
 //    delete m_shortcutSettings;//ROOPAK

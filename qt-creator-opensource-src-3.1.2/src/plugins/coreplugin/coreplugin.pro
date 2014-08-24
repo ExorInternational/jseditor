@@ -81,7 +81,7 @@ SOURCES += mainwindow.cpp \
     outputpanemanager.cpp \
     navigationsubwidget.cpp \
     sidebarwidget.cpp \
-    externaltool.cpp \
+#    externaltool.cpp \#ROOPAK
 #    dialogs/externaltoolconfig.cpp \ #ROOPAK
 #    toolsettings.cpp \#ROOPAK
     variablechooser.cpp \
@@ -178,7 +178,7 @@ HEADERS += mainwindow.h \
     outputpanemanager.h \
     navigationsubwidget.h \
     sidebarwidget.h \
-    externaltool.h \
+#    externaltool.h \#ROOPAK
 #    dialogs/externaltoolconfig.h \ #ROOPAK
 #    toolsettings.h \ #ROOPAK
     variablechooser.h \
@@ -186,7 +186,7 @@ HEADERS += mainwindow.h \
 #    mimetypesettings.h \#ROOPAK
 #    dialogs/promptoverwritedialog.h \ #ROOPAK
     fileutils.h \
-    externaltoolmanager.h \
+#    externaltoolmanager.h \#ROOPAK
     generatedfile.h \
     featureprovider.h \
     idocument.h \

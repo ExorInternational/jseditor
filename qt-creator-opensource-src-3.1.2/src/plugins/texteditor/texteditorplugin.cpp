@@ -46,7 +46,7 @@
 #include <coreplugin/icore.h>
 #include <coreplugin/variablemanager.h>
 #include <coreplugin/actionmanager/actionmanager.h>
-#include <coreplugin/externaltoolmanager.h>
+//#include <coreplugin/externaltoolmanager.h>//ROOPAK
 #include <extensionsystem/pluginmanager.h>
 #include <texteditor/texteditoractionhandler.h>
 #include <utils/qtcassert.h>
@@ -237,8 +237,8 @@ void TextEditorPlugin::extensionsInitialized()
         tr("Current document's font size in points."));
     connect(Core::VariableManager::instance(), SIGNAL(variableUpdateRequested(QByteArray)),
             this, SLOT(updateVariable(QByteArray)));
-    connect(Core::ExternalToolManager::instance(), SIGNAL(replaceSelectionRequested(QString)),
-            this, SLOT(updateCurrentSelection(QString)));
+//    connect(Core::ExternalToolManager::instance(), SIGNAL(replaceSelectionRequested(QString)),
+//            this, SLOT(updateCurrentSelection(QString)));//ROOPAK
 }
 
 void TextEditorPlugin::invokeCompletion()
