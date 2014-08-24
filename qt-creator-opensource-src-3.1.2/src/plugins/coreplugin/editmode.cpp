@@ -41,6 +41,8 @@
 #include <QHBoxLayout>
 #include <QWidget>
 #include <QIcon>
+#include <QApplication>//ROOPAK
+#include <QStyle>//ROOPAK
 
 using namespace Core;
 using namespace Core::Internal;
@@ -51,7 +53,8 @@ EditMode::EditMode() :
 {
     setObjectName(QLatin1String("EditMode"));
     setDisplayName(tr("Edit"));
-    setIcon(QIcon(QLatin1String(":/fancyactionbar/images/mode_Edit.png")));
+    //setIcon(QIcon(QLatin1String(":/fancyactionbar/images/mode_Edit.png")));//ROOPAK
+    setIcon(QApplication::style()->standardIcon(QStyle::SP_FileIcon));//ROOPAK
     setPriority(Constants::P_MODE_EDIT);
     setId(Constants::MODE_EDIT);
 

@@ -275,7 +275,8 @@ public:
         setWidget(proWindow);
         setContext(Context(Constants::C_PROJECTEXPLORER));
         setDisplayName(QCoreApplication::translate("ProjectExplorer::ProjectsMode", "Projects"));
-        setIcon(QIcon(QLatin1String(":/fancyactionbar/images/mode_Project.png")));
+//        setIcon(QIcon(QLatin1String(":/fancyactionbar/images/mode_Project.png")));//ROOPAK
+        setIcon(QApplication::style()->standardIcon(QStyle::SP_FileIcon));//ROOPAK
         setPriority(Constants::P_MODE_SESSION);
         setId(Constants::MODE_SESSION);
         setContextHelpId(QLatin1String("Managing Projects"));

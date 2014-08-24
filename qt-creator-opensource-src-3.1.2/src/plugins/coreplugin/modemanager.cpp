@@ -30,7 +30,7 @@
 #include "modemanager.h"
 
 #include "fancytabwidget.h"
-#include "fancyactionbar.h"
+//#include "fancyactionbar.h"//ROOPAK
 #include "icore.h"
 #include "mainwindow.h"
 
@@ -65,7 +65,7 @@ struct ModeManagerPrivate
 {
     Internal::MainWindow *m_mainWindow;
     Internal::FancyTabWidget *m_modeStack;
-    Internal::FancyActionBar *m_actionBar;
+//    Internal::FancyActionBar *m_actionBar;//ROOPAK
     QMap<QAction*, int> m_actions;
     QVector<IMode*> m_modes;
     QVector<Command*> m_modeShortcuts;
@@ -97,8 +97,8 @@ ModeManager::ModeManager(Internal::MainWindow *mainWindow,
     d->m_modeStack = modeStack;
     d->m_signalMapper = new QSignalMapper(this);
     d->m_oldCurrent = -1;
-    d->m_actionBar = new Internal::FancyActionBar(modeStack);
-    d->m_modeStack->addCornerWidget(d->m_actionBar);
+//    d->m_actionBar = new Internal::FancyActionBar(modeStack);//ROOPAK
+//    d->m_modeStack->addCornerWidget(d->m_actionBar);//ROOPAK
     d->m_modeSelectorVisible = true;
     d->m_modeStack->setSelectionWidgetVisible(d->m_modeSelectorVisible);
 
@@ -260,12 +260,12 @@ void ModeManager::addAction(QAction *action, int priority)
             ++index;
     }
 
-    d->m_actionBar->insertAction(index, action);
+//    d->m_actionBar->insertAction(index, action);//ROOPAK
 }
 
 void ModeManager::addProjectSelector(QAction *action)
 {
-    d->m_actionBar->addProjectSelector(action);
+//    d->m_actionBar->addProjectSelector(action);//ROOPAK
     d->m_actions.insert(0, INT_MAX);
 }
 

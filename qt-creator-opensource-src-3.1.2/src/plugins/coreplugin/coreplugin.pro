@@ -15,7 +15,7 @@ win32-msvc*:QMAKE_CXXFLAGS += -wd4251 -wd4290 -wd4250
 SOURCES += mainwindow.cpp \
     editmode.cpp \
     tabpositionindicator.cpp \
-    fancyactionbar.cpp \
+#    fancyactionbar.cpp \ #ROOPAK
     fancytabwidget.cpp \
 #    generalsettings.cpp \#ROOPAK
     id.cpp \
@@ -102,7 +102,7 @@ SOURCES += mainwindow.cpp \
 HEADERS += mainwindow.h \
     editmode.h \
     tabpositionindicator.h \
-    fancyactionbar.h \
+#    fancyactionbar.h \ #ROOPAK
     fancytabwidget.h \
 #    generalsettings.h \#ROOPAK
     id.h \
@@ -209,7 +209,7 @@ FORMS += \#dialogs/newdialog.ui \ #ROOPAK
 #   dialogs/addtovcsdialog.ui   #ROOPAK
 
 RESOURCES += core.qrc \
-    fancyactionbar.qrc
+#    fancyactionbar.qrc#ROOPAK
 
 include(find/find.pri)
 include(locator/locator.pri)
