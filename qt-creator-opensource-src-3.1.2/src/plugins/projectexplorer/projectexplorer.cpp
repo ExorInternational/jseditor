@@ -70,7 +70,7 @@
 #include "runsettingspropertiespage.h"
 #include "session.h"
 #include "projectnodes.h"
-#include "sessiondialog.h"
+//#include "sessiondialog.h"//ROOPAK
 //#include "projectexplorersettingspage.h"//ROOPAK
 #include "corelistenercheckingforrunningbuild.h"
 #include "buildconfiguration.h"
@@ -133,6 +133,10 @@
 #include <QMessageBox>
 #include <QTimer>
 #include <QWizard>
+
+//ADDED BY ROOPAK
+#include <QLayout>
+#include <QPushButton>
 
 /*!
     \namespace ProjectExplorer
@@ -1252,10 +1256,10 @@ void ProjectExplorerPlugin::showSessionManager()
     } else {
         SessionManager::save();
     }
-    SessionDialog sessionDialog(ICore::mainWindow());
-    sessionDialog.setAutoLoadSession(d->m_projectExplorerSettings.autorestoreLastSession);
-    sessionDialog.exec();
-    d->m_projectExplorerSettings.autorestoreLastSession = sessionDialog.autoLoadSession();
+//    SessionDialog sessionDialog(ICore::mainWindow());//ROOPAK - START
+//    sessionDialog.setAutoLoadSession(d->m_projectExplorerSettings.autorestoreLastSession);
+//    sessionDialog.exec();
+//    d->m_projectExplorerSettings.autorestoreLastSession = sessionDialog.autoLoadSession();//ROOPAK - END
 
     updateActions();
 

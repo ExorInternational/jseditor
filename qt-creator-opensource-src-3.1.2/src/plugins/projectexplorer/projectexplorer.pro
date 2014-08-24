@@ -77,7 +77,7 @@ HEADERS += projectexplorer.h \
 #    foldernavigationwidget.h \#ROOPAK
 #    buildprogress.h \#ROOPAK
     projectnodes.h \
-    sessiondialog.h \
+#    sessiondialog.h \#ROOPAK
 #    projectwizardpage.h \#ROOPAK
     buildstepspage.h \
     nodesvisitor.h \
@@ -214,7 +214,7 @@ SOURCES += projectexplorer.cpp \
 #    foldernavigationwidget.cpp \#ROOPAK
 #    buildprogress.cpp \#ROOPAK
     projectnodes.cpp \
-    sessiondialog.cpp \
+#    sessiondialog.cpp \#ROOPAK
 #    projectwizardpage.cpp \#ROOPAK
     buildstepspage.cpp \
     nodesvisitor.cpp \
@@ -279,7 +279,7 @@ SOURCES += projectexplorer.cpp \
 
 FORMS += \#processstep.ui \#ROOPAK
 #    editorsettingspropertiespage.ui \#ROOPAK
-    sessiondialog.ui \
+#    sessiondialog.ui \#ROOPAK
 #    projectwizardpage.ui \#ROOPAK
 #    projectexplorersettingspage.ui \#ROOPAK
     targetsettingswidget.ui \
@@ -319,8 +319,8 @@ equals(TEST, 1) {
 
 greaterThan(QT_MAJOR_VERSION, 4) {
     QT += quick
-    HEADERS += projectwelcomepage.h
-    SOURCES += projectwelcomepage.cpp
+#    HEADERS += projectwelcomepage.h//ROOPAK
+#    SOURCES += projectwelcomepage.cpp//ROOPAK
 }
 macx:LIBS += -framework Carbon
 
