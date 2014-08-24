@@ -84,7 +84,7 @@ SOURCES += mainwindow.cpp \
 #    externaltool.cpp \#ROOPAK
 #    dialogs/externaltoolconfig.cpp \ #ROOPAK
 #    toolsettings.cpp \#ROOPAK
-    variablechooser.cpp \
+#    variablechooser.cpp \ #ROOPAK
 #    mimetypemagicdialog.cpp \#ROOPAK
 #    mimetypesettings.cpp \#ROOPAK
 #    dialogs/promptoverwritedialog.cpp \ #ROOPAK
@@ -181,7 +181,7 @@ HEADERS += mainwindow.h \
 #    externaltool.h \#ROOPAK
 #    dialogs/externaltoolconfig.h \ #ROOPAK
 #    toolsettings.h \ #ROOPAK
-    variablechooser.h \
+#    variablechooser.h \#ROOPAK
 #    mimetypemagicdialog.h \#ROOPAK
 #    mimetypesettings.h \#ROOPAK
 #    dialogs/promptoverwritedialog.h \ #ROOPAK
@@ -202,7 +202,7 @@ FORMS += \#dialogs/newdialog.ui \ #ROOPAK
 #    dialogs/openwithdialog.ui \#ROOPAK
 #    generalsettings.ui \#ROOPAK
 #    dialogs/externaltoolconfig.ui \ #ROOPAK
-    variablechooser.ui \
+#    variablechooser.ui \#ROOPAK
 #    mimetypesettingspage.ui \#ROOPAK
 #    mimetypemagicdialog.ui \#ROOPAK
 #    removefiledialog.ui \ #ROOPAK

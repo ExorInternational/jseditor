@@ -33,7 +33,7 @@
 
 #include <coreplugin/coreconstants.h>
 #include <coreplugin/documentmanager.h>
-#include <coreplugin/variablechooser.h>
+//#include <coreplugin/variablechooser.h>//ROOPAK
 #include <utils/hostosinfo.h>
 
 #include <QCoreApplication>
@@ -47,8 +47,8 @@ ProjectExplorerSettingsWidget::ProjectExplorerSettingsWidget(QWidget *parent) :
     QWidget(parent)
 {
     m_ui.setupUi(this);
-    new Core::VariableChooser(this);
-    Core::VariableChooser::addVariableSupport(m_ui.buildDirectoryEdit);
+//    new Core::VariableChooser(this);//ROOPAK
+//    Core::VariableChooser::addVariableSupport(m_ui.buildDirectoryEdit);//ROOPAK
     setJomVisible(Utils::HostOsInfo::isWindowsHost());
     m_ui.directoryButtonGroup->setId(m_ui.currentDirectoryRadioButton, UseCurrentDirectory);
     m_ui.directoryButtonGroup->setId(m_ui.directoryRadioButton, UseProjectDirectory);
