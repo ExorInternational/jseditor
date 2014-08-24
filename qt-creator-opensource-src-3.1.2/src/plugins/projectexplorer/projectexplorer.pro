@@ -38,7 +38,7 @@ HEADERS += projectexplorer.h \
     deployconfigurationmodel.h \
     namedwidget.h \
     target.h \
-    targetsettingspanel.h \
+#    targetsettingspanel.h \#ROOPAK
     task.h \
     itaskhandler.h \
     copytaskhandler.h \
@@ -93,7 +93,7 @@ HEADERS += projectexplorer.h \
     baseprojectwizarddialog.h \
     miniprojecttargetselector.h \
     targetselector.h \
-    targetsettingswidget.h \
+#    targetsettingswidget.h \ #ROOPAK
 #    doubletabwidget.h \#ROOPAK
     buildenvironmentwidget.h \
     ldparser.h \
@@ -180,7 +180,7 @@ SOURCES += projectexplorer.cpp \
     deployconfigurationmodel.cpp \
     namedwidget.cpp \
     target.cpp \
-    targetsettingspanel.cpp \
+#    targetsettingspanel.cpp \#ROOPAK
     ioutputparser.cpp \
     projectconfiguration.cpp \
     gnumakeparser.cpp \
@@ -231,7 +231,7 @@ SOURCES += projectexplorer.cpp \
     baseprojectwizarddialog.cpp \
     miniprojecttargetselector.cpp \
     targetselector.cpp \
-    targetsettingswidget.cpp \
+#    targetsettingswidget.cpp \#ROOPAK
 #    doubletabwidget.cpp \#ROOPAK
     buildenvironmentwidget.cpp \
     ldparser.cpp \
@@ -282,7 +282,7 @@ FORMS += \#processstep.ui \#ROOPAK
 #    sessiondialog.ui \#ROOPAK
 #    projectwizardpage.ui \#ROOPAK
 #    projectexplorersettingspage.ui \#ROOPAK
-    targetsettingswidget.ui \
+#    targetsettingswidget.ui \#ROOPAK
 #    doubletabwidget.ui \ #ROOPAK
 #    codestylesettingspropertiespage.ui \#ROOPAK
     devicesupport/devicefactoryselectiondialog.ui \

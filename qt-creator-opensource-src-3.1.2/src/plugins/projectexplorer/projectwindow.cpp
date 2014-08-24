@@ -36,7 +36,7 @@
 #include "projectexplorer.h"
 #include "session.h"
 #include "iprojectproperties.h"
-#include "targetsettingspanel.h"
+//#include "targetsettingspanel.h" //ROOPAK
 #include "target.h"
 
 #include <coreplugin/idocument.h>
@@ -335,8 +335,8 @@ void ProjectWindow::registerProject(ProjectExplorer::Project *project)
     bool projectHasTarget = hasTarget(project);
     m_hasTarget.insert(project, projectHasTarget);
 
-    if (projectHasTarget) // Use the Targets page
-        subtabs << QCoreApplication::translate("TargetSettingsPanelFactory", "Build & Run");
+//    if (projectHasTarget) // Use the Targets page//ROOPAK
+//        subtabs << QCoreApplication::translate("TargetSettingsPanelFactory", "Build & Run");//ROOPAK
 
     // Add the project specific pages
     QList<IProjectPanelFactory *> factories = ExtensionSystem::PluginManager::getObjects<IProjectPanelFactory>();
@@ -385,24 +385,24 @@ void ProjectWindow::showProperties(int index, int subIndex)
     int pos = 0;
     IPanelFactory *fac = 0;
     // remember previous sub index state of target settings page
-    if (TargetSettingsPanelWidget *previousPanelWidget
-            = qobject_cast<TargetSettingsPanelWidget*>(m_currentWidget)) {
-        m_previousTargetSubIndex = previousPanelWidget->currentSubIndex();
-    }
+//    if (TargetSettingsPanelWidget *previousPanelWidget
+//            = qobject_cast<TargetSettingsPanelWidget*>(m_currentWidget)) {
+//        m_previousTargetSubIndex = previousPanelWidget->currentSubIndex();
+//    }
 
-    if (m_hasTarget.value(project) || !project->supportsNoTargetPanel()) {
-        if (subIndex == 0) {
-            // Targets page
-            removeCurrentWidget();
-            TargetSettingsPanelWidget *panelWidget = new TargetSettingsPanelWidget(project);
-            if (m_previousTargetSubIndex >= 0)
-                panelWidget->setCurrentSubIndex(m_previousTargetSubIndex);
-            m_currentWidget = panelWidget;
-            m_centralWidget->addWidget(m_currentWidget);
-            m_centralWidget->setCurrentWidget(m_currentWidget);
-        }
-        ++pos;
-    }
+//    if (m_hasTarget.value(project) || !project->supportsNoTargetPanel()) {
+//        if (subIndex == 0) {
+//            // Targets page
+//            removeCurrentWidget();
+//            TargetSettingsPanelWidget *panelWidget = new TargetSettingsPanelWidget(project);
+//            if (m_previousTargetSubIndex >= 0)
+//                panelWidget->setCurrentSubIndex(m_previousTargetSubIndex);
+//            m_currentWidget = panelWidget;
+//            m_centralWidget->addWidget(m_currentWidget);
+//            m_centralWidget->setCurrentWidget(m_currentWidget);
+//        }
+//        ++pos;
+//    }
 
     QList<IProjectPanelFactory *> factories = ExtensionSystem::PluginManager::getObjects<IProjectPanelFactory>();
     qSort(factories.begin(), factories.end(), &IPanelFactory::prioritySort);
