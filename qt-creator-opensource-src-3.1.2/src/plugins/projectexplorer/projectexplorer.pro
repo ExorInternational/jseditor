@@ -89,7 +89,7 @@ HEADERS += projectexplorer.h \
     toolchainoptionspage.h \
     cesdkhandler.h \
     gccparser.h \
-    projectexplorersettingspage.h \
+#    projectexplorersettingspage.h \#ROOPAK
     baseprojectwizarddialog.h \
     miniprojecttargetselector.h \
     targetselector.h \
@@ -226,7 +226,7 @@ SOURCES += projectexplorer.cpp \
     toolchainoptionspage.cpp \
     cesdkhandler.cpp \
     gccparser.cpp \
-    projectexplorersettingspage.cpp \
+#    projectexplorersettingspage.cpp \#ROOPAK
     corelistenercheckingforrunningbuild.cpp \
     baseprojectwizarddialog.cpp \
     miniprojecttargetselector.cpp \
@@ -281,7 +281,7 @@ FORMS += \#processstep.ui \#ROOPAK
 #    editorsettingspropertiespage.ui \#ROOPAK
     sessiondialog.ui \
     projectwizardpage.ui \
-    projectexplorersettingspage.ui \
+#    projectexplorersettingspage.ui \#ROOPAK
     targetsettingswidget.ui \
 #    doubletabwidget.ui \ #ROOPAK
 #    codestylesettingspropertiespage.ui \#ROOPAK
