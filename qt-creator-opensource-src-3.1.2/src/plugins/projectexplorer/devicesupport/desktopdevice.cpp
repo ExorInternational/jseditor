@@ -32,7 +32,7 @@
 #include "deviceprocesslist.h"
 //#include "localprocesslist.h"//ROOPAK
 //#include "desktopdeviceconfigurationwidget.h"//ROOPAK
-#include "desktopprocesssignaloperation.h"
+//#include "desktopprocesssignaloperation.h"//ROOPAK
 #include <projectexplorer/projectexplorerconstants.h>
 
 #include <ssh/sshconnection.h>
@@ -117,7 +117,7 @@ DeviceProcess *DesktopDevice::createProcess(QObject *parent) const
 
 DeviceProcessSignalOperation::Ptr DesktopDevice::signalOperation() const
 {
-    return DeviceProcessSignalOperation::Ptr(new DesktopProcessSignalOperation());
+    return DeviceProcessSignalOperation::Ptr(NULL/*new DesktopProcessSignalOperation()*/);//ROOPAK
 }
 
 QString DesktopDevice::qmlProfilerHost() const

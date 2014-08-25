@@ -135,7 +135,7 @@ HEADERS += projectexplorer.h \
 #    devicesupport/sshdeviceprocess.h \#ROOPAK
 #    devicesupport/sshdeviceprocesslist.h \#ROOPAK
 #    devicesupport/desktopdeviceconfigurationwidget.h \#ROOPAK
-    devicesupport/desktopprocesssignaloperation.h \
+#    devicesupport/desktopprocesssignaloperation.h \#ROOPAK
     deploymentdata.h \
     buildtargetinfo.h \
     customtoolchain.h \
@@ -267,7 +267,7 @@ SOURCES += projectexplorer.cpp \
 #    devicesupport/sshdeviceprocess.cpp \#ROOPAK
 #    devicesupport/sshdeviceprocesslist.cpp \#ROOPAK
 #    devicesupport/desktopdeviceconfigurationwidget.cpp \#ROOPAK
-    devicesupport/desktopprocesssignaloperation.cpp \
+#    devicesupport/desktopprocesssignaloperation.cpp \ #ROOPAK
     deployablefile.cpp \
     customtoolchain.cpp \
     projectmacroexpander.cpp \
