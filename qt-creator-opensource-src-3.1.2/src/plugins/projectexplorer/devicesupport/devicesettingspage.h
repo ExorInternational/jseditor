@@ -36,7 +36,7 @@
 namespace ProjectExplorer {
 namespace Internal {
 
-class DeviceSettingsWidget;
+//class DeviceSettingsWidget;//ROOPAK
 
 class DeviceSettingsPage : public Core::IOptionsPage
 {
@@ -50,7 +50,7 @@ public:
     void finish();
 
 private:
-    QPointer<DeviceSettingsWidget> m_widget;
+//    QPointer<DeviceSettingsWidget> m_widget;//ROOPAK
 };
 
 } // namespace Internal

@@ -28,12 +28,15 @@
 ****************************************************************************/
 #include "devicesettingspage.h"
 
-#include "devicesettingswidget.h"
+//#include "devicesettingswidget.h"//ROOPAK
 
 #include <projectexplorer/projectexplorerconstants.h>
 
 #include <QCoreApplication>
 #include <QString>
+
+//ADDED BY ROOPAK
+#include <QWidget>
 
 namespace ProjectExplorer {
 namespace Internal {
@@ -50,19 +53,20 @@ DeviceSettingsPage::DeviceSettingsPage(QObject *parent)
 
 QWidget *DeviceSettingsPage::widget()
 {
-    if (!m_widget)
-        m_widget = new DeviceSettingsWidget;
-    return m_widget;
+//    if (!m_widget)        //ROOPAK - START
+//        m_widget = new DeviceSettingsWidget;
+//    return m_widget;
+    return new QWidget;//ROOPAK - END
 }
 
 void DeviceSettingsPage::apply()
 {
-    m_widget->saveSettings();
+//    m_widget->saveSettings();//ROOPAK
 }
 
 void DeviceSettingsPage::finish()
 {
-    delete m_widget;
+//    delete m_widget;//ROOPAK
 }
 
 } // namespace Internal

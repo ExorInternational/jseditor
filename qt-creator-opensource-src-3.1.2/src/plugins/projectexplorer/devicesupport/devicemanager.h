@@ -45,13 +45,13 @@ class ProjectExplorerPlugin;
 
 namespace Internal {
 class DeviceManagerPrivate;
-class DeviceSettingsWidget;
+//class DeviceSettingsWidget;#ROOPAK
 } // namespace Internal
 
 class PROJECTEXPLORER_EXPORT DeviceManager : public QObject
 {
     Q_OBJECT
-    friend class Internal::DeviceSettingsWidget;
+//    friend class Internal::DeviceSettingsWidget;//ROOPAK
     friend class IDevice;
 
 public:
