@@ -28,7 +28,8 @@
 ****************************************************************************/
 #include "deviceapplicationrunner.h"
 
-#include "sshdeviceprocess.h"
+//#include "sshdeviceprocess.h"//ROOPAK
+#include "deviceprocess.h"//ROOPAK
 
 #include <ssh/sshconnection.h>
 #include <ssh/sshconnectionmanager.h>
