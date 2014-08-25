@@ -31,7 +31,7 @@
 #include "desktopdeviceprocess.h"
 #include "deviceprocesslist.h"
 #include "localprocesslist.h"
-#include "desktopdeviceconfigurationwidget.h"
+//#include "desktopdeviceconfigurationwidget.h"//ROOPAK
 #include "desktopprocesssignaloperation.h"
 #include <projectexplorer/projectexplorerconstants.h>
 

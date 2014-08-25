@@ -134,7 +134,7 @@ HEADERS += projectexplorer.h \
     devicesupport/localprocesslist.h \
     devicesupport/sshdeviceprocess.h \
     devicesupport/sshdeviceprocesslist.h \
-    devicesupport/desktopdeviceconfigurationwidget.h \
+#    devicesupport/desktopdeviceconfigurationwidget.h \#ROOPAK
     devicesupport/desktopprocesssignaloperation.h \
     deploymentdata.h \
     buildtargetinfo.h \
@@ -266,7 +266,7 @@ SOURCES += projectexplorer.cpp \
     devicesupport/localprocesslist.cpp \
     devicesupport/sshdeviceprocess.cpp \
     devicesupport/sshdeviceprocesslist.cpp \
-    devicesupport/desktopdeviceconfigurationwidget.cpp \
+#    devicesupport/desktopdeviceconfigurationwidget.cpp \#ROOPAK
     devicesupport/desktopprocesssignaloperation.cpp \
     deployablefile.cpp \
     customtoolchain.cpp \
@@ -288,7 +288,7 @@ FORMS += \#processstep.ui \#ROOPAK
 #    devicesupport/devicefactoryselectiondialog.ui \ #ROOPAK
     devicesupport/devicesettingswidget.ui \
 #    devicesupport/devicetestdialog.ui \ #ROOPAK
-    devicesupport/desktopdeviceconfigurationwidget.ui \
+#    devicesupport/desktopdeviceconfigurationwidget.ui \#ROOPAK
 #    customparserconfigdialog.ui#ROOPAK
 
 WINSOURCES += \
