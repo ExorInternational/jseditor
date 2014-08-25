@@ -82,7 +82,7 @@
 #include "devicesupport/desktopdevice.h"
 #include "devicesupport/desktopdevicefactory.h"
 #include "devicesupport/devicemanager.h"
-#include "devicesupport/devicesettingspage.h"
+//#include "devicesupport/devicesettingspage.h"//ROOPAK
 
 #ifdef Q_OS_WIN
 #    include "windebuginterface.h"
@@ -455,7 +455,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
 
     // Settings pages
 //    addAutoReleasedObject(new ProjectExplorerSettingsPage);//ROOPAK
-    addAutoReleasedObject(new DeviceSettingsPage);
+//    addAutoReleasedObject(new DeviceSettingsPage);//ROOPAK
 
     // context menus
     ActionContainer *msessionContextMenu =
