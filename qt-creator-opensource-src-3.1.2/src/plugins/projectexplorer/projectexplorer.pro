@@ -127,7 +127,7 @@ HEADERS += projectexplorer.h \
     devicesupport/deviceprocessesdialog.h \
     devicesupport/devicesettingswidget.h \
     devicesupport/devicesettingspage.h \
-    devicesupport/devicetestdialog.h \
+#    devicesupport/devicetestdialog.h \ #ROOPAK
     devicesupport/devicetypekitchooser.h \
     devicesupport/deviceusedportsgatherer.h \
     devicesupport/deviceapplicationrunner.h \
@@ -259,7 +259,7 @@ SOURCES += projectexplorer.cpp \
     devicesupport/deviceprocessesdialog.cpp \
     devicesupport/devicesettingswidget.cpp \
     devicesupport/devicesettingspage.cpp \
-    devicesupport/devicetestdialog.cpp \
+#    devicesupport/devicetestdialog.cpp \#ROOPAK
     devicesupport/devicetypekitchooser.cpp \
     devicesupport/deviceusedportsgatherer.cpp \
     devicesupport/deviceapplicationrunner.cpp \
@@ -287,7 +287,7 @@ FORMS += \#processstep.ui \#ROOPAK
 #    codestylesettingspropertiespage.ui \#ROOPAK
 #    devicesupport/devicefactoryselectiondialog.ui \ #ROOPAK
     devicesupport/devicesettingswidget.ui \
-    devicesupport/devicetestdialog.ui \
+#    devicesupport/devicetestdialog.ui \ #ROOPAK
     devicesupport/desktopdeviceconfigurationwidget.ui \
 #    customparserconfigdialog.ui#ROOPAK
 

@@ -33,7 +33,7 @@
 #include "devicemanager.h"
 #include "devicemanagermodel.h"
 #include "deviceprocessesdialog.h"
-#include "devicetestdialog.h"
+//#include "devicetestdialog.h"//ROOPAK
 #include "idevice.h"
 #include "idevicefactory.h"
 #include "idevicewidget.h"
@@ -269,8 +269,8 @@ void DeviceSettingsWidget::testDevice()
 {
     const IDevice::ConstPtr &device = currentDevice();
     QTC_ASSERT(device && device->hasDeviceTester(), return);
-    DeviceTestDialog dlg(device, this);
-    dlg.exec();
+//    DeviceTestDialog dlg(device, this);//ROOPAK
+//    dlg.exec();//ROOPAK
 }
 
 void DeviceSettingsWidget::handleDeviceUpdated(Id id)
