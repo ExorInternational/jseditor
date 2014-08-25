@@ -29,7 +29,7 @@
 #include "devicesettingswidget.h"
 #include "ui_devicesettingswidget.h"
 
-#include "devicefactoryselectiondialog.h"
+//#include "devicefactoryselectiondialog.h"//ROOPAK
 #include "devicemanager.h"
 #include "devicemanagermodel.h"
 #include "deviceprocessesdialog.h"
@@ -151,25 +151,25 @@ void DeviceSettingsWidget::initGui()
 
 void DeviceSettingsWidget::addDevice()
 {
-    DeviceFactorySelectionDialog d;
-    if (d.exec() != QDialog::Accepted)
-        return;
+//    DeviceFactorySelectionDialog d; //ROOPAK - START
+//    if (d.exec() != QDialog::Accepted)
+//        return;
 
-    Core::Id toCreate = d.selectedId();
-    if (!toCreate.isValid())
-        return;
-    IDeviceFactory *factory = IDeviceFactory::find(toCreate);
-    if (!factory)
-        return;
-    IDevice::Ptr device = factory->create(toCreate);
-    if (device.isNull())
-        return;
+//    Core::Id toCreate = d.selectedId();
+//    if (!toCreate.isValid())
+//        return;
+//    IDeviceFactory *factory = IDeviceFactory::find(toCreate);
+//    if (!factory)
+//        return;
+//    IDevice::Ptr device = factory->create(toCreate);
+//    if (device.isNull())
+//        return;
 
-    m_deviceManager->addDevice(device);
-    m_ui->removeConfigButton->setEnabled(true);
-    m_ui->configurationComboBox->setCurrentIndex(m_deviceManagerModel->indexOf(device));
-    if (device->hasDeviceTester())
-        testDevice();
+//    m_deviceManager->addDevice(device);
+//    m_ui->removeConfigButton->setEnabled(true);
+//    m_ui->configurationComboBox->setCurrentIndex(m_deviceManagerModel->indexOf(device));
+//    if (device->hasDeviceTester())
+//        testDevice();//ROOPAK - END
 }
 
 void DeviceSettingsWidget::removeDevice()
