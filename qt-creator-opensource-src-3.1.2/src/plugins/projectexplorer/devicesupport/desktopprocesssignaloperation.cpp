@@ -28,7 +28,7 @@
 ****************************************************************************/
 #include "desktopprocesssignaloperation.h"
 
-#include "localprocesslist.h"
+//#include "localprocesslist.h"//ROOPAK
 
 #include <utils/winutils.h>
 
@@ -58,10 +58,10 @@ void DesktopProcessSignalOperation::killProcess(int pid)
 void DesktopProcessSignalOperation::killProcess(const QString &filePath)
 {
     m_errorMessage.clear();
-    foreach (const DeviceProcessItem &process, Internal::LocalProcessList::getLocalProcesses()) {
-        if (process.cmdLine == filePath)
-            killProcessSilently(process.pid);
-    }
+//    foreach (const DeviceProcessItem &process, Internal::LocalProcessList::getLocalProcesses()) {//ROOPAK - START
+//        if (process.cmdLine == filePath)
+//            killProcessSilently(process.pid);
+//    }//ROOPAK - END
     emit finished(m_errorMessage);
 }
 
@@ -75,10 +75,10 @@ void DesktopProcessSignalOperation::interruptProcess(int pid)
 void DesktopProcessSignalOperation::interruptProcess(const QString &filePath)
 {
     m_errorMessage.clear();
-    foreach (const DeviceProcessItem &process, Internal::LocalProcessList::getLocalProcesses()) {
-        if (process.cmdLine == filePath)
-            interruptProcessSilently(process.pid);
-    }
+//    foreach (const DeviceProcessItem &process, Internal::LocalProcessList::getLocalProcesses()) {//ROOPAK - START
+//        if (process.cmdLine == filePath)
+//            interruptProcessSilently(process.pid);
+//    }//ROOPAK - END
     emit finished(m_errorMessage);
 }
 

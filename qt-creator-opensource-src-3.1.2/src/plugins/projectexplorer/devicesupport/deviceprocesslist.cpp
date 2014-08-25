@@ -28,7 +28,7 @@
 ****************************************************************************/
 
 #include "deviceprocesslist.h"
-#include "localprocesslist.h"
+//#include "localprocesslist.h"//ROOPAK
 
 #include <utils/qtcassert.h>
 
@@ -184,7 +184,8 @@ void DeviceProcessList::reportError(const QString &message)
 
 QList<DeviceProcessItem> DeviceProcessList::localProcesses()
 {
-    return LocalProcessList::getLocalProcesses();
+    QList<DeviceProcessItem> list;
+    return list/*LocalProcessList::getLocalProcesses()*/;//ROOPAK
 }
 
 bool DeviceProcessItem::operator <(const DeviceProcessItem &other) const

@@ -30,7 +30,7 @@
 #include "desktopdevice.h"
 #include "desktopdeviceprocess.h"
 #include "deviceprocesslist.h"
-#include "localprocesslist.h"
+//#include "localprocesslist.h"//ROOPAK
 //#include "desktopdeviceconfigurationwidget.h"//ROOPAK
 #include "desktopprocesssignaloperation.h"
 #include <projectexplorer/projectexplorerconstants.h>
@@ -107,7 +107,7 @@ bool DesktopDevice::canCreateProcessModel() const
 
 DeviceProcessList *DesktopDevice::createProcessListModel(QObject *parent) const
 {
-    return new Internal::LocalProcessList(sharedFromThis(), parent);
+    return NULL/*Internal::LocalProcessList(sharedFromThis(), parent)*/;//ROOPAK
 }
 
 DeviceProcess *DesktopDevice::createProcess(QObject *parent) const
