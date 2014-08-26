@@ -38,7 +38,7 @@
 #include "projectexplorersettings.h"
 #include "projectmacroexpander.h"
 #include "removetaskhandler.h"
-#include "unconfiguredprojectpanel.h"
+//#include "unconfiguredprojectpanel.h"//ROOPAK
 #include "kitmanager.h"
 #include "kitoptionspage.h"
 #include "target.h"
@@ -444,7 +444,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
     addAutoReleasedObject(new DependenciesPanelFactory);
 
 //    addAutoReleasedObject(new ProcessStepFactory);//ROOPAK
-    addAutoReleasedObject(new UnconfiguredProjectPanel);
+//    addAutoReleasedObject(new UnconfiguredProjectPanel);//ROOPAK
 
     addAutoReleasedObject(new AllProjectsFind);
     addAutoReleasedObject(new CurrentProjectFind);

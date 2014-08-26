@@ -21,7 +21,7 @@ HEADERS += projectexplorer.h \
     removetaskhandler.h \
     targetsetuppage.h \
     targetsetupwidget.h \
-    unconfiguredprojectpanel.h \
+#    unconfiguredprojectpanel.h \#ROOPAK
     kit.h \
     kitchooser.h \
     kitconfigwidget.h \
@@ -163,7 +163,7 @@ SOURCES += projectexplorer.cpp \
     removetaskhandler.cpp \
     targetsetuppage.cpp \
     targetsetupwidget.cpp \
-    unconfiguredprojectpanel.cpp \
+#    unconfiguredprojectpanel.cpp \#ROOPAK
     kit.cpp \
     kitchooser.cpp \
     kitconfigwidget.cpp \
