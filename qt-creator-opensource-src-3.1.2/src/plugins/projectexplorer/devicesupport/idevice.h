@@ -47,7 +47,7 @@ namespace QSsh { class SshConnectionParameters; }
 namespace Utils { class PortList; }
 
 namespace ProjectExplorer {
-class DeviceProcess;
+//class DeviceProcess;//ROOPAK
 //class DeviceProcessList;//ROOPAK
 
 namespace Internal { class IDevicePrivate; }
@@ -137,7 +137,7 @@ public:
     virtual DeviceTester *createDeviceTester() const;
 
     virtual bool canCreateProcess() const { return false; }
-    virtual DeviceProcess *createProcess(QObject *parent) const;
+//    virtual DeviceProcess *createProcess(QObject *parent) const;//ROOPAK
     virtual DeviceProcessSignalOperation::Ptr signalOperation() const = 0;
 
     enum DeviceState { DeviceReadyToUse, DeviceConnected, DeviceDisconnected, DeviceStateUnknown };
