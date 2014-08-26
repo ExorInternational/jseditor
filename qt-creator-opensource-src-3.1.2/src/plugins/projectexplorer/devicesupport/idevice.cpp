@@ -29,7 +29,7 @@
 #include "idevice.h"
 
 #include "devicemanager.h"
-#include "deviceprocesslist.h"
+//#include "deviceprocesslist.h"//ROOPAK
 
 #include <ssh/sshconnection.h>
 #include <utils/portlist.h>
@@ -244,12 +244,12 @@ PortsGatheringMethod::Ptr IDevice::portsGatheringMethod() const
     return PortsGatheringMethod::Ptr();
 }
 
-DeviceProcessList *IDevice::createProcessListModel(QObject *parent) const
-{
-    Q_UNUSED(parent);
-    QTC_ASSERT(false, qDebug("This should not have been called..."); return 0);
-    return 0;
-}
+//DeviceProcessList *IDevice::createProcessListModel(QObject *parent) const //ROOPAK - START
+//{
+//    Q_UNUSED(parent);
+//    QTC_ASSERT(false, qDebug("This should not have been called..."); return 0);
+//    return 0;
+//}                                                                        //ROOPAK - END
 
 DeviceTester *IDevice::createDeviceTester() const
 {

@@ -48,7 +48,7 @@ namespace Utils { class PortList; }
 
 namespace ProjectExplorer {
 class DeviceProcess;
-class DeviceProcessList;
+//class DeviceProcessList;//ROOPAK
 
 namespace Internal { class IDevicePrivate; }
 
@@ -132,7 +132,7 @@ public:
     virtual bool canAutoDetectPorts() const { return false; }
     virtual PortsGatheringMethod::Ptr portsGatheringMethod() const;
     virtual bool canCreateProcessModel() const { return false; }
-    virtual DeviceProcessList *createProcessListModel(QObject *parent = 0) const;
+//    virtual DeviceProcessList *createProcessListModel(QObject *parent = 0) const;//ROOPAK
     virtual bool hasDeviceTester() const { return false; }
     virtual DeviceTester *createDeviceTester() const;
 

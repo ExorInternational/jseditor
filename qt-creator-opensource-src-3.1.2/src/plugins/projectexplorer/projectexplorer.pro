@@ -123,7 +123,7 @@ HEADERS += projectexplorer.h \
 #    devicesupport/devicemanagermodel.h \ #ROOPAK
 #    devicesupport/devicefactoryselectiondialog.h \#ROOPAK
     devicesupport/deviceprocess.h \
-    devicesupport/deviceprocesslist.h \
+#    devicesupport/deviceprocesslist.h \ #ROOPAK
 #    devicesupport/deviceprocessesdialog.h \#ROOPAK
 #    devicesupport/devicesettingswidget.h \#ROOPAK
 #    devicesupport/devicesettingspage.h \#ROOPAK
@@ -255,7 +255,7 @@ SOURCES += projectexplorer.cpp \
 #    devicesupport/devicemanagermodel.cpp \ #ROOPAK
 #    devicesupport/devicefactoryselectiondialog.cpp \#ROOPAK
     devicesupport/deviceprocess.cpp \
-    devicesupport/deviceprocesslist.cpp \
+#    devicesupport/deviceprocesslist.cpp \#ROOPAK
 #    devicesupport/deviceprocessesdialog.cpp \#ROOPAK
 #    devicesupport/devicesettingswidget.cpp \#ROOPAK
 #    devicesupport/devicesettingspage.cpp \#ROOPAK
