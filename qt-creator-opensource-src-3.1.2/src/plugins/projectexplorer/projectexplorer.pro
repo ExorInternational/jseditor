@@ -117,7 +117,7 @@ HEADERS += projectexplorer.h \
     devicesupport/desktopdevicefactory.h \
     devicesupport/idevicewidget.h \
     devicesupport/idevicefactory.h \
-    devicesupport/desktopdeviceprocess.h \
+#    devicesupport/desktopdeviceprocess.h \ #ROOPAK
 #    devicesupport/devicecheckbuildstep.h \#ROOPAK
     devicesupport/devicemanager.h \
 #    devicesupport/devicemanagermodel.h \ #ROOPAK
@@ -249,7 +249,7 @@ SOURCES += projectexplorer.cpp \
     devicesupport/desktopdevice.cpp \
     devicesupport/desktopdevicefactory.cpp \
     devicesupport/idevicefactory.cpp \
-    devicesupport/desktopdeviceprocess.cpp \
+#    devicesupport/desktopdeviceprocess.cpp \ #ROOPAK
 #    devicesupport/devicecheckbuildstep.cpp \#ROOPAK
     devicesupport/devicemanager.cpp \
 #    devicesupport/devicemanagermodel.cpp \ #ROOPAK
