@@ -43,7 +43,7 @@
 //#include "kitoptionspage.h"//ROOPAK
 #include "target.h"
 #include "toolchainmanager.h"
-#include "toolchainoptionspage.h"
+//#include "toolchainoptionspage.h"//ROOPAK
 #include "copytaskhandler.h"
 #include "showineditortaskhandler.h"
 #include "vcsannotatetaskhandler.h"
@@ -364,7 +364,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
     KitManager::registerKitInformation(new ToolChainKitInformation);
     KitManager::registerKitInformation(new SysRootKitInformation);
 
-    addAutoReleasedObject(new Internal::ToolChainOptionsPage);
+//    addAutoReleasedObject(new Internal::ToolChainOptionsPage);//ROOPAK
 //    addAutoReleasedObject(new KitOptionsPage);//ROOPAK
 
     addAutoReleasedObject(new TaskHub);

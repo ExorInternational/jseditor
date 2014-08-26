@@ -86,7 +86,7 @@ HEADERS += projectexplorer.h \
     toolchain.h \
     toolchainconfigwidget.h \
     toolchainmanager.h \
-    toolchainoptionspage.h \
+#    toolchainoptionspage.h \#ROOPAK
     cesdkhandler.h \
     gccparser.h \
 #    projectexplorersettingspage.h \#ROOPAK
@@ -223,7 +223,7 @@ SOURCES += projectexplorer.cpp \
     toolchain.cpp \
     toolchainconfigwidget.cpp \
     toolchainmanager.cpp \
-    toolchainoptionspage.cpp \
+#    toolchainoptionspage.cpp \#ROOPAK
     cesdkhandler.cpp \
     gccparser.cpp \
 #    projectexplorersettingspage.cpp \#ROOPAK
