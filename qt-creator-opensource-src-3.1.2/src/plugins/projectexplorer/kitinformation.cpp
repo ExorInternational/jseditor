@@ -29,7 +29,8 @@
 
 #include "kitinformation.h"
 
-#include "devicesupport/desktopdevice.h"
+//#include "devicesupport/desktopdevice.h"//ROOPAK
+#include "devicesupport/idevicefactory.h"//ADDED BY ROOPAK
 #include "devicesupport/devicemanager.h"
 #include "projectexplorerconstants.h"
 #include "kit.h"

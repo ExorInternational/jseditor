@@ -79,7 +79,7 @@
 #include "customtoolchain.h"
 #include "selectablefilesmodel.h"
 #include <projectexplorer/customwizard/customwizard.h>
-#include "devicesupport/desktopdevice.h"
+//#include "devicesupport/desktopdevice.h"//ROOPAK
 //#include "devicesupport/desktopdevicefactory.h"//ROOPAK
 #include "devicesupport/devicemanager.h"
 //#include "devicesupport/devicesettingspage.h"//ROOPAK
@@ -1136,7 +1136,7 @@ void ProjectExplorerPlugin::extensionsInitialized()
     }
     BuildManager::extensionsInitialized();
 
-    DeviceManager::instance()->addDevice(IDevice::Ptr(new DesktopDevice));
+//    DeviceManager::instance()->addDevice(IDevice::Ptr(new DesktopDevice));//ROOPAK
     DeviceManager::instance()->load();
     ToolChainManager::restoreToolChains();
     d->m_kitManager->restoreKits();

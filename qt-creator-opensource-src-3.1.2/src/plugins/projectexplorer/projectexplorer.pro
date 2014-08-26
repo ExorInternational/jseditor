@@ -113,7 +113,7 @@ HEADERS += projectexplorer.h \
     environmentitemswidget.h \
     deployablefile.h \
     devicesupport/idevice.h \
-    devicesupport/desktopdevice.h \
+#    devicesupport/desktopdevice.h \#ROOPAK
 #    devicesupport/desktopdevicefactory.h \#ROOPAK
     devicesupport/idevicewidget.h \
     devicesupport/idevicefactory.h \
@@ -246,7 +246,7 @@ SOURCES += projectexplorer.cpp \
     settingsaccessor.cpp \
     environmentitemswidget.cpp \
     devicesupport/idevice.cpp \
-    devicesupport/desktopdevice.cpp \
+#    devicesupport/desktopdevice.cpp \ #ROOPAK
 #    devicesupport/desktopdevicefactory.cpp \#ROOPAK
     devicesupport/idevicefactory.cpp \
 #    devicesupport/desktopdeviceprocess.cpp \ #ROOPAK
