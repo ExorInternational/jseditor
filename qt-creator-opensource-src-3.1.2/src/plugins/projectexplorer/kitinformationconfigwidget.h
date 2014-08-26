@@ -43,7 +43,7 @@ namespace Utils { class PathChooser; }
 
 namespace ProjectExplorer {
 
-class DeviceManagerModel;
+//class DeviceManagerModel;//ROOPAK
 class ToolChain;
 
 namespace Internal {
@@ -164,7 +164,7 @@ private:
     bool m_ignoreChange;
     QComboBox *m_comboBox;
     QPushButton *m_manageButton;
-    DeviceManagerModel *m_model;
+//    DeviceManagerModel *m_model;//ROOPAK
     Core::Id m_selectedId;
 };
 

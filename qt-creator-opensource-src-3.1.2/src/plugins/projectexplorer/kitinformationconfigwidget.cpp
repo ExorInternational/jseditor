@@ -30,7 +30,7 @@
 #include "kitinformationconfigwidget.h"
 
 #include "devicesupport/devicemanager.h"
-#include "devicesupport/devicemanagermodel.h"
+//#include "devicesupport/devicemanagermodel.h"//ROOPAK
 #include "devicesupport/idevicefactory.h"
 #include "projectexplorerconstants.h"
 #include "kit.h"
@@ -311,18 +311,18 @@ DeviceInformationConfigWidget::DeviceInformationConfigWidget(Kit *workingCopy, c
     KitConfigWidget(workingCopy, ki),
     m_isReadOnly(false),
     m_ignoreChange(false),
-    m_comboBox(new QComboBox),
-    m_model(new DeviceManagerModel(DeviceManager::instance()))
+    m_comboBox(new QComboBox)/*,
+    m_model(new DeviceManagerModel(DeviceManager::instance()))*///ROOPAK
 {
-    m_comboBox->setModel(m_model);
+//    m_comboBox->setModel(m_model);//ROOPAK
 
     m_manageButton = new QPushButton(KitConfigWidget::msgManage());
 
     refresh();
     m_comboBox->setToolTip(toolTip());
 
-    connect(m_model, SIGNAL(modelAboutToBeReset()), SLOT(modelAboutToReset()));
-    connect(m_model, SIGNAL(modelReset()), SLOT(modelReset()));
+//    connect(m_model, SIGNAL(modelAboutToBeReset()), SLOT(modelAboutToReset()));//ROOPAK
+//    connect(m_model, SIGNAL(modelReset()), SLOT(modelReset()));//ROOPAK
     connect(m_comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(currentDeviceChanged()));
     connect(m_manageButton, SIGNAL(clicked()), this, SLOT(manageDevices()));
 }
@@ -330,7 +330,7 @@ DeviceInformationConfigWidget::DeviceInformationConfigWidget(Kit *workingCopy, c
 DeviceInformationConfigWidget::~DeviceInformationConfigWidget()
 {
     delete m_comboBox;
-    delete m_model;
+//    delete m_model;//ROOPAK
     delete m_manageButton;
 }
 
@@ -351,8 +351,8 @@ QString DeviceInformationConfigWidget::toolTip() const
 
 void DeviceInformationConfigWidget::refresh()
 {
-    m_model->setTypeFilter(DeviceTypeKitInformation::deviceTypeId(m_kit));
-    m_comboBox->setCurrentIndex(m_model->indexOf(DeviceKitInformation::device(m_kit)));
+//    m_model->setTypeFilter(DeviceTypeKitInformation::deviceTypeId(m_kit));//ROOPAK
+//    m_comboBox->setCurrentIndex(m_model->indexOf(DeviceKitInformation::device(m_kit)));//ROOPAK
 }
 
 void DeviceInformationConfigWidget::makeReadOnly()
@@ -373,13 +373,13 @@ void DeviceInformationConfigWidget::manageDevices()
 
 void DeviceInformationConfigWidget::modelAboutToReset()
 {
-    m_selectedId = m_model->deviceId(m_comboBox->currentIndex());
+//    m_selectedId = m_model->deviceId(m_comboBox->currentIndex());//ROOPAK
     m_ignoreChange = true;
 }
 
 void DeviceInformationConfigWidget::modelReset()
 {
-    m_comboBox->setCurrentIndex(m_model->indexForId(m_selectedId));
+//    m_comboBox->setCurrentIndex(m_model->indexForId(m_selectedId));//ROOPAK
     m_ignoreChange = false;
 }
 
@@ -387,7 +387,7 @@ void DeviceInformationConfigWidget::currentDeviceChanged()
 {
     if (m_ignoreChange)
         return;
-    DeviceKitInformation::setDeviceId(m_kit, m_model->deviceId(m_comboBox->currentIndex()));
+//    DeviceKitInformation::setDeviceId(m_kit, m_model->deviceId(m_comboBox->currentIndex()));//ROOPAK
 }
 
 } // namespace Internal
