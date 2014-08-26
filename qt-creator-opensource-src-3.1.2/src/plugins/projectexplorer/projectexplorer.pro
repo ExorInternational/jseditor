@@ -30,7 +30,7 @@ HEADERS += projectexplorer.h \
     kitmanager.h \
     kitmanagerconfigwidget.h \
     kitmodel.h \
-    kitoptionspage.h \
+#    kitoptionspage.h \#ROOPAK
     buildmanager.h \
     buildsteplist.h \
 #    compileoutputwindow.h \#ROOPAK
@@ -172,7 +172,7 @@ SOURCES += projectexplorer.cpp \
     kitmanager.cpp \
     kitmanagerconfigwidget.cpp \
     kitmodel.cpp \
-    kitoptionspage.cpp \
+#    kitoptionspage.cpp \#ROOPAK
     buildmanager.cpp \
     buildsteplist.cpp \
 #    compileoutputwindow.cpp \#ROOPAK

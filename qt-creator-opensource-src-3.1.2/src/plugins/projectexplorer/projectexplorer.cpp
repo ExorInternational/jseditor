@@ -40,7 +40,7 @@
 #include "removetaskhandler.h"
 //#include "unconfiguredprojectpanel.h"//ROOPAK
 #include "kitmanager.h"
-#include "kitoptionspage.h"
+//#include "kitoptionspage.h"//ROOPAK
 #include "target.h"
 #include "toolchainmanager.h"
 #include "toolchainoptionspage.h"
@@ -365,7 +365,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
     KitManager::registerKitInformation(new SysRootKitInformation);
 
     addAutoReleasedObject(new Internal::ToolChainOptionsPage);
-    addAutoReleasedObject(new KitOptionsPage);
+//    addAutoReleasedObject(new KitOptionsPage);//ROOPAK
 
     addAutoReleasedObject(new TaskHub);
 
