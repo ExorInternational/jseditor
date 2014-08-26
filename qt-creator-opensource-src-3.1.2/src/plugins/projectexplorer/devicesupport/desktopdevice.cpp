@@ -28,7 +28,7 @@
 ****************************************************************************/
 
 #include "desktopdevice.h"
-#include "desktopdeviceprocess.h"
+//#include "desktopdeviceprocess.h"//ROOPAK
 #include "deviceprocesslist.h"
 //#include "localprocesslist.h"//ROOPAK
 //#include "desktopdeviceconfigurationwidget.h"//ROOPAK
@@ -112,7 +112,8 @@ DeviceProcessList *DesktopDevice::createProcessListModel(QObject *parent) const
 
 DeviceProcess *DesktopDevice::createProcess(QObject *parent) const
 {
-    return new Internal::DesktopDeviceProcess(sharedFromThis(), parent);
+//    return new Internal::DesktopDeviceProcess(sharedFromThis(), parent);//ROOPAK
+    return NULL;//ADDED ROOPAK
 }
 
 DeviceProcessSignalOperation::Ptr DesktopDevice::signalOperation() const

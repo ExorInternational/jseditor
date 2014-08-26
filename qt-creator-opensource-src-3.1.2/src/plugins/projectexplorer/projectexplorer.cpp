@@ -80,7 +80,7 @@
 #include "selectablefilesmodel.h"
 #include <projectexplorer/customwizard/customwizard.h>
 #include "devicesupport/desktopdevice.h"
-#include "devicesupport/desktopdevicefactory.h"
+//#include "devicesupport/desktopdevicefactory.h"//ROOPAK
 #include "devicesupport/devicemanager.h"
 //#include "devicesupport/devicesettingspage.h"//ROOPAK
 
@@ -353,7 +353,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
     addAutoReleasedObject(new Internal::ClangToolChainFactory);
     addAutoReleasedObject(new Internal::CustomToolChainFactory);
 
-    addAutoReleasedObject(new Internal::DesktopDeviceFactory);
+//    addAutoReleasedObject(new Internal::DesktopDeviceFactory);//ROOPAK
 
     d->m_kitManager = new KitManager; // register before ToolChainManager
     d->m_toolChainManager = new ToolChainManager;

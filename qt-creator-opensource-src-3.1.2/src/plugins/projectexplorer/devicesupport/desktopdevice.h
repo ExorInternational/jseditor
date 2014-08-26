@@ -38,7 +38,7 @@
 namespace ProjectExplorer {
 class ProjectExplorerPlugin;
 
-namespace Internal { class DesktopDeviceFactory; }
+//namespace Internal { class DesktopDeviceFactory; }//ROOPAK
 
 class PROJECTEXPLORER_EXPORT DesktopDevice : public IDevice
 {
@@ -65,7 +65,7 @@ protected:
     DesktopDevice(const DesktopDevice &other);
 
     friend class ProjectExplorerPlugin;
-    friend class Internal::DesktopDeviceFactory;
+//    friend class Internal::DesktopDeviceFactory;//ROOPAK
 };
 
 } // namespace ProjectExplorer
