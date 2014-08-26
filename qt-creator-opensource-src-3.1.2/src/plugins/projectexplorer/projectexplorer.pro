@@ -138,7 +138,7 @@ HEADERS += projectexplorer.h \
 #    devicesupport/desktopprocesssignaloperation.h \#ROOPAK
     deploymentdata.h \
     buildtargetinfo.h \
-    customtoolchain.h \
+#    customtoolchain.h \#ROOPAK
     projectmacroexpander.h \
     customparser.h \
 #    customparserconfigdialog.h \#ROOPAK
@@ -269,7 +269,7 @@ SOURCES += projectexplorer.cpp \
 #    devicesupport/desktopdeviceconfigurationwidget.cpp \#ROOPAK
 #    devicesupport/desktopprocesssignaloperation.cpp \ #ROOPAK
     deployablefile.cpp \
-    customtoolchain.cpp \
+#    customtoolchain.cpp \#ROOPAK
     projectmacroexpander.cpp \
     customparser.cpp \
 #    customparserconfigdialog.cpp \#ROOPAK

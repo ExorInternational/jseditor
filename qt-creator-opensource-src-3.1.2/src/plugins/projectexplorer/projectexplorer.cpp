@@ -76,7 +76,7 @@
 #include "buildconfiguration.h"
 #include "miniprojecttargetselector.h"
 #include "taskhub.h"
-#include "customtoolchain.h"
+//#include "customtoolchain.h"//ROOPAK
 #include "selectablefilesmodel.h"
 #include <projectexplorer/customwizard/customwizard.h>
 //#include "devicesupport/desktopdevice.h"//ROOPAK
@@ -351,7 +351,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
 #endif
 //    addAutoReleasedObject(new Internal::GccToolChainFactory);
 //    addAutoReleasedObject(new Internal::ClangToolChainFactory);//ROOPAK
-    addAutoReleasedObject(new Internal::CustomToolChainFactory);
+//    addAutoReleasedObject(new Internal::CustomToolChainFactory);//ROOPAK
 
 //    addAutoReleasedObject(new Internal::DesktopDeviceFactory);//ROOPAK
 
