@@ -19,8 +19,8 @@ HEADERS += projectexplorer.h \
     projectimporter.h \
 #    projectwindow.h \#ROOPAK
     removetaskhandler.h \
-    targetsetuppage.h \
-    targetsetupwidget.h \
+#    targetsetuppage.h \ #ROOPAK
+#    targetsetupwidget.h \#ROOPAK
 #    unconfiguredprojectpanel.h \#ROOPAK
     kit.h \
     kitchooser.h \
@@ -161,8 +161,8 @@ SOURCES += projectexplorer.cpp \
     projectimporter.cpp \
 #    projectwindow.cpp \#ROOPAK
     removetaskhandler.cpp \
-    targetsetuppage.cpp \
-    targetsetupwidget.cpp \
+#    targetsetuppage.cpp \#ROOPAK
+#    targetsetupwidget.cpp \#ROOPAK
 #    unconfiguredprojectpanel.cpp \#ROOPAK
     kit.cpp \
     kitchooser.cpp \
