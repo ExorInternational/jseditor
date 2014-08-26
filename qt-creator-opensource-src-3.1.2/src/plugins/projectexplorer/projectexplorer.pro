@@ -10,7 +10,7 @@ HEADERS += projectexplorer.h \
     clangparser.h \
     environmentaspect.h \
     environmentaspectwidget.h \
-    gcctoolchain.h \
+#    gcctoolchain.h \#ROOPAK
     importwidget.h \
     localapplicationrunconfiguration.h \
     localenvironmentaspect.h \
@@ -106,7 +106,7 @@ HEADERS += projectexplorer.h \
     localapplicationruncontrol.h \
     metatypedeclarations.h \
     headerpath.h \
-    gcctoolchainfactories.h \
+#    gcctoolchainfactories.h \#ROOPAK
 #    appoutputpane.h \#ROOPAK
 #    codestylesettingspropertiespage.h \ #ROOPAK
     settingsaccessor.h \
@@ -153,7 +153,7 @@ SOURCES += projectexplorer.cpp \
     clangparser.cpp \
     environmentaspect.cpp \
     environmentaspectwidget.cpp \
-    gcctoolchain.cpp \
+#    gcctoolchain.cpp \#ROOPAK
     importwidget.cpp \
     localapplicationrunconfiguration.cpp \
     localenvironmentaspect.cpp \

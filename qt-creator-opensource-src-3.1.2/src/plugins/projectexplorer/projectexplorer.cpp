@@ -33,7 +33,7 @@
 #include "customwizard/customwizard.h"
 #include "deployablefile.h"
 #include "deployconfiguration.h"
-#include "gcctoolchainfactories.h"
+//#include "gcctoolchainfactories.h"//ROOPAK
 #include "project.h"
 #include "projectexplorersettings.h"
 #include "projectmacroexpander.h"
@@ -344,13 +344,13 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
     addAutoReleasedObject(new Internal::MsvcToolChainFactory);
     addAutoReleasedObject(new Internal::WinCEToolChainFactory);
 #else
-    addAutoReleasedObject(new Internal::LinuxIccToolChainFactory);
+//    addAutoReleasedObject(new Internal::LinuxIccToolChainFactory);//ROOPAK
 #endif
 #ifndef Q_OS_MAC
-    addAutoReleasedObject(new Internal::MingwToolChainFactory); // Mingw offers cross-compiling to windows
+//    addAutoReleasedObject(new Internal::MingwToolChainFactory); // Mingw offers cross-compiling to windows//ROOPAK
 #endif
-    addAutoReleasedObject(new Internal::GccToolChainFactory);
-    addAutoReleasedObject(new Internal::ClangToolChainFactory);
+//    addAutoReleasedObject(new Internal::GccToolChainFactory);
+//    addAutoReleasedObject(new Internal::ClangToolChainFactory);//ROOPAK
     addAutoReleasedObject(new Internal::CustomToolChainFactory);
 
 //    addAutoReleasedObject(new Internal::DesktopDeviceFactory);//ROOPAK
