@@ -64,7 +64,7 @@
 #include "pluginfilefactory.h"
 //#include "processstep.h"//ROOPAK
 #include "kitinformation.h"
-#include "projectfilewizardextension.h"
+//#include "projectfilewizardextension.h"//ROOPAK
 //#include "projecttreewidget.h"//ROOPAK
 //#include "projectwindow.h"//ROOPAK
 //#include "runsettingspropertiespage.h"//ROOPAK
@@ -453,7 +453,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
 
 //    addAutoReleasedObject(new LocalApplicationRunControlFactory);//ROOPAK
 
-    addAutoReleasedObject(new ProjectFileWizardExtension);
+//    addAutoReleasedObject(new ProjectFileWizardExtension);//ROOPAK
 
     // Settings pages
 //    addAutoReleasedObject(new ProjectExplorerSettingsPage);//ROOPAK

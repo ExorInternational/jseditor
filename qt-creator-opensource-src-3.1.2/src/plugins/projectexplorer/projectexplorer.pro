@@ -47,7 +47,7 @@ HEADERS += projectexplorer.h \
 #    vcsannotatetaskhandler.h \#ROOPAK
 #    taskwindow.h \//ROOPAK
     taskmodel.h \
-    projectfilewizardextension.h \
+#    projectfilewizardextension.h \#ROOPAK
     session.h \
 #    dependenciespanel.h \#ROOPAK
 #    allprojectsfilter.h \#ROOPAK
@@ -191,7 +191,7 @@ SOURCES += projectexplorer.cpp \
 #    vcsannotatetaskhandler.cpp \#ROOPAK
 #    taskwindow.cpp \//ROOPAK
     taskmodel.cpp \
-    projectfilewizardextension.cpp \
+#    projectfilewizardextension.cpp \#ROOPAK
     session.cpp \
 #    dependenciespanel.cpp \#ROOPAK
 #    allprojectsfilter.cpp \#ROOPAK
