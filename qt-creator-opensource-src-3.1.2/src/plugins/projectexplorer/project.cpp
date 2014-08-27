@@ -525,10 +525,10 @@ void Project::setup(QList<const BuildInfo *> infoList)
     }
 }
 
-ProjectImporter *Project::createProjectImporter() const
-{
-    return 0;
-}
+//ProjectImporter *Project::createProjectImporter() const//ROOPAK - START
+//{
+//    return 0;
+//}//ROOPAK - END
 
 void Project::onBuildDirectoryChanged()
 {

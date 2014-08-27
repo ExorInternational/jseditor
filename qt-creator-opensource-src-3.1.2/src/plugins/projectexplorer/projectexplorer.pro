@@ -16,7 +16,7 @@ HEADERS += projectexplorer.h \
 #    localenvironmentaspect.h \#ROOPAK
     osparser.h \
     projectexplorer_export.h \
-    projectimporter.h \
+#    projectimporter.h \#ROOPAK
 #    projectwindow.h \#ROOPAK
     removetaskhandler.h \
 #    targetsetuppage.h \ #ROOPAK
@@ -158,7 +158,7 @@ SOURCES += projectexplorer.cpp \
     localapplicationrunconfiguration.cpp \
 #    localenvironmentaspect.cpp \#ROOPAK
     osparser.cpp \
-    projectimporter.cpp \
+#    projectimporter.cpp \#ROOPAK
 #    projectwindow.cpp \#ROOPAK
     removetaskhandler.cpp \
 #    targetsetuppage.cpp \#ROOPAK

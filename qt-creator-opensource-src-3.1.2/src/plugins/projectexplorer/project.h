@@ -47,7 +47,7 @@ namespace ProjectExplorer {
 class BuildInfo;
 class IProjectManager;
 class EditorConfiguration;
-class ProjectImporter;
+//class ProjectImporter;
 class ProjectNode;
 class Kit;
 class KitMatcher;
@@ -127,7 +127,7 @@ public:
     virtual void configureAsExampleProject(const QStringList &platforms);
 
     virtual bool supportsNoTargetPanel() const;
-    virtual ProjectImporter *createProjectImporter() const;
+//    virtual ProjectImporter *createProjectImporter() const;//ROOPAK
     virtual KitMatcher *createRequiredKitMatcher() const { return 0; }
     virtual KitMatcher *createPreferredKitMatcher() const { return 0; }
 
