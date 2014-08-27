@@ -9,7 +9,7 @@ HEADERS += projectexplorer.h \
     buildinfo.h \
     clangparser.h \
     environmentaspect.h \
-    environmentaspectwidget.h \
+#    environmentaspectwidget.h \#ROOPAK
 #    gcctoolchain.h \#ROOPAK
     importwidget.h \
     localapplicationrunconfiguration.h \
@@ -152,7 +152,7 @@ SOURCES += projectexplorer.cpp \
     ansifilterparser.cpp \
     clangparser.cpp \
     environmentaspect.cpp \
-    environmentaspectwidget.cpp \
+#    environmentaspectwidget.cpp \#ROOPAK
 #    gcctoolchain.cpp \#ROOPAK
     importwidget.cpp \
     localapplicationrunconfiguration.cpp \

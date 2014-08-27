@@ -29,7 +29,7 @@
 
 #include "environmentaspect.h"
 
-#include "environmentaspectwidget.h"
+//#include "environmentaspectwidget.h"//ROOPAK
 #include "target.h"
 
 #include <utils/qtcassert.h>
@@ -52,7 +52,8 @@ EnvironmentAspect::EnvironmentAspect(RunConfiguration *runConfig)
 
 RunConfigWidget *EnvironmentAspect::createConfigurationWidget()
 {
-    return new EnvironmentAspectWidget(this);
+//    return new EnvironmentAspectWidget(this);//ROOPAK
+    return NULL;//ROOPAK
 }
 
 int EnvironmentAspect::baseEnvironmentBase() const

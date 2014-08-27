@@ -30,7 +30,7 @@
 #include "localenvironmentaspect.h"
 
 #include "buildconfiguration.h"
-#include "environmentaspectwidget.h"
+//#include "environmentaspectwidget.h"//ROOPAK
 #include "localapplicationrunconfiguration.h"
 #include "kit.h"
 #include "target.h"
