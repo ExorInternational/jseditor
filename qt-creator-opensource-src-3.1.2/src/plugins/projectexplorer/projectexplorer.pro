@@ -42,7 +42,7 @@ HEADERS += projectexplorer.h \
     task.h \
     itaskhandler.h \
     copytaskhandler.h \
-    showineditortaskhandler.h \
+#    showineditortaskhandler.h \ #ROOPAK
 #    showoutputtaskhandler.h \#ROOPAK
 #    vcsannotatetaskhandler.h \#ROOPAK
 #    taskwindow.h \//ROOPAK
@@ -186,7 +186,7 @@ SOURCES += projectexplorer.cpp \
     gnumakeparser.cpp \
     task.cpp \
     copytaskhandler.cpp \
-    showineditortaskhandler.cpp \
+#    showineditortaskhandler.cpp \ #ROOPAK
 #    showoutputtaskhandler.cpp \#ROOPAK
 #    vcsannotatetaskhandler.cpp \#ROOPAK
 #    taskwindow.cpp \//ROOPAK
