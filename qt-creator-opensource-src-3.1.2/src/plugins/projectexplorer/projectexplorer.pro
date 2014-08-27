@@ -13,7 +13,7 @@ HEADERS += projectexplorer.h \
 #    gcctoolchain.h \#ROOPAK
     importwidget.h \
     localapplicationrunconfiguration.h \
-    localenvironmentaspect.h \
+#    localenvironmentaspect.h \#ROOPAK
     osparser.h \
     projectexplorer_export.h \
     projectimporter.h \
@@ -156,7 +156,7 @@ SOURCES += projectexplorer.cpp \
 #    gcctoolchain.cpp \#ROOPAK
     importwidget.cpp \
     localapplicationrunconfiguration.cpp \
-    localenvironmentaspect.cpp \
+#    localenvironmentaspect.cpp \#ROOPAK
     osparser.cpp \
     projectimporter.cpp \
 #    projectwindow.cpp \#ROOPAK

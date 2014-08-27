@@ -32,7 +32,7 @@
 #include "qtkitinformation.h"
 
 #include <projectexplorer/buildconfiguration.h>
-#include <projectexplorer/localenvironmentaspect.h>
+//#include <projectexplorer/localenvironmentaspect.h>//ROOPAK
 #include <projectexplorer/project.h>
 #include <projectexplorer/target.h>
 #include <projectexplorer/abi.h>
@@ -49,6 +49,10 @@
 #include <QVBoxLayout>
 
 #include <QDir>
+
+//ADDED BY ROOPAK
+#include <projectexplorer/environmentaspect.h>
+//ROOPAK - END
 
 using namespace QtSupport;
 using namespace QtSupport::Internal;
@@ -72,7 +76,7 @@ CustomExecutableRunConfiguration::CustomExecutableRunConfiguration(ProjectExplor
     m_workingDirectory(QLatin1String(ProjectExplorer::Constants::DEFAULT_WORKING_DIR)),
     m_runMode(Gui)
 {
-    addExtraAspect(new ProjectExplorer::LocalEnvironmentAspect(this));
+//    addExtraAspect(new ProjectExplorer::LocalEnvironmentAspect(this));//ROOPAK
 
     if (!parent->activeBuildConfiguration())
         m_workingDirectory = QLatin1String(ProjectExplorer::Constants::DEFAULT_WORKING_DIR_ALTERNATE);
