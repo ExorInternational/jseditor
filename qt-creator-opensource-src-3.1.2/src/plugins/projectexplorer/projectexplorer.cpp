@@ -67,7 +67,7 @@
 #include "projectfilewizardextension.h"
 //#include "projecttreewidget.h"//ROOPAK
 //#include "projectwindow.h"//ROOPAK
-#include "runsettingspropertiespage.h"
+//#include "runsettingspropertiespage.h"//ROOPAK
 #include "session.h"
 #include "projectnodes.h"
 //#include "sessiondialog.h"//ROOPAK
@@ -439,7 +439,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
 //    addAutoReleasedObject(new CurrentProjectFilter);//ROOPAK
 
 //    addAutoReleasedObject(new BuildSettingsPanelFactory);//ROOPAK
-    addAutoReleasedObject(new RunSettingsPanelFactory);
+//    addAutoReleasedObject(new RunSettingsPanelFactory);//ROOPAK
 //    addAutoReleasedObject(new EditorSettingsPanelFactory);//ROOPAK
 //    addAutoReleasedObject(new CodeStyleSettingsPanelFactory);//ROOPAK
     addAutoReleasedObject(new DependenciesPanelFactory);

@@ -72,7 +72,7 @@ HEADERS += projectexplorer.h \
 #    editorsettingspropertiespage.h \#ROOPAK
     runconfiguration.h \
     applicationlauncher.h \
-    runsettingspropertiespage.h \
+#    runsettingspropertiespage.h \#ROOPAK
 #    projecttreewidget.h \ #ROOPAK
 #    foldernavigationwidget.h \#ROOPAK
 #    buildprogress.h \#ROOPAK
@@ -209,7 +209,7 @@ SOURCES += projectexplorer.cpp \
 #    editorsettingspropertiespage.cpp \#ROOPAK
     runconfiguration.cpp \
     applicationlauncher.cpp \
-    runsettingspropertiespage.cpp \
+#    runsettingspropertiespage.cpp \#ROOPAK
 #    projecttreewidget.cpp \#ROOPAK
 #    foldernavigationwidget.cpp \#ROOPAK
 #    buildprogress.cpp \#ROOPAK
