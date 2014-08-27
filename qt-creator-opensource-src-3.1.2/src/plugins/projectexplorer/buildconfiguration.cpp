@@ -37,7 +37,7 @@
 #include "kit.h"
 
 #include <coreplugin/variablemanager.h>
-#include <projectexplorer/buildenvironmentwidget.h>
+//#include <projectexplorer/buildenvironmentwidget.h>//ROOPAK
 #include <extensionsystem/pluginmanager.h>
 
 #include <utils/qtcassert.h>
@@ -141,7 +141,7 @@ void BuildConfiguration::setBuildDirectory(const Utils::FileName &dir)
 
 QList<NamedWidget *> BuildConfiguration::createSubConfigWidgets()
 {
-    return QList<NamedWidget *>() << new ProjectExplorer::BuildEnvironmentWidget(this);
+    return QList<NamedWidget *>()/* << new ProjectExplorer::BuildEnvironmentWidget(this)*/;//ROOPAK
 }
 
 Utils::AbstractMacroExpander *BuildConfiguration::macroExpander()

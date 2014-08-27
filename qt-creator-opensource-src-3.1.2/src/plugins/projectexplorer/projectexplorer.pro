@@ -95,7 +95,7 @@ HEADERS += projectexplorer.h \
     targetselector.h \
 #    targetsettingswidget.h \ #ROOPAK
 #    doubletabwidget.h \#ROOPAK
-    buildenvironmentwidget.h \
+#    buildenvironmentwidget.h \ #ROOPAK
     ldparser.h \
     linuxiccparser.h \
     runconfigurationmodel.h \
@@ -233,7 +233,7 @@ SOURCES += projectexplorer.cpp \
     targetselector.cpp \
 #    targetsettingswidget.cpp \#ROOPAK
 #    doubletabwidget.cpp \#ROOPAK
-    buildenvironmentwidget.cpp \
+#    buildenvironmentwidget.cpp \ #ROOPAK
     ldparser.cpp \
     linuxiccparser.cpp \
     runconfigurationmodel.cpp \
