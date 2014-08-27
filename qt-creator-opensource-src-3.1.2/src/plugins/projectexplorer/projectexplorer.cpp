@@ -37,7 +37,7 @@
 #include "project.h"
 #include "projectexplorersettings.h"
 #include "projectmacroexpander.h"
-#include "removetaskhandler.h"
+//#include "removetaskhandler.h"//ROOPAK
 //#include "unconfiguredprojectpanel.h"//ROOPAK
 #include "kitmanager.h"
 //#include "kitoptionspage.h"//ROOPAK
@@ -422,7 +422,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
     addAutoReleasedObject(new CopyTaskHandler);
     addAutoReleasedObject(new ShowInEditorTaskHandler);
     addAutoReleasedObject(new VcsAnnotateTaskHandler);
-    addAutoReleasedObject(new RemoveTaskHandler);
+//    addAutoReleasedObject(new RemoveTaskHandler);//ROOPAK
     addAutoReleasedObject(new CoreListener);
 
 //    d->m_outputPane = new AppOutputPane;      //ROOPAK - START
