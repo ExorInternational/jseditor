@@ -87,7 +87,7 @@ HEADERS += projectexplorer.h \
     toolchainconfigwidget.h \
     toolchainmanager.h \
 #    toolchainoptionspage.h \#ROOPAK
-    cesdkhandler.h \
+#    cesdkhandler.h \#ROOPAK
     gccparser.h \
 #    projectexplorersettingspage.h \#ROOPAK
     baseprojectwizarddialog.h \
@@ -224,7 +224,7 @@ SOURCES += projectexplorer.cpp \
     toolchainconfigwidget.cpp \
     toolchainmanager.cpp \
 #    toolchainoptionspage.cpp \#ROOPAK
-    cesdkhandler.cpp \
+#    cesdkhandler.cpp \#ROOPAK
     gccparser.cpp \
 #    projectexplorersettingspage.cpp \#ROOPAK
 #    corelistenercheckingforrunningbuild.cpp \#ROOPAK
