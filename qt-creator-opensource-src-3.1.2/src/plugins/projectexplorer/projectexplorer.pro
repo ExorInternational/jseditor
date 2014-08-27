@@ -50,7 +50,7 @@ HEADERS += projectexplorer.h \
     projectfilewizardextension.h \
     session.h \
     dependenciespanel.h \
-    allprojectsfilter.h \
+#    allprojectsfilter.h \#ROOPAK
     ioutputparser.h \
     projectconfiguration.h \
     gnumakeparser.h \
@@ -194,7 +194,7 @@ SOURCES += projectexplorer.cpp \
     projectfilewizardextension.cpp \
     session.cpp \
     dependenciespanel.cpp \
-    allprojectsfilter.cpp \
+#    allprojectsfilter.cpp \#ROOPAK
     currentprojectfilter.cpp \
     allprojectsfind.cpp \
     project.cpp \

@@ -48,7 +48,7 @@
 //#include "showineditortaskhandler.h"//ROOPAK
 //#include "vcsannotatetaskhandler.h"//ROOPAK
 #include "localapplicationruncontrol.h"
-#include "allprojectsfilter.h"
+//#include "allprojectsfilter.h"//ROOPAK
 #include "allprojectsfind.h"
 #include "buildmanager.h"
 #include "buildsettingspropertiespage.h"
@@ -435,7 +435,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
 //    connect(d->m_outputPane, SIGNAL(runControlFinished(ProjectExplorer::RunControl*)),
 //            this, SIGNAL(runControlFinished(ProjectExplorer::RunControl*)));//ROOPAK - END
 
-    addAutoReleasedObject(new AllProjectsFilter);
+//    addAutoReleasedObject(new AllProjectsFilter);//ROOPAK
     addAutoReleasedObject(new CurrentProjectFilter);
 
     addAutoReleasedObject(new BuildSettingsPanelFactory);
