@@ -56,7 +56,7 @@ HEADERS += projectexplorer.h \
     gnumakeparser.h \
     projectexplorerconstants.h \
     projectexplorersettings.h \
-    corelistenercheckingforrunningbuild.h \
+#    corelistenercheckingforrunningbuild.h \#ROOPAK
     project.h \
     pluginfilefactory.h \
     iprojectmanager.h \
@@ -227,7 +227,7 @@ SOURCES += projectexplorer.cpp \
     cesdkhandler.cpp \
     gccparser.cpp \
 #    projectexplorersettingspage.cpp \#ROOPAK
-    corelistenercheckingforrunningbuild.cpp \
+#    corelistenercheckingforrunningbuild.cpp \#ROOPAK
     baseprojectwizarddialog.cpp \
     miniprojecttargetselector.cpp \
     targetselector.cpp \

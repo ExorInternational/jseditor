@@ -72,7 +72,7 @@
 #include "projectnodes.h"
 //#include "sessiondialog.h"//ROOPAK
 //#include "projectexplorersettingspage.h"//ROOPAK
-#include "corelistenercheckingforrunningbuild.h"
+//#include "corelistenercheckingforrunningbuild.h"//ROOPAK
 #include "buildconfiguration.h"
 #include "miniprojecttargetselector.h"
 #include "taskhub.h"
@@ -423,7 +423,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
 //    addAutoReleasedObject(new ShowInEditorTaskHandler);//ROOPAK
 //    addAutoReleasedObject(new VcsAnnotateTaskHandler);//ROOPAK
 //    addAutoReleasedObject(new RemoveTaskHandler);//ROOPAK
-    addAutoReleasedObject(new CoreListener);
+//    addAutoReleasedObject(new CoreListener);//ROOPAK
 
 //    d->m_outputPane = new AppOutputPane;      //ROOPAK - START
 //    addAutoReleasedObject(d->m_outputPane);
