@@ -48,7 +48,7 @@ namespace Utils { class DetailsWidget; }
 
 namespace ProjectExplorer {
 
-class EnvironmentWidget;
+//class EnvironmentWidget;//ROOPAK
 
 class PROJECTEXPLORER_EXPORT EnvironmentAspectWidget : public RunConfigWidget
 {
@@ -76,7 +76,7 @@ private:
     QWidget *m_additionalWidget;
     QComboBox *m_baseEnvironmentComboBox;
     Utils::DetailsWidget *m_detailsContainer;
-    ProjectExplorer::EnvironmentWidget *m_environmentWidget;
+//    ProjectExplorer::EnvironmentWidget *m_environmentWidget;//ROOPAK
 };
 
 } // namespace ProjectExplorer

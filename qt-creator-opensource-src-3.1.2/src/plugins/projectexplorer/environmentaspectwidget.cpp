@@ -29,7 +29,7 @@
 
 #include "environmentaspectwidget.h"
 
-#include "environmentwidget.h"
+//#include "environmentwidget.h"//ROOPAK
 
 #include <utils/environment.h>
 #include <utils/qtcassert.h>
@@ -85,15 +85,15 @@ EnvironmentAspectWidget::EnvironmentAspectWidget(EnvironmentAspect *aspect, QWid
     if (additionalWidget)
         baseLayout->addWidget(additionalWidget);
 
-    m_environmentWidget = new ProjectExplorer::EnvironmentWidget(this, baseEnvironmentWidget);
-    m_environmentWidget->setBaseEnvironment(m_aspect->baseEnvironment());
-    m_environmentWidget->setBaseEnvironmentText(baseDisplayName);
-    m_environmentWidget->setUserChanges(m_aspect->userEnvironmentChanges());
-    m_environmentWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    topLayout->addWidget(m_environmentWidget);
+//    m_environmentWidget = new ProjectExplorer::EnvironmentWidget(this, baseEnvironmentWidget);//ROOPAK - START
+//    m_environmentWidget->setBaseEnvironment(m_aspect->baseEnvironment());
+//    m_environmentWidget->setBaseEnvironmentText(baseDisplayName);
+//    m_environmentWidget->setUserChanges(m_aspect->userEnvironmentChanges());
+//    m_environmentWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+//    topLayout->addWidget(m_environmentWidget);
 
-    connect(m_environmentWidget, SIGNAL(userChangesChanged()),
-            this, SLOT(userChangesEdited()));
+//    connect(m_environmentWidget, SIGNAL(userChangesChanged()),
+//            this, SLOT(userChangesEdited()));//ROOPAK - END
 
     connect(m_aspect, SIGNAL(baseEnvironmentChanged()), this, SLOT(changeBaseEnvironment()));
     connect(m_aspect, SIGNAL(userEnvironmentChangesChanged(QList<Utils::EnvironmentItem>)),
@@ -122,8 +122,8 @@ void EnvironmentAspectWidget::baseEnvironmentSelected(int idx)
     m_ignoreChange = true;
     int base = m_baseEnvironmentComboBox->itemData(idx).toInt();
     m_aspect->setBaseEnvironmentBase(base);
-    m_environmentWidget->setBaseEnvironment(m_aspect->baseEnvironment());
-    m_environmentWidget->setBaseEnvironmentText(m_aspect->baseEnvironmentDisplayName(base));
+//    m_environmentWidget->setBaseEnvironment(m_aspect->baseEnvironment());//ROOPAK
+//    m_environmentWidget->setBaseEnvironmentText(m_aspect->baseEnvironmentDisplayName(base));//ROOPAK
     m_ignoreChange = false;
 }
 
@@ -137,14 +137,14 @@ void EnvironmentAspectWidget::changeBaseEnvironment()
         if (m_baseEnvironmentComboBox->itemData(i).toInt() == base)
             m_baseEnvironmentComboBox->setCurrentIndex(i);
     }
-    m_environmentWidget->setBaseEnvironmentText(m_aspect->baseEnvironmentDisplayName(base));
-    m_environmentWidget->setBaseEnvironment(m_aspect->baseEnvironment());
+//    m_environmentWidget->setBaseEnvironmentText(m_aspect->baseEnvironmentDisplayName(base));//ROOPAK
+//    m_environmentWidget->setBaseEnvironment(m_aspect->baseEnvironment());//ROOPAK
 }
 
 void EnvironmentAspectWidget::userChangesEdited()
 {
     m_ignoreChange = true;
-    m_aspect->setUserEnvironmentChanges(m_environmentWidget->userChanges());
+//    m_aspect->setUserEnvironmentChanges(m_environmentWidget->userChanges());//ROOPAK
     m_ignoreChange = false;
 }
 
@@ -152,14 +152,14 @@ void EnvironmentAspectWidget::changeUserChanges(QList<Utils::EnvironmentItem> ch
 {
     if (m_ignoreChange)
         return;
-    m_environmentWidget->setUserChanges(changes);
+//    m_environmentWidget->setUserChanges(changes);//ROOPAK
 }
 
 void EnvironmentAspectWidget::environmentChanged()
 {
     if (m_ignoreChange)
         return;
-    m_environmentWidget->setBaseEnvironment(m_aspect->baseEnvironment());
+//    m_environmentWidget->setBaseEnvironment(m_aspect->baseEnvironment());//ROOPAK
 }
 
 } // namespace ProjectExplorer
