@@ -110,7 +110,7 @@ HEADERS += projectexplorer.h \
 #    appoutputpane.h \#ROOPAK
 #    codestylesettingspropertiespage.h \ #ROOPAK
     settingsaccessor.h \
-    environmentitemswidget.h \
+#    environmentitemswidget.h \#ROOPAK
     deployablefile.h \
     devicesupport/idevice.h \
 #    devicesupport/desktopdevice.h \#ROOPAK
@@ -244,7 +244,7 @@ SOURCES += projectexplorer.cpp \
 #    appoutputpane.cpp \#ROOPAK
 #    codestylesettingspropertiespage.cpp \#ROOPAK
     settingsaccessor.cpp \
-    environmentitemswidget.cpp \
+#    environmentitemswidget.cpp \#ROOPAK
     devicesupport/idevice.cpp \
 #    devicesupport/desktopdevice.cpp \ #ROOPAK
 #    devicesupport/desktopdevicefactory.cpp \#ROOPAK

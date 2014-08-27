@@ -28,7 +28,7 @@
 ****************************************************************************/
 
 #include "environmentwidget.h"
-#include "environmentitemswidget.h"
+//#include "environmentitemswidget.h"//ROOPAK
 
 #include <utils/detailswidget.h>
 #include <utils/environment.h>
@@ -265,12 +265,12 @@ void EnvironmentWidget::unsetEnvironmentButtonClicked()
 
 void EnvironmentWidget::batchEditEnvironmentButtonClicked()
 {
-    const QList<Utils::EnvironmentItem> changes = d->m_model->userChanges();
+//    const QList<Utils::EnvironmentItem> changes = d->m_model->userChanges();//ROOPAK - START
 
-    bool ok;
-    const QList<Utils::EnvironmentItem> newChanges = EnvironmentItemsDialog::getEnvironmentItems(this, changes, &ok);
-    if (ok)
-        d->m_model->setUserChanges(newChanges);
+//    bool ok;
+//    const QList<Utils::EnvironmentItem> newChanges = EnvironmentItemsDialog::getEnvironmentItems(this, changes, &ok);
+//    if (ok)
+//        d->m_model->setUserChanges(newChanges);//ROOPAK - END
 }
 
 void EnvironmentWidget::environmentCurrentIndexChanged(const QModelIndex &current)
