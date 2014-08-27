@@ -31,7 +31,7 @@
 
 #include "kit.h"
 #include "task.h"
-#include "kitmanagerconfigwidget.h"
+//#include "kitmanagerconfigwidget.h"//ROOPAK
 #include "project.h"
 
 #include <coreplugin/icore.h>
@@ -425,16 +425,16 @@ QList<KitInformation *> KitManager::kitInformation()
     return d->m_informationList;
 }
 
-Internal::KitManagerConfigWidget *KitManager::createConfigWidget(Kit *k)
-{
-    Internal::KitManagerConfigWidget *result = new Internal::KitManagerConfigWidget(k);
-    foreach (KitInformation *ki, kitInformation())
-        result->addConfigWidget(ki->createConfigWidget(result->workingCopy()));
+//Internal::KitManagerConfigWidget *KitManager::createConfigWidget(Kit *k)//ROOPAK - START
+//{
+//    Internal::KitManagerConfigWidget *result = new Internal::KitManagerConfigWidget(k);
+//    foreach (KitInformation *ki, kitInformation())
+//        result->addConfigWidget(ki->createConfigWidget(result->workingCopy()));
 
-    result->updateVisibility();
+//    result->updateVisibility();
 
-    return result;
-}
+//    return result;
+//}//ROOPAK - END
 
 void KitManager::deleteKit(Kit *k)
 {

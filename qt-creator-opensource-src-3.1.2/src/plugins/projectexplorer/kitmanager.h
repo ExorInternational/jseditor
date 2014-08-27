@@ -50,7 +50,7 @@ class KitConfigWidget;
 class KitManager;
 
 namespace Internal {
-class KitManagerConfigWidget;
+//class KitManagerConfigWidget;//ROOPAK
 //class KitModel;//ROOPAK
 } // namespace Internal
 
@@ -123,7 +123,7 @@ public:
 
     static QList<KitInformation *> kitInformation();
 
-    static Internal::KitManagerConfigWidget *createConfigWidget(Kit *k);
+//    static Internal::KitManagerConfigWidget *createConfigWidget(Kit *k);//ROOPAK
 
     static void deleteKit(Kit *k);
 
