@@ -44,7 +44,7 @@
 #include "target.h"
 #include "toolchainmanager.h"
 //#include "toolchainoptionspage.h"//ROOPAK
-#include "copytaskhandler.h"
+//#include "copytaskhandler.h"//ROOPAK
 //#include "showineditortaskhandler.h"//ROOPAK
 //#include "vcsannotatetaskhandler.h"//ROOPAK
 #include "localapplicationruncontrol.h"
@@ -419,7 +419,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
     addAutoReleasedObject(d->m_projectsMode);
 //    d->m_proWindow->layout()->addWidget(new FindToolBarPlaceHolder(d->m_proWindow));//ROOPAK
 
-    addAutoReleasedObject(new CopyTaskHandler);
+//    addAutoReleasedObject(new CopyTaskHandler);//ROOPAK
 //    addAutoReleasedObject(new ShowInEditorTaskHandler);//ROOPAK
 //    addAutoReleasedObject(new VcsAnnotateTaskHandler);//ROOPAK
 //    addAutoReleasedObject(new RemoveTaskHandler);//ROOPAK
