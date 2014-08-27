@@ -30,7 +30,7 @@
 #include "projectexplorer.h"
 
 #include "buildsteplist.h"
-#include "customwizard/customwizard.h"
+//#include "customwizard/customwizard.h"//ROOPAK
 #include "deployablefile.h"
 #include "deployconfiguration.h"
 //#include "gcctoolchainfactories.h"//ROOPAK
@@ -78,7 +78,7 @@
 #include "taskhub.h"
 //#include "customtoolchain.h"//ROOPAK
 #include "selectablefilesmodel.h"
-#include <projectexplorer/customwizard/customwizard.h>
+//#include <projectexplorer/customwizard/customwizard.h>//ROOPAK
 //#include "devicesupport/desktopdevice.h"//ROOPAK
 //#include "devicesupport/desktopdevicefactory.h"//ROOPAK
 #include "devicesupport/devicemanager.h"
@@ -137,7 +137,8 @@
 //ADDED BY ROOPAK
 #include <QLayout>
 #include <QPushButton>
-
+#include <coreplugin/basefilewizard.h>
+//ROOPAK - END
 /*!
     \namespace ProjectExplorer
     The ProjectExplorer namespace contains the classes to explore projects.
@@ -322,7 +323,7 @@ ProjectExplorerPlugin *ProjectExplorerPlugin::instance()
 
 bool ProjectExplorerPlugin::parseArguments(const QStringList &arguments, QString * /* error */)
 {
-    CustomWizard::setVerbose(arguments.count(QLatin1String("-customwizard-verbose")));
+//    CustomWizard::setVerbose(arguments.count(QLatin1String("-customwizard-verbose")));//ROOPAK
     return true;
 }
 
@@ -403,9 +404,9 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
     connect(sessionManager, SIGNAL(sessionLoaded(QString)),
             this, SLOT(updateWelcomePage()));
 
-    addAutoReleasedObject(new CustomWizardFactory<CustomProjectWizard>(Core::IWizard::ProjectWizard));
-    addAutoReleasedObject(new CustomWizardFactory<CustomWizard>(Core::IWizard::FileWizard));
-    addAutoReleasedObject(new CustomWizardFactory<CustomWizard>(Core::IWizard::ClassWizard));
+//    addAutoReleasedObject(new CustomWizardFactory<CustomProjectWizard>(Core::IWizard::ProjectWizard));//ROOPAK - START
+//    addAutoReleasedObject(new CustomWizardFactory<CustomWizard>(Core::IWizard::FileWizard));
+//    addAutoReleasedObject(new CustomWizardFactory<CustomWizard>(Core::IWizard::ClassWizard));//ROOPAK - END
 
 //    d->m_proWindow = new ProjectWindow;//ROOPAK
 //    addAutoReleasedObject(d->m_proWindow);//ROOPAK
@@ -1146,12 +1147,12 @@ void ProjectExplorerPlugin::loadCustomWizards()
 {
     // Add custom wizards, for which other plugins might have registered
     // class factories
-    static bool firstTime = true;
-    if (firstTime) {
-        firstTime = false;
-        foreach (IWizard *cpw, ProjectExplorer::CustomWizard::createWizards())
-            addAutoReleasedObject(cpw);
-    }
+//    static bool firstTime = true;//ROOPAK - START
+//    if (firstTime) {
+//        firstTime = false;
+//        foreach (IWizard *cpw, ProjectExplorer::CustomWizard::createWizards())
+//            addAutoReleasedObject(cpw);
+//    }//ROOPAK - END
 }
 
 void ProjectExplorerPlugin::updateVariable(const QByteArray &variable)

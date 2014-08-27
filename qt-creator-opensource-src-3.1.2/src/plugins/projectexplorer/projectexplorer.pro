@@ -1,7 +1,7 @@
 QT += xml script
 
 include(../../qtcreatorplugin.pri)
-include(customwizard/customwizard.pri)
+#include(customwizard/customwizard.pri)//ROOPAK
 HEADERS += projectexplorer.h \
     abi.h \
     abiwidget.h \
