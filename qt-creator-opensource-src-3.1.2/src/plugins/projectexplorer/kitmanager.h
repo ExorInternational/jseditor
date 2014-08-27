@@ -51,7 +51,7 @@ class KitManager;
 
 namespace Internal {
 class KitManagerConfigWidget;
-class KitModel;
+//class KitModel;//ROOPAK
 } // namespace Internal
 
 /**
@@ -177,7 +177,7 @@ private:
 
     friend class ProjectExplorerPlugin; // for constructor
     friend class Kit;
-    friend class Internal::KitModel;
+//    friend class Internal::KitModel;//ROOPAK
     friend class KitInformation; // for notifyAbutUpdate
 };
 

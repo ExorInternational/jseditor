@@ -41,7 +41,7 @@ namespace ProjectExplorer {
 class IOutputParser;
 
 namespace Internal {
-class KitModel;
+//class KitModel;//ROOPAK
 class KitPrivate;
 } // namespace Internal
 
@@ -130,7 +130,7 @@ private:
 
     friend class KitInformation;
     friend class KitManager;
-    friend class Internal::KitModel; // needed for setAutoDetected() when cloning kits
+//    friend class Internal::KitModel; // needed for setAutoDetected() when cloning kits//ROOPAK
 };
 
 class KitGuard
