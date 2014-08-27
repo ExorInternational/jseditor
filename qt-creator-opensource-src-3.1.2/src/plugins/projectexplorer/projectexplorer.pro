@@ -7,7 +7,7 @@ HEADERS += projectexplorer.h \
     abiwidget.h \
     ansifilterparser.h \
     buildinfo.h \
-    clangparser.h \
+#    clangparser.h \#ROOPAK
     environmentaspect.h \
 #    environmentaspectwidget.h \#ROOPAK
 #    gcctoolchain.h \#ROOPAK
@@ -150,7 +150,7 @@ SOURCES += projectexplorer.cpp \
     abi.cpp \
     abiwidget.cpp \
     ansifilterparser.cpp \
-    clangparser.cpp \
+#    clangparser.cpp \#ROOPAK
     environmentaspect.cpp \
 #    environmentaspectwidget.cpp \#ROOPAK
 #    gcctoolchain.cpp \#ROOPAK
