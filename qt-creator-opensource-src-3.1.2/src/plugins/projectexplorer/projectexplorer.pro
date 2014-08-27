@@ -49,7 +49,7 @@ HEADERS += projectexplorer.h \
     taskmodel.h \
     projectfilewizardextension.h \
     session.h \
-    dependenciespanel.h \
+#    dependenciespanel.h \#ROOPAK
 #    allprojectsfilter.h \#ROOPAK
     ioutputparser.h \
     projectconfiguration.h \
@@ -193,7 +193,7 @@ SOURCES += projectexplorer.cpp \
     taskmodel.cpp \
     projectfilewizardextension.cpp \
     session.cpp \
-    dependenciespanel.cpp \
+#    dependenciespanel.cpp \#ROOPAK
 #    allprojectsfilter.cpp \#ROOPAK
 #    currentprojectfilter.cpp \#ROOPAK
     allprojectsfind.cpp \
