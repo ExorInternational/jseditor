@@ -46,7 +46,7 @@
 //#include "toolchainoptionspage.h"//ROOPAK
 #include "copytaskhandler.h"
 #include "showineditortaskhandler.h"
-#include "vcsannotatetaskhandler.h"
+//#include "vcsannotatetaskhandler.h"//ROOPAK
 #include "localapplicationruncontrol.h"
 #include "allprojectsfilter.h"
 #include "allprojectsfind.h"
@@ -421,7 +421,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
 
     addAutoReleasedObject(new CopyTaskHandler);
     addAutoReleasedObject(new ShowInEditorTaskHandler);
-    addAutoReleasedObject(new VcsAnnotateTaskHandler);
+//    addAutoReleasedObject(new VcsAnnotateTaskHandler);//ROOPAK
 //    addAutoReleasedObject(new RemoveTaskHandler);//ROOPAK
     addAutoReleasedObject(new CoreListener);
 

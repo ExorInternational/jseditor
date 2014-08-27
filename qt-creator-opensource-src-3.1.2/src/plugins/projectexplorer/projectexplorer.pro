@@ -44,7 +44,7 @@ HEADERS += projectexplorer.h \
     copytaskhandler.h \
     showineditortaskhandler.h \
 #    showoutputtaskhandler.h \#ROOPAK
-    vcsannotatetaskhandler.h \
+#    vcsannotatetaskhandler.h \#ROOPAK
 #    taskwindow.h \//ROOPAK
     taskmodel.h \
     projectfilewizardextension.h \
@@ -188,7 +188,7 @@ SOURCES += projectexplorer.cpp \
     copytaskhandler.cpp \
     showineditortaskhandler.cpp \
 #    showoutputtaskhandler.cpp \#ROOPAK
-    vcsannotatetaskhandler.cpp \
+#    vcsannotatetaskhandler.cpp \#ROOPAK
 #    taskwindow.cpp \//ROOPAK
     taskmodel.cpp \
     projectfilewizardextension.cpp \
