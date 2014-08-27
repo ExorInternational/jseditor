@@ -34,7 +34,7 @@
 #include "devicesupport/devicemanager.h"
 #include "projectexplorerconstants.h"
 #include "kit.h"
-#include "kitinformationconfigwidget.h"
+//#include "kitinformationconfigwidget.h"//ROOPAK
 #include "toolchain.h"
 #include "toolchainmanager.h"
 
@@ -76,7 +76,8 @@ QList<Task> SysRootKitInformation::validate(const Kit *k) const
 
 KitConfigWidget *SysRootKitInformation::createConfigWidget(Kit *k) const
 {
-    return new Internal::SysRootInformationConfigWidget(k, this);
+    //return new Internal::SysRootInformationConfigWidget(k, this);//ROOPAK
+    return NULL;//ROOPAK
 }
 
 KitInformation::ItemList SysRootKitInformation::toUserOutput(const Kit *k) const
@@ -184,7 +185,8 @@ void ToolChainKitInformation::setup(Kit *k)
 
 KitConfigWidget *ToolChainKitInformation::createConfigWidget(Kit *k) const
 {
-    return new Internal::ToolChainInformationConfigWidget(k, this);
+//    return new Internal::ToolChainInformationConfigWidget(k, this);//ROOPAK
+    return NULL;//ROOPAK
 }
 
 QString ToolChainKitInformation::displayNamePostfix(const Kit *k) const
@@ -286,7 +288,8 @@ QList<Task> DeviceTypeKitInformation::validate(const Kit *k) const
 
 KitConfigWidget *DeviceTypeKitInformation::createConfigWidget(Kit *k) const
 {
-    return new Internal::DeviceTypeInformationConfigWidget(k, this);
+//    return new Internal::DeviceTypeInformationConfigWidget(k, this);//ROOPAK
+    return NULL;//ROOPAK
 }
 
 KitInformation::ItemList DeviceTypeKitInformation::toUserOutput(const Kit *k) const
@@ -376,7 +379,8 @@ void DeviceKitInformation::setup(Kit *k)
 
 KitConfigWidget *DeviceKitInformation::createConfigWidget(Kit *k) const
 {
-    return new Internal::DeviceInformationConfigWidget(k, this);
+//    return new Internal::DeviceInformationConfigWidget(k, this);//ROOPAK
+    return NULL;//ROOPAK
 }
 
 QString DeviceKitInformation::displayNamePostfix(const Kit *k) const
