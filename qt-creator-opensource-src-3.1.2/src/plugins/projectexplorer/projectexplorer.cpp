@@ -61,7 +61,7 @@
 #include "iprojectmanager.h"
 #include "nodesvisitor.h"
 //#include "appoutputpane.h"//ROOPAK
-#include "pluginfilefactory.h"
+//#include "pluginfilefactory.h"//ROOPAK
 //#include "processstep.h"//ROOPAK
 #include "kitinformation.h"
 //#include "projectfilewizardextension.h"//ROOPAK
@@ -231,7 +231,7 @@ struct ProjectExplorerPluginPrivate {
     Context m_lastProjectContext;
     Node *m_currentNode;
 
-    QList<Internal::ProjectFileFactory*> m_fileFactories;
+//    QList<Internal::ProjectFileFactory*> m_fileFactories;//ROOPAK
     QStringList m_profileMimeTypes;
 //    Internal::AppOutputPane *m_outputPane;//ROOPAK
 
@@ -1131,11 +1131,11 @@ void ProjectExplorerPlugin::closeAllProjects()
 void ProjectExplorerPlugin::extensionsInitialized()
 {
 //    d->m_proWindow->extensionsInitialized();//ROOPAK
-    d->m_fileFactories = ProjectFileFactory::createFactories(&d->m_projectFilterString);
-    foreach (ProjectFileFactory *pf, d->m_fileFactories) {
-        d->m_profileMimeTypes += pf->mimeTypes();
-        addAutoReleasedObject(pf);
-    }
+//    d->m_fileFactories = ProjectFileFactory::createFactories(&d->m_projectFilterString);//ROOPAK - START
+//    foreach (ProjectFileFactory *pf, d->m_fileFactories) {
+//        d->m_profileMimeTypes += pf->mimeTypes();
+//        addAutoReleasedObject(pf);
+//    }//ROOPAK - END
     BuildManager::extensionsInitialized();
 
 //    DeviceManager::instance()->addDevice(IDevice::Ptr(new DesktopDevice));//ROOPAK
