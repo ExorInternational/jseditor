@@ -103,7 +103,7 @@ HEADERS += projectexplorer.h \
     processparameters.h \
 #    abstractprocessstep.h \#ROOPAK
     taskhub.h \
-    localapplicationruncontrol.h \
+#    localapplicationruncontrol.h \#ROOPAK
     metatypedeclarations.h \
     headerpath.h \
 #    gcctoolchainfactories.h \#ROOPAK
@@ -240,7 +240,7 @@ SOURCES += projectexplorer.cpp \
     buildconfigurationmodel.cpp \
     taskhub.cpp \
     processparameters.cpp \
-    localapplicationruncontrol.cpp \
+#    localapplicationruncontrol.cpp \#ROOPAK
 #    appoutputpane.cpp \#ROOPAK
 #    codestylesettingspropertiespage.cpp \#ROOPAK
     settingsaccessor.cpp \

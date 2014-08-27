@@ -47,7 +47,7 @@
 //#include "copytaskhandler.h"//ROOPAK
 //#include "showineditortaskhandler.h"//ROOPAK
 //#include "vcsannotatetaskhandler.h"//ROOPAK
-#include "localapplicationruncontrol.h"
+//#include "localapplicationruncontrol.h"//ROOPAK
 //#include "allprojectsfilter.h"//ROOPAK
 #include "allprojectsfind.h"
 #include "buildmanager.h"
@@ -138,6 +138,7 @@
 #include <QLayout>
 #include <QPushButton>
 #include <coreplugin/basefilewizard.h>
+#include "runconfiguration.h"
 //ROOPAK - END
 /*!
     \namespace ProjectExplorer
@@ -450,7 +451,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
     addAutoReleasedObject(new AllProjectsFind);
     addAutoReleasedObject(new CurrentProjectFind);
 
-    addAutoReleasedObject(new LocalApplicationRunControlFactory);
+//    addAutoReleasedObject(new LocalApplicationRunControlFactory);//ROOPAK
 
     addAutoReleasedObject(new ProjectFileWizardExtension);
 
@@ -1700,21 +1701,21 @@ void ProjectExplorerPlugin::buildStateChanged(Project * pro)
 
 void ProjectExplorerPlugin::executeRunConfiguration(RunConfiguration *runConfiguration, RunMode runMode)
 {
-    QString errorMessage;
-    if (!runConfiguration->ensureConfigured(&errorMessage)) {
-        showRunErrorMessage(errorMessage);
-        return;
-    }
-    if (IRunControlFactory *runControlFactory = findRunControlFactory(runConfiguration, runMode)) {
-        emit aboutToExecuteProject(runConfiguration->target()->project(), runMode);
+//    QString errorMessage;//ROOPAK - START
+//    if (!runConfiguration->ensureConfigured(&errorMessage)) {
+//        showRunErrorMessage(errorMessage);
+//        return;
+//    }
+//    if (IRunControlFactory *runControlFactory = findRunControlFactory(runConfiguration, runMode)) {
+//        emit aboutToExecuteProject(runConfiguration->target()->project(), runMode);
 
-        RunControl *control = runControlFactory->create(runConfiguration, runMode, &errorMessage);
-        if (!control) {
-            showRunErrorMessage(errorMessage);
-            return;
-        }
-        startRunControl(control, runMode);
-    }
+//        RunControl *control = runControlFactory->create(runConfiguration, runMode, &errorMessage);
+//        if (!control) {
+//            showRunErrorMessage(errorMessage);
+//            return;
+//        }
+//        startRunControl(control, runMode);
+//    }//ROOPAK - END
 }
 
 void ProjectExplorerPlugin::showRunErrorMessage(const QString &errorMessage)
