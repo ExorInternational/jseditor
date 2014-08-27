@@ -65,7 +65,7 @@ HEADERS += projectexplorer.h \
     buildstep.h \
     buildconfiguration.h \
     iprojectproperties.h \
-    buildsettingspropertiespage.h \
+#    buildsettingspropertiespage.h \#ROOPAK
 #    environmentwidget.h \#ROOPAK
 #    processstep.h \#ROOPAK
     editorconfiguration.h \
@@ -201,7 +201,7 @@ SOURCES += projectexplorer.cpp \
     pluginfilefactory.cpp \
     buildstep.cpp \
     buildconfiguration.cpp \
-    buildsettingspropertiespage.cpp \
+#    buildsettingspropertiespage.cpp \#ROOPAK
 #    environmentwidget.cpp \#ROOPAK
 #    processstep.cpp \#ROOPAK
 #    abstractprocessstep.cpp \#ROOPAK
