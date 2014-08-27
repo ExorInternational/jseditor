@@ -60,7 +60,7 @@ HEADERS += projectexplorer.h \
     project.h \
     pluginfilefactory.h \
     iprojectmanager.h \
-    currentprojectfilter.h \
+#    currentprojectfilter.h \#ROOPAK
     allprojectsfind.h \
     buildstep.h \
     buildconfiguration.h \
@@ -195,7 +195,7 @@ SOURCES += projectexplorer.cpp \
     session.cpp \
     dependenciespanel.cpp \
 #    allprojectsfilter.cpp \#ROOPAK
-    currentprojectfilter.cpp \
+#    currentprojectfilter.cpp \#ROOPAK
     allprojectsfind.cpp \
     project.cpp \
     pluginfilefactory.cpp \

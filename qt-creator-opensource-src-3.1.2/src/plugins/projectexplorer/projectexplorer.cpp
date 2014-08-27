@@ -53,7 +53,7 @@
 #include "buildmanager.h"
 #include "buildsettingspropertiespage.h"
 #include "currentprojectfind.h"
-#include "currentprojectfilter.h"
+//#include "currentprojectfilter.h"//ROOPAK
 //#include "editorsettingspropertiespage.h"//ROOPAK
 //#include "codestylesettingspropertiespage.h"//ROOPAK
 #include "dependenciespanel.h"
@@ -436,7 +436,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
 //            this, SIGNAL(runControlFinished(ProjectExplorer::RunControl*)));//ROOPAK - END
 
 //    addAutoReleasedObject(new AllProjectsFilter);//ROOPAK
-    addAutoReleasedObject(new CurrentProjectFilter);
+//    addAutoReleasedObject(new CurrentProjectFilter);//ROOPAK
 
     addAutoReleasedObject(new BuildSettingsPanelFactory);
     addAutoReleasedObject(new RunSettingsPanelFactory);
