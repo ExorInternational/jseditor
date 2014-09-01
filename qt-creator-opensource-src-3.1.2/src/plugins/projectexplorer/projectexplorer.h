@@ -54,7 +54,7 @@ class RunConfiguration;
 class IRunControlFactory;
 class Project;
 class Node;
-class BuildConfiguration;
+//class BuildConfiguration;
 class FolderNode;
 class TaskHub;
 

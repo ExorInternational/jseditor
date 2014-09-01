@@ -30,7 +30,7 @@
 #include "project.h"
 
 //#include "buildinfo.h"//ROOPAK
-#include "buildconfiguration.h"
+//#include "buildconfiguration.h"//ROOPAK
 #include "editorconfiguration.h"
 #include "projectexplorer.h"
 #include "target.h"
@@ -129,7 +129,7 @@ QString Project::projectFilePath() const
 
 bool Project::hasActiveBuildSettings() const
 {
-    return activeTarget() && IBuildConfigurationFactory::find(activeTarget());
+    return activeTarget() /*&& IBuildConfigurationFactory::find(activeTarget())*/;//ROOPAK
 }
 
 QString Project::makeUnique(const QString &preferredName, const QStringList &usedNames)

@@ -33,7 +33,7 @@
 #include "target.h"
 #include "toolchain.h"
 #include "abi.h"
-#include "buildconfiguration.h"
+//#include "buildconfiguration.h"//ROOPAK
 #include "kitinformation.h"
 #include <extensionsystem/pluginmanager.h>
 
@@ -283,12 +283,12 @@ bool RunConfiguration::ensureConfigured(QString *errorMessage)
 }
 
 
-BuildConfiguration *RunConfiguration::activeBuildConfiguration() const
-{
-    if (!target())
-        return 0;
-    return target()->activeBuildConfiguration();
-}
+//BuildConfiguration *RunConfiguration::activeBuildConfiguration() const//ROOPAK - START
+//{
+//    if (!target())
+//        return 0;
+//    return target()->activeBuildConfiguration();
+//}//ROOPAK - END
 
 Target *RunConfiguration::target() const
 {
@@ -307,9 +307,9 @@ QVariantMap RunConfiguration::toMap() const
 
 ProjectExplorer::Abi RunConfiguration::abi() const
 {
-    BuildConfiguration *bc = target()->activeBuildConfiguration();
-    if (!bc)
-        return Abi::hostAbi();
+//    BuildConfiguration *bc = target()->activeBuildConfiguration();//ROOPAK - START
+//    if (!bc)
+//        return Abi::hostAbi();//ROOPAK - END
     ToolChain *tc = ProjectExplorer::ToolChainKitInformation::toolChain(target()->kit());
     if (!tc)
         return Abi::hostAbi();

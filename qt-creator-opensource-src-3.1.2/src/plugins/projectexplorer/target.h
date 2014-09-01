@@ -41,9 +41,9 @@ namespace ProjectExplorer {
 //class BuildTargetInfoList;//ROOPAK
 //class DeploymentData;//ROOPAK
 class RunConfiguration;
-class BuildConfiguration;
+//class BuildConfiguration;//ROOPAK
 //class DeployConfiguration;//ROOPAK
-class IBuildConfigurationFactory;
+//class IBuildConfigurationFactory;//ROOPAK
 //class DeployConfigurationFactory;//ROOPAK
 class IRunConfigurationFactory;
 class Kit;
@@ -66,12 +66,12 @@ public:
     Kit *kit() const;
 
     // Build configuration
-    void addBuildConfiguration(BuildConfiguration *configuration);
-    bool removeBuildConfiguration(BuildConfiguration *configuration);
+//    void addBuildConfiguration(BuildConfiguration *configuration);//ROOPAK - START
+//    bool removeBuildConfiguration(BuildConfiguration *configuration);
 
-    QList<BuildConfiguration *> buildConfigurations() const;
-    BuildConfiguration *activeBuildConfiguration() const;
-    void setActiveBuildConfiguration(BuildConfiguration *configuration);
+//    QList<BuildConfiguration *> buildConfigurations() const;
+//    BuildConfiguration *activeBuildConfiguration() const;
+//    void setActiveBuildConfiguration(BuildConfiguration *configuration);//ROOPAK - END
 
     // DeployConfiguration//ROOPAK - START
 //    void addDeployConfiguration(DeployConfiguration *dc);
@@ -131,9 +131,9 @@ signals:
     void addedRunConfiguration(ProjectExplorer::RunConfiguration *);
     void activeRunConfigurationChanged(ProjectExplorer::RunConfiguration *);
 
-    void removedBuildConfiguration(ProjectExplorer::BuildConfiguration *bc);
-    void addedBuildConfiguration(ProjectExplorer::BuildConfiguration *bc);
-    void activeBuildConfigurationChanged(ProjectExplorer::BuildConfiguration *);
+//    void removedBuildConfiguration(ProjectExplorer::BuildConfiguration *bc);//ROOPAK - START
+//    void addedBuildConfiguration(ProjectExplorer::BuildConfiguration *bc);
+//    void activeBuildConfigurationChanged(ProjectExplorer::BuildConfiguration *);//ROOPAK - END
 
 //    void removedDeployConfiguration(ProjectExplorer::DeployConfiguration *dc);//ROOPAK - START
 //    void addedDeployConfiguration(ProjectExplorer::DeployConfiguration *dc);

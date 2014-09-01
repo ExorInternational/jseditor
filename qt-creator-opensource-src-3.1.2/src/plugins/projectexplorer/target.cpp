@@ -35,7 +35,7 @@
 #include "kit.h"
 #include "kitinformation.h"
 #include "kitmanager.h"
-#include "buildconfiguration.h"
+//#include "buildconfiguration.h"//ROOPAK
 //#include "deployconfiguration.h"//ROOPAK
 #include "project.h"
 #include "runconfiguration.h"
@@ -86,8 +86,8 @@ public:
     QIcon m_overlayIcon;
     QString m_toolTip;
 
-    QList<BuildConfiguration *> m_buildConfigurations;
-    BuildConfiguration *m_activeBuildConfiguration;
+//    QList<BuildConfiguration *> m_buildConfigurations;//ROOPAK
+//    BuildConfiguration *m_activeBuildConfiguration;//ROOPAK
 //    QList<DeployConfiguration *> m_deployConfigurations;//ROOPAK
 //    DeployConfiguration *m_activeDeployConfiguration;//ROOPAK
     QList<RunConfiguration *> m_runConfigurations;
@@ -105,7 +105,7 @@ public:
 
 TargetPrivate::TargetPrivate() :
     m_isEnabled(true),
-    m_activeBuildConfiguration(0),
+//    m_activeBuildConfiguration(0),//ROOPAK
 //    m_activeDeployConfiguration(0),//ROOPAK
     m_activeRunConfiguration(0),
     m_connectedPixmap(QLatin1String(":/projectexplorer/images/DeviceConnected.png")),
@@ -140,7 +140,7 @@ Target::Target(Project *project, Kit *k) :
 
 Target::~Target()
 {
-    qDeleteAll(d->m_buildConfigurations);
+//    qDeleteAll(d->m_buildConfigurations);//ROOPAK
 //    qDeleteAll(d->m_deployConfigurations);//ROOPAK
     qDeleteAll(d->m_runConfigurations);
     delete d;
@@ -148,16 +148,16 @@ Target::~Target()
 
 void Target::changeEnvironment()
 {
-    BuildConfiguration *bc = qobject_cast<BuildConfiguration *>(sender());
-    if (bc == activeBuildConfiguration())
-        emit environmentChanged();
+//    BuildConfiguration *bc = qobject_cast<BuildConfiguration *>(sender());//ROOPAK - START
+//    if (bc == activeBuildConfiguration())
+//        emit environmentChanged();//ROOPAK - END
 }
 
 void Target::changeBuildConfigurationEnabled()
 {
-    BuildConfiguration *bc = qobject_cast<BuildConfiguration *>(sender());
-    if (bc == activeBuildConfiguration())
-        emit buildConfigurationEnabledChanged();
+//    BuildConfiguration *bc = qobject_cast<BuildConfiguration *>(sender());//ROOPAK - START
+//    if (bc == activeBuildConfiguration())
+//        emit buildConfigurationEnabledChanged();//ROOPAK - END
 }
 
 void Target::changeDeployConfigurationEnabled()
@@ -176,9 +176,9 @@ void Target::changeRunConfigurationEnabled()
 
 void Target::onBuildDirectoryChanged()
 {
-    BuildConfiguration *bc = qobject_cast<BuildConfiguration *>(sender());
-    if (bc && activeBuildConfiguration() == bc)
-        emit buildDirectoryChanged();
+//    BuildConfiguration *bc = qobject_cast<BuildConfiguration *>(sender());//ROOPAK - START
+//    if (bc && activeBuildConfiguration() == bc)
+//        emit buildDirectoryChanged();//ROOPAK - END
 }
 
 void Target::handleKitUpdates(Kit *k)
@@ -211,86 +211,86 @@ Kit *Target::kit() const
     return d->m_kit;
 }
 
-void Target::addBuildConfiguration(BuildConfiguration *configuration)
-{
-    QTC_ASSERT(configuration && !d->m_buildConfigurations.contains(configuration), return);
-    Q_ASSERT(configuration->target() == this);
+//void Target::addBuildConfiguration(BuildConfiguration *configuration)//ROOPAK - START
+//{
+//    QTC_ASSERT(configuration && !d->m_buildConfigurations.contains(configuration), return);
+//    Q_ASSERT(configuration->target() == this);
 
-    // Check that we don't have a configuration with the same displayName
-    QString configurationDisplayName = configuration->displayName();
-    QStringList displayNames;
-    foreach (const BuildConfiguration *bc, d->m_buildConfigurations)
-        displayNames << bc->displayName();
-    configurationDisplayName = Project::makeUnique(configurationDisplayName, displayNames);
-    if (configurationDisplayName != configuration->displayName()) {
-        if (configuration->usesDefaultDisplayName())
-            configuration->setDefaultDisplayName(configurationDisplayName);
-        else
-            configuration->setDisplayName(configurationDisplayName);
-    }
+//    // Check that we don't have a configuration with the same displayName
+//    QString configurationDisplayName = configuration->displayName();
+//    QStringList displayNames;
+//    foreach (const BuildConfiguration *bc, d->m_buildConfigurations)
+//        displayNames << bc->displayName();
+//    configurationDisplayName = Project::makeUnique(configurationDisplayName, displayNames);
+//    if (configurationDisplayName != configuration->displayName()) {
+//        if (configuration->usesDefaultDisplayName())
+//            configuration->setDefaultDisplayName(configurationDisplayName);
+//        else
+//            configuration->setDisplayName(configurationDisplayName);
+//    }
 
-    // add it
-    d->m_buildConfigurations.push_back(configuration);
+//    // add it
+//    d->m_buildConfigurations.push_back(configuration);
 
-    emit addedBuildConfiguration(configuration);
+//    emit addedBuildConfiguration(configuration);
 
-    connect(configuration, SIGNAL(environmentChanged()),
-            SLOT(changeEnvironment()));
-    connect(configuration, SIGNAL(enabledChanged()),
-            this, SLOT(changeBuildConfigurationEnabled()));
-    connect(configuration, SIGNAL(buildDirectoryChanged()),
-            SLOT(onBuildDirectoryChanged()));
+//    connect(configuration, SIGNAL(environmentChanged()),
+//            SLOT(changeEnvironment()));
+//    connect(configuration, SIGNAL(enabledChanged()),
+//            this, SLOT(changeBuildConfigurationEnabled()));
+//    connect(configuration, SIGNAL(buildDirectoryChanged()),
+//            SLOT(onBuildDirectoryChanged()));
 
-    if (!activeBuildConfiguration())
-        setActiveBuildConfiguration(configuration);
-}
+//    if (!activeBuildConfiguration())
+//        setActiveBuildConfiguration(configuration);
+//}
 
-bool Target::removeBuildConfiguration(BuildConfiguration *configuration)
-{
-    //todo: this might be error prone
-    if (!d->m_buildConfigurations.contains(configuration))
-        return false;
+//bool Target::removeBuildConfiguration(BuildConfiguration *configuration)
+//{
+//    //todo: this might be error prone
+//    if (!d->m_buildConfigurations.contains(configuration))
+//        return false;
 
-//    if (BuildManager::isBuilding(configuration))//ROOPAK
-//        return false;//ROOPAK
+////    if (BuildManager::isBuilding(configuration))//ROOPAK
+////        return false;//ROOPAK
 
-    d->m_buildConfigurations.removeOne(configuration);
+//    d->m_buildConfigurations.removeOne(configuration);
 
-    emit removedBuildConfiguration(configuration);
+//    emit removedBuildConfiguration(configuration);
 
-    if (activeBuildConfiguration() == configuration) {
-        if (d->m_buildConfigurations.isEmpty())
-            setActiveBuildConfiguration(0);
-        else
-            setActiveBuildConfiguration(d->m_buildConfigurations.at(0));
-    }
+//    if (activeBuildConfiguration() == configuration) {
+//        if (d->m_buildConfigurations.isEmpty())
+//            setActiveBuildConfiguration(0);
+//        else
+//            setActiveBuildConfiguration(d->m_buildConfigurations.at(0));
+//    }
 
-    delete configuration;
-    return true;
-}
+//    delete configuration;
+//    return true;
+//}
 
-QList<BuildConfiguration *> Target::buildConfigurations() const
-{
-    return d->m_buildConfigurations;
-}
+//QList<BuildConfiguration *> Target::buildConfigurations() const
+//{
+//    return d->m_buildConfigurations;
+//}
 
-BuildConfiguration *Target::activeBuildConfiguration() const
-{
-    return d->m_activeBuildConfiguration;
-}
+//BuildConfiguration *Target::activeBuildConfiguration() const
+//{
+//    return d->m_activeBuildConfiguration;
+//}
 
-void Target::setActiveBuildConfiguration(BuildConfiguration *configuration)
-{
-    if ((!configuration && d->m_buildConfigurations.isEmpty()) ||
-        (configuration && d->m_buildConfigurations.contains(configuration) &&
-         configuration != d->m_activeBuildConfiguration)) {
-        d->m_activeBuildConfiguration = configuration;
-        emit activeBuildConfigurationChanged(d->m_activeBuildConfiguration);
-        emit environmentChanged();
-        emit buildConfigurationEnabledChanged();
-        emit buildDirectoryChanged();
-    }
-}
+//void Target::setActiveBuildConfiguration(BuildConfiguration *configuration)
+//{
+//    if ((!configuration && d->m_buildConfigurations.isEmpty()) ||
+//        (configuration && d->m_buildConfigurations.contains(configuration) &&
+//         configuration != d->m_activeBuildConfiguration)) {
+//        d->m_activeBuildConfiguration = configuration;
+//        emit activeBuildConfigurationChanged(d->m_activeBuildConfiguration);
+//        emit environmentChanged();
+//        emit buildConfigurationEnabledChanged();
+//        emit buildDirectoryChanged();
+//    }
+//}//ROOPAK - END
 
 //void Target::addDeployConfiguration(DeployConfiguration *dc)//ROOPAK - START
 //{
@@ -500,11 +500,11 @@ QVariantMap Target::toMap() const
 
     QVariantMap map(ProjectConfiguration::toMap());
 
-    const QList<BuildConfiguration *> bcs = buildConfigurations();
-    map.insert(QLatin1String(ACTIVE_BC_KEY), bcs.indexOf(d->m_activeBuildConfiguration));
-    map.insert(QLatin1String(BC_COUNT_KEY), bcs.size());
-    for (int i = 0; i < bcs.size(); ++i)
-        map.insert(QString::fromLatin1(BC_KEY_PREFIX) + QString::number(i), bcs.at(i)->toMap());
+//    const QList<BuildConfiguration *> bcs = buildConfigurations();//ROOPAK - START
+//    map.insert(QLatin1String(ACTIVE_BC_KEY), bcs.indexOf(d->m_activeBuildConfiguration));
+//    map.insert(QLatin1String(BC_COUNT_KEY), bcs.size());
+//    for (int i = 0; i < bcs.size(); ++i)
+//        map.insert(QString::fromLatin1(BC_KEY_PREFIX) + QString::number(i), bcs.at(i)->toMap());//ROOPAK - END
 
 //    const QList<DeployConfiguration *> dcs = deployConfigurations();//ROOPAK - START
 //    map.insert(QLatin1String(ACTIVE_DC_KEY), dcs.indexOf(d->m_activeDeployConfiguration));
@@ -525,11 +525,11 @@ QVariantMap Target::toMap() const
 
 void Target::updateDefaultBuildConfigurations()
 {
-    IBuildConfigurationFactory *bcFactory = IBuildConfigurationFactory::find(this);
-    if (!bcFactory) {
-        qWarning("No build configuration factory found for target id '%s'.", qPrintable(id().toString()));
-        return;
-    }
+//    IBuildConfigurationFactory *bcFactory = IBuildConfigurationFactory::find(this);//ROOPAK - START
+//    if (!bcFactory) {
+//        qWarning("No build configuration factory found for target id '%s'.", qPrintable(id().toString()));
+//        return;
+//    }//ROOPAK - END
 //    QList<BuildInfo *> infoList = bcFactory->availableSetups(this->kit(), project()->projectFilePath());//ROOPAK - START
 //    foreach (BuildInfo *info, infoList) {
 //        BuildConfiguration *bc = bcFactory->create(this, info);
@@ -804,23 +804,23 @@ bool Target::fromMap(const QVariantMap &map)
         if (!map.contains(key))
             return false;
         const QVariantMap valueMap = map.value(key).toMap();
-        IBuildConfigurationFactory *factory = IBuildConfigurationFactory::find(this, valueMap);
-        if (!factory) {
-            qWarning("No factory found to restore build configuration!");
-            continue;
-        }
-        BuildConfiguration *bc = factory->restore(this, valueMap);
-        if (!bc) {
-            qWarning("Failed '%s' to restore build configuration!", qPrintable(factory->objectName()));
-            continue;
-        }
-        QTC_CHECK(bc->id() == ProjectExplorer::idFromMap(valueMap));
-        addBuildConfiguration(bc);
-        if (i == activeConfiguration)
-            setActiveBuildConfiguration(bc);
+//        IBuildConfigurationFactory *factory = IBuildConfigurationFactory::find(this, valueMap);//ROOPAK  - START
+//        if (!factory) {
+//            qWarning("No factory found to restore build configuration!");
+//            continue;
+//        }
+//        BuildConfiguration *bc = factory->restore(this, valueMap);
+//        if (!bc) {
+//            qWarning("Failed '%s' to restore build configuration!", qPrintable(factory->objectName()));
+//            continue;
+//        }
+//        QTC_CHECK(bc->id() == ProjectExplorer::idFromMap(valueMap));
+//        addBuildConfiguration(bc);
+//        if (i == activeConfiguration)
+//            setActiveBuildConfiguration(bc);//ROOPAK - END
     }
-    if (buildConfigurations().isEmpty() && IBuildConfigurationFactory::find(this))
-        return false;
+//    if (buildConfigurations().isEmpty() && IBuildConfigurationFactory::find(this))//ROOPAK
+//        return false;//ROOPAK
 
     int dcCount = map.value(QLatin1String(DC_COUNT_KEY), 0).toInt(&ok);
     if (!ok || dcCount < 0)

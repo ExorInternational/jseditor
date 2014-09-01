@@ -63,7 +63,7 @@ HEADERS += projectexplorer.h \
 #    currentprojectfilter.h \#ROOPAK
     allprojectsfind.h \
 #    buildstep.h \#ROOPAK
-    buildconfiguration.h \
+#    buildconfiguration.h \#ROOPAK
     iprojectproperties.h \
 #    buildsettingspropertiespage.h \#ROOPAK
 #    environmentwidget.h \#ROOPAK
@@ -200,7 +200,7 @@ SOURCES += projectexplorer.cpp \
     project.cpp \
 #    pluginfilefactory.cpp \#ROOPAK
 #    buildstep.cpp \#ROOPAK
-    buildconfiguration.cpp \
+#    buildconfiguration.cpp \#ROOPAK
 #    buildsettingspropertiespage.cpp \#ROOPAK
 #    environmentwidget.cpp \#ROOPAK
 #    processstep.cpp \#ROOPAK

@@ -73,7 +73,7 @@
 //#include "sessiondialog.h"//ROOPAK
 //#include "projectexplorersettingspage.h"//ROOPAK
 //#include "corelistenercheckingforrunningbuild.h"//ROOPAK
-#include "buildconfiguration.h"
+//#include "buildconfiguration.h"//ROOPAK
 //#include "miniprojecttargetselector.h"#ROOPAK
 #include "taskhub.h"
 //#include "customtoolchain.h"//ROOPAK
@@ -1160,23 +1160,23 @@ void ProjectExplorerPlugin::loadCustomWizards()
 void ProjectExplorerPlugin::updateVariable(const QByteArray &variable)
 {
     if (variable == Constants::VAR_CURRENTPROJECT_BUILDPATH) {
-        if (currentProject() && currentProject()->activeTarget() && currentProject()->activeTarget()->activeBuildConfiguration()) {
-            VariableManager::insert(variable,
-                                          currentProject()->activeTarget()->activeBuildConfiguration()->buildDirectory().toUserOutput());
+        if (currentProject() && currentProject()->activeTarget() /*&& currentProject()->activeTarget()->activeBuildConfiguration()*/) {//ROOPAK
+//            VariableManager::insert(variable,
+//                                          currentProject()->activeTarget()->activeBuildConfiguration()->buildDirectory().toUserOutput());//ROOPAK
         } else {
             VariableManager::remove(variable);
         }
     } else if (variable == Constants::VAR_CURRENTBUILD_TYPE) {
-        if (currentProject() && currentProject()->activeTarget() && currentProject()->activeTarget()->activeBuildConfiguration()) {
-            BuildConfiguration::BuildType type = currentProject()->activeTarget()->activeBuildConfiguration()->buildType();
-            QString typeString;
-            if (type == BuildConfiguration::Debug)
-                typeString = tr("debug");
-            else if (type == BuildConfiguration::Release)
-                typeString = tr("release");
-            else
-                typeString = tr("unknown");
-            VariableManager::insert(variable, typeString);
+        if (currentProject() && currentProject()->activeTarget() /*&& currentProject()->activeTarget()->activeBuildConfiguration()*/) {//ROOPAK
+//            BuildConfiguration::BuildType type = currentProject()->activeTarget()->activeBuildConfiguration()->buildType();//ROOPAK - START
+//            QString typeString;
+//            if (type == BuildConfiguration::Debug)
+//                typeString = tr("debug");
+//            else if (type == BuildConfiguration::Release)
+//                typeString = tr("release");
+//            else
+//                typeString = tr("unknown");
+//            VariableManager::insert(variable, typeString);//ROOPAK - END
         } else {
             VariableManager::remove(variable);
         }
@@ -1205,8 +1205,8 @@ void ProjectExplorerPlugin::updateVariable(const QByteArray &variable)
                 projectFilePath = doc->filePath();
             if (Target *target = project->activeTarget()) {
                 kit = target->kit();
-                if (BuildConfiguration *buildConfiguration = target->activeBuildConfiguration())
-                    buildConfigurationName = buildConfiguration->displayName();
+//                if (BuildConfiguration *buildConfiguration = target->activeBuildConfiguration())//ROOPAK
+//                    buildConfigurationName = buildConfiguration->displayName();//ROOPAK
             }
         }
 //        ProjectMacroExpander expander(projectFilePath, projectName, kit, buildConfigurationName);//ROOPAK - START
@@ -2217,7 +2217,7 @@ bool ProjectExplorerPlugin::hasBuildSettings(Project *pro)
     foreach (Project *project, SessionManager::projectOrder(pro))
         if (project
                 && project->activeTarget()
-                && project->activeTarget()->activeBuildConfiguration())
+                /*&& project->activeTarget()->activeBuildConfiguration()*/)//ROOPAK
             return true;
     return false;
 }
@@ -2243,12 +2243,12 @@ QPair<bool, QString> ProjectExplorerPlugin::buildSettingsEnabled(Project *pro)
         foreach (Project *project, projects) {
             if (project
                     && project->activeTarget()
-                    && project->activeTarget()->activeBuildConfiguration()
-                    && !project->activeTarget()->activeBuildConfiguration()->isEnabled()) {
+//                    && project->activeTarget()->activeBuildConfiguration()//ROOPAK
+                    /*&& !project->activeTarget()->activeBuildConfiguration()->isEnabled()*/) {//ROOPAK
                 result.first = false;
-                result.second += tr("Building '%1' is disabled: %2<br>")
-                        .arg(project->displayName(),
-                             project->activeTarget()->activeBuildConfiguration()->disabledReason());
+                result.second += tr("Building '%1' is disabled:");// %2<br>")//ROOPAK - START
+//                        .arg(project->displayName(),
+//                             project->activeTarget()->activeBuildConfiguration()->disabledReason());//ROOPAK - END
             }
         }
     }
@@ -2272,12 +2272,12 @@ QPair<bool, QString> ProjectExplorerPlugin::buildSettingsEnabledForSession()
         foreach (Project *project, SessionManager::projectOrder(0)) {
             if (project
                     && project->activeTarget()
-                    && project->activeTarget()->activeBuildConfiguration()
-                    && !project->activeTarget()->activeBuildConfiguration()->isEnabled()) {
+//                    && project->activeTarget()->activeBuildConfiguration()//ROOPAK
+                    /*&& !project->activeTarget()->activeBuildConfiguration()->isEnabled()*/) {//ROOPAK
                 result.first = false;
-                result.second += tr("Building '%1' is disabled: %2")
-                        .arg(project->displayName(),
-                             project->activeTarget()->activeBuildConfiguration()->disabledReason());
+                result.second += tr("Building '%1' is disabled:");// %2")//ROOPAK - START
+//                        .arg(project->displayName(),
+//                             project->activeTarget()->activeBuildConfiguration()->disabledReason());//ROOPAK - END
                 result.second += QLatin1Char('\n');
             }
         }

@@ -46,7 +46,7 @@ namespace Utils { class OutputFormatter; }
 
 namespace ProjectExplorer {
 class Abi;
-class BuildConfiguration;
+//class BuildConfiguration;//ROOPAK
 class IRunConfigurationAspect;
 class RunConfiguration;
 class RunConfigWidget;
@@ -202,7 +202,7 @@ protected:
     RunConfiguration(Target *parent, RunConfiguration *source);
 
     /// convenience function to get current build configuration.
-    BuildConfiguration *activeBuildConfiguration() const;
+//    BuildConfiguration *activeBuildConfiguration() const;//ROOPAK
 
 private:
     void ctor();

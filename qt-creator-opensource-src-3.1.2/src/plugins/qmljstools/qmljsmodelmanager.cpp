@@ -37,7 +37,7 @@
 #include <coreplugin/progressmanager/progressmanager.h>
 #include <cpptools/cppmodelmanagerinterface.h>
 #include <extensionsystem/pluginmanager.h>
-#include <projectexplorer/buildconfiguration.h>
+//#include <projectexplorer/buildconfiguration.h>//ROOPAK
 #include <projectexplorer/project.h>
 #include <projectexplorer/projectexplorer.h>
 #include <projectexplorer/session.h>
@@ -103,10 +103,10 @@ ModelManagerInterface::ProjectInfo QmlJSTools::defaultProjectInfoForProject(
     projectInfo.tryQmlDump = false;
 
     if (activeTarget) {
-        if (ProjectExplorer::BuildConfiguration *bc = activeTarget->activeBuildConfiguration()) {
-            preferDebugDump = bc->buildType() == ProjectExplorer::BuildConfiguration::Debug;
-            setPreferDump = true;
-        }
+//        if (ProjectExplorer::BuildConfiguration *bc = activeTarget->activeBuildConfiguration()) {//ROOPAK - START
+//            preferDebugDump = bc->buildType() == ProjectExplorer::BuildConfiguration::Debug;
+//            setPreferDump = true;
+//        }//ROOPAk - END
     }
     if (!setPreferDump && qtVersion)
         preferDebugDump = (qtVersion->defaultBuildConfig() & QtSupport::BaseQtVersion::DebugBuild);

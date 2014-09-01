@@ -34,7 +34,7 @@
 #include <coreplugin/editormanager/editormanager.h>
 #include <coreplugin/editormanager/ieditor.h>
 #include <cpptools/cppmodelmanagerinterface.h>
-#include <projectexplorer/buildconfiguration.h>
+//#include <projectexplorer/buildconfiguration.h>//ROOPAK
 //#include <projectexplorer/buildmanager.h>//ROOPAK
 #include <projectexplorer/project.h>
 #include <projectexplorer/projectexplorer.h>
@@ -44,6 +44,10 @@
 
 #include <QFile>
 #include <QFileInfo>
+
+//ADDED BY ROOPAK
+#include <utils/environment.h>
+//ROOPAK - END
 
 enum { debug = 0 };
 
@@ -271,8 +275,8 @@ QStringList UiCodeModelSupport::environment() const
         ProjectExplorer::Target *target = m_project->activeTarget();
         if (!target)
             return QStringList();
-        ProjectExplorer::BuildConfiguration *bc = target->activeBuildConfiguration();
-        return bc ? bc->environment().toStringList() : QStringList();
+//        ProjectExplorer::BuildConfiguration *bc = target->activeBuildConfiguration();//ROOPAK
+        return /*bc ? bc->environment().toStringList() :*/ QStringList();//ROOPAK
     }
 }
 
