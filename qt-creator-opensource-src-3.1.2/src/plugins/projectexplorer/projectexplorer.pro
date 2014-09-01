@@ -34,7 +34,7 @@ HEADERS += projectexplorer.h \
 #    buildmanager.h \#ROOPAK
 #    buildsteplist.h \#ROOPAK
 #    compileoutputwindow.h \#ROOPAK
-    deployconfiguration.h \
+#    deployconfiguration.h \#ROOPAK
 #    deployconfigurationmodel.h \ #ROOPAK
     namedwidget.h \
     target.h \
@@ -176,7 +176,7 @@ SOURCES += projectexplorer.cpp \
 #    buildmanager.cpp \#ROOPAK
 #    buildsteplist.cpp \#ROOPAK
 #    compileoutputwindow.cpp \#ROOPAK
-    deployconfiguration.cpp \
+#    deployconfiguration.cpp \#ROOPAK
 #    deployconfigurationmodel.cpp \#ROOPAK
     namedwidget.cpp \
     target.cpp \

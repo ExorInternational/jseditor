@@ -42,9 +42,9 @@ namespace ProjectExplorer {
 //class DeploymentData;//ROOPAK
 class RunConfiguration;
 class BuildConfiguration;
-class DeployConfiguration;
+//class DeployConfiguration;//ROOPAK
 class IBuildConfigurationFactory;
-class DeployConfigurationFactory;
+//class DeployConfigurationFactory;//ROOPAK
 class IRunConfigurationFactory;
 class Kit;
 class Project;
@@ -73,13 +73,13 @@ public:
     BuildConfiguration *activeBuildConfiguration() const;
     void setActiveBuildConfiguration(BuildConfiguration *configuration);
 
-    // DeployConfiguration
-    void addDeployConfiguration(DeployConfiguration *dc);
-    bool removeDeployConfiguration(DeployConfiguration *dc);
+    // DeployConfiguration//ROOPAK - START
+//    void addDeployConfiguration(DeployConfiguration *dc);
+//    bool removeDeployConfiguration(DeployConfiguration *dc);
 
-    QList<DeployConfiguration *> deployConfigurations() const;
-    DeployConfiguration *activeDeployConfiguration() const;
-    void setActiveDeployConfiguration(DeployConfiguration *configuration);
+//    QList<DeployConfiguration *> deployConfigurations() const;
+//    DeployConfiguration *activeDeployConfiguration() const;
+//    void setActiveDeployConfiguration(DeployConfiguration *configuration);//ROOPAK - END
 
 //    void setDeploymentData(const DeploymentData &deploymentData);//ROOPAK
 //    DeploymentData deploymentData() const;//ROOPAK
@@ -135,9 +135,9 @@ signals:
     void addedBuildConfiguration(ProjectExplorer::BuildConfiguration *bc);
     void activeBuildConfigurationChanged(ProjectExplorer::BuildConfiguration *);
 
-    void removedDeployConfiguration(ProjectExplorer::DeployConfiguration *dc);
-    void addedDeployConfiguration(ProjectExplorer::DeployConfiguration *dc);
-    void activeDeployConfigurationChanged(ProjectExplorer::DeployConfiguration *dc);
+//    void removedDeployConfiguration(ProjectExplorer::DeployConfiguration *dc);//ROOPAK - START
+//    void addedDeployConfiguration(ProjectExplorer::DeployConfiguration *dc);
+//    void activeDeployConfigurationChanged(ProjectExplorer::DeployConfiguration *dc);//ROOPAK - END
 
     /// convenience signal, emitted if either the active buildconfiguration emits
     /// environmentChanged() or if the active build configuration changes

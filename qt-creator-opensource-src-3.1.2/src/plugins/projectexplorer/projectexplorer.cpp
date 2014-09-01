@@ -32,7 +32,7 @@
 //#include "buildsteplist.h"//ROOPAK
 //#include "customwizard/customwizard.h"//ROOPAK
 //#include "deployablefile.h"//ROOPAK
-#include "deployconfiguration.h"
+//#include "deployconfiguration.h"//ROOPAK
 //#include "gcctoolchainfactories.h"//ROOPAK
 #include "project.h"
 //#include "projectexplorersettings.h"//ROOPAK
@@ -918,7 +918,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
 
 //    addAutoReleasedObject(new ProjectTreeWidgetFactory);//ROOPAK
 //    addAutoReleasedObject(new FolderNavigationWidgetFactory);//ROOPAK
-    addAutoReleasedObject(new DeployConfigurationFactory);
+//    addAutoReleasedObject(new DeployConfigurationFactory);//ROOPAK
 
     QSettings *s = ICore::settings();
     const QStringList fileNames =
@@ -2308,7 +2308,7 @@ bool ProjectExplorerPlugin::hasDeploySettings(Project *pro)
 {
     foreach (Project *project, SessionManager::projectOrder(pro))
         if (project->activeTarget()
-                && project->activeTarget()->activeDeployConfiguration()
+//                && project->activeTarget()->activeDeployConfiguration()//ROOPAK
                 /*&& !project->activeTarget()->activeDeployConfiguration()->stepList()->isEmpty()*/)//ROOPAK
             return true;
     return false;

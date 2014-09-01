@@ -36,7 +36,7 @@
 #include "kitinformation.h"
 #include "kitmanager.h"
 #include "buildconfiguration.h"
-#include "deployconfiguration.h"
+//#include "deployconfiguration.h"//ROOPAK
 #include "project.h"
 #include "runconfiguration.h"
 
@@ -79,7 +79,7 @@ class TargetPrivate
 public:
     TargetPrivate();
 
-    QList<DeployConfigurationFactory *> deployFactories() const;
+//    QList<DeployConfigurationFactory *> deployFactories() const;//ROOPAK
 
     bool m_isEnabled;
     QIcon m_icon;
@@ -88,8 +88,8 @@ public:
 
     QList<BuildConfiguration *> m_buildConfigurations;
     BuildConfiguration *m_activeBuildConfiguration;
-    QList<DeployConfiguration *> m_deployConfigurations;
-    DeployConfiguration *m_activeDeployConfiguration;
+//    QList<DeployConfiguration *> m_deployConfigurations;//ROOPAK
+//    DeployConfiguration *m_activeDeployConfiguration;//ROOPAK
     QList<RunConfiguration *> m_runConfigurations;
     RunConfiguration* m_activeRunConfiguration;
 //    DeploymentData m_deploymentData;//ROOPAK
@@ -106,7 +106,7 @@ public:
 TargetPrivate::TargetPrivate() :
     m_isEnabled(true),
     m_activeBuildConfiguration(0),
-    m_activeDeployConfiguration(0),
+//    m_activeDeployConfiguration(0),//ROOPAK
     m_activeRunConfiguration(0),
     m_connectedPixmap(QLatin1String(":/projectexplorer/images/DeviceConnected.png")),
     m_readyToUsePixmap(QLatin1String(":/projectexplorer/images/DeviceReadyToUse.png")),
@@ -115,10 +115,10 @@ TargetPrivate::TargetPrivate() :
 {
 }
 
-QList<DeployConfigurationFactory *> TargetPrivate::deployFactories() const
-{
-    return ExtensionSystem::PluginManager::getObjects<DeployConfigurationFactory>();
-}
+//QList<DeployConfigurationFactory *> TargetPrivate::deployFactories() const//ROOPAK - START
+//{
+//    return ExtensionSystem::PluginManager::getObjects<DeployConfigurationFactory>();
+//}//ROOPAK - END
 
 Target::Target(Project *project, Kit *k) :
     ProjectConfiguration(project, k->id()),
@@ -141,7 +141,7 @@ Target::Target(Project *project, Kit *k) :
 Target::~Target()
 {
     qDeleteAll(d->m_buildConfigurations);
-    qDeleteAll(d->m_deployConfigurations);
+//    qDeleteAll(d->m_deployConfigurations);//ROOPAK
     qDeleteAll(d->m_runConfigurations);
     delete d;
 }
@@ -162,9 +162,9 @@ void Target::changeBuildConfigurationEnabled()
 
 void Target::changeDeployConfigurationEnabled()
 {
-    DeployConfiguration *dc = qobject_cast<DeployConfiguration *>(sender());
-    if (dc == activeDeployConfiguration())
-        emit deployConfigurationEnabledChanged();
+//    DeployConfiguration *dc = qobject_cast<DeployConfiguration *>(sender());//ROOPAK - START
+//    if (dc == activeDeployConfiguration())
+//        emit deployConfigurationEnabledChanged();//ROOPAK - END
 }
 
 void Target::changeRunConfigurationEnabled()
@@ -292,79 +292,79 @@ void Target::setActiveBuildConfiguration(BuildConfiguration *configuration)
     }
 }
 
-void Target::addDeployConfiguration(DeployConfiguration *dc)
-{
-    QTC_ASSERT(dc && !d->m_deployConfigurations.contains(dc), return);
-    Q_ASSERT(dc->target() == this);
+//void Target::addDeployConfiguration(DeployConfiguration *dc)//ROOPAK - START
+//{
+//    QTC_ASSERT(dc && !d->m_deployConfigurations.contains(dc), return);
+//    Q_ASSERT(dc->target() == this);
 
-    if (d->deployFactories().isEmpty())
-        return;
+//    if (d->deployFactories().isEmpty())
+//        return;
 
-    // Check that we don't have a configuration with the same displayName
-    QString configurationDisplayName = dc->displayName();
-    QStringList displayNames;
-    foreach (const DeployConfiguration *current, d->m_deployConfigurations)
-        displayNames << current->displayName();
-    configurationDisplayName = Project::makeUnique(configurationDisplayName, displayNames);
-    dc->setDisplayName(configurationDisplayName);
+//    // Check that we don't have a configuration with the same displayName
+//    QString configurationDisplayName = dc->displayName();
+//    QStringList displayNames;
+//    foreach (const DeployConfiguration *current, d->m_deployConfigurations)
+//        displayNames << current->displayName();
+//    configurationDisplayName = Project::makeUnique(configurationDisplayName, displayNames);
+//    dc->setDisplayName(configurationDisplayName);
 
-    // add it
-    d->m_deployConfigurations.push_back(dc);
+//    // add it
+//    d->m_deployConfigurations.push_back(dc);
 
-    connect(dc, SIGNAL(enabledChanged()), this, SLOT(changeDeployConfigurationEnabled()));
+//    connect(dc, SIGNAL(enabledChanged()), this, SLOT(changeDeployConfigurationEnabled()));
 
-    emit addedDeployConfiguration(dc);
+//    emit addedDeployConfiguration(dc);
 
-    if (!d->m_activeDeployConfiguration)
-        setActiveDeployConfiguration(dc);
-    Q_ASSERT(activeDeployConfiguration());
-}
+//    if (!d->m_activeDeployConfiguration)
+//        setActiveDeployConfiguration(dc);
+//    Q_ASSERT(activeDeployConfiguration());
+//}
 
-bool Target::removeDeployConfiguration(DeployConfiguration *dc)
-{
-    //todo: this might be error prone
-    if (!d->m_deployConfigurations.contains(dc))
-        return false;
+//bool Target::removeDeployConfiguration(DeployConfiguration *dc)
+//{
+//    //todo: this might be error prone
+//    if (!d->m_deployConfigurations.contains(dc))
+//        return false;
 
-//    if (BuildManager::isBuilding(dc))//ROOPAK
-//        return false;//ROOPAK
+////    if (BuildManager::isBuilding(dc))//ROOPAK
+////        return false;//ROOPAK
 
-    d->m_deployConfigurations.removeOne(dc);
+//    d->m_deployConfigurations.removeOne(dc);
 
-    emit removedDeployConfiguration(dc);
+//    emit removedDeployConfiguration(dc);
 
-    if (activeDeployConfiguration() == dc) {
-        if (d->m_deployConfigurations.isEmpty())
-            setActiveDeployConfiguration(0);
-        else
-            setActiveDeployConfiguration(d->m_deployConfigurations.at(0));
-    }
+//    if (activeDeployConfiguration() == dc) {
+//        if (d->m_deployConfigurations.isEmpty())
+//            setActiveDeployConfiguration(0);
+//        else
+//            setActiveDeployConfiguration(d->m_deployConfigurations.at(0));
+//    }
 
-    delete dc;
-    return true;
-}
+//    delete dc;
+//    return true;
+//}
 
-QList<DeployConfiguration *> Target::deployConfigurations() const
-{
-    return d->m_deployConfigurations;
-}
+//QList<DeployConfiguration *> Target::deployConfigurations() const
+//{
+//    return d->m_deployConfigurations;
+//}
 
-DeployConfiguration *Target::activeDeployConfiguration() const
-{
-    return d->m_activeDeployConfiguration;
-}
+//DeployConfiguration *Target::activeDeployConfiguration() const
+//{
+//    return d->m_activeDeployConfiguration;
+//}
 
-void Target::setActiveDeployConfiguration(DeployConfiguration *dc)
-{
-    if ((!dc && d->m_deployConfigurations.isEmpty()) ||
-        (dc && d->m_deployConfigurations.contains(dc) &&
-         dc != d->m_activeDeployConfiguration)) {
-        d->m_activeDeployConfiguration = dc;
-        emit activeDeployConfigurationChanged(d->m_activeDeployConfiguration);
-        emit deployConfigurationEnabledChanged();
-    }
-    updateDeviceState();
-}
+//void Target::setActiveDeployConfiguration(DeployConfiguration *dc)
+//{
+//    if ((!dc && d->m_deployConfigurations.isEmpty()) ||
+//        (dc && d->m_deployConfigurations.contains(dc) &&
+//         dc != d->m_activeDeployConfiguration)) {
+//        d->m_activeDeployConfiguration = dc;
+//        emit activeDeployConfigurationChanged(d->m_activeDeployConfiguration);
+//        emit deployConfigurationEnabledChanged();
+//    }
+//    updateDeviceState();
+//}//ROOPAK - END
 
 //void Target::setDeploymentData(const DeploymentData &deploymentData)//ROOPAK - START
 //{
@@ -506,11 +506,11 @@ QVariantMap Target::toMap() const
     for (int i = 0; i < bcs.size(); ++i)
         map.insert(QString::fromLatin1(BC_KEY_PREFIX) + QString::number(i), bcs.at(i)->toMap());
 
-    const QList<DeployConfiguration *> dcs = deployConfigurations();
-    map.insert(QLatin1String(ACTIVE_DC_KEY), dcs.indexOf(d->m_activeDeployConfiguration));
-    map.insert(QLatin1String(DC_COUNT_KEY), dcs.size());
-    for (int i = 0; i < dcs.size(); ++i)
-        map.insert(QString::fromLatin1(DC_KEY_PREFIX) + QString::number(i), dcs.at(i)->toMap());
+//    const QList<DeployConfiguration *> dcs = deployConfigurations();//ROOPAK - START
+//    map.insert(QLatin1String(ACTIVE_DC_KEY), dcs.indexOf(d->m_activeDeployConfiguration));
+//    map.insert(QLatin1String(DC_COUNT_KEY), dcs.size());
+//    for (int i = 0; i < dcs.size(); ++i)
+//        map.insert(QString::fromLatin1(DC_KEY_PREFIX) + QString::number(i), dcs.at(i)->toMap());//ROOPAK - END
 
     const QList<RunConfiguration *> rcs = runConfigurations();
     map.insert(QLatin1String(ACTIVE_RC_KEY), rcs.indexOf(d->m_activeRunConfiguration));
@@ -542,37 +542,37 @@ void Target::updateDefaultBuildConfigurations()
 
 void Target::updateDefaultDeployConfigurations()
 {
-    QList<DeployConfigurationFactory *> dcFactories = DeployConfigurationFactory::find(this);
-    if (dcFactories.isEmpty()) {
-        qWarning("No deployment configuration factory found for target id '%s'.", qPrintable(id().toString()));
-        return;
-    }
+//    QList<DeployConfigurationFactory *> dcFactories = DeployConfigurationFactory::find(this);//ROOPAK - START
+//    if (dcFactories.isEmpty()) {
+//        qWarning("No deployment configuration factory found for target id '%s'.", qPrintable(id().toString()));
+//        return;
+//    }
 
-    QList<Core::Id> dcIds;
-    foreach (DeployConfigurationFactory *dcFactory, dcFactories)
-        dcIds.append(dcFactory->availableCreationIds(this));
+//    QList<Core::Id> dcIds;
+//    foreach (DeployConfigurationFactory *dcFactory, dcFactories)
+//        dcIds.append(dcFactory->availableCreationIds(this));
 
-    QList<DeployConfiguration *> dcList = deployConfigurations();
-    QList<Core::Id> toCreate = dcIds;
+//    QList<DeployConfiguration *> dcList = deployConfigurations();
+//    QList<Core::Id> toCreate = dcIds;
 
-    foreach (DeployConfiguration *dc, dcList) {
-        if (dcIds.contains(dc->id()))
-            toCreate.removeOne(dc->id());
-        else
-            removeDeployConfiguration(dc);
-    }
+//    foreach (DeployConfiguration *dc, dcList) {
+//        if (dcIds.contains(dc->id()))
+//            toCreate.removeOne(dc->id());
+//        else
+//            removeDeployConfiguration(dc);
+//    }
 
-    foreach (Core::Id id, toCreate) {
-        foreach (DeployConfigurationFactory *dcFactory, dcFactories) {
-            if (dcFactory->canCreate(this, id)) {
-                DeployConfiguration *dc = dcFactory->create(this, id);
-                if (dc) {
-                    QTC_CHECK(dc->id() == id);
-                    addDeployConfiguration(dc);
-                }
-            }
-        }
-    }
+//    foreach (Core::Id id, toCreate) {
+//        foreach (DeployConfigurationFactory *dcFactory, dcFactories) {
+//            if (dcFactory->canCreate(this, id)) {
+//                DeployConfiguration *dc = dcFactory->create(this, id);
+//                if (dc) {
+//                    QTC_CHECK(dc->id() == id);
+//                    addDeployConfiguration(dc);
+//                }
+//            }
+//        }
+//    }//ROOPAK - END
 }
 
 void Target::updateDefaultRunConfigurations()
@@ -835,23 +835,23 @@ bool Target::fromMap(const QVariantMap &map)
         const QString key = QString::fromLatin1(DC_KEY_PREFIX) + QString::number(i);
         if (!map.contains(key))
             return false;
-        QVariantMap valueMap = map.value(key).toMap();
-        DeployConfigurationFactory *factory = DeployConfigurationFactory::find(this, valueMap);
-        if (!factory) {
-            Core::Id id = idFromMap(valueMap);
-            qWarning("No factory found to restore deployment configuration of id '%s'!",
-                     id.isValid() ? qPrintable(id.toString()) : "UNKNOWN");
-            continue;
-        }
-        DeployConfiguration *dc = factory->restore(this, valueMap);
-        if (!dc) {
-            qWarning("Factory '%s' failed to restore deployment configuration!", qPrintable(factory->objectName()));
-            continue;
-        }
-        QTC_CHECK(dc->id() == ProjectExplorer::idFromMap(valueMap));
-        addDeployConfiguration(dc);
-        if (i == activeConfiguration)
-            setActiveDeployConfiguration(dc);
+//        QVariantMap valueMap = map.value(key).toMap();//ROOPAK - START
+//        DeployConfigurationFactory *factory = DeployConfigurationFactory::find(this, valueMap);
+//        if (!factory) {
+//            Core::Id id = idFromMap(valueMap);
+//            qWarning("No factory found to restore deployment configuration of id '%s'!",
+//                     id.isValid() ? qPrintable(id.toString()) : "UNKNOWN");
+//            continue;
+//        }
+//        DeployConfiguration *dc = factory->restore(this, valueMap);
+//        if (!dc) {
+//            qWarning("Factory '%s' failed to restore deployment configuration!", qPrintable(factory->objectName()));
+//            continue;
+//        }
+//        QTC_CHECK(dc->id() == ProjectExplorer::idFromMap(valueMap));
+//        addDeployConfiguration(dc);
+//        if (i == activeConfiguration)
+//            setActiveDeployConfiguration(dc);//ROOPAK - END
     }
 
     int rcCount = map.value(QLatin1String(RC_COUNT_KEY), 0).toInt(&ok);
