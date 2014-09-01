@@ -80,7 +80,7 @@ HEADERS += projectexplorer.h \
 #    sessiondialog.h \#ROOPAK
 #    projectwizardpage.h \#ROOPAK
 #    buildstepspage.h \#ROOPAK
-    nodesvisitor.h \
+#    nodesvisitor.h \#ROOPAK
 #    projectmodels.h \#ROOPAK
     currentprojectfind.h \
     toolchain.h \
@@ -217,7 +217,7 @@ SOURCES += projectexplorer.cpp \
 #    sessiondialog.cpp \#ROOPAK
 #    projectwizardpage.cpp \#ROOPAK
 #    buildstepspage.cpp \#ROOPAK
-    nodesvisitor.cpp \
+#    nodesvisitor.cpp \#ROOPAK
 #    projectmodels.cpp \#ROOPAK
     currentprojectfind.cpp \
     toolchain.cpp \

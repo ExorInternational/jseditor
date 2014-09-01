@@ -98,7 +98,7 @@ class FileContainerNode;
 class FolderNode;
 class ProjectNode;
 class NodesWatcher;
-class NodesVisitor;
+//class NodesVisitor;//ROOPAK
 class SessionManager;
 
 // Documentation inside.
@@ -169,7 +169,7 @@ public:
     QList<FileNode*> fileNodes() const;
     QList<FolderNode*> subFolderNodes() const;
 
-    virtual void accept(NodesVisitor *visitor);
+//    virtual void accept(NodesVisitor *visitor);//ROOPAK
 
     void setDisplayName(const QString &name);
     void setIcon(const QIcon &icon);
@@ -255,7 +255,7 @@ public:
     void registerWatcher(NodesWatcher *watcher);
     void unregisterWatcher(NodesWatcher *watcher);
 
-    void accept(NodesVisitor *visitor);
+//    void accept(NodesVisitor *visitor);//ROOPAK
 
     bool isEnabled() const { return true; }
 
@@ -295,7 +295,7 @@ public:
     void registerWatcher(NodesWatcher *watcher);
     void unregisterWatcher(NodesWatcher *watcher);
 
-    void accept(NodesVisitor *visitor);
+//    void accept(NodesVisitor *visitor);//ROOPAK
 
     bool isEnabled() const { return true; }
 

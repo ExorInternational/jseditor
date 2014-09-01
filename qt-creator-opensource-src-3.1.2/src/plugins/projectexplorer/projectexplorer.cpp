@@ -59,7 +59,7 @@
 //#include "dependenciespanel.h"//ROOPAK
 //#include "foldernavigationwidget.h"//ROOPAK
 #include "iprojectmanager.h"
-#include "nodesvisitor.h"
+//#include "nodesvisitor.h"//ROOPAK
 //#include "appoutputpane.h"//ROOPAK
 //#include "pluginfilefactory.h"//ROOPAK
 //#include "processstep.h"//ROOPAK
@@ -1977,9 +1977,9 @@ QStringList ProjectExplorerPlugin::allFilesWithDependencies(Project *pro)
 
     QStringList filesToSave;
     foreach (Project *p, SessionManager::projectOrder(pro)) {
-        FindAllFilesVisitor filesVisitor;
-        p->rootProjectNode()->accept(&filesVisitor);
-        filesToSave << filesVisitor.filePaths();
+//        FindAllFilesVisitor filesVisitor;//ROOPAK
+//        p->rootProjectNode()->accept(&filesVisitor);//ROOPAK
+//        filesToSave << filesVisitor.filePaths();//ROOPAK
     }
     qSort(filesToSave);
     return filesToSave;

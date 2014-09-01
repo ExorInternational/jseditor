@@ -29,7 +29,7 @@
 
 #include "projectnodes.h"
 
-#include "nodesvisitor.h"
+//#include "nodesvisitor.h"//ROOPAK
 #include "projectexplorerconstants.h"
 
 #include <coreplugin/mimedatabase.h>
@@ -291,12 +291,12 @@ QList<FolderNode*> FolderNode::subFolderNodes() const
     return m_subFolderNodes;
 }
 
-void FolderNode::accept(NodesVisitor *visitor)
-{
-    visitor->visitFolderNode(this);
-    foreach (FolderNode *subFolder, m_subFolderNodes)
-        subFolder->accept(visitor);
-}
+//void FolderNode::accept(NodesVisitor *visitor)//ROOPAK - START
+//{
+//    visitor->visitFolderNode(this);
+//    foreach (FolderNode *subFolder, m_subFolderNodes)
+//        subFolder->accept(visitor);
+//}//ROOPAK - END
 
 void FolderNode::setDisplayName(const QString &name)
 {
@@ -649,13 +649,13 @@ void ProjectNode::unregisterWatcher(NodesWatcher *watcher)
         subProject->unregisterWatcher(watcher);
 }
 
-void ProjectNode::accept(NodesVisitor *visitor)
-{
-    visitor->visitProjectNode(this);
+//void ProjectNode::accept(NodesVisitor *visitor)//ROOPAk - START
+//{
+//    visitor->visitProjectNode(this);
 
-    foreach (FolderNode *folder, m_subFolderNodes)
-        folder->accept(visitor);
-}
+//    foreach (FolderNode *folder, m_subFolderNodes)
+//        folder->accept(visitor);
+//}//ROOPAK - END
 
 /*!
   Adds project nodes specified by \a subProjects to the node hierarchy and
@@ -788,12 +788,12 @@ void SessionNode::unregisterWatcher(NodesWatcher *watcher)
         project->unregisterWatcher(watcher);
 }
 
-void SessionNode::accept(NodesVisitor *visitor)
-{
-    visitor->visitSessionNode(this);
-    foreach (ProjectNode *project, m_projectNodes)
-        project->accept(visitor);
-}
+//void SessionNode::accept(NodesVisitor *visitor)//ROOPAK - START
+//{
+//    visitor->visitSessionNode(this);
+//    foreach (ProjectNode *project, m_projectNodes)
+//        project->accept(visitor);
+//}//ROOPAK - END
 
 bool SessionNode::showInSimpleTree() const
 {

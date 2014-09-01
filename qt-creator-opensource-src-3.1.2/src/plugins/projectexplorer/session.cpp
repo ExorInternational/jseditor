@@ -31,7 +31,7 @@
 
 #include "project.h"
 #include "projectexplorer.h"
-#include "nodesvisitor.h"
+//#include "nodesvisitor.h"//ROOPAK
 #include "editorconfiguration.h"
 #include "projectnodes.h"
 
@@ -525,14 +525,14 @@ Node *SessionManager::nodeForFile(const QString &fileName, Project *project)
         project = projectForFile(fileName);
 
     if (project) {
-        FindNodesForFileVisitor findNodes(fileName);
-        project->rootProjectNode()->accept(&findNodes);
+//        FindNodesForFileVisitor findNodes(fileName);//ROOPAK - START
+//        project->rootProjectNode()->accept(&findNodes);
 
-        foreach (Node *n, findNodes.nodes()) {
-            // prefer file nodes
-            if (!node || (node->nodeType() != FileNodeType && n->nodeType() == FileNodeType))
-                node = n;
-        }
+//        foreach (Node *n, findNodes.nodes()) {
+//            // prefer file nodes
+//            if (!node || (node->nodeType() != FileNodeType && n->nodeType() == FileNodeType))
+//                node = n;
+//        }//ROOPAK - END
     }
 
     return node;
