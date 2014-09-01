@@ -53,9 +53,9 @@ class RunControl;
 class RunConfiguration;
 class IRunControlFactory;
 class Project;
-class Node;
+//class Node;//ROOPAK
 //class BuildConfiguration;
-class FolderNode;
+//class FolderNode;//ROOPAK
 class TaskHub;
 
 namespace Internal { /*class ProjectExplorerSettings;*/ }//ROOPAK
@@ -80,14 +80,14 @@ public:
     void unloadProject(Project *project);
 
     static Project *currentProject();
-    Node *currentNode() const;
+//    Node *currentNode() const;//ROOPAK
 
     void setCurrentFile(Project *project, const QString &file);
-    void setCurrentNode(Node *node);
+//    void setCurrentNode(Node *node);//ROOPAK
 
     bool saveModifiedFiles();
 
-    void showContextMenu(QWidget *view, const QPoint &globalPos, Node *node);
+//    void showContextMenu(QWidget *view, const QPoint &globalPos, Node *node);//ROOPAK
 
     //PluginInterface
     bool initialize(const QStringList &arguments, QString *errorMessage);
@@ -101,7 +101,7 @@ public:
     static void showRunErrorMessage(const QString &errorMessage);
 
     // internal public for FlatModel
-    void renameFile(Node *node, const QString &to);
+//    void renameFile(Node *node, const QString &to);//ROOPAK
     static QStringList projectFilePatterns();
     bool coreAboutToClose();
     QList<QPair<QString, QString> > recentProjects();
@@ -112,7 +112,7 @@ public:
     void runRunConfiguration(ProjectExplorer::RunConfiguration *rc, RunMode runMode,
                              const bool forceSkipDeploy = false);
 
-    void addExistingFiles(ProjectExplorer::FolderNode *projectNode, const QStringList &filePaths);
+//    void addExistingFiles(ProjectExplorer::FolderNode *projectNode, const QStringList &filePaths);//ROOPAK
     void addExistingFiles(const QStringList &filePaths);
 
     void buildProject(ProjectExplorer::Project *p);
@@ -126,21 +126,21 @@ public:
 
     static QString displayNameForStepId(Core::Id stepId);
 
-    static QString directoryFor(Node *node);
-    static QString pathFor(Node *node);
+//    static QString directoryFor(Node *node);//ROOPAK
+//    static QString pathFor(Node *node);//ROOPAK - END
 
 signals:
     void runControlStarted(ProjectExplorer::RunControl *rc);
     void runControlFinished(ProjectExplorer::RunControl *rc);
-    void aboutToShowContextMenu(ProjectExplorer::Project *project,
-                                ProjectExplorer::Node *node);
+//    void aboutToShowContextMenu(ProjectExplorer::Project *project,
+//                                ProjectExplorer::Node *node);//ROOPAK
 
     // Is emitted when a project has been added/removed,
     // or the file list of a specific project has changed.
     void fileListChanged();
 
     void currentProjectChanged(ProjectExplorer::Project *project);
-    void currentNodeChanged(ProjectExplorer::Node *node, ProjectExplorer::Project *project);
+//    void currentNodeChanged(ProjectExplorer::Node *node, ProjectExplorer::Project *project);//ROOPAK
     void aboutToExecuteProject(ProjectExplorer::Project *project, RunMode runMode);
     void recentProjectsChanged();
 
@@ -288,7 +288,7 @@ private:
     QPair<bool, QString> buildSettingsEnabled(Project *pro);
     bool hasDeploySettings(Project *pro);
 
-    void setCurrent(Project *project, QString filePath, Node *node);
+//    void setCurrent(Project *project, QString filePath, Node *node);//ROOPAK
 
     QStringList allFilesWithDependencies(Project *pro);
     IRunControlFactory *findRunControlFactory(RunConfiguration *config, RunMode mode);

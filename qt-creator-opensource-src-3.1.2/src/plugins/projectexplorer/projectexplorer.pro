@@ -76,7 +76,7 @@ HEADERS += projectexplorer.h \
 #    projecttreewidget.h \ #ROOPAK
 #    foldernavigationwidget.h \#ROOPAK
 #    buildprogress.h \#ROOPAK
-    projectnodes.h \
+#    projectnodes.h \#ROOPAK
 #    sessiondialog.h \#ROOPAK
 #    projectwizardpage.h \#ROOPAK
 #    buildstepspage.h \#ROOPAK
@@ -213,7 +213,7 @@ SOURCES += projectexplorer.cpp \
 #    projecttreewidget.cpp \#ROOPAK
 #    foldernavigationwidget.cpp \#ROOPAK
 #    buildprogress.cpp \#ROOPAK
-    projectnodes.cpp \
+#    projectnodes.cpp \#ROOPAK
 #    sessiondialog.cpp \#ROOPAK
 #    projectwizardpage.cpp \#ROOPAK
 #    buildstepspage.cpp \#ROOPAK

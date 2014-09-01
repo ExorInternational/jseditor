@@ -41,7 +41,7 @@
 #include <qmljs/qmljsutils.h>
 #include <qmljstools/qmljsrefactoringchanges.h>
 #include <projectexplorer/session.h>
-#include <projectexplorer/projectnodes.h>
+//#include <projectexplorer/projectnodes.h>//ROOPAK
 #include <projectexplorer/project.h>
 
 #include <QCoreApplication>
@@ -113,12 +113,12 @@ public:
 
         if (path == QFileInfo(fileName()).path()) {
             // hack for the common case, next version should use the wizard
-            ProjectExplorer::Node * oldFileNode = ProjectExplorer::SessionManager::nodeForFile(fileName());
-            if (oldFileNode) {
-                ProjectExplorer::FolderNode *containingFolder = oldFileNode->parentFolderNode();
-                if (containingFolder)
-                    containingFolder->addFiles(QStringList(newFileName));
-            }
+//            ProjectExplorer::Node * oldFileNode = ProjectExplorer::SessionManager::nodeForFile(fileName());//ROOPAK - START
+//            if (oldFileNode) {
+//                ProjectExplorer::FolderNode *containingFolder = oldFileNode->parentFolderNode();
+//                if (containingFolder)
+//                    containingFolder->addFiles(QStringList(newFileName));
+//            }//ROOPAK - END
         }
 
         Core::IVersionControl *versionControl = Core::VcsManager::findVersionControlForDirectory(path);

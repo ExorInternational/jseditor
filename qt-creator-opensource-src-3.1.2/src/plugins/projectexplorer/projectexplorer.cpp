@@ -69,7 +69,7 @@
 //#include "projectwindow.h"//ROOPAK
 //#include "runsettingspropertiespage.h"//ROOPAK
 #include "session.h"
-#include "projectnodes.h"
+//#include "projectnodes.h"//ROOPAK
 //#include "sessiondialog.h"//ROOPAK
 //#include "projectexplorersettingspage.h"//ROOPAK
 //#include "corelistenercheckingforrunningbuild.h"//ROOPAK
@@ -230,7 +230,7 @@ struct ProjectExplorerPluginPrivate {
 
     Project *m_currentProject;
     Context m_lastProjectContext;
-    Node *m_currentNode;
+//    Node *m_currentNode;//ROOPAK
 
 //    QList<Internal::ProjectFileFactory*> m_fileFactories;//ROOPAK
     QStringList m_profileMimeTypes;
@@ -263,7 +263,7 @@ struct ProjectExplorerPluginPrivate {
 
 ProjectExplorerPluginPrivate::ProjectExplorerPluginPrivate() :
     m_currentProject(0),
-    m_currentNode(0),
+//    m_currentNode(0),//ROOPAK
     m_shouldHaveRunConfiguration(false),
     m_runMode(NoRunMode),
     m_projectsMode(0),
@@ -1412,8 +1412,8 @@ QList<Project *> ProjectExplorerPlugin::openProjects(const QStringList &fileName
                             connect(pro, SIGNAL(fileListChanged()), this, SIGNAL(fileListChanged()));
                             SessionManager::addProject(pro);
                             // Make sure we always have a current project / node
-                            if (!d->m_currentProject && !openedPro.isEmpty())
-                                setCurrentNode(pro->rootProjectNode());
+//                            if (!d->m_currentProject && !openedPro.isEmpty())//ROOPAK
+//                                setCurrentNode(pro->rootProjectNode());//ROOPAK
                             openedPro += pro;
                         } else {
                             appendError(errorString, tr("Failed opening project '%1': Settings could not be restored.")
@@ -1470,14 +1470,14 @@ Project *ProjectExplorerPlugin::currentProject()
     return project;
 }
 
-Node *ProjectExplorerPlugin::currentNode() const
-{
-    return d->m_currentNode;
-}
+//Node *ProjectExplorerPlugin::currentNode() const//ROOPAk - START
+//{
+//    return d->m_currentNode;
+//}//ROOPAK - END
 
 void ProjectExplorerPlugin::setCurrentFile(Project *project, const QString &filePath)
 {
-    setCurrent(project, filePath, 0);
+//    setCurrent(project, filePath, 0);//ROOPAK
 }
 
 void ProjectExplorerPlugin::setCurrentFile(const QString &filePath)
@@ -1490,13 +1490,13 @@ void ProjectExplorerPlugin::setCurrentFile(const QString &filePath)
     // I'm not 100% sure this is correct
     if (!project)
         project = d->m_currentProject;
-    setCurrent(project, filePath, 0);
+//    setCurrent(project, filePath, 0);//ROOPAK
 }
 
-void ProjectExplorerPlugin::setCurrentNode(Node *node)
-{
-    setCurrent(SessionManager::projectForNode(node), QString(), node);
-}
+//void ProjectExplorerPlugin::setCurrentNode(Node *node)//ROOPAK - START
+//{
+//    setCurrent(SessionManager::projectForNode(node), QString(), node);
+//}//ROOPAK - END
 
 void ProjectExplorerPlugin::updateWelcomePage()
 {
@@ -1647,48 +1647,48 @@ void ProjectExplorerPlugin::loadSession(const QString &session)
 }
 
 
-void ProjectExplorerPlugin::showContextMenu(QWidget *view, const QPoint &globalPos, Node *node)
-{
-    QMenu *contextMenu = 0;
+//void ProjectExplorerPlugin::showContextMenu(QWidget *view, const QPoint &globalPos, Node *node)//ROOPAK - START
+//{
+//    QMenu *contextMenu = 0;
 
-    if (!node)
-        node = SessionManager::sessionNode();
+//    if (!node)
+//        node = SessionManager::sessionNode();
 
-    if (node->nodeType() != SessionNodeType) {
-        Project *project = SessionManager::projectForNode(node);
-        setCurrentNode(node);
+//    if (node->nodeType() != SessionNodeType) {
+//        Project *project = SessionManager::projectForNode(node);
+//        setCurrentNode(node);
 
-        emit aboutToShowContextMenu(project, node);
-        switch (node->nodeType()) {
-        case ProjectNodeType:
-            if (node->parentFolderNode() == SessionManager::sessionNode())
-                contextMenu = d->m_projectMenu;
-            else
-                contextMenu = d->m_subProjectMenu;
-            break;
-        case VirtualFolderNodeType:
-        case FolderNodeType:
-            contextMenu = d->m_folderMenu;
-            break;
-        case FileNodeType:
-            populateOpenWithMenu();
-            contextMenu = d->m_fileMenu;
-            break;
-        default:
-            qWarning("ProjectExplorerPlugin::showContextMenu - Missing handler for node type");
-        }
-    } else { // session item
-        emit aboutToShowContextMenu(0, node);
+//        emit aboutToShowContextMenu(project, node);
+//        switch (node->nodeType()) {
+//        case ProjectNodeType:
+//            if (node->parentFolderNode() == SessionManager::sessionNode())
+//                contextMenu = d->m_projectMenu;
+//            else
+//                contextMenu = d->m_subProjectMenu;
+//            break;
+//        case VirtualFolderNodeType:
+//        case FolderNodeType:
+//            contextMenu = d->m_folderMenu;
+//            break;
+//        case FileNodeType:
+//            populateOpenWithMenu();
+//            contextMenu = d->m_fileMenu;
+//            break;
+//        default:
+//            qWarning("ProjectExplorerPlugin::showContextMenu - Missing handler for node type");
+//        }
+//    } else { // session item
+//        emit aboutToShowContextMenu(0, node);
 
-        contextMenu = d->m_sessionContextMenu;
-    }
+//        contextMenu = d->m_sessionContextMenu;
+//    }
 
-    updateContextMenuActions();
-    d->m_projectTreeCollapseAllAction->disconnect(SIGNAL(triggered()));
-    connect(d->m_projectTreeCollapseAllAction, SIGNAL(triggered()), view, SLOT(collapseAll()));
-    if (contextMenu && contextMenu->actions().count() > 0)
-        contextMenu->popup(globalPos);
-}
+//    updateContextMenuActions();
+//    d->m_projectTreeCollapseAllAction->disconnect(SIGNAL(triggered()));
+//    connect(d->m_projectTreeCollapseAllAction, SIGNAL(triggered()), view, SLOT(collapseAll()));
+//    if (contextMenu && contextMenu->actions().count() > 0)
+//        contextMenu->popup(globalPos);
+//}//ROOPAk - END
 
 void ProjectExplorerPlugin::buildStateChanged(Project * pro)
 {
@@ -1833,58 +1833,58 @@ void ProjectExplorerPlugin::updateContext()
     ICore::updateAdditionalContexts(oldContext, newContext);
 }
 
-void ProjectExplorerPlugin::setCurrent(Project *project, QString filePath, Node *node)
-{
-    if (debug)
-        qDebug() << "ProjectExplorer - setting path to " << (node ? pathFor(node) : filePath)
-                << " and project to " << (project ? project->displayName() : QLatin1String("0"));
+//void ProjectExplorerPlugin::setCurrent(Project *project, QString filePath, Node *node)//ROOPAK - START
+//{
+//    if (debug)
+//        qDebug() << "ProjectExplorer - setting path to " << (node ? pathFor(node) : filePath)
+//                << " and project to " << (project ? project->displayName() : QLatin1String("0"));
 
-    if (node)
-        filePath = pathFor(node);
-    else
-        node = SessionManager::nodeForFile(filePath, project);
+//    if (node)
+//        filePath = pathFor(node);
+//    else
+//        node = SessionManager::nodeForFile(filePath, project);
 
-    bool projectChanged = false;
-    if (d->m_currentProject != project) {
-        if (d->m_currentProject) {
-            disconnect(d->m_currentProject, SIGNAL(projectContextUpdated()),
-                       this, SLOT(updateContext()));
-            disconnect(d->m_currentProject, SIGNAL(projectLanguagesUpdated()),
-                       this, SLOT(updateContext()));
-        }
-        if (project) {
-            connect(project, SIGNAL(projectContextUpdated()),
-                    this, SLOT(updateContext()));
-            connect(project, SIGNAL(projectLanguagesUpdated()),
-                    this, SLOT(updateContext()));
-        }
-        projectChanged = true;
-    }
-    d->m_currentProject = project;
+//    bool projectChanged = false;
+//    if (d->m_currentProject != project) {
+//        if (d->m_currentProject) {
+//            disconnect(d->m_currentProject, SIGNAL(projectContextUpdated()),
+//                       this, SLOT(updateContext()));
+//            disconnect(d->m_currentProject, SIGNAL(projectLanguagesUpdated()),
+//                       this, SLOT(updateContext()));
+//        }
+//        if (project) {
+//            connect(project, SIGNAL(projectContextUpdated()),
+//                    this, SLOT(updateContext()));
+//            connect(project, SIGNAL(projectLanguagesUpdated()),
+//                    this, SLOT(updateContext()));
+//        }
+//        projectChanged = true;
+//    }
+//    d->m_currentProject = project;
 
-    if (!node && EditorManager::currentDocument()) {
-        connect(EditorManager::currentDocument(), SIGNAL(changed()),
-                this, SLOT(updateExternalFileWarning()), Qt::UniqueConnection);
-    }
-    if (projectChanged || d->m_currentNode != node) {
-        d->m_currentNode = node;
-        if (debug)
-            qDebug() << "ProjectExplorer - currentNodeChanged(" << (node ? node->path() : QLatin1String("0")) << ", " << (project ? project->displayName() : QLatin1String("0")) << ')';
-        emit currentNodeChanged(d->m_currentNode, project);
-        updateContextMenuActions();
-    }
-    if (projectChanged) {
-        if (debug)
-            qDebug() << "ProjectExplorer - currentProjectChanged(" << (project ? project->displayName() : QLatin1String("0")) << ')';
-        emit currentProjectChanged(project);
-        updateActions();
-    }
+//    if (!node && EditorManager::currentDocument()) {
+//        connect(EditorManager::currentDocument(), SIGNAL(changed()),
+//                this, SLOT(updateExternalFileWarning()), Qt::UniqueConnection);
+//    }
+//    if (projectChanged || d->m_currentNode != node) {
+//        d->m_currentNode = node;
+//        if (debug)
+//            qDebug() << "ProjectExplorer - currentNodeChanged(" << (node ? node->path() : QLatin1String("0")) << ", " << (project ? project->displayName() : QLatin1String("0")) << ')';
+//        emit currentNodeChanged(d->m_currentNode, project);
+//        updateContextMenuActions();
+//    }
+//    if (projectChanged) {
+//        if (debug)
+//            qDebug() << "ProjectExplorer - currentProjectChanged(" << (project ? project->displayName() : QLatin1String("0")) << ')';
+//        emit currentProjectChanged(project);
+//        updateActions();
+//    }
 
-    d->m_ignoreDocumentManagerChangedFile = true;
-    DocumentManager::setCurrentFile(filePath);
-    updateContext();
-    d->m_ignoreDocumentManagerChangedFile = false;
-}
+//    d->m_ignoreDocumentManagerChangedFile = true;
+//    DocumentManager::setCurrentFile(filePath);
+//    updateContext();
+//    d->m_ignoreDocumentManagerChangedFile = false;
+//}//ROOPAK - END
 
 void ProjectExplorerPlugin::updateActions()
 {
@@ -2198,10 +2198,10 @@ void ProjectExplorerPlugin::runProjectWithoutDeploy()
 
 void ProjectExplorerPlugin::runProjectContextMenu()
 {
-    ProjectNode *projectNode = qobject_cast<ProjectNode*>(d->m_currentNode);
+    /*ProjectNode *projectNode = qobject_cast<ProjectNode*>(d->m_currentNode);//ROOPAK - START
     if (projectNode == d->m_currentProject->rootProjectNode() || !projectNode) {
         runProject(d->m_currentProject, NormalRunMode);
-    } else {
+    } else */{//ROOPAK - END
         QAction *act = qobject_cast<QAction *>(sender());
         if (!act)
             return;
@@ -2681,7 +2681,7 @@ void ProjectExplorerPlugin::invalidateProject(Project *project)
         // - currentChanged etc are not emitted if the
         // item is removed from the underlying data model
         //
-        setCurrent(0, QString(), 0);
+//        setCurrent(0, QString(), 0);//ROOPAK
     }
 
     disconnect(project, SIGNAL(fileListChanged()), this, SIGNAL(fileListChanged()));
@@ -2711,159 +2711,159 @@ void ProjectExplorerPlugin::updateContextMenuActions()
     ActionContainer *runMenu = ActionManager::actionContainer(Constants::RUNMENUCONTEXTMENU);
     runMenu->menu()->clear();
 
-    if (d->m_currentNode && d->m_currentNode->projectNode()) {
-        QList<ProjectExplorer::ProjectAction> actions =
-                d->m_currentNode->supportedActions(d->m_currentNode);
+//    if (d->m_currentNode && d->m_currentNode->projectNode()) {//ROOPAK - START
+//        QList<ProjectExplorer::ProjectAction> actions =
+//                d->m_currentNode->supportedActions(d->m_currentNode);
 
-        if (ProjectNode *pn = qobject_cast<ProjectNode *>(d->m_currentNode)) {
-            if (pn == d->m_currentProject->rootProjectNode()) {
-                d->m_runActionContextMenu->setVisible(true);
-            } else {
-                QList<RunConfiguration *> runConfigs = pn->runConfigurationsFor(pn);
-                if (runConfigs.count() == 1) {
-                    d->m_runActionContextMenu->setVisible(true);
-                    d->m_runActionContextMenu->setData(QVariant::fromValue(runConfigs.first()));
-                } else if (runConfigs.count() > 1) {
-                    foreach (RunConfiguration *rc, runConfigs) {
-                        QAction *act = new QAction(runMenu->menu());
-                        act->setData(QVariant::fromValue(rc));
-                        act->setText(tr("Run %1").arg(rc->displayName()));
-                        runMenu->menu()->addAction(act);
-                        connect(act, SIGNAL(triggered()),
-                                this, SLOT(runProjectContextMenu()));
-                    }
-                }
-            }
-        }
-        if (qobject_cast<FolderNode*>(d->m_currentNode)) {
-            // Also handles ProjectNode
-            d->m_addNewFileAction->setEnabled(actions.contains(ProjectExplorer::AddNewFile));
-            d->m_addNewSubprojectAction->setEnabled(d->m_currentNode->nodeType() == ProjectNodeType
-                                                    && actions.contains(ProjectExplorer::AddSubProject));
-            d->m_addExistingFilesAction->setEnabled(actions.contains(ProjectExplorer::AddExistingFile));
-            d->m_addExistingDirectoryAction->setEnabled(actions.contains(ProjectExplorer::AddExistingDirectory));
-            d->m_renameFileAction->setEnabled(actions.contains(ProjectExplorer::Rename));
-        } else if (qobject_cast<FileNode*>(d->m_currentNode)) {
-            // Enable and show remove / delete in magic ways:
-            // If both are disabled show Remove
-            // If both are enabled show both (can't happen atm)
-            // If only removeFile is enabled only show it
-            // If only deleteFile is enable only show it
-            bool enableRemove = actions.contains(ProjectExplorer::RemoveFile);
-            d->m_removeFileAction->setEnabled(enableRemove);
-            bool enableDelete = actions.contains(ProjectExplorer::EraseFile);
-            d->m_deleteFileAction->setEnabled(enableDelete);
-            d->m_deleteFileAction->setVisible(enableDelete);
+//        if (ProjectNode *pn = qobject_cast<ProjectNode *>(d->m_currentNode)) {
+//            if (pn == d->m_currentProject->rootProjectNode()) {
+//                d->m_runActionContextMenu->setVisible(true);
+//            } else {
+//                QList<RunConfiguration *> runConfigs = pn->runConfigurationsFor(pn);
+//                if (runConfigs.count() == 1) {
+//                    d->m_runActionContextMenu->setVisible(true);
+//                    d->m_runActionContextMenu->setData(QVariant::fromValue(runConfigs.first()));
+//                } else if (runConfigs.count() > 1) {
+//                    foreach (RunConfiguration *rc, runConfigs) {
+//                        QAction *act = new QAction(runMenu->menu());
+//                        act->setData(QVariant::fromValue(rc));
+//                        act->setText(tr("Run %1").arg(rc->displayName()));
+//                        runMenu->menu()->addAction(act);
+//                        connect(act, SIGNAL(triggered()),
+//                                this, SLOT(runProjectContextMenu()));
+//                    }
+//                }
+//            }
+//        }
+//        if (qobject_cast<FolderNode*>(d->m_currentNode)) {
+//            // Also handles ProjectNode
+//            d->m_addNewFileAction->setEnabled(actions.contains(ProjectExplorer::AddNewFile));
+//            d->m_addNewSubprojectAction->setEnabled(d->m_currentNode->nodeType() == ProjectNodeType
+//                                                    && actions.contains(ProjectExplorer::AddSubProject));
+//            d->m_addExistingFilesAction->setEnabled(actions.contains(ProjectExplorer::AddExistingFile));
+//            d->m_addExistingDirectoryAction->setEnabled(actions.contains(ProjectExplorer::AddExistingDirectory));
+//            d->m_renameFileAction->setEnabled(actions.contains(ProjectExplorer::Rename));
+//        } else if (qobject_cast<FileNode*>(d->m_currentNode)) {
+//            // Enable and show remove / delete in magic ways:
+//            // If both are disabled show Remove
+//            // If both are enabled show both (can't happen atm)
+//            // If only removeFile is enabled only show it
+//            // If only deleteFile is enable only show it
+//            bool enableRemove = actions.contains(ProjectExplorer::RemoveFile);
+//            d->m_removeFileAction->setEnabled(enableRemove);
+//            bool enableDelete = actions.contains(ProjectExplorer::EraseFile);
+//            d->m_deleteFileAction->setEnabled(enableDelete);
+//            d->m_deleteFileAction->setVisible(enableDelete);
 
-            d->m_removeFileAction->setVisible(!enableDelete || enableRemove);
-            d->m_renameFileAction->setEnabled(actions.contains(ProjectExplorer::Rename));
-        }
+//            d->m_removeFileAction->setVisible(!enableDelete || enableRemove);
+//            d->m_renameFileAction->setEnabled(actions.contains(ProjectExplorer::Rename));
+//        }
 
-        if (actions.contains(ProjectExplorer::HidePathActions)) {
-            d->m_openTerminalHere->setVisible(false);
-            d->m_showInGraphicalShell->setVisible(false);
-            d->m_searchOnFileSystem->setVisible(false);
-        }
-    }
+//        if (actions.contains(ProjectExplorer::HidePathActions)) {
+//            d->m_openTerminalHere->setVisible(false);
+//            d->m_showInGraphicalShell->setVisible(false);
+//            d->m_searchOnFileSystem->setVisible(false);
+//        }
+//    }//ROOPAK - END
 }
 
-QString pathOrDirectoryFor(Node *node, bool dir)
-{
-    QString path = node->path();
-    QString location;
-    FolderNode *folder = qobject_cast<FolderNode *>(node);
-    if (node->nodeType() == ProjectExplorer::VirtualFolderNodeType && folder) {
-        // Virtual Folder case
-        // If there are files directly below or no subfolders, take the folder path
-        if (!folder->fileNodes().isEmpty() || folder->subFolderNodes().isEmpty()) {
-            location = path;
-        } else {
-            // Otherwise we figure out a commonPath from the subfolders
-            QStringList list;
-            foreach (FolderNode *f, folder->subFolderNodes())
-                list << f->path() + QLatin1Char('/');
-            location = Utils::commonPath(list);
-        }
+//QString pathOrDirectoryFor(Node *node, bool dir)//ROOPAK - END
+//{
+//    QString path = node->path();
+//    QString location;
+//    FolderNode *folder = qobject_cast<FolderNode *>(node);
+//    if (node->nodeType() == ProjectExplorer::VirtualFolderNodeType && folder) {
+//        // Virtual Folder case
+//        // If there are files directly below or no subfolders, take the folder path
+//        if (!folder->fileNodes().isEmpty() || folder->subFolderNodes().isEmpty()) {
+//            location = path;
+//        } else {
+//            // Otherwise we figure out a commonPath from the subfolders
+//            QStringList list;
+//            foreach (FolderNode *f, folder->subFolderNodes())
+//                list << f->path() + QLatin1Char('/');
+//            location = Utils::commonPath(list);
+//        }
 
-        QFileInfo fi(location);
-        while ((!fi.exists() || !fi.isDir())
-               && !fi.isRoot())
-            fi.setFile(fi.absolutePath());
-        location = fi.absoluteFilePath();
-    } else {
-        QFileInfo fi(path);
-        // remove any /suffixes, which e.g. ResourceNode uses
-        // Note this should be removed again by making node->path() a true path again
-        // That requires changes in both the VirtualFolderNode and ResourceNode
-        while (!fi.exists() && !fi.isRoot())
-            fi.setFile(fi.absolutePath());
+//        QFileInfo fi(location);
+//        while ((!fi.exists() || !fi.isDir())
+//               && !fi.isRoot())
+//            fi.setFile(fi.absolutePath());
+//        location = fi.absoluteFilePath();
+//    } else {
+//        QFileInfo fi(path);
+//        // remove any /suffixes, which e.g. ResourceNode uses
+//        // Note this should be removed again by making node->path() a true path again
+//        // That requires changes in both the VirtualFolderNode and ResourceNode
+//        while (!fi.exists() && !fi.isRoot())
+//            fi.setFile(fi.absolutePath());
 
-        if (dir)
-            location = fi.isDir() ? fi.absoluteFilePath() : fi.absolutePath();
-        else
-            location = fi.absoluteFilePath();
-    }
-    return location;
-}
+//        if (dir)
+//            location = fi.isDir() ? fi.absoluteFilePath() : fi.absolutePath();
+//        else
+//            location = fi.absoluteFilePath();
+//    }
+//    return location;
+//}//ROOPAK - END
 
-QString ProjectExplorerPlugin::pathFor(Node *node)
-{
-    return pathOrDirectoryFor(node, false);
-}
+//QString ProjectExplorerPlugin::pathFor(Node *node)//ROOPAK - START
+//{
+//    return pathOrDirectoryFor(node, false);
+//}
 
-QString ProjectExplorerPlugin::directoryFor(Node *node)
-{
-    return pathOrDirectoryFor(node, true);
-}
+//QString ProjectExplorerPlugin::directoryFor(Node *node)
+//{
+//    return pathOrDirectoryFor(node, true);
+//}//ROOPAK - END
 
 void ProjectExplorerPlugin::addNewFile()
 {
-    QTC_ASSERT(d->m_currentNode, return);
-    QString location = directoryFor(d->m_currentNode);
+//    QTC_ASSERT(d->m_currentNode, return);//ROOPAK - START
+//    QString location = directoryFor(d->m_currentNode);
 
-    QVariantMap map;
-    map.insert(QLatin1String(Constants::PREFERED_PROJECT_NODE), QVariant::fromValue(d->m_currentNode));
-    if (d->m_currentProject) {
-        QList<Id> profileIds;
-        foreach (Target *target, d->m_currentProject->targets())
-            profileIds << target->id();
-        map.insert(QLatin1String(Constants::PROJECT_KIT_IDS), QVariant::fromValue(profileIds));
-    }
-    ICore::showNewItemDialog(tr("New File", "Title of dialog"),
-                               IWizard::wizardsOfKind(IWizard::FileWizard)
-                               + IWizard::wizardsOfKind(IWizard::ClassWizard),
-                               location, map);
+//    QVariantMap map;
+//    map.insert(QLatin1String(Constants::PREFERED_PROJECT_NODE), QVariant::fromValue(d->m_currentNode));
+//    if (d->m_currentProject) {
+//        QList<Id> profileIds;
+//        foreach (Target *target, d->m_currentProject->targets())
+//            profileIds << target->id();
+//        map.insert(QLatin1String(Constants::PROJECT_KIT_IDS), QVariant::fromValue(profileIds));
+//    }
+//    ICore::showNewItemDialog(tr("New File", "Title of dialog"),
+//                               IWizard::wizardsOfKind(IWizard::FileWizard)
+//                               + IWizard::wizardsOfKind(IWizard::ClassWizard),
+//                               location, map);//ROOPAK - END
 }
 
 void ProjectExplorerPlugin::addNewSubproject()
 {
-    QTC_ASSERT(d->m_currentNode, return);
-    QString location = directoryFor(d->m_currentNode);
+//    QTC_ASSERT(d->m_currentNode, return);//ROOPAK - START
+//    QString location = directoryFor(d->m_currentNode);
 
-    if (d->m_currentNode->nodeType() == ProjectNodeType
-            && d->m_currentNode->supportedActions(
-                d->m_currentNode).contains(ProjectExplorer::AddSubProject)) {
-        QVariantMap map;
-        map.insert(QLatin1String(Constants::PREFERED_PROJECT_NODE), QVariant::fromValue(d->m_currentNode));
-        if (d->m_currentProject) {
-            QList<Id> profileIds;
-            foreach (Target *target, d->m_currentProject->targets())
-                profileIds << target->id();
-            map.insert(QLatin1String(Constants::PROJECT_KIT_IDS), QVariant::fromValue(profileIds));
-        }
+//    if (d->m_currentNode->nodeType() == ProjectNodeType
+//            && d->m_currentNode->supportedActions(
+//                d->m_currentNode).contains(ProjectExplorer::AddSubProject)) {
+//        QVariantMap map;
+//        map.insert(QLatin1String(Constants::PREFERED_PROJECT_NODE), QVariant::fromValue(d->m_currentNode));
+//        if (d->m_currentProject) {
+//            QList<Id> profileIds;
+//            foreach (Target *target, d->m_currentProject->targets())
+//                profileIds << target->id();
+//            map.insert(QLatin1String(Constants::PROJECT_KIT_IDS), QVariant::fromValue(profileIds));
+//        }
 
-        ICore::showNewItemDialog(tr("New Subproject", "Title of dialog"),
-                              IWizard::wizardsOfKind(IWizard::ProjectWizard),
-                              location, map);
-    }
+//        ICore::showNewItemDialog(tr("New Subproject", "Title of dialog"),         //ROOPAK - START
+//                              IWizard::wizardsOfKind(IWizard::ProjectWizard),
+//                              location, map);
+//    }//ROOPAK - END
 }
 
 void ProjectExplorerPlugin::addExistingFiles()
 {
-    QTC_ASSERT(d->m_currentNode, return);
+//    QTC_ASSERT(d->m_currentNode, return);//ROOPAK
 
     QStringList fileNames = QFileDialog::getOpenFileNames(ICore::mainWindow(),
-        tr("Add Existing Files"), directoryFor(d->m_currentNode));
+        tr("Add Existing Files"), /*directoryFor(d->m_currentNode)*/QString());//ROOPAK
     if (fileNames.isEmpty())
         return;
     addExistingFiles(fileNames);
@@ -2871,9 +2871,9 @@ void ProjectExplorerPlugin::addExistingFiles()
 
 void ProjectExplorerPlugin::addExistingDirectory()
 {
-    QTC_ASSERT(d->m_currentNode, return);
+//    QTC_ASSERT(d->m_currentNode, return);//ROOPAK - START
 
-//    SelectableFilesDialogAddDirectory dialog(directoryFor(d->m_currentNode), QStringList(), Core::ICore::mainWindow());//ROOPAK - START
+//    SelectableFilesDialogAddDirectory dialog(directoryFor(d->m_currentNode), QStringList(), Core::ICore::mainWindow());
 
 //    if (dialog.exec() == QDialog::Accepted)
 //        addExistingFiles(dialog.selectedFiles());//ROOPAK - END
@@ -2881,77 +2881,77 @@ void ProjectExplorerPlugin::addExistingDirectory()
 
 void ProjectExplorerPlugin::addExistingFiles(const QStringList &filePaths)
 {
-    FolderNode *folderNode = qobject_cast<FolderNode *>(d->m_currentNode);
-    addExistingFiles(folderNode, filePaths);
+//    FolderNode *folderNode = qobject_cast<FolderNode *>(d->m_currentNode);//ROOPAK
+//    addExistingFiles(folderNode, filePaths);//ROOPAK
 }
 
-void ProjectExplorerPlugin::addExistingFiles(FolderNode *folderNode, const QStringList &filePaths)
-{
-    if (!folderNode) // can happen when project is not yet parsed
-        return;
+//void ProjectExplorerPlugin::addExistingFiles(FolderNode *folderNode, const QStringList &filePaths)//ROOPAK -END
+//{
+//    if (!folderNode) // can happen when project is not yet parsed
+//        return;
 
-    const QString dir = directoryFor(folderNode);
-    QStringList fileNames = filePaths;
-    QStringList notAdded;
-    folderNode->addFiles(fileNames, &notAdded);
+//    const QString dir = directoryFor(folderNode);
+//    QStringList fileNames = filePaths;
+//    QStringList notAdded;
+//    folderNode->addFiles(fileNames, &notAdded);
 
-    if (!notAdded.isEmpty()) {
-        QString message = tr("Could not add following files to project %1:").arg(folderNode->projectNode()->displayName());
-        message += QLatin1Char('\n');
-        QString files = notAdded.join(QString(QLatin1Char('\n')));
-        QMessageBox::warning(ICore::mainWindow(), tr("Adding Files to Project Failed"),
-                             message + files);
-        foreach (const QString &file, notAdded)
-            fileNames.removeOne(file);
-    }
+//    if (!notAdded.isEmpty()) {
+//        QString message = tr("Could not add following files to project %1:").arg(folderNode->projectNode()->displayName());
+//        message += QLatin1Char('\n');
+//        QString files = notAdded.join(QString(QLatin1Char('\n')));
+//        QMessageBox::warning(ICore::mainWindow(), tr("Adding Files to Project Failed"),
+//                             message + files);
+//        foreach (const QString &file, notAdded)
+//            fileNames.removeOne(file);
+//    }
 
-    VcsManager::promptToAdd(dir, fileNames);
-}
+//    VcsManager::promptToAdd(dir, fileNames);
+//}//ROOPAK - END
 
 void ProjectExplorerPlugin::removeProject()
 {
-    ProjectNode *subProjectNode = qobject_cast<ProjectNode*>(d->m_currentNode->projectNode());
-    ProjectNode *projectNode = qobject_cast<ProjectNode *>(subProjectNode->parentFolderNode());
-    if (projectNode) {
-//        RemoveFileDialog removeFileDialog(subProjectNode->path(), ICore::mainWindow());//ROOPAK - START
+//    ProjectNode *subProjectNode = qobject_cast<ProjectNode*>(d->m_currentNode->projectNode());//ROOPAK - START
+//    ProjectNode *projectNode = qobject_cast<ProjectNode *>(subProjectNode->parentFolderNode());
+//    if (projectNode) {
+//        RemoveFileDialog removeFileDialog(subProjectNode->path(), ICore::mainWindow());
 //        removeFileDialog.setDeleteFileVisible(false);
 //        if (removeFileDialog.exec() == QDialog::Accepted)
-//            projectNode->removeSubProjects(QStringList() << subProjectNode->path());//ROOPAK - END
-    }
+//            projectNode->removeSubProjects(QStringList() << subProjectNode->path());
+//    }//ROOPAK - END
 }
 
 void ProjectExplorerPlugin::openFile()
 {
-    QTC_ASSERT(d->m_currentNode, return);
-    EditorManager::openEditor(d->m_currentNode->path());
+//    QTC_ASSERT(d->m_currentNode, return);//ROOPAK
+//    EditorManager::openEditor(d->m_currentNode->path());//ROOPAK
 }
 
 void ProjectExplorerPlugin::searchOnFileSystem()
 {
-    QTC_ASSERT(d->m_currentNode, return);
-    TextEditor::FindInFiles::findOnFileSystem(pathFor(d->m_currentNode));
+//    QTC_ASSERT(d->m_currentNode, return);//ROOPAK
+//    TextEditor::FindInFiles::findOnFileSystem(pathFor(d->m_currentNode));//ROOPAK
 }
 
 void ProjectExplorerPlugin::showInGraphicalShell()
 {
-    QTC_ASSERT(d->m_currentNode, return);
-    Core::FileUtils::showInGraphicalShell(Core::ICore::mainWindow(),
-                                                    pathFor(d->m_currentNode));
+//    QTC_ASSERT(d->m_currentNode, return);//ROOPAK
+//    Core::FileUtils::showInGraphicalShell(Core::ICore::mainWindow(),
+//                                                    pathFor(d->m_currentNode));//ROOPAK
 }
 
 void ProjectExplorerPlugin::openTerminalHere()
 {
-    QTC_ASSERT(d->m_currentNode, return);
-    Core::FileUtils::openTerminal(directoryFor(d->m_currentNode));
+//    QTC_ASSERT(d->m_currentNode, return);//ROOPAK
+//    Core::FileUtils::openTerminal(directoryFor(d->m_currentNode));//ROOPAK
 }
 
 void ProjectExplorerPlugin::removeFile()
 {
-    QTC_ASSERT(d->m_currentNode && d->m_currentNode->nodeType() == FileNodeType, return);
+//    QTC_ASSERT(d->m_currentNode && d->m_currentNode->nodeType() == FileNodeType, return);//ROOPAK - START
 
-    FileNode *fileNode = qobject_cast<FileNode*>(d->m_currentNode);
+//    FileNode *fileNode = qobject_cast<FileNode*>(d->m_currentNode);
 
-//    QString filePath = d->m_currentNode->path();  //ROOPAK - START
+//    QString filePath = d->m_currentNode->path();
 //    RemoveFileDialog removeFileDialog(filePath, ICore::mainWindow());
 
 //    if (removeFileDialog.exec() == QDialog::Accepted) {
@@ -2975,36 +2975,36 @@ void ProjectExplorerPlugin::removeFile()
 
 void ProjectExplorerPlugin::deleteFile()
 {
-    QTC_ASSERT(d->m_currentNode && d->m_currentNode->nodeType() == FileNodeType, return);
+//    QTC_ASSERT(d->m_currentNode && d->m_currentNode->nodeType() == FileNodeType, return);//ROOPAK - START
 
-    FileNode *fileNode = qobject_cast<FileNode*>(d->m_currentNode);
+//    FileNode *fileNode = qobject_cast<FileNode*>(d->m_currentNode);
 
-    QString filePath = d->m_currentNode->path();
-    QMessageBox::StandardButton button =
-            QMessageBox::question(ICore::mainWindow(),
-                                  tr("Delete File"),
-                                  tr("Delete %1 from file system?").arg(filePath),
-                                  QMessageBox::Yes | QMessageBox::No);
-    if (button != QMessageBox::Yes)
-        return;
+//    QString filePath = d->m_currentNode->path();
+//    QMessageBox::StandardButton button =
+//            QMessageBox::question(ICore::mainWindow(),
+//                                  tr("Delete File"),
+//                                  tr("Delete %1 from file system?").arg(filePath),
+//                                  QMessageBox::Yes | QMessageBox::No);
+//    if (button != QMessageBox::Yes)
+//        return;
 
-    FolderNode *folderNode = fileNode->parentFolderNode();
-    QTC_ASSERT(folderNode, return);
+//    FolderNode *folderNode = fileNode->parentFolderNode();
+//    QTC_ASSERT(folderNode, return);
 
-    folderNode->deleteFiles(QStringList(filePath));
+//    folderNode->deleteFiles(QStringList(filePath));
 
-    DocumentManager::expectFileChange(filePath);
-    if (IVersionControl *vc =
-            VcsManager::findVersionControlForDirectory(QFileInfo(filePath).absolutePath())) {
-        vc->vcsDelete(filePath);
-    }
-    QFile file(filePath);
-    if (file.exists()) {
-        if (!file.remove())
-            QMessageBox::warning(ICore::mainWindow(), tr("Deleting File Failed"),
-                                 tr("Could not delete file %1.").arg(filePath));
-    }
-    DocumentManager::unexpectFileChange(filePath);
+//    DocumentManager::expectFileChange(filePath);
+//    if (IVersionControl *vc =
+//            VcsManager::findVersionControlForDirectory(QFileInfo(filePath).absolutePath())) {
+//        vc->vcsDelete(filePath);
+//    }
+//    QFile file(filePath);
+//    if (file.exists()) {
+//        if (!file.remove())
+//            QMessageBox::warning(ICore::mainWindow(), tr("Deleting File Failed"),
+//                                 tr("Could not delete file %1.").arg(filePath));
+//    }
+//    DocumentManager::unexpectFileChange(filePath);//ROOPAK - END
 }
 
 void ProjectExplorerPlugin::renameFile()
@@ -3020,26 +3020,26 @@ void ProjectExplorerPlugin::renameFile()
 //    }//ROOPAK - END
 }
 
-void ProjectExplorerPlugin::renameFile(Node *node, const QString &to)
-{
-    QString orgFilePath = QFileInfo(node->path()).absoluteFilePath();
-    QString dir = QFileInfo(orgFilePath).absolutePath();
-    QString newFilePath = dir + QLatin1Char('/') + to;
+//void ProjectExplorerPlugin::renameFile(Node *node, const QString &to)//ROOPAK - START
+//{
+//    QString orgFilePath = QFileInfo(node->path()).absoluteFilePath();
+//    QString dir = QFileInfo(orgFilePath).absolutePath();
+//    QString newFilePath = dir + QLatin1Char('/') + to;
 
-    if (Core::FileUtils::renameFile(orgFilePath, newFilePath)) {
-        // Tell the project plugin about rename
-        FolderNode *folderNode = node->parentFolderNode();
-        if (!folderNode->renameFile(orgFilePath, newFilePath)) {
-            QMessageBox::warning(ICore::mainWindow(), tr("Project Editing Failed"),
-                                 tr("The file %1 was renamed to %2, but the project file %3 could not be automatically changed.")
-                                 .arg(orgFilePath)
-                                 .arg(newFilePath)
-                                 .arg(folderNode->projectNode()->displayName()));
-        } else {
-            setCurrent(SessionManager::projectForFile(newFilePath), newFilePath, 0);
-        }
-    }
-}
+//    if (Core::FileUtils::renameFile(orgFilePath, newFilePath)) {
+//        // Tell the project plugin about rename
+//        FolderNode *folderNode = node->parentFolderNode();
+//        if (!folderNode->renameFile(orgFilePath, newFilePath)) {
+//            QMessageBox::warning(ICore::mainWindow(), tr("Project Editing Failed"),
+//                                 tr("The file %1 was renamed to %2, but the project file %3 could not be automatically changed.")
+//                                 .arg(orgFilePath)
+//                                 .arg(newFilePath)
+//                                 .arg(folderNode->projectNode()->displayName()));
+//        } else {
+//            setCurrent(SessionManager::projectForFile(newFilePath), newFilePath, 0);
+//        }
+//    }
+//}//ROOPAK - END
 
 void ProjectExplorerPlugin::setStartupProject()
 {
@@ -3048,7 +3048,7 @@ void ProjectExplorerPlugin::setStartupProject()
 
 void ProjectExplorerPlugin::populateOpenWithMenu()
 {
-    DocumentManager::populateOpenWithMenu(d->m_openWithMenu, currentNode()->path());
+//    DocumentManager::populateOpenWithMenu(d->m_openWithMenu, currentNode()->path());//ROOPAK
 }
 
 void ProjectExplorerPlugin::updateSessionMenu()

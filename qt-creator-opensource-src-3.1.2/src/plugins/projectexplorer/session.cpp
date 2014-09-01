@@ -33,7 +33,7 @@
 #include "projectexplorer.h"
 //#include "nodesvisitor.h"//ROOPAK
 #include "editorconfiguration.h"
-#include "projectnodes.h"
+//#include "projectnodes.h"//ROOPAK
 
 #include <coreplugin/icore.h>
 #include <coreplugin/imode.h>
@@ -98,7 +98,7 @@ public:
     void dependencies(const QString &proName, QStringList &result) const;
 
 public:
-    SessionNode *m_sessionNode;
+//    SessionNode *m_sessionNode;//ROOPAK
     QString m_sessionName;
     bool m_virginSession;
 
@@ -125,7 +125,7 @@ SessionManager::SessionManager(QObject *parent)
     m_instance = this;
     d = new SessionManagerPrivate;
 
-    d->m_sessionNode = new SessionNode(this);
+//    d->m_sessionNode = new SessionNode(this);//ROOPAK
 
     connect(ModeManager::instance(), SIGNAL(currentModeChanged(Core::IMode*)),
             this, SLOT(saveActiveMode(Core::IMode*)));
@@ -296,7 +296,7 @@ void SessionManager::addProjects(const QList<Project*> &projects)
         if (!d->m_projects.contains(pro)) {
             clearedList.append(pro);
             d->m_projects.append(pro);
-            d->m_sessionNode->addProjectNodes(QList<ProjectNode *>() << pro->rootProjectNode());
+//            d->m_sessionNode->addProjectNodes(QList<ProjectNode *>() << pro->rootProjectNode());//ROOPAK
 
             connect(pro, SIGNAL(fileListChanged()),
                     m_instance, SLOT(clearProjectFileCache()));
@@ -497,46 +497,46 @@ QList<Project *> SessionManager::projectOrder(Project *project)
     return result;
 }
 
-Project *SessionManager::projectForNode(Node *node)
-{
-    if (!node)
-        return 0;
+//Project *SessionManager::projectForNode(Node *node)//ROOPAK - START
+//{
+//    if (!node)
+//        return 0;
 
-    FolderNode *rootProjectNode = qobject_cast<FolderNode*>(node);
-    if (!rootProjectNode)
-        rootProjectNode = node->parentFolderNode();
+//    FolderNode *rootProjectNode = qobject_cast<FolderNode*>(node);
+//    if (!rootProjectNode)
+//        rootProjectNode = node->parentFolderNode();
 
-    while (rootProjectNode && rootProjectNode->parentFolderNode() != d->m_sessionNode)
-        rootProjectNode = rootProjectNode->parentFolderNode();
+//    while (rootProjectNode && rootProjectNode->parentFolderNode() != d->m_sessionNode)
+//        rootProjectNode = rootProjectNode->parentFolderNode();
 
-    Q_ASSERT(rootProjectNode);
+//    Q_ASSERT(rootProjectNode);
 
-    foreach (Project *p, d->m_projects)
-        if (p->rootProjectNode() == rootProjectNode)
-            return p;
+//    foreach (Project *p, d->m_projects)
+//        if (p->rootProjectNode() == rootProjectNode)
+//            return p;
 
-    return 0;
-}
+//    return 0;
+//}
 
-Node *SessionManager::nodeForFile(const QString &fileName, Project *project)
-{
-    Node *node = 0;
-    if (!project)
-        project = projectForFile(fileName);
+//Node *SessionManager::nodeForFile(const QString &fileName, Project *project)
+//{
+//    Node *node = 0;
+//    if (!project)
+//        project = projectForFile(fileName);
 
-    if (project) {
-//        FindNodesForFileVisitor findNodes(fileName);//ROOPAK - START
-//        project->rootProjectNode()->accept(&findNodes);
+//    if (project) {
+////        FindNodesForFileVisitor findNodes(fileName);//ROOPAK - START
+////        project->rootProjectNode()->accept(&findNodes);
 
-//        foreach (Node *n, findNodes.nodes()) {
-//            // prefer file nodes
-//            if (!node || (node->nodeType() != FileNodeType && n->nodeType() == FileNodeType))
-//                node = n;
-//        }//ROOPAK - END
-    }
+////        foreach (Node *n, findNodes.nodes()) {
+////            // prefer file nodes
+////            if (!node || (node->nodeType() != FileNodeType && n->nodeType() == FileNodeType))
+////                node = n;
+////        }//ROOPAK - END
+//    }
 
-    return node;
-}
+//    return node;
+//}//ROOPAK - END
 
 Project *SessionManager::projectForFile(const QString &fileName)
 {
@@ -637,7 +637,7 @@ void SessionManager::removeProjects(QList<Project *> remove)
 
         if (debug)
             qDebug() << "SessionManager - emitting projectRemoved(" << pro->displayName() << ")";
-        d->m_sessionNode->removeProjectNodes(QList<ProjectNode *>() << pro->rootProjectNode());
+//        d->m_sessionNode->removeProjectNodes(QList<ProjectNode *>() << pro->rootProjectNode());//ROOPAK
         emit m_instance->projectRemoved(pro);
         delete pro;
     }
@@ -957,10 +957,10 @@ QString SessionManager::lastSession()
     return ICore::settings()->value(QLatin1String("ProjectExplorer/StartupSession")).toString();
 }
 
-SessionNode *SessionManager::sessionNode()
-{
-    return d->m_sessionNode;
-}
+//SessionNode *SessionManager::sessionNode()//ROOPAK - START
+//{
+//    return d->m_sessionNode;
+//}//ROOPAK - END
 
 void SessionManager::reportProjectLoadingProgress()
 {
@@ -983,18 +983,18 @@ void SessionManager::projectDisplayNameChanged()
 {
     Project *pro = qobject_cast<Project*>(m_instance->sender());
     if (pro) {
-        Node *currentNode = 0;
-        if (ProjectExplorerPlugin::currentProject() == pro)
-            currentNode = ProjectExplorerPlugin::instance()->currentNode();
+//        Node *currentNode = 0;//ROOPAK - START
+//        if (ProjectExplorerPlugin::currentProject() == pro)
+//            currentNode = ProjectExplorerPlugin::instance()->currentNode();
 
-        // Fix node sorting
-        QList<ProjectNode *> nodes;
-        nodes << pro->rootProjectNode();
-        d->m_sessionNode->removeProjectNodes(nodes);
-        d->m_sessionNode->addProjectNodes(nodes);
+//        // Fix node sorting
+//        QList<ProjectNode *> nodes;
+//        nodes << pro->rootProjectNode();
+//        d->m_sessionNode->removeProjectNodes(nodes);
+//        d->m_sessionNode->addProjectNodes(nodes);
 
-        if (currentNode)
-            ProjectExplorerPlugin::instance()->setCurrentNode(currentNode);
+//        if (currentNode)
+//            ProjectExplorerPlugin::instance()->setCurrentNode(currentNode);//ROOPAK - END
 
         emit m_instance->projectDisplayNameChanged(pro);
     }

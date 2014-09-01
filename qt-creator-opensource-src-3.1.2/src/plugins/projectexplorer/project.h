@@ -48,7 +48,7 @@ namespace ProjectExplorer {
 class IProjectManager;
 class EditorConfiguration;
 //class ProjectImporter;
-class ProjectNode;
+//class ProjectNode;//ROOPAK
 class Kit;
 class KitMatcher;
 class NamedWidget;
@@ -102,7 +102,7 @@ public:
     void saveSettings();
     bool restoreSettings();
 
-    virtual ProjectNode *rootProjectNode() const = 0;
+//    virtual ProjectNode *rootProjectNode() const = 0;//ROOPAK
 
     enum FilesMode { AllFiles, ExcludeGeneratedFiles };
     virtual QStringList files(FilesMode fileMode) const = 0;

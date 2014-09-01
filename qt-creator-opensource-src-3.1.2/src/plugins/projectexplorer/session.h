@@ -53,8 +53,8 @@ class IEditor;
 namespace ProjectExplorer {
 
 class Project;
-class Node;
-class SessionNode;
+//class Node;//ROOPAK
+//class SessionNode;//ROOPAK
 
 class PROJECTEXPLORER_EXPORT SessionManager : public QObject
 {
@@ -113,10 +113,10 @@ public:
     // NBS rewrite projectOrder (dependency management)
     static QList<Project *> projectOrder(Project *project = 0);
 
-    static SessionNode *sessionNode();
+//    static SessionNode *sessionNode();//ROOPAK - START
 
-    static Project *projectForNode(ProjectExplorer::Node *node);
-    static Node *nodeForFile(const QString &fileName, Project *project = 0);
+//    static Project *projectForNode(ProjectExplorer::Node *node);
+//    static Node *nodeForFile(const QString &fileName, Project *project = 0);//ROOPAK - END
     static Project *projectForFile(const QString &fileName);
 
     static QStringList projectsForSessionName(const QString &session);
