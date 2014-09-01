@@ -29,7 +29,7 @@
 
 #include "deployconfiguration.h"
 
-#include "buildsteplist.h"
+//#include "buildsteplist.h"//ROOPAK
 #include "kitinformation.h"
 #include "project.h"
 #include "projectexplorer.h"
@@ -37,26 +37,30 @@
 
 #include <extensionsystem/pluginmanager.h>
 
+//ADDED BY ROOPAK
+#include <QDebug>
+//ROOPAK - END
+
 using namespace ProjectExplorer;
 
 const char BUILD_STEP_LIST_COUNT[] = "ProjectExplorer.BuildConfiguration.BuildStepListCount";
 const char BUILD_STEP_LIST_PREFIX[] = "ProjectExplorer.BuildConfiguration.BuildStepList.";
 
 DeployConfiguration::DeployConfiguration(Target *target, const Core::Id id) :
-    ProjectConfiguration(target, id),
-    m_stepList(0)
+    ProjectConfiguration(target, id)/*,
+    m_stepList(0)*///ROOPAK
 {
     Q_ASSERT(target);
-    m_stepList = new BuildStepList(this, Core::Id(Constants::BUILDSTEPS_DEPLOY));
-    //: Display name of the deploy build step list. Used as part of the labels in the project window.
-    m_stepList->setDefaultDisplayName(tr("Deploy"));
+//    m_stepList = new BuildStepList(this, Core::Id(Constants::BUILDSTEPS_DEPLOY));//ROOPAK
+//    //: Display name of the deploy build step list. Used as part of the labels in the project window.
+//    m_stepList->setDefaultDisplayName(tr("Deploy"));//ROOPAK
     //: Default DeployConfiguration display name
     setDefaultDisplayName(tr("Deploy locally"));
 }
 
 DeployConfiguration::DeployConfiguration(Target *target, DeployConfiguration *source) :
-    ProjectConfiguration(target, source),
-    m_stepList(0)
+    ProjectConfiguration(target, source)/*,
+    m_stepList(0)*///ROOPAK
 {
     Q_ASSERT(target);
     // Do not clone stepLists here, do that in the derived constructor instead
@@ -66,19 +70,19 @@ DeployConfiguration::DeployConfiguration(Target *target, DeployConfiguration *so
 
 DeployConfiguration::~DeployConfiguration()
 {
-    delete m_stepList;
+//    delete m_stepList;//ROOPAK
 }
 
-BuildStepList *DeployConfiguration::stepList() const
-{
-    return m_stepList;
-}
+//BuildStepList *DeployConfiguration::stepList() const//ROOPAK - START
+//{
+//    return m_stepList;
+//}//ROOPAK - END
 
 QVariantMap DeployConfiguration::toMap() const
 {
     QVariantMap map(ProjectConfiguration::toMap());
     map.insert(QLatin1String(BUILD_STEP_LIST_COUNT), 1);
-    map.insert(QLatin1String(BUILD_STEP_LIST_PREFIX) + QLatin1String("0"), m_stepList->toMap());
+//    map.insert(QLatin1String(BUILD_STEP_LIST_PREFIX) + QLatin1String("0"), m_stepList->toMap());//ROOPAK
     return map;
 }
 
@@ -107,22 +111,22 @@ bool DeployConfiguration::fromMap(const QVariantMap &map)
         return false;
     QVariantMap data = map.value(QLatin1String(BUILD_STEP_LIST_PREFIX) + QLatin1String("0")).toMap();
     if (!data.isEmpty()) {
-        delete m_stepList;
-        m_stepList = new BuildStepList(this, data);
-        if (m_stepList->isNull()) {
-            qWarning() << "Failed to restore deploy step list";
-            delete m_stepList;
-            m_stepList = 0;
-            return false;
-        }
-        m_stepList->setDefaultDisplayName(tr("Deploy"));
+//        delete m_stepList;//ROOPAK - START
+//        m_stepList = new BuildStepList(this, data);
+//        if (m_stepList->isNull()) {
+//            qWarning() << "Failed to restore deploy step list";
+//            delete m_stepList;
+//            m_stepList = 0;
+//            return false;
+//        }
+//        m_stepList->setDefaultDisplayName(tr("Deploy"));//ROOPAK - END
     } else {
         qWarning() << "No data for deploy step list found!";
         return false;
     }
 
     // We assume that we hold the deploy list
-    Q_ASSERT(m_stepList && m_stepList->id() == ProjectExplorer::Constants::BUILDSTEPS_DEPLOY);
+//    Q_ASSERT(m_stepList && m_stepList->id() == ProjectExplorer::Constants::BUILDSTEPS_DEPLOY);//ROOPAK
 
     return true;
 }
@@ -136,9 +140,9 @@ void DeployConfiguration::cloneSteps(DeployConfiguration *source)
 {
     if (source == this)
         return;
-    delete m_stepList;
-    m_stepList = new BuildStepList(this, source->stepList());
-    m_stepList->cloneSteps(source->stepList());
+//    delete m_stepList;//ROOPAK - START
+//    m_stepList = new BuildStepList(this, source->stepList());
+//    m_stepList->cloneSteps(source->stepList());//ROOPAK -END
 }
 
 ///

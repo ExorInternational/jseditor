@@ -10,7 +10,7 @@ SUBDIRS   = \
 #    qmldebug \ #ROOPAK
     qmleditorwidgets \
 #    glsl \ #ROOPAK
-    ssh \
+#    ssh \#ROOPAK
 #    zeroconf #ROOPAK
 
 for(l, SUBDIRS) {

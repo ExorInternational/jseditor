@@ -32,7 +32,7 @@
 
 #include <QObject>
 
-#include <projectexplorer/applicationlauncher.h>
+//#include <projectexplorer/applicationlauncher.h>//#ROOPAK
 
 namespace QmlJSEditor {
 namespace Internal {
@@ -53,7 +53,7 @@ public slots:
 private:
     QString m_qmlViewerDefaultPath;
 
-    ProjectExplorer::ApplicationLauncher m_applicationLauncher;
+//    ProjectExplorer::ApplicationLauncher m_applicationLauncher;//ROOPAK
 
 };
 

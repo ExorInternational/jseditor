@@ -28,7 +28,7 @@
 ****************************************************************************/
 #include "idevice.h"
 
-#include "devicemanager.h"
+//#include "devicemanager.h"//ROOPAK
 //#include "deviceprocesslist.h"//ROOPAK
 
 #include <ssh/sshconnection.h>
@@ -350,12 +350,14 @@ QVariantMap IDevice::toMap() const
 
 IDevice::Ptr IDevice::sharedFromThis()
 {
-    return DeviceManager::instance()->fromRawPointer(this);
+//    return DeviceManager::instance()->fromRawPointer(this);//ROOPAK
+    IDevice::Ptr ptr; return ptr;//ROOPAK
 }
 
 IDevice::ConstPtr IDevice::sharedFromThis() const
 {
-    return DeviceManager::instance()->fromRawPointer(this);
+//    return DeviceManager::instance()->fromRawPointer(this);
+    IDevice::Ptr ptr; return ptr;//ROOPAK
 }
 
 QString IDevice::deviceStateToString() const

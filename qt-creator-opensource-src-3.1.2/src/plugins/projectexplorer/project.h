@@ -44,7 +44,7 @@ class Context;
 
 namespace ProjectExplorer {
 
-class BuildInfo;
+//class BuildInfo;//ROOPAK
 class IProjectManager;
 class EditorConfiguration;
 //class ProjectImporter;
@@ -133,7 +133,7 @@ public:
 
     virtual bool needsSpecialDeployment() const;
 
-    void setup(QList<const BuildInfo *> infoList);
+//    void setup(QList<const BuildInfo *> infoList);//ROOPAK
 
 signals:
     void displayNameChanged();

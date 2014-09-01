@@ -44,6 +44,10 @@
 #include <QDir>
 #include <QSettings>
 
+//ADDED BY ROOPAK
+#include <QDebug>
+//ROOPAK - END
+
 static const char TOOLCHAIN_DATA_KEY[] = "ToolChain.";
 static const char TOOLCHAIN_COUNT_KEY[] = "ToolChain.Count";
 static const char TOOLCHAIN_FILE_VERSION_KEY[] = "Version";

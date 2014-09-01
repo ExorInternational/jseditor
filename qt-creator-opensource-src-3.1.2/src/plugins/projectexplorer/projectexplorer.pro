@@ -4,17 +4,17 @@ include(../../qtcreatorplugin.pri)
 #include(customwizard/customwizard.pri)//ROOPAK
 HEADERS += projectexplorer.h \
     abi.h \
-    abiwidget.h \
-    ansifilterparser.h \
-    buildinfo.h \
+#    abiwidget.h \#ROOPAK
+#    ansifilterparser.h \#ROOPAK
+#    buildinfo.h \#ROOPAK
 #    clangparser.h \#ROOPAK
-    environmentaspect.h \
+#    environmentaspect.h \#ROOPAK
 #    environmentaspectwidget.h \#ROOPAK
 #    gcctoolchain.h \#ROOPAK
-    importwidget.h \
-    localapplicationrunconfiguration.h \
+#    importwidget.h \#ROOPAK
+#    localapplicationrunconfiguration.h \#ROOPAK
 #    localenvironmentaspect.h \#ROOPAK
-    osparser.h \
+#    osparser.h \ #ROOPAK
     projectexplorer_export.h \
 #    projectimporter.h \#ROOPAK
 #    projectwindow.h \#ROOPAK
@@ -31,38 +31,38 @@ HEADERS += projectexplorer.h \
 #    kitmanagerconfigwidget.h \#ROOPAK
 #    kitmodel.h \#ROOPAK
 #    kitoptionspage.h \#ROOPAK
-    buildmanager.h \
-    buildsteplist.h \
+#    buildmanager.h \#ROOPAK
+#    buildsteplist.h \#ROOPAK
 #    compileoutputwindow.h \#ROOPAK
     deployconfiguration.h \
-    deployconfigurationmodel.h \
+#    deployconfigurationmodel.h \ #ROOPAK
     namedwidget.h \
     target.h \
 #    targetsettingspanel.h \#ROOPAK
     task.h \
-    itaskhandler.h \
+#    itaskhandler.h \#ROOPAK
 #    copytaskhandler.h \#ROOPAK
 #    showineditortaskhandler.h \ #ROOPAK
 #    showoutputtaskhandler.h \#ROOPAK
 #    vcsannotatetaskhandler.h \#ROOPAK
 #    taskwindow.h \//ROOPAK
-    taskmodel.h \
+#    taskmodel.h \#ROOPAK
 #    projectfilewizardextension.h \#ROOPAK
     session.h \
 #    dependenciespanel.h \#ROOPAK
 #    allprojectsfilter.h \#ROOPAK
     ioutputparser.h \
     projectconfiguration.h \
-    gnumakeparser.h \
+#    gnumakeparser.h \#ROOPAK
     projectexplorerconstants.h \
-    projectexplorersettings.h \
+#    projectexplorersettings.h \#ROOPAK
 #    corelistenercheckingforrunningbuild.h \#ROOPAK
     project.h \
 #    pluginfilefactory.h \#ROOPAK
     iprojectmanager.h \
 #    currentprojectfilter.h \#ROOPAK
     allprojectsfind.h \
-    buildstep.h \
+#    buildstep.h \#ROOPAK
     buildconfiguration.h \
     iprojectproperties.h \
 #    buildsettingspropertiespage.h \#ROOPAK
@@ -71,7 +71,7 @@ HEADERS += projectexplorer.h \
     editorconfiguration.h \
 #    editorsettingspropertiespage.h \#ROOPAK
     runconfiguration.h \
-    applicationlauncher.h \
+#    applicationlauncher.h \#ROOPAK
 #    runsettingspropertiespage.h \#ROOPAK
 #    projecttreewidget.h \ #ROOPAK
 #    foldernavigationwidget.h \#ROOPAK
@@ -81,26 +81,26 @@ HEADERS += projectexplorer.h \
 #    projectwizardpage.h \#ROOPAK
 #    buildstepspage.h \#ROOPAK
     nodesvisitor.h \
-    projectmodels.h \
+#    projectmodels.h \#ROOPAK
     currentprojectfind.h \
     toolchain.h \
-    toolchainconfigwidget.h \
+#    toolchainconfigwidget.h \#ROOPAK
     toolchainmanager.h \
 #    toolchainoptionspage.h \#ROOPAK
 #    cesdkhandler.h \#ROOPAK
-    gccparser.h \
+#    gccparser.h \#ROOPAK
 #    projectexplorersettingspage.h \#ROOPAK
-    baseprojectwizarddialog.h \
-    miniprojecttargetselector.h \
-    targetselector.h \
+#    baseprojectwizarddialog.h \#ROOPAK
+#    miniprojecttargetselector.h \#ROOPAK
+#    targetselector.h \#ROOPAK
 #    targetsettingswidget.h \ #ROOPAK
 #    doubletabwidget.h \#ROOPAK
 #    buildenvironmentwidget.h \ #ROOPAK
-    ldparser.h \
-    linuxiccparser.h \
-    runconfigurationmodel.h \
-    buildconfigurationmodel.h \
-    processparameters.h \
+#    ldparser.h \#ROOPAK
+#    linuxiccparser.h \#ROOPAK
+#    runconfigurationmodel.h \#ROOPAK
+#    buildconfigurationmodel.h \#ROOPAK
+#    processparameters.h \#ROOPAK
 #    abstractprocessstep.h \#ROOPAK
     taskhub.h \
 #    localapplicationruncontrol.h \#ROOPAK
@@ -109,17 +109,17 @@ HEADERS += projectexplorer.h \
 #    gcctoolchainfactories.h \#ROOPAK
 #    appoutputpane.h \#ROOPAK
 #    codestylesettingspropertiespage.h \ #ROOPAK
-    settingsaccessor.h \
+#    settingsaccessor.h \#ROOPAK
 #    environmentitemswidget.h \#ROOPAK
-    deployablefile.h \
-    devicesupport/idevice.h \
+#    deployablefile.h \#ROOPAK
+#    devicesupport/idevice.h \#ROOPAK
 #    devicesupport/desktopdevice.h \#ROOPAK
 #    devicesupport/desktopdevicefactory.h \#ROOPAK
-    devicesupport/idevicewidget.h \
-    devicesupport/idevicefactory.h \
+#    devicesupport/idevicewidget.h \#ROOPAK
+#    devicesupport/idevicefactory.h \#ROOPAK
 #    devicesupport/desktopdeviceprocess.h \ #ROOPAK
 #    devicesupport/devicecheckbuildstep.h \#ROOPAK
-    devicesupport/devicemanager.h \
+#    devicesupport/devicemanager.h \#ROOPAK
 #    devicesupport/devicemanagermodel.h \ #ROOPAK
 #    devicesupport/devicefactoryselectiondialog.h \#ROOPAK
 #    devicesupport/deviceprocess.h \ #ROOPAK
@@ -136,28 +136,28 @@ HEADERS += projectexplorer.h \
 #    devicesupport/sshdeviceprocesslist.h \#ROOPAK
 #    devicesupport/desktopdeviceconfigurationwidget.h \#ROOPAK
 #    devicesupport/desktopprocesssignaloperation.h \#ROOPAK
-    deploymentdata.h \
-    buildtargetinfo.h \
+#    deploymentdata.h \#ROOPAK
+#    buildtargetinfo.h \#ROOPAK
 #    customtoolchain.h \#ROOPAK
-    projectmacroexpander.h \
-    customparser.h \
+#    projectmacroexpander.h \#ROOPAK
+#    customparser.h \#ROOPAK
 #    customparserconfigdialog.h \#ROOPAK
-    ipotentialkit.h \
-    selectablefilesmodel.h \
-    xcodebuildparser.h
+#    ipotentialkit.h \#ROOPAK
+#    selectablefilesmodel.h \#ROOPAK
+#    xcodebuildparser.h#ROOPAK
 
 SOURCES += projectexplorer.cpp \
     abi.cpp \
-    abiwidget.cpp \
-    ansifilterparser.cpp \
+#    abiwidget.cpp \#ROOPAK
+#    ansifilterparser.cpp \#ROOPAK
 #    clangparser.cpp \#ROOPAK
-    environmentaspect.cpp \
+#    environmentaspect.cpp \#ROOPAK
 #    environmentaspectwidget.cpp \#ROOPAK
 #    gcctoolchain.cpp \#ROOPAK
-    importwidget.cpp \
-    localapplicationrunconfiguration.cpp \
+#    importwidget.cpp \#ROOPAK
+#    localapplicationrunconfiguration.cpp \#ROOPAK
 #    localenvironmentaspect.cpp \#ROOPAK
-    osparser.cpp \
+#    osparser.cpp \#ROOPAK
 #    projectimporter.cpp \#ROOPAK
 #    projectwindow.cpp \#ROOPAK
 #    removetaskhandler.cpp \#ROOPAK
@@ -173,24 +173,24 @@ SOURCES += projectexplorer.cpp \
 #    kitmanagerconfigwidget.cpp \ #ROOPAK
 #    kitmodel.cpp \#ROOPAK
 #    kitoptionspage.cpp \#ROOPAK
-    buildmanager.cpp \
-    buildsteplist.cpp \
+#    buildmanager.cpp \#ROOPAK
+#    buildsteplist.cpp \#ROOPAK
 #    compileoutputwindow.cpp \#ROOPAK
     deployconfiguration.cpp \
-    deployconfigurationmodel.cpp \
+#    deployconfigurationmodel.cpp \#ROOPAK
     namedwidget.cpp \
     target.cpp \
 #    targetsettingspanel.cpp \#ROOPAK
     ioutputparser.cpp \
     projectconfiguration.cpp \
-    gnumakeparser.cpp \
+#    gnumakeparser.cpp \#ROOPAK
     task.cpp \
 #    copytaskhandler.cpp \#ROOPAK
 #    showineditortaskhandler.cpp \ #ROOPAK
 #    showoutputtaskhandler.cpp \#ROOPAK
 #    vcsannotatetaskhandler.cpp \#ROOPAK
 #    taskwindow.cpp \//ROOPAK
-    taskmodel.cpp \
+#    taskmodel.cpp \#ROOPAK
 #    projectfilewizardextension.cpp \#ROOPAK
     session.cpp \
 #    dependenciespanel.cpp \#ROOPAK
@@ -199,7 +199,7 @@ SOURCES += projectexplorer.cpp \
     allprojectsfind.cpp \
     project.cpp \
 #    pluginfilefactory.cpp \#ROOPAK
-    buildstep.cpp \
+#    buildstep.cpp \#ROOPAK
     buildconfiguration.cpp \
 #    buildsettingspropertiespage.cpp \#ROOPAK
 #    environmentwidget.cpp \#ROOPAK
@@ -208,7 +208,7 @@ SOURCES += projectexplorer.cpp \
     editorconfiguration.cpp \
 #    editorsettingspropertiespage.cpp \#ROOPAK
     runconfiguration.cpp \
-    applicationlauncher.cpp \
+#    applicationlauncher.cpp \#ROOPAK
 #    runsettingspropertiespage.cpp \#ROOPAK
 #    projecttreewidget.cpp \#ROOPAK
 #    foldernavigationwidget.cpp \#ROOPAK
@@ -218,40 +218,40 @@ SOURCES += projectexplorer.cpp \
 #    projectwizardpage.cpp \#ROOPAK
 #    buildstepspage.cpp \#ROOPAK
     nodesvisitor.cpp \
-    projectmodels.cpp \
+#    projectmodels.cpp \#ROOPAK
     currentprojectfind.cpp \
     toolchain.cpp \
-    toolchainconfigwidget.cpp \
+#    toolchainconfigwidget.cpp \#ROOPAK
     toolchainmanager.cpp \
 #    toolchainoptionspage.cpp \#ROOPAK
 #    cesdkhandler.cpp \#ROOPAK
-    gccparser.cpp \
+#    gccparser.cpp \#ROOPAK
 #    projectexplorersettingspage.cpp \#ROOPAK
 #    corelistenercheckingforrunningbuild.cpp \#ROOPAK
-    baseprojectwizarddialog.cpp \
-    miniprojecttargetselector.cpp \
-    targetselector.cpp \
+#    baseprojectwizarddialog.cpp \#ROOPAK
+#    miniprojecttargetselector.cpp \#ROOPAK
+#    targetselector.cpp \#ROOPAK
 #    targetsettingswidget.cpp \#ROOPAK
 #    doubletabwidget.cpp \#ROOPAK
 #    buildenvironmentwidget.cpp \ #ROOPAK
-    ldparser.cpp \
-    linuxiccparser.cpp \
-    runconfigurationmodel.cpp \
-    buildconfigurationmodel.cpp \
+#    ldparser.cpp \#ROOPAK
+#    linuxiccparser.cpp \#ROOPAK
+#    runconfigurationmodel.cpp \#ROOPAK
+#    buildconfigurationmodel.cpp \#ROOPAK
     taskhub.cpp \
-    processparameters.cpp \
+#    processparameters.cpp \#ROOPAK
 #    localapplicationruncontrol.cpp \#ROOPAK
 #    appoutputpane.cpp \#ROOPAK
 #    codestylesettingspropertiespage.cpp \#ROOPAK
-    settingsaccessor.cpp \
+#    settingsaccessor.cpp \#ROOPAK
 #    environmentitemswidget.cpp \#ROOPAK
-    devicesupport/idevice.cpp \
+#    devicesupport/idevice.cpp \#ROOPAK
 #    devicesupport/desktopdevice.cpp \ #ROOPAK
 #    devicesupport/desktopdevicefactory.cpp \#ROOPAK
-    devicesupport/idevicefactory.cpp \
+#    devicesupport/idevicefactory.cpp \#ROOPAK
 #    devicesupport/desktopdeviceprocess.cpp \ #ROOPAK
 #    devicesupport/devicecheckbuildstep.cpp \#ROOPAK
-    devicesupport/devicemanager.cpp \
+#    devicesupport/devicemanager.cpp \#ROOPAK
 #    devicesupport/devicemanagermodel.cpp \ #ROOPAK
 #    devicesupport/devicefactoryselectiondialog.cpp \#ROOPAK
 #    devicesupport/deviceprocess.cpp \#ROOPAK
@@ -268,14 +268,14 @@ SOURCES += projectexplorer.cpp \
 #    devicesupport/sshdeviceprocesslist.cpp \#ROOPAK
 #    devicesupport/desktopdeviceconfigurationwidget.cpp \#ROOPAK
 #    devicesupport/desktopprocesssignaloperation.cpp \ #ROOPAK
-    deployablefile.cpp \
+#    deployablefile.cpp \#ROOPAK
 #    customtoolchain.cpp \#ROOPAK
-    projectmacroexpander.cpp \
-    customparser.cpp \
+#    projectmacroexpander.cpp \#ROOPAK
+#    customparser.cpp \#ROOPAK
 #    customparserconfigdialog.cpp \#ROOPAK
-    ipotentialkit.cpp \
-    selectablefilesmodel.cpp \
-    xcodebuildparser.cpp
+#    ipotentialkit.cpp \#ROOPAK
+#    selectablefilesmodel.cpp \#ROOPAK
+#    xcodebuildparser.cpp#ROOPAK
 
 FORMS += \#processstep.ui \#ROOPAK
 #    editorsettingspropertiespage.ui \#ROOPAK
@@ -293,17 +293,17 @@ FORMS += \#processstep.ui \#ROOPAK
 
 WINSOURCES += \
     windebuginterface.cpp \
-    msvcparser.cpp \
-    msvctoolchain.cpp \
-    abstractmsvctoolchain.cpp \
-    wincetoolchain.cpp
+#    msvcparser.cpp \#ROOPAK
+#    msvctoolchain.cpp \#ROOPAK
+#    abstractmsvctoolchain.cpp \#ROOPAK
+#    wincetoolchain.cpp#ROOPAK
 
 WINHEADERS += \
     windebuginterface.h \
-    msvcparser.h \
-    msvctoolchain.h \
-    abstractmsvctoolchain.h \
-    wincetoolchain.h
+#    msvcparser.h \#ROOPAK
+#    msvctoolchain.h \#ROOPAK
+#    abstractmsvctoolchain.h \#ROOPAK
+#    wincetoolchain.h#ROOPAK
 
 win32|equals(TEST, 1) {
     SOURCES += $$WINSOURCES

@@ -41,9 +41,9 @@ namespace Utils { class AbstractMacroExpander; }
 namespace ProjectExplorer {
 
 class BuildConfiguration;
-class BuildInfo;
+//class BuildInfo;//ROOPAK
 class NamedWidget;
-class BuildStepList;
+//class BuildStepList;//ROOPAK
 class Kit;
 class Target;
 class IOutputParser;
@@ -72,7 +72,7 @@ public:
     void setUseSystemEnvironment(bool b);
 
     QList<Core::Id> knownStepLists() const;
-    BuildStepList *stepList(Core::Id id) const;
+//    BuildStepList *stepList(Core::Id id) const;//
 
     virtual bool fromMap(const QVariantMap &map);
     virtual QVariantMap toMap() const;
@@ -112,7 +112,7 @@ private:
 
     bool m_clearSystemEnvironment;
     QList<Utils::EnvironmentItem> m_userEnvironmentChanges;
-    QList<BuildStepList *> m_stepLists;
+//    QList<BuildStepList *> m_stepLists;//ROOPAK
     Utils::AbstractMacroExpander *m_macroExpander;
     Utils::FileName m_buildDirectory;
     Utils::FileName m_lastEmmitedBuildDirectory;
@@ -134,13 +134,13 @@ public:
     virtual int priority(const Target *parent) const = 0;
     // List of build information that can be used to create a new build configuration via
     // "Add Build Configuration" button.
-    virtual QList<BuildInfo *> availableBuilds(const Target *parent) const = 0;
+//    virtual QList<BuildInfo *> availableBuilds(const Target *parent) const = 0;//ROOPAK
 
     virtual int priority(const Kit *k, const QString &projectPath) const = 0;
     // List of build information that can be used to initially set up a new build configuration.
-    virtual QList<BuildInfo *> availableSetups(const Kit *k, const QString &projectPath) const = 0;
+//    virtual QList<BuildInfo *> availableSetups(const Kit *k, const QString &projectPath) const = 0;//ROOPAK
 
-    virtual BuildConfiguration *create(Target *parent, const BuildInfo *info) const = 0;
+//    virtual BuildConfiguration *create(Target *parent, const BuildInfo *info) const = 0;//ROOPAK
 
     // used to recreate the runConfigurations when restoring settings
     virtual bool canRestore(const Target *parent, const QVariantMap &map) const = 0;

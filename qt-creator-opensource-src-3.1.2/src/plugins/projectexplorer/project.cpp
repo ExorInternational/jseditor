@@ -29,19 +29,22 @@
 
 #include "project.h"
 
-#include "buildinfo.h"
+//#include "buildinfo.h"//ROOPAK
 #include "buildconfiguration.h"
 #include "editorconfiguration.h"
 #include "projectexplorer.h"
 #include "target.h"
-#include "settingsaccessor.h"
+//#include "settingsaccessor.h"//ROOPAK
 
 #include <coreplugin/idocument.h>
 #include <coreplugin/icontext.h>
-#include <projectexplorer/buildmanager.h>
+//#include <projectexplorer/buildmanager.h>//ROOPAK
 #include <projectexplorer/kitmanager.h>
 #include <limits>
 #include <utils/qtcassert.h>
+
+//ADDED BY ROOPAK
+#include <QDebug>
 
 /*!
     \class ProjectExplorer::Project
@@ -91,17 +94,17 @@ public:
     Core::Context m_projectContext;
     Core::Context m_projectLanguages;
     QVariantMap m_pluginSettings;
-    SettingsAccessor *m_accessor;
+//    SettingsAccessor *m_accessor;//ROOPAK
 };
 
 ProjectPrivate::ProjectPrivate() :
     m_activeTarget(0),
-    m_editorConfiguration(new EditorConfiguration()),
-    m_accessor(0)
+    m_editorConfiguration(new EditorConfiguration())//,
+//    m_accessor(0)//ROOPAK
 { }
 
 ProjectPrivate::~ProjectPrivate()
-{ delete m_accessor; }
+{ /*delete m_accessor;*/ }//ROOPAK
 
 Project::Project() : d(new ProjectPrivate)
 { }
@@ -182,8 +185,8 @@ bool Project::removeTarget(Target *target)
     if (!target || !d->m_targets.contains(target))
         return false;
 
-    if (BuildManager::isBuilding(target))
-        return false;
+//    if (BuildManager::isBuilding(target))//ROOPAK
+//        return false;//ROOPAK
 
     if (target == activeTarget()) {
         if (d->m_targets.size() == 1)
@@ -301,20 +304,21 @@ Target *Project::restoreTarget(const QVariantMap &data)
 void Project::saveSettings()
 {
     emit aboutToSaveSettings();
-    if (!d->m_accessor)
-        d->m_accessor = new SettingsAccessor(this);
-    d->m_accessor->saveSettings(toMap());
+//    if (!d->m_accessor)//ROOPAK - START
+//        d->m_accessor = new SettingsAccessor(this);
+//    d->m_accessor->saveSettings(toMap());//ROOPAK - END
 }
 
 bool Project::restoreSettings()
 {
-    if (!d->m_accessor)
-        d->m_accessor = new SettingsAccessor(this);
-    QVariantMap map(d->m_accessor->restoreSettings());
-    bool ok = fromMap(map);
-    if (ok)
-        emit settingsLoaded();
-    return ok;
+//    if (!d->m_accessor)//ROOPAK - START
+//        d->m_accessor = new SettingsAccessor(this);
+//    QVariantMap map(d->m_accessor->restoreSettings());
+//    bool ok = fromMap(map);
+//    if (ok)
+//        emit settingsLoaded();
+//    return ok;
+    return false;//ROOPAK - END
 }
 
 
@@ -492,38 +496,38 @@ bool Project::needsSpecialDeployment() const
     return false;
 }
 
-void Project::setup(QList<const BuildInfo *> infoList)
-{
-    QList<Target *> toRegister;
-    foreach (const BuildInfo *info, infoList) {
-        Kit *k = KitManager::find(info->kitId);
-        if (!k)
-            continue;
-        Target *t = target(k);
-        if (!t) {
-            foreach (Target *i, toRegister) {
-                if (i->kit() == k) {
-                    t = i;
-                    break;
-                }
-            }
-        }
-        if (!t) {
-            t = new Target(this, k);
-            toRegister << t;
-        }
+//void Project::setup(QList<const BuildInfo *> infoList)//ROOPAK - START
+//{
+//    QList<Target *> toRegister;
+//    foreach (const BuildInfo *info, infoList) {
+//        Kit *k = KitManager::find(info->kitId);
+//        if (!k)
+//            continue;
+//        Target *t = target(k);
+//        if (!t) {
+//            foreach (Target *i, toRegister) {
+//                if (i->kit() == k) {
+//                    t = i;
+//                    break;
+//                }
+//            }
+//        }
+//        if (!t) {
+//            t = new Target(this, k);
+//            toRegister << t;
+//        }
 
-        BuildConfiguration *bc = info->factory()->create(t, info);
-        if (!bc)
-            continue;
-        t->addBuildConfiguration(bc);
-    }
-    foreach (Target *t, toRegister) {
-        t->updateDefaultDeployConfigurations();
-        t->updateDefaultRunConfigurations();
-        addTarget(t);
-    }
-}
+//        BuildConfiguration *bc = info->factory()->create(t, info);
+//        if (!bc)
+//            continue;
+//        t->addBuildConfiguration(bc);
+//    }
+//    foreach (Target *t, toRegister) {
+//        t->updateDefaultDeployConfigurations();
+//        t->updateDefaultRunConfigurations();
+//        addTarget(t);
+//    }
+//}//ROOPAK - END
 
 //ProjectImporter *Project::createProjectImporter() const//ROOPAK - START
 //{

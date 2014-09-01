@@ -146,8 +146,8 @@ void IOutputParser::appendOutputParser(IOutputParser *parser)
     }
 
     m_parser = parser;
-    connect(parser, SIGNAL(addOutput(QString,ProjectExplorer::BuildStep::OutputFormat)),
-            this, SLOT(outputAdded(QString,ProjectExplorer::BuildStep::OutputFormat)), Qt::DirectConnection);
+//    connect(parser, SIGNAL(addOutput(QString,ProjectExplorer::BuildStep::OutputFormat)),
+//            this, SLOT(outputAdded(QString,ProjectExplorer::BuildStep::OutputFormat)), Qt::DirectConnection);//ROOPAK
     connect(parser, SIGNAL(addTask(ProjectExplorer::Task)),
             this, SLOT(taskAdded(ProjectExplorer::Task)), Qt::DirectConnection);
 }
@@ -155,8 +155,8 @@ void IOutputParser::appendOutputParser(IOutputParser *parser)
 IOutputParser *IOutputParser::takeOutputParserChain()
 {
     IOutputParser *parser = m_parser;
-    disconnect(parser, SIGNAL(addOutput(QString,ProjectExplorer::BuildStep::OutputFormat)),
-               this, SLOT(outputAdded(QString,ProjectExplorer::BuildStep::OutputFormat)));
+//    disconnect(parser, SIGNAL(addOutput(QString,ProjectExplorer::BuildStep::OutputFormat)),
+//               this, SLOT(outputAdded(QString,ProjectExplorer::BuildStep::OutputFormat)));//ROOPAK
     disconnect(parser, SIGNAL(addTask(ProjectExplorer::Task)),
                this, SLOT(taskAdded(ProjectExplorer::Task)));
     m_parser = 0;
@@ -187,10 +187,10 @@ void IOutputParser::stdError(const QString &line)
         m_parser->stdError(line);
 }
 
-void IOutputParser::outputAdded(const QString &string, ProjectExplorer::BuildStep::OutputFormat format)
-{
-    emit addOutput(string, format);
-}
+//void IOutputParser::outputAdded(const QString &string, ProjectExplorer::BuildStep::OutputFormat format)//ROOPAK - START
+//{
+//    emit addOutput(string, format);
+//}//ROOPAK - END
 
 void IOutputParser::taskAdded(const ProjectExplorer::Task &task)
 {

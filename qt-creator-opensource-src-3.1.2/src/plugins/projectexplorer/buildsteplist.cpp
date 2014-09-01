@@ -30,7 +30,7 @@
 #include "buildsteplist.h"
 
 #include "buildconfiguration.h"
-#include "buildmanager.h"
+//#include "buildmanager.h"//ROOPAK
 #include "buildstep.h"
 #include "deployconfiguration.h"
 #include "projectexplorer.h"
@@ -184,13 +184,13 @@ void BuildStepList::insertStep(int position, BuildStep *step)
 
 bool BuildStepList::removeStep(int position)
 {
-    BuildStep *bs = at(position);
-    if (BuildManager::isBuilding(bs))
-        return false;
+//    BuildStep *bs = at(position);//ROOPAK
+//    if (BuildManager::isBuilding(bs))//ROOPAK
+//        return false;
 
     emit aboutToRemoveStep(position);
     m_steps.removeAt(position);
-    delete bs;
+//    delete bs;//ROOPAK
     emit stepRemoved(position);
     return true;
 }

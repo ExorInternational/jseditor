@@ -53,7 +53,7 @@ QmlJSPreviewRunner::QmlJSPreviewRunner(QObject *parent) :
                                + QString::fromLocal8Bit(qgetenv("PATH"));
     m_qmlViewerDefaultPath = Utils::SynchronousProcess::locateBinary(searchPath, QLatin1String("qmlviewer"));
 
-    m_applicationLauncher.setEnvironment(Utils::Environment::systemEnvironment());
+//    m_applicationLauncher.setEnvironment(Utils::Environment::systemEnvironment());//ROOPAK
 }
 
 bool QmlJSPreviewRunner::isReady() const
@@ -65,8 +65,8 @@ void QmlJSPreviewRunner::run(const QString &filename)
 {
     QString errorMessage;
     if (!filename.isEmpty()) {
-        m_applicationLauncher.start(ProjectExplorer::ApplicationLauncher::Gui, m_qmlViewerDefaultPath,
-                                    Utils::QtcProcess::quoteArg(filename));
+//        m_applicationLauncher.start(ProjectExplorer::ApplicationLauncher::Gui, m_qmlViewerDefaultPath,
+//                                    Utils::QtcProcess::quoteArg(filename));//ROOPAK
 
     } else {
         errorMessage = tr("No file specified.");

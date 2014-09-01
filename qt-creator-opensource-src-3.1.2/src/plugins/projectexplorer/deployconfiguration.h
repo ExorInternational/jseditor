@@ -40,7 +40,7 @@ QT_FORWARD_DECLARE_CLASS(QStringList)
 
 namespace ProjectExplorer {
 
-class BuildStepList;
+//class BuildStepList;//ROOPAK
 class Target;
 class DeployConfigurationFactory;
 class NamedWidget;
@@ -53,7 +53,7 @@ public:
     // ctors are protected
     virtual ~DeployConfiguration();
 
-    BuildStepList *stepList() const;
+//    BuildStepList *stepList() const;//ROOPAK
 
     virtual bool fromMap(const QVariantMap &map);
     virtual QVariantMap toMap() const;
@@ -75,7 +75,7 @@ protected:
     void cloneSteps(DeployConfiguration *source);
 
 private:
-    BuildStepList *m_stepList;
+//    BuildStepList *m_stepList;//ROOPAK
 };
 
 class PROJECTEXPLORER_EXPORT DefaultDeployConfiguration : public DeployConfiguration

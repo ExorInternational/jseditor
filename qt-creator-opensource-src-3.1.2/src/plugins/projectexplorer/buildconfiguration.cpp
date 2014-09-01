@@ -29,7 +29,7 @@
 
 #include "buildconfiguration.h"
 
-#include "buildsteplist.h"
+//#include "buildsteplist.h"//ROOPAK
 #include "projectexplorer.h"
 #include "kitmanager.h"
 #include "target.h"
@@ -83,14 +83,14 @@ BuildConfiguration::BuildConfiguration(Target *target, const Core::Id id) :
     m_macroExpander(0)
 {
     Q_ASSERT(target);
-    BuildStepList *bsl = new BuildStepList(this, Core::Id(Constants::BUILDSTEPS_BUILD));
-    //: Display name of the build build step list. Used as part of the labels in the project window.
-    bsl->setDefaultDisplayName(tr("Build"));
-    m_stepLists.append(bsl);
-    bsl = new BuildStepList(this, Core::Id(Constants::BUILDSTEPS_CLEAN));
-    //: Display name of the clean build step list. Used as part of the labels in the project window.
-    bsl->setDefaultDisplayName(tr("Clean"));
-    m_stepLists.append(bsl);
+//    BuildStepList *bsl = new BuildStepList(this, Core::Id(Constants::BUILDSTEPS_BUILD));//ROOPAK - START
+//    //: Display name of the build build step list. Used as part of the labels in the project window.
+//    bsl->setDefaultDisplayName(tr("Build"));
+//    m_stepLists.append(bsl);
+//    bsl = new BuildStepList(this, Core::Id(Constants::BUILDSTEPS_CLEAN));
+//    //: Display name of the clean build step list. Used as part of the labels in the project window.
+//    bsl->setDefaultDisplayName(tr("Clean"));
+//    m_stepLists.append(bsl);//ROOPAK - END
 
     emitEnvironmentChanged();
 
@@ -154,18 +154,18 @@ Utils::AbstractMacroExpander *BuildConfiguration::macroExpander()
 QList<Core::Id> BuildConfiguration::knownStepLists() const
 {
     QList<Core::Id> result;
-    foreach (BuildStepList *list, m_stepLists)
-        result.append(list->id());
+//    foreach (BuildStepList *list, m_stepLists)//ROOPAK
+//        result.append(list->id());//ROOPAK
     return result;
 }
 
-BuildStepList *BuildConfiguration::stepList(Core::Id id) const
-{
-    foreach (BuildStepList *list, m_stepLists)
-        if (id == list->id())
-            return list;
-    return 0;
-}
+//BuildStepList *BuildConfiguration::stepList(Core::Id id) const//ROOPAK - START
+//{
+//    foreach (BuildStepList *list, m_stepLists)
+//        if (id == list->id())
+//            return list;
+//    return 0;
+//}//ROOPAK - END
 
 QVariantMap BuildConfiguration::toMap() const
 {
@@ -174,9 +174,9 @@ QVariantMap BuildConfiguration::toMap() const
     map.insert(QLatin1String(USER_ENVIRONMENT_CHANGES_KEY), Utils::EnvironmentItem::toStringList(m_userEnvironmentChanges));
     map.insert(QLatin1String(BUILDDIRECTORY_KEY), m_buildDirectory.toString());
 
-    map.insert(QLatin1String(BUILD_STEP_LIST_COUNT), m_stepLists.count());
-    for (int i = 0; i < m_stepLists.count(); ++i)
-        map.insert(QLatin1String(BUILD_STEP_LIST_PREFIX) + QString::number(i), m_stepLists.at(i)->toMap());
+//    map.insert(QLatin1String(BUILD_STEP_LIST_COUNT), m_stepLists.count());//ROOPAK
+//    for (int i = 0; i < m_stepLists.count(); ++i)
+//        map.insert(QLatin1String(BUILD_STEP_LIST_PREFIX) + QString::number(i), m_stepLists.at(i)->toMap());//ROOPAK - END
 
     return map;
 }
@@ -189,8 +189,8 @@ bool BuildConfiguration::fromMap(const QVariantMap &map)
 
     emitEnvironmentChanged();
 
-    qDeleteAll(m_stepLists);
-    m_stepLists.clear();
+//    qDeleteAll(m_stepLists);//ROOPAK
+//    m_stepLists.clear();//ROOPAK
 
     int maxI = map.value(QLatin1String(BUILD_STEP_LIST_COUNT), 0).toInt();
     for (int i = 0; i < maxI; ++i) {
@@ -199,17 +199,17 @@ bool BuildConfiguration::fromMap(const QVariantMap &map)
             qWarning() << "No data for build step list" << i << "found!";
             continue;
         }
-        BuildStepList *list = new BuildStepList(this, data);
-        if (list->isNull()) {
-            qWarning() << "Failed to restore build step list" << i;
-            delete list;
-            return false;
-        }
-        if (list->id() == Constants::BUILDSTEPS_BUILD)
-            list->setDefaultDisplayName(tr("Build"));
-        else if (list->id() == Constants::BUILDSTEPS_CLEAN)
-            list->setDefaultDisplayName(tr("Clean"));
-        m_stepLists.append(list);
+//        BuildStepList *list = new BuildStepList(this, data);//ROOPAK - START
+//        if (list->isNull()) {
+//            qWarning() << "Failed to restore build step list" << i;
+//            delete list;
+//            return false;
+//        }
+//        if (list->id() == Constants::BUILDSTEPS_BUILD)
+//            list->setDefaultDisplayName(tr("Build"));
+//        else if (list->id() == Constants::BUILDSTEPS_CLEAN)
+//            list->setDefaultDisplayName(tr("Clean"));
+//        m_stepLists.append(list);//ROOPAK - END
     }
 
     // We currently assume there to be at least a clean and build list!
@@ -299,13 +299,13 @@ void BuildConfiguration::cloneSteps(BuildConfiguration *source)
 {
     if (source == this)
         return;
-    qDeleteAll(m_stepLists);
-    m_stepLists.clear();
-    foreach (BuildStepList *bsl, source->m_stepLists) {
-        BuildStepList *newBsl = new BuildStepList(this, bsl);
-        newBsl->cloneSteps(bsl);
-        m_stepLists.append(newBsl);
-    }
+//    qDeleteAll(m_stepLists);//ROOPAK
+//    m_stepLists.clear();//ROOPAK
+//    foreach (BuildStepList *bsl, source->m_stepLists) {//ROOPAK - START
+//        BuildStepList *newBsl = new BuildStepList(this, bsl);
+//        newBsl->cloneSteps(bsl);
+//        m_stepLists.append(newBsl);
+//    }//ROOPAK - END
 }
 
 bool BuildConfiguration::isEnabled() const

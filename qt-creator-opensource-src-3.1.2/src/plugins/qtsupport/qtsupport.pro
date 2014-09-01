@@ -18,8 +18,8 @@ HEADERS += \
     baseqtversion.h \
     qmldumptool.h \
     qtoptionspage.h \
-    customexecutablerunconfiguration.h \
-    customexecutableconfigurationwidget.h \
+#    customexecutablerunconfiguration.h \#ROOPAK
+#    customexecutableconfigurationwidget.h \#ROOPAK
     debugginghelperbuildtask.h \
     qtsupportconstants.h \
     profilereader.h \
@@ -46,8 +46,8 @@ SOURCES += \
     baseqtversion.cpp \
     qmldumptool.cpp \
     qtoptionspage.cpp \
-    customexecutablerunconfiguration.cpp \
-    customexecutableconfigurationwidget.cpp \
+#    customexecutablerunconfiguration.cpp \#ROOPAK
+#    customexecutableconfigurationwidget.cpp \#ROOPAK
     debugginghelperbuildtask.cpp \
     profilereader.cpp \
     qtparser.cpp \

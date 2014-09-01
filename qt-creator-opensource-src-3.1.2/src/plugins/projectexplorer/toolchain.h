@@ -49,7 +49,7 @@ namespace Internal { class ToolChainPrivate; }
 class Abi;
 class HeaderPath;
 class IOutputParser;
-class ToolChainConfigWidget;
+//class ToolChainConfigWidget;//ROOPAK
 class ToolChainFactory;
 class ToolChainManager;
 class Task;
@@ -143,7 +143,7 @@ public:
 
     virtual bool operator ==(const ToolChain &) const;
 
-    virtual ToolChainConfigWidget *configurationWidget() = 0;
+//    virtual ToolChainConfigWidget *configurationWidget() = 0;//ROOPAK
     virtual bool canClone() const;
     virtual ToolChain *clone() const = 0;
 

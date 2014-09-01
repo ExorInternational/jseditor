@@ -39,7 +39,7 @@
 namespace ProjectExplorer {
 class Task;
 class BuildConfiguration;
-class BuildStepList;
+//class BuildStepList;//ROOPAK
 class DeployConfiguration;
 class Target;
 
@@ -51,8 +51,8 @@ class PROJECTEXPLORER_EXPORT BuildStep : public ProjectConfiguration
     Q_OBJECT
 
 protected:
-    BuildStep(BuildStepList *bsl, const Core::Id id);
-    BuildStep(BuildStepList *bsl, BuildStep *bs);
+//    BuildStep(BuildStepList *bsl, const Core::Id id);//ROOPAK
+//    BuildStep(BuildStepList *bsl, BuildStep *bs);//ROOPAK
 
 public:
     virtual ~BuildStep();
@@ -105,17 +105,17 @@ public:
     virtual ~IBuildStepFactory();
 
     // used to show the list of possible additons to a target, returns a list of types
-    virtual QList<Core::Id> availableCreationIds(BuildStepList *parent) const = 0;
+//    virtual QList<Core::Id> availableCreationIds(BuildStepList *parent) const = 0;//ROOPAK
     // used to translate the types to names to display to the user
     virtual QString displayNameForId(const Core::Id id) const = 0;
 
-    virtual bool canCreate(BuildStepList *parent, const Core::Id id) const = 0;
-    virtual BuildStep *create(BuildStepList *parent, const Core::Id id) = 0;
+//    virtual bool canCreate(BuildStepList *parent, const Core::Id id) const = 0;//ROOPAK
+//    virtual BuildStep *create(BuildStepList *parent, const Core::Id id) = 0;//ROOPAK
     // used to recreate the runConfigurations when restoring settings
-    virtual bool canRestore(BuildStepList *parent, const QVariantMap &map) const = 0;
-    virtual BuildStep *restore(BuildStepList *parent, const QVariantMap &map) = 0;
-    virtual bool canClone(BuildStepList *parent, BuildStep *product) const = 0;
-    virtual BuildStep *clone(BuildStepList *parent, BuildStep *product) = 0;
+//    virtual bool canRestore(BuildStepList *parent, const QVariantMap &map) const = 0;//ROOPAK - START
+//    virtual BuildStep *restore(BuildStepList *parent, const QVariantMap &map) = 0;
+//    virtual bool canClone(BuildStepList *parent, BuildStep *product) const = 0;
+//    virtual BuildStep *clone(BuildStepList *parent, BuildStep *product) = 0;//ROOPAK - END
 };
 
 class PROJECTEXPLORER_EXPORT BuildStepConfigWidget

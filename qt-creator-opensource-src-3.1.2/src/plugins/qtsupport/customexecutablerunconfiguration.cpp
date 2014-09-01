@@ -28,7 +28,7 @@
 ****************************************************************************/
 
 #include "customexecutablerunconfiguration.h"
-#include "customexecutableconfigurationwidget.h"
+//#include "customexecutableconfigurationwidget.h"//ROOPAK
 #include "qtkitinformation.h"
 
 #include <projectexplorer/buildconfiguration.h>
@@ -301,7 +301,8 @@ void CustomExecutableRunConfiguration::setRunMode(ProjectExplorer::LocalApplicat
 
 QWidget *CustomExecutableRunConfiguration::createConfigurationWidget()
 {
-    return new CustomExecutableConfigurationWidget(this);
+//    return new CustomExecutableConfigurationWidget(this);//ROOPAK
+    return new QWidget();
 }
 
 ProjectExplorer::Abi CustomExecutableRunConfiguration::abi() const

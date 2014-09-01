@@ -46,7 +46,7 @@
 #include <projectexplorer/buildconfiguration.h>
 #include <projectexplorer/deployconfiguration.h>
 #include <projectexplorer/kitmanager.h>
-#include <projectexplorer/projectmodels.h>
+//#include <projectexplorer/projectmodels.h>//ROOPAK
 #include <projectexplorer/runconfiguration.h>
 
 #include <QTimer>
@@ -103,10 +103,10 @@ using namespace ProjectExplorer::Internal;
 
 static bool projectLesserThan(Project *p1, Project *p2)
 {
-    int result = caseFriendlyCompare(p1->displayName(), p2->displayName());
+    /*int result = caseFriendlyCompare(p1->displayName(), p2->displayName());//ROOPAK - START
     if (result != 0)
         return result < 0;
-    else
+    else*///ROOPAK - END
         return p1 < p2;
 }
 

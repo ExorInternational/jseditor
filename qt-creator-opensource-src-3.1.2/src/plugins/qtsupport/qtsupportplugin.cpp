@@ -29,7 +29,7 @@
 
 #include "qtsupportplugin.h"
 
-#include "customexecutablerunconfiguration.h"
+//#include "customexecutablerunconfiguration.h"//ROOPAK
 #include "desktopqtversionfactory.h"
 #include "qtfeatureprovider.h"
 #include "qtkitinformation.h"
@@ -92,7 +92,7 @@ bool QtSupportPlugin::initialize(const QStringList &arguments, QString *errorMes
     welcomePage = new ExamplesWelcomePage;
     addAutoReleasedObject(welcomePage);
 #endif
-    addAutoReleasedObject(new CustomExecutableRunConfigurationFactory);
+//    addAutoReleasedObject(new CustomExecutableRunConfigurationFactory);//ROOPAK
 
     ProjectExplorer::KitManager::registerKitInformation(new QtKitInformation);
 

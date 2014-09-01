@@ -182,7 +182,7 @@ private:
     int version() const;
 
     Internal::IDevicePrivate *d;
-    friend class DeviceManager;
+//    friend class DeviceManager;
 };
 
 

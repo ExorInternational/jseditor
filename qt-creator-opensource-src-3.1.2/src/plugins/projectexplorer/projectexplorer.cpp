@@ -29,14 +29,14 @@
 
 #include "projectexplorer.h"
 
-#include "buildsteplist.h"
+//#include "buildsteplist.h"//ROOPAK
 //#include "customwizard/customwizard.h"//ROOPAK
-#include "deployablefile.h"
+//#include "deployablefile.h"//ROOPAK
 #include "deployconfiguration.h"
 //#include "gcctoolchainfactories.h"//ROOPAK
 #include "project.h"
-#include "projectexplorersettings.h"
-#include "projectmacroexpander.h"
+//#include "projectexplorersettings.h"//ROOPAK
+//#include "projectmacroexpander.h"//ROOPAK
 //#include "removetaskhandler.h"//ROOPAK
 //#include "unconfiguredprojectpanel.h"//ROOPAK
 #include "kitmanager.h"
@@ -50,7 +50,7 @@
 //#include "localapplicationruncontrol.h"//ROOPAK
 //#include "allprojectsfilter.h"//ROOPAK
 #include "allprojectsfind.h"
-#include "buildmanager.h"
+//#include "buildmanager.h"//ROOPAK
 //#include "buildsettingspropertiespage.h"//ROOPAK
 #include "currentprojectfind.h"
 //#include "currentprojectfilter.h"//ROOPAK
@@ -74,20 +74,20 @@
 //#include "projectexplorersettingspage.h"//ROOPAK
 //#include "corelistenercheckingforrunningbuild.h"//ROOPAK
 #include "buildconfiguration.h"
-#include "miniprojecttargetselector.h"
+//#include "miniprojecttargetselector.h"#ROOPAK
 #include "taskhub.h"
 //#include "customtoolchain.h"//ROOPAK
-#include "selectablefilesmodel.h"
+//#include "selectablefilesmodel.h"//ROOPAK
 //#include <projectexplorer/customwizard/customwizard.h>//ROOPAK
 //#include "devicesupport/desktopdevice.h"//ROOPAK
 //#include "devicesupport/desktopdevicefactory.h"//ROOPAK
-#include "devicesupport/devicemanager.h"
+//#include "devicesupport/devicemanager.h"//ROOPAK
 //#include "devicesupport/devicesettingspage.h"//ROOPAK
 
 #ifdef Q_OS_WIN
 #    include "windebuginterface.h"
-#    include "msvctoolchain.h"
-#    include "wincetoolchain.h"
+//#    include "msvctoolchain.h"//ROOPAK
+//#    include "wincetoolchain.h"//ROOPAK
 #endif
 
 #define HAS_WELCOME_PAGE (QT_VERSION >= QT_VERSION_CHECK(5, 1, 0))
@@ -139,6 +139,7 @@
 #include <QPushButton>
 #include <coreplugin/basefilewizard.h>
 #include "runconfiguration.h"
+#include <utils/stringutils.h>
 //ROOPAK - END
 /*!
     \namespace ProjectExplorer
@@ -243,8 +244,8 @@ struct ProjectExplorerPluginPrivate {
     bool m_shouldHaveRunConfiguration;
     RunMode m_runMode;
     QString m_projectFilterString;
-    Internal::MiniProjectTargetSelector * m_targetSelector;
-    Internal::ProjectExplorerSettings m_projectExplorerSettings;
+//    Internal::MiniProjectTargetSelector * m_targetSelector;//ROOPAK
+//    Internal::ProjectExplorerSettings m_projectExplorerSettings;//ROOPAK
 
 
 #if HAS_WELCOME_PAGE
@@ -331,20 +332,20 @@ bool ProjectExplorerPlugin::parseArguments(const QStringList &arguments, QString
 bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *error)
 {
     qRegisterMetaType<ProjectExplorer::RunControl *>();
-    qRegisterMetaType<ProjectExplorer::DeployableFile>("ProjectExplorer::DeployableFile");
+//    qRegisterMetaType<ProjectExplorer::DeployableFile>("ProjectExplorer::DeployableFile");//ROOPAK
 
     if (!parseArguments(arguments, error))
         return false;
     addObject(this);
 
-    addAutoReleasedObject(new DeviceManager);
+//    addAutoReleasedObject(new DeviceManager);//ROOPAK
 
     // Add ToolChainFactories:
 #ifdef Q_OS_WIN
     addAutoReleasedObject(new WinDebugInterface);
 
-    addAutoReleasedObject(new Internal::MsvcToolChainFactory);
-    addAutoReleasedObject(new Internal::WinCEToolChainFactory);
+//    addAutoReleasedObject(new Internal::MsvcToolChainFactory);//ROOPAK
+//    addAutoReleasedObject(new Internal::WinCEToolChainFactory);//ROOPAK
 #else
 //    addAutoReleasedObject(new Internal::LinuxIccToolChainFactory);//ROOPAK
 #endif
@@ -893,14 +894,14 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
     d->m_projectSelectorAction->setCheckable(true);
     d->m_projectSelectorAction->setEnabled(false);
     QWidget *mainWindow = ICore::mainWindow();
-    d->m_targetSelector = new Internal::MiniProjectTargetSelector(d->m_projectSelectorAction, mainWindow);
-    connect(d->m_projectSelectorAction, SIGNAL(triggered()), d->m_targetSelector, SLOT(show()));
+//    d->m_targetSelector = new Internal::MiniProjectTargetSelector(d->m_projectSelectorAction, mainWindow);//ROOPAK
+//    connect(d->m_projectSelectorAction, SIGNAL(triggered()), d->m_targetSelector, SLOT(show()));//ROOPAK
     ModeManager::addProjectSelector(d->m_projectSelectorAction);
 
     d->m_projectSelectorActionMenu = new QAction(this);
     d->m_projectSelectorActionMenu->setEnabled(false);
     d->m_projectSelectorActionMenu->setText(tr("Open Build and Run Kit Selector..."));
-    connect(d->m_projectSelectorActionMenu, SIGNAL(triggered()), d->m_targetSelector, SLOT(toggleVisible()));
+//    connect(d->m_projectSelectorActionMenu, SIGNAL(triggered()), d->m_targetSelector, SLOT(toggleVisible()));//ROOPAK
     cmd = ActionManager::registerAction(d->m_projectSelectorActionMenu, ProjectExplorer::Constants::SELECTTARGET,
                        globalcontext);
     mbuild->addAction(cmd, Constants::G_BUILD_RUN);
@@ -908,7 +909,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
     d->m_projectSelectorActionQuick = new QAction(this);
     d->m_projectSelectorActionQuick->setEnabled(false);
     d->m_projectSelectorActionQuick->setText(tr("Quick Switch Kit Selector"));
-    connect(d->m_projectSelectorActionQuick, SIGNAL(triggered()), d->m_targetSelector, SLOT(nextOrShow()));
+//    connect(d->m_projectSelectorActionQuick, SIGNAL(triggered()), d->m_targetSelector, SLOT(nextOrShow()));//ROOPAK
     cmd = ActionManager::registerAction(d->m_projectSelectorActionQuick, ProjectExplorer::Constants::SELECTTARGETQUICK, globalcontext);
     cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+T")));
 
@@ -931,36 +932,36 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
         }
     }
 
-    d->m_projectExplorerSettings.buildBeforeDeploy =
-            s->value(QLatin1String("ProjectExplorer/Settings/BuildBeforeDeploy"), true).toBool();
-    d->m_projectExplorerSettings.deployBeforeRun =
-            s->value(QLatin1String("ProjectExplorer/Settings/DeployBeforeRun"), true).toBool();
-    d->m_projectExplorerSettings.saveBeforeBuild =
-            s->value(QLatin1String("ProjectExplorer/Settings/SaveBeforeBuild"), false).toBool();
-    d->m_projectExplorerSettings.showCompilerOutput =
-            s->value(QLatin1String("ProjectExplorer/Settings/ShowCompilerOutput"), false).toBool();
-    d->m_projectExplorerSettings.showRunOutput =
-            s->value(QLatin1String("ProjectExplorer/Settings/ShowRunOutput"), true).toBool();
-    d->m_projectExplorerSettings.showDebugOutput =
-            s->value(QLatin1String("ProjectExplorer/Settings/ShowDebugOutput"), false).toBool();
-    d->m_projectExplorerSettings.cleanOldAppOutput =
-            s->value(QLatin1String("ProjectExplorer/Settings/CleanOldAppOutput"), false).toBool();
-    d->m_projectExplorerSettings.mergeStdErrAndStdOut =
-            s->value(QLatin1String("ProjectExplorer/Settings/MergeStdErrAndStdOut"), false).toBool();
-    d->m_projectExplorerSettings.wrapAppOutput =
-            s->value(QLatin1String("ProjectExplorer/Settings/WrapAppOutput"), true).toBool();
-    d->m_projectExplorerSettings.useJom =
-            s->value(QLatin1String("ProjectExplorer/Settings/UseJom"), true).toBool();
-    d->m_projectExplorerSettings.autorestoreLastSession =
-            s->value(QLatin1String("ProjectExplorer/Settings/AutoRestoreLastSession"), false).toBool();
-    d->m_projectExplorerSettings.prompToStopRunControl =
-            s->value(QLatin1String("ProjectExplorer/Settings/PromptToStopRunControl"), false).toBool();
-    d->m_projectExplorerSettings.maxAppOutputLines =
-            s->value(QLatin1String("ProjectExplorer/Settings/MaxAppOutputLines"), 100000).toInt();
-    d->m_projectExplorerSettings.environmentId =
-            QUuid(s->value(QLatin1String("ProjectExplorer/Settings/EnvironmentId")).toByteArray());
-    if (d->m_projectExplorerSettings.environmentId.isNull())
-        d->m_projectExplorerSettings.environmentId = QUuid::createUuid();
+//    d->m_projectExplorerSettings.buildBeforeDeploy =              //ROOPAK - START
+//            s->value(QLatin1String("ProjectExplorer/Settings/BuildBeforeDeploy"), true).toBool();
+//    d->m_projectExplorerSettings.deployBeforeRun =
+//            s->value(QLatin1String("ProjectExplorer/Settings/DeployBeforeRun"), true).toBool();
+//    d->m_projectExplorerSettings.saveBeforeBuild =
+//            s->value(QLatin1String("ProjectExplorer/Settings/SaveBeforeBuild"), false).toBool();
+//    d->m_projectExplorerSettings.showCompilerOutput =
+//            s->value(QLatin1String("ProjectExplorer/Settings/ShowCompilerOutput"), false).toBool();
+//    d->m_projectExplorerSettings.showRunOutput =
+//            s->value(QLatin1String("ProjectExplorer/Settings/ShowRunOutput"), true).toBool();
+//    d->m_projectExplorerSettings.showDebugOutput =
+//            s->value(QLatin1String("ProjectExplorer/Settings/ShowDebugOutput"), false).toBool();
+//    d->m_projectExplorerSettings.cleanOldAppOutput =
+//            s->value(QLatin1String("ProjectExplorer/Settings/CleanOldAppOutput"), false).toBool();
+//    d->m_projectExplorerSettings.mergeStdErrAndStdOut =
+//            s->value(QLatin1String("ProjectExplorer/Settings/MergeStdErrAndStdOut"), false).toBool();
+//    d->m_projectExplorerSettings.wrapAppOutput =
+//            s->value(QLatin1String("ProjectExplorer/Settings/WrapAppOutput"), true).toBool();
+//    d->m_projectExplorerSettings.useJom =
+//            s->value(QLatin1String("ProjectExplorer/Settings/UseJom"), true).toBool();
+//    d->m_projectExplorerSettings.autorestoreLastSession =
+//            s->value(QLatin1String("ProjectExplorer/Settings/AutoRestoreLastSession"), false).toBool();
+//    d->m_projectExplorerSettings.prompToStopRunControl =
+//            s->value(QLatin1String("ProjectExplorer/Settings/PromptToStopRunControl"), false).toBool();
+//    d->m_projectExplorerSettings.maxAppOutputLines =
+//            s->value(QLatin1String("ProjectExplorer/Settings/MaxAppOutputLines"), 100000).toInt();
+//    d->m_projectExplorerSettings.environmentId =
+//            QUuid(s->value(QLatin1String("ProjectExplorer/Settings/EnvironmentId")).toByteArray());
+//    if (d->m_projectExplorerSettings.environmentId.isNull())
+//        d->m_projectExplorerSettings.environmentId = QUuid::createUuid(); //ROOPAK - END
 
     connect(d->m_sessionManagerAction, SIGNAL(triggered()), this, SLOT(showSessionManager()));
 //    connect(d->m_newAction, SIGNAL(triggered()), this, SLOT(newProject()));
@@ -1004,11 +1005,11 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
     connect(this, SIGNAL(updateRunActions()), this, SLOT(slotUpdateRunActions()));
     connect(this, SIGNAL(settingsChanged()), this, SLOT(updateRunWithoutDeployMenu()));
 
-    QObject *buildManager = new BuildManager(this, d->m_cancelBuildAction);
-    connect(buildManager, SIGNAL(buildStateChanged(ProjectExplorer::Project*)),
-            this, SLOT(buildStateChanged(ProjectExplorer::Project*)));
-    connect(buildManager, SIGNAL(buildQueueFinished(bool)),
-            this, SLOT(buildQueueFinished(bool)), Qt::QueuedConnection);
+//    QObject *buildManager = new BuildManager(this, d->m_cancelBuildAction);//ROOPAK - START
+//    connect(buildManager, SIGNAL(buildStateChanged(ProjectExplorer::Project*)),
+//            this, SLOT(buildStateChanged(ProjectExplorer::Project*)));
+//    connect(buildManager, SIGNAL(buildQueueFinished(bool)),
+//            this, SLOT(buildQueueFinished(bool)), Qt::QueuedConnection);//ROOPAK - END
 
     updateActions();
 
@@ -1080,19 +1081,19 @@ void ProjectExplorerPlugin::unloadProject()
     if (debug)
         qDebug() << "ProjectExplorerPlugin::unloadProject";
 
-    if (BuildManager::isBuilding(d->m_currentProject)) {
-        QMessageBox box;
-        QPushButton *closeAnyway = box.addButton(tr("Cancel Build && Unload"), QMessageBox::AcceptRole);
-        QPushButton *cancelClose = box.addButton(tr("Do Not Unload"), QMessageBox::RejectRole);
-        box.setDefaultButton(cancelClose);
-        box.setWindowTitle(tr("Unload Project %1?").arg(d->m_currentProject->displayName()));
-        box.setText(tr("The project %1 is currently being built.").arg(d->m_currentProject->displayName()));
-        box.setInformativeText(tr("Do you want to cancel the build process and unload the project anyway?"));
-        box.exec();
-        if (box.clickedButton() != closeAnyway)
-            return;
-        BuildManager::cancel();
-    }
+//    if (BuildManager::isBuilding(d->m_currentProject)) {//ROOPAK - START
+//        QMessageBox box;
+//        QPushButton *closeAnyway = box.addButton(tr("Cancel Build && Unload"), QMessageBox::AcceptRole);
+//        QPushButton *cancelClose = box.addButton(tr("Do Not Unload"), QMessageBox::RejectRole);
+//        box.setDefaultButton(cancelClose);
+//        box.setWindowTitle(tr("Unload Project %1?").arg(d->m_currentProject->displayName()));
+//        box.setText(tr("The project %1 is currently being built.").arg(d->m_currentProject->displayName()));
+//        box.setInformativeText(tr("Do you want to cancel the build process and unload the project anyway?"));
+//        box.exec();
+//        if (box.clickedButton() != closeAnyway)
+//            return;
+//        BuildManager::cancel();
+//    }//ROOPAK - END
 
     IDocument *document = d->m_currentProject->document();
 
@@ -1136,10 +1137,10 @@ void ProjectExplorerPlugin::extensionsInitialized()
 //        d->m_profileMimeTypes += pf->mimeTypes();
 //        addAutoReleasedObject(pf);
 //    }//ROOPAK - END
-    BuildManager::extensionsInitialized();
+//    BuildManager::extensionsInitialized();//ROOPAK
 
 //    DeviceManager::instance()->addDevice(IDevice::Ptr(new DesktopDevice));//ROOPAK
-    DeviceManager::instance()->load();
+//    DeviceManager::instance()->load();//ROOPAK
     ToolChainManager::restoreToolChains();
     d->m_kitManager->restoreKits();
 }
@@ -1208,18 +1209,18 @@ void ProjectExplorerPlugin::updateVariable(const QByteArray &variable)
                     buildConfigurationName = buildConfiguration->displayName();
             }
         }
-        ProjectMacroExpander expander(projectFilePath, projectName, kit, buildConfigurationName);
-        QString result;
-        if (expander.resolveProjectMacro(QString::fromUtf8(variable), &result))
-            VariableManager::insert(variable, result);
-        else
-            VariableManager::remove(variable);
+//        ProjectMacroExpander expander(projectFilePath, projectName, kit, buildConfigurationName);//ROOPAK - START
+//        QString result;
+//        if (expander.resolveProjectMacro(QString::fromUtf8(variable), &result))
+//            VariableManager::insert(variable, result);
+//        else
+//            VariableManager::remove(variable);//ROOPAK - END
     }
 }
 
 void ProjectExplorerPlugin::updateRunWithoutDeployMenu()
 {
-    d->m_runWithoutDeployAction->setVisible(d->m_projectExplorerSettings.deployBeforeRun);
+//    d->m_runWithoutDeployAction->setVisible(d->m_projectExplorerSettings.deployBeforeRun);//ROOPAK
 }
 
 ExtensionSystem::IPlugin::ShutdownFlag ProjectExplorerPlugin::aboutToShutdown()
@@ -1318,20 +1319,20 @@ void ProjectExplorerPlugin::savePersistentSettings()
     s->setValue(QLatin1String("ProjectExplorer/RecentProjects/FileNames"), fileNames);
     s->setValue(QLatin1String("ProjectExplorer/RecentProjects/DisplayNames"), displayNames);
 
-    s->setValue(QLatin1String("ProjectExplorer/Settings/BuildBeforeDeploy"), d->m_projectExplorerSettings.buildBeforeDeploy);
-    s->setValue(QLatin1String("ProjectExplorer/Settings/DeployBeforeRun"), d->m_projectExplorerSettings.deployBeforeRun);
-    s->setValue(QLatin1String("ProjectExplorer/Settings/SaveBeforeBuild"), d->m_projectExplorerSettings.saveBeforeBuild);
-    s->setValue(QLatin1String("ProjectExplorer/Settings/ShowCompilerOutput"), d->m_projectExplorerSettings.showCompilerOutput);
-    s->setValue(QLatin1String("ProjectExplorer/Settings/ShowRunOutput"), d->m_projectExplorerSettings.showRunOutput);
-    s->setValue(QLatin1String("ProjectExplorer/Settings/ShowDebugOutput"), d->m_projectExplorerSettings.showDebugOutput);
-    s->setValue(QLatin1String("ProjectExplorer/Settings/CleanOldAppOutput"), d->m_projectExplorerSettings.cleanOldAppOutput);
-    s->setValue(QLatin1String("ProjectExplorer/Settings/MergeStdErrAndStdOut"), d->m_projectExplorerSettings.mergeStdErrAndStdOut);
-    s->setValue(QLatin1String("ProjectExplorer/Settings/WrapAppOutput"), d->m_projectExplorerSettings.wrapAppOutput);
-    s->setValue(QLatin1String("ProjectExplorer/Settings/UseJom"), d->m_projectExplorerSettings.useJom);
-    s->setValue(QLatin1String("ProjectExplorer/Settings/AutoRestoreLastSession"), d->m_projectExplorerSettings.autorestoreLastSession);
-    s->setValue(QLatin1String("ProjectExplorer/Settings/PromptToStopRunControl"), d->m_projectExplorerSettings.prompToStopRunControl);
-    s->setValue(QLatin1String("ProjectExplorer/Settings/MaxAppOutputLines"), d->m_projectExplorerSettings.maxAppOutputLines);
-    s->setValue(QLatin1String("ProjectExplorer/Settings/EnvironmentId"), d->m_projectExplorerSettings.environmentId.toByteArray());
+//    s->setValue(QLatin1String("ProjectExplorer/Settings/BuildBeforeDeploy"), d->m_projectExplorerSettings.buildBeforeDeploy);//ROOPAK - START
+//    s->setValue(QLatin1String("ProjectExplorer/Settings/DeployBeforeRun"), d->m_projectExplorerSettings.deployBeforeRun);
+//    s->setValue(QLatin1String("ProjectExplorer/Settings/SaveBeforeBuild"), d->m_projectExplorerSettings.saveBeforeBuild);
+//    s->setValue(QLatin1String("ProjectExplorer/Settings/ShowCompilerOutput"), d->m_projectExplorerSettings.showCompilerOutput);
+//    s->setValue(QLatin1String("ProjectExplorer/Settings/ShowRunOutput"), d->m_projectExplorerSettings.showRunOutput);
+//    s->setValue(QLatin1String("ProjectExplorer/Settings/ShowDebugOutput"), d->m_projectExplorerSettings.showDebugOutput);
+//    s->setValue(QLatin1String("ProjectExplorer/Settings/CleanOldAppOutput"), d->m_projectExplorerSettings.cleanOldAppOutput);
+//    s->setValue(QLatin1String("ProjectExplorer/Settings/MergeStdErrAndStdOut"), d->m_projectExplorerSettings.mergeStdErrAndStdOut);
+//    s->setValue(QLatin1String("ProjectExplorer/Settings/WrapAppOutput"), d->m_projectExplorerSettings.wrapAppOutput);
+//    s->setValue(QLatin1String("ProjectExplorer/Settings/UseJom"), d->m_projectExplorerSettings.useJom);
+//    s->setValue(QLatin1String("ProjectExplorer/Settings/AutoRestoreLastSession"), d->m_projectExplorerSettings.autorestoreLastSession);
+//    s->setValue(QLatin1String("ProjectExplorer/Settings/PromptToStopRunControl"), d->m_projectExplorerSettings.prompToStopRunControl);
+//    s->setValue(QLatin1String("ProjectExplorer/Settings/MaxAppOutputLines"), d->m_projectExplorerSettings.maxAppOutputLines);
+//    s->setValue(QLatin1String("ProjectExplorer/Settings/EnvironmentId"), d->m_projectExplorerSettings.environmentId.toByteArray());//ROOPAK - END
 }
 
 void ProjectExplorerPlugin::openProjectWelcomePage(const QString &fileName)
@@ -1531,9 +1532,9 @@ void ProjectExplorerPlugin::determineSessionToRestoreAtStartup()
         }
     }
     // Handle settings only after command line arguments:
-    if (d->m_sessionToRestoreAtStartup.isNull()
-        && d->m_projectExplorerSettings.autorestoreLastSession)
-        d->m_sessionToRestoreAtStartup = SessionManager::lastSession();
+//    if (d->m_sessionToRestoreAtStartup.isNull()//ROOPAK - START
+//        && d->m_projectExplorerSettings.autorestoreLastSession)
+//        d->m_sessionToRestoreAtStartup = SessionManager::lastSession();//ROOPAK - END
 
     if (!d->m_sessionToRestoreAtStartup.isNull())
         ModeManager::activateMode(Core::Constants::MODE_EDIT);
@@ -1693,7 +1694,7 @@ void ProjectExplorerPlugin::buildStateChanged(Project * pro)
 {
     if (debug) {
         qDebug() << "buildStateChanged";
-        qDebug() << pro->projectFilePath() << "isBuilding()" << BuildManager::isBuilding(pro);
+//        qDebug() << pro->projectFilePath() << "isBuilding()" << BuildManager::isBuilding(pro);//ROOPAK
     }
     Q_UNUSED(pro)
     updateActions();
@@ -1760,14 +1761,14 @@ void ProjectExplorerPlugin::buildQueueFinished(bool success)
     updateActions();
 
     bool ignoreErrors = true;
-    if (!d->m_delayedRunConfiguration.isNull() && success && BuildManager::getErrorTaskCount() > 0) {
-        ignoreErrors = QMessageBox::question(ICore::dialogParent(),
-                                             tr("Ignore All Errors?"),
-                                             tr("Found some build errors in current task.\n"
-                                                "Do you want to ignore them?"),
-                                             QMessageBox::Yes | QMessageBox::No,
-                                             QMessageBox::No) == QMessageBox::Yes;
-    }
+//    if (!d->m_delayedRunConfiguration.isNull() && success && BuildManager::getErrorTaskCount() > 0) {//ROOPAK - START
+//        ignoreErrors = QMessageBox::question(ICore::dialogParent(),
+//                                             tr("Ignore All Errors?"),
+//                                             tr("Found some build errors in current task.\n"
+//                                                "Do you want to ignore them?"),
+//                                             QMessageBox::Yes | QMessageBox::No,
+//                                             QMessageBox::No) == QMessageBox::Yes;
+//    }//ROOPAK - END
     if (d->m_delayedRunConfiguration.isNull() && d->m_shouldHaveRunConfiguration) {
         QMessageBox::warning(ICore::dialogParent(),
                              tr("Run Configuration Removed"),
@@ -1778,8 +1779,8 @@ void ProjectExplorerPlugin::buildQueueFinished(bool success)
     if (success && ignoreErrors && !d->m_delayedRunConfiguration.isNull()) {
         executeRunConfiguration(d->m_delayedRunConfiguration.data(), d->m_runMode);
     } else {
-        if (BuildManager::tasksAvailable())
-            BuildManager::showTaskWindow();
+//        if (BuildManager::tasksAvailable())//ROOPAK
+//            BuildManager::showTaskWindow();//ROOPAK
     }
     d->m_delayedRunConfiguration = 0;
     d->m_shouldHaveRunConfiguration = false;
@@ -1956,7 +1957,7 @@ void ProjectExplorerPlugin::updateActions()
     d->m_rebuildSessionAction->setToolTip(buildSessionState.second);
     d->m_cleanSessionAction->setToolTip(buildSessionState.second);
 
-    d->m_cancelBuildAction->setEnabled(BuildManager::isBuilding());
+//    d->m_cancelBuildAction->setEnabled(BuildManager::isBuilding());//ROOPAK
 
     const bool hasProjects = SessionManager::hasProjects();
     d->m_projectSelectorAction->setEnabled(hasProjects);
@@ -1991,23 +1992,23 @@ bool ProjectExplorerPlugin::saveModifiedFiles()
 
     QList<IDocument *> documentsToSave = DocumentManager::modifiedDocuments();
     if (!documentsToSave.isEmpty()) {
-        if (d->m_projectExplorerSettings.saveBeforeBuild) {
-            bool cancelled = false;
-            DocumentManager::saveModifiedDocumentsSilently(documentsToSave, &cancelled);
-            if (cancelled)
-                return false;
-        } else {
-            bool cancelled = false;
-            bool alwaysSave = false;
-            if (!DocumentManager::saveModifiedDocuments(documentsToSave, QString(), &cancelled,
-                                                        tr("Always save files before build"), &alwaysSave)) {
-                if (cancelled)
-                    return false;
-            }
+//        if (d->m_projectExplorerSettings.saveBeforeBuild) {//ROOPAK - START
+//            bool cancelled = false;
+//            DocumentManager::saveModifiedDocumentsSilently(documentsToSave, &cancelled);
+//            if (cancelled)
+//                return false;
+//        } else {
+//            bool cancelled = false;
+//            bool alwaysSave = false;
+//            if (!DocumentManager::saveModifiedDocuments(documentsToSave, QString(), &cancelled,
+//                                                        tr("Always save files before build"), &alwaysSave)) {
+//                if (cancelled)
+//                    return false;
+//            }
 
-            if (alwaysSave)
-                d->m_projectExplorerSettings.saveBeforeBuild = true;
-        }
+//            if (alwaysSave)
+//                d->m_projectExplorerSettings.saveBeforeBuild = true;
+//        }//ROOPAK - END
     }
     return true;
 }
@@ -2018,8 +2019,8 @@ bool ProjectExplorerPlugin::saveModifiedFiles()
 void ProjectExplorerPlugin::deploy(QList<Project *> projects)
 {
     QList<Id> steps;
-    if (d->m_projectExplorerSettings.buildBeforeDeploy)
-        steps << Id(Constants::BUILDSTEPS_BUILD);
+//    if (d->m_projectExplorerSettings.buildBeforeDeploy)//ROOPAK
+//        steps << Id(Constants::BUILDSTEPS_BUILD);//ROOPAK
     steps << Id(Constants::BUILDSTEPS_DEPLOY);
     queue(projects, steps);
 }
@@ -2049,7 +2050,7 @@ int ProjectExplorerPlugin::queue(QList<Project *> projects, QList<Id> stepIds)
     if (!saveModifiedFiles())
         return -1;
 
-    QList<BuildStepList *> stepLists;
+//    QList<BuildStepList *> stepLists;//ROOPAK
     QStringList names;
     QStringList preambleMessage;
 
@@ -2061,26 +2062,26 @@ int ProjectExplorerPlugin::queue(QList<Project *> projects, QList<Id> stepIds)
         foreach (Project *pro, projects) {
             if (!pro || !pro->activeTarget())
                 continue;
-            BuildStepList *bsl = 0;
-            if (id == Constants::BUILDSTEPS_DEPLOY
-                && pro->activeTarget()->activeDeployConfiguration())
-                bsl = pro->activeTarget()->activeDeployConfiguration()->stepList();
-            else if (pro->activeTarget()->activeBuildConfiguration())
-                bsl = pro->activeTarget()->activeBuildConfiguration()->stepList(id);
+//            BuildStepList *bsl = 0;//ROOPAK - START
+//            if (id == Constants::BUILDSTEPS_DEPLOY
+//                && pro->activeTarget()->activeDeployConfiguration())
+//                bsl = pro->activeTarget()->activeDeployConfiguration()->stepList();
+//            else if (pro->activeTarget()->activeBuildConfiguration())
+//                bsl = pro->activeTarget()->activeBuildConfiguration()->stepList(id);
 
-            if (!bsl || bsl->isEmpty())
-                continue;
-            stepLists << bsl;
+//            if (!bsl || bsl->isEmpty())
+//                continue;
+//            stepLists << bsl;//ROOPAK - END
             names << displayNameForStepId(id);
         }
     }
 
-    if (stepLists.isEmpty())
-        return 0;
+//    if (stepLists.isEmpty())//ROOPAK - START
+//        return 0;
 
-    if (!BuildManager::buildLists(stepLists, names, preambleMessage))
-        return -1;
-    return stepLists.count();
+//    if (!BuildManager::buildLists(stepLists, names, preambleMessage))
+//        return -1;//ROOPAK - END
+    return 0/*stepLists.count()*/;//ROOPAK
 }
 
 void ProjectExplorerPlugin::buildProjectOnly()
@@ -2228,10 +2229,10 @@ QPair<bool, QString> ProjectExplorerPlugin::buildSettingsEnabled(Project *pro)
     if (!pro) {
         result.first = false;
         result.second = tr("No project loaded.");
-    } else if (BuildManager::isBuilding(pro)) {
+    } /*else if (BuildManager::isBuilding(pro)) {//ROOPAK - START
         result.first = false;
         result.second = tr("Currently building the active project.");
-    } else if (pro->needsConfiguration()) {
+    } */else if (pro->needsConfiguration()) {//ROOPAK - END
         result.first = false;
         result.second = tr("The project %1 is not configured.").arg(pro->displayName());
     } else if (!hasBuildSettings(pro)) {
@@ -2261,10 +2262,10 @@ QPair<bool, QString> ProjectExplorerPlugin::buildSettingsEnabledForSession()
     if (!SessionManager::hasProjects()) {
         result.first = false;
         result.second = tr("No project loaded");
-    } else if (BuildManager::isBuilding()) {
+    } /*else if (BuildManager::isBuilding()) {//ROOPAK - START
         result.first = false;
         result.second = tr("A build is in progress");
-    } else if (!hasBuildSettings(0)) {
+    } */else if (!hasBuildSettings(0)) {//ROOPAK - END
         result.first = false;
         result.second = tr("Project has no build settings");
     } else {
@@ -2286,18 +2287,18 @@ QPair<bool, QString> ProjectExplorerPlugin::buildSettingsEnabledForSession()
 
 bool ProjectExplorerPlugin::coreAboutToClose()
 {
-    if (BuildManager::isBuilding()) {
-        QMessageBox box;
-        QPushButton *closeAnyway = box.addButton(tr("Cancel Build && Close"), QMessageBox::AcceptRole);
-        QPushButton *cancelClose = box.addButton(tr("Do Not Close"), QMessageBox::RejectRole);
-        box.setDefaultButton(cancelClose);
-        box.setWindowTitle(tr("Close Qt Creator?"));
-        box.setText(tr("A project is currently being built."));
-        box.setInformativeText(tr("Do you want to cancel the build process and close Qt Creator anyway?"));
-        box.exec();
-        if (box.clickedButton() != closeAnyway)
-            return false;
-    }
+//    if (BuildManager::isBuilding()) {//ROOPAK - START
+//        QMessageBox box;
+//        QPushButton *closeAnyway = box.addButton(tr("Cancel Build && Close"), QMessageBox::AcceptRole);
+//        QPushButton *cancelClose = box.addButton(tr("Do Not Close"), QMessageBox::RejectRole);
+//        box.setDefaultButton(cancelClose);
+//        box.setWindowTitle(tr("Close Qt Creator?"));
+//        box.setText(tr("A project is currently being built."));
+//        box.setInformativeText(tr("Do you want to cancel the build process and close Qt Creator anyway?"));
+//        box.exec();
+//        if (box.clickedButton() != closeAnyway)
+//            return false;
+//    }//ROOPAK - END
 //    if (!d->m_outputPane->aboutToClose())//ROOPAK
 //        return false;//ROOPAK
     return true;
@@ -2308,7 +2309,7 @@ bool ProjectExplorerPlugin::hasDeploySettings(Project *pro)
     foreach (Project *project, SessionManager::projectOrder(pro))
         if (project->activeTarget()
                 && project->activeTarget()->activeDeployConfiguration()
-                && !project->activeTarget()->activeDeployConfiguration()->stepList()->isEmpty())
+                /*&& !project->activeTarget()->activeDeployConfiguration()->stepList()->isEmpty()*/)//ROOPAK
             return true;
     return false;
 }
@@ -2331,11 +2332,11 @@ void ProjectExplorerPlugin::runRunConfiguration(RunConfiguration *rc,
         return;
 
     QList<Id> stepIds;
-    if (!forceSkipDeploy && d->m_projectExplorerSettings.deployBeforeRun) {
-        if (d->m_projectExplorerSettings.buildBeforeDeploy)
-            stepIds << Id(Constants::BUILDSTEPS_BUILD);
-        stepIds << Id(Constants::BUILDSTEPS_DEPLOY);
-    }
+//    if (!forceSkipDeploy && d->m_projectExplorerSettings.deployBeforeRun) {//ROOPAK - START
+//        if (d->m_projectExplorerSettings.buildBeforeDeploy)
+//            stepIds << Id(Constants::BUILDSTEPS_BUILD);
+//        stepIds << Id(Constants::BUILDSTEPS_DEPLOY);
+//    }//ROOPAK - END
 
     Project *pro = rc->target()->project();
     int queueCount = queue(SessionManager::projectOrder(pro), stepIds);
@@ -2466,20 +2467,20 @@ void ProjectExplorerPlugin::updateDeployActions()
     Project *project = SessionManager::startupProject();
 
     bool enableDeployActions = project
-            && !BuildManager::isBuilding(project)
+            //&& !BuildManager::isBuilding(project)//ROOPAK
             && hasDeploySettings(project);
     bool enableDeployActionsContextMenu = d->m_currentProject
-                              && !BuildManager::isBuilding(d->m_currentProject)
+//                              && !BuildManager::isBuilding(d->m_currentProject)//ROOPAK
                               && hasDeploySettings(d->m_currentProject);
 
-    if (d->m_projectExplorerSettings.buildBeforeDeploy) {
-        if (hasBuildSettings(project)
-                && !buildSettingsEnabled(project).first)
-            enableDeployActions = false;
-        if (hasBuildSettings(d->m_currentProject)
-                && !buildSettingsEnabled(d->m_currentProject).first)
-            enableDeployActionsContextMenu = false;
-    }
+//    if (d->m_projectExplorerSettings.buildBeforeDeploy) {//ROOPAK - START
+//        if (hasBuildSettings(project)
+//                && !buildSettingsEnabled(project).first)
+//            enableDeployActions = false;
+//        if (hasBuildSettings(d->m_currentProject)
+//                && !buildSettingsEnabled(d->m_currentProject).first)
+//            enableDeployActionsContextMenu = false;
+//    }//ROOPAK - END
 
     const QString projectName = project ? project->displayName() : QString();
     bool hasProjects = SessionManager::hasProjects();
@@ -2492,18 +2493,18 @@ void ProjectExplorerPlugin::updateDeployActions()
     d->m_deployProjectOnlyAction->setEnabled(enableDeployActions);
 
     bool enableDeploySessionAction = true;
-    if (d->m_projectExplorerSettings.buildBeforeDeploy) {
-        foreach (Project *project, SessionManager::projectOrder(0)) {
-            if (project
-                    && project->activeTarget()
-                    && project->activeTarget()->activeBuildConfiguration()
-                    && !project->activeTarget()->activeBuildConfiguration()->isEnabled()) {
-                enableDeploySessionAction = false;
-                break;
-            }
-        }
-    }
-    if (!hasProjects || !hasDeploySettings(0) || BuildManager::isBuilding())
+//    if (d->m_projectExplorerSettings.buildBeforeDeploy) {//ROOPAK - START
+//        foreach (Project *project, SessionManager::projectOrder(0)) {
+//            if (project
+//                    && project->activeTarget()
+//                    && project->activeTarget()->activeBuildConfiguration()
+//                    && !project->activeTarget()->activeBuildConfiguration()->isEnabled()) {
+//                enableDeploySessionAction = false;
+//                break;
+//            }
+//        }
+//    }//ROOPAK - END
+    if (!hasProjects || !hasDeploySettings(0) /*|| BuildManager::isBuilding()*/)//ROOPAK
         enableDeploySessionAction = false;
     d->m_deploySessionAction->setEnabled(enableDeploySessionAction);
 
@@ -2518,18 +2519,18 @@ bool ProjectExplorerPlugin::canRun(Project *project, RunMode runMode)
         return false;
     }
 
-    if (d->m_projectExplorerSettings.buildBeforeDeploy
-            && d->m_projectExplorerSettings.deployBeforeRun
-            && hasBuildSettings(project)
-            && !buildSettingsEnabled(project).first)
-        return false;
+//    if (d->m_projectExplorerSettings.buildBeforeDeploy//ROOPAK - START
+//            && d->m_projectExplorerSettings.deployBeforeRun
+//            && hasBuildSettings(project)
+//            && !buildSettingsEnabled(project).first)
+//        return false;//ROOPAK = END
 
 
     RunConfiguration *activeRC = project->activeTarget()->activeRunConfiguration();
 
     bool canRun = findRunControlFactory(activeRC, runMode)
                   && activeRC->isEnabled();
-    return canRun && !BuildManager::isBuilding();
+    return canRun /*&& !BuildManager::isBuilding()*/;//ROOPAK
 }
 
 QString ProjectExplorerPlugin::cannotRunReason(Project *project, RunMode runMode)
@@ -2548,13 +2549,13 @@ QString ProjectExplorerPlugin::cannotRunReason(Project *project, RunMode runMode
                 .arg(project->activeTarget()->displayName(), project->displayName());
 
 
-    if (d->m_projectExplorerSettings.buildBeforeDeploy
-            && d->m_projectExplorerSettings.deployBeforeRun
-            && hasBuildSettings(project)) {
-        QPair<bool, QString> buildState = buildSettingsEnabled(project);
-        if (!buildState.first)
-            return buildState.second;
-    }
+//    if (d->m_projectExplorerSettings.buildBeforeDeploy//ROOPAK - START
+//            && d->m_projectExplorerSettings.deployBeforeRun
+//            && hasBuildSettings(project)) {
+//        QPair<bool, QString> buildState = buildSettingsEnabled(project);
+//        if (!buildState.first)
+//            return buildState.second;
+//    }//ROOPAk - END
 
 
     RunConfiguration *activeRC = project->activeTarget()->activeRunConfiguration();
@@ -2565,8 +2566,8 @@ QString ProjectExplorerPlugin::cannotRunReason(Project *project, RunMode runMode
     if (!findRunControlFactory(activeRC, runMode))
         return tr("Cannot run '%1'.").arg(activeRC->displayName());
 
-    if (BuildManager::isBuilding())
-        return tr("A build is still in progress.");
+//    if (BuildManager::isBuilding())//ROOPAK
+//        return tr("A build is still in progress.");//ROOPAK
     return QString();
 }
 
@@ -2584,8 +2585,8 @@ void ProjectExplorerPlugin::cancelBuild()
     if (debug)
         qDebug() << "ProjectExplorerPlugin::cancelBuild";
 
-    if (BuildManager::isBuilding())
-        BuildManager::cancel();
+//    if (BuildManager::isBuilding())//ROOPAK
+//        BuildManager::cancel();//ROOPAK
 }
 
 void ProjectExplorerPlugin::addToRecentProjects(const QString &fileName, const QString &displayName)
@@ -2872,10 +2873,10 @@ void ProjectExplorerPlugin::addExistingDirectory()
 {
     QTC_ASSERT(d->m_currentNode, return);
 
-    SelectableFilesDialogAddDirectory dialog(directoryFor(d->m_currentNode), QStringList(), Core::ICore::mainWindow());
+//    SelectableFilesDialogAddDirectory dialog(directoryFor(d->m_currentNode), QStringList(), Core::ICore::mainWindow());//ROOPAK - START
 
-    if (dialog.exec() == QDialog::Accepted)
-        addExistingFiles(dialog.selectedFiles());
+//    if (dialog.exec() == QDialog::Accepted)
+//        addExistingFiles(dialog.selectedFiles());//ROOPAK - END
 }
 
 void ProjectExplorerPlugin::addExistingFiles(const QStringList &filePaths)
@@ -3073,20 +3074,20 @@ void ProjectExplorerPlugin::setSession(QAction *action)
         SessionManager::loadSession(session);
 }
 
-void ProjectExplorerPlugin::setProjectExplorerSettings(const ProjectExplorerSettings &pes)
-{
-    QTC_ASSERT(m_instance->d->m_projectExplorerSettings.environmentId == pes.environmentId, return);
+//void ProjectExplorerPlugin::setProjectExplorerSettings(const ProjectExplorerSettings &pes)//ROOPAK - START
+//{
+//    QTC_ASSERT(m_instance->d->m_projectExplorerSettings.environmentId == pes.environmentId, return);
 
-    if (m_instance->d->m_projectExplorerSettings == pes)
-        return;
-    m_instance->d->m_projectExplorerSettings = pes;
-    emit m_instance->settingsChanged();
-}
+//    if (m_instance->d->m_projectExplorerSettings == pes)
+//        return;
+//    m_instance->d->m_projectExplorerSettings = pes;
+//    emit m_instance->settingsChanged();
+//}
 
-ProjectExplorerSettings ProjectExplorerPlugin::projectExplorerSettings()
-{
-    return m_instance->d->m_projectExplorerSettings;
-}
+//ProjectExplorerSettings ProjectExplorerPlugin::projectExplorerSettings()
+//{
+//    return m_instance->d->m_projectExplorerSettings;
+//}//ROOPAK - END
 
 QStringList ProjectExplorerPlugin::projectFilePatterns()
 {

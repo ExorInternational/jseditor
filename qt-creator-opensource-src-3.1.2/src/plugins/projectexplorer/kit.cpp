@@ -31,7 +31,7 @@
 
 #include "kitmanager.h"
 #include "ioutputparser.h"
-#include "osparser.h"
+//#include "osparser.h"//ROOPAK
 
 #include <utils/fileutils.h>
 
@@ -466,11 +466,12 @@ void Kit::addToEnvironment(Utils::Environment &env) const
 
 IOutputParser *Kit::createOutputParser() const
 {
-    IOutputParser *first = new OsParser;
-    QList<KitInformation *> infoList = KitManager::kitInformation();
-    foreach (KitInformation *ki, infoList)
-        first->appendOutputParser(ki->createOutputParser(this));
-    return first;
+//    IOutputParser *first = new OsParser;//ROOPAK - START
+//    QList<KitInformation *> infoList = KitManager::kitInformation();
+//    foreach (KitInformation *ki, infoList)
+//        first->appendOutputParser(ki->createOutputParser(this));
+//    return first;
+    return NULL;//ROOPAK - END
 }
 
 QString Kit::toHtml() const

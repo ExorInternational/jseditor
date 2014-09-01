@@ -30,7 +30,7 @@
 #include "buildstep.h"
 
 #include "buildconfiguration.h"
-#include "buildsteplist.h"
+//#include "buildsteplist.h"//ROOPAK
 #include "deployconfiguration.h"
 #include "target.h"
 
@@ -113,18 +113,18 @@ static const char buildStepEnabledKey[] = "ProjectExplorer.BuildStep.Enabled";
 
 using namespace ProjectExplorer;
 
-BuildStep::BuildStep(BuildStepList *bsl, const Core::Id id) :
-    ProjectConfiguration(bsl, id), m_enabled(true)
-{
-    Q_ASSERT(bsl);
-}
+//BuildStep::BuildStep(BuildStepList *bsl, const Core::Id id) ://ROOPAK - START
+//    ProjectConfiguration(bsl, id), m_enabled(true)
+//{
+//    Q_ASSERT(bsl);
+//}
 
-BuildStep::BuildStep(BuildStepList *bsl, BuildStep *bs) :
-    ProjectConfiguration(bsl, bs), m_enabled(bs->m_enabled)
-{
-    Q_ASSERT(bsl);
-    setDisplayName(bs->displayName());
-}
+//BuildStep::BuildStep(BuildStepList *bsl, BuildStep *bs) :
+//    ProjectConfiguration(bsl, bs), m_enabled(bs->m_enabled)
+//{
+//    Q_ASSERT(bsl);
+//    setDisplayName(bs->displayName());
+//}//ROOPAK - END
 
 BuildStep::~BuildStep()
 {

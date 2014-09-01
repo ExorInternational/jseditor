@@ -35,7 +35,7 @@
 #include <coreplugin/editormanager/ieditor.h>
 #include <cpptools/cppmodelmanagerinterface.h>
 #include <projectexplorer/buildconfiguration.h>
-#include <projectexplorer/buildmanager.h>
+//#include <projectexplorer/buildmanager.h>//ROOPAK
 #include <projectexplorer/project.h>
 #include <projectexplorer/projectexplorer.h>
 #include <projectexplorer/session.h>
@@ -314,8 +314,8 @@ UiCodeModelManager::UiCodeModelManager() :
     m_dirty(false)
 {
     m_instance = this;
-    connect(BuildManager::instance(), SIGNAL(buildStateChanged(ProjectExplorer::Project*)),
-            this, SLOT(buildStateHasChanged(ProjectExplorer::Project*)));
+//    connect(BuildManager::instance(), SIGNAL(buildStateChanged(ProjectExplorer::Project*)),//ROOPAK
+//            this, SLOT(buildStateHasChanged(ProjectExplorer::Project*)));//ROOPAK
     connect(SessionManager::instance(),
             SIGNAL(projectRemoved(ProjectExplorer::Project*)),
             this, SLOT(projectWasRemoved(ProjectExplorer::Project*)));
@@ -384,8 +384,8 @@ void UiCodeModelManager::updateContents(const QString &uiFileName, const QString
 
 void UiCodeModelManager::buildStateHasChanged(Project *project)
 {
-    if (BuildManager::isBuilding(project))
-        return;
+//    if (BuildManager::isBuilding(project))//ROOPAK
+//        return;//ROOPAK
 
     QList<UiCodeModelSupport *> projectSupport = m_projectUiSupport.value(project);
     foreach (UiCodeModelSupport *const i, projectSupport)

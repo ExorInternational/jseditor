@@ -31,9 +31,14 @@
 #define IOUTPUTPARSER_H
 
 #include "projectexplorer_export.h"
-#include "buildstep.h"
+//#include "buildstep.h"//ROOPAK
 
 #include <QString>
+
+//ADDED BY ROOPAK
+#include <QFutureInterface>
+#include <QWidget>
+//ROOPAK - END
 
 namespace ProjectExplorer {
 class Task;
@@ -65,11 +70,11 @@ public:
     static QString rightTrimmed(const QString &in);
 
 signals:
-    void addOutput(const QString &string, ProjectExplorer::BuildStep::OutputFormat format);
+//    void addOutput(const QString &string, ProjectExplorer::BuildStep::OutputFormat format);//ROOPAK
     void addTask(const ProjectExplorer::Task &task);
 
 public slots:
-    virtual void outputAdded(const QString &string, ProjectExplorer::BuildStep::OutputFormat format);
+//    virtual void outputAdded(const QString &string, ProjectExplorer::BuildStep::OutputFormat format);//ROOPAK
     virtual void taskAdded(const ProjectExplorer::Task &task);
 
 private:

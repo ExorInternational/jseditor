@@ -29,9 +29,9 @@
 
 #include "target.h"
 
-#include "buildinfo.h"
-#include "buildtargetinfo.h"
-#include "deploymentdata.h"
+//#include "buildinfo.h"//ROOPAK
+//#include "buildtargetinfo.h"//ROOPAK
+//#include "deploymentdata.h"//ROOPAK
 #include "kit.h"
 #include "kitinformation.h"
 #include "kitmanager.h"
@@ -42,8 +42,8 @@
 
 #include <limits>
 #include <coreplugin/coreconstants.h>
-#include <projectexplorer/buildmanager.h>
-#include <projectexplorer/devicesupport/devicemanager.h>
+//#include <projectexplorer/buildmanager.h>//ROOPAK
+//#include <projectexplorer/devicesupport/devicemanager.h>//ROOPAK
 #include <extensionsystem/pluginmanager.h>
 #include <projectexplorer/projectexplorer.h>
 #include <utils/qtcassert.h>
@@ -92,8 +92,8 @@ public:
     DeployConfiguration *m_activeDeployConfiguration;
     QList<RunConfiguration *> m_runConfigurations;
     RunConfiguration* m_activeRunConfiguration;
-    DeploymentData m_deploymentData;
-    BuildTargetInfoList m_appTargets;
+//    DeploymentData m_deploymentData;//ROOPAK
+//    BuildTargetInfoList m_appTargets;//ROOPAK
     QVariantMap m_pluginSettings;
 
     QPixmap m_connectedPixmap;
@@ -124,7 +124,7 @@ Target::Target(Project *project, Kit *k) :
     ProjectConfiguration(project, k->id()),
     d(new TargetPrivate)
 {
-    connect(DeviceManager::instance(), SIGNAL(updated()), this, SLOT(updateDeviceState()));
+//    connect(DeviceManager::instance(), SIGNAL(updated()), this, SLOT(updateDeviceState()));//ROOPAK
 
     d->m_kit = k;
 
@@ -251,8 +251,8 @@ bool Target::removeBuildConfiguration(BuildConfiguration *configuration)
     if (!d->m_buildConfigurations.contains(configuration))
         return false;
 
-    if (BuildManager::isBuilding(configuration))
-        return false;
+//    if (BuildManager::isBuilding(configuration))//ROOPAK
+//        return false;//ROOPAK
 
     d->m_buildConfigurations.removeOne(configuration);
 
@@ -326,8 +326,8 @@ bool Target::removeDeployConfiguration(DeployConfiguration *dc)
     if (!d->m_deployConfigurations.contains(dc))
         return false;
 
-    if (BuildManager::isBuilding(dc))
-        return false;
+//    if (BuildManager::isBuilding(dc))//ROOPAK
+//        return false;//ROOPAK
 
     d->m_deployConfigurations.removeOne(dc);
 
@@ -366,31 +366,31 @@ void Target::setActiveDeployConfiguration(DeployConfiguration *dc)
     updateDeviceState();
 }
 
-void Target::setDeploymentData(const DeploymentData &deploymentData)
-{
-    if (d->m_deploymentData != deploymentData) {
-        d->m_deploymentData = deploymentData;
-        emit deploymentDataChanged();
-    }
-}
+//void Target::setDeploymentData(const DeploymentData &deploymentData)//ROOPAK - START
+//{
+//    if (d->m_deploymentData != deploymentData) {
+//        d->m_deploymentData = deploymentData;
+//        emit deploymentDataChanged();
+//    }
+//}
 
-DeploymentData Target::deploymentData() const
-{
-    return d->m_deploymentData;
-}
+//DeploymentData Target::deploymentData() const
+//{
+//    return d->m_deploymentData;
+//}//ROOPAK - END
 
-void Target::setApplicationTargets(const BuildTargetInfoList &appTargets)
-{
-    if (d->m_appTargets != appTargets) {
-        d->m_appTargets = appTargets;
-        emit applicationTargetsChanged();
-    }
-}
+//void Target::setApplicationTargets(const BuildTargetInfoList &appTargets)//ROOPAK - START
+//{
+//    if (d->m_appTargets != appTargets) {
+//        d->m_appTargets = appTargets;
+//        emit applicationTargetsChanged();
+//    }
+//}
 
-BuildTargetInfoList Target::applicationTargets() const
-{
-    return d->m_appTargets;
-}
+//BuildTargetInfoList Target::applicationTargets() const
+//{
+//    return d->m_appTargets;
+//}//ROOPAK - END
 
 QList<RunConfiguration *> Target::runConfigurations() const
 {
@@ -530,14 +530,14 @@ void Target::updateDefaultBuildConfigurations()
         qWarning("No build configuration factory found for target id '%s'.", qPrintable(id().toString()));
         return;
     }
-    QList<BuildInfo *> infoList = bcFactory->availableSetups(this->kit(), project()->projectFilePath());
-    foreach (BuildInfo *info, infoList) {
-        BuildConfiguration *bc = bcFactory->create(this, info);
-        if (!bc)
-            continue;
-        addBuildConfiguration(bc);
-    }
-    qDeleteAll(infoList);
+//    QList<BuildInfo *> infoList = bcFactory->availableSetups(this->kit(), project()->projectFilePath());//ROOPAK - START
+//    foreach (BuildInfo *info, infoList) {
+//        BuildConfiguration *bc = bcFactory->create(this, info);
+//        if (!bc)
+//            continue;
+//        addBuildConfiguration(bc);
+//    }
+//    qDeleteAll(infoList);//ROOPAK - END
 }
 
 void Target::updateDefaultDeployConfigurations()
@@ -718,40 +718,40 @@ void Target::setNamedSettings(const QString &name, const QVariant &value)
         d->m_pluginSettings.insert(name, value);
 }
 
-static QString formatToolTip(const IDevice::DeviceInfo &input)
-{
-    QStringList lines;
-    foreach (const IDevice::DeviceInfoItem &item, input)
-        lines << QString::fromLatin1("<b>%1:</b> %2").arg(item.key, item.value);
-    return lines.join(QLatin1String("<br>"));
-}
+//static QString formatToolTip(const IDevice::DeviceInfo &input)//ROOPAK - START
+//{
+//    QStringList lines;
+//    foreach (const IDevice::DeviceInfoItem &item, input)
+//        lines << QString::fromLatin1("<b>%1:</b> %2").arg(item.key, item.value);
+//    return lines.join(QLatin1String("<br>"));
+//}//ROOPAK - END
 
 void Target::updateDeviceState()
 {
-    IDevice::ConstPtr current = DeviceKitInformation::device(kit());
+//    IDevice::ConstPtr current = DeviceKitInformation::device(kit());//ROOPAK - START
 
     QPixmap overlay;
-    if (current.isNull()) {
+//    if (current.isNull()) {
         overlay = d->m_disconnectedPixmap;
-    } else {
-        switch (current->deviceState()) {
-        case IDevice::DeviceStateUnknown:
-            setOverlayIcon(QIcon());
-            setToolTip(QString());
-            return;
-        case IDevice::DeviceReadyToUse:
-            overlay = d->m_readyToUsePixmap;
-            break;
-        case IDevice::DeviceConnected:
-            overlay = d->m_connectedPixmap;
-            break;
-        case IDevice::DeviceDisconnected:
-            overlay = d->m_disconnectedPixmap;
-            break;
-        default:
-            break;
-        }
-    }
+//    } else {
+//        switch (current->deviceState()) {
+//        case IDevice::DeviceStateUnknown:
+//            setOverlayIcon(QIcon());
+//            setToolTip(QString());
+//            return;
+//        case IDevice::DeviceReadyToUse:
+//            overlay = d->m_readyToUsePixmap;
+//            break;
+//        case IDevice::DeviceConnected:
+//            overlay = d->m_connectedPixmap;
+//            break;
+//        case IDevice::DeviceDisconnected:
+//            overlay = d->m_disconnectedPixmap;
+//            break;
+//        default:
+//            break;
+//        }
+//    }
 
     static const int TARGET_OVERLAY_ORIGINAL_SIZE = 32;
 
@@ -765,7 +765,7 @@ void Target::updateDeviceState()
                        overlay.scaled(overlaySize));
 
     setOverlayIcon(QIcon(pixmap));
-    setToolTip(current.isNull() ? QString() : formatToolTip(current->deviceInformation()));
+//    setToolTip(current.isNull() ? QString() : formatToolTip(current->deviceInformation()));//ROOPAK
 }
 
 void Target::setEnabled(bool enabled)

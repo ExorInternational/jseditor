@@ -33,7 +33,7 @@
 #include "kitmanager.h"
 #include "kit.h"
 
-#include "devicesupport/idevice.h"
+//#include "devicesupport/idevice.h"//ROOPAK
 
 #include <QVariant>
 
@@ -201,9 +201,9 @@ public:
     ItemList toUserOutput(const Kit *k) const;
 
     static Core::Id id();
-    static IDevice::ConstPtr device(const Kit *k);
+//    static IDevice::ConstPtr device(const Kit *k);//ROOPAK
     static Core::Id deviceId(const Kit *k);
-    static void setDevice(Kit *k, IDevice::ConstPtr dev);
+//    static void setDevice(Kit *k, IDevice::ConstPtr dev);//ROOPAK
     static void setDeviceId(Kit *k, const Core::Id dataId);
 
 private slots:

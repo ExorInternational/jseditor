@@ -34,7 +34,7 @@
 //#include "compileoutputwindow.h"//ROOPAK
 #include "project.h"
 #include "projectexplorer.h"
-#include "projectexplorersettings.h"
+//#include "projectexplorersettings.h"//ROOPAK
 #include "target.h"
 //#include "taskwindow.h"//ROOPAK
 #include "taskhub.h"

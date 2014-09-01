@@ -39,7 +39,7 @@
 namespace ProjectExplorer { class Target; }
 
 namespace QtSupport {
-namespace Internal { class CustomExecutableConfigurationWidget; }
+//namespace Internal { class CustomExecutableConfigurationWidget; }//ROOPAK
 
 class CustomExecutableRunConfigurationFactory;
 
@@ -47,7 +47,7 @@ class QTSUPPORT_EXPORT CustomExecutableRunConfiguration : public ProjectExplorer
 {
     Q_OBJECT
     // the configuration widget needs to setExecutable setWorkingDirectory and setCommandLineArguments
-    friend class Internal::CustomExecutableConfigurationWidget;
+//    friend class Internal::CustomExecutableConfigurationWidget;//ROOPAK
     friend class CustomExecutableRunConfigurationFactory;
 
 public:

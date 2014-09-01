@@ -30,8 +30,8 @@
 #include "kitinformation.h"
 
 //#include "devicesupport/desktopdevice.h"//ROOPAK
-#include "devicesupport/idevicefactory.h"//ADDED BY ROOPAK
-#include "devicesupport/devicemanager.h"
+//#include "devicesupport/idevicefactory.h"//ADDED BY ROOPAK
+//#include "devicesupport/devicemanager.h"//ROOPAK
 #include "projectexplorerconstants.h"
 #include "kit.h"
 //#include "kitinformationconfigwidget.h"//ROOPAK
@@ -297,14 +297,14 @@ KitInformation::ItemList DeviceTypeKitInformation::toUserOutput(const Kit *k) co
     Core::Id type = deviceTypeId(k);
     QString typeDisplayName = tr("Unknown device type");
     if (type.isValid()) {
-        QList<IDeviceFactory *> factories
-                = ExtensionSystem::PluginManager::getObjects<IDeviceFactory>();
-        foreach (IDeviceFactory *factory, factories) {
-            if (factory->availableCreationIds().contains(type)) {
-                typeDisplayName = factory->displayNameForId(type);
-                break;
-            }
-        }
+//        QList<IDeviceFactory *> factories//ROOPAK - START
+//                = ExtensionSystem::PluginManager::getObjects<IDeviceFactory>();
+//        foreach (IDeviceFactory *factory, factories) {
+//            if (factory->availableCreationIds().contains(type)) {
+//                typeDisplayName = factory->displayNameForId(type);
+//                break;
+//            }
+//        }//ROOPAK - END
     }
     return ItemList() << qMakePair(tr("Device type"), typeDisplayName);
 }
@@ -341,38 +341,39 @@ DeviceKitInformation::DeviceKitInformation()
 QVariant DeviceKitInformation::defaultValue(Kit *k) const
 {
     Core::Id type = DeviceTypeKitInformation::deviceTypeId(k);
-    IDevice::ConstPtr dev = DeviceManager::instance()->defaultDevice(type);
-    return dev.isNull() ? QString() : dev->id().toString();
+//    IDevice::ConstPtr dev = DeviceManager::instance()->defaultDevice(type);//ROOPAK - START
+//    return dev.isNull() ? QString() : dev->id().toString();
+    return QString();//ROOPAK - END
 }
 
 QList<Task> DeviceKitInformation::validate(const Kit *k) const
 {
-    IDevice::ConstPtr dev = DeviceKitInformation::device(k);
+//    IDevice::ConstPtr dev = DeviceKitInformation::device(k);//ROOPAK
     QList<Task> result;
-    if (!dev.isNull() && dev->type() != DeviceTypeKitInformation::deviceTypeId(k))
-        result.append(Task(Task::Error, tr("Device does not match device type."),
-                           Utils::FileName(), -1, Core::Id(Constants::TASK_CATEGORY_BUILDSYSTEM)));
-    if (dev.isNull())
-        result.append(Task(Task::Warning, tr("No device set."),
-                           Utils::FileName(), -1, Core::Id(Constants::TASK_CATEGORY_BUILDSYSTEM)));
+//    if (!dev.isNull() && dev->type() != DeviceTypeKitInformation::deviceTypeId(k))//ROOPAK - START
+//        result.append(Task(Task::Error, tr("Device does not match device type."),
+//                           Utils::FileName(), -1, Core::Id(Constants::TASK_CATEGORY_BUILDSYSTEM)));
+//    if (dev.isNull())
+//        result.append(Task(Task::Warning, tr("No device set."),
+//                           Utils::FileName(), -1, Core::Id(Constants::TASK_CATEGORY_BUILDSYSTEM)));//ROOPAK - END
     return result;
 }
 
 void DeviceKitInformation::fix(Kit *k)
 {
-    IDevice::ConstPtr dev = DeviceKitInformation::device(k);
-    if (!dev.isNull() && dev->type() != DeviceTypeKitInformation::deviceTypeId(k)) {
-        qWarning("Device is no longer known, removing from kit \"%s\".", qPrintable(k->displayName()));
-        setDeviceId(k, Core::Id());
-    }
+//    IDevice::ConstPtr dev = DeviceKitInformation::device(k);//ROOPAK - START
+//    if (!dev.isNull() && dev->type() != DeviceTypeKitInformation::deviceTypeId(k)) {
+//        qWarning("Device is no longer known, removing from kit \"%s\".", qPrintable(k->displayName()));
+//        setDeviceId(k, Core::Id());
+//    }//ROOPAK - END
 }
 
 void DeviceKitInformation::setup(Kit *k)
 {
-    QTC_ASSERT(DeviceManager::instance()->isLoaded(), return);
-    IDevice::ConstPtr dev = DeviceKitInformation::device(k);
-    if (!dev.isNull() && dev->type() == DeviceTypeKitInformation::deviceTypeId(k))
-        return;
+//    QTC_ASSERT(DeviceManager::instance()->isLoaded(), return);//ROOPAK
+//    IDevice::ConstPtr dev = DeviceKitInformation::device(k);
+//    if (!dev.isNull() && dev->type() == DeviceTypeKitInformation::deviceTypeId(k))
+//        return;
 
     setDeviceId(k, Core::Id::fromSetting(defaultValue(k)));
 }
@@ -385,14 +386,16 @@ KitConfigWidget *DeviceKitInformation::createConfigWidget(Kit *k) const
 
 QString DeviceKitInformation::displayNamePostfix(const Kit *k) const
 {
-    IDevice::ConstPtr dev = device(k);
-    return dev.isNull() ? QString() : dev->displayName();
+//    IDevice::ConstPtr dev = device(k);//ROOPAK - START
+//    return dev.isNull() ? QString() : dev->displayName();
+    return QString();//ROOPAK - END
 }
 
 KitInformation::ItemList DeviceKitInformation::toUserOutput(const Kit *k) const
 {
-    IDevice::ConstPtr dev = device(k);
-    return ItemList() << qMakePair(tr("Device"), dev.isNull() ? tr("Unconfigured") : dev->displayName());
+//    IDevice::ConstPtr dev = device(k);//ROOPAK - START
+//    return ItemList() << qMakePair(tr("Device"), dev.isNull() ? tr("Unconfigured") : dev->displayName());
+    return KitInformation::ItemList();//ROOPAK - END
 }
 
 Core::Id DeviceKitInformation::id()
@@ -400,21 +403,22 @@ Core::Id DeviceKitInformation::id()
     return "PE.Profile.Device";
 }
 
-IDevice::ConstPtr DeviceKitInformation::device(const Kit *k)
-{
-    QTC_ASSERT(DeviceManager::instance()->isLoaded(), return IDevice::ConstPtr());
-    return DeviceManager::instance()->find(deviceId(k));
-}
+//IDevice::ConstPtr DeviceKitInformation::device(const Kit *k)//ROOPAK - START
+//{
+////    QTC_ASSERT(DeviceManager::instance()->isLoaded(), return IDevice::ConstPtr());//ROOPAK - START
+////    return DeviceManager::instance()->find(deviceId(k));
+//    IDevice::ConstPtr ptr; return ptr;
+//}//ROOPAK - END
 
 Core::Id DeviceKitInformation::deviceId(const Kit *k)
 {
     return k ? Core::Id::fromSetting(k->value(DeviceKitInformation::id())) : Core::Id();
 }
 
-void DeviceKitInformation::setDevice(Kit *k, IDevice::ConstPtr dev)
-{
-    setDeviceId(k, dev ? dev->id() : Core::Id());
-}
+//void DeviceKitInformation::setDevice(Kit *k, IDevice::ConstPtr dev)//ROOPAK - START
+//{
+//    setDeviceId(k, dev ? dev->id() : Core::Id());
+//}//ROOPAK - END
 
 void DeviceKitInformation::setDeviceId(Kit *k, const Core::Id id)
 {
@@ -426,11 +430,11 @@ void DeviceKitInformation::kitsWereLoaded()
     foreach (Kit *k, KitManager::kits())
         fix(k);
 
-    DeviceManager *dm = DeviceManager::instance();
-    connect(dm, SIGNAL(deviceListReplaced()), this, SLOT(devicesChanged()));
-    connect(dm, SIGNAL(deviceAdded(Core::Id)), this, SLOT(devicesChanged()));
-    connect(dm, SIGNAL(deviceRemoved(Core::Id)), this, SLOT(devicesChanged()));
-    connect(dm, SIGNAL(deviceUpdated(Core::Id)), this, SLOT(deviceUpdated(Core::Id)));
+//    DeviceManager *dm = DeviceManager::instance();//ROOPAK - START
+//    connect(dm, SIGNAL(deviceListReplaced()), this, SLOT(devicesChanged()));
+//    connect(dm, SIGNAL(deviceAdded(Core::Id)), this, SLOT(devicesChanged()));
+//    connect(dm, SIGNAL(deviceRemoved(Core::Id)), this, SLOT(devicesChanged()));
+//    connect(dm, SIGNAL(deviceUpdated(Core::Id)), this, SLOT(deviceUpdated(Core::Id)));//ROOPAK - END
 
     connect(KitManager::instance(), SIGNAL(kitUpdated(ProjectExplorer::Kit*)),
             this, SLOT(kitUpdated(ProjectExplorer::Kit*)));

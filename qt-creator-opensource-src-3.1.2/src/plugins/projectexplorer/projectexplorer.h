@@ -58,7 +58,7 @@ class BuildConfiguration;
 class FolderNode;
 class TaskHub;
 
-namespace Internal { class ProjectExplorerSettings; }
+namespace Internal { /*class ProjectExplorerSettings;*/ }//ROOPAK
 
 struct ProjectExplorerPluginPrivate;
 
@@ -94,8 +94,8 @@ public:
     void extensionsInitialized();
     ShutdownFlag aboutToShutdown();
 
-    static void setProjectExplorerSettings(const Internal::ProjectExplorerSettings &pes);
-    static Internal::ProjectExplorerSettings projectExplorerSettings();
+//    static void setProjectExplorerSettings(const Internal::ProjectExplorerSettings &pes);//ROOPAK
+//    static Internal::ProjectExplorerSettings projectExplorerSettings();//ROOPAK
 
     void startRunControl(RunControl *runControl, RunMode runMode);
     static void showRunErrorMessage(const QString &errorMessage);
