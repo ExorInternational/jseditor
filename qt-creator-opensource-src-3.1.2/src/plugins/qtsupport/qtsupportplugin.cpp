@@ -46,7 +46,7 @@
 #include <coreplugin/variablemanager.h>
 #include <projectexplorer/project.h>
 #include <projectexplorer/projectexplorer.h>
-#include <projectexplorer/target.h>
+//#include <projectexplorer/target.h>//#720 ROOPAK
 
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 1, 0))
 #include "gettingstartedwelcomepage.h"
@@ -123,19 +123,19 @@ void QtSupportPlugin::updateVariable(const QByteArray &variable)
         return;
 
     ProjectExplorer::Project *project = ProjectExplorer::ProjectExplorerPlugin::currentProject();
-    if (!project || !project->activeTarget()) {
+    if (!project /*|| !project->activeTarget()*/) {//#720 ROOPAk
         VariableManager::remove(variable);
         return;
     }
 
-    const BaseQtVersion *qtVersion = QtKitInformation::qtVersion(project->activeTarget()->kit());
-    if (!qtVersion) {
-        VariableManager::remove(variable);
-        return;
-    }
+//    const BaseQtVersion *qtVersion = QtKitInformation::qtVersion(project->activeTarget()->kit());//#720 ROOPAK - START
+//    if (!qtVersion) {
+//        VariableManager::remove(variable);
+//        return;
+//    }
 
-    QString value = qtVersion->qmakeProperty(variable == kHostBins ? "QT_HOST_BINS" : "QT_INSTALL_BINS");
-    VariableManager::insert(variable, value);
+//    QString value = qtVersion->qmakeProperty(variable == kHostBins ? "QT_HOST_BINS" : "QT_INSTALL_BINS");
+//    VariableManager::insert(variable, value);//#720 ROOPAK - END
 }
 
 Q_EXPORT_PLUGIN(QtSupportPlugin)

@@ -41,7 +41,7 @@
 //#include "unconfiguredprojectpanel.h"//ROOPAK
 #include "kitmanager.h"
 //#include "kitoptionspage.h"//ROOPAK
-#include "target.h"
+//#include "target.h"//#720 ROOPAK
 #include "toolchainmanager.h"
 //#include "toolchainoptionspage.h"//ROOPAK
 //#include "copytaskhandler.h"//ROOPAK
@@ -1160,14 +1160,14 @@ void ProjectExplorerPlugin::loadCustomWizards()
 void ProjectExplorerPlugin::updateVariable(const QByteArray &variable)
 {
     if (variable == Constants::VAR_CURRENTPROJECT_BUILDPATH) {
-        if (currentProject() && currentProject()->activeTarget() /*&& currentProject()->activeTarget()->activeBuildConfiguration()*/) {//ROOPAK
+        if (currentProject() /*&& currentProject()->activeTarget() && currentProject()->activeTarget()->activeBuildConfiguration()*/) {//ROOPAK
 //            VariableManager::insert(variable,
 //                                          currentProject()->activeTarget()->activeBuildConfiguration()->buildDirectory().toUserOutput());//ROOPAK
         } else {
             VariableManager::remove(variable);
         }
     } else if (variable == Constants::VAR_CURRENTBUILD_TYPE) {
-        if (currentProject() && currentProject()->activeTarget() /*&& currentProject()->activeTarget()->activeBuildConfiguration()*/) {//ROOPAK
+        if (currentProject() /*&& currentProject()->activeTarget() && currentProject()->activeTarget()->activeBuildConfiguration()*/) {//ROOPAK
 //            BuildConfiguration::BuildType type = currentProject()->activeTarget()->activeBuildConfiguration()->buildType();//ROOPAK - START
 //            QString typeString;
 //            if (type == BuildConfiguration::Debug)
@@ -1203,11 +1203,11 @@ void ProjectExplorerPlugin::updateVariable(const QByteArray &variable)
             projectName = project->displayName();
             if (IDocument *doc = project->document())
                 projectFilePath = doc->filePath();
-            if (Target *target = project->activeTarget()) {
-                kit = target->kit();
-//                if (BuildConfiguration *buildConfiguration = target->activeBuildConfiguration())//ROOPAK
-//                    buildConfigurationName = buildConfiguration->displayName();//ROOPAK
-            }
+//            if (Target *target = project->activeTarget()) {//#720 ROOPAK - START
+//                kit = target->kit();
+////                if (BuildConfiguration *buildConfiguration = target->activeBuildConfiguration())//ROOPAK
+////                    buildConfigurationName = buildConfiguration->displayName();//ROOPAK
+//            }//#720 ROOPAK - END
         }
 //        ProjectMacroExpander expander(projectFilePath, projectName, kit, buildConfigurationName);//ROOPAK - START
 //        QString result;
@@ -1741,12 +1741,12 @@ void ProjectExplorerPlugin::showRunErrorMessage(const QString &errorMessage)
 //    emit updateRunActions();
 //}//ROOPAK - END
 
-QList<RunControl *> ProjectExplorerPlugin::runControls() const
-{
-//    return d->m_outputPane->runControls();//ROOPAK
-      QList<RunControl *> result;
-      return result;
-}
+//QList<RunControl *> ProjectExplorerPlugin::runControls() const//#720 ROOPAK - START
+//{
+////    return d->m_outputPane->runControls();//ROOPAK
+//      QList<RunControl *> result;
+//      return result;
+//}//#720 ROOPAK - END
 
 void ProjectExplorerPlugin::initiateInlineRenaming()
 {
@@ -2060,9 +2060,9 @@ int ProjectExplorerPlugin::queue(QList<Project *> projects, QList<Id> stepIds)
                                    .arg(pro->displayName()) + QLatin1Char('\n'));
     foreach (Id id, stepIds) {
         foreach (Project *pro, projects) {
-            if (!pro || !pro->activeTarget())
-                continue;
-//            BuildStepList *bsl = 0;//ROOPAK - START
+//            if (!pro || !pro->activeTarget())//#720 ROOPAK - START
+//                continue;
+//            BuildStepList *bsl = 0;
 //            if (id == Constants::BUILDSTEPS_DEPLOY
 //                && pro->activeTarget()->activeDeployConfiguration())
 //                bsl = pro->activeTarget()->activeDeployConfiguration()->stepList();
@@ -2216,7 +2216,7 @@ bool ProjectExplorerPlugin::hasBuildSettings(Project *pro)
 {
     foreach (Project *project, SessionManager::projectOrder(pro))
         if (project
-                && project->activeTarget()
+//                && project->activeTarget()//#720 ROOPAK
                 /*&& project->activeTarget()->activeBuildConfiguration()*/)//ROOPAK
             return true;
     return false;
@@ -2242,7 +2242,7 @@ QPair<bool, QString> ProjectExplorerPlugin::buildSettingsEnabled(Project *pro)
         const QList<Project *> & projects = SessionManager::projectOrder(pro);
         foreach (Project *project, projects) {
             if (project
-                    && project->activeTarget()
+//                    && project->activeTarget()//#720 ROOPAK
 //                    && project->activeTarget()->activeBuildConfiguration()//ROOPAK
                     /*&& !project->activeTarget()->activeBuildConfiguration()->isEnabled()*/) {//ROOPAK
                 result.first = false;
@@ -2271,7 +2271,7 @@ QPair<bool, QString> ProjectExplorerPlugin::buildSettingsEnabledForSession()
     } else {
         foreach (Project *project, SessionManager::projectOrder(0)) {
             if (project
-                    && project->activeTarget()
+//                    && project->activeTarget()//#720 ROOPAK
 //                    && project->activeTarget()->activeBuildConfiguration()//ROOPAK
                     /*&& !project->activeTarget()->activeBuildConfiguration()->isEnabled()*/) {//ROOPAK
                 result.first = false;
@@ -2306,11 +2306,11 @@ bool ProjectExplorerPlugin::coreAboutToClose()
 
 bool ProjectExplorerPlugin::hasDeploySettings(Project *pro)
 {
-    foreach (Project *project, SessionManager::projectOrder(pro))
-        if (project->activeTarget()
-//                && project->activeTarget()->activeDeployConfiguration()//ROOPAK
-                /*&& !project->activeTarget()->activeDeployConfiguration()->stepList()->isEmpty()*/)//ROOPAK
-            return true;
+//    foreach (Project *project, SessionManager::projectOrder(pro))//#720 ROOPAK - START
+//        if (project->activeTarget()
+////                && project->activeTarget()->activeDeployConfiguration()//ROOPAK
+//                /*&& !project->activeTarget()->activeDeployConfiguration()->stepList()->isEmpty()*/)//ROOPAK
+//            return true;//#720 ROOPAK - END
     return false;
 }
 
@@ -2409,19 +2409,19 @@ void ProjectExplorerPlugin::startupProjectChanged()
 
 void ProjectExplorerPlugin::activeTargetChanged()
 {
-    static QPointer<Target> previousTarget = 0;
-    Target *target = 0;
-    Project *startupProject = SessionManager::startupProject();
-    if (startupProject)
-        target = startupProject->activeTarget();
-    if (target == previousTarget)
-        return;
+//    static QPointer<Target> previousTarget = 0;//#720 ROOPAK - START
+//    Target *target = 0;
+//    Project *startupProject = SessionManager::startupProject();
+//    if (startupProject)
+//        target = startupProject->activeTarget();
+//    if (target == previousTarget)
+//        return;//#720 ROOPAK - END
 
 //    if (previousTarget) {//#720 ROOPAK - END
 //        disconnect(previousTarget, SIGNAL(activeRunConfigurationChanged(ProjectExplorer::RunConfiguration*)),
 //                   this, SLOT(activeRunConfigurationChanged()));
 //    }//#720 ROOPAK - END
-    previousTarget = target;
+//    previousTarget = target;
 //    if (target) {//#720 ROOPAK - START
 //        connect(target, SIGNAL(activeRunConfigurationChanged(ProjectExplorer::RunConfiguration*)),
 //                this, SLOT(activeRunConfigurationChanged()));
@@ -2513,8 +2513,8 @@ void ProjectExplorerPlugin::updateDeployActions()
 
 bool ProjectExplorerPlugin::canRun(Project *project, RunMode runMode)
 {
-    if (!project ||
-        !project->activeTarget() /*||//#720 ROOPAK
+    if (!project/* ||
+        !project->activeTarget() ||//#720 ROOPAK
         !project->activeTarget()->activeRunConfiguration()*/) {
         return false;
     }
@@ -2541,8 +2541,8 @@ QString ProjectExplorerPlugin::cannotRunReason(Project *project, RunMode runMode
     if (project->needsConfiguration())
         return tr("The project %1 is not configured.").arg(project->displayName());
 
-    if (!project->activeTarget())
-        return tr("The project '%1' has no active kit.").arg(project->displayName());
+//    if (!project->activeTarget())//#720 ROOPAK - START
+//        return tr("The project '%1' has no active kit.").arg(project->displayName());//#720 ROOPAK - END
 
 //    if (!project->activeTarget()->activeRunConfiguration())//#720 ROOPAK - START
 //        return tr("The kit '%1' for the project '%2' has no active run configuration.")

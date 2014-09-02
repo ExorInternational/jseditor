@@ -33,7 +33,7 @@
 //#include "buildconfiguration.h"//ROOPAK
 #include "editorconfiguration.h"
 #include "projectexplorer.h"
-#include "target.h"
+//#include "target.h"//#720 ROOPAK
 //#include "settingsaccessor.h"//ROOPAK
 
 #include <coreplugin/idocument.h>
@@ -88,8 +88,8 @@ public:
     ~ProjectPrivate();
 
     Core::Id m_id;
-    QList<Target *> m_targets;
-    Target *m_activeTarget;
+//    QList<Target *> m_targets;//#720 ROOPAK
+//    Target *m_activeTarget;//#720 ROOPAK
     EditorConfiguration *m_editorConfiguration;
     Core::Context m_projectContext;
     Core::Context m_projectLanguages;
@@ -98,7 +98,7 @@ public:
 };
 
 ProjectPrivate::ProjectPrivate() :
-    m_activeTarget(0),
+//    m_activeTarget(0),//#720 ROOPAK
     m_editorConfiguration(new EditorConfiguration())//,
 //    m_accessor(0)//ROOPAK
 { }
@@ -111,7 +111,7 @@ Project::Project() : d(new ProjectPrivate)
 
 Project::~Project()
 {
-    qDeleteAll(d->m_targets);
+//    qDeleteAll(d->m_targets);//#720 ROOPAK
     delete d->m_editorConfiguration;
     delete d;
 }
@@ -129,7 +129,7 @@ QString Project::projectFilePath() const
 
 bool Project::hasActiveBuildSettings() const
 {
-    return activeTarget() /*&& IBuildConfigurationFactory::find(activeTarget())*/;//ROOPAK
+    return false/*activeTarget() && IBuildConfigurationFactory::find(activeTarget())*/;//ROOPAK
 }
 
 QString Project::makeUnique(const QString &preferredName, const QStringList &usedNames)
@@ -145,104 +145,104 @@ QString Project::makeUnique(const QString &preferredName, const QStringList &use
 
 void Project::changeEnvironment()
 {
-    Target *t = qobject_cast<Target *>(sender());
-    if (t == activeTarget())
-        emit environmentChanged();
+//    Target *t = qobject_cast<Target *>(sender());//#720 ROOPAK - START
+//    if (t == activeTarget())
+//        emit environmentChanged();//#720 ROOPAK - END
 }
 
 void Project::changeBuildConfigurationEnabled()
 {
-    Target *t = qobject_cast<Target *>(sender());
-    if (t == activeTarget())
-        emit buildConfigurationEnabledChanged();
+//    Target *t = qobject_cast<Target *>(sender());//#720 ROOPAK - START
+//    if (t == activeTarget())
+//        emit buildConfigurationEnabledChanged();//#720 ROOPAK - END
 }
 
-void Project::addTarget(Target *t)
-{
-    QTC_ASSERT(t && !d->m_targets.contains(t), return);
-    QTC_ASSERT(!target(t->kit()), return);
-    Q_ASSERT(t->project() == this);
+//void Project::addTarget(Target *t)//#720 ROOPAK - START
+//{
+//    QTC_ASSERT(t && !d->m_targets.contains(t), return);
+//    QTC_ASSERT(!target(t->kit()), return);
+//    Q_ASSERT(t->project() == this);
 
-    t->setDefaultDisplayName(t->displayName());
+//    t->setDefaultDisplayName(t->displayName());
 
-    // add it
-    d->m_targets.push_back(t);
-    connect(t, SIGNAL(environmentChanged()),
-            SLOT(changeEnvironment()));
-    connect(t, SIGNAL(buildConfigurationEnabledChanged()),
-            this, SLOT(changeBuildConfigurationEnabled()));
-    connect(t, SIGNAL(buildDirectoryChanged()),
-            this, SLOT(onBuildDirectoryChanged()));
-    emit addedTarget(t);
+//    // add it
+//    d->m_targets.push_back(t);
+//    connect(t, SIGNAL(environmentChanged()),
+//            SLOT(changeEnvironment()));
+//    connect(t, SIGNAL(buildConfigurationEnabledChanged()),
+//            this, SLOT(changeBuildConfigurationEnabled()));
+//    connect(t, SIGNAL(buildDirectoryChanged()),
+//            this, SLOT(onBuildDirectoryChanged()));
+//    emit addedTarget(t);
 
-    // check activeTarget:
-    if (activeTarget() == 0)
-        setActiveTarget(t);
-}
+//    // check activeTarget:
+//    if (activeTarget() == 0)
+//        setActiveTarget(t);
+//}
 
-bool Project::removeTarget(Target *target)
-{
-    if (!target || !d->m_targets.contains(target))
-        return false;
+//bool Project::removeTarget(Target *target)
+//{
+//    if (!target || !d->m_targets.contains(target))
+//        return false;
 
-//    if (BuildManager::isBuilding(target))//ROOPAK
-//        return false;//ROOPAK
+////    if (BuildManager::isBuilding(target))//ROOPAK
+////        return false;//ROOPAK
 
-    if (target == activeTarget()) {
-        if (d->m_targets.size() == 1)
-            setActiveTarget(0);
-        else if (d->m_targets.first() == target)
-            setActiveTarget(d->m_targets.at(1));
-        else
-            setActiveTarget(d->m_targets.at(0));
-    }
+//    if (target == activeTarget()) {
+//        if (d->m_targets.size() == 1)
+//            setActiveTarget(0);
+//        else if (d->m_targets.first() == target)
+//            setActiveTarget(d->m_targets.at(1));
+//        else
+//            setActiveTarget(d->m_targets.at(0));
+//    }
 
-    emit aboutToRemoveTarget(target);
-    d->m_targets.removeOne(target);
-    emit removedTarget(target);
+//    emit aboutToRemoveTarget(target);
+//    d->m_targets.removeOne(target);
+//    emit removedTarget(target);
 
-    delete target;
-    return true;
-}
+//    delete target;
+//    return true;
+//}
 
-QList<Target *> Project::targets() const
-{
-    return d->m_targets;
-}
+//QList<Target *> Project::targets() const
+//{
+//    return d->m_targets;
+//}
 
-Target *Project::activeTarget() const
-{
-    return d->m_activeTarget;
-}
+//Target *Project::activeTarget() const
+//{
+//    return d->m_activeTarget;
+//}
 
-void Project::setActiveTarget(Target *target)
-{
-    if ((!target && !d->m_targets.isEmpty()) ||
-        (target && d->m_targets.contains(target) && d->m_activeTarget != target)) {
-        d->m_activeTarget = target;
-        emit activeTargetChanged(d->m_activeTarget);
-        emit environmentChanged();
-        emit buildConfigurationEnabledChanged();
-    }
-}
+//void Project::setActiveTarget(Target *target)
+//{
+//    if ((!target && !d->m_targets.isEmpty()) ||
+//        (target && d->m_targets.contains(target) && d->m_activeTarget != target)) {
+//        d->m_activeTarget = target;
+//        emit activeTargetChanged(d->m_activeTarget);
+//        emit environmentChanged();
+//        emit buildConfigurationEnabledChanged();
+//    }
+//}
 
-Target *Project::target(const Core::Id id) const
-{
-    foreach (Target *target, d->m_targets) {
-        if (target->id() == id)
-            return target;
-    }
-    return 0;
-}
+//Target *Project::target(const Core::Id id) const
+//{
+//    foreach (Target *target, d->m_targets) {
+//        if (target->id() == id)
+//            return target;
+//    }
+//    return 0;
+//}
 
-Target *Project::target(Kit *k) const
-{
-    foreach (Target *target, d->m_targets) {
-        if (target->kit() == k)
-            return target;
-    }
-    return 0;
-}
+//Target *Project::target(Kit *k) const
+//{
+//    foreach (Target *target, d->m_targets) {
+//        if (target->kit() == k)
+//            return target;
+//    }
+//    return 0;
+//}//#720 ROOPAK - END
 
 bool Project::supportsKit(Kit *k, QString *errorMessage) const
 {
@@ -251,55 +251,55 @@ bool Project::supportsKit(Kit *k, QString *errorMessage) const
     return true;
 }
 
-Target *Project::createTarget(Kit *k)
-{
-    if (!k || target(k))
-        return 0;
+//Target *Project::createTarget(Kit *k)//#720 ROOPAK - START
+//{
+//    if (!k || target(k))
+//        return 0;
 
-    Target *t = new Target(this, k);
-    if (!setupTarget(t)) {
-        delete t;
-        return 0;
-    }
-    return t;
-}
+//    Target *t = new Target(this, k);
+//    if (!setupTarget(t)) {
+//        delete t;
+//        return 0;
+//    }
+//    return t;
+//}
 
-bool Project::setupTarget(Target *t)
-{
-    t->updateDefaultBuildConfigurations();
-    t->updateDefaultDeployConfigurations();
-//    t->updateDefaultRunConfigurations();//#720 ROOPAK
-    return true;
-}
+//bool Project::setupTarget(Target *t)
+//{
+//    t->updateDefaultBuildConfigurations();
+//    t->updateDefaultDeployConfigurations();
+////    t->updateDefaultRunConfigurations();//#720 ROOPAK
+//    return true;
+//}//#720 ROOPAK - END
 
 void Project::setId(Core::Id id)
 {
     d->m_id = id;
 }
 
-Target *Project::restoreTarget(const QVariantMap &data)
-{
-    Core::Id id = idFromMap(data);
-    if (target(id)) {
-        qWarning("Warning: Duplicated target id found, not restoring second target with id '%s'. Continuing.",
-                 qPrintable(id.toString()));
-        return 0;
-    }
+//Target *Project::restoreTarget(const QVariantMap &data)//#720 ROOPAK - START
+//{
+//    Core::Id id = idFromMap(data);
+//    if (target(id)) {
+//        qWarning("Warning: Duplicated target id found, not restoring second target with id '%s'. Continuing.",
+//                 qPrintable(id.toString()));
+//        return 0;
+//    }
 
-    Kit *k = KitManager::find(id);
-    if (!k) {
-        qWarning("Warning: No kit '%s' found. Continuing.", qPrintable(id.toString()));
-        return 0;
-    }
+//    Kit *k = KitManager::find(id);
+//    if (!k) {
+//        qWarning("Warning: No kit '%s' found. Continuing.", qPrintable(id.toString()));
+//        return 0;
+//    }
 
-    Target *t = new Target(this, k);
-    if (!t->fromMap(data)) {
-        delete t;
-        return 0;
-    }
+//    Target *t = new Target(this, k);
+//    if (!t->fromMap(data)) {
+//        delete t;
+//        return 0;
+//    }
 
-    return t;
-}
+//    return t;
+//}//#720 ROOPAK - END
 
 void Project::saveSettings()
 {
@@ -335,13 +335,13 @@ bool Project::restoreSettings()
 
 QVariantMap Project::toMap() const
 {
-    const QList<Target *> ts = targets();
+//    const QList<Target *> ts = targets();//#720 ROOPAK
 
     QVariantMap map;
-    map.insert(QLatin1String(ACTIVE_TARGET_KEY), ts.indexOf(d->m_activeTarget));
-    map.insert(QLatin1String(TARGET_COUNT_KEY), ts.size());
-    for (int i = 0; i < ts.size(); ++i)
-        map.insert(QString::fromLatin1(TARGET_KEY_PREFIX) + QString::number(i), ts.at(i)->toMap());
+//    map.insert(QLatin1String(ACTIVE_TARGET_KEY), ts.indexOf(d->m_activeTarget));//#720 ROOPAK - START
+//    map.insert(QLatin1String(TARGET_COUNT_KEY), ts.size());
+//    for (int i = 0; i < ts.size(); ++i)
+//        map.insert(QString::fromLatin1(TARGET_KEY_PREFIX) + QString::number(i), ts.at(i)->toMap());//#720 ROOPAK - END
 
     map.insert(QLatin1String(EDITOR_SETTINGS_KEY), d->m_editorConfiguration->toMap());
     map.insert(QLatin1String(PLUGIN_SETTINGS_KEY), d->m_pluginSettings);
@@ -389,13 +389,13 @@ bool Project::fromMap(const QVariantMap &map)
         }
         QVariantMap targetMap = map.value(key).toMap();
 
-        Target *t = restoreTarget(targetMap);
-        if (!t)
-            continue;
+//        Target *t = restoreTarget(targetMap);//#720 ROOPAK - START
+//        if (!t)
+//            continue;
 
-        addTarget(t);
-        if (i == active)
-            setActiveTarget(t);
+//        addTarget(t);
+//        if (i == active)
+//            setActiveTarget(t);//#720 ROOPAK - END
     }
 
     return true;
@@ -536,9 +536,9 @@ bool Project::needsSpecialDeployment() const
 
 void Project::onBuildDirectoryChanged()
 {
-    Target *target = qobject_cast<Target *>(sender());
-    if (target && target == activeTarget())
-        emit buildDirectoryChanged();
+//    Target *target = qobject_cast<Target *>(sender());//#720 ROOPAK - START
+//    if (target && target == activeTarget())
+//        emit buildDirectoryChanged();//#720 ROOPAK - END
 }
 
 } // namespace ProjectExplorer

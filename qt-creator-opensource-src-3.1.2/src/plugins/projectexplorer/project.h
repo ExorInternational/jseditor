@@ -52,7 +52,7 @@ class EditorConfiguration;
 class Kit;
 class KitMatcher;
 class NamedWidget;
-class Target;
+//class Target;//#720 ROOPAK
 class ProjectPrivate;
 
 // Documentation inside.
@@ -85,19 +85,19 @@ public:
     EditorConfiguration *editorConfiguration() const;
 
     // Target:
-    void addTarget(Target *target);
-    bool removeTarget(Target *target);
+//    void addTarget(Target *target);//#720 ROOPAK - START
+//    bool removeTarget(Target *target);
 
-    QList<Target *> targets() const;
-    // Note: activeTarget can be 0 (if no targets are defined).
-    Target *activeTarget() const;
-    void setActiveTarget(Target *target);
-    Target *target(const Core::Id id) const;
-    Target *target(Kit *k) const;
+//    QList<Target *> targets() const;
+//    // Note: activeTarget can be 0 (if no targets are defined).
+//    Target *activeTarget() const;
+//    void setActiveTarget(Target *target);
+//    Target *target(const Core::Id id) const;
+//    Target *target(Kit *k) const;//#720 ROOPAK - END
     virtual bool supportsKit(Kit *k, QString *errorMessage = 0) const;
 
-    Target *createTarget(Kit *k);
-    Target *restoreTarget(const QVariantMap &data);
+//    Target *createTarget(Kit *k);//#720 ROOPAK - START
+//    Target *restoreTarget(const QVariantMap &data);//#720 ROOPAK - END
 
     void saveSettings();
     bool restoreSettings();
@@ -140,11 +140,11 @@ signals:
     void fileListChanged();
 
     // Note: activeTarget can be 0 (if no targets are defined).
-    void activeTargetChanged(ProjectExplorer::Target *target);
+//    void activeTargetChanged(ProjectExplorer::Target *target);//#720 ROOPAK - START
 
-    void aboutToRemoveTarget(ProjectExplorer::Target *target);
-    void removedTarget(ProjectExplorer::Target *target);
-    void addedTarget(ProjectExplorer::Target *target);
+//    void aboutToRemoveTarget(ProjectExplorer::Target *target);
+//    void removedTarget(ProjectExplorer::Target *target);
+//    void addedTarget(ProjectExplorer::Target *target);//#720 ROOPAK - END
 
     void environmentChanged();
     void buildConfigurationEnabledChanged();
@@ -159,7 +159,7 @@ signals:
 
 protected:
     virtual bool fromMap(const QVariantMap &map);
-    virtual bool setupTarget(Target *t);
+//    virtual bool setupTarget(Target *t);//#720 ROOPAK
 
     void setId(Core::Id id);
     void setProjectContext(Core::Context context);

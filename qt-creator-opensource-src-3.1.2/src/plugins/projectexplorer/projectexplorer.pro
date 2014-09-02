@@ -37,7 +37,7 @@ HEADERS += projectexplorer.h \
 #    deployconfiguration.h \#ROOPAK
 #    deployconfigurationmodel.h \ #ROOPAK
     namedwidget.h \
-    target.h \
+#    target.h \//#720 ROOPAK
 #    targetsettingspanel.h \#ROOPAK
     task.h \
 #    itaskhandler.h \#ROOPAK
@@ -179,7 +179,7 @@ SOURCES += projectexplorer.cpp \
 #    deployconfiguration.cpp \#ROOPAK
 #    deployconfigurationmodel.cpp \#ROOPAK
     namedwidget.cpp \
-    target.cpp \
+#    target.cpp \//#720 ROOPAK
 #    targetsettingspanel.cpp \#ROOPAK
     ioutputparser.cpp \
     projectconfiguration.cpp \

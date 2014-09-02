@@ -41,7 +41,7 @@
 #include <projectexplorer/project.h>
 #include <projectexplorer/projectexplorer.h>
 #include <projectexplorer/session.h>
-#include <projectexplorer/target.h>
+//#include <projectexplorer/target.h>//#720 ROOPAK
 #include <qmljs/qmljsbind.h>
 #include <qmljs/qmljsfindexportedcpptypes.h>
 #include <qmljs/qmljsplugindumper.h>
@@ -74,7 +74,7 @@ ModelManagerInterface::ProjectInfo QmlJSTools::defaultProjectInfoForProject(
         ProjectExplorer::Project *project)
 {
     ModelManagerInterface::ProjectInfo projectInfo(project);
-    ProjectExplorer::Target *activeTarget = 0;
+//    ProjectExplorer::Target *activeTarget = 0;//#720 ROOPAK
     if (project) {
         QList<MimeGlobPattern> globs;
         foreach (const MimeType &mimeType, MimeDatabase::mimeTypes())
@@ -92,9 +92,9 @@ ModelManagerInterface::ProjectInfo QmlJSTools::defaultProjectInfoForProject(
             foreach (const MimeGlobPattern &glob, globs)
                 if (glob.matches(filePath))
                     projectInfo.sourceFiles << filePath;
-        activeTarget = project->activeTarget();
+//        activeTarget = project->activeTarget();//#720 ROOPAK
     }
-    ProjectExplorer::Kit *activeKit = activeTarget ? activeTarget->kit() :
+    ProjectExplorer::Kit *activeKit = /*activeTarget ? activeTarget->kit() :*///#720 ROOPAK
                                            ProjectExplorer::KitManager::defaultKit();
     QtSupport::BaseQtVersion *qtVersion = QtSupport::QtKitInformation::qtVersion(activeKit);
 
@@ -102,12 +102,12 @@ ModelManagerInterface::ProjectInfo QmlJSTools::defaultProjectInfoForProject(
     bool setPreferDump = false;
     projectInfo.tryQmlDump = false;
 
-    if (activeTarget) {
-//        if (ProjectExplorer::BuildConfiguration *bc = activeTarget->activeBuildConfiguration()) {//ROOPAK - START
+//    if (activeTarget) {//ROOPAK - START
+//        if (ProjectExplorer::BuildConfiguration *bc = activeTarget->activeBuildConfiguration()) {
 //            preferDebugDump = bc->buildType() == ProjectExplorer::BuildConfiguration::Debug;
 //            setPreferDump = true;
-//        }//ROOPAk - END
-    }
+//        }
+//    }//ROOPAk - END
     if (!setPreferDump && qtVersion)
         preferDebugDump = (qtVersion->defaultBuildConfig() & QtSupport::BaseQtVersion::DebugBuild);
     if (qtVersion && qtVersion->isValid()) {
@@ -138,11 +138,11 @@ ModelManagerInterface::ProjectInfo QmlJSTools::defaultProjectInfoForProject(
 
 void QmlJSTools::setupProjectInfoQmlBundles(ModelManagerInterface::ProjectInfo &projectInfo)
 {
-    ProjectExplorer::Target *activeTarget = 0;
-    if (projectInfo.project)
-        activeTarget = projectInfo.project->activeTarget();
-    ProjectExplorer::Kit *activeKit = activeTarget
-            ? activeTarget->kit() : ProjectExplorer::KitManager::defaultKit();
+//    ProjectExplorer::Target *activeTarget = 0;//#720 ROOPAK - START
+//    if (projectInfo.project)
+//        activeTarget = projectInfo.project->activeTarget();
+//    ProjectExplorer::Kit *activeKit = activeTarget
+//            ? activeTarget->kit() : ProjectExplorer::KitManager::defaultKit();//#720 ROOPAK - END
     QHash<QString, QString> replacements;
     replacements.insert(QLatin1String("$(QT_INSTALL_IMPORTS)"), projectInfo.qtImportsPath);
     replacements.insert(QLatin1String("$(QT_INSTALL_QML)"), projectInfo.qtQmlPath);
@@ -150,18 +150,18 @@ void QmlJSTools::setupProjectInfoQmlBundles(ModelManagerInterface::ProjectInfo &
     QList<IBundleProvider *> bundleProviders =
             ExtensionSystem::PluginManager::getObjects<IBundleProvider>();
 
-    foreach (IBundleProvider *bp, bundleProviders) {
-        if (bp)
-            bp->mergeBundlesForKit(activeKit, projectInfo.activeBundle, replacements);
-    }
+//    foreach (IBundleProvider *bp, bundleProviders) {//#720 ROOPAK - START
+//        if (bp)
+//            bp->mergeBundlesForKit(activeKit, projectInfo.activeBundle, replacements);
+//    }//#720 ROOPAK - END
     projectInfo.extendedBundle = projectInfo.activeBundle;
 
     if (projectInfo.project) {
         QSet<ProjectExplorer::Kit *> currentKits;
-        foreach (const ProjectExplorer::Target *t, projectInfo.project->targets())
-            if (t->kit())
-                currentKits.insert(t->kit());
-        currentKits.remove(activeKit);
+//        foreach (const ProjectExplorer::Target *t, projectInfo.project->targets())//#720 ROOPAK - START
+//            if (t->kit())
+//                currentKits.insert(t->kit())
+//        currentKits.remove(activeKit);;//#720 ROOPAK - END
         foreach (ProjectExplorer::Kit *kit, currentKits) {
             foreach (IBundleProvider *bp, bundleProviders)
                 if (bp)

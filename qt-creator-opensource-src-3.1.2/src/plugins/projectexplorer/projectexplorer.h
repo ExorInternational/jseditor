@@ -49,9 +49,9 @@ class Id;
 }
 
 namespace ProjectExplorer {
-class RunControl;
+//class RunControl;
 //class RunConfiguration;//#720 ROOPAK
-class IRunControlFactory;
+//class IRunControlFactory;
 class Project;
 //class Node;//ROOPAK
 //class BuildConfiguration;
@@ -120,7 +120,7 @@ public:
     /// This function needs to be called, only if the pages that support a project changed.
     void requestProjectModeUpdate(ProjectExplorer::Project *p);
 
-    QList<RunControl *> runControls() const;
+//    QList<RunControl *> runControls() const;//#720 ROOPAK
 
     void initiateInlineRenaming();
 
@@ -130,8 +130,8 @@ public:
 //    static QString pathFor(Node *node);//ROOPAK - END
 
 signals:
-    void runControlStarted(ProjectExplorer::RunControl *rc);
-    void runControlFinished(ProjectExplorer::RunControl *rc);
+//    void runControlStarted(ProjectExplorer::RunControl *rc);//#720 ROOPAK
+//    void runControlFinished(ProjectExplorer::RunControl *rc);//#720 ROOPAK
 //    void aboutToShowContextMenu(ProjectExplorer::Project *project,
 //                                ProjectExplorer::Node *node);//ROOPAK
 

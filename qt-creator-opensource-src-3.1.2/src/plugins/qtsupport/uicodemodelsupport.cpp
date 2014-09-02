@@ -39,7 +39,7 @@
 #include <projectexplorer/project.h>
 #include <projectexplorer/projectexplorer.h>
 #include <projectexplorer/session.h>
-#include <projectexplorer/target.h>
+//#include <projectexplorer/target.h>//#720 ROOPAK
 #include <utils/qtcassert.h>
 
 #include <QFile>
@@ -261,8 +261,8 @@ QString UiCodeModelSupport::uicCommand() const
     if (m_project->needsConfiguration()) {
         version = QtSupport::QtKitInformation::qtVersion(ProjectExplorer::KitManager::defaultKit());
     } else {
-        ProjectExplorer::Target *target = m_project->activeTarget();
-        version = QtSupport::QtKitInformation::qtVersion(target->kit());
+//        ProjectExplorer::Target *target = m_project->activeTarget();//#720 ROOPAK - START
+//        version = QtSupport::QtKitInformation::qtVersion(target->kit());//#720 ROOPAK - END
     }
     return version ? version->uicCommand() : QString();
 }
@@ -272,9 +272,9 @@ QStringList UiCodeModelSupport::environment() const
     if (m_project->needsConfiguration()) {
         return Utils::Environment::systemEnvironment().toStringList();
     } else {
-        ProjectExplorer::Target *target = m_project->activeTarget();
-        if (!target)
-            return QStringList();
+//        ProjectExplorer::Target *target = m_project->activeTarget();//#720 ROOPAK - START
+//        if (!target)
+//            return QStringList();
 //        ProjectExplorer::BuildConfiguration *bc = target->activeBuildConfiguration();//ROOPAK
         return /*bc ? bc->environment().toStringList() :*/ QStringList();//ROOPAK
     }
