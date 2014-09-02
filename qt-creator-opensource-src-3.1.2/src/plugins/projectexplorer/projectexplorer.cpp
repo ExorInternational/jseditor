@@ -75,7 +75,7 @@
 //#include "corelistenercheckingforrunningbuild.h"//ROOPAK
 //#include "buildconfiguration.h"//ROOPAK
 //#include "miniprojecttargetselector.h"#ROOPAK
-#include "taskhub.h"
+//#include "taskhub.h"//#720 ROOPAK
 //#include "customtoolchain.h"//ROOPAK
 //#include "selectablefilesmodel.h"//ROOPAK
 //#include <projectexplorer/customwizard/customwizard.h>//ROOPAK
@@ -253,7 +253,7 @@ struct ProjectExplorerPluginPrivate {
 #endif
     IMode *m_projectsMode;
 
-    TaskHub *m_taskHub;
+//    TaskHub *m_taskHub;//#720 ROOPAK
     KitManager *m_kitManager;
     ToolChainManager *m_toolChainManager;
     bool m_shuttingDown;
@@ -370,7 +370,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
 //    addAutoReleasedObject(new Internal::ToolChainOptionsPage);//ROOPAK
 //    addAutoReleasedObject(new KitOptionsPage);//ROOPAK
 
-    addAutoReleasedObject(new TaskHub);
+//    addAutoReleasedObject(new TaskHub);//#720 ROOPAK
 
     connect(ICore::instance(), SIGNAL(newItemsDialogRequested()), this, SLOT(loadCustomWizards()));
 

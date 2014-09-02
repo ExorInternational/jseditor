@@ -32,7 +32,7 @@
 
 #include <coreplugin/idocument.h>
 #include <projectexplorer/projectexplorer.h>
-#include <projectexplorer/taskhub.h>
+//#include <projectexplorer/taskhub.h>//#720 ROOPAK
 #include <qmljs/qmljsmodelmanagerinterface.h>
 #include <qmljs/qmljscontext.h>
 #include <qmljs/qmljslink.h>
@@ -192,24 +192,24 @@ void QmlTaskManager::insertTask(const ProjectExplorer::Task &task)
     QList<ProjectExplorer::Task> tasks = m_docsWithTasks.value(task.file.toString());
     tasks.append(task);
     m_docsWithTasks.insert(task.file.toString(), tasks);
-    ProjectExplorer::TaskHub::addTask(task);
+//    ProjectExplorer::TaskHub::addTask(task);//#720 ROOPAK
 }
 
 void QmlTaskManager::removeTasksForFile(const QString &fileName)
 {
     if (m_docsWithTasks.contains(fileName)) {
         const QList<ProjectExplorer::Task> tasks = m_docsWithTasks.value(fileName);
-        foreach (const ProjectExplorer::Task &task, tasks)
-            ProjectExplorer::TaskHub::removeTask(task);
+//        foreach (const ProjectExplorer::Task &task, tasks)//#720 ROOPAK - START
+//            ProjectExplorer::TaskHub::removeTask(task);//#720 ROOPAK - END
         m_docsWithTasks.remove(fileName);
     }
 }
 
 void QmlTaskManager::removeAllTasks(bool clearSemantic)
 {
-    ProjectExplorer::TaskHub::clearTasks(Constants::TASK_CATEGORY_QML);
-    if (clearSemantic)
-        ProjectExplorer::TaskHub::clearTasks(Constants::TASK_CATEGORY_QML_ANALYSIS);
+//    ProjectExplorer::TaskHub::clearTasks(Constants::TASK_CATEGORY_QML);//#720 ROOPAK - START
+//    if (clearSemantic)
+//        ProjectExplorer::TaskHub::clearTasks(Constants::TASK_CATEGORY_QML_ANALYSIS);//#720 ROOPAK - END
     m_docsWithTasks.clear();
 }
 

@@ -56,7 +56,7 @@ class Project;
 //class Node;//ROOPAK
 //class BuildConfiguration;
 //class FolderNode;//ROOPAK
-class TaskHub;
+//class TaskHub;//#720 ROOPAK
 
 namespace Internal { /*class ProjectExplorerSettings;*/ }//ROOPAK
 

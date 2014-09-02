@@ -61,7 +61,7 @@
 #include <coreplugin/actionmanager/actioncontainer.h>
 #include <coreplugin/actionmanager/command.h>
 #include <coreplugin/editormanager/editormanager.h>
-#include <projectexplorer/taskhub.h>
+//#include <projectexplorer/taskhub.h>//#720 ROOPAK
 #include <texteditor/texteditorconstants.h>
 #include <texteditor/textfilewizard.h>
 #include <utils/qtcassert.h>
@@ -242,8 +242,8 @@ bool QmlJSEditorPlugin::initialize(const QStringList & /*arguments*/, QString *e
 
 void QmlJSEditorPlugin::extensionsInitialized()
 {
-    TaskHub::addCategory(Constants::TASK_CATEGORY_QML, tr("QML"));
-    TaskHub::addCategory(Constants::TASK_CATEGORY_QML_ANALYSIS, tr("QML Analysis"), false);
+//    TaskHub::addCategory(Constants::TASK_CATEGORY_QML, tr("QML"));//#720 ROOPAK - START
+//    TaskHub::addCategory(Constants::TASK_CATEGORY_QML_ANALYSIS, tr("QML Analysis"), false);//#720 ROOPAK - END
 }
 
 ExtensionSystem::IPlugin::ShutdownFlag QmlJSEditorPlugin::aboutToShutdown()
@@ -325,8 +325,8 @@ void QmlJSEditorPlugin::currentEditorChanged(Core::IEditor *editor)
 void QmlJSEditorPlugin::runSemanticScan()
 {
     m_qmlTaskManager->updateSemanticMessagesNow();
-    TaskHub::setCategoryVisibility(Constants::TASK_CATEGORY_QML_ANALYSIS, true);
-    TaskHub::requestPopup();
+//    TaskHub::setCategoryVisibility(Constants::TASK_CATEGORY_QML_ANALYSIS, true);//#720 ROOPAK - START
+//    TaskHub::requestPopup();//#720 ROOPAK - END
 }
 
 void QmlJSEditorPlugin::checkCurrentEditorSemanticInfoUpToDate()

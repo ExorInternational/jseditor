@@ -102,7 +102,7 @@ HEADERS += projectexplorer.h \
 #    buildconfigurationmodel.h \#ROOPAK
 #    processparameters.h \#ROOPAK
 #    abstractprocessstep.h \#ROOPAK
-    taskhub.h \
+#    taskhub.h \//#720 ROOPAK
 #    localapplicationruncontrol.h \#ROOPAK
     metatypedeclarations.h \
     headerpath.h \
@@ -238,7 +238,7 @@ SOURCES += projectexplorer.cpp \
 #    linuxiccparser.cpp \#ROOPAK
 #    runconfigurationmodel.cpp \#ROOPAK
 #    buildconfigurationmodel.cpp \#ROOPAK
-    taskhub.cpp \
+#    taskhub.cpp \//#720 ROOPAK
 #    processparameters.cpp \#ROOPAK
 #    localapplicationruncontrol.cpp \#ROOPAK
 #    appoutputpane.cpp \#ROOPAK
