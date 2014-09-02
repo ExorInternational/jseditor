@@ -40,12 +40,12 @@ namespace Utils { class Environment; }
 namespace ProjectExplorer {
 //class BuildTargetInfoList;//ROOPAK
 //class DeploymentData;//ROOPAK
-class RunConfiguration;
+//class RunConfiguration;//#720 ROOPAK
 //class BuildConfiguration;//ROOPAK
 //class DeployConfiguration;//ROOPAK
 //class IBuildConfigurationFactory;//ROOPAK
 //class DeployConfigurationFactory;//ROOPAK
-class IRunConfigurationFactory;
+//class IRunConfigurationFactory;//#720 ROOPAK
 class Kit;
 class Project;
 class NamedWidget;
@@ -88,12 +88,12 @@ public:
 //    BuildTargetInfoList applicationTargets() const;//ROOPAK
 
     // Running
-    QList<RunConfiguration *> runConfigurations() const;
-    void addRunConfiguration(RunConfiguration *runConfiguration);
-    void removeRunConfiguration(RunConfiguration *runConfiguration);
+//    QList<RunConfiguration *> runConfigurations() const;//#720 ROOPAK - START
+//    void addRunConfiguration(RunConfiguration *runConfiguration);
+//    void removeRunConfiguration(RunConfiguration *runConfiguration);
 
-    RunConfiguration *activeRunConfiguration() const;
-    void setActiveRunConfiguration(RunConfiguration *runConfiguration);
+//    RunConfiguration *activeRunConfiguration() const;
+//    void setActiveRunConfiguration(RunConfiguration *runConfiguration);//#720 ROOPAK - END
 
     // Returns whether this target is actually available at he time
     // of the call. A target may become unavailable e.g. when a Qt version
@@ -113,7 +113,7 @@ public:
 
     void updateDefaultBuildConfigurations();
     void updateDefaultDeployConfigurations();
-    void updateDefaultRunConfigurations();
+//    void updateDefaultRunConfigurations();//#720 ROOPAK
 
     QVariant namedSettings(const QString &name) const;
     void setNamedSettings(const QString &name, const QVariant &value);
@@ -127,9 +127,9 @@ signals:
 
     // TODO clean up signal names
     // might be better to also have aboutToRemove signals
-    void removedRunConfiguration(ProjectExplorer::RunConfiguration *);
-    void addedRunConfiguration(ProjectExplorer::RunConfiguration *);
-    void activeRunConfigurationChanged(ProjectExplorer::RunConfiguration *);
+//    void removedRunConfiguration(ProjectExplorer::RunConfiguration *);//#720 ROOPAK - START
+//    void addedRunConfiguration(ProjectExplorer::RunConfiguration *);
+//    void activeRunConfigurationChanged(ProjectExplorer::RunConfiguration *);//#720 ROOPAK - END
 
 //    void removedBuildConfiguration(ProjectExplorer::BuildConfiguration *bc);//ROOPAK - START
 //    void addedBuildConfiguration(ProjectExplorer::BuildConfiguration *bc);

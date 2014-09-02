@@ -268,7 +268,7 @@ bool Project::setupTarget(Target *t)
 {
     t->updateDefaultBuildConfigurations();
     t->updateDefaultDeployConfigurations();
-    t->updateDefaultRunConfigurations();
+//    t->updateDefaultRunConfigurations();//#720 ROOPAK
     return true;
 }
 

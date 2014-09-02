@@ -50,7 +50,7 @@ class Id;
 
 namespace ProjectExplorer {
 class RunControl;
-class RunConfiguration;
+//class RunConfiguration;//#720 ROOPAK
 class IRunControlFactory;
 class Project;
 //class Node;//ROOPAK
@@ -97,7 +97,7 @@ public:
 //    static void setProjectExplorerSettings(const Internal::ProjectExplorerSettings &pes);//ROOPAK
 //    static Internal::ProjectExplorerSettings projectExplorerSettings();//ROOPAK
 
-    void startRunControl(RunControl *runControl, RunMode runMode);
+//    void startRunControl(RunControl *runControl, RunMode runMode);//#720 ROOPAK
     static void showRunErrorMessage(const QString &errorMessage);
 
     // internal public for FlatModel
@@ -109,8 +109,8 @@ public:
     bool canRun(Project *pro, RunMode runMode);
     QString cannotRunReason(Project *project, RunMode runMode);
     void runProject(Project *pro, RunMode, const bool forceSkipDeploy = false);
-    void runRunConfiguration(ProjectExplorer::RunConfiguration *rc, RunMode runMode,
-                             const bool forceSkipDeploy = false);
+//    void runRunConfiguration(ProjectExplorer::RunConfiguration *rc, RunMode runMode,//#720 ROOPAK
+//                             const bool forceSkipDeploy = false);//#720 ROOPAK
 
 //    void addExistingFiles(ProjectExplorer::FolderNode *projectNode, const QStringList &filePaths);//ROOPAK
     void addExistingFiles(const QStringList &filePaths);
@@ -219,7 +219,7 @@ private slots:
     void projectDisplayNameChanged(ProjectExplorer::Project *pro);
     void startupProjectChanged(); // Calls updateRunAction
     void activeTargetChanged();
-    void activeRunConfigurationChanged();
+//    void activeRunConfigurationChanged();//#720 ROOPAK
 
     void updateDeployActions();
     void slotUpdateRunActions();
@@ -282,7 +282,7 @@ private:
     int queue(QList<Project *>, QList<Core::Id> stepIds);
     void updateContextMenuActions();
     bool parseArguments(const QStringList &arguments, QString *error);
-    void executeRunConfiguration(RunConfiguration *, RunMode mode);
+//    void executeRunConfiguration(RunConfiguration *, RunMode mode);//#720 ROOPAK
     bool hasBuildSettings(Project *pro);
     QPair<bool, QString> buildSettingsEnabledForSession();
     QPair<bool, QString> buildSettingsEnabled(Project *pro);
@@ -291,7 +291,7 @@ private:
 //    void setCurrent(Project *project, QString filePath, Node *node);//ROOPAK
 
     QStringList allFilesWithDependencies(Project *pro);
-    IRunControlFactory *findRunControlFactory(RunConfiguration *config, RunMode mode);
+//    IRunControlFactory *findRunControlFactory(RunConfiguration *config, RunMode mode);//#720 ROOPAK
 
     void addToRecentProjects(const QString &fileName, const QString &displayName);
 

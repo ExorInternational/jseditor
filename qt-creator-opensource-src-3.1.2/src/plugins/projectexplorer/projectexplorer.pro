@@ -70,7 +70,7 @@ HEADERS += projectexplorer.h \
 #    processstep.h \#ROOPAK
     editorconfiguration.h \
 #    editorsettingspropertiespage.h \#ROOPAK
-    runconfiguration.h \
+#    runconfiguration.h \#720 ROOPAK
 #    applicationlauncher.h \#ROOPAK
 #    runsettingspropertiespage.h \#ROOPAK
 #    projecttreewidget.h \ #ROOPAK
@@ -207,7 +207,7 @@ SOURCES += projectexplorer.cpp \
 #    abstractprocessstep.cpp \#ROOPAK
     editorconfiguration.cpp \
 #    editorsettingspropertiespage.cpp \#ROOPAK
-    runconfiguration.cpp \
+#    runconfiguration.cpp \#720 #ROOPAK
 #    applicationlauncher.cpp \#ROOPAK
 #    runsettingspropertiespage.cpp \#ROOPAK
 #    projecttreewidget.cpp \#ROOPAK

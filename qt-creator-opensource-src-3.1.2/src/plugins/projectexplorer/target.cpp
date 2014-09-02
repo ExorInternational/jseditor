@@ -38,7 +38,7 @@
 //#include "buildconfiguration.h"//ROOPAK
 //#include "deployconfiguration.h"//ROOPAK
 #include "project.h"
-#include "runconfiguration.h"
+//#include "runconfiguration.h"//#720 ROOPAK
 
 #include <limits>
 #include <coreplugin/coreconstants.h>
@@ -90,8 +90,8 @@ public:
 //    BuildConfiguration *m_activeBuildConfiguration;//ROOPAK
 //    QList<DeployConfiguration *> m_deployConfigurations;//ROOPAK
 //    DeployConfiguration *m_activeDeployConfiguration;//ROOPAK
-    QList<RunConfiguration *> m_runConfigurations;
-    RunConfiguration* m_activeRunConfiguration;
+//    QList<RunConfiguration *> m_runConfigurations;//#720 ROOPAK
+//    RunConfiguration* m_activeRunConfiguration;//#720 ROOPAK
 //    DeploymentData m_deploymentData;//ROOPAK
 //    BuildTargetInfoList m_appTargets;//ROOPAK
     QVariantMap m_pluginSettings;
@@ -107,7 +107,7 @@ TargetPrivate::TargetPrivate() :
     m_isEnabled(true),
 //    m_activeBuildConfiguration(0),//ROOPAK
 //    m_activeDeployConfiguration(0),//ROOPAK
-    m_activeRunConfiguration(0),
+//    m_activeRunConfiguration(0),//#720 ROOPAK
     m_connectedPixmap(QLatin1String(":/projectexplorer/images/DeviceConnected.png")),
     m_readyToUsePixmap(QLatin1String(":/projectexplorer/images/DeviceReadyToUse.png")),
     m_disconnectedPixmap(QLatin1String(":/projectexplorer/images/DeviceDisconnected.png")),
@@ -142,7 +142,7 @@ Target::~Target()
 {
 //    qDeleteAll(d->m_buildConfigurations);//ROOPAK
 //    qDeleteAll(d->m_deployConfigurations);//ROOPAK
-    qDeleteAll(d->m_runConfigurations);
+//    qDeleteAll(d->m_runConfigurations);//#720 ROOPAK
     delete d;
 }
 
@@ -169,9 +169,9 @@ void Target::changeDeployConfigurationEnabled()
 
 void Target::changeRunConfigurationEnabled()
 {
-    RunConfiguration *rc = qobject_cast<RunConfiguration *>(sender());
-    if (rc == activeRunConfiguration())
-        emit runConfigurationEnabledChanged();
+//    RunConfiguration *rc = qobject_cast<RunConfiguration *>(sender());//#720 ROOPAK - START
+//    if (rc == activeRunConfiguration())
+//        emit runConfigurationEnabledChanged();//#720 ROOPAK - END
 }
 
 void Target::onBuildDirectoryChanged()
@@ -392,68 +392,68 @@ Kit *Target::kit() const
 //    return d->m_appTargets;
 //}//ROOPAK - END
 
-QList<RunConfiguration *> Target::runConfigurations() const
-{
-    return d->m_runConfigurations;
-}
+//QList<RunConfiguration *> Target::runConfigurations() const//#720 ROOPAK - START
+//{
+//    return d->m_runConfigurations;
+//}
 
-void Target::addRunConfiguration(RunConfiguration* runConfiguration)
-{
-    QTC_ASSERT(runConfiguration && !d->m_runConfigurations.contains(runConfiguration), return);
-    Q_ASSERT(runConfiguration->target() == this);
-    runConfiguration->addExtraAspects();
+//void Target::addRunConfiguration(RunConfiguration* runConfiguration)
+//{
+//    QTC_ASSERT(runConfiguration && !d->m_runConfigurations.contains(runConfiguration), return);
+//    Q_ASSERT(runConfiguration->target() == this);
+//    runConfiguration->addExtraAspects();
 
-    // Check that we don't have a configuration with the same displayName
-    QString configurationDisplayName = runConfiguration->displayName();
-    QStringList displayNames;
-    foreach (const RunConfiguration *rc, d->m_runConfigurations)
-        displayNames << rc->displayName();
-    configurationDisplayName = Project::makeUnique(configurationDisplayName, displayNames);
-    runConfiguration->setDisplayName(configurationDisplayName);
+//    // Check that we don't have a configuration with the same displayName
+//    QString configurationDisplayName = runConfiguration->displayName();
+//    QStringList displayNames;
+//    foreach (const RunConfiguration *rc, d->m_runConfigurations)
+//        displayNames << rc->displayName();
+//    configurationDisplayName = Project::makeUnique(configurationDisplayName, displayNames);
+//    runConfiguration->setDisplayName(configurationDisplayName);
 
-    d->m_runConfigurations.push_back(runConfiguration);
+//    d->m_runConfigurations.push_back(runConfiguration);
 
-    connect(runConfiguration, SIGNAL(enabledChanged()), this, SLOT(changeRunConfigurationEnabled()));
+//    connect(runConfiguration, SIGNAL(enabledChanged()), this, SLOT(changeRunConfigurationEnabled()));
 
-    emit addedRunConfiguration(runConfiguration);
+//    emit addedRunConfiguration(runConfiguration);
 
-    if (!activeRunConfiguration())
-        setActiveRunConfiguration(runConfiguration);
-}
+//    if (!activeRunConfiguration())
+//        setActiveRunConfiguration(runConfiguration);
+//}
 
-void Target::removeRunConfiguration(RunConfiguration* runConfiguration)
-{
-    QTC_ASSERT(runConfiguration && d->m_runConfigurations.contains(runConfiguration), return);
+//void Target::removeRunConfiguration(RunConfiguration* runConfiguration)
+//{
+//    QTC_ASSERT(runConfiguration && d->m_runConfigurations.contains(runConfiguration), return);
 
-    d->m_runConfigurations.removeOne(runConfiguration);
+//    d->m_runConfigurations.removeOne(runConfiguration);
 
-    if (activeRunConfiguration() == runConfiguration) {
-        if (d->m_runConfigurations.isEmpty())
-            setActiveRunConfiguration(0);
-        else
-            setActiveRunConfiguration(d->m_runConfigurations.at(0));
-    }
+//    if (activeRunConfiguration() == runConfiguration) {
+//        if (d->m_runConfigurations.isEmpty())
+//            setActiveRunConfiguration(0);
+//        else
+//            setActiveRunConfiguration(d->m_runConfigurations.at(0));
+//    }
 
-    emit removedRunConfiguration(runConfiguration);
-    delete runConfiguration;
-}
+//    emit removedRunConfiguration(runConfiguration);
+//    delete runConfiguration;
+//}
 
-RunConfiguration* Target::activeRunConfiguration() const
-{
-    return d->m_activeRunConfiguration;
-}
+//RunConfiguration* Target::activeRunConfiguration() const
+//{
+//    return d->m_activeRunConfiguration;
+//}
 
-void Target::setActiveRunConfiguration(RunConfiguration* configuration)
-{
-    if ((!configuration && d->m_runConfigurations.isEmpty()) ||
-        (configuration && d->m_runConfigurations.contains(configuration) &&
-         configuration != d->m_activeRunConfiguration)) {
-        d->m_activeRunConfiguration = configuration;
-        emit activeRunConfigurationChanged(d->m_activeRunConfiguration);
-        emit runConfigurationEnabledChanged();
-    }
-    updateDeviceState();
-}
+//void Target::setActiveRunConfiguration(RunConfiguration* configuration)
+//{
+//    if ((!configuration && d->m_runConfigurations.isEmpty()) ||
+//        (configuration && d->m_runConfigurations.contains(configuration) &&
+//         configuration != d->m_activeRunConfiguration)) {
+//        d->m_activeRunConfiguration = configuration;
+//        emit activeRunConfigurationChanged(d->m_activeRunConfiguration);
+//        emit runConfigurationEnabledChanged();
+//    }
+//    updateDeviceState();
+//}//#720 ROOPAK - END
 
 bool Target::isEnabled() const
 {
@@ -512,11 +512,11 @@ QVariantMap Target::toMap() const
 //    for (int i = 0; i < dcs.size(); ++i)
 //        map.insert(QString::fromLatin1(DC_KEY_PREFIX) + QString::number(i), dcs.at(i)->toMap());//ROOPAK - END
 
-    const QList<RunConfiguration *> rcs = runConfigurations();
-    map.insert(QLatin1String(ACTIVE_RC_KEY), rcs.indexOf(d->m_activeRunConfiguration));
-    map.insert(QLatin1String(RC_COUNT_KEY), rcs.size());
-    for (int i = 0; i < rcs.size(); ++i)
-        map.insert(QString::fromLatin1(RC_KEY_PREFIX) + QString::number(i), rcs.at(i)->toMap());
+//    const QList<RunConfiguration *> rcs = runConfigurations();//#720 ROOPAK - START
+//    map.insert(QLatin1String(ACTIVE_RC_KEY), rcs.indexOf(d->m_activeRunConfiguration));
+//    map.insert(QLatin1String(RC_COUNT_KEY), rcs.size());
+//    for (int i = 0; i < rcs.size(); ++i)
+//        map.insert(QString::fromLatin1(RC_KEY_PREFIX) + QString::number(i), rcs.at(i)->toMap());//#720 ROOPAK - END
 
     map.insert(QLatin1String(PLUGIN_SETTINGS_KEY), d->m_pluginSettings);
 
@@ -575,135 +575,135 @@ void Target::updateDefaultDeployConfigurations()
 //    }//ROOPAK - END
 }
 
-void Target::updateDefaultRunConfigurations()
-{
-    QList<IRunConfigurationFactory *> rcFactories = IRunConfigurationFactory::find(this);
-    if (rcFactories.isEmpty()) {
-        qWarning("No run configuration factory found for target id '%s'.", qPrintable(id().toString()));
-        return;
-    }
+//void Target::updateDefaultRunConfigurations()//#720 ROOPAK - START
+//{
+//    QList<IRunConfigurationFactory *> rcFactories = IRunConfigurationFactory::find(this);
+//    if (rcFactories.isEmpty()) {
+//        qWarning("No run configuration factory found for target id '%s'.", qPrintable(id().toString()));
+//        return;
+//    }
 
-    QList<RunConfiguration *> existingConfigured; // Existing configured RCs
-    QList<RunConfiguration *> existingUnconfigured; // Existing unconfigured RCs
-    QList<RunConfiguration *> newConfigured; // NEW configured Rcs
-    QList<RunConfiguration *> newUnconfigured; // NEW unconfigured RCs
+//    QList<RunConfiguration *> existingConfigured; // Existing configured RCs
+//    QList<RunConfiguration *> existingUnconfigured; // Existing unconfigured RCs
+//    QList<RunConfiguration *> newConfigured; // NEW configured Rcs
+//    QList<RunConfiguration *> newUnconfigured; // NEW unconfigured RCs
 
 
-    // sort existing RCs into configured/unconfigured.
-    foreach (RunConfiguration *rc, runConfigurations()) {
-        if (!rc->isConfigured())
-            existingUnconfigured << rc;
-        else
-            existingConfigured << rc;
-    }
-    int configuredCount = existingConfigured.count();
+//    // sort existing RCs into configured/unconfigured.
+//    foreach (RunConfiguration *rc, runConfigurations()) {
+//        if (!rc->isConfigured())
+//            existingUnconfigured << rc;
+//        else
+//            existingConfigured << rc;
+//    }
+//    int configuredCount = existingConfigured.count();
 
-    // find all RC ids that can get created:
-    QList<Core::Id> factoryIds;
-    foreach (IRunConfigurationFactory *rcFactory, rcFactories)
-        factoryIds.append(rcFactory->availableCreationIds(this));
+//    // find all RC ids that can get created:
+//    QList<Core::Id> factoryIds;
+//    foreach (IRunConfigurationFactory *rcFactory, rcFactories)
+//        factoryIds.append(rcFactory->availableCreationIds(this));
 
-    // Put outdated RCs into toRemove, do not bother with factories
-    // that produce already existing RCs
-    QList<RunConfiguration *> toRemove;
-    QList<Core::Id> toIgnore;
-    foreach (RunConfiguration *rc, existingConfigured) {
-        if (factoryIds.contains(rc->id()))
-            toIgnore.append(rc->id()); // Already there
-        else
-            toRemove << rc;
-    }
-    foreach (Core::Id i, toIgnore)
-        factoryIds.removeAll(i);
-    configuredCount -= toRemove.count();
+//    // Put outdated RCs into toRemove, do not bother with factories
+//    // that produce already existing RCs
+//    QList<RunConfiguration *> toRemove;
+//    QList<Core::Id> toIgnore;
+//    foreach (RunConfiguration *rc, existingConfigured) {
+//        if (factoryIds.contains(rc->id()))
+//            toIgnore.append(rc->id()); // Already there
+//        else
+//            toRemove << rc;
+//    }
+//    foreach (Core::Id i, toIgnore)
+//        factoryIds.removeAll(i);
+//    configuredCount -= toRemove.count();
 
-    // Create new RCs and put them into newConfigured/newUnconfigured
-    foreach (Core::Id id, factoryIds) {
-        IRunConfigurationFactory *factory = 0;
-        foreach (IRunConfigurationFactory *i, rcFactories) {
-            if (i->canCreate(this, id)) {
-                factory = i;
-                break;
-            }
-        }
-        if (!factory)
-            continue;
+//    // Create new RCs and put them into newConfigured/newUnconfigured
+//    foreach (Core::Id id, factoryIds) {
+//        IRunConfigurationFactory *factory = 0;
+//        foreach (IRunConfigurationFactory *i, rcFactories) {
+//            if (i->canCreate(this, id)) {
+//                factory = i;
+//                break;
+//            }
+//        }
+//        if (!factory)
+//            continue;
 
-        RunConfiguration *rc = factory->create(this, id);
-        if (!rc)
-            continue;
-        QTC_CHECK(rc->id() == id);
-        if (!rc->isConfigured())
-            newUnconfigured << rc;
-        else
-            newConfigured << rc;
-    }
-    configuredCount += newConfigured.count();
+//        RunConfiguration *rc = factory->create(this, id);
+//        if (!rc)
+//            continue;
+//        QTC_CHECK(rc->id() == id);
+//        if (!rc->isConfigured())
+//            newUnconfigured << rc;
+//        else
+//            newConfigured << rc;
+//    }
+//    configuredCount += newConfigured.count();
 
-    // Decide what to do with the different categories:
-    bool removeExistingUnconfigured = false;
-    if (configuredCount > 0) {
-        // new non-Custom Executable RCs were added
-        removeExistingUnconfigured = true;
-        qDeleteAll(newUnconfigured);
-        newUnconfigured.clear();
-    } else {
-        // no new RCs, use old or new CERCs?
-        if (!existingUnconfigured.isEmpty()) {
-            qDeleteAll(newUnconfigured);
-            newUnconfigured.clear();
-        }
-    }
+//    // Decide what to do with the different categories:
+//    bool removeExistingUnconfigured = false;
+//    if (configuredCount > 0) {
+//        // new non-Custom Executable RCs were added
+//        removeExistingUnconfigured = true;
+//        qDeleteAll(newUnconfigured);
+//        newUnconfigured.clear();
+//    } else {
+//        // no new RCs, use old or new CERCs?
+//        if (!existingUnconfigured.isEmpty()) {
+//            qDeleteAll(newUnconfigured);
+//            newUnconfigured.clear();
+//        }
+//    }
 
-    // Do actual changes:
-    foreach (RunConfiguration *rc, newConfigured)
-        addRunConfiguration(rc);
-    foreach (RunConfiguration *rc, newUnconfigured)
-        addRunConfiguration(rc);
+//    // Do actual changes:
+//    foreach (RunConfiguration *rc, newConfigured)
+//        addRunConfiguration(rc);
+//    foreach (RunConfiguration *rc, newUnconfigured)
+//        addRunConfiguration(rc);
 
-    // Generate complete list of RCs to remove later:
-    QList<RunConfiguration *> removalList;
-    foreach (RunConfiguration *rc, toRemove) {
-        removalList << rc;
-        existingConfigured.removeOne(rc); // make sure to also remove them from existingConfigured!
-    }
+//    // Generate complete list of RCs to remove later:
+//    QList<RunConfiguration *> removalList;
+//    foreach (RunConfiguration *rc, toRemove) {
+//        removalList << rc;
+//        existingConfigured.removeOne(rc); // make sure to also remove them from existingConfigured!
+//    }
 
-    if (removeExistingUnconfigured) {
-        removalList.append(existingUnconfigured);
-        existingUnconfigured.clear();
-    }
+//    if (removeExistingUnconfigured) {
+//        removalList.append(existingUnconfigured);
+//        existingUnconfigured.clear();
+//    }
 
-    // Make sure a configured RC will be active after we delete the RCs:
-    RunConfiguration *active = activeRunConfiguration();
-    if (removalList.contains(active)) {
-        if (!existingConfigured.isEmpty()) {
-            setActiveRunConfiguration(existingConfigured.at(0));
-        } else if (!newConfigured.isEmpty()) {
-            RunConfiguration *selected = newConfigured.at(0);
-            // Try to find a runconfiguration that matches the project name. That is a good
-            // candidate for something to run initially.
-            foreach (RunConfiguration *rc, newConfigured) {
-                if (rc->displayName() == project()->displayName()) {
-                    selected = rc;
-                    break;
-                }
-            }
-            setActiveRunConfiguration(selected);
-        } else if (!newUnconfigured.isEmpty()){
-            setActiveRunConfiguration(newUnconfigured.at(0));
-        } else {
-            if (!removalList.isEmpty())
-                setActiveRunConfiguration(removalList.last());
-            // Nothing will be left after removal: We set this to the last of in the removal list
-            // since that gives us the minimum number of signals (one signal for the change here and
-            // one more when the last RC is removed and the active RC becomes 0).
-        }
-    }
+//    // Make sure a configured RC will be active after we delete the RCs:
+//    RunConfiguration *active = activeRunConfiguration();
+//    if (removalList.contains(active)) {
+//        if (!existingConfigured.isEmpty()) {
+//            setActiveRunConfiguration(existingConfigured.at(0));
+//        } else if (!newConfigured.isEmpty()) {
+//            RunConfiguration *selected = newConfigured.at(0);
+//            // Try to find a runconfiguration that matches the project name. That is a good
+//            // candidate for something to run initially.
+//            foreach (RunConfiguration *rc, newConfigured) {
+//                if (rc->displayName() == project()->displayName()) {
+//                    selected = rc;
+//                    break;
+//                }
+//            }
+//            setActiveRunConfiguration(selected);
+//        } else if (!newUnconfigured.isEmpty()){
+//            setActiveRunConfiguration(newUnconfigured.at(0));
+//        } else {
+//            if (!removalList.isEmpty())
+//                setActiveRunConfiguration(removalList.last());
+//            // Nothing will be left after removal: We set this to the last of in the removal list
+//            // since that gives us the minimum number of signals (one signal for the change here and
+//            // one more when the last RC is removed and the active RC becomes 0).
+//        }
+//    }
 
-    // Remove the RCs that are no longer needed:
-    foreach (RunConfiguration *rc, removalList)
-        removeRunConfiguration(rc);
-}
+//    // Remove the RCs that are no longer needed:
+//    foreach (RunConfiguration *rc, removalList)
+//        removeRunConfiguration(rc);
+//}//#720 ROOPAK - END
 
 QVariant Target::namedSettings(const QString &name) const
 {
@@ -869,17 +869,17 @@ bool Target::fromMap(const QVariantMap &map)
             return false;
 
         // Ignore missing RCs: We will just populate them using the default ones.
-        QVariantMap valueMap = map.value(key).toMap();
-        IRunConfigurationFactory *factory = IRunConfigurationFactory::find(this, valueMap);
-        if (!factory)
-            continue;
-        RunConfiguration *rc = factory->restore(this, valueMap);
-        if (!rc)
-            continue;
-        QTC_CHECK(rc->id() == ProjectExplorer::idFromMap(valueMap));
-        addRunConfiguration(rc);
-        if (i == activeConfiguration)
-            setActiveRunConfiguration(rc);
+//        QVariantMap valueMap = map.value(key).toMap();//#720 ROOPAK - START
+//        IRunConfigurationFactory *factory = IRunConfigurationFactory::find(this, valueMap);
+//        if (!factory)
+//            continue;
+//        RunConfiguration *rc = factory->restore(this, valueMap);
+//        if (!rc)
+//            continue;
+//        QTC_CHECK(rc->id() == ProjectExplorer::idFromMap(valueMap));
+//        addRunConfiguration(rc);
+//        if (i == activeConfiguration)
+//            setActiveRunConfiguration(rc);//#720 ROOPAK - END
     }
 
     if (map.contains(QLatin1String(PLUGIN_SETTINGS_KEY)))

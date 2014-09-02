@@ -138,7 +138,7 @@
 #include <QLayout>
 #include <QPushButton>
 #include <coreplugin/basefilewizard.h>
-#include "runconfiguration.h"
+//#include "runconfiguration.h"#720 #ROOPAK
 #include <utils/stringutils.h>
 //ROOPAK - END
 /*!
@@ -240,7 +240,7 @@ struct ProjectExplorerPluginPrivate {
     static const int m_maxRecentProjects = 25;
 
     QString m_lastOpenDirectory;
-    QPointer<RunConfiguration> m_delayedRunConfiguration;
+//    QPointer<RunConfiguration> m_delayedRunConfiguration;#720 #ROOPAK
     bool m_shouldHaveRunConfiguration;
     RunMode m_runMode;
     QString m_projectFilterString;
@@ -331,7 +331,7 @@ bool ProjectExplorerPlugin::parseArguments(const QStringList &arguments, QString
 
 bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *error)
 {
-    qRegisterMetaType<ProjectExplorer::RunControl *>();
+//    qRegisterMetaType<ProjectExplorer::RunControl *>();//#720 ROOPAK
 //    qRegisterMetaType<ProjectExplorer::DeployableFile>("ProjectExplorer::DeployableFile");//ROOPAK
 
     if (!parseArguments(arguments, error))
@@ -1700,9 +1700,9 @@ void ProjectExplorerPlugin::buildStateChanged(Project * pro)
     updateActions();
 }
 
-void ProjectExplorerPlugin::executeRunConfiguration(RunConfiguration *runConfiguration, RunMode runMode)
-{
-//    QString errorMessage;//ROOPAK - START
+//void ProjectExplorerPlugin::executeRunConfiguration(RunConfiguration *runConfiguration, RunMode runMode)//ROOPAK - START
+//{
+//    QString errorMessage;
 //    if (!runConfiguration->ensureConfigured(&errorMessage)) {
 //        showRunErrorMessage(errorMessage);
 //        return;
@@ -1716,8 +1716,8 @@ void ProjectExplorerPlugin::executeRunConfiguration(RunConfiguration *runConfigu
 //            return;
 //        }
 //        startRunControl(control, runMode);
-//    }//ROOPAK - END
-}
+//    }
+//}//ROOPAK - END
 
 void ProjectExplorerPlugin::showRunErrorMessage(const QString &errorMessage)
 {
@@ -1727,19 +1727,19 @@ void ProjectExplorerPlugin::showRunErrorMessage(const QString &errorMessage)
         QMessageBox::critical(ICore::mainWindow(), errorMessage.isNull() ? tr("Unknown error") : tr("Could Not Run"), errorMessage);
 }
 
-void ProjectExplorerPlugin::startRunControl(RunControl *runControl, RunMode runMode)
-{
-//    d->m_outputPane->createNewOutputWindow(runControl);//ROOPAK - START
+//void ProjectExplorerPlugin::startRunControl(RunControl *runControl, RunMode runMode)//ROOPAK - START
+//{
+//    d->m_outputPane->createNewOutputWindow(runControl);
 //    d->m_outputPane->flash(); // one flash for starting
 //    d->m_outputPane->showTabFor(runControl);
 //    bool popup = (runMode == NormalRunMode && d->m_projectExplorerSettings.showRunOutput)
 //            || ((runMode == DebugRunMode || runMode == DebugRunModeWithBreakOnMain)
 //                && d->m_projectExplorerSettings.showDebugOutput);
-//    d->m_outputPane->setBehaviorOnOutput(runControl, popup ? AppOutputPane::Popup : AppOutputPane::Flash);//ROOPAK - END
-    connect(runControl, SIGNAL(finished()), this, SLOT(runControlFinished()));
-    runControl->start();
-    emit updateRunActions();
-}
+//    d->m_outputPane->setBehaviorOnOutput(runControl, popup ? AppOutputPane::Popup : AppOutputPane::Flash);
+//    connect(runControl, SIGNAL(finished()), this, SLOT(runControlFinished()));
+//    runControl->start();
+//    emit updateRunActions();
+//}//ROOPAK - END
 
 QList<RunControl *> ProjectExplorerPlugin::runControls() const
 {
@@ -1768,21 +1768,21 @@ void ProjectExplorerPlugin::buildQueueFinished(bool success)
 //                                                "Do you want to ignore them?"),
 //                                             QMessageBox::Yes | QMessageBox::No,
 //                                             QMessageBox::No) == QMessageBox::Yes;
-//    }//ROOPAK - END
-    if (d->m_delayedRunConfiguration.isNull() && d->m_shouldHaveRunConfiguration) {
-        QMessageBox::warning(ICore::dialogParent(),
-                             tr("Run Configuration Removed"),
-                             tr("The configuration that was supposed to run is no longer "
-                                "available."), QMessageBox::Ok);
-    }
+//    }
+//    if (d->m_delayedRunConfiguration.isNull() && d->m_shouldHaveRunConfiguration) {
+//        QMessageBox::warning(ICore::dialogParent(),
+//                             tr("Run Configuration Removed"),
+//                             tr("The configuration that was supposed to run is no longer "
+//                                "available."), QMessageBox::Ok);
+//    }
 
-    if (success && ignoreErrors && !d->m_delayedRunConfiguration.isNull()) {
-        executeRunConfiguration(d->m_delayedRunConfiguration.data(), d->m_runMode);
-    } else {
+//    if (success && ignoreErrors && !d->m_delayedRunConfiguration.isNull()) {
+//        executeRunConfiguration(d->m_delayedRunConfiguration.data(), d->m_runMode);
+//    } else {
 //        if (BuildManager::tasksAvailable())//ROOPAK
 //            BuildManager::showTaskWindow();//ROOPAK
-    }
-    d->m_delayedRunConfiguration = 0;
+//    }
+//    d->m_delayedRunConfiguration = 0;//ROOPAK - END
     d->m_shouldHaveRunConfiguration = false;
     d->m_runMode = NoRunMode;
 }
@@ -2205,10 +2205,10 @@ void ProjectExplorerPlugin::runProjectContextMenu()
         QAction *act = qobject_cast<QAction *>(sender());
         if (!act)
             return;
-        RunConfiguration *rc = act->data().value<RunConfiguration *>();
-        if (!rc)
-            return;
-        runRunConfiguration(rc, NormalRunMode);
+//        RunConfiguration *rc = act->data().value<RunConfiguration *>();//#720 ROOPAK - START
+//        if (!rc)
+//            return;
+//        runRunConfiguration(rc, NormalRunMode);//#720 ROOPAK - END
     }
 }
 
@@ -2319,41 +2319,41 @@ void ProjectExplorerPlugin::runProject(Project *pro, RunMode mode, const bool fo
     if (!pro)
         return;
 
-    if (Target *target = pro->activeTarget())
-        if (RunConfiguration *rc = target->activeRunConfiguration())
-            runRunConfiguration(rc, mode, forceSkipDeploy);
+//    if (Target *target = pro->activeTarget())//#720 ROOPAK - START
+//        if (RunConfiguration *rc = target->activeRunConfiguration())
+//            runRunConfiguration(rc, mode, forceSkipDeploy);//#720 ROOPAK - END
 }
 
-void ProjectExplorerPlugin::runRunConfiguration(RunConfiguration *rc,
-                                                RunMode runMode,
-                                                const bool forceSkipDeploy)
-{
-    if (!rc->isEnabled())
-        return;
+//void ProjectExplorerPlugin::runRunConfiguration(RunConfiguration *rc,             //#720 ROOPAK - START
+//                                                RunMode runMode,
+//                                                const bool forceSkipDeploy)
+//{
+//    if (!rc->isEnabled())
+//        return;
 
-    QList<Id> stepIds;
+//    QList<Id> stepIds;
 //    if (!forceSkipDeploy && d->m_projectExplorerSettings.deployBeforeRun) {//ROOPAK - START
 //        if (d->m_projectExplorerSettings.buildBeforeDeploy)
 //            stepIds << Id(Constants::BUILDSTEPS_BUILD);
 //        stepIds << Id(Constants::BUILDSTEPS_DEPLOY);
 //    }//ROOPAK - END
 
-    Project *pro = rc->target()->project();
-    int queueCount = queue(SessionManager::projectOrder(pro), stepIds);
+//    Project *pro = rc->target()->project();
+//    int queueCount = queue(SessionManager::projectOrder(pro), stepIds);
 
-    if (queueCount < 0) // something went wrong
-        return;
+//    if (queueCount < 0) // something went wrong
+//        return;
 
-    if (queueCount > 0) {
-        // delay running till after our queued steps were processed
-        d->m_runMode = runMode;
-        d->m_delayedRunConfiguration = rc;
-        d->m_shouldHaveRunConfiguration = true;
-    } else {
-        executeRunConfiguration(rc, runMode);
-    }
-    emit updateRunActions();
-}
+//    if (queueCount > 0) {
+//        // delay running till after our queued steps were processed
+//        d->m_runMode = runMode;
+//        d->m_delayedRunConfiguration = rc;
+//        d->m_shouldHaveRunConfiguration = true;
+//    } else {
+//        executeRunConfiguration(rc, runMode);
+//    }
+//    emit updateRunActions();
+//}//#720 ROOPAK - END
 
 void ProjectExplorerPlugin::runControlFinished()
 {
@@ -2417,50 +2417,50 @@ void ProjectExplorerPlugin::activeTargetChanged()
     if (target == previousTarget)
         return;
 
-    if (previousTarget) {
-        disconnect(previousTarget, SIGNAL(activeRunConfigurationChanged(ProjectExplorer::RunConfiguration*)),
-                   this, SLOT(activeRunConfigurationChanged()));
-    }
+//    if (previousTarget) {//#720 ROOPAK - END
+//        disconnect(previousTarget, SIGNAL(activeRunConfigurationChanged(ProjectExplorer::RunConfiguration*)),
+//                   this, SLOT(activeRunConfigurationChanged()));
+//    }//#720 ROOPAK - END
     previousTarget = target;
-    if (target) {
-        connect(target, SIGNAL(activeRunConfigurationChanged(ProjectExplorer::RunConfiguration*)),
-                this, SLOT(activeRunConfigurationChanged()));
-    }
+//    if (target) {//#720 ROOPAK - START
+//        connect(target, SIGNAL(activeRunConfigurationChanged(ProjectExplorer::RunConfiguration*)),
+//                this, SLOT(activeRunConfigurationChanged()));
+//    }
 
-    activeRunConfigurationChanged();
+//    activeRunConfigurationChanged();//#720 ROOPAK - END
     updateDeployActions();
 }
 
-void ProjectExplorerPlugin::activeRunConfigurationChanged()
-{
-    static QPointer<RunConfiguration> previousRunConfiguration = 0;
-    RunConfiguration *rc = 0;
-    Project *startupProject = SessionManager::startupProject();
-    if (startupProject && startupProject->activeTarget())
-        rc = startupProject->activeTarget()->activeRunConfiguration();
-    if (rc == previousRunConfiguration)
-        return;
-    if (previousRunConfiguration) {
-        disconnect(previousRunConfiguration, SIGNAL(requestRunActionsUpdate()),
-                   this, SIGNAL(updateRunActions()));
-    }
-    previousRunConfiguration = rc;
-    if (rc) {
-        connect(rc, SIGNAL(requestRunActionsUpdate()),
-                this, SIGNAL(updateRunActions()));
-    }
-    emit updateRunActions();
-}
+//void ProjectExplorerPlugin::activeRunConfigurationChanged()//#720 ROOPAK - START
+//{
+//    static QPointer<RunConfiguration> previousRunConfiguration = 0;
+//    RunConfiguration *rc = 0;
+//    Project *startupProject = SessionManager::startupProject();
+//    if (startupProject && startupProject->activeTarget())
+//        rc = startupProject->activeTarget()->activeRunConfiguration();
+//    if (rc == previousRunConfiguration)
+//        return;
+//    if (previousRunConfiguration) {
+//        disconnect(previousRunConfiguration, SIGNAL(requestRunActionsUpdate()),
+//                   this, SIGNAL(updateRunActions()));
+//    }
+//    previousRunConfiguration = rc;
+//    if (rc) {
+//        connect(rc, SIGNAL(requestRunActionsUpdate()),
+//                this, SIGNAL(updateRunActions()));
+//    }
+//    emit updateRunActions();
+//}//#720 ROOPAK - END
 
 // NBS TODO implement more than one runner
-IRunControlFactory *ProjectExplorerPlugin::findRunControlFactory(RunConfiguration *config, RunMode mode)
-{
-    const QList<IRunControlFactory *> factories = ExtensionSystem::PluginManager::getObjects<IRunControlFactory>();
-    foreach (IRunControlFactory *f, factories)
-        if (f->canRun(config, mode))
-            return f;
-    return 0;
-}
+//IRunControlFactory *ProjectExplorerPlugin::findRunControlFactory(RunConfiguration *config, RunMode mode)//#720 ROOPAK - START
+//{
+//    const QList<IRunControlFactory *> factories = ExtensionSystem::PluginManager::getObjects<IRunControlFactory>();
+//    foreach (IRunControlFactory *f, factories)
+//        if (f->canRun(config, mode))
+//            return f;
+//    return 0;
+//}//#720 ROOPAK - END
 
 void ProjectExplorerPlugin::updateDeployActions()
 {
@@ -2514,8 +2514,8 @@ void ProjectExplorerPlugin::updateDeployActions()
 bool ProjectExplorerPlugin::canRun(Project *project, RunMode runMode)
 {
     if (!project ||
-        !project->activeTarget() ||
-        !project->activeTarget()->activeRunConfiguration()) {
+        !project->activeTarget() /*||//#720 ROOPAK
+        !project->activeTarget()->activeRunConfiguration()*/) {
         return false;
     }
 
@@ -2526,11 +2526,11 @@ bool ProjectExplorerPlugin::canRun(Project *project, RunMode runMode)
 //        return false;//ROOPAK = END
 
 
-    RunConfiguration *activeRC = project->activeTarget()->activeRunConfiguration();
+//    RunConfiguration *activeRC = project->activeTarget()->activeRunConfiguration();//#720 ROOPAK - START
 
-    bool canRun = findRunControlFactory(activeRC, runMode)
-                  && activeRC->isEnabled();
-    return canRun /*&& !BuildManager::isBuilding()*/;//ROOPAK
+//    bool canRun = findRunControlFactory(activeRC, runMode)
+//                  && activeRC->isEnabled();
+    return false/*canRun && !BuildManager::isBuilding()*/;//#720 ROOPAK - END
 }
 
 QString ProjectExplorerPlugin::cannotRunReason(Project *project, RunMode runMode)
@@ -2544,9 +2544,9 @@ QString ProjectExplorerPlugin::cannotRunReason(Project *project, RunMode runMode
     if (!project->activeTarget())
         return tr("The project '%1' has no active kit.").arg(project->displayName());
 
-    if (!project->activeTarget()->activeRunConfiguration())
-        return tr("The kit '%1' for the project '%2' has no active run configuration.")
-                .arg(project->activeTarget()->displayName(), project->displayName());
+//    if (!project->activeTarget()->activeRunConfiguration())//#720 ROOPAK - START
+//        return tr("The kit '%1' for the project '%2' has no active run configuration.")
+//                .arg(project->activeTarget()->displayName(), project->displayName());//#720 ROOPAK - END
 
 
 //    if (d->m_projectExplorerSettings.buildBeforeDeploy//ROOPAK - START
@@ -2558,13 +2558,13 @@ QString ProjectExplorerPlugin::cannotRunReason(Project *project, RunMode runMode
 //    }//ROOPAk - END
 
 
-    RunConfiguration *activeRC = project->activeTarget()->activeRunConfiguration();
-    if (!activeRC->isEnabled())
-        return activeRC->disabledReason();
+//    RunConfiguration *activeRC = project->activeTarget()->activeRunConfiguration();//#720 ROOPAK - START
+//    if (!activeRC->isEnabled())
+//        return activeRC->disabledReason();
 
-    // shouldn't actually be shown to the user...
-    if (!findRunControlFactory(activeRC, runMode))
-        return tr("Cannot run '%1'.").arg(activeRC->displayName());
+//    // shouldn't actually be shown to the user...
+//    if (!findRunControlFactory(activeRC, runMode))
+//        return tr("Cannot run '%1'.").arg(activeRC->displayName());//#720 ROOPAK - END
 
 //    if (BuildManager::isBuilding())//ROOPAK
 //        return tr("A build is still in progress.");//ROOPAK
