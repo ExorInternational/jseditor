@@ -52,7 +52,7 @@ HEADERS += projectexplorer.h \
 #    dependenciespanel.h \#ROOPAK
 #    allprojectsfilter.h \#ROOPAK
     ioutputparser.h \
-    projectconfiguration.h \
+#    projectconfiguration.h \//#720 ROOPAK
 #    gnumakeparser.h \#ROOPAK
     projectexplorerconstants.h \
 #    projectexplorersettings.h \#ROOPAK
@@ -182,7 +182,7 @@ SOURCES += projectexplorer.cpp \
 #    target.cpp \//#720 ROOPAK
 #    targetsettingspanel.cpp \#ROOPAK
     ioutputparser.cpp \
-    projectconfiguration.cpp \
+#    projectconfiguration.cpp \//#720 ROOPAK
 #    gnumakeparser.cpp \#ROOPAK
     task.cpp \
 #    copytaskhandler.cpp \#ROOPAK
