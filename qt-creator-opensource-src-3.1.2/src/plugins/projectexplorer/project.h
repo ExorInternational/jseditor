@@ -51,7 +51,7 @@ class EditorConfiguration;
 //class ProjectNode;//ROOPAK
 class Kit;
 class KitMatcher;
-class NamedWidget;
+//class NamedWidget;//#720 ROOPAK
 //class Target;//#720 ROOPAK
 class ProjectPrivate;
 
