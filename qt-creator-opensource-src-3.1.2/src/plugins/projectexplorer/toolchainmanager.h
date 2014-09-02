@@ -42,7 +42,7 @@ namespace ProjectExplorer {
 
 class ProjectExplorerPlugin;
 class ToolChain;
-class Abi;
+//class Abi;//#720 ROOPAK
 
 // --------------------------------------------------------------------------
 // ToolChainManager
@@ -57,10 +57,10 @@ public:
     ~ToolChainManager();
 
     static QList<ToolChain *> toolChains();
-    static QList<ToolChain *> findToolChains(const Abi &abi);
+//    static QList<ToolChain *> findToolChains(const Abi &abi);//#720 ROOPAK
     static ToolChain *findToolChain(const QString &id);
 
-    static Utils::FileName defaultDebugger(const Abi &abi);
+//    static Utils::FileName defaultDebugger(const Abi &abi);//#720 ROOPAK
 
     static bool isLoaded();
 

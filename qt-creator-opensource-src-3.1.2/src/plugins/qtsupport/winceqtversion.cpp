@@ -37,20 +37,20 @@ using namespace QtSupport;
 using namespace QtSupport::Internal;
 
 WinCeQtVersion::WinCeQtVersion()
-    : BaseQtVersion(),
-      m_archType(ProjectExplorer::Abi::ArmArchitecture)
+    : BaseQtVersion()/*,
+      m_archType(ProjectExplorer::Abi::ArmArchitecture)*///#720 ROOPAK
 {
 }
 
 WinCeQtVersion::WinCeQtVersion(const Utils::FileName &path, const QString &archType,
                                bool isAutodetected, const QString &autodetectionSource)
-    : BaseQtVersion(path, isAutodetected, autodetectionSource),
-      m_archType(ProjectExplorer::Abi::ArmArchitecture)
+    : BaseQtVersion(path, isAutodetected, autodetectionSource)/*,
+      m_archType(ProjectExplorer::Abi::ArmArchitecture)*///#720 ROOPAK
 {
-    if (0 == archType.compare(QLatin1String("x86"), Qt::CaseInsensitive))
+    /*if (0 == archType.compare(QLatin1String("x86"), Qt::CaseInsensitive))//#720 ROOPAK - START
         m_archType = ProjectExplorer::Abi::X86Architecture;
     else if (0 == archType.compare(QLatin1String("mipsii"), Qt::CaseInsensitive))
-        m_archType = ProjectExplorer::Abi::MipsArchitecture;
+        m_archType = ProjectExplorer::Abi::MipsArchitecture;*///#720 ROOPAK - END
     setDisplayName(defaultDisplayName(qtVersionString(), path, false));
 }
 
@@ -68,15 +68,15 @@ QString WinCeQtVersion::type() const
     return QLatin1String(Constants::WINCEQT);
 }
 
-QList<ProjectExplorer::Abi> WinCeQtVersion::detectQtAbis() const
-{
-    return QList<ProjectExplorer::Abi>()
-            << ProjectExplorer::Abi(m_archType,
-                                    ProjectExplorer::Abi::WindowsOS,
-                                    ProjectExplorer::Abi::WindowsCEFlavor,
-                                    ProjectExplorer::Abi::PEFormat,
-                                    false);
-}
+//QList<ProjectExplorer::Abi> WinCeQtVersion::detectQtAbis() const//#720 ROOPAK - START
+//{
+//    return QList<ProjectExplorer::Abi>()
+//            << ProjectExplorer::Abi(m_archType,
+//                                    ProjectExplorer::Abi::WindowsOS,
+//                                    ProjectExplorer::Abi::WindowsCEFlavor,
+//                                    ProjectExplorer::Abi::PEFormat,
+//                                    false);
+//}//#720 ROOPAK - END
 
 QString WinCeQtVersion::description() const
 {
@@ -91,15 +91,15 @@ void WinCeQtVersion::fromMap(const QVariantMap &map)
     // Default to an ARM architecture, then use the makespec to see what
     // the architecture is. This assumes that a WinCE makespec will be
     // named <Description>-<Architecture>-<Compiler> with no other '-' characters.
-    m_archType = ProjectExplorer::Abi::ArmArchitecture;
+//    m_archType = ProjectExplorer::Abi::ArmArchitecture;//#720 ROOPAK
 
     const QStringList splitSpec = mkspec().toString().split(QLatin1Char('-'));
     if (splitSpec.length() == 3) {
         const QString archString = splitSpec.value(1);
-        if (archString.contains(QLatin1String("x86"), Qt::CaseInsensitive))
-            m_archType = ProjectExplorer::Abi::X86Architecture;
-        else if (archString.contains(QLatin1String("mips"), Qt::CaseInsensitive))
-            m_archType = ProjectExplorer::Abi::MipsArchitecture;
+//        if (archString.contains(QLatin1String("x86"), Qt::CaseInsensitive))//#720 ROOPAK - START
+//            m_archType = ProjectExplorer::Abi::X86Architecture;
+//        else if (archString.contains(QLatin1String("mips"), Qt::CaseInsensitive))
+//            m_archType = ProjectExplorer::Abi::MipsArchitecture;//#720 ROOPAK - END
     }
 }
 

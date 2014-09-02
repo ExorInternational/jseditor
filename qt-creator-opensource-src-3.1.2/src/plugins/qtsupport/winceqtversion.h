@@ -46,7 +46,7 @@ public:
 
     QString type() const;
 
-    QList<ProjectExplorer::Abi> detectQtAbis() const;
+//    QList<ProjectExplorer::Abi> detectQtAbis() const;//#720 ROOPAK
 
     QString description() const;
 
@@ -56,7 +56,7 @@ public:
     QString platformDisplayName() const;
 
 private:
-    ProjectExplorer::Abi::Architecture m_archType;
+//    ProjectExplorer::Abi::Architecture m_archType;//#720 ROOPAK
 };
 
 } // Internal

@@ -47,7 +47,7 @@ public:
 
     QStringList warningReason() const;
 
-    QList<ProjectExplorer::Abi> detectQtAbis() const;
+//    QList<ProjectExplorer::Abi> detectQtAbis() const;//#720 ROOPAK
 
     QString description() const;
 

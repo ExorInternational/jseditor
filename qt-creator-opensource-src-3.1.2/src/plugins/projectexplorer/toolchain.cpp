@@ -29,7 +29,7 @@
 
 #include "toolchain.h"
 
-#include "abi.h"
+//#include "abi.h"//#720 ROOPAK
 #include "headerpath.h"
 #include "toolchainmanager.h"
 #include "task.h"
@@ -133,7 +133,8 @@ QList<Utils::FileName> ToolChain::suggestedMkspecList() const
 
 Utils::FileName ToolChain::suggestedDebugger() const
 {
-    return ToolChainManager::defaultDebugger(targetAbi());
+//    return ToolChainManager::defaultDebugger(targetAbi());//#720 ROOPAK
+    return Utils::FileName();
 }
 
 bool ToolChain::canClone() const

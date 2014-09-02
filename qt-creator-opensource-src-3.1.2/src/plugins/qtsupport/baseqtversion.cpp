@@ -289,27 +289,27 @@ QList<Task> BaseQtVersion::validateKit(const Kit *k)
     BaseQtVersion *version = QtKitInformation::qtVersion(k);
     Q_ASSERT(version == this);
 
-    const QList<Abi> qtAbis = version->qtAbis();
-    if (qtAbis.isEmpty()) // No need to test if Qt does not know anyway...
-        return result;
+//    const QList<Abi> qtAbis = version->qtAbis();//#720 ROOPAK - START
+//    if (qtAbis.isEmpty()) // No need to test if Qt does not know anyway...
+//        return result;//#720 ROOPAK - END
 
     ToolChain *tc = ToolChainKitInformation::toolChain(k);
     if (tc) {
-        Abi targetAbi = tc->targetAbi();
+//        Abi targetAbi = tc->targetAbi();//#720 ROOPAK
         bool fuzzyMatch = false;
         bool fullMatch = false;
 
         QString qtAbiString;
-        foreach (const Abi &qtAbi, qtAbis) {
-            if (!qtAbiString.isEmpty())
-                qtAbiString.append(QLatin1Char(' '));
-            qtAbiString.append(qtAbi.toString());
+//        foreach (const Abi &qtAbi, qtAbis) {
+//            if (!qtAbiString.isEmpty())
+//                qtAbiString.append(QLatin1Char(' '));
+//            qtAbiString.append(qtAbi.toString());
 
-            if (!fullMatch)
-                fullMatch = (targetAbi == qtAbi);
-            if (!fuzzyMatch)
-                fuzzyMatch = targetAbi.isCompatibleWith(qtAbi);
-        }
+//            if (!fullMatch)
+//                fullMatch = (targetAbi == qtAbi);
+//            if (!fuzzyMatch)
+//                fuzzyMatch = targetAbi.isCompatibleWith(qtAbi);//#720 ROOPAK - END
+//        }
 
         QString message;
         if (!fullMatch) {
@@ -319,8 +319,8 @@ QList<Task> BaseQtVersion::validateKit(const Kit *k)
             else
                 message = QCoreApplication::translate("BaseQtVersion",
                                                       "The compiler '%1' (%2) may not produce code compatible with the Qt version '%3' (%4).");
-            message = message.arg(tc->displayName(), targetAbi.toString(),
-                                  version->displayName(), qtAbiString);
+//            message = message.arg(tc->displayName(), targetAbi.toString(),//#720 ROOPAK
+//                                  version->displayName(), qtAbiString);//#720 ROOPAK
             result << Task(fuzzyMatch ? Task::Warning : Task::Error, message, FileName(), -1,
                            ProjectExplorer::Constants::TASK_CATEGORY_BUILDSYSTEM);
         }
@@ -467,8 +467,8 @@ QString BaseQtVersion::invalidReason() const
 QStringList BaseQtVersion::warningReason() const
 {
     QStringList ret;
-    if (qtAbis().isEmpty())
-        ret << QCoreApplication::translate("QtVersion", "ABI detection failed: Make sure to use a matching compiler when building.");
+//    if (qtAbis().isEmpty())//#720 ROOPAK - START
+//        ret << QCoreApplication::translate("QtVersion", "ABI detection failed: Make sure to use a matching compiler when building.");//#720 ROOPAK - END
     if (m_versionInfo.value(QLatin1String("QT_INSTALL_PREFIX/get"))
         != m_versionInfo.value(QLatin1String("QT_INSTALL_PREFIX"))) {
         ret << QCoreApplication::translate("QtVersion", "Non-installed -prefix build - for internal development only.");
@@ -481,8 +481,8 @@ ToolChain *BaseQtVersion::preferredToolChain(const FileName &ms) const
     const FileName spec = ms.isEmpty() ? mkspec() : ms;
     ToolChain *possibleTc = 0;
     foreach (ToolChain *tc, ToolChainManager::toolChains()) {
-        if (!qtAbis().contains(tc->targetAbi()))
-            continue;
+//        if (!qtAbis().contains(tc->targetAbi()))//#720 ROOPAK - START
+//            continue;//#720 ROOPAK - END
         if (tc->suggestedMkspecList().contains(spec))
             return tc; // perfect match
         if (!possibleTc)
@@ -496,14 +496,14 @@ FileName BaseQtVersion::qmakeCommand() const
     return m_qmakeCommand;
 }
 
-QList<Abi> BaseQtVersion::qtAbis() const
-{
-    if (!m_hasQtAbis) {
-        m_qtAbis = detectQtAbis();
-        m_hasQtAbis = true;
-    }
-    return m_qtAbis;
-}
+//QList<Abi> BaseQtVersion::qtAbis() const//#720 ROOPAK - START
+//{
+//    if (!m_hasQtAbis) {
+//        m_qtAbis = detectQtAbis();
+//        m_hasQtAbis = true;
+//    }
+//    return m_qtAbis;
+//}//#720 ROOPAK - END
 
 bool BaseQtVersion::equals(BaseQtVersion *other)
 {
@@ -563,16 +563,16 @@ QString BaseQtVersion::toHtml(bool verbose) const
     } else {
         str << "<tr><td><b>" << QCoreApplication::translate("BaseQtVersion", "ABI:")
             << "</b></td>";
-        const QList<Abi> abis = qtAbis();
-        if (abis.isEmpty()) {
-            str << "<td>" << Abi().toString() << "</td></tr>";
-        } else {
-            for (int i = 0; i < abis.size(); ++i) {
-                if (i)
-                    str << "<tr><td></td>";
-                str << "<td>" << abis.at(i).toString() << "</td></tr>";
-            }
-        }
+//        const QList<Abi> abis = qtAbis();//#720 ROOPAK - START
+//        if (abis.isEmpty()) {
+//            str << "<td>" << Abi().toString() << "</td></tr>";
+//        } else {
+//            for (int i = 0; i < abis.size(); ++i) {
+//                if (i)
+//                    str << "<tr><td></td>";
+//                str << "<td>" << abis.at(i).toString() << "</td></tr>";
+//            }
+//        }//#720 ROOPAK - END
         str << "<tr><td><b>" << QCoreApplication::translate("BaseQtVersion", "Source:")
             << "</b></td><td>" << sourcePath().toUserOutput() << "</td></tr>";
         str << "<tr><td><b>" << QCoreApplication::translate("BaseQtVersion", "mkspec:")
@@ -1115,11 +1115,11 @@ Environment BaseQtVersion::qmlToolsEnvironment() const
 #endif
 
     // add preferred tool chain, as that is how the tools are built, compare QtVersion::buildDebuggingHelperLibrary
-    if (!qtAbis().isEmpty()) {
-        QList<ToolChain *> alltc = ToolChainManager::findToolChains(qtAbis().at(0));
-        if (!alltc.isEmpty())
-            alltc.first()->addToEnvironment(environment);
-    }
+//    if (!qtAbis().isEmpty()) {//#720 ROOPAK - START
+//        QList<ToolChain *> alltc = ToolChainManager::findToolChains(qtAbis().at(0));
+//        if (!alltc.isEmpty())
+//            alltc.first()->addToEnvironment(environment);
+//    }//#720 ROOPAK - END
 
     return environment;
 }
@@ -1255,11 +1255,11 @@ bool BaseQtVersion::queryQMakeVariables(const FileName &binary, const Environmen
         // Try running qmake with all kinds of tool chains set up in the environment.
         // This is required to make non-static qmakes work on windows where every tool chain
         // tries to be incompatible with any other.
-        QList<Abi> abiList = Abi::abisOfBinary(binary);
+//        QList<Abi> abiList = Abi::abisOfBinary(binary);//#720 ROOPAK
         QList<ToolChain *> tcList = ToolChainManager::toolChains();
         foreach (ToolChain *tc, tcList) {
-            if (!abiList.contains(tc->targetAbi()))
-                continue;
+//            if (!abiList.contains(tc->targetAbi()))//#720 ROOPAK - START
+//                continue;//#720 ROOPAK - END
             Environment realEnv = env;
             tc->addToEnvironment(realEnv);
             output = runQmakeQuery(binary, realEnv, error);
@@ -1500,12 +1500,12 @@ QList<FileName> BaseQtVersion::qtCorePaths(const QHash<QString,QString> &version
     return dynamicLibs;
 }
 
-QList<Abi> BaseQtVersion::qtAbisFromLibrary(const QList<FileName> &coreLibraries)
-{
-    QList<Abi> res;
-    foreach (const FileName &library, coreLibraries)
-        foreach (const Abi &abi, Abi::abisOfBinary(library))
-            if (!res.contains(abi))
-                res.append(abi);
-    return res;
-}
+//QList<Abi> BaseQtVersion::qtAbisFromLibrary(const QList<FileName> &coreLibraries)//#720 ROOPAK - START
+//{
+//    QList<Abi> res;
+//    foreach (const FileName &library, coreLibraries)
+//        foreach (const Abi &abi, Abi::abisOfBinary(library))
+//            if (!res.contains(abi))
+//                res.append(abi);
+//    return res;
+//}//#720 ROOPAK - END

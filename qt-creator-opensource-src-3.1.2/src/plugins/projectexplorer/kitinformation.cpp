@@ -39,7 +39,7 @@
 #include "toolchainmanager.h"
 
 #include <extensionsystem/pluginmanager.h>
-#include <projectexplorer/abi.h>
+//#include <projectexplorer/abi.h>//#720 ROOPAK
 #include <utils/qtcassert.h>
 
 #include <QFileInfo>
@@ -130,12 +130,12 @@ QVariant ToolChainKitInformation::defaultValue(Kit *k) const
     if (tcList.isEmpty())
         return QString();
 
-    Abi abi = Abi::hostAbi();
+//    Abi abi = Abi::hostAbi();//#720 ROOPAK - START
 
-    foreach (ToolChain *tc, tcList) {
-        if (tc->targetAbi() == abi)
-            return tc->id();
-    }
+//    foreach (ToolChain *tc, tcList) {
+//        if (tc->targetAbi() == abi)
+//            return tc->id();
+//    }//#720 ROOPAK - END
 
     return tcList.at(0)->id();
 }
@@ -177,10 +177,10 @@ void ToolChainKitInformation::setup(Kit *k)
         return;
 
     // ID is not found: Might be an ABI string...
-    foreach (ToolChain *current, ToolChainManager::toolChains()) {
-        if (current->targetAbi().toString() == id)
-            return setToolChain(k, current);
-    }
+//    foreach (ToolChain *current, ToolChainManager::toolChains()) {//#720 ROOPAK - START
+//        if (current->targetAbi().toString() == id)
+//            return setToolChain(k, current);
+//    }//#720 ROOPAK - END
 }
 
 KitConfigWidget *ToolChainKitInformation::createConfigWidget(Kit *k) const

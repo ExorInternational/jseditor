@@ -74,11 +74,11 @@ QStringList SimulatorQtVersion::warningReason() const
     return ret;
 }
 
-QList<ProjectExplorer::Abi> SimulatorQtVersion::detectQtAbis() const
-{
-    ensureMkSpecParsed();
-    return qtAbisFromLibrary(qtCorePaths(versionInfo(), qtVersionString()));
-}
+//QList<ProjectExplorer::Abi> SimulatorQtVersion::detectQtAbis() const//#720 ROOPAK - START
+//{
+//    ensureMkSpecParsed();
+//    return qtAbisFromLibrary(qtCorePaths(versionInfo(), qtVersionString()));
+//}//#720 ROOPAK - END
 
 QString SimulatorQtVersion::description() const
 {

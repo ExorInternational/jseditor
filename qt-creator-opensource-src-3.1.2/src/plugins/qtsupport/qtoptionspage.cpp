@@ -350,11 +350,11 @@ QtOptionsPageWidget::ValidityInfo QtOptionsPageWidget::validInformation(const Ba
     // Do we have tool chain issues?
     QStringList missingToolChains;
     int abiCount = 0;
-    foreach (const Abi &abi, version->qtAbis()) {
-        if (ToolChainManager::findToolChains(abi).isEmpty())
-            missingToolChains.append(abi.toString());
-        ++abiCount;
-    }
+//    foreach (const Abi &abi, version->qtAbis()) {//#720 ROOPAK - START
+//        if (ToolChainManager::findToolChains(abi).isEmpty())
+//            missingToolChains.append(abi.toString());
+//        ++abiCount;
+//    }//#720 ROOPAK - END
 
     bool useable = true;
     QStringList warnings;
@@ -390,9 +390,9 @@ QList<ToolChain*> QtOptionsPageWidget::toolChains(const BaseQtVersion *version)
     if (!version)
         return toolChains.values();
 
-    foreach (const Abi &a, version->qtAbis())
-        foreach (ToolChain *tc, ToolChainManager::findToolChains(a))
-            toolChains.insert(tc->id(), tc);
+//    foreach (const Abi &a, version->qtAbis())//#720 ROOPAK - START
+//        foreach (ToolChain *tc, ToolChainManager::findToolChains(a))
+//            toolChains.insert(tc->id(), tc);//#720 ROOPAK - END
 
     return toolChains.values();
 }

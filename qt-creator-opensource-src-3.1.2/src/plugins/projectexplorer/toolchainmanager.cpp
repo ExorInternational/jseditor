@@ -29,7 +29,7 @@
 
 #include "toolchainmanager.h"
 
-#include "abi.h"
+//#include "abi.h"//#720 ROOPAK
 #include "kitinformation.h"
 #include "toolchain.h"
 
@@ -301,16 +301,16 @@ QList<ToolChain *> ToolChainManager::toolChains()
     return d->m_toolChains;
 }
 
-QList<ToolChain *> ToolChainManager::findToolChains(const Abi &abi)
-{
-    QList<ToolChain *> result;
-    foreach (ToolChain *tc, d->m_toolChains) {
-        Abi targetAbi = tc->targetAbi();
-        if (targetAbi.isCompatibleWith(abi))
-            result.append(tc);
-    }
-    return result;
-}
+//QList<ToolChain *> ToolChainManager::findToolChains(const Abi &abi)//#720 ROOPAK - START
+//{
+//    QList<ToolChain *> result;
+//    foreach (ToolChain *tc, d->m_toolChains) {
+//        Abi targetAbi = tc->targetAbi();
+//        if (targetAbi.isCompatibleWith(abi))
+//            result.append(tc);
+//    }
+//    return result;
+//}//#720 ROOPAK - END
 
 ToolChain *ToolChainManager::findToolChain(const QString &id)
 {
@@ -324,10 +324,10 @@ ToolChain *ToolChainManager::findToolChain(const QString &id)
     return 0;
 }
 
-FileName ToolChainManager::defaultDebugger(const Abi &abi)
-{
-    return d->m_abiToDebugger.value(abi.toString());
-}
+//FileName ToolChainManager::defaultDebugger(const Abi &abi)//#720 ROOPAK - START
+//{
+//    return d->m_abiToDebugger.value(abi.toString());
+//}//#720 ROOPAK - END
 
 bool ToolChainManager::isLoaded()
 {

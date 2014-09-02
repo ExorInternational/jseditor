@@ -86,21 +86,21 @@ DebuggingHelperBuildTask::DebuggingHelperBuildTask(const BaseQtVersion *version,
     log(QCoreApplication::translate("QtVersion", "Building helper(s) with toolchain '%1'...\n"
                                     ).arg(toolChain->displayName()), QString());
 
-    if (toolChain->targetAbi().os() == Abi::LinuxOS
-        && Abi::hostAbi().os() == Abi::WindowsOS)
-        m_target = QLatin1String("-unix");
-    m_makeArguments << QLatin1String("all")
-                    << QLatin1String("-k");
-    m_qmakeCommand = version->qmakeCommand();
-    m_qmakeArguments = QStringList() << QLatin1String("-nocache");
-    if (toolChain->targetAbi().os() == Abi::MacOS
-            && toolChain->targetAbi().architecture() == Abi::X86Architecture) {
-        // explicitly set 32 or 64 bit in case Qt is compiled with both
-        if (toolChain->targetAbi().wordWidth() == 32)
-            m_qmakeArguments << QLatin1String("CONFIG+=x86");
-        else if (toolChain->targetAbi().wordWidth() == 64)
-            m_qmakeArguments << QLatin1String("CONFIG+=x86_64");
-    }
+//    if (toolChain->targetAbi().os() == Abi::LinuxOS//#720 ROOPAK - START
+//        && Abi::hostAbi().os() == Abi::WindowsOS)
+//        m_target = QLatin1String("-unix");
+//    m_makeArguments << QLatin1String("all")
+//                    << QLatin1String("-k");
+//    m_qmakeCommand = version->qmakeCommand();
+//    m_qmakeArguments = QStringList() << QLatin1String("-nocache");
+//    if (toolChain->targetAbi().os() == Abi::MacOS
+//            && toolChain->targetAbi().architecture() == Abi::X86Architecture) {
+//        // explicitly set 32 or 64 bit in case Qt is compiled with both
+//        if (toolChain->targetAbi().wordWidth() == 32)
+//            m_qmakeArguments << QLatin1String("CONFIG+=x86");
+//        else if (toolChain->targetAbi().wordWidth() == 64)
+//            m_qmakeArguments << QLatin1String("CONFIG+=x86_64");
+//    }//#720 ROOPAK - END
     m_makeCommand = toolChain->makeCommand(m_environment);
     m_mkspec = version->mkspec();
 

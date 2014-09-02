@@ -34,7 +34,7 @@
 
 #include <utils/fileutils.h>
 
-#include <projectexplorer/abi.h>
+//#include <projectexplorer/abi.h>//#720 ROOPAK
 
 #include <QStringList>
 #include <QVariantMap>
@@ -113,8 +113,8 @@ public:
     virtual QString description() const = 0;
     virtual QString toHtml(bool verbose) const;
 
-    QList<ProjectExplorer::Abi> qtAbis() const;
-    virtual QList<ProjectExplorer::Abi> detectQtAbis() const = 0;
+//    QList<ProjectExplorer::Abi> qtAbis() const;//#720 ROOPAK - START
+//    virtual QList<ProjectExplorer::Abi> detectQtAbis() const = 0;//#720 ROOPAK - END
 
     // Returns the PREFIX, BINPREFIX, DOCPREFIX and similar information
     QHash<QString,QString> versionInfo() const;
@@ -236,7 +236,7 @@ protected:
     // helper function for desktop and simulator to figure out the supported abis based on the libraries
     static QList<Utils::FileName> qtCorePaths(const QHash<QString,QString> &versionInfo,
                                               const QString &versionString);
-    static QList<ProjectExplorer::Abi> qtAbisFromLibrary(const QList<Utils::FileName> &coreLibraries);
+//    static QList<ProjectExplorer::Abi> qtAbisFromLibrary(const QList<Utils::FileName> &coreLibraries);//#720 ROOPAK
 
     void ensureMkSpecParsed() const;
     virtual void parseMkSpec(ProFileEvaluator *) const;
@@ -291,7 +291,7 @@ private:
     mutable QString m_qmlsceneCommand;
     mutable QString m_qmlviewerCommand;
 
-    mutable QList<ProjectExplorer::Abi> m_qtAbis;
+//    mutable QList<ProjectExplorer::Abi> m_qtAbis;//#720 ROOPAK
 };
 }
 

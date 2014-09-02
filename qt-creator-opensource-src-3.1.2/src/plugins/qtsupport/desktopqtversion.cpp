@@ -76,10 +76,10 @@ QStringList DesktopQtVersion::warningReason() const
     return ret;
 }
 
-QList<ProjectExplorer::Abi> DesktopQtVersion::detectQtAbis() const
-{
-    return qtAbisFromLibrary(qtCorePaths(versionInfo(), qtVersionString()));
-}
+//QList<ProjectExplorer::Abi> DesktopQtVersion::detectQtAbis() const//#720 ROOPAK - START
+//{
+//    return qtAbisFromLibrary(qtCorePaths(versionInfo(), qtVersionString()));
+//}//#720 ROOPAK - END
 
 QString DesktopQtVersion::description() const
 {

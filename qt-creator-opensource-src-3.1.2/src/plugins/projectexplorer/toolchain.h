@@ -46,7 +46,7 @@ namespace ProjectExplorer {
 
 namespace Internal { class ToolChainPrivate; }
 
-class Abi;
+//class Abi;//#720 ROOPAK
 class HeaderPath;
 class IOutputParser;
 //class ToolChainConfigWidget;//ROOPAK
@@ -83,7 +83,7 @@ public:
 
     virtual QString type() const = 0;
     virtual QString typeDisplayName() const = 0;
-    virtual Abi targetAbi() const = 0;
+//    virtual Abi targetAbi() const = 0;//#720 ROOPAK
 
     virtual bool isValid() const = 0;
 

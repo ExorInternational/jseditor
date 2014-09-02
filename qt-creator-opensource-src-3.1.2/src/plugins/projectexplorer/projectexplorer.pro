@@ -3,7 +3,7 @@ QT += xml script
 include(../../qtcreatorplugin.pri)
 #include(customwizard/customwizard.pri)//ROOPAK
 HEADERS += projectexplorer.h \
-    abi.h \
+#    abi.h \//#720 ROOPAK
 #    abiwidget.h \#ROOPAK
 #    ansifilterparser.h \#ROOPAK
 #    buildinfo.h \#ROOPAK
@@ -147,7 +147,7 @@ HEADERS += projectexplorer.h \
 #    xcodebuildparser.h#ROOPAK
 
 SOURCES += projectexplorer.cpp \
-    abi.cpp \
+#    abi.cpp \//#720 ROOPAK
 #    abiwidget.cpp \#ROOPAK
 #    ansifilterparser.cpp \#ROOPAK
 #    clangparser.cpp \#ROOPAK
