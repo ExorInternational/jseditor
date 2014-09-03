@@ -64,7 +64,7 @@ HEADERS += projectexplorer.h \
     allprojectsfind.h \
 #    buildstep.h \#ROOPAK
 #    buildconfiguration.h \#ROOPAK
-    iprojectproperties.h \
+#    iprojectproperties.h \//#720 ROOPAK
 #    buildsettingspropertiespage.h \#ROOPAK
 #    environmentwidget.h \#ROOPAK
 #    processstep.h \#ROOPAK
