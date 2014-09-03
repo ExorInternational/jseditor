@@ -74,11 +74,11 @@ QList<Task> SysRootKitInformation::validate(const Kit *k) const
     return result;
 }
 
-KitConfigWidget *SysRootKitInformation::createConfigWidget(Kit *k) const
-{
-    //return new Internal::SysRootInformationConfigWidget(k, this);//ROOPAK
-    return NULL;//ROOPAK
-}
+//KitConfigWidget *SysRootKitInformation::createConfigWidget(Kit *k) const//#720 ROOPAK - START
+//{
+//    //return new Internal::SysRootInformationConfigWidget(k, this);//ROOPAK
+//    return NULL;//ROOPAK
+//}//#720 ROOPAK - END
 
 KitInformation::ItemList SysRootKitInformation::toUserOutput(const Kit *k) const
 {
@@ -183,11 +183,11 @@ void ToolChainKitInformation::setup(Kit *k)
 //    }//#720 ROOPAK - END
 }
 
-KitConfigWidget *ToolChainKitInformation::createConfigWidget(Kit *k) const
-{
-//    return new Internal::ToolChainInformationConfigWidget(k, this);//ROOPAK
-    return NULL;//ROOPAK
-}
+//KitConfigWidget *ToolChainKitInformation::createConfigWidget(Kit *k) const//#720 ROOPAK - START
+//{
+////    return new Internal::ToolChainInformationConfigWidget(k, this);//ROOPAK
+//    return NULL;//ROOPAK
+//}//#720 ROOPAK - END
 
 QString ToolChainKitInformation::displayNamePostfix(const Kit *k) const
 {
@@ -286,11 +286,11 @@ QList<Task> DeviceTypeKitInformation::validate(const Kit *k) const
     return QList<Task>();
 }
 
-KitConfigWidget *DeviceTypeKitInformation::createConfigWidget(Kit *k) const
-{
-//    return new Internal::DeviceTypeInformationConfigWidget(k, this);//ROOPAK
-    return NULL;//ROOPAK
-}
+//KitConfigWidget *DeviceTypeKitInformation::createConfigWidget(Kit *k) const//#720 ROOPAK - START
+//{
+////    return new Internal::DeviceTypeInformationConfigWidget(k, this);//ROOPAK
+//    return NULL;//ROOPAK
+//}//#720 ROOPAK - END
 
 KitInformation::ItemList DeviceTypeKitInformation::toUserOutput(const Kit *k) const
 {
@@ -378,11 +378,11 @@ void DeviceKitInformation::setup(Kit *k)
     setDeviceId(k, Core::Id::fromSetting(defaultValue(k)));
 }
 
-KitConfigWidget *DeviceKitInformation::createConfigWidget(Kit *k) const
-{
-//    return new Internal::DeviceInformationConfigWidget(k, this);//ROOPAK
-    return NULL;//ROOPAK
-}
+//KitConfigWidget *DeviceKitInformation::createConfigWidget(Kit *k) const//#720 ROOPAK - START
+//{
+////    return new Internal::DeviceInformationConfigWidget(k, this);//ROOPAK
+//    return NULL;//ROOPAK
+//}//#720 ROOPAK - END
 
 QString DeviceKitInformation::displayNamePostfix(const Kit *k) const
 {

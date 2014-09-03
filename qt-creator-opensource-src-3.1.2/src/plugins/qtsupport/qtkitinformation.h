@@ -51,7 +51,7 @@ public:
     QList<ProjectExplorer::Task> validate(const ProjectExplorer::Kit *k) const;
     void fix(ProjectExplorer::Kit *);
 
-    ProjectExplorer::KitConfigWidget *createConfigWidget(ProjectExplorer::Kit *k) const;
+//    ProjectExplorer::KitConfigWidget *createConfigWidget(ProjectExplorer::Kit *k) const;//#720 ROOPAK
 
     QString displayNamePostfix(const ProjectExplorer::Kit *k) const;
 

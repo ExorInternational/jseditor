@@ -40,7 +40,7 @@
 namespace ProjectExplorer {
 
 class ToolChain;
-class KitConfigWidget;
+//class KitConfigWidget;//#720 ROOPAK
 
 // --------------------------------------------------------------------------
 // SysRootInformation:
@@ -57,7 +57,7 @@ public:
 
     QList<Task> validate(const Kit *k) const;
 
-    KitConfigWidget *createConfigWidget(Kit *k) const;
+//    KitConfigWidget *createConfigWidget(Kit *k) const;//#720 ROOPAK
 
     ItemList toUserOutput(const Kit *k) const;
 
@@ -99,7 +99,7 @@ public:
     void fix(Kit *k);
     void setup(Kit *k);
 
-    KitConfigWidget *createConfigWidget(Kit *k) const;
+//    KitConfigWidget *createConfigWidget(Kit *k) const;//#720 ROOPAK
 
     QString displayNamePostfix(const Kit *k) const;
 
@@ -150,7 +150,7 @@ public:
 
     QList<Task> validate(const Kit *k) const;
 
-    KitConfigWidget *createConfigWidget(Kit *k) const;
+//    KitConfigWidget *createConfigWidget(Kit *k) const;//#720 ROOPAK
 
     ItemList toUserOutput(const Kit *k) const;
 
@@ -194,7 +194,7 @@ public:
     void fix(Kit *k);
     void setup(Kit *k);
 
-    KitConfigWidget *createConfigWidget(Kit *k) const;
+//    KitConfigWidget *createConfigWidget(Kit *k) const;//#720 ROOPAK
 
     QString displayNamePostfix(const Kit *k) const;
 

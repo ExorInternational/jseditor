@@ -93,10 +93,10 @@ void QtKitInformation::fix(ProjectExplorer::Kit *k)
     }
 }
 
-ProjectExplorer::KitConfigWidget *QtKitInformation::createConfigWidget(ProjectExplorer::Kit */*k*/) const//#720 ROOPAK
-{
-    return NULL;//new Internal::QtKitConfigWidget(k, this);//#720 ROOPAK
-}
+//ProjectExplorer::KitConfigWidget *QtKitInformation::createConfigWidget(ProjectExplorer::Kit */*k*/) const//#720 ROOPAK - START
+//{
+//    return NULL;//new Internal::QtKitConfigWidget(k, this);//#720 ROOPAK
+//}//#720 ROOPAK - END
 
 QString QtKitInformation::displayNamePostfix(const ProjectExplorer::Kit *k) const
 {

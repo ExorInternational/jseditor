@@ -46,7 +46,7 @@ namespace ProjectExplorer {
 class Task;
 class IOutputParser;
 class Kit;
-class KitConfigWidget;
+//class KitConfigWidget;//#720 ROOPAK
 class KitManager;
 
 namespace Internal {
@@ -83,7 +83,7 @@ public:
 
     virtual ItemList toUserOutput(const Kit *) const = 0;
 
-    virtual KitConfigWidget *createConfigWidget(Kit *) const = 0;
+//    virtual KitConfigWidget *createConfigWidget(Kit *) const = 0;//#720 ROOPAK
 
     virtual void addToEnvironment(const Kit *k, Utils::Environment &env) const;
     virtual IOutputParser *createOutputParser(const Kit *k) const;
