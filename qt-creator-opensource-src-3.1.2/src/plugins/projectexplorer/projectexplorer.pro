@@ -25,7 +25,7 @@ HEADERS += projectexplorer.h \
     kit.h \
 #    kitchooser.h \#ROOPAK
 #    kitconfigwidget.h \//#720 ROOPAK
-    kitinformation.h \
+#    kitinformation.h \//#720 ROOPAK
 #    kitinformationconfigwidget.h \ #ROOPAK
     kitmanager.h \
 #    kitmanagerconfigwidget.h \#ROOPAK
@@ -167,7 +167,7 @@ SOURCES += projectexplorer.cpp \
     kit.cpp \
 #    kitchooser.cpp \#ROOPAK
 #    kitconfigwidget.cpp \//#720 ROOPAK
-    kitinformation.cpp \
+#    kitinformation.cpp \//#720 ROOPAK
 #    kitinformationconfigwidget.cpp \ #ROOPAK
     kitmanager.cpp \
 #    kitmanagerconfigwidget.cpp \ #ROOPAK

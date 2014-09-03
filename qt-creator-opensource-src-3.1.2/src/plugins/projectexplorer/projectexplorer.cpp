@@ -63,7 +63,7 @@
 //#include "appoutputpane.h"//ROOPAK
 //#include "pluginfilefactory.h"//ROOPAK
 //#include "processstep.h"//ROOPAK
-#include "kitinformation.h"
+//#include "kitinformation.h"//#720 ROOPAK
 //#include "projectfilewizardextension.h"//ROOPAK
 //#include "projecttreewidget.h"//ROOPAK
 //#include "projectwindow.h"//ROOPAK
@@ -362,10 +362,10 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
     d->m_toolChainManager = new ToolChainManager;
 
     // Register KitInformation:
-    KitManager::registerKitInformation(new DeviceTypeKitInformation);
-    KitManager::registerKitInformation(new DeviceKitInformation);
-    KitManager::registerKitInformation(new ToolChainKitInformation);
-    KitManager::registerKitInformation(new SysRootKitInformation);
+//    KitManager::registerKitInformation(new DeviceTypeKitInformation);//#720 ROOPAK - START
+//    KitManager::registerKitInformation(new DeviceKitInformation);
+//    KitManager::registerKitInformation(new ToolChainKitInformation);
+//    KitManager::registerKitInformation(new SysRootKitInformation);//#720 ROOPAK - END
 
 //    addAutoReleasedObject(new Internal::ToolChainOptionsPage);//ROOPAK
 //    addAutoReleasedObject(new KitOptionsPage);//ROOPAK

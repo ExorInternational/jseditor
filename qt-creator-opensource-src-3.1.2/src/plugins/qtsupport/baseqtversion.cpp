@@ -60,7 +60,8 @@
 
 //#720 ADDED BY ROOPAK - START
 #include <coreplugin/featureprovider.h>
-#include <projectexplorer/kitinformation.h>
+//#include <projectexplorer/kitinformation.h>//#720 ROOPAK
+#include <projectexplorer/kit.h>
 //#720 ROOPAK - END
 
 using namespace Core;
@@ -299,38 +300,38 @@ QList<Task> BaseQtVersion::validateKit(const Kit *k)
 //    if (qtAbis.isEmpty()) // No need to test if Qt does not know anyway...
 //        return result;//#720 ROOPAK - END
 
-    ToolChain *tc = ToolChainKitInformation::toolChain(k);
-    if (tc) {
-//        Abi targetAbi = tc->targetAbi();//#720 ROOPAK
-        bool fuzzyMatch = false;
-        bool fullMatch = false;
+//    ToolChain *tc = ToolChainKitInformation::toolChain(k);//#720 ROOPAK - START
+//    if (tc) {
+////        Abi targetAbi = tc->targetAbi();//#720 ROOPAK
+//        bool fuzzyMatch = false;
+//        bool fullMatch = false;
 
-        QString qtAbiString;
-//        foreach (const Abi &qtAbi, qtAbis) {
-//            if (!qtAbiString.isEmpty())
-//                qtAbiString.append(QLatin1Char(' '));
-//            qtAbiString.append(qtAbi.toString());
+//        QString qtAbiString;
+////        foreach (const Abi &qtAbi, qtAbis) {
+////            if (!qtAbiString.isEmpty())
+////                qtAbiString.append(QLatin1Char(' '));
+////            qtAbiString.append(qtAbi.toString());
 
-//            if (!fullMatch)
-//                fullMatch = (targetAbi == qtAbi);
+////            if (!fullMatch)
+////                fullMatch = (targetAbi == qtAbi);
+////            if (!fuzzyMatch)
+////                fuzzyMatch = targetAbi.isCompatibleWith(qtAbi);//#720 ROOPAK - END
+////        }
+
+//        QString message;
+//        if (!fullMatch) {
 //            if (!fuzzyMatch)
-//                fuzzyMatch = targetAbi.isCompatibleWith(qtAbi);//#720 ROOPAK - END
+//                message = QCoreApplication::translate("BaseQtVersion",
+//                                                      "The compiler '%1' (%2) cannot produce code for the Qt version '%3' (%4).");
+//            else
+//                message = QCoreApplication::translate("BaseQtVersion",
+//                                                      "The compiler '%1' (%2) may not produce code compatible with the Qt version '%3' (%4).");
+////            message = message.arg(tc->displayName(), targetAbi.toString(),//#720 ROOPAK
+////                                  version->displayName(), qtAbiString);//#720 ROOPAK
+//            result << Task(fuzzyMatch ? Task::Warning : Task::Error, message, FileName(), -1,
+//                           ProjectExplorer::Constants::TASK_CATEGORY_BUILDSYSTEM);
 //        }
-
-        QString message;
-        if (!fullMatch) {
-            if (!fuzzyMatch)
-                message = QCoreApplication::translate("BaseQtVersion",
-                                                      "The compiler '%1' (%2) cannot produce code for the Qt version '%3' (%4).");
-            else
-                message = QCoreApplication::translate("BaseQtVersion",
-                                                      "The compiler '%1' (%2) may not produce code compatible with the Qt version '%3' (%4).");
-//            message = message.arg(tc->displayName(), targetAbi.toString(),//#720 ROOPAK
-//                                  version->displayName(), qtAbiString);//#720 ROOPAK
-            result << Task(fuzzyMatch ? Task::Warning : Task::Error, message, FileName(), -1,
-                           ProjectExplorer::Constants::TASK_CATEGORY_BUILDSYSTEM);
-        }
-    }
+//    }//#720 ROOPAK - END
     return result;
 }
 

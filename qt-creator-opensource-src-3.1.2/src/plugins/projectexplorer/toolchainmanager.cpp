@@ -30,7 +30,7 @@
 #include "toolchainmanager.h"
 
 //#include "abi.h"//#720 ROOPAK
-#include "kitinformation.h"
+//#include "kitinformation.h"//#720 ROOPAK
 #include "toolchain.h"
 
 #include <coreplugin/icore.h>
