@@ -9,7 +9,7 @@ include(../../shared/proparser/proparser.pri)
 HEADERS += \
     qtsupportplugin.h \
     qtsupport_global.h \
-    qtkitconfigwidget.h \
+#    qtkitconfigwidget.h \//#720 ROOPAK
     qtkitinformation.h \
     qtoutputformatter.h \
     qtversionmanager.h \
@@ -37,7 +37,7 @@ HEADERS += \
 
 SOURCES += \
     qtsupportplugin.cpp \
-    qtkitconfigwidget.cpp \
+#    qtkitconfigwidget.cpp \//#720 ROOPAK
     qtkitinformation.cpp \
     qtoutputformatter.cpp \
     qtversionmanager.cpp \

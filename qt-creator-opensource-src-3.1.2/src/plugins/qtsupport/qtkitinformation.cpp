@@ -29,7 +29,7 @@
 
 #include "qtkitinformation.h"
 
-#include "qtkitconfigwidget.h"
+//#include "qtkitconfigwidget.h"//#720 ROOPAK
 #include "qtsupportconstants.h"
 #include "qtversionmanager.h"
 #include "qtparser.h"
@@ -93,9 +93,9 @@ void QtKitInformation::fix(ProjectExplorer::Kit *k)
     }
 }
 
-ProjectExplorer::KitConfigWidget *QtKitInformation::createConfigWidget(ProjectExplorer::Kit *k) const
+ProjectExplorer::KitConfigWidget *QtKitInformation::createConfigWidget(ProjectExplorer::Kit */*k*/) const//#720 ROOPAK
 {
-    return new Internal::QtKitConfigWidget(k, this);
+    return NULL;//new Internal::QtKitConfigWidget(k, this);//#720 ROOPAK
 }
 
 QString QtKitInformation::displayNamePostfix(const ProjectExplorer::Kit *k) const
