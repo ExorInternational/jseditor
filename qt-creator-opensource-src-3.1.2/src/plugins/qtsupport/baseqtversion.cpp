@@ -30,7 +30,7 @@
 #include "baseqtversion.h"
 #include "qtconfigwidget.h"
 #include "qmldumptool.h"
-#include "qtkitinformation.h"
+//#include "qtkitinformation.h"//#720 ROOPAK
 
 #include "qtversionmanager.h"
 #include "profilereader.h"
@@ -56,6 +56,12 @@
 #include <QFuture>
 #include <QCoreApplication>
 #include <QProcess>
+
+
+//#720 ADDED BY ROOPAK - START
+#include <coreplugin/featureprovider.h>
+#include <projectexplorer/kitinformation.h>
+//#720 ROOPAK - END
 
 using namespace Core;
 using namespace QtSupport;
@@ -286,8 +292,8 @@ QList<Task> BaseQtVersion::validateKit(const Kit *k)
 {
     QList<Task> result;
 
-    BaseQtVersion *version = QtKitInformation::qtVersion(k);
-    Q_ASSERT(version == this);
+//    BaseQtVersion *version = QtKitInformation::qtVersion(k);//#720 ROOPAK - START
+//    Q_ASSERT(version == this);//#720 ROOPAK - END
 
 //    const QList<Abi> qtAbis = version->qtAbis();//#720 ROOPAK - START
 //    if (qtAbis.isEmpty()) // No need to test if Qt does not know anyway...
@@ -1407,13 +1413,14 @@ FileName BaseQtVersion::sourcePath(const QHash<QString, QString> &versionInfo)
 bool BaseQtVersion::isQmlDebuggingSupported(Kit *k, QString *reason)
 {
     QTC_ASSERT(k, return false);
-    BaseQtVersion *version = QtKitInformation::qtVersion(k);
-    if (!version) {
-        if (reason)
-            *reason = QCoreApplication::translate("BaseQtVersion", "No Qt version.");
-        return false;
-    }
-    return version->isQmlDebuggingSupported(reason);
+//    BaseQtVersion *version = QtKitInformation::qtVersion(k);//#720 ROOPAK - START
+//    if (!version) {
+//        if (reason)
+//            *reason = QCoreApplication::translate("BaseQtVersion", "No Qt version.");
+//        return false;
+//    }
+//    return version->isQmlDebuggingSupported(reason);
+    return false;//#720 ROOPAK - END
 }
 
 bool BaseQtVersion::isQmlDebuggingSupported(QString *reason) const
@@ -1435,12 +1442,12 @@ bool BaseQtVersion::isQmlDebuggingSupported(QString *reason) const
 
 void BaseQtVersion::buildDebuggingHelper(Kit *k, int tools)
 {
-    BaseQtVersion *version = QtKitInformation::qtVersion(k);
-    ToolChain *tc = ToolChainKitInformation::toolChain(k);
-    if (!k || !version || !tc)
-        return;
+//    BaseQtVersion *version = QtKitInformation::qtVersion(k);//#720 ROOPAK - START
+//    ToolChain *tc = ToolChainKitInformation::toolChain(k);
+//    if (!k || !version || !tc)
+//        return;
 
-    version->buildDebuggingHelper(tc, tools);
+//    version->buildDebuggingHelper(tc, tools);//#720 ROOPAK - END
 }
 
 void BaseQtVersion::buildDebuggingHelper(ToolChain *tc, int tools)

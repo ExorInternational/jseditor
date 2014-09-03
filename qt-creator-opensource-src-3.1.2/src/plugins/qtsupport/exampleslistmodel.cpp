@@ -37,12 +37,16 @@
 
 #include <coreplugin/helpmanager.h>
 #include <coreplugin/icore.h>
-#include <qtsupport/qtkitinformation.h>
+//#include <qtsupport/qtkitinformation.h>//#720 ROOPAK
 #include <qtsupport/qtversionmanager.h>
 #include <utils/environment.h>
 #include <utils/qtcassert.h>
 
 #include <algorithm>
+
+//#720 ADDED BY ROOPAK - START
+#include <projectexplorer/kitmanager.h>
+//#720 ROOPAK - END
 
 namespace QtSupport {
 namespace Internal {
@@ -519,10 +523,10 @@ void ExamplesListModel::updateQtVersions()
     }
 
     // prioritize default qt version
-    ProjectExplorer::Kit *defaultKit = ProjectExplorer::KitManager::defaultKit();
-    BaseQtVersion *defaultVersion = QtKitInformation::qtVersion(defaultKit);
-    if (defaultVersion && versions.contains(defaultVersion))
-        versions.move(versions.indexOf(defaultVersion), 0);
+//    ProjectExplorer::Kit *defaultKit = ProjectExplorer::KitManager::defaultKit();//#720 ROOPAK - START
+//    BaseQtVersion *defaultVersion = QtKitInformation::qtVersion(defaultKit);
+//    if (defaultVersion && versions.contains(defaultVersion))
+//        versions.move(versions.indexOf(defaultVersion), 0);//#720 ROOPAK - END
 
     if (m_qtVersions == versions && m_selectedExampleSetIndex >= 0)
         return;

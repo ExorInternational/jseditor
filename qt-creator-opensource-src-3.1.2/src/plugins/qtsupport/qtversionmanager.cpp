@@ -29,7 +29,7 @@
 
 #include "qtversionmanager.h"
 
-#include "qtkitinformation.h"
+//#include "qtkitinformation.h"//#720 ROOPAK
 #include "qtversionfactory.h"
 #include "baseqtversion.h"
 #include "qtfeatureprovider.h"

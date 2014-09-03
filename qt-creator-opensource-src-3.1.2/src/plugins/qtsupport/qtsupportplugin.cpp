@@ -32,7 +32,7 @@
 //#include "customexecutablerunconfiguration.h"//ROOPAK
 #include "desktopqtversionfactory.h"
 #include "qtfeatureprovider.h"
-#include "qtkitinformation.h"
+//#include "qtkitinformation.h"//#720 ROOPAK
 #include "qtoptionspage.h"
 #include "qtversionmanager.h"
 #include "simulatorqtversionfactory.h"
@@ -94,7 +94,7 @@ bool QtSupportPlugin::initialize(const QStringList &arguments, QString *errorMes
 #endif
 //    addAutoReleasedObject(new CustomExecutableRunConfigurationFactory);//ROOPAK
 
-    ProjectExplorer::KitManager::registerKitInformation(new QtKitInformation);
+//    ProjectExplorer::KitManager::registerKitInformation(new QtKitInformation);//#720 ROOPAK
 
     QtVersionManager::initialized();
 

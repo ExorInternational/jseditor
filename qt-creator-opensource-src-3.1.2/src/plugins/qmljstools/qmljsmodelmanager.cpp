@@ -46,7 +46,7 @@
 #include <qmljs/qmljsfindexportedcpptypes.h>
 #include <qmljs/qmljsplugindumper.h>
 #include <qtsupport/qmldumptool.h>
-#include <qtsupport/qtkitinformation.h>
+//#include <qtsupport/qtkitinformation.h>//#720 ROOPAK
 #include <qtsupport/qtsupportconstants.h>
 #include <texteditor/basetextdocument.h>
 #include <utils/function.h>
@@ -94,9 +94,9 @@ ModelManagerInterface::ProjectInfo QmlJSTools::defaultProjectInfoForProject(
                     projectInfo.sourceFiles << filePath;
 //        activeTarget = project->activeTarget();//#720 ROOPAK
     }
-    ProjectExplorer::Kit *activeKit = /*activeTarget ? activeTarget->kit() :*///#720 ROOPAK
-                                           ProjectExplorer::KitManager::defaultKit();
-    QtSupport::BaseQtVersion *qtVersion = QtSupport::QtKitInformation::qtVersion(activeKit);
+//    ProjectExplorer::Kit *activeKit = /*activeTarget ? activeTarget->kit() :*///#720 ROOPAK
+//                                           ProjectExplorer::KitManager::defaultKit();
+//    QtSupport::BaseQtVersion *qtVersion = QtSupport::QtKitInformation::qtVersion(activeKit);//#720 ROOPAK
 
     bool preferDebugDump = false;
     bool setPreferDump = false;
@@ -108,25 +108,25 @@ ModelManagerInterface::ProjectInfo QmlJSTools::defaultProjectInfoForProject(
 //            setPreferDump = true;
 //        }
 //    }//ROOPAk - END
-    if (!setPreferDump && qtVersion)
-        preferDebugDump = (qtVersion->defaultBuildConfig() & QtSupport::BaseQtVersion::DebugBuild);
-    if (qtVersion && qtVersion->isValid()) {
-        projectInfo.tryQmlDump = project && (
-                    qtVersion->type() == QLatin1String(QtSupport::Constants::DESKTOPQT)
-                    || qtVersion->type() == QLatin1String(QtSupport::Constants::SIMULATORQT));
-        projectInfo.qtQmlPath = qtVersion->qmakeProperty("QT_INSTALL_QML");
-        projectInfo.qtImportsPath = qtVersion->qmakeProperty("QT_INSTALL_IMPORTS");
-        projectInfo.qtVersionString = qtVersion->qtVersionString();
-    }
+//    if (!setPreferDump && qtVersion)//#720 ROOPAK
+//        preferDebugDump = (qtVersion->defaultBuildConfig() & QtSupport::BaseQtVersion::DebugBuild);
+//    if (qtVersion && qtVersion->isValid()) {
+//        projectInfo.tryQmlDump = project && (
+//                    qtVersion->type() == QLatin1String(QtSupport::Constants::DESKTOPQT)
+//                    || qtVersion->type() == QLatin1String(QtSupport::Constants::SIMULATORQT));
+//        projectInfo.qtQmlPath = qtVersion->qmakeProperty("QT_INSTALL_QML");
+//        projectInfo.qtImportsPath = qtVersion->qmakeProperty("QT_INSTALL_IMPORTS");
+//        projectInfo.qtVersionString = qtVersion->qtVersionString();
+//    }//#720 ROOPAK - END
 
     if (projectInfo.tryQmlDump) {
-        ProjectExplorer::ToolChain *toolChain =
-                ProjectExplorer::ToolChainKitInformation::toolChain(activeKit);
-        QtSupport::QmlDumpTool::pathAndEnvironment(project, qtVersion,
-                                                   toolChain,
-                                                   preferDebugDump, &projectInfo.qmlDumpPath,
-                                                   &projectInfo.qmlDumpEnvironment);
-        projectInfo.qmlDumpHasRelocatableFlag = qtVersion->hasQmlDumpWithRelocatableFlag();
+//        ProjectExplorer::ToolChain *toolChain =                                       //#720 ROOPAK - START
+//                ProjectExplorer::ToolChainKitInformation::toolChain(activeKit);
+//        QtSupport::QmlDumpTool::pathAndEnvironment(project, qtVersion,
+//                                                   toolChain,
+//                                                   preferDebugDump, &projectInfo.qmlDumpPath,
+//                                                   &projectInfo.qmlDumpEnvironment);
+//        projectInfo.qmlDumpHasRelocatableFlag = qtVersion->hasQmlDumpWithRelocatableFlag();//#720 ROOPAK - END
     } else {
         projectInfo.qmlDumpPath.clear();
         projectInfo.qmlDumpEnvironment.clear();

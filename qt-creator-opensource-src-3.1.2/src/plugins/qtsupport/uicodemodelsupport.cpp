@@ -29,7 +29,7 @@
 
 #include "uicodemodelsupport.h"
 
-#include "qtkitinformation.h"
+//#include "qtkitinformation.h"//#720 ROOPAK
 
 #include <coreplugin/editormanager/editormanager.h>
 #include <coreplugin/editormanager/ieditor.h>
@@ -47,6 +47,7 @@
 
 //ADDED BY ROOPAK
 #include <utils/environment.h>
+#include <baseqtversion.h>
 //ROOPAK - END
 
 enum { debug = 0 };
@@ -259,7 +260,7 @@ QString UiCodeModelSupport::uicCommand() const
 {
     QtSupport::BaseQtVersion *version;
     if (m_project->needsConfiguration()) {
-        version = QtSupport::QtKitInformation::qtVersion(ProjectExplorer::KitManager::defaultKit());
+//        version = QtSupport::QtKitInformation::qtVersion(ProjectExplorer::KitManager::defaultKit());//#720 ROOPAK
     } else {
 //        ProjectExplorer::Target *target = m_project->activeTarget();//#720 ROOPAK - START
 //        version = QtSupport::QtKitInformation::qtVersion(target->kit());//#720 ROOPAK - END
