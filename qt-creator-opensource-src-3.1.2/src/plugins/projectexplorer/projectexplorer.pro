@@ -104,7 +104,7 @@ HEADERS += projectexplorer.h \
 #    abstractprocessstep.h \#ROOPAK
 #    taskhub.h \//#720 ROOPAK
 #    localapplicationruncontrol.h \#ROOPAK
-    metatypedeclarations.h \
+#    metatypedeclarations.h \//#720 ROOPAK
     headerpath.h \
 #    gcctoolchainfactories.h \#ROOPAK
 #    appoutputpane.h \#ROOPAK
