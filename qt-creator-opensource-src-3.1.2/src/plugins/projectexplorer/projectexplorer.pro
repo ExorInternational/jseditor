@@ -59,7 +59,7 @@ HEADERS += projectexplorer.h \
 #    corelistenercheckingforrunningbuild.h \#ROOPAK
     project.h \
 #    pluginfilefactory.h \#ROOPAK
-    iprojectmanager.h \
+#    iprojectmanager.h \//#720 ROOPAK
 #    currentprojectfilter.h \#ROOPAK
     allprojectsfind.h \
 #    buildstep.h \#ROOPAK

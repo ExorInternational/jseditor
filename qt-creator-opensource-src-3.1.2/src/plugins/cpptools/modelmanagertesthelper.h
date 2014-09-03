@@ -51,8 +51,8 @@ public:
     virtual Core::IDocument *document() const
     { return 0; }
 
-    virtual ProjectExplorer::IProjectManager *projectManager() const
-    { return 0; }
+//    virtual ProjectExplorer::IProjectManager *projectManager() const//#720 ROOPAK - START
+//    { return 0; }//#720 ROOPAK - END
 
     virtual ProjectExplorer::ProjectNode *rootProjectNode() const
     { return 0; }

@@ -45,7 +45,7 @@ class Context;
 namespace ProjectExplorer {
 
 //class BuildInfo;//ROOPAK
-class IProjectManager;
+//class IProjectManager;//#720 ROOPAK
 class EditorConfiguration;
 //class ProjectImporter;
 //class ProjectNode;//ROOPAK
@@ -75,7 +75,7 @@ public:
     virtual QString displayName() const = 0;
     Core::Id id() const;
     virtual Core::IDocument *document() const = 0;
-    virtual IProjectManager *projectManager() const = 0;
+//    virtual IProjectManager *projectManager() const = 0;//#720 ROOPAK
 
     QString projectFilePath() const;
 

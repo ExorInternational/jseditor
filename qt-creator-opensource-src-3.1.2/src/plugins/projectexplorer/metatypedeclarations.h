@@ -33,7 +33,7 @@
 #include <QMetaType>
 
 namespace ProjectExplorer {
-class IProjectManager;
+//class IProjectManager;//#720 ROOPAK
 class SessionManager;
 class Project;
 }
@@ -41,12 +41,12 @@ class Project;
 #if QT_VERSION >= 0x050000
 // Required for Q_DECLARE_METATYPE of forward-declared types in Qt 5.
    Q_DECLARE_OPAQUE_POINTER(ProjectExplorer::Project*)
-   Q_DECLARE_OPAQUE_POINTER(ProjectExplorer::IProjectManager*)
+//   Q_DECLARE_OPAQUE_POINTER(ProjectExplorer::IProjectManager*)//#720 ROOPAK
    Q_DECLARE_OPAQUE_POINTER(ProjectExplorer::SessionManager*)
 #endif // QT_VERSION >= 0x050000
 
 Q_DECLARE_METATYPE(QList<ProjectExplorer::Project*>)
 Q_DECLARE_METATYPE(ProjectExplorer::SessionManager*)
-Q_DECLARE_METATYPE(ProjectExplorer::IProjectManager*)
+//Q_DECLARE_METATYPE(ProjectExplorer::IProjectManager*)//#720 ROOPAK
 
 #endif // PROJECTEXPLORERMETATYPEDECLARATIONS_H

@@ -58,7 +58,7 @@
 //#include "codestylesettingspropertiespage.h"//ROOPAK
 //#include "dependenciespanel.h"//ROOPAK
 //#include "foldernavigationwidget.h"//ROOPAK
-#include "iprojectmanager.h"
+//#include "iprojectmanager.h"//#720 ROOPAK
 //#include "nodesvisitor.h"//ROOPAK
 //#include "appoutputpane.h"//ROOPAK
 //#include "pluginfilefactory.h"//ROOPAK
@@ -1357,10 +1357,10 @@ Project *ProjectExplorerPlugin::openProject(const QString &fileName, QString *er
     return 0;
 }
 
-static inline QList<IProjectManager*> allProjectManagers()
-{
-    return ExtensionSystem::PluginManager::getObjects<IProjectManager>();
-}
+//static inline QList<IProjectManager*> allProjectManagers()//#720 ROOPAK - START
+//{
+//    return ExtensionSystem::PluginManager::getObjects<IProjectManager>();
+//}//#720 ROOPAK - END
 
 static void appendError(QString *errorString, const QString &error)
 {
@@ -1377,7 +1377,7 @@ QList<Project *> ProjectExplorerPlugin::openProjects(const QStringList &fileName
     if (debug)
         qDebug() << "ProjectExplorerPlugin - opening projects " << fileNames;
 
-    const QList<IProjectManager*> projectManagers = allProjectManagers();
+//    const QList<IProjectManager*> projectManagers = allProjectManagers();//#720 ROOPAK
 
     QList<Project*> openedPro;
     foreach (const QString &fileName, fileNames) {
@@ -1403,29 +1403,29 @@ QList<Project *> ProjectExplorerPlugin::openProjects(const QStringList &fileName
 
         if (const MimeType mt = MimeDatabase::findByFile(QFileInfo(fileName))) {
             bool foundProjectManager = false;
-            foreach (IProjectManager *manager, projectManagers) {
-                if (manager->mimeType() == mt.type()) {
-                    foundProjectManager = true;
-                    QString tmp;
-                    if (Project *pro = manager->openProject(filePath, &tmp)) {
-                        if (pro->restoreSettings()) {
-                            connect(pro, SIGNAL(fileListChanged()), this, SIGNAL(fileListChanged()));
-                            SessionManager::addProject(pro);
-                            // Make sure we always have a current project / node
-//                            if (!d->m_currentProject && !openedPro.isEmpty())//ROOPAK
-//                                setCurrentNode(pro->rootProjectNode());//ROOPAK
-                            openedPro += pro;
-                        } else {
-                            appendError(errorString, tr("Failed opening project '%1': Settings could not be restored.")
-                                        .arg(QDir::toNativeSeparators(fileName)));
-                            delete pro;
-                        }
-                    }
-                    if (!tmp.isEmpty())
-                        appendError(errorString, tmp);
-                    break;
-                }
-            }
+//            foreach (IProjectManager *manager, projectManagers) {//#720 ROOPAK - START
+//                if (manager->mimeType() == mt.type()) {
+//                    foundProjectManager = true;
+//                    QString tmp;
+//                    if (Project *pro = manager->openProject(filePath, &tmp)) {
+//                        if (pro->restoreSettings()) {
+//                            connect(pro, SIGNAL(fileListChanged()), this, SIGNAL(fileListChanged()));
+//                            SessionManager::addProject(pro);
+//                            // Make sure we always have a current project / node
+////                            if (!d->m_currentProject && !openedPro.isEmpty())//ROOPAK
+////                                setCurrentNode(pro->rootProjectNode());//ROOPAK
+//                            openedPro += pro;
+//                        } else {
+//                            appendError(errorString, tr("Failed opening project '%1': Settings could not be restored.")
+//                                        .arg(QDir::toNativeSeparators(fileName)));
+//                            delete pro;
+//                        }
+//                    }
+//                    if (!tmp.isEmpty())
+//                        appendError(errorString, tmp);
+//                    break;
+//                }
+//            }//#720 ROOPAK - END
             if (!foundProjectManager) {
                 appendError(errorString, tr("Failed opening project '%1': No plugin can open project type '%2'.")
                             .arg(QDir::toNativeSeparators(fileName))
@@ -1544,13 +1544,13 @@ void ProjectExplorerPlugin::determineSessionToRestoreAtStartup()
 static inline QStringList projectFileGlobs()
 {
     QStringList result;
-    foreach (const IProjectManager *ipm, ExtensionSystem::PluginManager::getObjects<IProjectManager>()) {
-        if (const MimeType mimeType = MimeDatabase::findByType(ipm->mimeType())) {
-            const QList<MimeGlobPattern> patterns = mimeType.globPatterns();
-            if (!patterns.isEmpty())
-                result.push_back(patterns.front().pattern());
-        }
-    }
+//    foreach (const IProjectManager *ipm, ExtensionSystem::PluginManager::getObjects<IProjectManager>()) {//#720 ROOPAK - START
+//        if (const MimeType mimeType = MimeDatabase::findByType(ipm->mimeType())) {
+//            const QList<MimeGlobPattern> patterns = mimeType.globPatterns();
+//            if (!patterns.isEmpty())
+//                result.push_back(patterns.front().pattern());
+//        }
+//    }//#720 ROOPAK - END
     return result;
 }
 
@@ -3092,10 +3092,10 @@ void ProjectExplorerPlugin::setSession(QAction *action)
 QStringList ProjectExplorerPlugin::projectFilePatterns()
 {
     QStringList patterns;
-    foreach (const IProjectManager *pm, allProjectManagers())
-        if (const MimeType mt = MimeDatabase::findByType(pm->mimeType()))
-            foreach (const MimeGlobPattern &gp, mt.globPatterns())
-                patterns.append(gp.pattern());
+//    foreach (const IProjectManager *pm, allProjectManagers())//#720 ROOPAK - START
+//        if (const MimeType mt = MimeDatabase::findByType(pm->mimeType()))
+//            foreach (const MimeGlobPattern &gp, mt.globPatterns())
+//                patterns.append(gp.pattern());//#720 ROOPAK - END
     return patterns;
 }
 
