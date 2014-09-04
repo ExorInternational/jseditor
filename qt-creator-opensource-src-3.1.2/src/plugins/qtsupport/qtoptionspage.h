@@ -43,7 +43,7 @@ class QTextBrowser;
 class QUrl;
 QT_END_NAMESPACE
 
-namespace ProjectExplorer { class ToolChain; }
+//namespace ProjectExplorer { class ToolChain; }//#720 ROOPAK
 
 namespace QtSupport {
 
@@ -124,7 +124,7 @@ private:
         QIcon icon;
     };
     ValidityInfo validInformation(const BaseQtVersion *version);
-    QList<ProjectExplorer::ToolChain*> toolChains(const BaseQtVersion *version);
+//    QList<ProjectExplorer::ToolChain*> toolChains(const BaseQtVersion *version);//#720 ROOPAK
     QString defaultToolChainId(const BaseQtVersion *verison);
 
     QTreeWidgetItem *m_autoItem;

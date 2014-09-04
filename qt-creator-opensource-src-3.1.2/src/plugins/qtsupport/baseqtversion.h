@@ -46,7 +46,7 @@ namespace Core { class FeatureSet; }
 namespace ProjectExplorer {
 class IOutputParser;
 class Kit;
-class ToolChain;
+//class ToolChain;//#720 ROOPAK
 class HeaderPath;
 class Task;
 } // namespace ProjectExplorer
@@ -108,7 +108,7 @@ public:
     virtual QString invalidReason() const;
     virtual QStringList warningReason() const;
 
-    virtual ProjectExplorer::ToolChain *preferredToolChain(const Utils::FileName &ms) const;
+//    virtual ProjectExplorer::ToolChain *preferredToolChain(const Utils::FileName &ms) const;//#720 ROOPAK
 
     virtual QString description() const = 0;
     virtual QString toHtml(bool verbose) const;
@@ -151,7 +151,7 @@ public:
 
     /// @returns the name of the mkspec
     Utils::FileName mkspec() const;
-    Utils::FileName mkspecFor(ProjectExplorer::ToolChain *tc) const;
+//    Utils::FileName mkspecFor(ProjectExplorer::ToolChain *tc) const;//#720 ROOPAK
     /// @returns the full path to the default directory
     /// specifally not the directory the symlink/ORIGINAL_QMAKESPEC points to
     Utils::FileName mkspecPath() const;
@@ -185,7 +185,7 @@ public:
     static bool isQmlDebuggingSupported(ProjectExplorer::Kit *k, QString *reason = 0);
     bool isQmlDebuggingSupported(QString *reason = 0) const;
     static void buildDebuggingHelper(ProjectExplorer::Kit *k, int tools);
-    void buildDebuggingHelper(ProjectExplorer::ToolChain *tc, int tools);
+//    void buildDebuggingHelper(ProjectExplorer::ToolChain *tc, int tools);//#720 ROOPAK
 
     virtual QString qmlDumpTool(bool debugVersion) const;
 

@@ -384,24 +384,24 @@ QtOptionsPageWidget::ValidityInfo QtOptionsPageWidget::validInformation(const Ba
     return info;
 }
 
-QList<ToolChain*> QtOptionsPageWidget::toolChains(const BaseQtVersion *version)
-{
-    QHash<QString,ToolChain*> toolChains;
-    if (!version)
-        return toolChains.values();
+//QList<ToolChain*> QtOptionsPageWidget::toolChains(const BaseQtVersion *version)//#720 ROOPAK - START
+//{
+//    QHash<QString,ToolChain*> toolChains;
+//    if (!version)
+//        return toolChains.values();
 
-//    foreach (const Abi &a, version->qtAbis())//#720 ROOPAK - START
-//        foreach (ToolChain *tc, ToolChainManager::findToolChains(a))
-//            toolChains.insert(tc->id(), tc);//#720 ROOPAK - END
+////    foreach (const Abi &a, version->qtAbis())//#720 ROOPAK - START
+////        foreach (ToolChain *tc, ToolChainManager::findToolChains(a))
+////            toolChains.insert(tc->id(), tc);//#720 ROOPAK - END
 
-    return toolChains.values();
-}
+//    return toolChains.values();
+//}//#720 ROOPAK - END
 
 QString QtOptionsPageWidget::defaultToolChainId(const BaseQtVersion *version)
 {
-    QList<ToolChain*> possibleToolChains = toolChains(version);
-    if (!possibleToolChains.isEmpty())
-        return possibleToolChains.first()->id();
+//    QList<ToolChain*> possibleToolChains = toolChains(version);//#720 ROOPAK - START
+//    if (!possibleToolChains.isEmpty())
+//        return possibleToolChains.first()->id();//#720 ROOPAK - END
     return QString();
 }
 
@@ -702,9 +702,9 @@ void QtOptionsPageWidget::updateDebuggingHelperUi()
     BaseQtVersion *version = currentVersion();
     const QTreeWidgetItem *currentItem = m_ui->qtdirList->currentItem();
 
-    QList<ToolChain*> toolchains = toolChains(currentVersion());
+//    QList<ToolChain*> toolchains = toolChains(currentVersion());//#720 ROOPAK
 
-    if (!version || !version->isValid() || toolchains.isEmpty()) {
+    if (!version || !version->isValid() /*|| toolchains.isEmpty()*/) {//#720 ROOPAK
         m_ui->debuggingHelperWidget->setVisible(false);
     } else {
         const DebuggingHelperBuildTask::Tools availableTools = DebuggingHelperBuildTask::availableTools(version);
@@ -764,19 +764,19 @@ void QtOptionsPageWidget::updateDebuggingHelperUi()
         m_debuggingHelperUi->qmlDumpStatus->setToolTip(qmlDumpStatusToolTip);
         m_debuggingHelperUi->qmlDumpBuildButton->setEnabled(canBuildQmlDumper & !isBuildingQmlDumper);
 
-        QList<ToolChain*> toolchains = toolChains(currentVersion());
-        QString selectedToolChainId = currentItem->data(0, ToolChainIdRole).toString();
-        m_debuggingHelperUi->toolChainComboBox->clear();
-        for (int i = 0; i < toolchains.size(); ++i) {
-            if (!toolchains.at(i)->isValid())
-                continue;
-            if (i >= m_debuggingHelperUi->toolChainComboBox->count()) {
-                m_debuggingHelperUi->toolChainComboBox->insertItem(i, toolchains.at(i)->displayName(),
-                                                                   toolchains.at(i)->id());
-            }
-            if (toolchains.at(i)->id() == selectedToolChainId)
-                m_debuggingHelperUi->toolChainComboBox->setCurrentIndex(i);
-        }
+//        QList<ToolChain*> toolchains = toolChains(currentVersion());      //#720 ROOPAK - START
+//        QString selectedToolChainId = currentItem->data(0, ToolChainIdRole).toString();
+//        m_debuggingHelperUi->toolChainComboBox->clear();
+//        for (int i = 0; i < toolchains.size(); ++i) {
+//            if (!toolchains.at(i)->isValid())
+//                continue;
+//            if (i >= m_debuggingHelperUi->toolChainComboBox->count()) {
+//                m_debuggingHelperUi->toolChainComboBox->insertItem(i, toolchains.at(i)->displayName(),
+//                                                                   toolchains.at(i)->id());
+//            }
+//            if (toolchains.at(i)->id() == selectedToolChainId)
+//                m_debuggingHelperUi->toolChainComboBox->setCurrentIndex(i);
+//        }//#720 ROOPAK - END
 
         const bool hasLog = currentItem && !currentItem->data(0, BuildLogRole).toString().isEmpty();
         m_debuggingHelperUi->showLogButton->setEnabled(hasLog);

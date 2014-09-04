@@ -36,7 +36,7 @@
 
 #include <cplusplus/CppDocument.h>
 #include <cplusplus/cppmodelmanagerbase.h>
-#include <projectexplorer/toolchain.h>
+//#include <projectexplorer/toolchain.h>//#720 ROOPAK
 
 #include <QFuture>
 #include <QHash>
@@ -64,10 +64,10 @@ class CPPTOOLS_EXPORT ProjectPart
 public:
     ProjectPart();
 
-    void evaluateToolchain(const ProjectExplorer::ToolChain *tc,
-                           const QStringList &cxxflags,
-                           const QStringList &cflags,
-                           const Utils::FileName &sysRoot);
+//    void evaluateToolchain(const ProjectExplorer::ToolChain *tc,//#720 ROOPAK - START
+//                           const QStringList &cxxflags,
+//                           const QStringList &cflags,
+//                           const Utils::FileName &sysRoot);//#720 ROOPAK - END
 
 public:
     enum CVersion {
@@ -116,8 +116,8 @@ public:
     CXXVersion cxxVersion;
     CXXExtensions cxxExtensions;
     QtVersion qtVersion;
-    ProjectExplorer::ToolChain::WarningFlags cWarningFlags;
-    ProjectExplorer::ToolChain::WarningFlags cxxWarningFlags;
+//    ProjectExplorer::ToolChain::WarningFlags cWarningFlags;//#720 ROOPAK
+//    ProjectExplorer::ToolChain::WarningFlags cxxWarningFlags;//#720 ROOPAK
 };
 
 class CPPTOOLS_EXPORT CppModelManagerInterface : public CPlusPlus::CppModelManagerBase

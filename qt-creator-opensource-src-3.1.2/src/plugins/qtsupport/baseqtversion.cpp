@@ -38,7 +38,7 @@
 #include <coreplugin/progressmanager/progressmanager.h>
 #include <proparser/qmakevfs.h>
 //#include <projectexplorer/toolchainmanager.h>//#720 ROOPAK
-#include <projectexplorer/toolchain.h>
+//#include <projectexplorer/toolchain.h>//#720 ROOPAK
 #include <projectexplorer/projectexplorer.h>
 #include <projectexplorer/headerpath.h>
 #include <qtsupport/debugginghelperbuildtask.h>
@@ -483,20 +483,20 @@ QStringList BaseQtVersion::warningReason() const
     return ret;
 }
 
-ToolChain *BaseQtVersion::preferredToolChain(const FileName &ms) const
-{
-    const FileName spec = ms.isEmpty() ? mkspec() : ms;
-    ToolChain *possibleTc = 0;
-//    foreach (ToolChain *tc, ToolChainManager::toolChains()) {//#720 ROOPAK - START
-////        if (!qtAbis().contains(tc->targetAbi()))//#720 ROOPAK - START
-////            continue;//#720 ROOPAK - END
-//        if (tc->suggestedMkspecList().contains(spec))
-//            return tc; // perfect match
-//        if (!possibleTc)
-//            possibleTc = tc; // first possible match
-//    }//#720 ROOPAK - END
-    return possibleTc;
-}
+//ToolChain *BaseQtVersion::preferredToolChain(const FileName &ms) const//#720 ROOPAK - START
+//{
+//    const FileName spec = ms.isEmpty() ? mkspec() : ms;
+//    ToolChain *possibleTc = 0;
+////    foreach (ToolChain *tc, ToolChainManager::toolChains()) {//#720 ROOPAK - START
+//////        if (!qtAbis().contains(tc->targetAbi()))//#720 ROOPAK - START
+//////            continue;//#720 ROOPAK - END
+////        if (tc->suggestedMkspecList().contains(spec))
+////            return tc; // perfect match
+////        if (!possibleTc)
+////            possibleTc = tc; // first possible match
+////    }//#720 ROOPAK - END
+//    return possibleTc;
+//}//#720 ROOPAK - END
 
 FileName BaseQtVersion::qmakeCommand() const
 {
@@ -868,22 +868,22 @@ FileName BaseQtVersion::mkspec() const
     return m_mkspec;
 }
 
-FileName BaseQtVersion::mkspecFor(ToolChain *tc) const
-{
-    FileName versionSpec = mkspec();
-    if (!tc)
-        return versionSpec;
+//FileName BaseQtVersion::mkspecFor(ToolChain *tc) const//#720 ROOPAK - START
+//{
+//    FileName versionSpec = mkspec();
+//    if (!tc)
+//        return versionSpec;
 
-    const QList<FileName> tcSpecList = tc->suggestedMkspecList();
-    if (tcSpecList.contains(versionSpec))
-        return versionSpec;
-    foreach (const FileName &tcSpec, tcSpecList) {
-        if (hasMkspec(tcSpec))
-            return tcSpec;
-    }
+//    const QList<FileName> tcSpecList = tc->suggestedMkspecList();
+//    if (tcSpecList.contains(versionSpec))
+//        return versionSpec;
+//    foreach (const FileName &tcSpec, tcSpecList) {
+//        if (hasMkspec(tcSpec))
+//            return tcSpec;
+//    }
 
-    return versionSpec;
-}
+//    return versionSpec;
+//}//#720 ROOPAK - END
 
 FileName BaseQtVersion::mkspecPath() const
 {
@@ -1451,19 +1451,19 @@ void BaseQtVersion::buildDebuggingHelper(Kit *k, int tools)
 //    version->buildDebuggingHelper(tc, tools);//#720 ROOPAK - END
 }
 
-void BaseQtVersion::buildDebuggingHelper(ToolChain *tc, int tools)
-{
-    QTC_ASSERT(tc, return);
-    DebuggingHelperBuildTask *buildTask =
-            new DebuggingHelperBuildTask(this, tc, static_cast<DebuggingHelperBuildTask::Tools>(tools));
+//void BaseQtVersion::buildDebuggingHelper(ToolChain *tc, int tools)//#720 ROOPAK - START
+//{
+//    QTC_ASSERT(tc, return);
+//    DebuggingHelperBuildTask *buildTask =
+//            new DebuggingHelperBuildTask(this, tc, static_cast<DebuggingHelperBuildTask::Tools>(tools));
 
-    // pop up Application Output on error
-    buildTask->showOutputOnError(true);
+//    // pop up Application Output on error
+//    buildTask->showOutputOnError(true);
 
-    QFuture<void> task = QtConcurrent::run(&QtSupport::DebuggingHelperBuildTask::run, buildTask);
-    const QString taskName = QCoreApplication::translate("BaseQtVersion", "Building helpers");
-    ProgressManager::addTask(task, taskName, "Qt::BuildHelpers");
-}
+//    QFuture<void> task = QtConcurrent::run(&QtSupport::DebuggingHelperBuildTask::run, buildTask);
+//    const QString taskName = QCoreApplication::translate("BaseQtVersion", "Building helpers");
+//    ProgressManager::addTask(task, taskName, "Qt::BuildHelpers");
+//}//#720 ROOPAK - END
 
 QList<FileName> BaseQtVersion::qtCorePaths(const QHash<QString,QString> &versionInfo, const QString &versionString)
 {

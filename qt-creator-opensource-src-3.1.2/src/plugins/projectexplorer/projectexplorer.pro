@@ -83,7 +83,7 @@ HEADERS += projectexplorer.h \
 #    nodesvisitor.h \#ROOPAK
 #    projectmodels.h \#ROOPAK
     currentprojectfind.h \
-    toolchain.h \
+#    toolchain.h \//#720 ROOPAK
 #    toolchainconfigwidget.h \#ROOPAK
 #    toolchainmanager.h \//#720 ROOPAK
 #    toolchainoptionspage.h \#ROOPAK
@@ -220,7 +220,7 @@ SOURCES += projectexplorer.cpp \
 #    nodesvisitor.cpp \#ROOPAK
 #    projectmodels.cpp \#ROOPAK
     currentprojectfind.cpp \
-    toolchain.cpp \
+#    toolchain.cpp \//#720 ROOPAK
 #    toolchainconfigwidget.cpp \#ROOPAK
 #    toolchainmanager.cpp \//#720 ROOPAK
 #    toolchainoptionspage.cpp \#ROOPAK

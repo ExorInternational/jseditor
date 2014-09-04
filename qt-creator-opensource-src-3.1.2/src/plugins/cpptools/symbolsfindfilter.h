@@ -40,6 +40,8 @@
 #include <QCheckBox>
 #include <QRadioButton>
 
+#include <coreplugin/id.h>
+
 namespace CppTools {
 namespace Internal {
 

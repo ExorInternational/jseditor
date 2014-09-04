@@ -62,8 +62,8 @@ class QmlDumpBuildTask : public QObject
     Q_OBJECT
 
 public:
-    explicit QmlDumpBuildTask(BaseQtVersion *version, ToolChain *toolChain)
-        : m_buildTask(new DebuggingHelperBuildTask(version, toolChain,
+    explicit QmlDumpBuildTask(BaseQtVersion *version/*, ToolChain *toolChain*/)//#720 ROOPAK
+        : m_buildTask(new DebuggingHelperBuildTask(version, /*toolChain,*///#720 ROOPAK
                                                    DebuggingHelperBuildTask::QmlDump))
         , m_failed(false)
     {
@@ -313,7 +313,7 @@ QStringList QmlDumpTool::installDirectories(const QString &qtInstallData)
 }
 
 void QmlDumpTool::pathAndEnvironment(Project *project, BaseQtVersion *version,
-                                     ToolChain *toolChain,
+//                                     ToolChain *toolChain,//#720 ROOPAK
                                      bool preferDebug, QString *dumperPath, Utils::Environment *env)
 {
     QString path;
@@ -323,11 +323,11 @@ void QmlDumpTool::pathAndEnvironment(Project *project, BaseQtVersion *version,
             if (!qmlDumpBuildTask->hasFailed())
                 qmlDumpBuildTask->updateProjectWhenDone(project, preferDebug);
         } else {
-            QmlDumpBuildTask *buildTask = new QmlDumpBuildTask(version, toolChain);
-            buildTask->updateProjectWhenDone(project, preferDebug);
-            QFuture<void> task = QtConcurrent::run(&QmlDumpBuildTask::run, buildTask);
-            const QString taskName = QmlDumpBuildTask::tr("Building helper");
-            Core::ProgressManager::addTask(task, taskName, "QmakeProjectManager::BuildHelpers");
+//            QmlDumpBuildTask *buildTask = new QmlDumpBuildTask(version, toolChain);//#720 ROOPAK - START
+//            buildTask->updateProjectWhenDone(project, preferDebug);
+//            QFuture<void> task = QtConcurrent::run(&QmlDumpBuildTask::run, buildTask);
+//            const QString taskName = QmlDumpBuildTask::tr("Building helper");
+//            Core::ProgressManager::addTask(task, taskName, "QmakeProjectManager::BuildHelpers");//#720 ROOPAK - END
         }
         return;
     }

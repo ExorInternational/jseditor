@@ -32,7 +32,7 @@
 #include <cplusplus/pp-engine.h>
 
 #include <projectexplorer/headerpath.h>
-#include <projectexplorer/toolchain.h>
+//#include <projectexplorer/toolchain.h>//#720 ROOPAK
 
 #include <QSet>
 
@@ -105,8 +105,8 @@ ProjectPart::ProjectPart()
     , cxxVersion(CXX11)
     , cxxExtensions(NoExtensions)
     , qtVersion(UnknownQt)
-    , cWarningFlags(ProjectExplorer::ToolChain::WarningsDefault)
-    , cxxWarningFlags(ProjectExplorer::ToolChain::WarningsDefault)
+//    , cWarningFlags(ProjectExplorer::ToolChain::WarningsDefault)//#720 ROOPAK
+//    , cxxWarningFlags(ProjectExplorer::ToolChain::WarningsDefault)//#720 ROOPAK
 
 {
 }
@@ -118,51 +118,51 @@ ProjectPart::ProjectPart()
     \param cxxflags C++ or Objective-C++ flags.
     \param cflags C or ObjectiveC flags if possible, \a cxxflags otherwise.
 */
-void ProjectPart::evaluateToolchain(const ToolChain *tc,
-                                    const QStringList &cxxflags,
-                                    const QStringList &cflags,
-                                    const Utils::FileName &sysRoot)
-{
-    if (!tc)
-        return;
+//void ProjectPart::evaluateToolchain(const ToolChain *tc,          //#720 ROOPAK - START
+//                                    const QStringList &cxxflags,
+//                                    const QStringList &cflags,
+//                                    const Utils::FileName &sysRoot)
+//{
+//    if (!tc)
+//        return;
 
-    ToolChain::CompilerFlags cxx = tc->compilerFlags(cxxflags);
-    ToolChain::CompilerFlags c = (cxxflags == cflags)
-            ? cxx : tc->compilerFlags(cflags);
+//    ToolChain::CompilerFlags cxx = tc->compilerFlags(cxxflags);
+//    ToolChain::CompilerFlags c = (cxxflags == cflags)
+//            ? cxx : tc->compilerFlags(cflags);
 
-    if (c & ToolChain::StandardC11)
-        cVersion = C11;
-    else if (c & ToolChain::StandardC99)
-        cVersion = C99;
-    else
-        cVersion = C89;
+//    if (c & ToolChain::StandardC11)
+//        cVersion = C11;
+//    else if (c & ToolChain::StandardC99)
+//        cVersion = C99;
+//    else
+//        cVersion = C89;
 
-    if (cxx & ToolChain::StandardCxx11)
-        cxxVersion = CXX11;
-    else
-        cxxVersion = CXX98;
+//    if (cxx & ToolChain::StandardCxx11)
+//        cxxVersion = CXX11;
+//    else
+//        cxxVersion = CXX98;
 
-    if (cxx & ToolChain::BorlandExtensions)
-        cxxExtensions |= BorlandExtensions;
-    if (cxx & ToolChain::GnuExtensions)
-        cxxExtensions |= GnuExtensions;
-    if (cxx & ToolChain::MicrosoftExtensions)
-        cxxExtensions |= MicrosoftExtensions;
-    if (cxx & ToolChain::OpenMP)
-        cxxExtensions |= OpenMPExtensions;
+//    if (cxx & ToolChain::BorlandExtensions)
+//        cxxExtensions |= BorlandExtensions;
+//    if (cxx & ToolChain::GnuExtensions)
+//        cxxExtensions |= GnuExtensions;
+//    if (cxx & ToolChain::MicrosoftExtensions)
+//        cxxExtensions |= MicrosoftExtensions;
+//    if (cxx & ToolChain::OpenMP)
+//        cxxExtensions |= OpenMPExtensions;
 
-    cWarningFlags = tc->warningFlags(cflags);
-    cxxWarningFlags = tc->warningFlags(cxxflags);
+//    cWarningFlags = tc->warningFlags(cflags);
+//    cxxWarningFlags = tc->warningFlags(cxxflags);
 
-    const QList<HeaderPath> headers = tc->systemHeaderPaths(cxxflags, sysRoot);
-    foreach (const HeaderPath &header, headers)
-        if (header.kind() == HeaderPath::FrameworkHeaderPath)
-            frameworkPaths << header.path();
-        else
-            includePaths << header.path();
+//    const QList<HeaderPath> headers = tc->systemHeaderPaths(cxxflags, sysRoot);
+//    foreach (const HeaderPath &header, headers)
+//        if (header.kind() == HeaderPath::FrameworkHeaderPath)
+//            frameworkPaths << header.path();
+//        else
+//            includePaths << header.path();
 
-    toolchainDefines = tc->predefinedMacros(cxxflags);
-}
+//    toolchainDefines = tc->predefinedMacros(cxxflags);
+//}//#720 ROOPAK - END
 
 const QString CppModelManagerInterface::configurationFileName()
 { return CPlusPlus::Preprocessor::configurationFileName; }

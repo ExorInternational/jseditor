@@ -34,7 +34,7 @@
 #include <utils/environment.h>
 #include <utils/fileutils.h>
 #include <coreplugin/messagemanager.h>
-#include <projectexplorer/toolchain.h>
+//#include <projectexplorer/toolchain.h>//#720 ROOPAK
 
 #include <QObject>
 #include <QFutureInterface>
@@ -56,7 +56,7 @@ public:
     Q_DECLARE_FLAGS(Tools, DebuggingHelper)
 
     explicit DebuggingHelperBuildTask(const BaseQtVersion *version,
-                                      const ProjectExplorer::ToolChain *toolChain,
+//                                      const ProjectExplorer::ToolChain *toolChain,//#720 ROOPAK
                                       Tools tools = AllTools);
 
     void showOutputOnError(bool show);
