@@ -106,82 +106,82 @@ QmlBundle BasicBundleProvider::defaultQmlprojectBundle()
     return defaultBundle(QLatin1String("qmlproject-bundle.json"));
 }
 
-void BasicBundleProvider::mergeBundlesForKit(ProjectExplorer::Kit *kit
-                                             , QmlLanguageBundles &bundles
-                                             , const QHash<QString,QString> &replacements)
-{
-    QHash<QString,QString> myReplacements = replacements;
+//void BasicBundleProvider::mergeBundlesForKit(ProjectExplorer::Kit *kit//#720 ROOPAK - START
+//                                             , QmlLanguageBundles &bundles
+//                                             , const QHash<QString,QString> &replacements)
+//{
+//    QHash<QString,QString> myReplacements = replacements;
 
-    bundles.mergeBundleForLanguage(Language::QmlQbs, defaultQbsBundle());
-    bundles.mergeBundleForLanguage(Language::QmlTypeInfo, defaultQmltypesBundle());
-    bundles.mergeBundleForLanguage(Language::QmlProject, defaultQmlprojectBundle());
+//    bundles.mergeBundleForLanguage(Language::QmlQbs, defaultQbsBundle());
+//    bundles.mergeBundleForLanguage(Language::QmlTypeInfo, defaultQmltypesBundle());
+//    bundles.mergeBundleForLanguage(Language::QmlProject, defaultQmlprojectBundle());
 
-//    QtSupport::BaseQtVersion *qtVersion = QtSupport::QtKitInformation::qtVersion(kit);
-//    if (!qtVersion) {
-//        QmlBundle b1(defaultQt4QtQuick1Bundle());
-//        bundles.mergeBundleForLanguage(Language::Qml, b1);
-//        bundles.mergeBundleForLanguage(Language::QmlQtQuick1, b1);
-//        QmlBundle b11(defaultQt5QtQuick1Bundle());
-//        bundles.mergeBundleForLanguage(Language::Qml, b11);
-//        bundles.mergeBundleForLanguage(Language::QmlQtQuick1, b11);
-//        QmlBundle b2(defaultQt5QtQuick2Bundle());
-//        bundles.mergeBundleForLanguage(Language::Qml, b2);
-//        bundles.mergeBundleForLanguage(Language::QmlQtQuick2, b2);
-//        return;
-//    }
-//    QString qtImportsPath = qtVersion->qmakeProperty("QT_INSTALL_IMPORTS");
-//    QString qtQmlPath = qtVersion->qmakeProperty("QT_INSTALL_QML");
+////    QtSupport::BaseQtVersion *qtVersion = QtSupport::QtKitInformation::qtVersion(kit);
+////    if (!qtVersion) {
+////        QmlBundle b1(defaultQt4QtQuick1Bundle());
+////        bundles.mergeBundleForLanguage(Language::Qml, b1);
+////        bundles.mergeBundleForLanguage(Language::QmlQtQuick1, b1);
+////        QmlBundle b11(defaultQt5QtQuick1Bundle());
+////        bundles.mergeBundleForLanguage(Language::Qml, b11);
+////        bundles.mergeBundleForLanguage(Language::QmlQtQuick1, b11);
+////        QmlBundle b2(defaultQt5QtQuick2Bundle());
+////        bundles.mergeBundleForLanguage(Language::Qml, b2);
+////        bundles.mergeBundleForLanguage(Language::QmlQtQuick2, b2);
+////        return;
+////    }
+////    QString qtImportsPath = qtVersion->qmakeProperty("QT_INSTALL_IMPORTS");
+////    QString qtQmlPath = qtVersion->qmakeProperty("QT_INSTALL_QML");
 
-//    Core::FeatureSet features = qtVersion->availableFeatures();
-//    if (features.contains(Core::Feature(QtSupport::Constants::FEATURE_QT_QUICK))
-//            || features.contains(Core::Feature(QtSupport::Constants::FEATURE_QT_QUICK_1))
-//            || features.contains(Core::Feature(QtSupport::Constants::FEATURE_QT_QUICK_1_1))) {
-//        myReplacements.insert(QLatin1String("$(CURRENT_DIRECTORY)"), qtImportsPath);
-//        QDir qtQuick1Bundles(qtImportsPath);
-//        qtQuick1Bundles.setNameFilters(QStringList(QLatin1String("*-bundle.json")));
-//        QmlBundle qtQuick1Bundle;
-//        QFileInfoList list = qtQuick1Bundles.entryInfoList();
-//        for (int i = 0; i < list.size(); ++i) {
-//            QmlBundle bAtt;
-//            QStringList errors;
-//            if (!bAtt.readFrom(list.value(i).filePath(), &errors))
-//                qWarning() << "BasicBundleProvider: ERROR reading " << list[i].filePath() << " : "
-//                           << errors;
-//            qtQuick1Bundle.merge(bAtt);
-//        }
-//        if (!qtQuick1Bundle.supportedImports().contains(QLatin1String("QtQuick 1."),
-//                                                        PersistentTrie::Partial)) {
-//            if (qtVersion->qtVersion().majorVersion == 4)
-//                qtQuick1Bundle.merge(defaultQt4QtQuick1Bundle());
-//            else if (qtVersion->qtVersion().majorVersion > 4)
-//                qtQuick1Bundle.merge(defaultQt5QtQuick1Bundle());
-//        }
-//        qtQuick1Bundle.replaceVars(myReplacements);
-//        bundles.mergeBundleForLanguage(Language::Qml, qtQuick1Bundle);
-//        bundles.mergeBundleForLanguage(Language::QmlQtQuick1, qtQuick1Bundle);
-//    }
-//    if (features.contains(Core::Feature(QtSupport::Constants::FEATURE_QT_QUICK_2))) {
-//        myReplacements.insert(QLatin1String("$(CURRENT_DIRECTORY)"), qtQmlPath);
-//        QDir qtQuick2Bundles(qtQmlPath);
-//        qtQuick2Bundles.setNameFilters(QStringList(QLatin1String("*-bundle.json")));
-//        QmlBundle qtQuick2Bundle;
-//        QFileInfoList list = qtQuick2Bundles.entryInfoList();
-//        for (int i = 0; i < list.size(); ++i) {
-//            QmlBundle bAtt;
-//            QStringList errors;
-//            if (!bAtt.readFrom(list.value(i).filePath(), &errors))
-//                qWarning() << "BasicBundleProvider: ERROR reading " << list[i].filePath() << " : "
-//                           << errors;
-//            qtQuick2Bundle.merge(bAtt);
-//        }
-//        if (!qtQuick2Bundle.supportedImports().contains(QLatin1String("QtQuick 2."),
-//                                                        PersistentTrie::Partial)) {
-//            qtQuick2Bundle.merge(defaultQt5QtQuick2Bundle());
-//        }
-//        qtQuick2Bundle.replaceVars(myReplacements);
-//        bundles.mergeBundleForLanguage(Language::Qml, qtQuick2Bundle);
-//        bundles.mergeBundleForLanguage(Language::QmlQtQuick2, qtQuick2Bundle);
-//    }//#720 ROOPAK - END
-}
+////    Core::FeatureSet features = qtVersion->availableFeatures();
+////    if (features.contains(Core::Feature(QtSupport::Constants::FEATURE_QT_QUICK))
+////            || features.contains(Core::Feature(QtSupport::Constants::FEATURE_QT_QUICK_1))
+////            || features.contains(Core::Feature(QtSupport::Constants::FEATURE_QT_QUICK_1_1))) {
+////        myReplacements.insert(QLatin1String("$(CURRENT_DIRECTORY)"), qtImportsPath);
+////        QDir qtQuick1Bundles(qtImportsPath);
+////        qtQuick1Bundles.setNameFilters(QStringList(QLatin1String("*-bundle.json")));
+////        QmlBundle qtQuick1Bundle;
+////        QFileInfoList list = qtQuick1Bundles.entryInfoList();
+////        for (int i = 0; i < list.size(); ++i) {
+////            QmlBundle bAtt;
+////            QStringList errors;
+////            if (!bAtt.readFrom(list.value(i).filePath(), &errors))
+////                qWarning() << "BasicBundleProvider: ERROR reading " << list[i].filePath() << " : "
+////                           << errors;
+////            qtQuick1Bundle.merge(bAtt);
+////        }
+////        if (!qtQuick1Bundle.supportedImports().contains(QLatin1String("QtQuick 1."),
+////                                                        PersistentTrie::Partial)) {
+////            if (qtVersion->qtVersion().majorVersion == 4)
+////                qtQuick1Bundle.merge(defaultQt4QtQuick1Bundle());
+////            else if (qtVersion->qtVersion().majorVersion > 4)
+////                qtQuick1Bundle.merge(defaultQt5QtQuick1Bundle());
+////        }
+////        qtQuick1Bundle.replaceVars(myReplacements);
+////        bundles.mergeBundleForLanguage(Language::Qml, qtQuick1Bundle);
+////        bundles.mergeBundleForLanguage(Language::QmlQtQuick1, qtQuick1Bundle);
+////    }
+////    if (features.contains(Core::Feature(QtSupport::Constants::FEATURE_QT_QUICK_2))) {
+////        myReplacements.insert(QLatin1String("$(CURRENT_DIRECTORY)"), qtQmlPath);
+////        QDir qtQuick2Bundles(qtQmlPath);
+////        qtQuick2Bundles.setNameFilters(QStringList(QLatin1String("*-bundle.json")));
+////        QmlBundle qtQuick2Bundle;
+////        QFileInfoList list = qtQuick2Bundles.entryInfoList();
+////        for (int i = 0; i < list.size(); ++i) {
+////            QmlBundle bAtt;
+////            QStringList errors;
+////            if (!bAtt.readFrom(list.value(i).filePath(), &errors))
+////                qWarning() << "BasicBundleProvider: ERROR reading " << list[i].filePath() << " : "
+////                           << errors;
+////            qtQuick2Bundle.merge(bAtt);
+////        }
+////        if (!qtQuick2Bundle.supportedImports().contains(QLatin1String("QtQuick 2."),
+////                                                        PersistentTrie::Partial)) {
+////            qtQuick2Bundle.merge(defaultQt5QtQuick2Bundle());
+////        }
+////        qtQuick2Bundle.replaceVars(myReplacements);
+////        bundles.mergeBundleForLanguage(Language::Qml, qtQuick2Bundle);
+////        bundles.mergeBundleForLanguage(Language::QmlQtQuick2, qtQuick2Bundle);
+////    }//#720 ROOPAK - END
+//}//#720 ROOPAK - END
 
 } // end namespace QmlJSTools

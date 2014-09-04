@@ -157,16 +157,16 @@ void QmlJSTools::setupProjectInfoQmlBundles(ModelManagerInterface::ProjectInfo &
     projectInfo.extendedBundle = projectInfo.activeBundle;
 
     if (projectInfo.project) {
-        QSet<ProjectExplorer::Kit *> currentKits;
-//        foreach (const ProjectExplorer::Target *t, projectInfo.project->targets())//#720 ROOPAK - START
-//            if (t->kit())
-//                currentKits.insert(t->kit())
-//        currentKits.remove(activeKit);;//#720 ROOPAK - END
-        foreach (ProjectExplorer::Kit *kit, currentKits) {
-            foreach (IBundleProvider *bp, bundleProviders)
-                if (bp)
-                    bp->mergeBundlesForKit(kit, projectInfo.extendedBundle, replacements);
-        }
+//        QSet<ProjectExplorer::Kit *> currentKits;//#720 ROOPAK - START
+////        foreach (const ProjectExplorer::Target *t, projectInfo.project->targets())//#720 ROOPAK - START
+////            if (t->kit())
+////                currentKits.insert(t->kit())
+////        currentKits.remove(activeKit);;//#720 ROOPAK - END
+//        foreach (ProjectExplorer::Kit *kit, currentKits) {
+//            foreach (IBundleProvider *bp, bundleProviders)
+//                if (bp)
+//                    bp->mergeBundlesForKit(kit, projectInfo.extendedBundle, replacements);
+//        }//#720 ROOPAK - END
     }
 }
 

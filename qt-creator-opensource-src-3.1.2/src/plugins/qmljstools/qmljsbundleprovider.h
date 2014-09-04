@@ -36,7 +36,7 @@
 #include "qmljstools_global.h"
 
 namespace ProjectExplorer {
-class Kit;
+//class Kit;//#720 ROOPAK
 class Project;
 class Target;
 }
@@ -56,8 +56,8 @@ public:
         : QObject(parent)
     { }
 
-    virtual void mergeBundlesForKit(ProjectExplorer::Kit *kit, QmlJS::QmlLanguageBundles &bundles
-                                    , const QHash<QString,QString> &replacements) = 0;
+//    virtual void mergeBundlesForKit(ProjectExplorer::Kit *kit, QmlJS::QmlLanguageBundles &bundles//#720 ROOPAK - START
+//                                    , const QHash<QString,QString> &replacements) = 0;//#720 ROOPAK - END
 };
 
 class QMLJSTOOLS_EXPORT BasicBundleProvider : public IBundleProvider
@@ -66,8 +66,8 @@ class QMLJSTOOLS_EXPORT BasicBundleProvider : public IBundleProvider
 public:
     explicit BasicBundleProvider(QObject *parent = 0);
 
-    virtual void mergeBundlesForKit(ProjectExplorer::Kit *kit, QmlJS::QmlLanguageBundles &bundles
-                                    , const QHash<QString,QString> &replacements);
+//    virtual void mergeBundlesForKit(ProjectExplorer::Kit *kit, QmlJS::QmlLanguageBundles &bundles//#720 ROOPAK - START
+//                                    , const QHash<QString,QString> &replacements);//#720 ROOPAK - END
 
     static QmlJS::QmlBundle defaultBundle(const QString &bundleInfoName);
     static QmlJS::QmlBundle defaultQt4QtQuick1Bundle();

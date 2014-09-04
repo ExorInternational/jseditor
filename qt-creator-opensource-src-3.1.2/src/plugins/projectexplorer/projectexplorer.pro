@@ -22,7 +22,7 @@ HEADERS += projectexplorer.h \
 #    targetsetuppage.h \ #ROOPAK
 #    targetsetupwidget.h \#ROOPAK
 #    unconfiguredprojectpanel.h \#ROOPAK
-    kit.h \
+#    kit.h \//#720 ROOPAK
 #    kitchooser.h \#ROOPAK
 #    kitconfigwidget.h \//#720 ROOPAK
 #    kitinformation.h \//#720 ROOPAK
@@ -164,7 +164,7 @@ SOURCES += projectexplorer.cpp \
 #    targetsetuppage.cpp \#ROOPAK
 #    targetsetupwidget.cpp \#ROOPAK
 #    unconfiguredprojectpanel.cpp \#ROOPAK
-    kit.cpp \
+#    kit.cpp \//#720 ROOPAK
 #    kitchooser.cpp \#ROOPAK
 #    kitconfigwidget.cpp \//#720 ROOPAK
 #    kitinformation.cpp \//#720 ROOPAK

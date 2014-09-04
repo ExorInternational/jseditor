@@ -49,7 +49,7 @@ namespace ProjectExplorer {
 class EditorConfiguration;
 //class ProjectImporter;
 //class ProjectNode;//ROOPAK
-class Kit;
+//class Kit;//#720 ROOPAK
 //class KitMatcher;//#720 ROOPAK
 //class NamedWidget;//#720 ROOPAK
 //class Target;//#720 ROOPAK
@@ -94,7 +94,7 @@ public:
 //    void setActiveTarget(Target *target);
 //    Target *target(const Core::Id id) const;
 //    Target *target(Kit *k) const;//#720 ROOPAK - END
-    virtual bool supportsKit(Kit *k, QString *errorMessage = 0) const;
+//    virtual bool supportsKit(Kit *k, QString *errorMessage = 0) const;//#720 ROOPAK
 
 //    Target *createTarget(Kit *k);//#720 ROOPAK - START
 //    Target *restoreTarget(const QVariantMap &data);//#720 ROOPAK - END

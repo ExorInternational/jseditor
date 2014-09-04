@@ -61,7 +61,8 @@
 //#720 ADDED BY ROOPAK - START
 #include <coreplugin/featureprovider.h>
 //#include <projectexplorer/kitinformation.h>//#720 ROOPAK
-#include <projectexplorer/kit.h>
+//#include <projectexplorer/kit.h>//#720 ROOPAK
+#include <projectexplorer/task.h>
 //#720 ROOPAK - END
 
 using namespace Core;
@@ -289,51 +290,51 @@ bool BaseQtVersion::supportsPlatform(const QString &platform) const
     return platform == platformName();
 }
 
-QList<Task> BaseQtVersion::validateKit(const Kit *k)
-{
-    QList<Task> result;
+//QList<Task> BaseQtVersion::validateKit(const Kit *k)//#720 ROOPAK - START
+//{
+//    QList<Task> result;
 
-//    BaseQtVersion *version = QtKitInformation::qtVersion(k);//#720 ROOPAK - START
-//    Q_ASSERT(version == this);//#720 ROOPAK - END
+////    BaseQtVersion *version = QtKitInformation::qtVersion(k);//#720 ROOPAK - START
+////    Q_ASSERT(version == this);//#720 ROOPAK - END
 
-//    const QList<Abi> qtAbis = version->qtAbis();//#720 ROOPAK - START
-//    if (qtAbis.isEmpty()) // No need to test if Qt does not know anyway...
-//        return result;//#720 ROOPAK - END
+////    const QList<Abi> qtAbis = version->qtAbis();//#720 ROOPAK - START
+////    if (qtAbis.isEmpty()) // No need to test if Qt does not know anyway...
+////        return result;//#720 ROOPAK - END
 
-//    ToolChain *tc = ToolChainKitInformation::toolChain(k);//#720 ROOPAK - START
-//    if (tc) {
-////        Abi targetAbi = tc->targetAbi();//#720 ROOPAK
-//        bool fuzzyMatch = false;
-//        bool fullMatch = false;
+////    ToolChain *tc = ToolChainKitInformation::toolChain(k);//#720 ROOPAK - START
+////    if (tc) {
+//////        Abi targetAbi = tc->targetAbi();//#720 ROOPAK
+////        bool fuzzyMatch = false;
+////        bool fullMatch = false;
 
-//        QString qtAbiString;
-////        foreach (const Abi &qtAbi, qtAbis) {
-////            if (!qtAbiString.isEmpty())
-////                qtAbiString.append(QLatin1Char(' '));
-////            qtAbiString.append(qtAbi.toString());
+////        QString qtAbiString;
+//////        foreach (const Abi &qtAbi, qtAbis) {
+//////            if (!qtAbiString.isEmpty())
+//////                qtAbiString.append(QLatin1Char(' '));
+//////            qtAbiString.append(qtAbi.toString());
 
-////            if (!fullMatch)
-////                fullMatch = (targetAbi == qtAbi);
+//////            if (!fullMatch)
+//////                fullMatch = (targetAbi == qtAbi);
+//////            if (!fuzzyMatch)
+//////                fuzzyMatch = targetAbi.isCompatibleWith(qtAbi);//#720 ROOPAK - END
+//////        }
+
+////        QString message;
+////        if (!fullMatch) {
 ////            if (!fuzzyMatch)
-////                fuzzyMatch = targetAbi.isCompatibleWith(qtAbi);//#720 ROOPAK - END
+////                message = QCoreApplication::translate("BaseQtVersion",
+////                                                      "The compiler '%1' (%2) cannot produce code for the Qt version '%3' (%4).");
+////            else
+////                message = QCoreApplication::translate("BaseQtVersion",
+////                                                      "The compiler '%1' (%2) may not produce code compatible with the Qt version '%3' (%4).");
+//////            message = message.arg(tc->displayName(), targetAbi.toString(),//#720 ROOPAK
+//////                                  version->displayName(), qtAbiString);//#720 ROOPAK
+////            result << Task(fuzzyMatch ? Task::Warning : Task::Error, message, FileName(), -1,
+////                           ProjectExplorer::Constants::TASK_CATEGORY_BUILDSYSTEM);
 ////        }
-
-//        QString message;
-//        if (!fullMatch) {
-//            if (!fuzzyMatch)
-//                message = QCoreApplication::translate("BaseQtVersion",
-//                                                      "The compiler '%1' (%2) cannot produce code for the Qt version '%3' (%4).");
-//            else
-//                message = QCoreApplication::translate("BaseQtVersion",
-//                                                      "The compiler '%1' (%2) may not produce code compatible with the Qt version '%3' (%4).");
-////            message = message.arg(tc->displayName(), targetAbi.toString(),//#720 ROOPAK
-////                                  version->displayName(), qtAbiString);//#720 ROOPAK
-//            result << Task(fuzzyMatch ? Task::Warning : Task::Error, message, FileName(), -1,
-//                           ProjectExplorer::Constants::TASK_CATEGORY_BUILDSYSTEM);
-//        }
-//    }//#720 ROOPAK - END
-    return result;
-}
+////    }//#720 ROOPAK - END
+//    return result;
+//}//#720 ROOPAK - END
 
 FileName BaseQtVersion::headerPath() const
 {
@@ -1071,20 +1072,20 @@ QStringList BaseQtVersion::qtConfigValues() const
     return m_qtConfigValues;
 }
 
-QList<HeaderPath> BaseQtVersion::systemHeaderPathes(const Kit *k) const
-{
-    Q_UNUSED(k);
-    QList<HeaderPath> result;
-    result.append(HeaderPath(mkspecPath().toString(), HeaderPath::GlobalHeaderPath));
-    return result;
-}
+//QList<HeaderPath> BaseQtVersion::systemHeaderPathes(const Kit *k) const//#720 ROOPAK - START
+//{
+//    Q_UNUSED(k);
+//    QList<HeaderPath> result;
+//    result.append(HeaderPath(mkspecPath().toString(), HeaderPath::GlobalHeaderPath));
+//    return result;
+//}//#720 ROOPAK - END
 
-void BaseQtVersion::addToEnvironment(const Kit *k, Environment &env) const
-{
-    Q_UNUSED(k);
-    env.set(QLatin1String("QTDIR"), QDir::toNativeSeparators(qmakeProperty("QT_HOST_DATA")));
-    env.prependOrSetPath(qmakeProperty("QT_HOST_BINS"));
-}
+//void BaseQtVersion::addToEnvironment(const Kit *k, Environment &env) const//#720 ROOPAK - START
+//{
+//    Q_UNUSED(k);
+//    env.set(QLatin1String("QTDIR"), QDir::toNativeSeparators(qmakeProperty("QT_HOST_DATA")));
+//    env.prependOrSetPath(qmakeProperty("QT_HOST_BINS"));
+//}//#720 ROOPAK - END
 
 // Some Qt versions may require environment settings for qmake to work
 //
@@ -1411,18 +1412,18 @@ FileName BaseQtVersion::sourcePath(const QHash<QString, QString> &versionInfo)
     return FileName::fromUserInput(sourcePath);
 }
 
-bool BaseQtVersion::isQmlDebuggingSupported(Kit *k, QString *reason)
-{
-    QTC_ASSERT(k, return false);
-//    BaseQtVersion *version = QtKitInformation::qtVersion(k);//#720 ROOPAK - START
-//    if (!version) {
-//        if (reason)
-//            *reason = QCoreApplication::translate("BaseQtVersion", "No Qt version.");
-//        return false;
-//    }
-//    return version->isQmlDebuggingSupported(reason);
-    return false;//#720 ROOPAK - END
-}
+//bool BaseQtVersion::isQmlDebuggingSupported(Kit *k, QString *reason)//#720 ROOPAK - START
+//{
+//    QTC_ASSERT(k, return false);
+////    BaseQtVersion *version = QtKitInformation::qtVersion(k);//#720 ROOPAK - START
+////    if (!version) {
+////        if (reason)
+////            *reason = QCoreApplication::translate("BaseQtVersion", "No Qt version.");
+////        return false;
+////    }
+////    return version->isQmlDebuggingSupported(reason);
+//    return false;//#720 ROOPAK - END
+//}//#720 ROOPAK - END
 
 bool BaseQtVersion::isQmlDebuggingSupported(QString *reason) const
 {
@@ -1441,15 +1442,15 @@ bool BaseQtVersion::isQmlDebuggingSupported(QString *reason) const
     return true;
 }
 
-void BaseQtVersion::buildDebuggingHelper(Kit *k, int tools)
-{
-//    BaseQtVersion *version = QtKitInformation::qtVersion(k);//#720 ROOPAK - START
-//    ToolChain *tc = ToolChainKitInformation::toolChain(k);
-//    if (!k || !version || !tc)
-//        return;
+//void BaseQtVersion::buildDebuggingHelper(Kit *k, int tools)//#720 ROOPAK - START
+//{
+////    BaseQtVersion *version = QtKitInformation::qtVersion(k);//#720 ROOPAK - START
+////    ToolChain *tc = ToolChainKitInformation::toolChain(k);
+////    if (!k || !version || !tc)
+////        return;
 
-//    version->buildDebuggingHelper(tc, tools);//#720 ROOPAK - END
-}
+////    version->buildDebuggingHelper(tc, tools);//#720 ROOPAK - END
+//}//#720 ROOPAK - END
 
 //void BaseQtVersion::buildDebuggingHelper(ToolChain *tc, int tools)//#720 ROOPAK - START
 //{

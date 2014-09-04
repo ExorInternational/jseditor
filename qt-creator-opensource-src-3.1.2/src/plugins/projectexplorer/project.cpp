@@ -244,12 +244,12 @@ void Project::changeBuildConfigurationEnabled()
 //    return 0;
 //}//#720 ROOPAK - END
 
-bool Project::supportsKit(Kit *k, QString *errorMessage) const
-{
-    Q_UNUSED(k);
-    Q_UNUSED(errorMessage);
-    return true;
-}
+//bool Project::supportsKit(Kit *k, QString *errorMessage) const//#720 ROOPAK - START
+//{
+//    Q_UNUSED(k);
+//    Q_UNUSED(errorMessage);
+//    return true;
+//}//#720 ROOPAK - END
 
 //Target *Project::createTarget(Kit *k)//#720 ROOPAK - START
 //{

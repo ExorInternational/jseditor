@@ -45,7 +45,7 @@ namespace Core { class FeatureSet; }
 
 namespace ProjectExplorer {
 class IOutputParser;
-class Kit;
+//class Kit;//#720 ROOPAK
 //class ToolChain;//#720 ROOPAK
 class HeaderPath;
 class Task;
@@ -120,7 +120,7 @@ public:
     QHash<QString,QString> versionInfo() const;
     enum PropertyVariant { PropertyVariantGet, PropertyVariantSrc };
     QString qmakeProperty(const QByteArray &name) const;
-    virtual void addToEnvironment(const ProjectExplorer::Kit *k, Utils::Environment &env) const;
+//    virtual void addToEnvironment(const ProjectExplorer::Kit *k, Utils::Environment &env) const;//#720 ROOPAK
     virtual Utils::Environment qmakeRunEnvironment() const;
 
     virtual Utils::FileName sourcePath() const;
@@ -143,7 +143,7 @@ public:
     bool hasDemos() const;
     QString demosPath() const;
 
-    virtual QList<ProjectExplorer::HeaderPath> systemHeaderPathes(const ProjectExplorer::Kit *k) const;
+//    virtual QList<ProjectExplorer::HeaderPath> systemHeaderPathes(const ProjectExplorer::Kit *k) const;//#720 ROOPAK
     virtual QString frameworkInstallPath() const;
 
     // former local functions
@@ -182,9 +182,9 @@ public:
     static Utils::FileName mkspecFromVersionInfo(const QHash<QString, QString> &versionInfo);
     static Utils::FileName sourcePath(const QHash<QString, QString> &versionInfo);
 
-    static bool isQmlDebuggingSupported(ProjectExplorer::Kit *k, QString *reason = 0);
+//    static bool isQmlDebuggingSupported(ProjectExplorer::Kit *k, QString *reason = 0);//#720 ROOPAK
     bool isQmlDebuggingSupported(QString *reason = 0) const;
-    static void buildDebuggingHelper(ProjectExplorer::Kit *k, int tools);
+//    static void buildDebuggingHelper(ProjectExplorer::Kit *k, int tools);//#720 ROOPAK
 //    void buildDebuggingHelper(ProjectExplorer::ToolChain *tc, int tools);//#720 ROOPAK
 
     virtual QString qmlDumpTool(bool debugVersion) const;
@@ -205,7 +205,7 @@ public:
     virtual QString platformDisplayName() const;
     virtual bool supportsPlatform(const QString &platformName) const;
 
-    virtual QList<ProjectExplorer::Task> validateKit(const ProjectExplorer::Kit *k);
+//    virtual QList<ProjectExplorer::Task> validateKit(const ProjectExplorer::Kit *k);//#720 ROOPAK
 
     Utils::FileName headerPath() const;
     Utils::FileName docsPath() const;

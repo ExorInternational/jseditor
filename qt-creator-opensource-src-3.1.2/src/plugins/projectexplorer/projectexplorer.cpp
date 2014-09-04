@@ -1197,7 +1197,7 @@ void ProjectExplorerPlugin::updateVariable(const QByteArray &variable)
     } else {
         QString projectName;
         QString projectFilePath;
-        Kit *kit = 0;
+//        Kit *kit = 0;//#720 ROOPAK
         QString buildConfigurationName;
         if (Project *project = currentProject()) {
             projectName = project->displayName();
