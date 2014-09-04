@@ -29,7 +29,7 @@
 
 #include "kit.h"
 
-#include "kitmanager.h"
+//#include "kitmanager.h"//#720 ROOPAK
 #include "ioutputparser.h"
 //#include "osparser.h"//ROOPAK
 
@@ -116,8 +116,8 @@ public:
 Kit::Kit(Core::Id id) :
     d(new Internal::KitPrivate(id))
 {
-    foreach (KitInformation *sti, KitManager::kitInformation())
-        d->m_data.insert(sti->id(), sti->defaultValue(this));
+//    foreach (KitInformation *sti, KitManager::kitInformation())//#720 ROOPAK - START
+//        d->m_data.insert(sti->id(), sti->defaultValue(this));//#720 ROOPAK - END
 
     d->m_icon = icon(d->m_iconPath);
 }
@@ -236,19 +236,19 @@ bool Kit::hasWarning() const
 QList<Task> Kit::validate() const
 {
     QList<Task> result;
-    QList<KitInformation *> infoList = KitManager::kitInformation();
-    d->m_isValid = true;
-    d->m_hasWarning = false;
-    foreach (KitInformation *i, infoList) {
-        QList<Task> tmp = i->validate(this);
-        foreach (const Task &t, tmp) {
-            if (t.type == Task::Error)
-                d->m_isValid = false;
-            if (t.type == Task::Warning)
-                d->m_hasWarning = true;
-        }
-        result.append(tmp);
-    }
+//    QList<KitInformation *> infoList = KitManager::kitInformation();//#720 ROOPAK - START
+//    d->m_isValid = true;
+//    d->m_hasWarning = false;
+//    foreach (KitInformation *i, infoList) {
+//        QList<Task> tmp = i->validate(this);
+//        foreach (const Task &t, tmp) {
+//            if (t.type == Task::Error)
+//                d->m_isValid = false;
+//            if (t.type == Task::Warning)
+//                d->m_hasWarning = true;
+//        }
+//        result.append(tmp);
+//    }//#720 ROOPAK - END
     qSort(result);
     d->m_hasValidityInfo = true;
     return result;
@@ -256,19 +256,19 @@ QList<Task> Kit::validate() const
 
 void Kit::fix()
 {
-    KitGuard g(this);
-    foreach (KitInformation *i, KitManager::kitInformation())
-        i->fix(this);
+//    KitGuard g(this);//#720 ROOPAK - START
+//    foreach (KitInformation *i, KitManager::kitInformation())
+//        i->fix(this);//#720 ROOPAK - END
 }
 
 void Kit::setup()
 {
-    KitGuard g(this);
-    // Process the KitInfos in reverse order: They may only be based on other information lower in
-    // the stack.
-    QList<KitInformation *> info = KitManager::kitInformation();
-    for (int i = info.count() - 1; i >= 0; --i)
-        info.at(i)->setup(this);
+//    KitGuard g(this);//#720 ROOPAK - START
+//    // Process the KitInfos in reverse order: They may only be based on other information lower in
+//    // the stack.
+//    QList<KitInformation *> info = KitManager::kitInformation();
+//    for (int i = info.count() - 1; i >= 0; --i)
+//        info.at(i)->setup(this);//#720 ROOPAK - END
 }
 
 QString Kit::displayName() const
@@ -299,30 +299,30 @@ QStringList Kit::candidateNameList(const QString &base) const
 {
     QStringList result;
     result << base;
-    foreach (KitInformation *ki, KitManager::kitInformation()) {
-        const QString postfix = ki->displayNamePostfix(this);
-        if (!postfix.isEmpty()) {
-            QString tmp = candidateName(base, postfix);
-            if (!tmp.isEmpty())
-                result << candidateName(base, postfix);
-        }
-    }
+//    foreach (KitInformation *ki, KitManager::kitInformation()) {//#720 ROOPAK - START
+//        const QString postfix = ki->displayNamePostfix(this);
+//        if (!postfix.isEmpty()) {
+//            QString tmp = candidateName(base, postfix);
+//            if (!tmp.isEmpty())
+//                result << candidateName(base, postfix);
+//        }
+//    }//#720 ROOPAK - END
     return result;
 }
 
 QString Kit::fileSystemFriendlyName() const
 {
     QString name = Utils::FileUtils::qmakeFriendlyName(displayName());
-    foreach (Kit *i, KitManager::kits()) {
-        if (i == this)
-            continue;
-        if (name == Utils::FileUtils::qmakeFriendlyName(i->displayName())) {
-            // append part of the kit id: That should be unique enough;-)
-            // Leading { will be turned into _ which should be fine.
-            name = Utils::FileUtils::qmakeFriendlyName(name + QLatin1Char('_') + (id().toString().left(7)));
-            break;
-        }
-    }
+//    foreach (Kit *i, KitManager::kits()) {//#720 ROOPAK - START
+//        if (i == this)
+//            continue;
+//        if (name == Utils::FileUtils::qmakeFriendlyName(i->displayName())) {
+//            // append part of the kit id: That should be unique enough;-)
+//            // Leading { will be turned into _ which should be fine.
+//            name = Utils::FileUtils::qmakeFriendlyName(name + QLatin1Char('_') + (id().toString().left(7)));
+//            break;
+//        }
+//    }//#720 ROOPAK - END
     return name;
 }
 
@@ -459,9 +459,9 @@ QVariantMap Kit::toMap() const
 
 void Kit::addToEnvironment(Utils::Environment &env) const
 {
-    QList<KitInformation *> infoList = KitManager::kitInformation();
-    foreach (KitInformation *ki, infoList)
-        ki->addToEnvironment(this, env);
+//    QList<KitInformation *> infoList = KitManager::kitInformation();//#720 ROOPAK - START
+//    foreach (KitInformation *ki, infoList)
+//        ki->addToEnvironment(this, env);//#720 ROOPAK - END
 }
 
 IOutputParser *Kit::createOutputParser() const
@@ -503,12 +503,12 @@ QString Kit::toHtml() const
         str << "</p>";
     }
 
-    QList<KitInformation *> infoList = KitManager::kitInformation();
-    foreach (KitInformation *ki, infoList) {
-        KitInformation::ItemList list = ki->toUserOutput(this);
-        foreach (const KitInformation::Item &j, list)
-            str << "<tr><td><b>" << j.first << ":</b></td><td>" << j.second << "</td></tr>";
-    }
+//    QList<KitInformation *> infoList = KitManager::kitInformation();//#720 ROOPAK - START
+//    foreach (KitInformation *ki, infoList) {
+//        KitInformation::ItemList list = ki->toUserOutput(this);
+//        foreach (const KitInformation::Item &j, list)
+//            str << "<tr><td><b>" << j.first << ":</b></td><td>" << j.second << "</td></tr>";
+//    }//#720 ROOPAK - END
     str << "</table></body></html>";
     return rc;
 }
@@ -530,10 +530,10 @@ void Kit::setSdkProvided(bool sdkProvided)
 
 void Kit::makeSticky()
 {
-    foreach (KitInformation *ki, KitManager::kitInformation()) {
-        if (hasValue(ki->id()))
-            setSticky(ki->id(), true);
-    }
+//    foreach (KitInformation *ki, KitManager::kitInformation()) {//#720 ROOPAK - START
+//        if (hasValue(ki->id()))
+//            setSticky(ki->id(), true);
+//    }//#720 ROOPAK - END
 }
 
 void Kit::setSticky(Core::Id id, bool b)
@@ -569,7 +569,7 @@ void Kit::kitUpdated()
         return;
     }
     d->m_hasValidityInfo = false;
-    KitManager::notifyAboutUpdate(this);
+//    KitManager::notifyAboutUpdate(this);//#720 ROOPAK
 }
 
 void Kit::kitDisplayNameChanged()
@@ -580,7 +580,7 @@ void Kit::kitDisplayNameChanged()
         return;
     }
     d->m_hasValidityInfo = false;
-    KitManager::notifyAboutDisplayNameChange(this);
+//    KitManager::notifyAboutDisplayNameChange(this);//#720 ROOPAK
 }
 
 } // namespace ProjectExplorer

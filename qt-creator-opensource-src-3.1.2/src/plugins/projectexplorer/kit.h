@@ -129,7 +129,7 @@ private:
     Internal::KitPrivate *const d;
 
     friend class KitInformation;
-    friend class KitManager;
+//    friend class KitManager;//#720 ROOPAK
 //    friend class Internal::KitModel; // needed for setAutoDetected() when cloning kits//ROOPAK
 };
 

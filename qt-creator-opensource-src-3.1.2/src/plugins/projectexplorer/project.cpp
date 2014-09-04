@@ -39,7 +39,7 @@
 #include <coreplugin/idocument.h>
 #include <coreplugin/icontext.h>
 //#include <projectexplorer/buildmanager.h>//ROOPAK
-#include <projectexplorer/kitmanager.h>
+//#include <projectexplorer/kitmanager.h>//#720 ROOPAK
 #include <limits>
 #include <utils/qtcassert.h>
 

@@ -39,7 +39,7 @@
 //#include "projectmacroexpander.h"//ROOPAK
 //#include "removetaskhandler.h"//ROOPAK
 //#include "unconfiguredprojectpanel.h"//ROOPAK
-#include "kitmanager.h"
+//#include "kitmanager.h"//#720 ROOPAK
 //#include "kitoptionspage.h"//ROOPAK
 //#include "target.h"//#720 ROOPAK
 //#include "toolchainmanager.h"//#720 ROOPAK
@@ -254,7 +254,7 @@ struct ProjectExplorerPluginPrivate {
     IMode *m_projectsMode;
 
 //    TaskHub *m_taskHub;//#720 ROOPAK
-    KitManager *m_kitManager;
+//    KitManager *m_kitManager;//#720 ROOPAK
 //    ToolChainManager *m_toolChainManager;//#720 ROOPAK
     bool m_shuttingDown;
     bool m_ignoreDocumentManagerChangedFile;
@@ -267,7 +267,7 @@ ProjectExplorerPluginPrivate::ProjectExplorerPluginPrivate() :
     m_shouldHaveRunConfiguration(false),
     m_runMode(NoRunMode),
     m_projectsMode(0),
-    m_kitManager(0),
+//    m_kitManager(0),//#720 ROOPAK
 //    m_toolChainManager(0),//#720 ROOPAK
     m_shuttingDown(false),
     m_ignoreDocumentManagerChangedFile(false)
@@ -312,7 +312,7 @@ ProjectExplorerPlugin::~ProjectExplorerPlugin()
 #endif
     removeObject(this);
     // Force sequence of deletion:
-    delete d->m_kitManager; // remove all the profile informations
+//    delete d->m_kitManager; // remove all the profile informations//#720 ROOPAK
 //    delete d->m_toolChainManager;//#720 ROOPAK
 
     delete d;
@@ -358,7 +358,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
 
 //    addAutoReleasedObject(new Internal::DesktopDeviceFactory);//ROOPAK
 
-    d->m_kitManager = new KitManager; // register before ToolChainManager
+//    d->m_kitManager = new KitManager; // register before ToolChainManager//#720 ROOPAK
 //    d->m_toolChainManager = new ToolChainManager;//#720 ROOPAK
 
     // Register KitInformation:
@@ -1142,7 +1142,7 @@ void ProjectExplorerPlugin::extensionsInitialized()
 //    DeviceManager::instance()->addDevice(IDevice::Ptr(new DesktopDevice));//ROOPAK
 //    DeviceManager::instance()->load();//ROOPAK
 //    ToolChainManager::restoreToolChains();//#720 ROOPAK
-    d->m_kitManager->restoreKits();
+//    d->m_kitManager->restoreKits();//#720 ROOPAK
 }
 
 void ProjectExplorerPlugin::loadCustomWizards()

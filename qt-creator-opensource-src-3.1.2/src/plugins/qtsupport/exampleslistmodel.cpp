@@ -45,7 +45,7 @@
 #include <algorithm>
 
 //#720 ADDED BY ROOPAK - START
-#include <projectexplorer/kitmanager.h>
+//#include <projectexplorer/kitmanager.h>//#720 ROOPAK
 //#720 ROOPAK - END
 
 namespace QtSupport {
@@ -884,8 +884,8 @@ void ExamplesListModelFilter::tryToInitialize()
         m_initalized = true;
         connect(QtVersionManager::instance(), SIGNAL(qtVersionsChanged(QList<int>,QList<int>,QList<int>)),
                 this, SLOT(handleQtVersionsChanged()));
-        connect(ProjectExplorer::KitManager::instance(), SIGNAL(defaultkitChanged()),
-                this, SLOT(handleQtVersionsChanged()));
+//        connect(ProjectExplorer::KitManager::instance(), SIGNAL(defaultkitChanged()),//#720 ROOPAK - START
+//                this, SLOT(handleQtVersionsChanged()));//#720 ROOPAK - END
         handleQtVersionsChanged();
     }
 }

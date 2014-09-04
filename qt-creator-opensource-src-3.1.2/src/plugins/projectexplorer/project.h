@@ -50,7 +50,7 @@ class EditorConfiguration;
 //class ProjectImporter;
 //class ProjectNode;//ROOPAK
 class Kit;
-class KitMatcher;
+//class KitMatcher;//#720 ROOPAK
 //class NamedWidget;//#720 ROOPAK
 //class Target;//#720 ROOPAK
 class ProjectPrivate;
@@ -128,8 +128,8 @@ public:
 
     virtual bool supportsNoTargetPanel() const;
 //    virtual ProjectImporter *createProjectImporter() const;//ROOPAK
-    virtual KitMatcher *createRequiredKitMatcher() const { return 0; }
-    virtual KitMatcher *createPreferredKitMatcher() const { return 0; }
+//    virtual KitMatcher *createRequiredKitMatcher() const { return 0; }//#720 ROOPAK - START
+//    virtual KitMatcher *createPreferredKitMatcher() const { return 0; }//#720 ROOPAK - END
 
     virtual bool needsSpecialDeployment() const;
 
