@@ -42,7 +42,7 @@
 #include "kitmanager.h"
 //#include "kitoptionspage.h"//ROOPAK
 //#include "target.h"//#720 ROOPAK
-#include "toolchainmanager.h"
+//#include "toolchainmanager.h"//#720 ROOPAK
 //#include "toolchainoptionspage.h"//ROOPAK
 //#include "copytaskhandler.h"//ROOPAK
 //#include "showineditortaskhandler.h"//ROOPAK
@@ -255,7 +255,7 @@ struct ProjectExplorerPluginPrivate {
 
 //    TaskHub *m_taskHub;//#720 ROOPAK
     KitManager *m_kitManager;
-    ToolChainManager *m_toolChainManager;
+//    ToolChainManager *m_toolChainManager;//#720 ROOPAK
     bool m_shuttingDown;
     bool m_ignoreDocumentManagerChangedFile;
     QStringList m_arguments;
@@ -268,7 +268,7 @@ ProjectExplorerPluginPrivate::ProjectExplorerPluginPrivate() :
     m_runMode(NoRunMode),
     m_projectsMode(0),
     m_kitManager(0),
-    m_toolChainManager(0),
+//    m_toolChainManager(0),//#720 ROOPAK
     m_shuttingDown(false),
     m_ignoreDocumentManagerChangedFile(false)
 {
@@ -313,7 +313,7 @@ ProjectExplorerPlugin::~ProjectExplorerPlugin()
     removeObject(this);
     // Force sequence of deletion:
     delete d->m_kitManager; // remove all the profile informations
-    delete d->m_toolChainManager;
+//    delete d->m_toolChainManager;//#720 ROOPAK
 
     delete d;
 }
@@ -359,7 +359,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
 //    addAutoReleasedObject(new Internal::DesktopDeviceFactory);//ROOPAK
 
     d->m_kitManager = new KitManager; // register before ToolChainManager
-    d->m_toolChainManager = new ToolChainManager;
+//    d->m_toolChainManager = new ToolChainManager;//#720 ROOPAK
 
     // Register KitInformation:
 //    KitManager::registerKitInformation(new DeviceTypeKitInformation);//#720 ROOPAK - START
@@ -1141,7 +1141,7 @@ void ProjectExplorerPlugin::extensionsInitialized()
 
 //    DeviceManager::instance()->addDevice(IDevice::Ptr(new DesktopDevice));//ROOPAK
 //    DeviceManager::instance()->load();//ROOPAK
-    ToolChainManager::restoreToolChains();
+//    ToolChainManager::restoreToolChains();//#720 ROOPAK
     d->m_kitManager->restoreKits();
 }
 

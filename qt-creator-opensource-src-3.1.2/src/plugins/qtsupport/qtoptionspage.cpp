@@ -39,7 +39,7 @@
 #include "qmldumptool.h"
 
 #include <coreplugin/progressmanager/progressmanager.h>
-#include <projectexplorer/toolchainmanager.h>
+//#include <projectexplorer/toolchainmanager.h>//#720 ROOPAK
 #include <projectexplorer/projectexplorerconstants.h>
 #include <utils/hostosinfo.h>
 #include <utils/pathchooser.h>
@@ -191,8 +191,8 @@ QtOptionsPageWidget::QtOptionsPageWidget(QWidget *parent)
     connect(QtVersionManager::instance(), SIGNAL(qtVersionsChanged(QList<int>,QList<int>,QList<int>)),
             this, SLOT(updateQtVersions(QList<int>,QList<int>,QList<int>)));
 
-    connect(ProjectExplorer::ToolChainManager::instance(), SIGNAL(toolChainsChanged()),
-            this, SLOT(toolChainsUpdated()));
+//    connect(ProjectExplorer::ToolChainManager::instance(), SIGNAL(toolChainsChanged()),//#720 ROOPAK - START
+//            this, SLOT(toolChainsUpdated()));//#720 ROOPAK - END
 }
 
 int QtOptionsPageWidget::currentIndex() const
@@ -431,20 +431,20 @@ void QtOptionsPageWidget::buildDebuggingHelper(DebuggingHelperBuildTask::Tools t
     // Run a debugging helper build task in the background.
     QString toolChainId = m_debuggingHelperUi->toolChainComboBox->itemData(
                 m_debuggingHelperUi->toolChainComboBox->currentIndex()).toString();
-    ToolChain *toolChain = ToolChainManager::findToolChain(toolChainId);
-    if (!toolChain)
-        return;
+//    ToolChain *toolChain = ToolChainManager::findToolChain(toolChainId);//#720 ROOPAK - START
+//    if (!toolChain)
+//        return;
 
-    DebuggingHelperBuildTask *buildTask = new DebuggingHelperBuildTask(version, toolChain, tools);
-    // Don't open General Messages pane with errors
-    buildTask->showOutputOnError(false);
-    connect(buildTask, SIGNAL(finished(int,QString,DebuggingHelperBuildTask::Tools)),
-            this, SLOT(debuggingHelperBuildFinished(int,QString,DebuggingHelperBuildTask::Tools)),
-            Qt::QueuedConnection);
-    QFuture<void> task = QtConcurrent::run(&DebuggingHelperBuildTask::run, buildTask);
-    const QString taskName = tr("Building helpers");
+//    DebuggingHelperBuildTask *buildTask = new DebuggingHelperBuildTask(version, toolChain, tools);
+//    // Don't open General Messages pane with errors
+//    buildTask->showOutputOnError(false);
+//    connect(buildTask, SIGNAL(finished(int,QString,DebuggingHelperBuildTask::Tools)),
+//            this, SLOT(debuggingHelperBuildFinished(int,QString,DebuggingHelperBuildTask::Tools)),
+//            Qt::QueuedConnection);
+//    QFuture<void> task = QtConcurrent::run(&DebuggingHelperBuildTask::run, buildTask);
+//    const QString taskName = tr("Building helpers");
 
-    Core::ProgressManager::addTask(task, taskName, "QmakeProjectManager::BuildHelpers");
+//    Core::ProgressManager::addTask(task, taskName, "QmakeProjectManager::BuildHelpers");//#720 ROOPAK - END
 }
 
 void QtOptionsPageWidget::buildQmlDump()

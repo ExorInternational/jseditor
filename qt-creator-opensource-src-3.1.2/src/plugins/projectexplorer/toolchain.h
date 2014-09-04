@@ -51,7 +51,7 @@ class HeaderPath;
 class IOutputParser;
 //class ToolChainConfigWidget;//ROOPAK
 class ToolChainFactory;
-class ToolChainManager;
+//class ToolChainManager;//#720 ROOPAK
 class Task;
 class Kit;
 
@@ -165,7 +165,7 @@ private:
 
     Internal::ToolChainPrivate *const d;
 
-    friend class ToolChainManager;
+//    friend class ToolChainManager;//#720 ROOPAK
     friend class ToolChainFactory;
 };
 

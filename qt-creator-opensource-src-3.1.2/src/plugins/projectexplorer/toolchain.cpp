@@ -31,7 +31,7 @@
 
 //#include "abi.h"//#720 ROOPAK
 #include "headerpath.h"
-#include "toolchainmanager.h"
+//#include "toolchainmanager.h"//#720 ROOPAK
 #include "task.h"
 
 #include <utils/fileutils.h>
@@ -172,7 +172,7 @@ QVariantMap ToolChain::toMap() const
 
 void ToolChain::toolChainUpdated()
 {
-    ToolChainManager::notifyAboutUpdate(this);
+//    ToolChainManager::notifyAboutUpdate(this);//#720 ROOPAK
 }
 
 void ToolChain::setDetection(ToolChain::Detection de)

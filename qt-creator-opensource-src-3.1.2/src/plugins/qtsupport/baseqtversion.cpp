@@ -37,7 +37,7 @@
 #include <coreplugin/icore.h>
 #include <coreplugin/progressmanager/progressmanager.h>
 #include <proparser/qmakevfs.h>
-#include <projectexplorer/toolchainmanager.h>
+//#include <projectexplorer/toolchainmanager.h>//#720 ROOPAK
 #include <projectexplorer/toolchain.h>
 #include <projectexplorer/projectexplorer.h>
 #include <projectexplorer/headerpath.h>
@@ -487,14 +487,14 @@ ToolChain *BaseQtVersion::preferredToolChain(const FileName &ms) const
 {
     const FileName spec = ms.isEmpty() ? mkspec() : ms;
     ToolChain *possibleTc = 0;
-    foreach (ToolChain *tc, ToolChainManager::toolChains()) {
-//        if (!qtAbis().contains(tc->targetAbi()))//#720 ROOPAK - START
-//            continue;//#720 ROOPAK - END
-        if (tc->suggestedMkspecList().contains(spec))
-            return tc; // perfect match
-        if (!possibleTc)
-            possibleTc = tc; // first possible match
-    }
+//    foreach (ToolChain *tc, ToolChainManager::toolChains()) {//#720 ROOPAK - START
+////        if (!qtAbis().contains(tc->targetAbi()))//#720 ROOPAK - START
+////            continue;//#720 ROOPAK - END
+//        if (tc->suggestedMkspecList().contains(spec))
+//            return tc; // perfect match
+//        if (!possibleTc)
+//            possibleTc = tc; // first possible match
+//    }//#720 ROOPAK - END
     return possibleTc;
 }
 
@@ -1263,16 +1263,16 @@ bool BaseQtVersion::queryQMakeVariables(const FileName &binary, const Environmen
         // This is required to make non-static qmakes work on windows where every tool chain
         // tries to be incompatible with any other.
 //        QList<Abi> abiList = Abi::abisOfBinary(binary);//#720 ROOPAK
-        QList<ToolChain *> tcList = ToolChainManager::toolChains();
-        foreach (ToolChain *tc, tcList) {
-//            if (!abiList.contains(tc->targetAbi()))//#720 ROOPAK - START
-//                continue;//#720 ROOPAK - END
-            Environment realEnv = env;
-            tc->addToEnvironment(realEnv);
-            output = runQmakeQuery(binary, realEnv, error);
-            if (error->isEmpty())
-                break;
-        }
+//        QList<ToolChain *> tcList = ToolChainManager::toolChains();
+//        foreach (ToolChain *tc, tcList) {//#720 ROOPAK - START
+////            if (!abiList.contains(tc->targetAbi()))//#720 ROOPAK - START
+////                continue;//#720 ROOPAK - END
+//            Environment realEnv = env;
+//            tc->addToEnvironment(realEnv);
+//            output = runQmakeQuery(binary, realEnv, error);
+//            if (error->isEmpty())
+//                break;
+//        }//#720 ROOPAK - END
     }
 
     if (output.isNull())

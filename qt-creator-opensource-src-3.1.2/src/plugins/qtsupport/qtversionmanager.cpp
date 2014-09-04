@@ -40,7 +40,7 @@
 
 #include <extensionsystem/pluginmanager.h>
 
-#include <projectexplorer/toolchainmanager.h>
+//#include <projectexplorer/toolchainmanager.h>//#720 ROOPAK
 
 #include <utils/buildablehelperlibrary.h>
 #include <utils/filesystemwatcher.h>
@@ -163,8 +163,8 @@ QtVersionManager::QtVersionManager()
 
 void QtVersionManager::triggerQtVersionRestore()
 {
-    disconnect(ProjectExplorer::ToolChainManager::instance(), SIGNAL(toolChainsLoaded()),
-               this, SLOT(triggerQtVersionRestore()));
+//    disconnect(ProjectExplorer::ToolChainManager::instance(), SIGNAL(toolChainsLoaded()),//#720 ROOPAK - START
+//               this, SLOT(triggerQtVersionRestore()));//#720 ROOPAK - END
 
     bool success = restoreQtVersions();
     m_instance->updateFromInstaller(false);
@@ -209,8 +209,8 @@ QtVersionManager::~QtVersionManager()
 
 void QtVersionManager::initialized()
 {
-    connect(ProjectExplorer::ToolChainManager::instance(), SIGNAL(toolChainsLoaded()),
-            QtVersionManager::instance(), SLOT(triggerQtVersionRestore()));
+//    connect(ProjectExplorer::ToolChainManager::instance(), SIGNAL(toolChainsLoaded()),//#720 ROOPAK - START
+//            QtVersionManager::instance(), SLOT(triggerQtVersionRestore()));//#720 ROOPAK - END
 }
 
 QObject *QtVersionManager::instance()
