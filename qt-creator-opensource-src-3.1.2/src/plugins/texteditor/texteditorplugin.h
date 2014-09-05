@@ -42,7 +42,7 @@ class TextEditorSettings;
 
 namespace Internal {
 
-class LineNumberFilter;
+//class LineNumberFilter;//#720 ROOPAK
 class PlainTextEditorFactory;
 class OutlineFactory;
 class BaseTextMarkRegistry;
@@ -63,7 +63,7 @@ public:
     void extensionsInitialized();
 
     PlainTextEditorFactory *editorFactory() { return m_editorFactory; }
-    LineNumberFilter *lineNumberFilter() { return m_lineNumberFilter; }
+//    LineNumberFilter *lineNumberFilter() { return m_lineNumberFilter; }//#720 ROOPAK
     BaseTextMarkRegistry *baseTextMarkRegistry() { return m_baseTextMarkRegistry; }
 
 private slots:
@@ -85,7 +85,7 @@ private:
     static TextEditorPlugin *m_instance;
     TextEditorSettings *m_settings;
     PlainTextEditorFactory *m_editorFactory;
-    LineNumberFilter *m_lineNumberFilter;
+//    LineNumberFilter *m_lineNumberFilter;//#720 ROOPAK
     Core::SearchResultWindow *m_searchResultWindow;
     OutlineFactory *m_outlineFactory;
     BaseTextMarkRegistry *m_baseTextMarkRegistry;

@@ -20,7 +20,7 @@ SOURCES += texteditorplugin.cpp \
     displaysettings.cpp \
     displaysettingspage.cpp \
     fontsettings.cpp \
-    linenumberfilter.cpp \
+#    linenumberfilter.cpp \//#720 ROOPAK
     basetextmark.cpp \
     findinfiles.cpp \
     basefilefind.cpp \
@@ -128,7 +128,7 @@ HEADERS += texteditorplugin.h \
     displaysettingspage.h \
     fontsettings.h \
     itexteditor.h \
-    linenumberfilter.h \
+#    linenumberfilter.h \//#720 ROOPAK
     texteditor_global.h \
     basetextmark.h \
     findinfiles.h \

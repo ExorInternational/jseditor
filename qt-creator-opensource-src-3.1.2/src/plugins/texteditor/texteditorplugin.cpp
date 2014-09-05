@@ -33,7 +33,7 @@
 #include "findincurrentfile.h"
 #include "findinopenfiles.h"
 #include "fontsettings.h"
-#include "linenumberfilter.h"
+//#include "linenumberfilter.h"//#720 ROOPAK
 #include "texteditorsettings.h"
 #include "textfilewizard.h"
 #include "plaintexteditorfactory.h"
@@ -71,7 +71,7 @@ TextEditorPlugin *TextEditorPlugin::m_instance = 0;
 TextEditorPlugin::TextEditorPlugin()
   : m_settings(0),
     m_editorFactory(0),
-    m_lineNumberFilter(0),
+//    m_lineNumberFilter(0),//#720 ROOPAK
     m_searchResultWindow(0)
 {
     QTC_ASSERT(!m_instance, return);
@@ -163,8 +163,8 @@ bool TextEditorPlugin::initialize(const QStringList &arguments, QString *errorMe
     addAutoReleasedObject(m_editorFactory);
 
     // Goto line functionality for quick open
-    m_lineNumberFilter = new LineNumberFilter;
-    addAutoReleasedObject(m_lineNumberFilter);
+//    m_lineNumberFilter = new LineNumberFilter;//#720 ROOPAK - START
+//    addAutoReleasedObject(m_lineNumberFilter);//#720 ROOPAK - END
 
     Core::Context context(TextEditor::Constants::C_TEXTEDITOR);
 

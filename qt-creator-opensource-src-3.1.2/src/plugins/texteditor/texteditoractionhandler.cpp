@@ -31,7 +31,7 @@
 
 #include "basetexteditor.h"
 #include "displaysettings.h"
-#include "linenumberfilter.h"
+//#include "linenumberfilter.h"//#720 ROOPAK
 #include "texteditorconstants.h"
 #include "texteditorplugin.h"
 
@@ -421,11 +421,11 @@ void TextEditorActionHandler::updateCopyAction()
 
 void TextEditorActionHandler::gotoAction()
 {
-    QString locatorString = TextEditorPlugin::instance()->lineNumberFilter()->shortcutString();
-    locatorString += QLatin1Char(' ');
-    const int selectionStart = locatorString.size();
-    locatorString += tr("<line>:<column>");
-    Core::LocatorManager::show(locatorString, selectionStart, locatorString.size() - selectionStart);
+//    QString locatorString = TextEditorPlugin::instance()->lineNumberFilter()->shortcutString();//#720 ROOPAK - START
+//    locatorString += QLatin1Char(' ');
+//    const int selectionStart = locatorString.size();
+//    locatorString += tr("<line>:<column>");
+//    Core::LocatorManager::show(locatorString, selectionStart, locatorString.size() - selectionStart);//#720 ROOPAK - END
 }
 
 void TextEditorActionHandler::printAction()
