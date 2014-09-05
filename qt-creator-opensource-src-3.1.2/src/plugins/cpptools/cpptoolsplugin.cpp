@@ -36,7 +36,7 @@
 //#include "cppfunctionsfilter.h"//#720 ROOPAK
 //#include "cppcurrentdocumentfilter.h"//#720 ROOPAK
 #include "cppmodelmanager.h"
-#include "cpplocatorfilter.h"
+//#include "cpplocatorfilter.h"//#720 ROOPAK
 #include "symbolsfindfilter.h"
 #include "cpptoolssettings.h"
 #include "cpptoolsreuse.h"
@@ -133,7 +133,7 @@ bool CppToolsPlugin::initialize(const QStringList &arguments, QString *error)
 
     CppLocatorData *locatorData = new CppLocatorData(modelManager);
     addAutoReleasedObject(locatorData);
-    addAutoReleasedObject(new CppLocatorFilter(locatorData));
+//    addAutoReleasedObject(new CppLocatorFilter(locatorData));//#720 ROOPAK
 //    addAutoReleasedObject(new CppClassesFilter(locatorData));//#720 ROOPAK
 //    addAutoReleasedObject(new CppFunctionsFilter(locatorData));//#720 ROOPAK
 //    addAutoReleasedObject(new CppCurrentDocumentFilter(modelManager));//#720 ROOPAK
