@@ -114,25 +114,25 @@ FORMS += \
     cppcodestylesettingspage.ui \
     cppfilesettingspage.ui
 
-equals(TEST, 1) {
-    HEADERS += \
-        cpppreprocessertesthelper.h \
-        cpptoolstestcase.h \
-        modelmanagertesthelper.h
+#equals(TEST, 1) {//#720 ROOPAK - START
+#    HEADERS += \
+#        cpppreprocessertesthelper.h \
+#        cpptoolstestcase.h \
+#        modelmanagertesthelper.h
 
-    SOURCES += \
-        cppcodegen_test.cpp \
-        cppcompletion_test.cpp \
-        cppheadersource_test.cpp \
-        cpplocatorfilter_test.cpp \
-        cppmodelmanager_test.cpp \
-        cpppointerdeclarationformatter_test.cpp \
-        cpppreprocessertesthelper.cpp \
-        cpppreprocessor_test.cpp \
-        cpptoolstestcase.cpp \
-        modelmanagertesthelper.cpp \
-        symbolsearcher_test.cpp \
-        typehierarchybuilder_test.cpp
+#    SOURCES += \
+#        cppcodegen_test.cpp \
+#        cppcompletion_test.cpp \
+#        cppheadersource_test.cpp \
+#        cpplocatorfilter_test.cpp \
+#        cppmodelmanager_test.cpp \
+#        cpppointerdeclarationformatter_test.cpp \
+#        cpppreprocessertesthelper.cpp \
+#        cpppreprocessor_test.cpp \
+#        cpptoolstestcase.cpp \
+#        modelmanagertesthelper.cpp \
+#        symbolsearcher_test.cpp \
+#        typehierarchybuilder_test.cpp
 
-    DEFINES += SRCDIR=\\\"$$PWD\\\"
-}
+#    DEFINES += SRCDIR=\\\"$$PWD\\\"
+#}//#720 ROOPAK - END
