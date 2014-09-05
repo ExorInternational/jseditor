@@ -80,11 +80,11 @@ Locator::~Locator()
 {
 //    m_corePlugin->removeObject(m_openDocumentsFilter);//#720 ROOPAK
 //    m_corePlugin->removeObject(m_fileSystemFilter);//#720 ROOPAK
-    m_corePlugin->removeObject(m_executeFilter);
+//    m_corePlugin->removeObject(m_executeFilter);//#720 ROOPAK
 //    m_corePlugin->removeObject(m_settingsPage);//#720 ROOPAK
 //    delete m_openDocumentsFilter;//#720 ROOPAK
 //    delete m_fileSystemFilter;//#720 ROOPAK
-    delete m_executeFilter;
+//    delete m_executeFilter;//#720 ROOPAK
 //    delete m_settingsPage;//#720 ROOPAK
     qDeleteAll(m_customFilters);
 }
@@ -123,8 +123,8 @@ void Locator::initialize(CorePlugin *corePlugin, const QStringList &, QString *)
 //    m_fileSystemFilter = new FileSystemFilter(m_locatorWidget);//#720 ROOPAK - START
 //    m_corePlugin->addObject(m_fileSystemFilter);//#720 ROOPAK - END
 
-    m_executeFilter = new ExecuteFilter();
-    m_corePlugin->addObject(m_executeFilter);
+//    m_executeFilter = new ExecuteFilter();//#720 ROOPAK - START
+//    m_corePlugin->addObject(m_executeFilter);//#720 ROOPAK - END
 
     m_corePlugin->addAutoReleasedObject(new LocatorFiltersFilter(this, m_locatorWidget));
 

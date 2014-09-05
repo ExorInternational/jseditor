@@ -32,7 +32,7 @@
 
 #include "ilocatorfilter.h"
 //#include "directoryfilter.h"//#720 ROOPAK
-#include "executefilter.h"
+//#include "executefilter.h"//#720 ROOPAK
 #include "locatorconstants.h"
 
 #include <extensionsystem/iplugin.h>
@@ -93,7 +93,7 @@ private:
     QTimer m_refreshTimer;
 //    OpenDocumentsFilter *m_openDocumentsFilter;//#720 ROOPAK
 //    FileSystemFilter *m_fileSystemFilter;//#720 ROOPAK
-    ExecuteFilter *m_executeFilter;
+//    ExecuteFilter *m_executeFilter;//#720 ROOPAK
     CorePlugin *m_corePlugin;
 };
 
