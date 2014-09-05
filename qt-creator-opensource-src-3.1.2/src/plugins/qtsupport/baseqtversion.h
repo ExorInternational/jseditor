@@ -44,7 +44,7 @@ namespace Utils { class Environment; }
 namespace Core { class FeatureSet; }
 
 namespace ProjectExplorer {
-class IOutputParser;
+//class IOutputParser;//#720 ROOPAK
 //class Kit;//#720 ROOPAK
 //class ToolChain;//#720 ROOPAK
 class HeaderPath;

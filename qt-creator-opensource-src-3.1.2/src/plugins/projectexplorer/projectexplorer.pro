@@ -51,7 +51,7 @@ HEADERS += projectexplorer.h \
     session.h \
 #    dependenciespanel.h \#ROOPAK
 #    allprojectsfilter.h \#ROOPAK
-    ioutputparser.h \
+#    ioutputparser.h \//#720 ROOPAK
 #    projectconfiguration.h \//#720 ROOPAK
 #    gnumakeparser.h \#ROOPAK
     projectexplorerconstants.h \
@@ -181,7 +181,7 @@ SOURCES += projectexplorer.cpp \
 #    namedwidget.cpp \//#720 ROOPAK
 #    target.cpp \//#720 ROOPAK
 #    targetsettingspanel.cpp \#ROOPAK
-    ioutputparser.cpp \
+#    ioutputparser.cpp \//#720 ROOPAK
 #    projectconfiguration.cpp \//#720 ROOPAK
 #    gnumakeparser.cpp \#ROOPAK
     task.cpp \
@@ -310,12 +310,12 @@ win32|equals(TEST, 1) {
     HEADERS += $$WINHEADERS
 }
 
-equals(TEST, 1) {
-    SOURCES += \
-        outputparser_test.cpp
-    HEADERS += \
-        outputparser_test.h
-}
+#equals(TEST, 1) {//#720 ROOPAK - START
+#    SOURCES += \
+#        outputparser_test.cpp
+#    HEADERS += \
+#        outputparser_test.h
+#}//#720 ROOPAK - END
 
 greaterThan(QT_MAJOR_VERSION, 4) {
     QT += quick
