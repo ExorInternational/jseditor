@@ -37,10 +37,10 @@ FORMS += \
 RESOURCES += \
     $$PWD/locator.qrc
 
-equals(TEST, 1) {
-    HEADERS += $$PWD/locatorfiltertest.h
-    SOURCES += \
-        $$PWD/locatorfiltertest.cpp \
-        $$PWD/locator_test.cpp
-    DEFINES += SRCDIR=\\\"$$PWD\\\"
-}
+#equals(TEST, 1) {
+#    HEADERS += $$PWD/locatorfiltertest.h
+#    SOURCES += \
+#        $$PWD/locatorfiltertest.cpp \
+#        $$PWD/locator_test.cpp
+#    DEFINES += SRCDIR=\\\"$$PWD\\\"
+#}
