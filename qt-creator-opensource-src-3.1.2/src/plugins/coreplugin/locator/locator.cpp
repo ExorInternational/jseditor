@@ -34,7 +34,7 @@
 #include "locatorwidget.h"
 #include "opendocumentsfilter.h"
 #include "filesystemfilter.h"
-#include "settingspage.h"
+//#include "settingspage.h"//#720 ROOPAK
 
 #include <coreplugin/coreplugin.h>
 #include <coreplugin/statusbarwidget.h>
@@ -81,11 +81,11 @@ Locator::~Locator()
     m_corePlugin->removeObject(m_openDocumentsFilter);
     m_corePlugin->removeObject(m_fileSystemFilter);
     m_corePlugin->removeObject(m_executeFilter);
-    m_corePlugin->removeObject(m_settingsPage);
+//    m_corePlugin->removeObject(m_settingsPage);//#720 ROOPAK
     delete m_openDocumentsFilter;
     delete m_fileSystemFilter;
     delete m_executeFilter;
-    delete m_settingsPage;
+//    delete m_settingsPage;//#720 ROOPAK
     qDeleteAll(m_customFilters);
 }
 
@@ -93,8 +93,8 @@ void Locator::initialize(CorePlugin *corePlugin, const QStringList &, QString *)
 {
     m_corePlugin = corePlugin;
 
-    m_settingsPage = new SettingsPage(this);
-    m_corePlugin->addObject(m_settingsPage);
+//    m_settingsPage = new SettingsPage(this);//#720 ROOPAK - START
+//    m_corePlugin->addObject(m_settingsPage);//#720 ROOPAK - END
 
     m_locatorWidget = new LocatorWidget(this);
     m_locatorWidget->setEnabled(false);
