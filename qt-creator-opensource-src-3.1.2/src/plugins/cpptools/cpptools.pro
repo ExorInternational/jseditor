@@ -8,7 +8,7 @@ HEADERS += \
     commentssettings.h \
     completionsettingspage.h \
     cppchecksymbols.h \
-    cppclassesfilter.h \
+#    cppclassesfilter.h \//#720 ROOPAK
     cppcodeformatter.h \
     cppcodemodelinspectordumper.h \
     cppcodemodelsettings.h \
@@ -62,7 +62,7 @@ SOURCES += \
     commentssettings.cpp \
     completionsettingspage.cpp \
     cppchecksymbols.cpp \
-    cppclassesfilter.cpp \
+#    cppclassesfilter.cpp \//#720 ROOPAK
     cppcodeformatter.cpp \
     cppcodemodelinspectordumper.cpp \
     cppcodemodelsettings.cpp \

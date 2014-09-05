@@ -32,7 +32,7 @@
 #include "cppfilesettingspage.h"
 #include "cppcodemodelsettingspage.h"
 #include "cppcodestylesettingspage.h"
-#include "cppclassesfilter.h"
+//#include "cppclassesfilter.h"//#720 ROOPAK
 #include "cppfunctionsfilter.h"
 //#include "cppcurrentdocumentfilter.h"//#720 ROOPAK
 #include "cppmodelmanager.h"
@@ -134,7 +134,7 @@ bool CppToolsPlugin::initialize(const QStringList &arguments, QString *error)
     CppLocatorData *locatorData = new CppLocatorData(modelManager);
     addAutoReleasedObject(locatorData);
     addAutoReleasedObject(new CppLocatorFilter(locatorData));
-    addAutoReleasedObject(new CppClassesFilter(locatorData));
+//    addAutoReleasedObject(new CppClassesFilter(locatorData));//#720 ROOPAK
     addAutoReleasedObject(new CppFunctionsFilter(locatorData));
 //    addAutoReleasedObject(new CppCurrentDocumentFilter(modelManager));//#720 ROOPAK
     addAutoReleasedObject(new CppFileSettingsPage(m_fileSettings));
