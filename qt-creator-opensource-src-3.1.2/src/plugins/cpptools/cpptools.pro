@@ -19,7 +19,7 @@ HEADERS += \
     cppcodestylesettingspage.h \
     cppcompletionassist.h \
     cppcompletionassistprovider.h \
-    cppcurrentdocumentfilter.h \
+#    cppcurrentdocumentfilter.h \//#720 ROOPAK
     cppdoxygen.h \
     cppfilesettingspage.h \
     cppfindreferences.h \
@@ -73,7 +73,7 @@ SOURCES += \
     cppcodestylesettingspage.cpp \
     cppcompletionassist.cpp \
     cppcompletionassistprovider.cpp \
-    cppcurrentdocumentfilter.cpp \
+#    cppcurrentdocumentfilter.cpp \//#720 ROOPAK
     cppdoxygen.cpp \
     cppfilesettingspage.cpp \
     cppfindreferences.cpp \
