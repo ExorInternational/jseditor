@@ -31,7 +31,7 @@
 #define LOCATORPLUGIN_H
 
 #include "ilocatorfilter.h"
-#include "directoryfilter.h"
+//#include "directoryfilter.h"//#720 ROOPAK
 #include "executefilter.h"
 #include "locatorconstants.h"
 
@@ -116,10 +116,10 @@ void Locator::loadSettingsHelper(S *settings)
     int count = 0;
     Core::Id baseId(Constants::CUSTOM_FILTER_BASEID);
     foreach (const QString &key, keys) {
-        ILocatorFilter *filter = new DirectoryFilter(baseId.withSuffix(++count));
-        filter->restoreState(settings->value(key).toByteArray());
-        m_filters.append(filter);
-        customFilters.append(filter);
+//        ILocatorFilter *filter = new DirectoryFilter(baseId.withSuffix(++count));//#720 ROOPAK - START
+//        filter->restoreState(settings->value(key).toByteArray());
+//        m_filters.append(filter);
+//        customFilters.append(filter);//#720 ROOPAK - END
     }
     setCustomFilters(customFilters);
     settings->endGroup();
