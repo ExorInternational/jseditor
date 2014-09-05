@@ -5,7 +5,7 @@ HEADERS += \
     $$PWD/locatorfiltersfilter.h \
 #    $$PWD/settingspage.h \//#720 ROOPAK
     $$PWD/ilocatorfilter.h \
-    $$PWD/opendocumentsfilter.h \
+#    $$PWD/opendocumentsfilter.h \//#720 ROOPAK
 #    $$PWD/filesystemfilter.h \//#720 ROOPAK
     $$PWD/locatorconstants.h \
     $$PWD/directoryfilter.h \
@@ -19,7 +19,7 @@ SOURCES += \
     $$PWD/commandlocator.cpp \
     $$PWD/locatorwidget.cpp \
     $$PWD/locatorfiltersfilter.cpp \
-    $$PWD/opendocumentsfilter.cpp \
+#    $$PWD/opendocumentsfilter.cpp \//#720 ROOPAK
 #    $$PWD/filesystemfilter.cpp \//#720 ROOPAK
 #    $$PWD/settingspage.cpp \//#720 ROOPAK
     $$PWD/directoryfilter.cpp \

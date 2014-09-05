@@ -46,7 +46,7 @@ namespace Internal {
 
 class CorePlugin;
 class LocatorWidget;
-class OpenDocumentsFilter;
+//class OpenDocumentsFilter;//#720 ROOPAK
 //class FileSystemFilter;//#720 ROOPAK
 //class SettingsPage;//#720 ROOPAK
 
@@ -91,7 +91,7 @@ private:
     QList<ILocatorFilter *> m_customFilters;
     int m_refreshInterval;
     QTimer m_refreshTimer;
-    OpenDocumentsFilter *m_openDocumentsFilter;
+//    OpenDocumentsFilter *m_openDocumentsFilter;//#720 ROOPAK
 //    FileSystemFilter *m_fileSystemFilter;//#720 ROOPAK
     ExecuteFilter *m_executeFilter;
     CorePlugin *m_corePlugin;
