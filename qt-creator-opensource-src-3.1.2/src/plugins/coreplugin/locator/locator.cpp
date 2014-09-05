@@ -33,7 +33,7 @@
 #include "locatormanager.h"
 #include "locatorwidget.h"
 #include "opendocumentsfilter.h"
-#include "filesystemfilter.h"
+//#include "filesystemfilter.h"//#720 ROOPAK
 //#include "settingspage.h"//#720 ROOPAK
 
 #include <coreplugin/coreplugin.h>
@@ -79,11 +79,11 @@ Locator::Locator()
 Locator::~Locator()
 {
     m_corePlugin->removeObject(m_openDocumentsFilter);
-    m_corePlugin->removeObject(m_fileSystemFilter);
+//    m_corePlugin->removeObject(m_fileSystemFilter);//#720 ROOPAK
     m_corePlugin->removeObject(m_executeFilter);
 //    m_corePlugin->removeObject(m_settingsPage);//#720 ROOPAK
     delete m_openDocumentsFilter;
-    delete m_fileSystemFilter;
+//    delete m_fileSystemFilter;//#720 ROOPAK
     delete m_executeFilter;
 //    delete m_settingsPage;//#720 ROOPAK
     qDeleteAll(m_customFilters);
@@ -120,8 +120,8 @@ void Locator::initialize(CorePlugin *corePlugin, const QStringList &, QString *)
     m_openDocumentsFilter = new OpenDocumentsFilter;
     m_corePlugin->addObject(m_openDocumentsFilter);
 
-    m_fileSystemFilter = new FileSystemFilter(m_locatorWidget);
-    m_corePlugin->addObject(m_fileSystemFilter);
+//    m_fileSystemFilter = new FileSystemFilter(m_locatorWidget);//#720 ROOPAK - START
+//    m_corePlugin->addObject(m_fileSystemFilter);//#720 ROOPAK - END
 
     m_executeFilter = new ExecuteFilter();
     m_corePlugin->addObject(m_executeFilter);
