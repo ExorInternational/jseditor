@@ -82,7 +82,7 @@ HEADERS += projectexplorer.h \
 #    buildstepspage.h \#ROOPAK
 #    nodesvisitor.h \#ROOPAK
 #    projectmodels.h \#ROOPAK
-    currentprojectfind.h \
+#    currentprojectfind.h \//#720 ROOPAK
 #    toolchain.h \//#720 ROOPAK
 #    toolchainconfigwidget.h \#ROOPAK
 #    toolchainmanager.h \//#720 ROOPAK
@@ -219,7 +219,7 @@ SOURCES += projectexplorer.cpp \
 #    buildstepspage.cpp \#ROOPAK
 #    nodesvisitor.cpp \#ROOPAK
 #    projectmodels.cpp \#ROOPAK
-    currentprojectfind.cpp \
+#    currentprojectfind.cpp \//#720 ROOPAK
 #    toolchain.cpp \//#720 ROOPAK
 #    toolchainconfigwidget.cpp \#ROOPAK
 #    toolchainmanager.cpp \//#720 ROOPAK

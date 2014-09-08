@@ -52,7 +52,7 @@
 #include "allprojectsfind.h"
 //#include "buildmanager.h"//ROOPAK
 //#include "buildsettingspropertiespage.h"//ROOPAK
-#include "currentprojectfind.h"
+//#include "currentprojectfind.h"//#720 ROOPAK
 //#include "currentprojectfilter.h"//ROOPAK
 //#include "editorsettingspropertiespage.h"//ROOPAK
 //#include "codestylesettingspropertiespage.h"//ROOPAK
@@ -450,7 +450,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
 //    addAutoReleasedObject(new UnconfiguredProjectPanel);//ROOPAK
 
     addAutoReleasedObject(new AllProjectsFind);
-    addAutoReleasedObject(new CurrentProjectFind);
+//    addAutoReleasedObject(new CurrentProjectFind);//#720 ROOPAK
 
 //    addAutoReleasedObject(new LocalApplicationRunControlFactory);//ROOPAK
 
