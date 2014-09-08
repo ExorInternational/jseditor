@@ -49,7 +49,7 @@
 //#include "vcsannotatetaskhandler.h"//ROOPAK
 //#include "localapplicationruncontrol.h"//ROOPAK
 //#include "allprojectsfilter.h"//ROOPAK
-#include "allprojectsfind.h"
+//#include "allprojectsfind.h"//#720 ROOPAK
 //#include "buildmanager.h"//ROOPAK
 //#include "buildsettingspropertiespage.h"//ROOPAK
 //#include "currentprojectfind.h"//#720 ROOPAK
@@ -449,7 +449,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
 //    addAutoReleasedObject(new ProcessStepFactory);//ROOPAK
 //    addAutoReleasedObject(new UnconfiguredProjectPanel);//ROOPAK
 
-    addAutoReleasedObject(new AllProjectsFind);
+//    addAutoReleasedObject(new AllProjectsFind);//#720 ROOPAK
 //    addAutoReleasedObject(new CurrentProjectFind);//#720 ROOPAK
 
 //    addAutoReleasedObject(new LocalApplicationRunControlFactory);//ROOPAK

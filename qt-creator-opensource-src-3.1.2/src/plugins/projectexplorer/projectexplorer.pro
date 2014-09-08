@@ -61,7 +61,7 @@ HEADERS += projectexplorer.h \
 #    pluginfilefactory.h \#ROOPAK
 #    iprojectmanager.h \//#720 ROOPAK
 #    currentprojectfilter.h \#ROOPAK
-    allprojectsfind.h \
+#    allprojectsfind.h \//#720 ROOPAK
 #    buildstep.h \#ROOPAK
 #    buildconfiguration.h \#ROOPAK
 #    iprojectproperties.h \//#720 ROOPAK
@@ -196,7 +196,7 @@ SOURCES += projectexplorer.cpp \
 #    dependenciespanel.cpp \#ROOPAK
 #    allprojectsfilter.cpp \#ROOPAK
 #    currentprojectfilter.cpp \#ROOPAK
-    allprojectsfind.cpp \
+#    allprojectsfind.cpp \//#720 ROOPAK
     project.cpp \
 #    pluginfilefactory.cpp \#ROOPAK
 #    buildstep.cpp \#ROOPAK
