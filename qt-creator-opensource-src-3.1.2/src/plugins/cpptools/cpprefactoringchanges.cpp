@@ -32,7 +32,11 @@
 #include "cppqtstyleindenter.h"
 #include "cppcodeformatter.h"
 #include "cppmodelmanager.h"
-#include <projectexplorer/editorconfiguration.h>
+//#include <projectexplorer/editorconfiguration.h>//#720 ROOPAK
+
+//#720 ADDED BY ROOPAK - START
+#include <texteditor/tabsettings.h>
+//#720 ROOPAK - END
 
 #include <utils/qtcassert.h>
 
@@ -53,22 +57,22 @@ public:
                                  const QString &fileName,
                                  const TextEditor::BaseTextDocument *textDocument) const
     {
-        const TextEditor::TabSettings &tabSettings =
-            ProjectExplorer::actualTabSettings(fileName, textDocument);
+//        const TextEditor::TabSettings &tabSettings =                          //#720 ROOPAK - START
+//            ProjectExplorer::actualTabSettings(fileName, textDocument);
 
-        CppQtStyleIndenter indenter;
-        indenter.indent(selection.document(), selection, QChar::Null, tabSettings);
+//        CppQtStyleIndenter indenter;
+//        indenter.indent(selection.document(), selection, QChar::Null, tabSettings);//#720 ROOPAK - END
     }
 
     virtual void reindentSelection(const QTextCursor &selection,
                                    const QString &fileName,
                                    const TextEditor::BaseTextDocument *textDocument) const
     {
-        const TextEditor::TabSettings &tabSettings =
-            ProjectExplorer::actualTabSettings(fileName, textDocument);
+//        const TextEditor::TabSettings &tabSettings =                  //#720 ROOPAK - START
+//            ProjectExplorer::actualTabSettings(fileName, textDocument);
 
-        CppQtStyleIndenter indenter;
-        indenter.reindent(selection.document(), selection, tabSettings);
+//        CppQtStyleIndenter indenter;
+//        indenter.reindent(selection.document(), selection, tabSettings);//#720 ROOPAK - END
     }
 
     virtual void fileChanged(const QString &fileName)

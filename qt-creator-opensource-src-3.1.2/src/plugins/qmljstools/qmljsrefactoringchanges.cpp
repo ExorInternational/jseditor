@@ -35,7 +35,7 @@
 #include <qmljs/parser/qmljsast_p.h>
 #include <texteditor/basetextdocument.h>
 #include <texteditor/tabsettings.h>
-#include <projectexplorer/editorconfiguration.h>
+//#include <projectexplorer/editorconfiguration.h>//#720 ROOPAK
 
 using namespace QmlJS;
 using namespace QmlJSTools;
@@ -59,29 +59,29 @@ public:
         QTextBlock block = doc->findBlock(selection.selectionStart());
         const QTextBlock end = doc->findBlock(selection.selectionEnd()).next();
 
-        const TextEditor::TabSettings &tabSettings =
-            ProjectExplorer::actualTabSettings(fileName, textDocument);
-        CreatorCodeFormatter codeFormatter(tabSettings);
-        codeFormatter.updateStateUntil(block);
+//        const TextEditor::TabSettings &tabSettings =//#720 ROOPAK - START
+//            ProjectExplorer::actualTabSettings(fileName, textDocument);
+//        CreatorCodeFormatter codeFormatter(tabSettings);
+//        codeFormatter.updateStateUntil(block);
 
-        do {
-            const int depth = codeFormatter.indentFor(block);
-            if (depth != -1)
-                tabSettings.indentLine(block, depth);
-            codeFormatter.updateLineStateChange(block);
-            block = block.next();
-        } while (block.isValid() && block != end);
+//        do {
+//            const int depth = codeFormatter.indentFor(block);
+//            if (depth != -1)
+//                tabSettings.indentLine(block, depth);
+//            codeFormatter.updateLineStateChange(block);
+//            block = block.next();
+//        } while (block.isValid() && block != end);//#720 ROOPAK - END
     }
 
     virtual void reindentSelection(const QTextCursor &selection,
                                    const QString &fileName,
                                    const TextEditor::BaseTextDocument *textDocument) const
     {
-        const TextEditor::TabSettings &tabSettings =
-            ProjectExplorer::actualTabSettings(fileName, textDocument);
+//        const TextEditor::TabSettings &tabSettings =//#720 ROOPAK - START
+//            ProjectExplorer::actualTabSettings(fileName, textDocument);
 
-        QmlJSEditor::Internal::Indenter indenter;
-        indenter.reindent(selection.document(), selection, tabSettings);
+//        QmlJSEditor::Internal::Indenter indenter;
+//        indenter.reindent(selection.document(), selection, tabSettings);//#720 ROOPAK - END
     }
 
     virtual void fileChanged(const QString &fileName)

@@ -46,7 +46,7 @@ namespace ProjectExplorer {
 
 //class BuildInfo;//ROOPAK
 //class IProjectManager;//#720 ROOPAK
-class EditorConfiguration;
+//class EditorConfiguration;//#720 ROOPAK
 //class ProjectImporter;
 //class ProjectNode;//ROOPAK
 //class Kit;//#720 ROOPAK
@@ -82,7 +82,7 @@ public:
     bool hasActiveBuildSettings() const;
 
     // EditorConfiguration:
-    EditorConfiguration *editorConfiguration() const;
+//    EditorConfiguration *editorConfiguration() const;//#720 ROOPAK
 
     // Target:
 //    void addTarget(Target *target);//#720 ROOPAK - START

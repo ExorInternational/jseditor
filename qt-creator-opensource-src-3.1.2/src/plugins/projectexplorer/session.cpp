@@ -32,7 +32,7 @@
 #include "project.h"
 #include "projectexplorer.h"
 //#include "nodesvisitor.h"//ROOPAK
-#include "editorconfiguration.h"
+//#include "editorconfiguration.h"//#720 ROOPAK
 //#include "projectnodes.h"//ROOPAK
 
 #include <coreplugin/icore.h>
@@ -570,8 +570,8 @@ void SessionManager::configureEditor(Core::IEditor *editor, const QString &fileN
     if (TextEditor::ITextEditor *textEditor = qobject_cast<TextEditor::ITextEditor*>(editor)) {
         Project *project = projectForFile(fileName);
         // Global settings are the default.
-        if (project)
-            project->editorConfiguration()->configureEditor(textEditor);
+//        if (project)//#720 ROOPAK - START
+//            project->editorConfiguration()->configureEditor(textEditor);//#720 ROOPAK - END
     }
 }
 

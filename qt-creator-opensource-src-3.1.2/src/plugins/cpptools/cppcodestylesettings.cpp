@@ -33,7 +33,7 @@
 #include "cpptoolsconstants.h"
 #include "cpptoolssettings.h"
 
-#include <projectexplorer/editorconfiguration.h>
+//#include <projectexplorer/editorconfiguration.h>//#720 ROOPAK
 #include <projectexplorer/project.h>
 #include <projectexplorer/projectexplorer.h>
 
@@ -213,21 +213,21 @@ CPlusPlus::Overview CppCodeStyleSettings::currentProjectCodeStyleOverview()
     if (!project)
         return currentGlobalCodeStyleOverview();
 
-    ProjectExplorer::EditorConfiguration *editorConfiguration = project->editorConfiguration();
-    QTC_ASSERT(editorConfiguration, return currentGlobalCodeStyleOverview());
+//    ProjectExplorer::EditorConfiguration *editorConfiguration = project->editorConfiguration();//#720 ROOPAK - START
+//    QTC_ASSERT(editorConfiguration, return currentGlobalCodeStyleOverview());
 
-    TextEditor::ICodeStylePreferences *codeStylePreferences
-        = editorConfiguration->codeStyle(Constants::CPP_SETTINGS_ID);
-    QTC_ASSERT(codeStylePreferences, return currentGlobalCodeStyleOverview());
+//    TextEditor::ICodeStylePreferences *codeStylePreferences
+//        = editorConfiguration->codeStyle(Constants::CPP_SETTINGS_ID);
+//    QTC_ASSERT(codeStylePreferences, return currentGlobalCodeStyleOverview());
 
-    CppCodeStylePreferences *cppCodeStylePreferences
-        = dynamic_cast<CppCodeStylePreferences *>(codeStylePreferences);
-    QTC_ASSERT(cppCodeStylePreferences, return currentGlobalCodeStyleOverview());
+//    CppCodeStylePreferences *cppCodeStylePreferences
+//        = dynamic_cast<CppCodeStylePreferences *>(codeStylePreferences);
+//    QTC_ASSERT(cppCodeStylePreferences, return currentGlobalCodeStyleOverview());
 
-    CppCodeStyleSettings settings = cppCodeStylePreferences->currentCodeStyleSettings();
+//    CppCodeStyleSettings settings = cppCodeStylePreferences->currentCodeStyleSettings();//#720 ROOPAK - END
 
     CPlusPlus::Overview overview;
-    configureOverviewWithCodeStyleSettings(overview, settings);
+//    configureOverviewWithCodeStyleSettings(overview, settings);//#720 ROOPAK
     return overview;
 }
 

@@ -31,7 +31,7 @@
 
 //#include "buildinfo.h"//ROOPAK
 //#include "buildconfiguration.h"//ROOPAK
-#include "editorconfiguration.h"
+//#include "editorconfiguration.h"//#720 ROOPAK
 #include "projectexplorer.h"
 //#include "target.h"//#720 ROOPAK
 //#include "settingsaccessor.h"//ROOPAK
@@ -90,16 +90,16 @@ public:
     Core::Id m_id;
 //    QList<Target *> m_targets;//#720 ROOPAK
 //    Target *m_activeTarget;//#720 ROOPAK
-    EditorConfiguration *m_editorConfiguration;
+//    EditorConfiguration *m_editorConfiguration;//#720 ROOPAK
     Core::Context m_projectContext;
     Core::Context m_projectLanguages;
     QVariantMap m_pluginSettings;
 //    SettingsAccessor *m_accessor;//ROOPAK
 };
 
-ProjectPrivate::ProjectPrivate() :
+ProjectPrivate::ProjectPrivate() //:
 //    m_activeTarget(0),//#720 ROOPAK
-    m_editorConfiguration(new EditorConfiguration())//,
+//    m_editorConfiguration(new EditorConfiguration())//,//#720 ROOPAK
 //    m_accessor(0)//ROOPAK
 { }
 
@@ -112,7 +112,7 @@ Project::Project() : d(new ProjectPrivate)
 Project::~Project()
 {
 //    qDeleteAll(d->m_targets);//#720 ROOPAK
-    delete d->m_editorConfiguration;
+//    delete d->m_editorConfiguration;//#720 ROOPAK
     delete d;
 }
 
@@ -343,7 +343,7 @@ QVariantMap Project::toMap() const
 //    for (int i = 0; i < ts.size(); ++i)
 //        map.insert(QString::fromLatin1(TARGET_KEY_PREFIX) + QString::number(i), ts.at(i)->toMap());//#720 ROOPAK - END
 
-    map.insert(QLatin1String(EDITOR_SETTINGS_KEY), d->m_editorConfiguration->toMap());
+//    map.insert(QLatin1String(EDITOR_SETTINGS_KEY), d->m_editorConfiguration->toMap());//#720 ROOPAK
     map.insert(QLatin1String(PLUGIN_SETTINGS_KEY), d->m_pluginSettings);
 
     return map;
@@ -367,7 +367,7 @@ bool Project::fromMap(const QVariantMap &map)
 {
     if (map.contains(QLatin1String(EDITOR_SETTINGS_KEY))) {
         QVariantMap values(map.value(QLatin1String(EDITOR_SETTINGS_KEY)).toMap());
-        d->m_editorConfiguration->fromMap(values);
+//        d->m_editorConfiguration->fromMap(values);//#720 ROOPAK
     }
 
     if (map.contains(QLatin1String(PLUGIN_SETTINGS_KEY)))
@@ -401,10 +401,10 @@ bool Project::fromMap(const QVariantMap &map)
     return true;
 }
 
-EditorConfiguration *Project::editorConfiguration() const
-{
-    return d->m_editorConfiguration;
-}
+//EditorConfiguration *Project::editorConfiguration() const//#720 ROOPAK - START
+//{
+//    return d->m_editorConfiguration;
+//}//#720 ROOPAK - END
 
 QString Project::generatedUiHeader(const QString & /* formFile */) const
 {
