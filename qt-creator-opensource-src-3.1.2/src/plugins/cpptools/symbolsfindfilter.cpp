@@ -35,7 +35,7 @@
 #include <coreplugin/progressmanager/futureprogress.h>
 #include <coreplugin/progressmanager/progressmanager.h>
 #include <projectexplorer/projectexplorer.h>
-#include <projectexplorer/session.h>
+//#include <projectexplorer/session.h>//#720 ROOPAK
 
 #include <utils/runextensions.h>
 #include <utils/qtcassert.h>
@@ -133,8 +133,8 @@ void SymbolsFindFilter::startSearch(Core::SearchResult *search)
     SymbolSearcher::Parameters parameters = search->userData().value<SymbolSearcher::Parameters>();
     QSet<QString> projectFileNames;
     if (parameters.scope == SymbolSearcher::SearchProjectsOnly) {
-        foreach (ProjectExplorer::Project *project, ProjectExplorer::SessionManager::projects())
-            projectFileNames += project->files(ProjectExplorer::Project::AllFiles).toSet();
+//        foreach (ProjectExplorer::Project *project, ProjectExplorer::SessionManager::projects())//#720 ROOPAK - START
+//            projectFileNames += project->files(ProjectExplorer::Project::AllFiles).toSet();//#720 ROOPAK - END
     }
 
     QFutureWatcher<Core::SearchResultItem> *watcher = new QFutureWatcher<Core::SearchResultItem>();

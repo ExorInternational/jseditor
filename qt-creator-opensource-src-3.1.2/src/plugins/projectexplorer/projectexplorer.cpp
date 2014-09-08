@@ -68,7 +68,7 @@
 //#include "projecttreewidget.h"//ROOPAK
 //#include "projectwindow.h"//ROOPAK
 //#include "runsettingspropertiespage.h"//ROOPAK
-#include "session.h"
+//#include "session.h"//#720 ROOPAK
 //#include "projectnodes.h"//ROOPAK
 //#include "sessiondialog.h"//ROOPAK
 //#include "projectexplorersettingspage.h"//ROOPAK
@@ -383,28 +383,28 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
     connect(DocumentManager::instance(), SIGNAL(currentFileChanged(QString)),
             this, SLOT(setCurrentFile(QString)));
 
-    QObject *sessionManager = new SessionManager(this);
+//    QObject *sessionManager = new SessionManager(this);//#720 ROOPAK - START
 
-    connect(sessionManager, SIGNAL(projectAdded(ProjectExplorer::Project*)),
-            this, SIGNAL(fileListChanged()));
-    connect(sessionManager, SIGNAL(aboutToRemoveProject(ProjectExplorer::Project*)),
-            this, SLOT(invalidateProject(ProjectExplorer::Project*)));
-    connect(sessionManager, SIGNAL(projectRemoved(ProjectExplorer::Project*)),
-            this, SIGNAL(fileListChanged()));
-    connect(sessionManager, SIGNAL(projectAdded(ProjectExplorer::Project*)),
-            this, SLOT(projectAdded(ProjectExplorer::Project*)));
-    connect(sessionManager, SIGNAL(projectRemoved(ProjectExplorer::Project*)),
-            this, SLOT(projectRemoved(ProjectExplorer::Project*)));
-    connect(sessionManager, SIGNAL(startupProjectChanged(ProjectExplorer::Project*)),
-            this, SLOT(startupProjectChanged()));
-    connect(sessionManager, SIGNAL(projectDisplayNameChanged(ProjectExplorer::Project*)),
-            this, SLOT(projectDisplayNameChanged(ProjectExplorer::Project*)));
-    connect(sessionManager, SIGNAL(dependencyChanged(ProjectExplorer::Project*,ProjectExplorer::Project*)),
-            this, SLOT(updateActions()));
-    connect(sessionManager, SIGNAL(sessionLoaded(QString)),
-            this, SLOT(updateActions()));
-    connect(sessionManager, SIGNAL(sessionLoaded(QString)),
-            this, SLOT(updateWelcomePage()));
+//    connect(sessionManager, SIGNAL(projectAdded(ProjectExplorer::Project*)),
+//            this, SIGNAL(fileListChanged()));
+//    connect(sessionManager, SIGNAL(aboutToRemoveProject(ProjectExplorer::Project*)),
+//            this, SLOT(invalidateProject(ProjectExplorer::Project*)));
+//    connect(sessionManager, SIGNAL(projectRemoved(ProjectExplorer::Project*)),
+//            this, SIGNAL(fileListChanged()));
+//    connect(sessionManager, SIGNAL(projectAdded(ProjectExplorer::Project*)),
+//            this, SLOT(projectAdded(ProjectExplorer::Project*)));
+//    connect(sessionManager, SIGNAL(projectRemoved(ProjectExplorer::Project*)),
+//            this, SLOT(projectRemoved(ProjectExplorer::Project*)));
+//    connect(sessionManager, SIGNAL(startupProjectChanged(ProjectExplorer::Project*)),
+//            this, SLOT(startupProjectChanged()));
+//    connect(sessionManager, SIGNAL(projectDisplayNameChanged(ProjectExplorer::Project*)),
+//            this, SLOT(projectDisplayNameChanged(ProjectExplorer::Project*)));
+//    connect(sessionManager, SIGNAL(dependencyChanged(ProjectExplorer::Project*,ProjectExplorer::Project*)),
+//            this, SLOT(updateActions()));
+//    connect(sessionManager, SIGNAL(sessionLoaded(QString)),
+//            this, SLOT(updateActions()));
+//    connect(sessionManager, SIGNAL(sessionLoaded(QString)),
+//            this, SLOT(updateWelcomePage()));//#720 ROOPAK - END
 
 //    addAutoReleasedObject(new CustomWizardFactory<CustomProjectWizard>(Core::IWizard::ProjectWizard));//ROOPAK - START
 //    addAutoReleasedObject(new CustomWizardFactory<CustomWizard>(Core::IWizard::FileWizard));
@@ -1109,7 +1109,7 @@ void ProjectExplorerPlugin::unloadProject()
 
 void ProjectExplorerPlugin::unloadProject(Project *project)
 {
-    SessionManager::removeProject(project);
+//    SessionManager::removeProject(project);//#720 ROOPAK
     updateActions();
 }
 
@@ -1121,7 +1121,7 @@ void ProjectExplorerPlugin::closeAllProjects()
     if (!EditorManager::closeAllEditors())
         return; // Action has been cancelled
 
-    SessionManager::closeAllProjects();
+//    SessionManager::closeAllProjects();//#720 ROOPAK
     updateActions();
 
 #if HAS_WELCOME_PAGE
@@ -1181,19 +1181,19 @@ void ProjectExplorerPlugin::updateVariable(const QByteArray &variable)
             VariableManager::remove(variable);
         }
     } else if (variable == Constants::VAR_CURRENTSESSION_NAME) {
-        if (!SessionManager::activeSession().isEmpty())
-            VariableManager::insert(variable, SessionManager::activeSession());
-        else
-            VariableManager::remove(variable);
+//        if (!SessionManager::activeSession().isEmpty())//#720 ROOPAK - START
+//            VariableManager::insert(variable, SessionManager::activeSession());
+//        else
+//            VariableManager::remove(variable);//#720 ROOPAK - END
     } else if (Core::VariableManager::isFileVariable(
                    variable, ProjectExplorer::Constants::VAR_CURRENTSESSION_PREFIX)) {
-        if (!SessionManager::activeSession().isEmpty()) {
-            VariableManager::insert(variable, Core::VariableManager::fileVariableValue(variable,
-                 ProjectExplorer::Constants::VAR_CURRENTSESSION_PREFIX,
-                 SessionManager::sessionNameToFileName(SessionManager::activeSession()).toFileInfo()));
-        } else {
-            VariableManager::remove(variable);
-        }
+//        if (!SessionManager::activeSession().isEmpty()) {//#720 ROOPAK - START
+//            VariableManager::insert(variable, Core::VariableManager::fileVariableValue(variable,
+//                 ProjectExplorer::Constants::VAR_CURRENTSESSION_PREFIX,
+//                 SessionManager::sessionNameToFileName(SessionManager::activeSession()).toFileInfo()));
+//        } else {
+//            VariableManager::remove(variable);
+//        }//#720 ROOPAK - END
     } else {
         QString projectName;
         QString projectFilePath;
@@ -1226,7 +1226,7 @@ void ProjectExplorerPlugin::updateRunWithoutDeployMenu()
 ExtensionSystem::IPlugin::ShutdownFlag ProjectExplorerPlugin::aboutToShutdown()
 {
 //    d->m_proWindow->aboutToShutdown(); // disconnect from session//ROOPAK
-    SessionManager::closeAllProjects();
+//    SessionManager::closeAllProjects();//#720 ROOPAK
     d->m_projectsMode = 0;
     d->m_shuttingDown = true;
     // Attempt to synchronously shutdown all run controls.
@@ -1254,11 +1254,11 @@ void ProjectExplorerPlugin::showSessionManager()
     if (debug)
         qDebug() << "ProjectExplorerPlugin::showSessionManager";
 
-    if (SessionManager::isDefaultVirgin()) {
-        // do not save new virgin default sessions
-    } else {
-        SessionManager::save();
-    }
+//    if (SessionManager::isDefaultVirgin()) {//#720 ROOPAK - START
+//        // do not save new virgin default sessions
+//    } else {
+//        SessionManager::save();
+//    }//#720 ROOPAK - END
 //    SessionDialog sessionDialog(ICore::mainWindow());//ROOPAK - START
 //    sessionDialog.setAutoLoadSession(d->m_projectExplorerSettings.autorestoreLastSession);
 //    sessionDialog.exec();
@@ -1280,7 +1280,7 @@ void ProjectExplorerPlugin::setStartupProject(Project *project)
 
     if (!project)
         return;
-    SessionManager::setStartupProject(project);
+//    SessionManager::setStartupProject(project);//#720 ROOPAK
     updateActions();
 }
 
@@ -1292,19 +1292,19 @@ void ProjectExplorerPlugin::savePersistentSettings()
     if (d->m_shuttingDown)
         return;
 
-    if (!SessionManager::loadingSession())  {
-        foreach (Project *pro, SessionManager::projects())
-            pro->saveSettings();
+//    if (!SessionManager::loadingSession())  {//#720 ROOPAK - START
+//        foreach (Project *pro, SessionManager::projects())
+//            pro->saveSettings();
 
-        if (SessionManager::isDefaultVirgin()) {
-            // do not save new virgin default sessions
-        } else {
-            SessionManager::save();
-        }
-    }
+//        if (SessionManager::isDefaultVirgin()) {
+//            // do not save new virgin default sessions
+//        } else {
+//            SessionManager::save();
+//        }
+//    }//#720 ROOPAK - END
 
     QSettings *s = ICore::settings();
-    s->setValue(QLatin1String("ProjectExplorer/StartupSession"), SessionManager::activeSession());
+//    s->setValue(QLatin1String("ProjectExplorer/StartupSession"), SessionManager::activeSession());//#720 ROOPAK
     s->remove(QLatin1String("ProjectExplorer/RecentProjects/Files"));
 
     QStringList fileNames;
@@ -1351,7 +1351,7 @@ Project *ProjectExplorerPlugin::openProject(const QString &fileName, QString *er
     QList<Project *> list = openProjects(QStringList() << fileName, errorString);
     if (!list.isEmpty()) {
         addToRecentProjects(fileName, list.first()->displayName());
-        SessionManager::setStartupProject(list.first());
+//        SessionManager::setStartupProject(list.first());//#720 ROOPAK
         return list.first();
     }
     return 0;
@@ -1388,16 +1388,16 @@ QList<Project *> ProjectExplorerPlugin::openProjects(const QStringList &fileName
         if (fi.exists()) // canonicalFilePath will be empty otherwise!
             filePath = fi.canonicalFilePath();
         bool found = false;
-        foreach (Project *pi, SessionManager::projects()) {
-            if (filePath == pi->projectFilePath()) {
-                found = true;
-                break;
-            }
-        }
+//        foreach (Project *pi, SessionManager::projects()) {//#720 ROOPAK - END
+//            if (filePath == pi->projectFilePath()) {
+//                found = true;
+//                break;
+//            }
+//        }//#720 ROOPAK - END
         if (found) {
             appendError(errorString, tr("Failed opening project '%1': Project already open.")
                         .arg(QDir::toNativeSeparators(fileName)));
-            SessionManager::reportProjectLoadingProgress();
+//            SessionManager::reportProjectLoadingProgress();//#720 ROOPAK
             continue;
         }
 
@@ -1435,7 +1435,7 @@ QList<Project *> ProjectExplorerPlugin::openProjects(const QStringList &fileName
             appendError(errorString, tr("Failed opening project '%1': Unknown project type.")
                         .arg(QDir::toNativeSeparators(fileName)));
         }
-        SessionManager::reportProjectLoadingProgress();
+//        SessionManager::reportProjectLoadingProgress();//#720 ROOPAK
     }
     updateActions();
 
@@ -1484,12 +1484,12 @@ void ProjectExplorerPlugin::setCurrentFile(const QString &filePath)
 {
     if (d->m_ignoreDocumentManagerChangedFile)
         return;
-    Project *project = SessionManager::projectForFile(filePath);
+//    Project *project = SessionManager::projectForFile(filePath);//#720 ROOPAK
     // If the file is not in any project, stay with the current project
     // e.g. on opening a git diff buffer, git log buffer, we don't change the project
     // I'm not 100% sure this is correct
-    if (!project)
-        project = d->m_currentProject;
+//    if (!project)
+//        project = d->m_currentProject;
 //    setCurrent(project, filePath, 0);//ROOPAK
 }
 
@@ -1516,21 +1516,21 @@ void ProjectExplorerPlugin::currentModeChanged(IMode *mode, IMode *oldMode)
 void ProjectExplorerPlugin::determineSessionToRestoreAtStartup()
 {
     // Process command line arguments first:
-    if (pluginSpec()->arguments().contains(QLatin1String("-lastsession")))
-        d->m_sessionToRestoreAtStartup = SessionManager::lastSession();
-    QStringList arguments = ExtensionSystem::PluginManager::arguments();
-    if (d->m_sessionToRestoreAtStartup.isNull()) {
-        QStringList sessions = SessionManager::sessions();
-        // We have command line arguments, try to find a session in them
-        // Default to no session loading
-        foreach (const QString &arg, arguments) {
-            if (sessions.contains(arg)) {
-                // Session argument
-                d->m_sessionToRestoreAtStartup = arg;
-                break;
-            }
-        }
-    }
+//    if (pluginSpec()->arguments().contains(QLatin1String("-lastsession")))//#720 ROOPAK - START
+//        d->m_sessionToRestoreAtStartup = SessionManager::lastSession();
+//    QStringList arguments = ExtensionSystem::PluginManager::arguments();
+//    if (d->m_sessionToRestoreAtStartup.isNull()) {
+//        QStringList sessions = SessionManager::sessions();
+//        // We have command line arguments, try to find a session in them
+//        // Default to no session loading
+//        foreach (const QString &arg, arguments) {
+//            if (sessions.contains(arg)) {
+//                // Session argument
+//                d->m_sessionToRestoreAtStartup = arg;
+//                break;
+//            }
+//        }
+//    }//#720 ROOPAK - END
     // Handle settings only after command line arguments:
 //    if (d->m_sessionToRestoreAtStartup.isNull()//ROOPAK - START
 //        && d->m_projectExplorerSettings.autorestoreLastSession)
@@ -1579,7 +1579,7 @@ void ProjectExplorerPlugin::restoreSession()
     // In addition, convert "filename" "+45" or "filename" ":23" into
     //   "filename+45"   and "filename:23".
     if (!arguments.isEmpty()) {
-        const QStringList sessions = SessionManager::sessions();
+//        const QStringList sessions = SessionManager::sessions();//#720 ROOPAK
         QStringList projectGlobs = projectFileGlobs();
         for (int a = 0; a < arguments.size(); ) {
             const QString &arg = arguments.at(a);
@@ -1588,7 +1588,7 @@ void ProjectExplorerPlugin::restoreSession()
                 const QDir dir(fi.absoluteFilePath());
                 // Does the directory name match a session?
                 if (d->m_sessionToRestoreAtStartup.isEmpty()
-                    && sessions.contains(dir.dirName())) {
+                    /*&& sessions.contains(dir.dirName())*/) {//#720 ROOPAK
                     d->m_sessionToRestoreAtStartup = dir.dirName();
                     arguments.removeAt(a);
                     continue;
@@ -1617,8 +1617,8 @@ void ProjectExplorerPlugin::restoreSession()
         } // for arguments
     } // !arguments.isEmpty()
     // Restore latest session or what was passed on the command line
-    if (!d->m_sessionToRestoreAtStartup.isEmpty())
-        SessionManager::loadSession(d->m_sessionToRestoreAtStartup);
+//    if (!d->m_sessionToRestoreAtStartup.isEmpty())//#720 ROOPAK - START
+//        SessionManager::loadSession(d->m_sessionToRestoreAtStartup);//#720 ROOPAK - END
 
     // update welcome page
     connect(ModeManager::instance(),
@@ -1643,7 +1643,7 @@ void ProjectExplorerPlugin::loadSession(const QString &session)
 {
     if (debug)
         qDebug() << "ProjectExplorerPlugin::loadSession" << session;
-    SessionManager::loadSession(session);
+//    SessionManager::loadSession(session);//#720 ROOPAK
 }
 
 
@@ -1891,13 +1891,13 @@ void ProjectExplorerPlugin::updateActions()
     if (debug)
         qDebug() << "ProjectExplorerPlugin::updateActions";
 
-    Project *project = SessionManager::startupProject();
+//    Project *project = SessionManager::startupProject();//#720 ROOPAK
 
-    QPair<bool, QString> buildActionState = buildSettingsEnabled(project);
+    QPair<bool, QString> buildActionState = buildSettingsEnabled(/*project*/NULL);//#720 ROOPAK
     QPair<bool, QString> buildActionContextState = buildSettingsEnabled(d->m_currentProject);
     QPair<bool, QString> buildSessionState = buildSettingsEnabledForSession();
 
-    QString projectName = project ? project->displayName() : QString();
+    QString projectName = /*project ? project->displayName() :*/ QString();//#720 ROOPAK
     QString projectNameContextMenu = d->m_currentProject ? d->m_currentProject->displayName() : QString();
 
     d->m_unloadAction->setParameter(projectNameContextMenu);
@@ -1918,16 +1918,16 @@ void ProjectExplorerPlugin::updateActions()
     // Context menu actions
     d->m_setStartupProjectAction->setParameter(projectNameContextMenu);
 
-    bool hasDependencies = SessionManager::projectOrder(d->m_currentProject).size() > 1;
-    if (hasDependencies) {
-        d->m_buildActionContextMenu->setText(tr("Build Without Dependencies"));
-        d->m_rebuildActionContextMenu->setText(tr("Rebuild Without Dependencies"));
-        d->m_cleanActionContextMenu->setText(tr("Clean Without Dependencies"));
-    } else {
-        d->m_buildActionContextMenu->setText(tr("Build"));
-        d->m_rebuildActionContextMenu->setText(tr("Rebuild"));
-        d->m_cleanActionContextMenu->setText(tr("Clean"));
-    }
+//    bool hasDependencies = SessionManager::projectOrder(d->m_currentProject).size() > 1;//#720 ROOPAK - START
+//    if (hasDependencies) {
+//        d->m_buildActionContextMenu->setText(tr("Build Without Dependencies"));
+//        d->m_rebuildActionContextMenu->setText(tr("Rebuild Without Dependencies"));
+//        d->m_cleanActionContextMenu->setText(tr("Clean Without Dependencies"));
+//    } else {
+//        d->m_buildActionContextMenu->setText(tr("Build"));
+//        d->m_rebuildActionContextMenu->setText(tr("Rebuild"));
+//        d->m_cleanActionContextMenu->setText(tr("Clean"));
+//    }//#720 ROOPAK - END
 
     d->m_buildActionContextMenu->setEnabled(buildActionContextState.first);
     d->m_rebuildActionContextMenu->setEnabled(buildActionContextState.first);
@@ -1947,7 +1947,7 @@ void ProjectExplorerPlugin::updateActions()
     d->m_cleanProjectOnlyAction->setToolTip(buildActionState.second);
 
     // Session actions
-    d->m_closeAllProjects->setEnabled(SessionManager::hasProjects());
+//    d->m_closeAllProjects->setEnabled(SessionManager::hasProjects());//#720 ROOPAK
 
     d->m_buildSessionAction->setEnabled(buildSessionState.first);
     d->m_rebuildSessionAction->setEnabled(buildSessionState.first);
@@ -1959,7 +1959,7 @@ void ProjectExplorerPlugin::updateActions()
 
 //    d->m_cancelBuildAction->setEnabled(BuildManager::isBuilding());//ROOPAK
 
-    const bool hasProjects = SessionManager::hasProjects();
+    const bool hasProjects = false;//SessionManager::hasProjects();//#720 ROOPAK - START
     d->m_projectSelectorAction->setEnabled(hasProjects);
     d->m_projectSelectorActionMenu->setEnabled(hasProjects);
     d->m_projectSelectorActionQuick->setEnabled(hasProjects);
@@ -1976,11 +1976,11 @@ QStringList ProjectExplorerPlugin::allFilesWithDependencies(Project *pro)
         qDebug() << "ProjectExplorerPlugin::allFilesWithDependencies(" << pro->projectFilePath() << ")";
 
     QStringList filesToSave;
-    foreach (Project *p, SessionManager::projectOrder(pro)) {
+//    foreach (Project *p, SessionManager::projectOrder(pro)) {//#720 ROOPAK - END
 //        FindAllFilesVisitor filesVisitor;//ROOPAK
 //        p->rootProjectNode()->accept(&filesVisitor);//ROOPAK
 //        filesToSave << filesVisitor.filePaths();//ROOPAK
-    }
+//    }//#720 ROOPAK - END
     qSort(filesToSave);
     return filesToSave;
 }
@@ -2086,13 +2086,13 @@ int ProjectExplorerPlugin::queue(QList<Project *> projects, QList<Id> stepIds)
 
 void ProjectExplorerPlugin::buildProjectOnly()
 {
-    queue(QList<Project *>() << SessionManager::startupProject(), QList<Id>() << Id(Constants::BUILDSTEPS_BUILD));
+//    queue(QList<Project *>() << SessionManager::startupProject(), QList<Id>() << Id(Constants::BUILDSTEPS_BUILD));//#720 ROOPAK
 }
 
 void ProjectExplorerPlugin::buildProject(Project *p)
 {
-    queue(SessionManager::projectOrder(p),
-          QList<Id>() << Id(Constants::BUILDSTEPS_BUILD));
+//    queue(SessionManager::projectOrder(p),//#720 ROOPAK - START
+//          QList<Id>() << Id(Constants::BUILDSTEPS_BUILD));//#720 ROOPAK - END
 }
 
 void ProjectExplorerPlugin::requestProjectModeUpdate(Project *p)
@@ -2102,8 +2102,8 @@ void ProjectExplorerPlugin::requestProjectModeUpdate(Project *p)
 
 void ProjectExplorerPlugin::buildProject()
 {
-    queue(SessionManager::projectOrder(SessionManager::startupProject()),
-          QList<Id>() << Id(Constants::BUILDSTEPS_BUILD));
+//    queue(SessionManager::projectOrder(SessionManager::startupProject()),//#720 ROOPAK - START
+//          QList<Id>() << Id(Constants::BUILDSTEPS_BUILD));//#720 ROOPAK - END
 }
 
 void ProjectExplorerPlugin::buildProjectContextMenu()
@@ -2114,20 +2114,20 @@ void ProjectExplorerPlugin::buildProjectContextMenu()
 
 void ProjectExplorerPlugin::buildSession()
 {
-    queue(SessionManager::projectOrder(),
-          QList<Id>() << Id(Constants::BUILDSTEPS_BUILD));
+//    queue(SessionManager::projectOrder(),//#720 ROOPAK - START
+//          QList<Id>() << Id(Constants::BUILDSTEPS_BUILD));//#720 ROOPAK - END
 }
 
 void ProjectExplorerPlugin::rebuildProjectOnly()
 {
-    queue(QList<Project *>() << SessionManager::startupProject(),
-          QList<Id>() << Id(Constants::BUILDSTEPS_CLEAN) << Id(Constants::BUILDSTEPS_BUILD));
+//    queue(QList<Project *>() << SessionManager::startupProject(),//#720 ROOPAK - START
+//          QList<Id>() << Id(Constants::BUILDSTEPS_CLEAN) << Id(Constants::BUILDSTEPS_BUILD));//#720 ROOPAK - END
 }
 
 void ProjectExplorerPlugin::rebuildProject()
 {
-    queue(SessionManager::projectOrder(SessionManager::startupProject()),
-          QList<Id>() << Id(Constants::BUILDSTEPS_CLEAN) << Id(Constants::BUILDSTEPS_BUILD));
+//    queue(SessionManager::projectOrder(SessionManager::startupProject()),//#720 ROOPAK - START
+//          QList<Id>() << Id(Constants::BUILDSTEPS_CLEAN) << Id(Constants::BUILDSTEPS_BUILD));//#720 ROOPAK - END
 }
 
 void ProjectExplorerPlugin::rebuildProjectContextMenu()
@@ -2138,18 +2138,18 @@ void ProjectExplorerPlugin::rebuildProjectContextMenu()
 
 void ProjectExplorerPlugin::rebuildSession()
 {
-    queue(SessionManager::projectOrder(),
-          QList<Id>() << Id(Constants::BUILDSTEPS_CLEAN) << Id(Constants::BUILDSTEPS_BUILD));
+//    queue(SessionManager::projectOrder(),//#720 ROOPAK - START
+//          QList<Id>() << Id(Constants::BUILDSTEPS_CLEAN) << Id(Constants::BUILDSTEPS_BUILD));//#720 ROOPAK - END
 }
 
 void ProjectExplorerPlugin::deployProjectOnly()
 {
-    deploy(QList<Project *>() << SessionManager::startupProject());
+//    deploy(QList<Project *>() << SessionManager::startupProject());//#720 ROOPAK
 }
 
 void ProjectExplorerPlugin::deployProject()
 {
-    deploy(SessionManager::projectOrder(SessionManager::startupProject()));
+//    deploy(SessionManager::projectOrder(SessionManager::startupProject()));//#720 ROOPAK
 }
 
 void ProjectExplorerPlugin::deployProjectContextMenu()
@@ -2159,19 +2159,19 @@ void ProjectExplorerPlugin::deployProjectContextMenu()
 
 void ProjectExplorerPlugin::deploySession()
 {
-    deploy(SessionManager::projectOrder());
+//    deploy(SessionManager::projectOrder());//#720 ROOPAK
 }
 
 void ProjectExplorerPlugin::cleanProjectOnly()
 {
-    queue(QList<Project *>() << SessionManager::startupProject(),
-          QList<Id>() << Id(Constants::BUILDSTEPS_CLEAN));
+//    queue(QList<Project *>() << SessionManager::startupProject(),//#720 ROOPAK - START
+//          QList<Id>() << Id(Constants::BUILDSTEPS_CLEAN));//#720 ROOPAK - END
 }
 
 void ProjectExplorerPlugin::cleanProject()
 {
-    queue(SessionManager::projectOrder(SessionManager::startupProject()),
-          QList<Id>() << Id(Constants::BUILDSTEPS_CLEAN));
+//    queue(SessionManager::projectOrder(SessionManager::startupProject()),//#720 ROOPAK - END
+//          QList<Id>() << Id(Constants::BUILDSTEPS_CLEAN));//#720 ROOPAK - END
 }
 
 void ProjectExplorerPlugin::cleanProjectContextMenu()
@@ -2182,18 +2182,18 @@ void ProjectExplorerPlugin::cleanProjectContextMenu()
 
 void ProjectExplorerPlugin::cleanSession()
 {
-    queue(SessionManager::projectOrder(),
-          QList<Id>() << Id(Constants::BUILDSTEPS_CLEAN));
+//    queue(SessionManager::projectOrder(),//#720 ROOPAK - START
+//          QList<Id>() << Id(Constants::BUILDSTEPS_CLEAN));//#720 ROOPAK - END
 }
 
 void ProjectExplorerPlugin::runProject()
 {
-    runProject(SessionManager::startupProject(), NormalRunMode);
+//    runProject(SessionManager::startupProject(), NormalRunMode);//#720 ROOPAK
 }
 
 void ProjectExplorerPlugin::runProjectWithoutDeploy()
 {
-    runProject(SessionManager::startupProject(), NormalRunMode, true);
+//    runProject(SessionManager::startupProject(), NormalRunMode, true);//#720 ROOPAK
 }
 
 void ProjectExplorerPlugin::runProjectContextMenu()
@@ -2214,11 +2214,11 @@ void ProjectExplorerPlugin::runProjectContextMenu()
 
 bool ProjectExplorerPlugin::hasBuildSettings(Project *pro)
 {
-    foreach (Project *project, SessionManager::projectOrder(pro))
-        if (project
+//    foreach (Project *project, SessionManager::projectOrder(pro))//#720 ROOPAK - START
+//        if (project
 //                && project->activeTarget()//#720 ROOPAK
-                /*&& project->activeTarget()->activeBuildConfiguration()*/)//ROOPAK
-            return true;
+//                /*&& project->activeTarget()->activeBuildConfiguration()*/)//ROOPAK
+//            return true;//#720 ROOPAK - END
     return false;
 }
 
@@ -2239,18 +2239,18 @@ QPair<bool, QString> ProjectExplorerPlugin::buildSettingsEnabled(Project *pro)
         result.first = false;
         result.second = tr("Project has no build settings.");
     } else {
-        const QList<Project *> & projects = SessionManager::projectOrder(pro);
-        foreach (Project *project, projects) {
-            if (project
-//                    && project->activeTarget()//#720 ROOPAK
-//                    && project->activeTarget()->activeBuildConfiguration()//ROOPAK
-                    /*&& !project->activeTarget()->activeBuildConfiguration()->isEnabled()*/) {//ROOPAK
-                result.first = false;
-                result.second += tr("Building '%1' is disabled:");// %2<br>")//ROOPAK - START
-//                        .arg(project->displayName(),
-//                             project->activeTarget()->activeBuildConfiguration()->disabledReason());//ROOPAK - END
-            }
-        }
+//        const QList<Project *> & projects = SessionManager::projectOrder(pro);//#720 ROOPAK - START
+//        foreach (Project *project, projects) {
+//            if (project
+////                    && project->activeTarget()//#720 ROOPAK
+////                    && project->activeTarget()->activeBuildConfiguration()//ROOPAK
+//                    /*&& !project->activeTarget()->activeBuildConfiguration()->isEnabled()*/) {//ROOPAK
+//                result.first = false;
+//                result.second += tr("Building '%1' is disabled:");// %2<br>")//ROOPAK - START
+////                        .arg(project->displayName(),
+////                             project->activeTarget()->activeBuildConfiguration()->disabledReason());//ROOPAK - END
+//            }
+//        }//#720 ROOPAK - END
     }
     return result;
 }
@@ -2259,28 +2259,28 @@ QPair<bool, QString> ProjectExplorerPlugin::buildSettingsEnabledForSession()
 {
     QPair<bool, QString> result;
     result.first = true;
-    if (!SessionManager::hasProjects()) {
+    /*if (!SessionManager::hasProjects()) {
         result.first = false;
         result.second = tr("No project loaded");
-    } /*else if (BuildManager::isBuilding()) {//ROOPAK - START
+    } else if (BuildManager::isBuilding()) {//ROOPAK - START
         result.first = false;
         result.second = tr("A build is in progress");
-    } */else if (!hasBuildSettings(0)) {//ROOPAK - END
+    } else*/ if (!hasBuildSettings(0)) {//ROOPAK - END
         result.first = false;
         result.second = tr("Project has no build settings");
     } else {
-        foreach (Project *project, SessionManager::projectOrder(0)) {
-            if (project
-//                    && project->activeTarget()//#720 ROOPAK
-//                    && project->activeTarget()->activeBuildConfiguration()//ROOPAK
-                    /*&& !project->activeTarget()->activeBuildConfiguration()->isEnabled()*/) {//ROOPAK
-                result.first = false;
-                result.second += tr("Building '%1' is disabled:");// %2")//ROOPAK - START
-//                        .arg(project->displayName(),
-//                             project->activeTarget()->activeBuildConfiguration()->disabledReason());//ROOPAK - END
-                result.second += QLatin1Char('\n');
-            }
-        }
+//        foreach (Project *project, SessionManager::projectOrder(0)) {//#720 ROOPAK - START
+//            if (project
+////                    && project->activeTarget()//#720 ROOPAK
+////                    && project->activeTarget()->activeBuildConfiguration()//ROOPAK
+//                    /*&& !project->activeTarget()->activeBuildConfiguration()->isEnabled()*/) {//ROOPAK
+//                result.first = false;
+//                result.second += tr("Building '%1' is disabled:");// %2")//ROOPAK - START
+////                        .arg(project->displayName(),
+////                             project->activeTarget()->activeBuildConfiguration()->disabledReason());//ROOPAK - END
+//                result.second += QLatin1Char('\n');
+//            }
+//        }//#720 ROOPAK - END
     }
     return result;
 }
@@ -2371,8 +2371,8 @@ void ProjectExplorerPlugin::projectAdded(ProjectExplorer::Project *pro)
 
 void ProjectExplorerPlugin::projectRemoved(ProjectExplorer::Project * pro)
 {
-    if (d->m_projectsMode)
-        d->m_projectsMode->setEnabled(SessionManager::hasProjects());
+//    if (d->m_projectsMode)//#720 ROOPAK - START
+//        d->m_projectsMode->setEnabled(SessionManager::hasProjects());//#720 ROOPAK - END
     // more specific action en and disabling ?
     disconnect(pro, SIGNAL(buildConfigurationEnabledChanged()),
                this, SLOT(updateActions()));
@@ -2387,21 +2387,21 @@ void ProjectExplorerPlugin::projectDisplayNameChanged(Project *pro)
 void ProjectExplorerPlugin::startupProjectChanged()
 {
     static QPointer<Project> previousStartupProject = 0;
-    Project *project = SessionManager::startupProject();
-    if (project == previousStartupProject)
-        return;
+//    Project *project = SessionManager::startupProject();
+//    if (project == previousStartupProject)
+//        return;//#720 ROOPAK - END
 
     if (previousStartupProject) {
         disconnect(previousStartupProject, SIGNAL(activeTargetChanged(ProjectExplorer::Target*)),
                    this, SLOT(activeTargetChanged()));
     }
 
-    previousStartupProject = project;
+//    previousStartupProject = project;//#720 ROOPAK - START
 
-    if (project) {
-        connect(project, SIGNAL(activeTargetChanged(ProjectExplorer::Target*)),
-                this, SLOT(activeTargetChanged()));
-    }
+//    if (project) {
+//        connect(project, SIGNAL(activeTargetChanged(ProjectExplorer::Target*)),
+//                this, SLOT(activeTargetChanged()));
+//    }//#720 ROOPAK - END
 
     activeTargetChanged();
     updateActions();
@@ -2464,11 +2464,11 @@ void ProjectExplorerPlugin::activeTargetChanged()
 
 void ProjectExplorerPlugin::updateDeployActions()
 {
-    Project *project = SessionManager::startupProject();
+    Project *project = NULL;// SessionManager::startupProject();
 
-    bool enableDeployActions = project
+    bool enableDeployActions = false;//project//#720 ROOPAK - START
             //&& !BuildManager::isBuilding(project)//ROOPAK
-            && hasDeploySettings(project);
+//            && hasDeploySettings(project);//#720 ROOPAK - END
     bool enableDeployActionsContextMenu = d->m_currentProject
 //                              && !BuildManager::isBuilding(d->m_currentProject)//ROOPAK
                               && hasDeploySettings(d->m_currentProject);
@@ -2483,7 +2483,7 @@ void ProjectExplorerPlugin::updateDeployActions()
 //    }//ROOPAK - END
 
     const QString projectName = project ? project->displayName() : QString();
-    bool hasProjects = SessionManager::hasProjects();
+//    bool hasProjects = SessionManager::hasProjects();//#720 ROOPAK
 
     d->m_deployAction->setParameter(projectName);
     d->m_deployAction->setEnabled(enableDeployActions);
@@ -2504,7 +2504,7 @@ void ProjectExplorerPlugin::updateDeployActions()
 //            }
 //        }
 //    }//ROOPAK - END
-    if (!hasProjects || !hasDeploySettings(0) /*|| BuildManager::isBuilding()*/)//ROOPAK
+    if (/*!hasProjects ||*/ !hasDeploySettings(0) /*|| BuildManager::isBuilding()*/)//ROOPAK
         enableDeploySessionAction = false;
     d->m_deploySessionAction->setEnabled(enableDeploySessionAction);
 
@@ -2573,7 +2573,7 @@ QString ProjectExplorerPlugin::cannotRunReason(Project *project, RunMode runMode
 
 void ProjectExplorerPlugin::slotUpdateRunActions()
 {
-    Project *project = SessionManager::startupProject();
+    Project *project = false;//SessionManager::startupProject();//#720 ROOPAK - START
     const bool state = canRun(project, NormalRunMode);
     d->m_runAction->setEnabled(state);
     d->m_runAction->setToolTip(cannotRunReason(project, NormalRunMode));
@@ -3056,13 +3056,13 @@ void ProjectExplorerPlugin::updateSessionMenu()
     d->m_sessionMenu->clear();
     QActionGroup *ag = new QActionGroup(d->m_sessionMenu);
     connect(ag, SIGNAL(triggered(QAction*)), this, SLOT(setSession(QAction*)));
-    const QString activeSession = SessionManager::activeSession();
-    foreach (const QString &session, SessionManager::sessions()) {
-        QAction *act = ag->addAction(session);
-        act->setCheckable(true);
-        if (session == activeSession)
-            act->setChecked(true);
-    }
+//    const QString activeSession = SessionManager::activeSession();//#720 ROOPAK - START
+//    foreach (const QString &session, SessionManager::sessions()) {
+//        QAction *act = ag->addAction(session);
+//        act->setCheckable(true);
+//        if (session == activeSession)
+//            act->setChecked(true);
+//    }//#720 ROOPAK - END
     d->m_sessionMenu->addActions(ag->actions());
     d->m_sessionMenu->setEnabled(true);
 }
@@ -3070,8 +3070,8 @@ void ProjectExplorerPlugin::updateSessionMenu()
 void ProjectExplorerPlugin::setSession(QAction *action)
 {
     QString session = action->text();
-    if (session != SessionManager::activeSession())
-        SessionManager::loadSession(session);
+//    if (session != SessionManager::activeSession())//#720 ROOPAK - START
+//        SessionManager::loadSession(session);//#720 ROOPAK - END
 }
 
 //void ProjectExplorerPlugin::setProjectExplorerSettings(const ProjectExplorerSettings &pes)//ROOPAK - START

@@ -45,7 +45,7 @@
 #include <coreplugin/icore.h>
 #include <coreplugin/progressmanager/progressmanager.h>
 #include <projectexplorer/projectexplorer.h>
-#include <projectexplorer/session.h>
+//#include <projectexplorer/session.h>//#720 ROOPAK
 #include <extensionsystem/pluginmanager.h>
 #include <utils/qtcassert.h>
 
@@ -256,15 +256,15 @@ CppModelManager::CppModelManager(QObject *parent)
     m_delayedGcTimer->setSingleShot(true);
     connect(m_delayedGcTimer, SIGNAL(timeout()), this, SLOT(GC()));
 
-    QObject *sessionManager = ProjectExplorer::SessionManager::instance();
-    connect(sessionManager, SIGNAL(projectAdded(ProjectExplorer::Project*)),
-            this, SLOT(onProjectAdded(ProjectExplorer::Project*)));
-    connect(sessionManager, SIGNAL(aboutToRemoveProject(ProjectExplorer::Project*)),
-            this, SLOT(onAboutToRemoveProject(ProjectExplorer::Project*)));
-    connect(sessionManager, SIGNAL(aboutToLoadSession(QString)),
-            this, SLOT(onAboutToLoadSession()));
-    connect(sessionManager, SIGNAL(aboutToUnloadSession(QString)),
-            this, SLOT(onAboutToUnloadSession()));
+//    QObject *sessionManager = ProjectExplorer::SessionManager::instance();//#720 ROOPAK - START
+//    connect(sessionManager, SIGNAL(projectAdded(ProjectExplorer::Project*)),
+//            this, SLOT(onProjectAdded(ProjectExplorer::Project*)));
+//    connect(sessionManager, SIGNAL(aboutToRemoveProject(ProjectExplorer::Project*)),
+//            this, SLOT(onAboutToRemoveProject(ProjectExplorer::Project*)));
+//    connect(sessionManager, SIGNAL(aboutToLoadSession(QString)),
+//            this, SLOT(onAboutToLoadSession()));
+//    connect(sessionManager, SIGNAL(aboutToUnloadSession(QString)),
+//            this, SLOT(onAboutToUnloadSession()));//#720 ROOPAK - END
 
     connect(Core::ICore::instance(), SIGNAL(coreAboutToClose()),
             this, SLOT(onCoreAboutToClose()));

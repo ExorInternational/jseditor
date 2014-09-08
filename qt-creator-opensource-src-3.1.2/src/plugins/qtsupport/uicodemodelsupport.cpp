@@ -38,7 +38,7 @@
 //#include <projectexplorer/buildmanager.h>//ROOPAK
 #include <projectexplorer/project.h>
 #include <projectexplorer/projectexplorer.h>
-#include <projectexplorer/session.h>
+//#include <projectexplorer/session.h>//#720 ROOPAK
 //#include <projectexplorer/target.h>//#720 ROOPAK
 #include <utils/qtcassert.h>
 
@@ -321,9 +321,9 @@ UiCodeModelManager::UiCodeModelManager() :
     m_instance = this;
 //    connect(BuildManager::instance(), SIGNAL(buildStateChanged(ProjectExplorer::Project*)),//ROOPAK
 //            this, SLOT(buildStateHasChanged(ProjectExplorer::Project*)));//ROOPAK
-    connect(SessionManager::instance(),
-            SIGNAL(projectRemoved(ProjectExplorer::Project*)),
-            this, SLOT(projectWasRemoved(ProjectExplorer::Project*)));
+//    connect(SessionManager::instance(),//#720 ROOPAK - START
+//            SIGNAL(projectRemoved(ProjectExplorer::Project*)),
+//            this, SLOT(projectWasRemoved(ProjectExplorer::Project*)));//#720 ROOPAK - END
 
     connect(Core::EditorManager::instance(), SIGNAL(editorAboutToClose(Core::IEditor*)),
             this, SLOT(editorIsAboutToClose(Core::IEditor*)));

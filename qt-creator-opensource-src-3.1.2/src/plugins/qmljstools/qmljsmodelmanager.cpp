@@ -40,7 +40,7 @@
 //#include <projectexplorer/buildconfiguration.h>//ROOPAK
 #include <projectexplorer/project.h>
 #include <projectexplorer/projectexplorer.h>
-#include <projectexplorer/session.h>
+//#include <projectexplorer/session.h>//#720 ROOPAK
 //#include <projectexplorer/target.h>//#720 ROOPAK
 #include <qmljs/qmljsbind.h>
 #include <qmljs/qmljsfindexportedcpptypes.h>
@@ -216,8 +216,8 @@ void ModelManager::delayedInitialization()
                 this, SLOT(maybeQueueCppQmlTypeUpdate(CPlusPlus::Document::Ptr)), Qt::DirectConnection);
     }
 
-    connect(ProjectExplorer::SessionManager::instance(), SIGNAL(projectRemoved(ProjectExplorer::Project*)),
-            this, SLOT(removeProjectInfo(ProjectExplorer::Project*)));
+//    connect(ProjectExplorer::SessionManager::instance(), SIGNAL(projectRemoved(ProjectExplorer::Project*)),//#720 ROOPAK - START
+//            this, SLOT(removeProjectInfo(ProjectExplorer::Project*)));//#720 ROOPAK - END
 }
 
 void ModelManager::loadDefaultQmlTypeDescriptions()
@@ -251,11 +251,11 @@ ModelManagerInterface::WorkingCopy ModelManager::workingCopyInternal() const
 
 ModelManagerInterface::ProjectInfo ModelManager::defaultProjectInfo() const
 {
-    ProjectExplorer::Project *activeProject = ProjectExplorer::SessionManager::startupProject();
-    if (!activeProject)
+//    ProjectExplorer::Project *activeProject = ProjectExplorer::SessionManager::startupProject();//#720 ROOPAK - START
+//    if (!activeProject)
         return ModelManagerInterface::ProjectInfo();
 
-    return projectInfo(activeProject);
+//    return projectInfo(activeProject);//#720 ROOPAK - END
 }
 
 // Check whether fileMimeType is the same or extends knownMimeType

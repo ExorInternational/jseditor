@@ -40,7 +40,7 @@
 #include <qmljs/qmljsdocument.h>
 #include <qmljs/qmljsutils.h>
 #include <qmljstools/qmljsrefactoringchanges.h>
-#include <projectexplorer/session.h>
+//#include <projectexplorer/session.h>//#720 ROOPAK
 //#include <projectexplorer/projectnodes.h>//ROOPAK
 #include <projectexplorer/project.h>
 
