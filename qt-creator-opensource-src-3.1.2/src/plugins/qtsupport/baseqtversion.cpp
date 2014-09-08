@@ -40,7 +40,7 @@
 //#include <projectexplorer/toolchainmanager.h>//#720 ROOPAK
 //#include <projectexplorer/toolchain.h>//#720 ROOPAK
 #include <projectexplorer/projectexplorer.h>
-#include <projectexplorer/headerpath.h>
+//#include <projectexplorer/headerpath.h>//#720 ROOPAK
 #include <qtsupport/debugginghelperbuildtask.h>
 #include <qtsupport/qtsupportconstants.h>
 

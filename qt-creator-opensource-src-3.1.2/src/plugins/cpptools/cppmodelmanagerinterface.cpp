@@ -31,7 +31,7 @@
 
 #include <cplusplus/pp-engine.h>
 
-#include <projectexplorer/headerpath.h>
+//#include <projectexplorer/headerpath.h>//#720 ROOPAK
 //#include <projectexplorer/toolchain.h>//#720 ROOPAK
 
 #include <QSet>
