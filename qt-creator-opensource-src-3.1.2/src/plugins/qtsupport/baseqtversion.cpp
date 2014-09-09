@@ -62,7 +62,7 @@
 #include <coreplugin/featureprovider.h>
 //#include <projectexplorer/kitinformation.h>//#720 ROOPAK
 //#include <projectexplorer/kit.h>//#720 ROOPAK
-#include <projectexplorer/task.h>
+//#include <projectexplorer/task.h>//#720 ROOPAK
 //#720 ROOPAK - END
 
 using namespace Core;
@@ -1152,57 +1152,57 @@ bool BaseQtVersion::supportsShadowBuilds() const
     return true;
 }
 
-QList<Task> BaseQtVersion::reportIssuesImpl(const QString &proFile, const QString &buildDir) const
-{
-    QList<Task> results;
+//QList<Task> BaseQtVersion::reportIssuesImpl(const QString &proFile, const QString &buildDir) const//#720 ROOPAK - START
+//{
+//    QList<Task> results;
 
-    QString tmpBuildDir = QDir(buildDir).absolutePath();
-    if (!tmpBuildDir.endsWith(QLatin1Char('/')))
-        tmpBuildDir.append(QLatin1Char('/'));
+//    QString tmpBuildDir = QDir(buildDir).absolutePath();
+//    if (!tmpBuildDir.endsWith(QLatin1Char('/')))
+//        tmpBuildDir.append(QLatin1Char('/'));
 
-    if (!isValid()) {
-        //: %1: Reason for being invalid
-        const QString msg = QCoreApplication::translate("QmakeProjectManager::QtVersion", "The Qt version is invalid: %1").arg(invalidReason());
-        results.append(Task(Task::Error, msg, FileName(), -1,
-                            ProjectExplorer::Constants::TASK_CATEGORY_BUILDSYSTEM));
-    }
+//    if (!isValid()) {
+//        //: %1: Reason for being invalid
+//        const QString msg = QCoreApplication::translate("QmakeProjectManager::QtVersion", "The Qt version is invalid: %1").arg(invalidReason());
+//        results.append(Task(Task::Error, msg, FileName(), -1,
+//                            ProjectExplorer::Constants::TASK_CATEGORY_BUILDSYSTEM));
+//    }
 
-    QFileInfo qmakeInfo = qmakeCommand().toFileInfo();
-    if (!qmakeInfo.exists() ||
-        !qmakeInfo.isExecutable()) {
-        //: %1: Path to qmake executable
-        const QString msg = QCoreApplication::translate("QmakeProjectManager::QtVersion",
-                                                        "The qmake command \"%1\" was not found or is not executable.").arg(qmakeCommand().toUserOutput());
-        results.append(Task(Task::Error, msg, FileName(), -1,
-                            ProjectExplorer::Constants::TASK_CATEGORY_BUILDSYSTEM));
-    }
+//    QFileInfo qmakeInfo = qmakeCommand().toFileInfo();
+//    if (!qmakeInfo.exists() ||
+//        !qmakeInfo.isExecutable()) {
+//        //: %1: Path to qmake executable
+//        const QString msg = QCoreApplication::translate("QmakeProjectManager::QtVersion",
+//                                                        "The qmake command \"%1\" was not found or is not executable.").arg(qmakeCommand().toUserOutput());
+//        results.append(Task(Task::Error, msg, FileName(), -1,
+//                            ProjectExplorer::Constants::TASK_CATEGORY_BUILDSYSTEM));
+//    }
 
-    QString sourcePath = QFileInfo(proFile).absolutePath();
-    const QChar slash = QLatin1Char('/');
-    if (!sourcePath.endsWith(slash))
-        sourcePath.append(slash);
-    if ((tmpBuildDir.startsWith(sourcePath)) && (tmpBuildDir != sourcePath)) {
-        const QString msg = QCoreApplication::translate("QmakeProjectManager::QtVersion",
-                                                        "Qmake does not support build directories below the source directory.");
-        results.append(Task(Task::Warning, msg, FileName(), -1,
-                             ProjectExplorer::Constants::TASK_CATEGORY_BUILDSYSTEM));
-    } else if (tmpBuildDir.count(slash) != sourcePath.count(slash) && qtVersion() < QtVersionNumber(4,8, 0)) {
-        const QString msg = QCoreApplication::translate("QmakeProjectManager::QtVersion",
-                                                        "The build directory needs to be at the same level as the source directory.");
+//    QString sourcePath = QFileInfo(proFile).absolutePath();
+//    const QChar slash = QLatin1Char('/');
+//    if (!sourcePath.endsWith(slash))
+//        sourcePath.append(slash);
+//    if ((tmpBuildDir.startsWith(sourcePath)) && (tmpBuildDir != sourcePath)) {
+//        const QString msg = QCoreApplication::translate("QmakeProjectManager::QtVersion",
+//                                                        "Qmake does not support build directories below the source directory.");
+//        results.append(Task(Task::Warning, msg, FileName(), -1,
+//                             ProjectExplorer::Constants::TASK_CATEGORY_BUILDSYSTEM));
+//    } else if (tmpBuildDir.count(slash) != sourcePath.count(slash) && qtVersion() < QtVersionNumber(4,8, 0)) {
+//        const QString msg = QCoreApplication::translate("QmakeProjectManager::QtVersion",
+//                                                        "The build directory needs to be at the same level as the source directory.");
 
-        results.append(Task(Task::Warning, msg, FileName(), -1,
-                            ProjectExplorer::Constants::TASK_CATEGORY_BUILDSYSTEM));
-    }
+//        results.append(Task(Task::Warning, msg, FileName(), -1,
+//                            ProjectExplorer::Constants::TASK_CATEGORY_BUILDSYSTEM));
+//    }
 
-    return results;
-}
+//    return results;
+//}
 
-QList<Task> BaseQtVersion::reportIssues(const QString &proFile, const QString &buildDir) const
-{
-    QList<Task> results = reportIssuesImpl(proFile, buildDir);
-    qSort(results);
-    return results;
-}
+//QList<Task> BaseQtVersion::reportIssues(const QString &proFile, const QString &buildDir) const
+//{
+//    QList<Task> results = reportIssuesImpl(proFile, buildDir);
+//    qSort(results);
+//    return results;
+//}//#720 ROOPAK - END
 
 QtConfigWidget *BaseQtVersion::createConfigurationWidget() const
 {

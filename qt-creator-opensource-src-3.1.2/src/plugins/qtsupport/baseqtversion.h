@@ -48,7 +48,7 @@ namespace ProjectExplorer {
 //class Kit;//#720 ROOPAK
 //class ToolChain;//#720 ROOPAK
 class HeaderPath;
-class Task;
+//class Task;//#720 ROOPAK
 } // namespace ProjectExplorer
 
 QT_BEGIN_NAMESPACE
@@ -174,7 +174,7 @@ public:
     /// Check a .pro-file/Qt version combination on possible issues
     /// @return a list of tasks, ordered on severity (errors first, then
     ///         warnings and finally info items.
-    QList<ProjectExplorer::Task> reportIssues(const QString &proFile, const QString &buildDir) const;
+//    QList<ProjectExplorer::Task> reportIssues(const QString &proFile, const QString &buildDir) const;//#720 ROOPAK
 
     static bool queryQMakeVariables(const Utils::FileName &binary, const Utils::Environment &env,
                                     QHash<QString, QString> *versionInfo, QString *error = 0);
@@ -231,7 +231,7 @@ protected:
     static QString qmakeProperty(const QHash<QString,QString> &versionInfo, const QByteArray &name,
                                  PropertyVariant variant = PropertyVariantGet);
 
-    virtual QList<ProjectExplorer::Task> reportIssuesImpl(const QString &proFile, const QString &buildDir) const;
+//    virtual QList<ProjectExplorer::Task> reportIssuesImpl(const QString &proFile, const QString &buildDir) const;//#720 ROOPAK
 
     // helper function for desktop and simulator to figure out the supported abis based on the libraries
     static QList<Utils::FileName> qtCorePaths(const QHash<QString,QString> &versionInfo,

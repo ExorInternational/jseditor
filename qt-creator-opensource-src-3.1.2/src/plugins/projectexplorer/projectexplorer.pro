@@ -39,7 +39,7 @@ HEADERS += projectexplorer.h \
 #    namedwidget.h \//#720 ROOPAK
 #    target.h \//#720 ROOPAK
 #    targetsettingspanel.h \#ROOPAK
-    task.h \
+#    task.h \//#720 ROOPAK
 #    itaskhandler.h \#ROOPAK
 #    copytaskhandler.h \#ROOPAK
 #    showineditortaskhandler.h \ #ROOPAK
@@ -184,7 +184,7 @@ SOURCES += projectexplorer.cpp \
 #    ioutputparser.cpp \//#720 ROOPAK
 #    projectconfiguration.cpp \//#720 ROOPAK
 #    gnumakeparser.cpp \#ROOPAK
-    task.cpp \
+#    task.cpp \//#720 ROOPAK
 #    copytaskhandler.cpp \#ROOPAK
 #    showineditortaskhandler.cpp \ #ROOPAK
 #    showoutputtaskhandler.cpp \#ROOPAK
