@@ -39,7 +39,7 @@
 #include "qmljsoutline.h"
 #include "qmljspreviewrunner.h"
 #include "qmljssnippetprovider.h"
-#include "qmltaskmanager.h"
+//#include "qmltaskmanager.h"//#720 ROOPAK
 #include "quicktoolbar.h"
 #include "quicktoolbarsettingspage.h"
 #include "qmljscompletionassist.h"
@@ -118,18 +118,18 @@ bool QmlJSEditorPlugin::initialize(const QStringList & /*arguments*/, QString *e
     addAutoReleasedObject(new QmlJSHighlighterFactory);
 
     // QML task updating manager
-    m_qmlTaskManager = new QmlTaskManager;
-    addAutoReleasedObject(m_qmlTaskManager);
-    connect(m_modelManager, SIGNAL(documentChangedOnDisk(QmlJS::Document::Ptr)),
-            m_qmlTaskManager, SLOT(updateMessages()));
-    // recompute messages when information about libraries changes
-    connect(m_modelManager, SIGNAL(libraryInfoUpdated(QString,QmlJS::LibraryInfo)),
-            m_qmlTaskManager, SLOT(updateMessages()));
-    // recompute messages when project data changes (files added or removed)
-    connect(m_modelManager, SIGNAL(projectInfoUpdated(ProjectInfo)),
-            m_qmlTaskManager, SLOT(updateMessages()));
-    connect(m_modelManager, SIGNAL(aboutToRemoveFiles(QStringList)),
-            m_qmlTaskManager, SLOT(documentsRemoved(QStringList)));
+//    m_qmlTaskManager = new QmlTaskManager;//#720 ROOPAK - START
+//    addAutoReleasedObject(m_qmlTaskManager);
+//    connect(m_modelManager, SIGNAL(documentChangedOnDisk(QmlJS::Document::Ptr)),
+//            m_qmlTaskManager, SLOT(updateMessages()));
+//    // recompute messages when information about libraries changes
+//    connect(m_modelManager, SIGNAL(libraryInfoUpdated(QString,QmlJS::LibraryInfo)),
+//            m_qmlTaskManager, SLOT(updateMessages()));
+//    // recompute messages when project data changes (files added or removed)
+//    connect(m_modelManager, SIGNAL(projectInfoUpdated(ProjectInfo)),
+//            m_qmlTaskManager, SLOT(updateMessages()));
+//    connect(m_modelManager, SIGNAL(aboutToRemoveFiles(QStringList)),
+//            m_qmlTaskManager, SLOT(documentsRemoved(QStringList)));//#720 ROOPAK - END
 
     Core::Context context(Constants::C_QMLJSEDITOR_ID);
 
@@ -324,7 +324,7 @@ void QmlJSEditorPlugin::currentEditorChanged(Core::IEditor *editor)
 
 void QmlJSEditorPlugin::runSemanticScan()
 {
-    m_qmlTaskManager->updateSemanticMessagesNow();
+//    m_qmlTaskManager->updateSemanticMessagesNow();//#720 ROOPAK
 //    TaskHub::setCategoryVisibility(Constants::TASK_CATEGORY_QML_ANALYSIS, true);//#720 ROOPAK - START
 //    TaskHub::requestPopup();//#720 ROOPAK - END
 }

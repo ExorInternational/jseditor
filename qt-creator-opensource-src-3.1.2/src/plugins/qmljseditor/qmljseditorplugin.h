@@ -61,7 +61,7 @@ namespace Internal {
 class QmlJSEditorFactory;
 class QmlJSPreviewRunner;
 class QmlJSQuickFixAssistProvider;
-class QmlTaskManager;
+//class QmlTaskManager;//#720 ROOPAK
 
 class QmlJSEditorPlugin : public ExtensionSystem::IPlugin
 {
@@ -104,7 +104,7 @@ private:
     QmlJS::ModelManagerInterface *m_modelManager;
     QmlJSEditorFactory *m_editor;
     QmlJSQuickFixAssistProvider *m_quickFixAssistProvider;
-    QmlTaskManager *m_qmlTaskManager;
+//    QmlTaskManager *m_qmlTaskManager;//#720 ROOPAK
 
     QAction *m_reformatFileAction;
 

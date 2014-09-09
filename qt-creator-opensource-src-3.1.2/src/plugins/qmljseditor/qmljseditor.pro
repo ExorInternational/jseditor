@@ -19,7 +19,7 @@ HEADERS += \
     qmljscomponentfromobjectdef.h \
     qmljsoutline.h \
     qmloutlinemodel.h \
-    qmltaskmanager.h \
+#    qmltaskmanager.h \//#720 ROOPAK
     qmljsoutlinetreeview.h \
     quicktoolbarsettingspage.h \
     quicktoolbar.h \
@@ -52,7 +52,7 @@ SOURCES += \
     qmljscomponentfromobjectdef.cpp \
     qmljsoutline.cpp \
     qmloutlinemodel.cpp \
-    qmltaskmanager.cpp \
+#    qmltaskmanager.cpp \//#720 ROOPAK
     qmljsquickfixes.cpp \
     qmljsoutlinetreeview.cpp \
     quicktoolbarsettingspage.cpp \
