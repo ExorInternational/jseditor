@@ -14,7 +14,7 @@ HEADERS += \
     qtoutputformatter.h \
     qtversionmanager.h \
     qtversionfactory.h \
-    uicodemodelsupport.h \
+#    uicodemodelsupport.h \//#720 ROOPAK
     baseqtversion.h \
     qmldumptool.h \
     qtoptionspage.h \
@@ -42,7 +42,7 @@ SOURCES += \
     qtoutputformatter.cpp \
     qtversionmanager.cpp \
     qtversionfactory.cpp \
-    uicodemodelsupport.cpp \
+#    uicodemodelsupport.cpp \//#720 ROOPAK
     baseqtversion.cpp \
     qmldumptool.cpp \
     qtoptionspage.cpp \

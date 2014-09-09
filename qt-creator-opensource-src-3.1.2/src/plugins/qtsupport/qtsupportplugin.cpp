@@ -36,7 +36,7 @@
 #include "qtoptionspage.h"
 #include "qtversionmanager.h"
 #include "simulatorqtversionfactory.h"
-#include "uicodemodelsupport.h"
+//#include "uicodemodelsupport.h"//#720 ROOPAK
 #include "winceqtversionfactory.h"
 
 #include "profilereader.h"
@@ -76,7 +76,7 @@ bool QtSupportPlugin::initialize(const QStringList &arguments, QString *errorMes
     addAutoReleasedObject(new DesktopQtVersionFactory);
     addAutoReleasedObject(new SimulatorQtVersionFactory);
     addAutoReleasedObject(new WinCeQtVersionFactory);
-    addAutoReleasedObject(new UiCodeModelManager);
+//    addAutoReleasedObject(new UiCodeModelManager);//#720 ROOPAK
 
     QtFeatureProvider *featureMgr = new QtFeatureProvider;
     addAutoReleasedObject(featureMgr);
