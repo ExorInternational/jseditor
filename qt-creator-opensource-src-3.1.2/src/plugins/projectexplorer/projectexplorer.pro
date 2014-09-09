@@ -292,14 +292,14 @@ FORMS += \#processstep.ui \#ROOPAK
 #    customparserconfigdialog.ui#ROOPAK
 
 WINSOURCES += \
-    windebuginterface.cpp \
+#    windebuginterface.cpp \//#720 ROOPAK
 #    msvcparser.cpp \#ROOPAK
 #    msvctoolchain.cpp \#ROOPAK
 #    abstractmsvctoolchain.cpp \#ROOPAK
 #    wincetoolchain.cpp#ROOPAK
 
 WINHEADERS += \
-    windebuginterface.h \
+#    windebuginterface.h \//#720 ROOPAK
 #    msvcparser.h \#ROOPAK
 #    msvctoolchain.h \#ROOPAK
 #    abstractmsvctoolchain.h \#ROOPAK

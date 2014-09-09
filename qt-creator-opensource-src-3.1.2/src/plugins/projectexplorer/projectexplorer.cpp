@@ -85,7 +85,7 @@
 //#include "devicesupport/devicesettingspage.h"//ROOPAK
 
 #ifdef Q_OS_WIN
-#    include "windebuginterface.h"
+//#    include "windebuginterface.h"//#720 ROOPAK
 //#    include "msvctoolchain.h"//ROOPAK
 //#    include "wincetoolchain.h"//ROOPAK
 #endif
@@ -342,7 +342,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
 
     // Add ToolChainFactories:
 #ifdef Q_OS_WIN
-    addAutoReleasedObject(new WinDebugInterface);
+//    addAutoReleasedObject(new WinDebugInterface);//#720 ROOPAK
 
 //    addAutoReleasedObject(new Internal::MsvcToolChainFactory);//ROOPAK
 //    addAutoReleasedObject(new Internal::WinCEToolChainFactory);//ROOPAK
