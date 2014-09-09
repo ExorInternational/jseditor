@@ -47,7 +47,7 @@ namespace ProjectExplorer {
 //class IOutputParser;//#720 ROOPAK
 //class Kit;//#720 ROOPAK
 //class ToolChain;//#720 ROOPAK
-class HeaderPath;
+//class HeaderPath;//#720 ROOPAK
 //class Task;//#720 ROOPAK
 } // namespace ProjectExplorer
 
