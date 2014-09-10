@@ -4,7 +4,7 @@ include(../../qtcreatorplugin.pri)
 
 HEADERS += \
     abstracteditorsupport.h \
-    builtinindexingsupport.h \
+#    builtinindexingsupport.h \//#720 ROOPAK
     commentssettings.h \
     completionsettingspage.h \
     cppchecksymbols.h \
@@ -58,7 +58,7 @@ HEADERS += \
 
 SOURCES += \
     abstracteditorsupport.cpp \
-    builtinindexingsupport.cpp \
+#    builtinindexingsupport.cpp \//#720 ROOPAK
     commentssettings.cpp \
     completionsettingspage.cpp \
     cppchecksymbols.cpp \

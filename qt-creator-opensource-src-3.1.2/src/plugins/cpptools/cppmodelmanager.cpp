@@ -30,7 +30,7 @@
 #include "cppmodelmanager.h"
 
 #include "abstracteditorsupport.h"
-#include "builtinindexingsupport.h"
+//#include "builtinindexingsupport.h"//#720 ROOPAK
 #include "cppcodemodelinspectordumper.h"
 #include "cppcodemodelsettings.h"
 #include "cppfindreferences.h"
@@ -276,7 +276,7 @@ CppModelManager::CppModelManager(QObject *parent)
                 m_modelManagerSupportFallback->id());
     addModelManagerSupport(m_modelManagerSupportFallback.data());
 
-    m_internalIndexingSupport = new BuiltinIndexingSupport;
+//    m_internalIndexingSupport = new BuiltinIndexingSupport;//#720 ROOPAK
 }
 
 CppModelManager::~CppModelManager()
