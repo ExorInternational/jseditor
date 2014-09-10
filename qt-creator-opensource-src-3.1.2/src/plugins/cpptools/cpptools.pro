@@ -34,7 +34,7 @@ HEADERS += \
     cppmodelmanagerinterface.h \
     cppmodelmanagersupport.h \
     cppmodelmanagersupportinternal.h \
-    cpppointerdeclarationformatter.h \
+#    cpppointerdeclarationformatter.h \//#720 ROOPAK
 #    cpppreprocessor.h \//#720 ROOPAK
     cppprojectfile.h \
     cppqtstyleindenter.h \
@@ -88,7 +88,7 @@ SOURCES += \
     cppmodelmanagerinterface.cpp \
     cppmodelmanagersupport.cpp \
     cppmodelmanagersupportinternal.cpp \
-    cpppointerdeclarationformatter.cpp \
+#    cpppointerdeclarationformatter.cpp \//#720 ROOPAK
 #    cpppreprocessor.cpp \//#720 ROOPAK
     cppprojectfile.cpp \
     cppqtstyleindenter.cpp \

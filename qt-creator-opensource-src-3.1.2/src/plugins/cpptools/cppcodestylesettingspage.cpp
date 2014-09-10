@@ -30,7 +30,7 @@
 #include "cppcodestylesettingspage.h"
 
 #include "cppcodestylepreferences.h"
-#include "cpppointerdeclarationformatter.h"
+//#include "cpppointerdeclarationformatter.h"//#720 ROOPAK
 #include "cppqtstyleindenter.h"
 #include "cpptoolsconstants.h"
 #include "cpptoolssettings.h"
@@ -49,6 +49,12 @@
 
 #include <QTextBlock>
 #include <QTextStream>
+
+//#720 ADDED BY ROOPAK - START
+using namespace CPlusPlus;
+#include "cplusplus/PreprocessorEnvironment.h"
+#include "cplusplus/CppDocument.h"
+//#720 ROOPAK - END
 
 static const char *defaultCodeStyleSnippets[] = {
     "#include <math.h>\n"
@@ -234,7 +240,7 @@ static void applyRefactorings(QTextDocument *textDocument, TextEditor::BaseTextE
     cppDocument->parse(Document::ParseTranlationUnit);
     cppDocument->check();
 
-    CppRefactoringFilePtr cppRefactoringFile = CppRefactoringChanges::file(editor, cppDocument);
+//    CppRefactoringFilePtr cppRefactoringFile = CppRefactoringChanges::file(editor, cppDocument);//#720 ROOPAK
 
     // Run the formatter
     Overview overview;
@@ -250,12 +256,12 @@ static void applyRefactorings(QTextDocument *textDocument, TextEditor::BaseTextE
     if (settings.bindStarToRightSpecifier)
         overview.starBindFlags |= Overview::BindToRightSpecifier;
 
-    PointerDeclarationFormatter formatter(cppRefactoringFile, overview);
-    Utils::ChangeSet change = formatter.format(cppDocument->translationUnit()->ast());
+//    PointerDeclarationFormatter formatter(cppRefactoringFile, overview);//#720 ROOPAK - START
+//    Utils::ChangeSet change = formatter.format(cppDocument->translationUnit()->ast());
 
     // Apply change
-    QTextCursor cursor(textDocument);
-    change.apply(&cursor);
+//    QTextCursor cursor(textDocument);
+//    change.apply(&cursor);//#720 ROOPAK - END
 }
 
 // ------------------ CppCodeStyleSettingsWidget
