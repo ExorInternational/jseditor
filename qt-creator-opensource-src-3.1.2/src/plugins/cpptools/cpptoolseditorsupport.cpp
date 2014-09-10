@@ -254,18 +254,18 @@ CppCompletionAssistProvider *CppEditorSupport::completionAssistProvider() const
     return m_completionAssistProvider;
 }
 
-QSharedPointer<SnapshotUpdater> CppEditorSupport::snapshotUpdater()
-{
-    QSharedPointer<SnapshotUpdater> updater = snapshotUpdater_internal();
-    if (!updater || updater->fileInEditor() != fileName()) {
-        updater = QSharedPointer<SnapshotUpdater>(new SnapshotUpdater(fileName()));
-        setSnapshotUpdater_internal(updater);
+//QSharedPointer<SnapshotUpdater> CppEditorSupport::snapshotUpdater()//#720 ROOPAK - START
+//{
+//    QSharedPointer<SnapshotUpdater> updater = snapshotUpdater_internal();
+//    if (!updater || updater->fileInEditor() != fileName()) {
+//        updater = QSharedPointer<SnapshotUpdater>(new SnapshotUpdater(fileName()));
+//        setSnapshotUpdater_internal(updater);
 
-        QSharedPointer<CppCodeModelSettings> cms = CppToolsPlugin::instance()->codeModelSettings();
-        updater->setUsePrecompiledHeaders(cms->pchUsage() != CppCodeModelSettings::PchUse_None);
-    }
-    return updater;
-}
+//        QSharedPointer<CppCodeModelSettings> cms = CppToolsPlugin::instance()->codeModelSettings();
+//        updater->setUsePrecompiledHeaders(cms->pchUsage() != CppCodeModelSettings::PchUse_None);
+//    }
+//    return updater;
+//}//#720 ROOPAK - END
 
 void CppEditorSupport::updateDocument()
 {
@@ -277,21 +277,21 @@ void CppEditorSupport::updateDocument()
     m_updateDocumentTimer->start(m_updateDocumentInterval);
 }
 
-static void parse(QFutureInterface<void> &future, QSharedPointer<SnapshotUpdater> updater,
-                  CppModelManagerInterface::WorkingCopy workingCopy)
-{
-    future.setProgressRange(0, 1);
-    if (future.isCanceled()) {
-        future.setProgressValue(1);
-        return;
-    }
+//static void parse(QFutureInterface<void> &future, QSharedPointer<SnapshotUpdater> updater,//#720 ROOPAK - START
+//                  CppModelManagerInterface::WorkingCopy workingCopy)
+//{
+//    future.setProgressRange(0, 1);
+//    if (future.isCanceled()) {
+//        future.setProgressValue(1);
+//        return;
+//    }
 
-    CppModelManager *cmm = qobject_cast<CppModelManager *>(CppModelManager::instance());
-    updater->update(workingCopy);
-    cmm->finishedRefreshingSourceFiles(QStringList(updater->fileInEditor()));
+//    CppModelManager *cmm = qobject_cast<CppModelManager *>(CppModelManager::instance());
+//    updater->update(workingCopy);
+//    cmm->finishedRefreshingSourceFiles(QStringList(updater->fileInEditor()));
 
-    future.setProgressValue(1);
-}
+//    future.setProgressValue(1);
+//}//#720 ROOPAK - END
 
 void CppEditorSupport::updateDocumentNow()
 {
@@ -306,8 +306,8 @@ void CppEditorSupport::updateDocumentNow()
         if (m_highlightingSupport && !m_highlightingSupport->requiresSemanticInfo())
             startHighlighting();
 
-        m_documentParser = QtConcurrent::run(&parse, snapshotUpdater(),
-                                             CppModelManager::instance()->workingCopy());
+//        m_documentParser = QtConcurrent::run(&parse, snapshotUpdater(),//#720 ROOPAK - START
+//                                             CppModelManager::instance()->workingCopy());//#720 ROOPAK - END
     }
 }
 
@@ -483,7 +483,7 @@ void CppEditorSupport::releaseResources()
 {
     m_highlighter.cancel();
     m_highlighter = QFuture<TextEditor::HighlightingResult>();
-    snapshotUpdater()->releaseSnapshot();
+//    snapshotUpdater()->releaseSnapshot();//#720 ROOPAK
     setSemanticInfo(SemanticInfo(), /*emitSignal=*/ false);
     m_lastHighlightOnCompleteSemanticInfo = true;
 }
@@ -519,9 +519,9 @@ SemanticInfo CppEditorSupport::recalculateSemanticInfoNow(const SemanticInfo::So
 
     // Otherwise reprocess document
     } else {
-        const QSharedPointer<SnapshotUpdater> snapshotUpdater = snapshotUpdater_internal();
-        QTC_ASSERT(snapshotUpdater, return newSemanticInfo);
-        newSemanticInfo.snapshot = snapshotUpdater->snapshot();
+//        const QSharedPointer<SnapshotUpdater> snapshotUpdater = snapshotUpdater_internal();//#720 ROOPAK - START
+//        QTC_ASSERT(snapshotUpdater, return newSemanticInfo);
+//        newSemanticInfo.snapshot = snapshotUpdater->snapshot();//#720 ROOPAK - END
         QTC_ASSERT(newSemanticInfo.snapshot.contains(source.fileName), return newSemanticInfo);
         Document::Ptr doc = newSemanticInfo.snapshot.preprocessedDocument(source.code,
                                                                           source.fileName);
@@ -577,17 +577,17 @@ void CppEditorSupport::setSemanticInfo(const SemanticInfo &semanticInfo, bool em
         emit semanticInfoUpdated(semanticInfo);
 }
 
-QSharedPointer<SnapshotUpdater> CppEditorSupport::snapshotUpdater_internal() const
-{
-    QMutexLocker locker(&m_snapshotUpdaterLock);
-    return m_snapshotUpdater;
-}
+//QSharedPointer<SnapshotUpdater> CppEditorSupport::snapshotUpdater_internal() const//#720 ROOPAK - START
+//{
+//    QMutexLocker locker(&m_snapshotUpdaterLock);
+//    return m_snapshotUpdater;
+//}
 
-void CppEditorSupport::setSnapshotUpdater_internal(const QSharedPointer<SnapshotUpdater> &updater)
-{
-    QMutexLocker locker(&m_snapshotUpdaterLock);
-    m_snapshotUpdater = updater;
-}
+//void CppEditorSupport::setSnapshotUpdater_internal(const QSharedPointer<SnapshotUpdater> &updater)
+//{
+//    QMutexLocker locker(&m_snapshotUpdaterLock);
+//    m_snapshotUpdater = updater;
+//}//#720 ROOPAK - END
 
 void CppEditorSupport::onMimeTypeChanged()
 {

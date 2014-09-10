@@ -33,7 +33,7 @@
 #include "cpphighlightingsupport.h"
 #include "cppmodelmanager.h"
 #include "cppsemanticinfo.h"
-#include "cppsnapshotupdater.h"
+//#include "cppsnapshotupdater.h"//#720 ROOPAK
 
 #include <cplusplus/Control.h>
 #include <cplusplus/CppDocument.h>
@@ -133,7 +133,7 @@ public:
 
     CppCompletionAssistProvider *completionAssistProvider() const;
 
-    QSharedPointer<SnapshotUpdater> snapshotUpdater();
+//    QSharedPointer<SnapshotUpdater> snapshotUpdater();//#720 ROOPAK
 
     /// Checks whether the document is (re)parsed or about to be (re)parsed.
     bool isUpdatingDocument();
@@ -202,8 +202,8 @@ private:
     SemanticInfo semanticInfo() const;
     void setSemanticInfo(const SemanticInfo &semanticInfo, bool emitSignal = true);
 
-    QSharedPointer<SnapshotUpdater> snapshotUpdater_internal() const;
-    void setSnapshotUpdater_internal(const QSharedPointer<SnapshotUpdater> &updater);
+//    QSharedPointer<SnapshotUpdater> snapshotUpdater_internal() const;//#720 ROOPAK - START
+//    void setSnapshotUpdater_internal(const QSharedPointer<SnapshotUpdater> &updater);//#720 ROOPAK - END
 
 private:
     Internal::CppModelManager *m_modelManager;
@@ -234,7 +234,7 @@ private:
     SemanticInfo m_lastSemanticInfo;
     QFuture<void> m_futureSemanticInfo;
     mutable QMutex m_snapshotUpdaterLock;
-    QSharedPointer<SnapshotUpdater> m_snapshotUpdater;
+//    QSharedPointer<SnapshotUpdater> m_snapshotUpdater;//#720 ROOPAK
 
     // Highlighting:
     unsigned m_lastHighlightRevision;

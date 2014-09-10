@@ -32,7 +32,7 @@
 #include "cppdoxygen.h"
 #include "cppmodelmanager.h"
 #include "cppmodelmanagerinterface.h"
-#include "cppsnapshotupdater.h"
+//#include "cppsnapshotupdater.h"//#720 ROOPAK
 #include "cpptoolsconstants.h"
 #include "cpptoolseditorsupport.h"
 
@@ -1956,11 +1956,11 @@ void CppCompletionAssistInterface::getCppSpecifics() const
 
     CppModelManagerInterface *modelManager = CppModelManagerInterface::instance();
     if (CppEditorSupport *supp = modelManager->cppEditorSupport(m_editor)) {
-        if (QSharedPointer<SnapshotUpdater> updater = supp->snapshotUpdater()) {
-            updater->update(m_workingCopy);
-            m_snapshot = updater->snapshot();
-            m_includePaths = updater->includePaths();
-            m_frameworkPaths = updater->frameworkPaths();
-        }
+//        if (QSharedPointer<SnapshotUpdater> updater = supp->snapshotUpdater()) {//#720 ROOPAK - START
+//            updater->update(m_workingCopy);
+//            m_snapshot = updater->snapshot();
+//            m_includePaths = updater->includePaths();
+//            m_frameworkPaths = updater->frameworkPaths();
+//        }//#720 ROOPAK - END
     }
 }
