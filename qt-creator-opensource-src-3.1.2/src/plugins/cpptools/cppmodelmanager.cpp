@@ -37,7 +37,7 @@
 #include "cpphighlightingsupport.h"
 #include "cppindexingsupport.h"
 #include "cppmodelmanagersupportinternal.h"
-#include "cpppreprocessor.h"
+//#include "cpppreprocessor.h"//#720 ROOPAK
 #include "cpptoolsconstants.h"
 #include "cpptoolseditorsupport.h"
 #include "cpptoolsplugin.h"
@@ -345,13 +345,13 @@ QStringList CppModelManager::internalIncludePaths() const
 {
     QStringList includePaths;
     QMapIterator<ProjectExplorer::Project *, ProjectInfo> it(m_projectToProjectsInfo);
-    while (it.hasNext()) {
-        it.next();
-        const ProjectInfo pinfo = it.value();
-        foreach (const ProjectPart::Ptr &part, pinfo.projectParts())
-            foreach (const QString &path, part->includePaths)
-                includePaths.append(CppPreprocessor::cleanPath(path));
-    }
+//    while (it.hasNext()) {//#720 ROOPAK - START
+//        it.next();
+//        const ProjectInfo pinfo = it.value();
+//        foreach (const ProjectPart::Ptr &part, pinfo.projectParts())
+//            foreach (const QString &path, part->includePaths)
+//                includePaths.append(CppPreprocessor::cleanPath(path));
+//    }//#720 ROOPAK - END
     includePaths.removeDuplicates();
     return includePaths;
 }
@@ -360,13 +360,13 @@ QStringList CppModelManager::internalFrameworkPaths() const
 {
     QStringList frameworkPaths;
     QMapIterator<ProjectExplorer::Project *, ProjectInfo> it(m_projectToProjectsInfo);
-    while (it.hasNext()) {
-        it.next();
-        const ProjectInfo pinfo = it.value();
-        foreach (const ProjectPart::Ptr &part, pinfo.projectParts())
-            foreach (const QString &path, part->frameworkPaths)
-                frameworkPaths.append(CppPreprocessor::cleanPath(path));
-    }
+//    while (it.hasNext()) {//#720 ROOPAK - START
+//        it.next();
+//        const ProjectInfo pinfo = it.value();
+//        foreach (const ProjectPart::Ptr &part, pinfo.projectParts())
+//            foreach (const QString &path, part->frameworkPaths)
+//                frameworkPaths.append(CppPreprocessor::cleanPath(path));
+//    }//#720 ROOPAK - END
     frameworkPaths.removeDuplicates();
     return frameworkPaths;
 }
