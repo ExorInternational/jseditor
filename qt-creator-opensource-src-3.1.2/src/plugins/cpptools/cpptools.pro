@@ -28,14 +28,14 @@ HEADERS += \
     cpphighlightingsupportinternal.h \
     cppindexingsupport.h \
     cpplocalsymbols.h \
-    cpplocatordata.h \
+#    cpplocatordata.h \//#720 ROOPAK
 #    cpplocatorfilter.h \//#720 ROOPAK
     cppmodelmanager.h \
     cppmodelmanagerinterface.h \
     cppmodelmanagersupport.h \
     cppmodelmanagersupportinternal.h \
     cpppointerdeclarationformatter.h \
-    cpppreprocessor.h \
+#    cpppreprocessor.h \//#720 ROOPAK
     cppprojectfile.h \
     cppqtstyleindenter.h \
     cpprefactoringchanges.h \
@@ -82,14 +82,14 @@ SOURCES += \
     cpphighlightingsupportinternal.cpp \
     cppindexingsupport.cpp \
     cpplocalsymbols.cpp \
-    cpplocatordata.cpp \
+#    cpplocatordata.cpp \//#720 ROOPAK
 #    cpplocatorfilter.cpp \//#720 ROOPAK
     cppmodelmanager.cpp \
     cppmodelmanagerinterface.cpp \
     cppmodelmanagersupport.cpp \
     cppmodelmanagersupportinternal.cpp \
     cpppointerdeclarationformatter.cpp \
-    cpppreprocessor.cpp \
+#    cpppreprocessor.cpp \//#720 ROOPAK
     cppprojectfile.cpp \
     cppqtstyleindenter.cpp \
     cpprefactoringchanges.cpp \

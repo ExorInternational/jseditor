@@ -41,7 +41,7 @@
 #include "cpptoolssettings.h"
 #include "cpptoolsreuse.h"
 #include "cppprojectfile.h"
-#include "cpplocatordata.h"
+//#include "cpplocatordata.h"//#720 ROOPAK
 
 #include <coreplugin/actionmanager/actioncontainer.h>
 #include <coreplugin/actionmanager/actionmanager.h>
@@ -131,8 +131,8 @@ bool CppToolsPlugin::initialize(const QStringList &arguments, QString *error)
     connect(DocumentManager::instance(), SIGNAL(filesChangedInternally(QStringList)),
             modelManager, SLOT(updateSourceFiles(QStringList)));
 
-    CppLocatorData *locatorData = new CppLocatorData(modelManager);
-    addAutoReleasedObject(locatorData);
+//    CppLocatorData *locatorData = new CppLocatorData(modelManager);//#720 ROOPAK
+//    addAutoReleasedObject(locatorData);//#720 ROOPAK
 //    addAutoReleasedObject(new CppLocatorFilter(locatorData));//#720 ROOPAK
 //    addAutoReleasedObject(new CppClassesFilter(locatorData));//#720 ROOPAK
 //    addAutoReleasedObject(new CppFunctionsFilter(locatorData));//#720 ROOPAK
