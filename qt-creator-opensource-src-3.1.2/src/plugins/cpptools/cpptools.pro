@@ -51,7 +51,7 @@ HEADERS += \
     functionutils.h \
     includeutils.h \
     insertionpointlocator.h \
-    searchsymbols.h \
+#    searchsymbols.h \//#720 ROOPAK
     symbolfinder.h \
 #    symbolsfindfilter.h \//#720 ROOPAK
 #    typehierarchybuilder.h//#720 ROOPAK
@@ -103,7 +103,7 @@ SOURCES += \
     functionutils.cpp \
     includeutils.cpp \
     insertionpointlocator.cpp \
-    searchsymbols.cpp \
+#    searchsymbols.cpp \//#720 ROOPAK
     symbolfinder.cpp \
 #    symbolsfindfilter.cpp \//#720 ROOPAK
 #    typehierarchybuilder.cpp//#720 ROOPAK
