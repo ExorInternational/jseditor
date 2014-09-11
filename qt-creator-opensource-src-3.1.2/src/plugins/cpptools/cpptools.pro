@@ -17,7 +17,7 @@ HEADERS += \
     cppcodestylepreferencesfactory.h \
     cppcodestylesettings.h \
     cppcodestylesettingspage.h \
-    cppcompletionassist.h \
+#    cppcompletionassist.h \//#720 ROOPAK
     cppcompletionassistprovider.h \
 #    cppcurrentdocumentfilter.h \//#720 ROOPAK
     cppdoxygen.h \
@@ -71,7 +71,7 @@ SOURCES += \
     cppcodestylepreferencesfactory.cpp \
     cppcodestylesettings.cpp \
     cppcodestylesettingspage.cpp \
-    cppcompletionassist.cpp \
+#    cppcompletionassist.cpp \//#720 ROOPAK
     cppcompletionassistprovider.cpp \
 #    cppcurrentdocumentfilter.cpp \//#720 ROOPAK
     cppdoxygen.cpp \

@@ -52,7 +52,7 @@ public:
     virtual CppHighlightingSupport *highlightingSupport(TextEditor::ITextEditor *editor);
 
 private:
-    QScopedPointer<CppCompletionAssistProvider> m_completionAssistProvider;
+//    QScopedPointer<CppCompletionAssistProvider> m_completionAssistProvider;//#720 ROOPAK
 };
 
 } // Internal namespace

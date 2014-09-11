@@ -27,7 +27,7 @@
 **
 ****************************************************************************/
 
-#include "cppcompletionassist.h"
+//#include "cppcompletionassist.h"//#720 ROOPAK
 #include "cpphighlightingsupportinternal.h"
 #include "cppmodelmanagersupportinternal.h"
 
@@ -37,7 +37,7 @@ using namespace CppTools;
 using namespace CppTools::Internal;
 
 ModelManagerSupportInternal::ModelManagerSupportInternal()
-    : m_completionAssistProvider(new InternalCompletionAssistProvider)
+//    : m_completionAssistProvider(new InternalCompletionAssistProvider)//#720 ROOPAK
 {
 }
 
@@ -58,7 +58,7 @@ QString ModelManagerSupportInternal::displayName() const
 
 CppCompletionAssistProvider *ModelManagerSupportInternal::completionAssistProvider()
 {
-    return m_completionAssistProvider.data();
+    return NULL;//m_completionAssistProvider.data();//#720 ROOPAK
 }
 
 CppHighlightingSupport *ModelManagerSupportInternal::highlightingSupport(TextEditor::ITextEditor *editor)
