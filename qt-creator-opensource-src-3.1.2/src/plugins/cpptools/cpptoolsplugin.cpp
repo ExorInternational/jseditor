@@ -35,7 +35,7 @@
 //#include "cppclassesfilter.h"//#720 ROOPAK
 //#include "cppfunctionsfilter.h"//#720 ROOPAK
 //#include "cppcurrentdocumentfilter.h"//#720 ROOPAK
-#include "cppmodelmanager.h"
+//#include "cppmodelmanager.h"//#720 ROOPAK
 //#include "cpplocatorfilter.h"//#720 ROOPAK
 //#include "symbolsfindfilter.h"//#720 ROOPAK
 #include "cpptoolssettings.h"
@@ -62,6 +62,11 @@
 #include <QMenu>
 #include <QAction>
 
+//#720 ADDED BY ROOPAK - START
+#include <coreplugin/editormanager/editormanager.h>
+#include <projectexplorer/project.h>
+//#720 ROOPAK - END
+
 using namespace Core;
 using namespace CPlusPlus;
 
@@ -83,7 +88,7 @@ CppToolsPlugin::CppToolsPlugin()
 CppToolsPlugin::~CppToolsPlugin()
 {
     m_instance = 0;
-    delete CppModelManager::instance();
+//    delete CppModelManager::instance();//#720 ROOPAK
 }
 
 CppToolsPlugin *CppToolsPlugin::instance()
@@ -125,11 +130,11 @@ bool CppToolsPlugin::initialize(const QStringList &arguments, QString *error)
     m_settings = new CppToolsSettings(this); // force registration of cpp tools settings
 
     // Objects
-    CppModelManager *modelManager = CppModelManager::instance();
-    connect(VcsManager::instance(), SIGNAL(repositoryChanged(QString)),
-            modelManager, SLOT(updateModifiedSourceFiles()));
-    connect(DocumentManager::instance(), SIGNAL(filesChangedInternally(QStringList)),
-            modelManager, SLOT(updateSourceFiles(QStringList)));
+//    CppModelManager *modelManager = CppModelManager::instance();//#720 ROOPAK - START
+//    connect(VcsManager::instance(), SIGNAL(repositoryChanged(QString)),
+//            modelManager, SLOT(updateModifiedSourceFiles()));
+//    connect(DocumentManager::instance(), SIGNAL(filesChangedInternally(QStringList)),
+//            modelManager, SLOT(updateSourceFiles(QStringList)));//#720 ROOPAK - END
 
 //    CppLocatorData *locatorData = new CppLocatorData(modelManager);//#720 ROOPAK
 //    addAutoReleasedObject(locatorData);//#720 ROOPAK
@@ -406,17 +411,17 @@ QString correspondingHeaderOrSource(const QString &fileName, bool *wasHeader)
     }
 
     // Find files in other projects
-    CppModelManager *modelManager = CppModelManager::instance();
-    QList<CppModelManagerInterface::ProjectInfo> projectInfos = modelManager->projectInfos();
-    foreach (const CppModelManagerInterface::ProjectInfo &projectInfo, projectInfos) {
-        const ProjectExplorer::Project *project = projectInfo.project().data();
-        if (project == currentProject)
-            continue; // We have already checked the current project.
+//    CppModelManager *modelManager = CppModelManager::instance();//#720 ROOPAK - START
+//    QList<CppModelManagerInterface::ProjectInfo> projectInfos = modelManager->projectInfos();
+//    foreach (const CppModelManagerInterface::ProjectInfo &projectInfo, projectInfos) {
+//        const ProjectExplorer::Project *project = projectInfo.project().data();
+//        if (project == currentProject)
+//            continue; // We have already checked the current project.
 
-        const QString path = correspondingHeaderOrSourceInProject(fi, candidateFileNames, project);
-        if (!path.isEmpty())
-            return path;
-    }
+//        const QString path = correspondingHeaderOrSourceInProject(fi, candidateFileNames, project);
+//        if (!path.isEmpty())
+//            return path;
+//    }//#720 ROOPAK - END
 
     return QString();
 }

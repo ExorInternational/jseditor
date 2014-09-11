@@ -47,7 +47,7 @@ class CppToolsSettings;
 
 namespace Internal {
 
-class CppModelManager;
+//class CppModelManager;//#720 ROOPAK
 struct CppFileSettings;
 class CppCodeModelSettings;
 

@@ -30,7 +30,7 @@ HEADERS += \
     cpplocalsymbols.h \
 #    cpplocatordata.h \//#720 ROOPAK
 #    cpplocatorfilter.h \//#720 ROOPAK
-    cppmodelmanager.h \
+#    cppmodelmanager.h \//#720 ROOPAK
     cppmodelmanagerinterface.h \
     cppmodelmanagersupport.h \
     cppmodelmanagersupportinternal.h \
@@ -84,7 +84,7 @@ SOURCES += \
     cpplocalsymbols.cpp \
 #    cpplocatordata.cpp \//#720 ROOPAK
 #    cpplocatorfilter.cpp \//#720 ROOPAK
-    cppmodelmanager.cpp \
+#    cppmodelmanager.cpp \//#720 ROOPAK
     cppmodelmanagerinterface.cpp \
     cppmodelmanagersupport.cpp \
     cppmodelmanagersupportinternal.cpp \

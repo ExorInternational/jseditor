@@ -30,7 +30,7 @@
 #include "cppcompletionassist.h"
 
 #include "cppdoxygen.h"
-#include "cppmodelmanager.h"
+//#include "cppmodelmanager.h"//#720 ROOPAK
 #include "cppmodelmanagerinterface.h"
 //#include "cppsnapshotupdater.h"//#720 ROOPAK
 #include "cpptoolsconstants.h"
@@ -1170,18 +1170,18 @@ bool CppCompletionAssistProcessor::completeInclude(const QTextCursor &cursor)
 void CppCompletionAssistProcessor::completeInclude(const QString &realPath,
                                                    const QStringList &suffixes)
 {
-    QDirIterator i(realPath, QDir::Files | QDir::Dirs | QDir::NoDotAndDotDot);
-    while (i.hasNext()) {
-        const QString fileName = i.next();
-        const QFileInfo fileInfo = i.fileInfo();
-        const QString suffix = fileInfo.suffix();
-        if (suffix.isEmpty() || suffixes.contains(suffix)) {
-            QString text = fileName.mid(realPath.length() + 1);
-            if (fileInfo.isDir())
-                text += QLatin1Char('/');
-            addCompletionItem(text, m_icons.keywordIcon());
-        }
-    }
+//    QDirIterator i(realPath, QDir::Files | QDir::Dirs | QDir::NoDotAndDotDot);//#720 ROOPAK - START
+//    while (i.hasNext()) {
+//        const QString fileName = i.next();
+//        const QFileInfo fileInfo = i.fileInfo();
+//        const QString suffix = fileInfo.suffix();
+//        if (suffix.isEmpty() || suffixes.contains(suffix)) {
+//            QString text = fileName.mid(realPath.length() + 1);
+//            if (fileInfo.isDir())
+//                text += QLatin1Char('/');
+//            addCompletionItem(text, m_icons.keywordIcon());
+//        }
+//    }//#720 ROOPAK - END
 }
 
 void CppCompletionAssistProcessor::completePreprocessor()

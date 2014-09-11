@@ -31,11 +31,13 @@
 
 #include "cppqtstyleindenter.h"
 #include "cppcodeformatter.h"
-#include "cppmodelmanager.h"
+//#include "cppmodelmanager.h"//#720 ROOPAK
 //#include <projectexplorer/editorconfiguration.h>//#720 ROOPAK
 
 //#720 ADDED BY ROOPAK - START
 #include <texteditor/tabsettings.h>
+#include <QTextDocument>
+#include <QTextCursor>
 //#720 ROOPAK - END
 
 #include <utils/qtcassert.h>
@@ -49,7 +51,7 @@ class CppTools::CppRefactoringChangesData : public TextEditor::RefactoringChange
 public:
     CppRefactoringChangesData(const Snapshot &snapshot)
         : m_snapshot(snapshot)
-        , m_modelManager(Internal::CppModelManager::instance())
+        , m_modelManager(/*Internal::CppModelManager*/CppModelManagerInterface::instance())//#720 ROOPAK
         , m_workingCopy(m_modelManager->workingCopy())
     {}
 
