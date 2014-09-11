@@ -48,7 +48,7 @@ QT_FORWARD_DECLARE_CLASS(QLocale)
 
 namespace Core { class MimeType; }
 
-namespace CPlusPlus { class CppModelManagerInterface; }
+//namespace CPlusPlus { class CppModelManagerInterface; }//#720 ROOPAK
 
 namespace QmlJS { class QrcParser; }
 

@@ -31,7 +31,7 @@ HEADERS += \
 #    cpplocatordata.h \//#720 ROOPAK
 #    cpplocatorfilter.h \//#720 ROOPAK
 #    cppmodelmanager.h \//#720 ROOPAK
-    cppmodelmanagerinterface.h \
+#    cppmodelmanagerinterface.h \//#720 ROOPAK
     cppmodelmanagersupport.h \
     cppmodelmanagersupportinternal.h \
 #    cpppointerdeclarationformatter.h \//#720 ROOPAK
@@ -85,7 +85,7 @@ SOURCES += \
 #    cpplocatordata.cpp \//#720 ROOPAK
 #    cpplocatorfilter.cpp \//#720 ROOPAK
 #    cppmodelmanager.cpp \//#720 ROOPAK
-    cppmodelmanagerinterface.cpp \
+#    cppmodelmanagerinterface.cpp \//#720 ROOPAK
     cppmodelmanagersupport.cpp \
     cppmodelmanagersupportinternal.cpp \
 #    cpppointerdeclarationformatter.cpp \//#720 ROOPAK

@@ -35,7 +35,7 @@
 #include <coreplugin/icore.h>
 #include <coreplugin/messagemanager.h>
 #include <coreplugin/progressmanager/progressmanager.h>
-#include <cpptools/cppmodelmanagerinterface.h>
+//#include <cpptools/cppmodelmanagerinterface.h>//#720 ROOPAK
 #include <extensionsystem/pluginmanager.h>
 //#include <projectexplorer/buildconfiguration.h>//ROOPAK
 #include <projectexplorer/project.h>
@@ -63,6 +63,10 @@
 #include <QtAlgorithms>
 
 #include <QDebug>
+
+//#720 ADDED BY ROOPAK - START
+#include <coreplugin/mimedatabase.h>
+//#720 ROOPAK - END
 
 using namespace Core;
 using namespace QmlJS;
@@ -207,14 +211,14 @@ ModelManager::~ModelManager()
 
 void ModelManager::delayedInitialization()
 {
-    CppTools::CppModelManagerInterface *cppModelManager =
-            CppTools::CppModelManagerInterface::instance();
-    if (cppModelManager) {
-        // It's important to have a direct connection here so we can prevent
-        // the source and AST of the cpp document being cleaned away.
-        connect(cppModelManager, SIGNAL(documentUpdated(CPlusPlus::Document::Ptr)),
-                this, SLOT(maybeQueueCppQmlTypeUpdate(CPlusPlus::Document::Ptr)), Qt::DirectConnection);
-    }
+//    CppTools::CppModelManagerInterface *cppModelManager =//#720 ROOPAK - START
+//            CppTools::CppModelManagerInterface::instance();
+//    if (cppModelManager) {
+//        // It's important to have a direct connection here so we can prevent
+//        // the source and AST of the cpp document being cleaned away.
+//        connect(cppModelManager, SIGNAL(documentUpdated(CPlusPlus::Document::Ptr)),
+//                this, SLOT(maybeQueueCppQmlTypeUpdate(CPlusPlus::Document::Ptr)), Qt::DirectConnection);
+//    }//#720 ROOPAK - END
 
 //    connect(ProjectExplorer::SessionManager::instance(), SIGNAL(projectRemoved(ProjectExplorer::Project*)),//#720 ROOPAK - START
 //            this, SLOT(removeProjectInfo(ProjectExplorer::Project*)));//#720 ROOPAK - END
