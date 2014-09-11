@@ -22,7 +22,7 @@ HEADERS += \
 #    cppcurrentdocumentfilter.h \//#720 ROOPAK
     cppdoxygen.h \
     cppfilesettingspage.h \
-    cppfindreferences.h \
+#    cppfindreferences.h \//#720 ROOPAK
 #    cppfunctionsfilter.h \//#720 ROOPAK
     cpphighlightingsupport.h \
     cpphighlightingsupportinternal.h \
@@ -76,7 +76,7 @@ SOURCES += \
 #    cppcurrentdocumentfilter.cpp \//#720 ROOPAK
     cppdoxygen.cpp \
     cppfilesettingspage.cpp \
-    cppfindreferences.cpp \
+#    cppfindreferences.cpp \//#720 ROOPAK
 #    cppfunctionsfilter.cpp \//#720 ROOPAK
     cpphighlightingsupport.cpp \
     cpphighlightingsupportinternal.cpp \
