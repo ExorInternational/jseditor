@@ -53,7 +53,7 @@ HEADERS += \
     insertionpointlocator.h \
     searchsymbols.h \
     symbolfinder.h \
-    symbolsfindfilter.h \
+#    symbolsfindfilter.h \//#720 ROOPAK
     typehierarchybuilder.h
 
 SOURCES += \
@@ -105,7 +105,7 @@ SOURCES += \
     insertionpointlocator.cpp \
     searchsymbols.cpp \
     symbolfinder.cpp \
-    symbolsfindfilter.cpp \
+#    symbolsfindfilter.cpp \//#720 ROOPAK
     typehierarchybuilder.cpp
 
 FORMS += \

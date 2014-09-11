@@ -37,7 +37,7 @@
 //#include "cppcurrentdocumentfilter.h"//#720 ROOPAK
 #include "cppmodelmanager.h"
 //#include "cpplocatorfilter.h"//#720 ROOPAK
-#include "symbolsfindfilter.h"
+//#include "symbolsfindfilter.h"//#720 ROOPAK
 #include "cpptoolssettings.h"
 #include "cpptoolsreuse.h"
 #include "cppprojectfile.h"
@@ -139,7 +139,7 @@ bool CppToolsPlugin::initialize(const QStringList &arguments, QString *error)
 //    addAutoReleasedObject(new CppCurrentDocumentFilter(modelManager));//#720 ROOPAK
     addAutoReleasedObject(new CppFileSettingsPage(m_fileSettings));
     addAutoReleasedObject(new CppCodeModelSettingsPage(m_codeModelSettings));
-    addAutoReleasedObject(new SymbolsFindFilter(modelManager));
+//    addAutoReleasedObject(new SymbolsFindFilter(modelManager));//#720 ROOPAK
     addAutoReleasedObject(new CppCodeStyleSettingsPage);
 
     // Menus
