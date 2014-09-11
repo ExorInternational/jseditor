@@ -57,7 +57,7 @@ class ModelManagerSupport;
 class CppCompletionAssistProvider;
 //class CppEditorSupport;//#720 ROOPAK
 class CppHighlightingSupport;
-class CppIndexingSupport;
+//class CppIndexingSupport;//#720 ROOPAK
 
 class CPPTOOLS_EXPORT ProjectPart
 {
@@ -264,8 +264,8 @@ public:
     virtual CppCompletionAssistProvider *completionAssistProvider(Core::IEditor *editor) const = 0;
     virtual CppHighlightingSupport *highlightingSupport(Core::IEditor *editor) const = 0;
 
-    virtual void setIndexingSupport(CppTools::CppIndexingSupport *indexingSupport) = 0;
-    virtual CppIndexingSupport *indexingSupport() = 0;
+//    virtual void setIndexingSupport(CppTools::CppIndexingSupport *indexingSupport) = 0;//#720 ROOPAK - START
+//    virtual CppIndexingSupport *indexingSupport() = 0;//#720 ROOPAK - END
 
     virtual void setIncludePaths(const QStringList &includePaths) = 0;
     virtual void enableGarbageCollector(bool enable) = 0;

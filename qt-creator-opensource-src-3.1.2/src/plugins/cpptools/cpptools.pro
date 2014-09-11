@@ -26,7 +26,7 @@ HEADERS += \
 #    cppfunctionsfilter.h \//#720 ROOPAK
     cpphighlightingsupport.h \
     cpphighlightingsupportinternal.h \
-    cppindexingsupport.h \
+#    cppindexingsupport.h \//#720 ROOPAK
     cpplocalsymbols.h \
 #    cpplocatordata.h \//#720 ROOPAK
 #    cpplocatorfilter.h \//#720 ROOPAK
@@ -80,7 +80,7 @@ SOURCES += \
 #    cppfunctionsfilter.cpp \//#720 ROOPAK
     cpphighlightingsupport.cpp \
     cpphighlightingsupportinternal.cpp \
-    cppindexingsupport.cpp \
+#    cppindexingsupport.cpp \//#720 ROOPAK
     cpplocalsymbols.cpp \
 #    cpplocatordata.cpp \//#720 ROOPAK
 #    cpplocatorfilter.cpp \//#720 ROOPAK
