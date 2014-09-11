@@ -3,7 +3,7 @@ win32-msvc*:DEFINES += _SCL_SECURE_NO_WARNINGS
 include(../../qtcreatorplugin.pri)
 
 HEADERS += \
-    abstracteditorsupport.h \
+#    abstracteditorsupport.h \//#720 ROOPAK
 #    builtinindexingsupport.h \//#720 ROOPAK
     commentssettings.h \
     completionsettingspage.h \
@@ -57,7 +57,7 @@ HEADERS += \
 #    typehierarchybuilder.h//#720 ROOPAK
 
 SOURCES += \
-    abstracteditorsupport.cpp \
+#    abstracteditorsupport.cpp \//#720 ROOPAK
 #    builtinindexingsupport.cpp \//#720 ROOPAK
     commentssettings.cpp \
     completionsettingspage.cpp \
