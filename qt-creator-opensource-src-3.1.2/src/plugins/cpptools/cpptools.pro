@@ -54,7 +54,7 @@ HEADERS += \
     searchsymbols.h \
     symbolfinder.h \
 #    symbolsfindfilter.h \//#720 ROOPAK
-    typehierarchybuilder.h
+#    typehierarchybuilder.h//#720 ROOPAK
 
 SOURCES += \
     abstracteditorsupport.cpp \
@@ -106,7 +106,7 @@ SOURCES += \
     searchsymbols.cpp \
     symbolfinder.cpp \
 #    symbolsfindfilter.cpp \//#720 ROOPAK
-    typehierarchybuilder.cpp
+#    typehierarchybuilder.cpp//#720 ROOPAK
 
 FORMS += \
     completionsettingspage.ui \

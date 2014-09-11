@@ -29,7 +29,7 @@
 
 #include "functionutils.h"
 
-#include "typehierarchybuilder.h"
+//#include "typehierarchybuilder.h"//#720 ROOPAK
 
 #include <cplusplus/CppDocument.h>
 #include <cplusplus/LookupContext.h>
@@ -121,39 +121,39 @@ QList<Function *> FunctionUtils::overrides(Function *function, Class *functionsC
     QTC_ASSERT(referenceName && referenceType.isValid(), return result);
 
     // Find overrides
-    TypeHierarchyBuilder builder(staticClass, snapshot);
-    const TypeHierarchy &staticClassHierarchy = builder.buildDerivedTypeHierarchy();
+//    TypeHierarchyBuilder builder(staticClass, snapshot);//#720 ROOPAK - START
+//    const TypeHierarchy &staticClassHierarchy = builder.buildDerivedTypeHierarchy();
 
-    QList<TypeHierarchy> l;
-    if (functionsClass != staticClass)
-        l.append(TypeHierarchy(functionsClass));
-    l.append(staticClassHierarchy);
+//    QList<TypeHierarchy> l;
+//    if (functionsClass != staticClass)
+//        l.append(TypeHierarchy(functionsClass));
+//    l.append(staticClassHierarchy);
 
-    while (!l.isEmpty()) {
-        // Add derived
-        const TypeHierarchy hierarchy = l.takeFirst();
-        QTC_ASSERT(hierarchy.symbol(), continue);
-        Class *c = hierarchy.symbol()->asClass();
-        QTC_ASSERT(c, continue);
+//    while (!l.isEmpty()) {
+//        // Add derived
+//        const TypeHierarchy hierarchy = l.takeFirst();
+//        QTC_ASSERT(hierarchy.symbol(), continue);
+//        Class *c = hierarchy.symbol()->asClass();
+//        QTC_ASSERT(c, continue);
 
-        foreach (const TypeHierarchy &t, hierarchy.hierarchy()) {
-            if (!l.contains(t))
-                l << t;
-        }
+//        foreach (const TypeHierarchy &t, hierarchy.hierarchy()) {
+//            if (!l.contains(t))
+//                l << t;
+//        }
 
-        // Check member functions
-        for (int i = 0, total = c->memberCount(); i < total; ++i) {
-            Symbol *candidate = c->memberAt(i);
-            const Name *candidateName = candidate->name();
-            Function *candidateFunc = candidate->type()->asFunctionType();
-            if (!candidateName || !candidateFunc)
-                continue;
-            if (candidateName->isEqualTo(referenceName)
-                    && candidateFunc->isSignatureEqualTo(function)) {
-                result << candidateFunc;
-            }
-        }
-    }
+//        // Check member functions
+//        for (int i = 0, total = c->memberCount(); i < total; ++i) {
+//            Symbol *candidate = c->memberAt(i);
+//            const Name *candidateName = candidate->name();
+//            Function *candidateFunc = candidate->type()->asFunctionType();
+//            if (!candidateName || !candidateFunc)
+//                continue;
+//            if (candidateName->isEqualTo(referenceName)
+//                    && candidateFunc->isSignatureEqualTo(function)) {
+//                result << candidateFunc;
+//            }
+//        }
+//    }//#720 ROOPAK - END
 
     return result;
 }
