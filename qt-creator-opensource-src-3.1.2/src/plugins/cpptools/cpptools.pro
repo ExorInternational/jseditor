@@ -10,7 +10,7 @@ HEADERS += \
     cppchecksymbols.h \
 #    cppclassesfilter.h \//#720 ROOPAK
     cppcodeformatter.h \
-    cppcodemodelinspectordumper.h \
+#    cppcodemodelinspectordumper.h \//#720 ROOPAK
     cppcodemodelsettings.h \
     cppcodemodelsettingspage.h \
     cppcodestylepreferences.h \
@@ -64,7 +64,7 @@ SOURCES += \
     cppchecksymbols.cpp \
 #    cppclassesfilter.cpp \//#720 ROOPAK
     cppcodeformatter.cpp \
-    cppcodemodelinspectordumper.cpp \
+#    cppcodemodelinspectordumper.cpp \//#720 ROOPAK
     cppcodemodelsettings.cpp \
     cppcodemodelsettingspage.cpp \
     cppcodestylepreferences.cpp \
