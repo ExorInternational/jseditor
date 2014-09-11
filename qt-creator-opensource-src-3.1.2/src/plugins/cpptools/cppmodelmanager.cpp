@@ -39,7 +39,7 @@
 #include "cppmodelmanagersupportinternal.h"
 //#include "cpppreprocessor.h"//#720 ROOPAK
 #include "cpptoolsconstants.h"
-#include "cpptoolseditorsupport.h"
+//#include "cpptoolseditorsupport.h"//#720 ROOPAK
 #include "cpptoolsplugin.h"
 
 #include <coreplugin/icore.h>
@@ -432,48 +432,48 @@ void CppModelManager::removeExtraEditorSupport(AbstractEditorSupport *editorSupp
 
 /// \brief Returns the \c CppEditorSupport for the given text editor. It will
 ///        create one when none exists yet.
-CppEditorSupport *CppModelManager::cppEditorSupport(TextEditor::BaseTextEditor *textEditor)
-{
-    Q_ASSERT(textEditor);
+//CppEditorSupport *CppModelManager::cppEditorSupport(TextEditor::BaseTextEditor *textEditor)//#720 ROOPAK - START
+//{
+//    Q_ASSERT(textEditor);
 
-    QMutexLocker locker(&m_cppEditorSupportsMutex);
+//    QMutexLocker locker(&m_cppEditorSupportsMutex);
 
-    CppEditorSupport *editorSupport = m_cppEditorSupports.value(textEditor, 0);
-    if (!editorSupport && isCppEditor(textEditor)) {
-        editorSupport = new CppEditorSupport(this, textEditor);
-        m_cppEditorSupports.insert(textEditor, editorSupport);
-    }
-    return editorSupport;
-}
+//    CppEditorSupport *editorSupport = m_cppEditorSupports.value(textEditor, 0);
+//    if (!editorSupport && isCppEditor(textEditor)) {
+//        editorSupport = new CppEditorSupport(this, textEditor);
+//        m_cppEditorSupports.insert(textEditor, editorSupport);
+//    }
+//    return editorSupport;
+//}
 
-/// \brief Removes the CppEditorSupport for the closed editor.
-void CppModelManager::deleteCppEditorSupport(TextEditor::BaseTextEditor *textEditor)
-{
-    static short numberOfClosedEditors = 0;
+///// \brief Removes the CppEditorSupport for the closed editor.
+//void CppModelManager::deleteCppEditorSupport(TextEditor::BaseTextEditor *textEditor)
+//{
+//    static short numberOfClosedEditors = 0;
 
-    QTC_ASSERT(textEditor, return);
+//    QTC_ASSERT(textEditor, return);
 
-    if (!isCppEditor(textEditor))
-        return;
+//    if (!isCppEditor(textEditor))
+//        return;
 
-    CppEditorSupport *editorSupport;
-    int numberOfOpenEditors = 0;
+//    CppEditorSupport *editorSupport;
+//    int numberOfOpenEditors = 0;
 
-    { // Only lock the operations on m_cppEditorSupport
-        QMutexLocker locker(&m_cppEditorSupportsMutex);
-        editorSupport = m_cppEditorSupports.value(textEditor, 0);
-        m_cppEditorSupports.remove(textEditor);
-        numberOfOpenEditors = m_cppEditorSupports.size();
-    }
+//    { // Only lock the operations on m_cppEditorSupport
+//        QMutexLocker locker(&m_cppEditorSupportsMutex);
+//        editorSupport = m_cppEditorSupports.value(textEditor, 0);
+//        m_cppEditorSupports.remove(textEditor);
+//        numberOfOpenEditors = m_cppEditorSupports.size();
+//    }
 
-    delete editorSupport;
+//    delete editorSupport;
 
-    ++numberOfClosedEditors;
-    if (numberOfOpenEditors == 0 || numberOfClosedEditors == 5) {
-        numberOfClosedEditors = 0;
-        delayedGC();
-    }
-}
+//    ++numberOfClosedEditors;
+//    if (numberOfOpenEditors == 0 || numberOfClosedEditors == 5) {
+//        numberOfClosedEditors = 0;
+//        delayedGC();
+//    }
+//}//#720 ROOPAK - END
 
 QList<int> CppModelManager::references(CPlusPlus::Symbol *symbol, const LookupContext &context)
 {
@@ -512,18 +512,18 @@ void CppModelManager::replaceSnapshot(const CPlusPlus::Snapshot &newSnapshot)
 
 CppModelManager::WorkingCopy CppModelManager::buildWorkingCopyList()
 {
-    QList<CppEditorSupport *> cppEditorSupports;
+//    QList<CppEditorSupport *> cppEditorSupports;//#720 ROOPAK - START
 
-    {
-        QMutexLocker locker(&m_cppEditorSupportsMutex);
-        cppEditorSupports = m_cppEditorSupports.values();
-    }
+//    {
+//        QMutexLocker locker(&m_cppEditorSupportsMutex);
+//        cppEditorSupports = m_cppEditorSupports.values();
+//    }//#720 ROOPAK - END
 
     WorkingCopy workingCopy;
-    foreach (const CppEditorSupport *editorSupport, cppEditorSupports) {
-        workingCopy.insert(editorSupport->fileName(), editorSupport->contents(),
-                           editorSupport->editorRevision());
-    }
+//    foreach (const CppEditorSupport *editorSupport, cppEditorSupports) {//#720 ROOPAK - START
+//        workingCopy.insert(editorSupport->fileName(), editorSupport->contents(),
+//                           editorSupport->editorRevision());
+//    }//#720 ROOPAK - END
 
     QSetIterator<AbstractEditorSupport *> it(m_extraEditorSupports);
     while (it.hasNext()) {
@@ -855,15 +855,15 @@ void CppModelManager::GC()
     if (!m_enableGC)
         return;
 
-    // Collect files of CppEditorSupport and AbstractEditorSupport.
+//    // Collect files of CppEditorSupport and AbstractEditorSupport.
     QStringList filesInEditorSupports;
-    QList<CppEditorSupport *> cppEditorSupports;
-    {
-        QMutexLocker locker(&m_cppEditorSupportsMutex);
-        cppEditorSupports = m_cppEditorSupports.values();
-    }
-    foreach (const CppEditorSupport *cppEditorSupport, cppEditorSupports)
-        filesInEditorSupports << cppEditorSupport->fileName();
+//    QList<CppEditorSupport *> cppEditorSupports;//#720 ROOPAK - START
+//    {
+//        QMutexLocker locker(&m_cppEditorSupportsMutex);
+//        cppEditorSupports = m_cppEditorSupports.values();
+//    }
+//    foreach (const CppEditorSupport *cppEditorSupport, cppEditorSupports)
+//        filesInEditorSupports << cppEditorSupport->fileName();//#720 ROOPAK - END
 
     QSetIterator<AbstractEditorSupport *> jt(m_extraEditorSupports);
     while (jt.hasNext()) {
@@ -968,36 +968,36 @@ bool CppModelManager::setExtraDiagnostics(const QString &fileName,
                                           const QString &kind,
                                           const QList<Document::DiagnosticMessage> &diagnostics)
 {
-    QList<CppEditorSupport *> cppEditorSupports;
+//    QList<CppEditorSupport *> cppEditorSupports;//#720 ROOPAK - START
 
-    {
-        QMutexLocker locker(&m_cppEditorSupportsMutex);
-        cppEditorSupports = m_cppEditorSupports.values();
-    }
+//    {
+//        QMutexLocker locker(&m_cppEditorSupportsMutex);
+//        cppEditorSupports = m_cppEditorSupports.values();
+//    }
 
-    foreach (CppEditorSupport *editorSupport, cppEditorSupports) {
-        if (editorSupport->fileName() == fileName) {
-            editorSupport->setExtraDiagnostics(kind, diagnostics);
-            return true;
-        }
-    }
+//    foreach (CppEditorSupport *editorSupport, cppEditorSupports) {
+//        if (editorSupport->fileName() == fileName) {
+//            editorSupport->setExtraDiagnostics(kind, diagnostics);
+//            return true;
+//        }
+//    }//#720 ROOPAK - END
     return false;
 }
 
 void CppModelManager::setIfdefedOutBlocks(const QString &fileName,
                                           const QList<TextEditor::BlockRange> &ifdeffedOutBlocks)
 {
-    QList<CppEditorSupport *> cppEditorSupports;
+//    QList<CppEditorSupport *> cppEditorSupports;//#720 ROOPAK - START
 
-    {
-        QMutexLocker locker(&m_cppEditorSupportsMutex);
-        cppEditorSupports = m_cppEditorSupports.values();
-    }
+//    {
+//        QMutexLocker locker(&m_cppEditorSupportsMutex);
+//        cppEditorSupports = m_cppEditorSupports.values();
+//    }
 
-    foreach (CppEditorSupport *editorSupport, cppEditorSupports) {
-        if (editorSupport->fileName() == fileName) {
-            editorSupport->setIfdefedOutBlocks(ifdeffedOutBlocks);
-            break;
-        }
-    }
+//    foreach (CppEditorSupport *editorSupport, cppEditorSupports) {
+//        if (editorSupport->fileName() == fileName) {
+//            editorSupport->setIfdefedOutBlocks(ifdeffedOutBlocks);
+//            break;
+//        }
+//    }//#720 ROOPAK - END
 }

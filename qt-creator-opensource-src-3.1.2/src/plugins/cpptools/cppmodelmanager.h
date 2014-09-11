@@ -46,7 +46,7 @@ namespace TextEditor { class BaseTextEditorWidget; }
 
 namespace CppTools {
 
-class CppEditorSupport;
+//class CppEditorSupport;//#720 ROOPAK
 
 namespace Internal {
 
@@ -95,8 +95,8 @@ public:
 
     virtual void addExtraEditorSupport(AbstractEditorSupport *editorSupport);
     virtual void removeExtraEditorSupport(AbstractEditorSupport *editorSupport);
-    virtual CppEditorSupport *cppEditorSupport(TextEditor::BaseTextEditor *textEditor);
-    virtual void deleteCppEditorSupport(TextEditor::BaseTextEditor *textEditor);
+//    virtual CppEditorSupport *cppEditorSupport(TextEditor::BaseTextEditor *textEditor);//#720 ROOPAK - START
+//    virtual void deleteCppEditorSupport(TextEditor::BaseTextEditor *textEditor);//#720 ROOPAK - END
 
     virtual QList<int> references(CPlusPlus::Symbol *symbol, const CPlusPlus::LookupContext &context);
 
@@ -212,7 +212,7 @@ private:
 
     // Editor integration
     mutable QMutex m_cppEditorSupportsMutex;
-    QMap<TextEditor::BaseTextEditor *, CppEditorSupport *> m_cppEditorSupports;
+//    QMap<TextEditor::BaseTextEditor *, CppEditorSupport *> m_cppEditorSupports;//#720 ROOPAK
     QSet<AbstractEditorSupport *> m_extraEditorSupports;
 
     // Completion & highlighting

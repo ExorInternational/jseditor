@@ -43,7 +43,7 @@ HEADERS += \
 #    cppsnapshotupdater.h \//#720 ROOPAK
     cpptools_global.h \
     cpptoolsconstants.h \
-    cpptoolseditorsupport.h \
+#    cpptoolseditorsupport.h \//#720 ROOPAK
     cpptoolsplugin.h \
     cpptoolsreuse.h \
     cpptoolssettings.h \
@@ -95,7 +95,7 @@ SOURCES += \
     cpprefactoringchanges.cpp \
     cppsemanticinfo.cpp \
 #    cppsnapshotupdater.cpp \//#720 ROOPAK
-    cpptoolseditorsupport.cpp \
+#    cpptoolseditorsupport.cpp \//#720 ROOPAK
     cpptoolsplugin.cpp \
     cpptoolsreuse.cpp \
     cpptoolssettings.cpp \

@@ -55,7 +55,7 @@ namespace CppTools {
 class AbstractEditorSupport;
 class ModelManagerSupport;
 class CppCompletionAssistProvider;
-class CppEditorSupport;
+//class CppEditorSupport;//#720 ROOPAK
 class CppHighlightingSupport;
 class CppIndexingSupport;
 
@@ -243,8 +243,8 @@ public:
 
     virtual void addExtraEditorSupport(CppTools::AbstractEditorSupport *editorSupport) = 0;
     virtual void removeExtraEditorSupport(CppTools::AbstractEditorSupport *editorSupport) = 0;
-    virtual CppEditorSupport *cppEditorSupport(TextEditor::BaseTextEditor *textEditor) = 0;
-    virtual void deleteCppEditorSupport(TextEditor::BaseTextEditor *textEditor) = 0;
+//    virtual CppEditorSupport *cppEditorSupport(TextEditor::BaseTextEditor *textEditor) = 0;//#720 ROOPAK - START
+//    virtual void deleteCppEditorSupport(TextEditor::BaseTextEditor *textEditor) = 0;//#720 ROOPAK - END
 
     virtual QList<int> references(CPlusPlus::Symbol *symbol,
                                   const CPlusPlus::LookupContext &context) = 0;

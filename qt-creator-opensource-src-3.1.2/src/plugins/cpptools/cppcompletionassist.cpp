@@ -34,7 +34,7 @@
 #include "cppmodelmanagerinterface.h"
 //#include "cppsnapshotupdater.h"//#720 ROOPAK
 #include "cpptoolsconstants.h"
-#include "cpptoolseditorsupport.h"
+//#include "cpptoolseditorsupport.h"//#720 ROOPAK
 
 #include <coreplugin/icore.h>
 #include <cppeditor/cppeditorconstants.h>
@@ -1955,12 +1955,12 @@ void CppCompletionAssistInterface::getCppSpecifics() const
     m_gotCppSpecifics = true;
 
     CppModelManagerInterface *modelManager = CppModelManagerInterface::instance();
-    if (CppEditorSupport *supp = modelManager->cppEditorSupport(m_editor)) {
-//        if (QSharedPointer<SnapshotUpdater> updater = supp->snapshotUpdater()) {//#720 ROOPAK - START
+//    if (CppEditorSupport *supp = modelManager->cppEditorSupport(m_editor)) {//#720 ROOPAK - START
+//        if (QSharedPointer<SnapshotUpdater> updater = supp->snapshotUpdater()) {
 //            updater->update(m_workingCopy);
 //            m_snapshot = updater->snapshot();
 //            m_includePaths = updater->includePaths();
 //            m_frameworkPaths = updater->frameworkPaths();
-//        }//#720 ROOPAK - END
-    }
+//        }
+//    }//#720 ROOPAK - END
 }
