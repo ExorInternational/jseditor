@@ -37,6 +37,10 @@
 
 #include <utils/qtcassert.h>
 
+//#720 ADDED BY ROOPAK - START
+#include "cppprojectfile.h"
+//#720 ROOPAK - END
+
 using namespace CPlusPlus;
 using namespace CppTools;
 
@@ -299,8 +303,8 @@ QString InsertionPointLocator::accessSpecToString(InsertionPointLocator::AccessS
     }
 }
 
-InsertionPointLocator::InsertionPointLocator(const CppRefactoringChanges &refactoringChanges)
-    : m_refactoringChanges(refactoringChanges)
+InsertionPointLocator::InsertionPointLocator(/*const CppRefactoringChanges &refactoringChanges*/)//#720 ROOPAK
+//    : m_refactoringChanges(refactoringChanges)//#720 ROOPAK
 {
 }
 
@@ -309,13 +313,13 @@ InsertionLocation InsertionPointLocator::methodDeclarationInClass(
     const Class *clazz,
     AccessSpec xsSpec) const
 {
-    const Document::Ptr doc = m_refactoringChanges.file(fileName)->cppDocument();
-    if (doc) {
-        FindInClass find(doc, clazz, xsSpec);
-        return find();
-    } else {
-        return InsertionLocation();
-    }
+//    const Document::Ptr doc = m_refactoringChanges.file(fileName)->cppDocument();//#720 ROOPAK - START
+//    if (doc) {
+//        FindInClass find(doc, clazz, xsSpec);
+//        return find();
+//    } else {
+//        return InsertionLocation();
+//    }//#720 ROOPAK - END
 }
 
 namespace {
@@ -475,7 +479,7 @@ static Declaration *isNonVirtualFunctionDeclaration(Symbol *s)
 }
 
 static InsertionLocation nextToSurroundingDefinitions(Symbol *declaration,
-                                                      const CppRefactoringChanges &changes,
+//                                                      const CppRefactoringChanges &changes,//#720 ROOPAK
                                                       const QString& destinationFile)
 {
     InsertionLocation noResult;
@@ -504,16 +508,16 @@ static InsertionLocation nextToSurroundingDefinitions(Symbol *declaration,
         Symbol *s = klass->memberAt(i);
         if (s->isGenerated() || !(surroundingFunctionDecl = isNonVirtualFunctionDeclaration(s)))
             continue;
-        if ((definitionFunction = symbolFinder.findMatchingDefinition(surroundingFunctionDecl,
-                                                                      changes.snapshot())))
-        {
-            if (destinationFile.isEmpty() || destinationFile == QString::fromUtf8(
-                        definitionFunction->fileName(), definitionFunction->fileNameLength())) {
-                prefix = QLatin1String("\n\n");
-                break;
-            }
-            definitionFunction = 0;
-        }
+//        if ((definitionFunction = symbolFinder.findMatchingDefinition(surroundingFunctionDecl,//#720 ROOPAK - START
+//                                                                      changes.snapshot())))
+//        {
+//            if (destinationFile.isEmpty() || destinationFile == QString::fromUtf8(
+//                        definitionFunction->fileName(), definitionFunction->fileNameLength())) {
+//                prefix = QLatin1String("\n\n");
+//                break;
+//            }
+//            definitionFunction = 0;
+//        }//#720 ROOPAK - END
     }
     if (!definitionFunction) {
         // try to find one below
@@ -522,16 +526,16 @@ static InsertionLocation nextToSurroundingDefinitions(Symbol *declaration,
             surroundingFunctionDecl = isNonVirtualFunctionDeclaration(s);
             if (!surroundingFunctionDecl)
                 continue;
-            if ((definitionFunction = symbolFinder.findMatchingDefinition(surroundingFunctionDecl,
-                                                                          changes.snapshot())))
-            {
-                if (destinationFile.isEmpty() || destinationFile == QString::fromUtf8(
-                            definitionFunction->fileName(), definitionFunction->fileNameLength())) {
-                    suffix = QLatin1String("\n\n");
-                    break;
-                }
-                definitionFunction = 0;
-            }
+//            if ((definitionFunction = symbolFinder.findMatchingDefinition(surroundingFunctionDecl,//#720 ROOPAK - START
+//                                                                          changes.snapshot())))
+//            {
+//                if (destinationFile.isEmpty() || destinationFile == QString::fromUtf8(
+//                            definitionFunction->fileName(), definitionFunction->fileNameLength())) {
+//                    suffix = QLatin1String("\n\n");
+//                    break;
+//                }
+//                definitionFunction = 0;
+//            }//#720 ROOPAK - END
         }
     }
 
@@ -540,23 +544,23 @@ static InsertionLocation nextToSurroundingDefinitions(Symbol *declaration,
 
     unsigned line, column;
     if (suffix.isEmpty()) {
-        Document::Ptr targetDoc = changes.snapshot().document(QString::fromUtf8(definitionFunction->fileName()));
-        if (!targetDoc)
-            return noResult;
+//        Document::Ptr targetDoc = changes.snapshot().document(QString::fromUtf8(definitionFunction->fileName()));//#720 ROOPAK - START
+//        if (!targetDoc)
+//            return noResult;
 
-        targetDoc->translationUnit()->getPosition(definitionFunction->endOffset(), &line, &column);
+//        targetDoc->translationUnit()->getPosition(definitionFunction->endOffset(), &line, &column);//#720 ROOPAK - END
     } else {
         // we don't have an offset to the start of the function definition, so we need to manually find it...
-        CppRefactoringFilePtr targetFile = changes.file(QString::fromUtf8(definitionFunction->fileName()));
-        if (!targetFile->isValid())
-            return noResult;
+//        CppRefactoringFilePtr targetFile = changes.file(QString::fromUtf8(definitionFunction->fileName()));//#720 ROOPAK - START
+//        if (!targetFile->isValid())
+//            return noResult;
 
-        FindFunctionDefinition finder(targetFile->cppDocument()->translationUnit());
-        FunctionDefinitionAST *functionDefinition = finder(definitionFunction->line(), definitionFunction->column());
-        if (!functionDefinition)
-            return noResult;
+//        FindFunctionDefinition finder(targetFile->cppDocument()->translationUnit());
+//        FunctionDefinitionAST *functionDefinition = finder(definitionFunction->line(), definitionFunction->column());
+//        if (!functionDefinition)
+//            return noResult;
 
-        targetFile->cppDocument()->translationUnit()->getTokenStartPosition(functionDefinition->firstToken(), &line, &column);
+//        targetFile->cppDocument()->translationUnit()->getTokenStartPosition(functionDefinition->firstToken(), &line, &column);//#720 ROOPAK - END
     }
 
     return InsertionLocation(QString::fromUtf8(definitionFunction->fileName()), prefix, suffix, line, column);
@@ -572,12 +576,12 @@ QList<InsertionLocation> InsertionPointLocator::methodDefinition(Symbol *declara
 
     if (useSymbolFinder) {
         CppTools::SymbolFinder symbolFinder;
-        if (symbolFinder.findMatchingDefinition(declaration, m_refactoringChanges.snapshot(), true))
-            return result;
+//        if (symbolFinder.findMatchingDefinition(declaration, m_refactoringChanges.snapshot(), true))//#720 ROOPAK - START
+//            return result;//#720 ROOPAK - END
     }
 
     const InsertionLocation location = nextToSurroundingDefinitions(declaration,
-                                                                    m_refactoringChanges,
+//                                                                    m_refactoringChanges,//#720 ROOPAK
                                                                     destinationFile);
     if (location.isValid()) {
         result += location;
@@ -593,43 +597,43 @@ QList<InsertionLocation> InsertionPointLocator::methodDefinition(Symbol *declara
             target = candidate;
     }
 
-    CppRefactoringFilePtr targetFile = m_refactoringChanges.file(target);
-    Document::Ptr doc = targetFile->cppDocument();
-    if (doc.isNull())
-        return result;
+//    CppRefactoringFilePtr targetFile = m_refactoringChanges.file(target);//#720 ROOPAK - START
+//    Document::Ptr doc = targetFile->cppDocument();
+//    if (doc.isNull())
+//        return result;
 
-    unsigned line = 0, column = 0;
-    FindMethodDefinitionInsertPoint finder(doc->translationUnit());
-    finder(declaration, &line, &column);
+//    unsigned line = 0, column = 0;
+//    FindMethodDefinitionInsertPoint finder(doc->translationUnit());
+//    finder(declaration, &line, &column);
 
-    // Force empty lines before and after the new definition.
-    QString prefix;
-    QString suffix;
-    if (!line) {
-        // Totally empty file.
-        line = 1;
-        column = 1;
-        prefix = suffix = QLatin1Char('\n');
-    } else {
-        QTC_ASSERT(column, return result);
+//    // Force empty lines before and after the new definition.
+//    QString prefix;
+//    QString suffix;
+//    if (!line) {
+//        // Totally empty file.
+//        line = 1;
+//        column = 1;
+//        prefix = suffix = QLatin1Char('\n');
+//    } else {
+//        QTC_ASSERT(column, return result);
 
-        prefix = QLatin1String("\n\n");
-        int firstNonSpace = targetFile->position(line, column);
-        QChar c = targetFile->charAt(firstNonSpace);
-        while (c == QLatin1Char(' ') || c == QLatin1Char('\t')) {
-            ++firstNonSpace;
-            c = targetFile->charAt(firstNonSpace);
-        }
-        if (targetFile->charAt(firstNonSpace) != QChar::ParagraphSeparator) {
-            suffix.append(QLatin1String("\n\n"));
-        } else {
-            ++firstNonSpace;
-            if (targetFile->charAt(firstNonSpace) != QChar::ParagraphSeparator)
-                suffix.append(QLatin1Char('\n'));
-        }
-    }
+//        prefix = QLatin1String("\n\n");
+//        int firstNonSpace = targetFile->position(line, column);
+//        QChar c = targetFile->charAt(firstNonSpace);
+//        while (c == QLatin1Char(' ') || c == QLatin1Char('\t')) {
+//            ++firstNonSpace;
+//            c = targetFile->charAt(firstNonSpace);
+//        }
+//        if (targetFile->charAt(firstNonSpace) != QChar::ParagraphSeparator) {
+//            suffix.append(QLatin1String("\n\n"));
+//        } else {
+//            ++firstNonSpace;
+//            if (targetFile->charAt(firstNonSpace) != QChar::ParagraphSeparator)
+//                suffix.append(QLatin1Char('\n'));
+//        }
+//    }
 
-    result += InsertionLocation(target, prefix, suffix, line, column);
+//    result += InsertionLocation(target, prefix, suffix, line, column);//#720 ROOPAK - END
 
     return result;
 }

@@ -31,7 +31,12 @@
 #define INSERTIONPOINTLOCATOR_H
 
 #include "cpptools_global.h"
-#include "cpprefactoringchanges.h"
+//#include "cpprefactoringchanges.h"//#720 ROOPAK
+
+//#720 ADDED BY ROOPAK - START
+#include <QString>
+#include <cplusplus/LookupContext.h>
+//#720 ROOPAK - END
 
 namespace CppTools {
 
@@ -92,7 +97,7 @@ public:
     static QString accessSpecToString(InsertionPointLocator::AccessSpec xsSpec);
 
 public:
-    InsertionPointLocator(const CppRefactoringChanges &refactoringChanges);
+    InsertionPointLocator(/*const CppRefactoringChanges &refactoringChanges*/);//#720 ROOPAK
 
     InsertionLocation methodDeclarationInClass(const QString &fileName,
                                                const CPlusPlus::Class *clazz,
@@ -103,7 +108,7 @@ public:
                                               const QString &destinationFile = QString()) const;
 
 private:
-    CppRefactoringChanges m_refactoringChanges;
+//    CppRefactoringChanges m_refactoringChanges;//#720 ROOPAK
 };
 
 } // namespace CppTools
