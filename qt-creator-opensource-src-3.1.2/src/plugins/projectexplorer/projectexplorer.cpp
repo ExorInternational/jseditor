@@ -173,7 +173,7 @@ struct ProjectExplorerPluginPrivate {
     ProjectExplorerPluginPrivate();
 
     QMenu *m_sessionContextMenu;
-    QMenu *m_sessionMenu;
+//    QMenu *m_sessionMenu;//#720 ROOPAK
     QMenu *m_projectMenu;
     QMenu *m_subProjectMenu;
     QMenu *m_folderMenu;
