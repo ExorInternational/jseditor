@@ -139,7 +139,7 @@ protected:
 private slots:
     void openFile();
 //    void aboutToShowRecentFiles();//#720 ROOPAK
-    void openRecentFile();
+//    void openRecentFile();//#720 ROOPAK
     void setFocusToEditor();
     void saveAll();
     void aboutQtCreator();

@@ -1171,15 +1171,15 @@ void MainWindow::updateContext()
 //                                                     "Core", Core::Constants::TR_CLEAR_MENU));
 //        connect(action, SIGNAL(triggered()), DocumentManager::instance(), SLOT(clearRecentFiles()));
 //    }
-//}//#720 ROOPAK - END
+//}
 
-void MainWindow::openRecentFile()
-{
-    if (const QAction *action = qobject_cast<const QAction*>(sender())) {
-        const DocumentManager::RecentFile file = action->data().value<DocumentManager::RecentFile>();
-        EditorManager::openEditor(file.first, file.second);
-    }
-}
+//void MainWindow::openRecentFile()
+//{
+//    if (const QAction *action = qobject_cast<const QAction*>(sender())) {
+//        const DocumentManager::RecentFile file = action->data().value<DocumentManager::RecentFile>();
+//        EditorManager::openEditor(file.first, file.second);
+//    }
+//}//#720 ROOPAK - END
 
 void MainWindow::aboutQtCreator()
 {
