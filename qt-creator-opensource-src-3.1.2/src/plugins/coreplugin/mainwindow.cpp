@@ -475,7 +475,7 @@ void MainWindow::registerDefaultContainers()
     filemenu->appendGroup(Constants::G_FILE_CLOSE);
     filemenu->appendGroup(Constants::G_FILE_PRINT);
     filemenu->appendGroup(Constants::G_FILE_OTHER);
-    connect(filemenu->menu(), SIGNAL(aboutToShow()), this, SLOT(aboutToShowRecentFiles()));
+//    connect(filemenu->menu(), SIGNAL(aboutToShow()), this, SLOT(aboutToShowRecentFiles()));//#720 ROOPAK
 
 
     // Edit Menu
@@ -565,10 +565,10 @@ void MainWindow::registerDefaultActions()
 //    connect(m_openWithAction, SIGNAL(triggered()), this, SLOT(openFileWith()));//#720 ROOPAK - END
 
     // File->Recent Files Menu
-    ActionContainer *ac = ActionManager::createMenu(Constants::M_FILE_RECENTFILES);
-    mfile->addMenu(ac, Constants::G_FILE_OPEN);
-    ac->menu()->setTitle(tr("Recent &Files"));
-    ac->setOnAllDisabledBehavior(ActionContainer::Show);
+//    ActionContainer *ac = ActionManager::createMenu(Constants::M_FILE_RECENTFILES);//#720 ROOPAK - START
+//    mfile->addMenu(ac, Constants::G_FILE_OPEN);
+//    ac->menu()->setTitle(tr("Recent &Files"));
+//    ac->setOnAllDisabledBehavior(ActionContainer::Show);//#720 ROOPAK - END
 
     // Save Action
     icon = QIcon::fromTheme(QLatin1String("document-save"), QIcon(QLatin1String(Constants::ICON_SAVEFILE)));
@@ -1148,30 +1148,30 @@ void MainWindow::updateContext()
     emit m_coreImpl->contextChanged(m_activeContext, m_additionalContexts);
 }
 
-void MainWindow::aboutToShowRecentFiles()
-{
-    ActionContainer *aci =
-        ActionManager::actionContainer(Constants::M_FILE_RECENTFILES);
-    aci->menu()->clear();
+//void MainWindow::aboutToShowRecentFiles()//#720 ROOPAK - START
+//{
+//    ActionContainer *aci =
+//        ActionManager::actionContainer(Constants::M_FILE_RECENTFILES);
+//    aci->menu()->clear();
 
-    bool hasRecentFiles = false;
-    foreach (const DocumentManager::RecentFile &file, DocumentManager::recentFiles()) {
-        hasRecentFiles = true;
-        QAction *action = aci->menu()->addAction(
-                    QDir::toNativeSeparators(Utils::withTildeHomePath(file.first)));
-        action->setData(qVariantFromValue(file));
-        connect(action, SIGNAL(triggered()), this, SLOT(openRecentFile()));
-    }
-    aci->menu()->setEnabled(hasRecentFiles);
+//    bool hasRecentFiles = false;
+//    foreach (const DocumentManager::RecentFile &file, DocumentManager::recentFiles()) {
+//        hasRecentFiles = true;
+//        QAction *action = aci->menu()->addAction(
+//                    QDir::toNativeSeparators(Utils::withTildeHomePath(file.first)));
+//        action->setData(qVariantFromValue(file));
+//        connect(action, SIGNAL(triggered()), this, SLOT(openRecentFile()));
+//    }
+//    aci->menu()->setEnabled(hasRecentFiles);
 
-    // add the Clear Menu item
-    if (hasRecentFiles) {
-        aci->menu()->addSeparator();
-        QAction *action = aci->menu()->addAction(QCoreApplication::translate(
-                                                     "Core", Core::Constants::TR_CLEAR_MENU));
-        connect(action, SIGNAL(triggered()), DocumentManager::instance(), SLOT(clearRecentFiles()));
-    }
-}
+//    // add the Clear Menu item
+//    if (hasRecentFiles) {
+//        aci->menu()->addSeparator();
+//        QAction *action = aci->menu()->addAction(QCoreApplication::translate(
+//                                                     "Core", Core::Constants::TR_CLEAR_MENU));
+//        connect(action, SIGNAL(triggered()), DocumentManager::instance(), SLOT(clearRecentFiles()));
+//    }
+//}//#720 ROOPAK - END
 
 void MainWindow::openRecentFile()
 {

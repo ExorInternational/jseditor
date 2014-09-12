@@ -138,7 +138,7 @@ protected:
 
 private slots:
     void openFile();
-    void aboutToShowRecentFiles();
+//    void aboutToShowRecentFiles();//#720 ROOPAK
     void openRecentFile();
     void setFocusToEditor();
     void saveAll();
