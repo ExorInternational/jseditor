@@ -169,7 +169,7 @@ private slots:
     void cleanProjectOnly();
     void cleanProject();
     void cleanProjectContextMenu();
-    void cleanSession();
+//    void cleanSession();//#720 ROOPAK
     void cancelBuild();
     void loadAction();
 //    void unloadProject();//#720 ROOPAK
