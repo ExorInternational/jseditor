@@ -318,7 +318,7 @@ InsertionLocation InsertionPointLocator::methodDeclarationInClass(
 //        FindInClass find(doc, clazz, xsSpec);
 //        return find();
 //    } else {
-//        return InsertionLocation();
+        return InsertionLocation();
 //    }//#720 ROOPAK - END
 }
 
