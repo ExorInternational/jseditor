@@ -172,7 +172,7 @@ namespace ProjectExplorer {
 struct ProjectExplorerPluginPrivate {
     ProjectExplorerPluginPrivate();
 
-    QMenu *m_sessionContextMenu;
+//    QMenu *m_sessionContextMenu;//#720 ROOPAK
 //    QMenu *m_sessionMenu;//#720 ROOPAK
     QMenu *m_projectMenu;
     QMenu *m_subProjectMenu;
@@ -461,8 +461,8 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
 //    addAutoReleasedObject(new DeviceSettingsPage);//ROOPAK
 
     // context menus
-    ActionContainer *msessionContextMenu =
-        ActionManager::createMenu(Constants::M_SESSIONCONTEXT);
+//    ActionContainer *msessionContextMenu =//#720 ROOPAK
+//        ActionManager::createMenu(Constants::M_SESSIONCONTEXT);//#720 ROOPAK - END
     ActionContainer *mprojectContextMenu =
         ActionManager::createMenu(Constants::M_PROJECTCONTEXT);
     ActionContainer *msubProjectContextMenu =
@@ -472,7 +472,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
     ActionContainer *mfileContextMenu =
         ActionManager::createMenu(Constants::M_FILECONTEXT);
 
-    d->m_sessionContextMenu = msessionContextMenu->menu();
+//    d->m_sessionContextMenu = msessionContextMenu->menu();//#720 ROOPAK
     d->m_projectMenu = mprojectContextMenu->menu();
     d->m_subProjectMenu = msubProjectContextMenu->menu();
     d->m_folderMenu = mfolderContextMenu->menu();
@@ -511,11 +511,11 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
     mbuild->appendGroup(Constants::G_BUILD_CANCEL);
     mbuild->appendGroup(Constants::G_BUILD_RUN);
 
-    msessionContextMenu->appendGroup(Constants::G_SESSION_BUILD);
-    msessionContextMenu->appendGroup(Constants::G_SESSION_REBUILD);
-    msessionContextMenu->appendGroup(Constants::G_SESSION_FILES);
-    msessionContextMenu->appendGroup(Constants::G_SESSION_OTHER);
-    msessionContextMenu->appendGroup(Constants::G_PROJECT_TREE);
+//    msessionContextMenu->appendGroup(Constants::G_SESSION_BUILD);//#720 ROOPAK - START
+//    msessionContextMenu->appendGroup(Constants::G_SESSION_REBUILD);
+//    msessionContextMenu->appendGroup(Constants::G_SESSION_FILES);
+//    msessionContextMenu->appendGroup(Constants::G_SESSION_OTHER);
+//    msessionContextMenu->appendGroup(Constants::G_PROJECT_TREE);//#720 ROOPAK - END
 
     mprojectContextMenu->appendGroup(Constants::G_PROJECT_FIRST);
     mprojectContextMenu->appendGroup(Constants::G_PROJECT_BUILD);
@@ -565,14 +565,14 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
 
     Command *cmd;
 
-    msessionContextMenu->addSeparator(projecTreeContext, Constants::G_SESSION_REBUILD);
+//    msessionContextMenu->addSeparator(projecTreeContext, Constants::G_SESSION_REBUILD);//#720 ROOPAK
 
-    msessionContextMenu->addSeparator(projecTreeContext, Constants::G_SESSION_FILES);
+//    msessionContextMenu->addSeparator(projecTreeContext, Constants::G_SESSION_FILES);//#720 ROOPAK
     mprojectContextMenu->addSeparator(projecTreeContext, Constants::G_PROJECT_FILES);
     msubProjectContextMenu->addSeparator(projecTreeContext, Constants::G_PROJECT_FILES);
     mfile->addSeparator(globalcontext, Core::Constants::G_FILE_PROJECT);
     mbuild->addSeparator(globalcontext, Constants::G_BUILD_REBUILD);
-    msessionContextMenu->addSeparator(globalcontext, Constants::G_SESSION_OTHER);
+//    msessionContextMenu->addSeparator(globalcontext, Constants::G_SESSION_OTHER);//#720 ROOPAK
     mbuild->addSeparator(globalcontext, Constants::G_BUILD_CANCEL);
     mbuild->addSeparator(globalcontext, Constants::G_BUILD_RUN);
     mprojectContextMenu->addSeparator(globalcontext, Constants::G_PROJECT_REBUILD);
@@ -593,7 +593,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
 #ifndef Q_OS_MAC
     cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+Shift+O")));
 #endif
-    msessionContextMenu->addAction(cmd, Constants::G_SESSION_FILES);
+//    msessionContextMenu->addAction(cmd, Constants::G_SESSION_FILES);//#720 ROOPAK
 
     // Default open action
     d->m_openFileAction = new QAction(tr("Open File"), this);
@@ -886,8 +886,8 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
     mfolderContextMenu->addAction(cmd, treeGroup);
     mprojectContextMenu->addSeparator(globalcontext, treeGroup);
     mprojectContextMenu->addAction(cmd, treeGroup);
-    msessionContextMenu->addSeparator(globalcontext, treeGroup);
-    msessionContextMenu->addAction(cmd, treeGroup);
+//    msessionContextMenu->addSeparator(globalcontext, treeGroup);//#720 ROOPAK
+//    msessionContextMenu->addAction(cmd, treeGroup);//#720 ROOPAK
 
     // target selector
     d->m_projectSelectorAction = new QAction(this);
