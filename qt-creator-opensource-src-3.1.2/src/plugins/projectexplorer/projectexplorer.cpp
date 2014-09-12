@@ -625,13 +625,13 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
     mfileContextMenu->addMenu(openWith, ProjectExplorer::Constants::G_FILE_OPEN);
 
     // recent projects menu
-    ActionContainer *mrecent =
-        ActionManager::createMenu(Constants::M_RECENTPROJECTS);
-    mrecent->menu()->setTitle(tr("Recent P&rojects"));
-    mrecent->setOnAllDisabledBehavior(ActionContainer::Show);
-    mfile->addMenu(mrecent, Core::Constants::G_FILE_OPEN);
-    connect(mfile->menu(), SIGNAL(aboutToShow()),
-        this, SLOT(updateRecentProjectMenu()));
+//    ActionContainer *mrecent =//#720 ROOPAK - START
+//        ActionManager::createMenu(Constants::M_RECENTPROJECTS);
+//    mrecent->menu()->setTitle(tr("Recent P&rojects"));
+//    mrecent->setOnAllDisabledBehavior(ActionContainer::Show);
+//    mfile->addMenu(mrecent, Core::Constants::G_FILE_OPEN);
+//    connect(mfile->menu(), SIGNAL(aboutToShow()),
+//        this, SLOT(updateRecentProjectMenu()));//#720 ROOPAK - END
 
     // session menu
     ActionContainer *msession = ActionManager::createMenu(Constants::M_SESSION);
@@ -2613,46 +2613,46 @@ void ProjectExplorerPlugin::addToRecentProjects(const QString &fileName, const Q
     emit recentProjectsChanged();
 }
 
-void ProjectExplorerPlugin::updateRecentProjectMenu()
-{
-    typedef QList<QPair<QString, QString> >::const_iterator StringPairListConstIterator;
-    if (debug)
-        qDebug() << "ProjectExplorerPlugin::updateRecentProjectMenu";
+//void ProjectExplorerPlugin::updateRecentProjectMenu()//#720 ROOPAK - START
+//{
+//    typedef QList<QPair<QString, QString> >::const_iterator StringPairListConstIterator;
+//    if (debug)
+//        qDebug() << "ProjectExplorerPlugin::updateRecentProjectMenu";
 
-    ActionContainer *aci =
-        ActionManager::actionContainer(Constants::M_RECENTPROJECTS);
-    QMenu *menu = aci->menu();
-    menu->clear();
+//    ActionContainer *aci =
+//        ActionManager::actionContainer(Constants::M_RECENTPROJECTS);
+//    QMenu *menu = aci->menu();
+//    menu->clear();
 
-    bool hasRecentProjects = false;
-    //projects (ignore sessions, they used to be in this list)
-    const StringPairListConstIterator end = d->m_recentProjects.constEnd();
-    for (StringPairListConstIterator it = d->m_recentProjects.constBegin(); it != end; ++it) {
-        const QPair<QString, QString> &s = *it;
-        if (s.first.endsWith(QLatin1String(".qws")))
-            continue;
-        QAction *action = menu->addAction(Utils::withTildeHomePath(s.first));
-        action->setData(s.first);
-        connect(action, SIGNAL(triggered()), this, SLOT(openRecentProject()));
-        hasRecentProjects = true;
-    }
-    menu->setEnabled(hasRecentProjects);
+//    bool hasRecentProjects = false;
+//    //projects (ignore sessions, they used to be in this list)
+//    const StringPairListConstIterator end = d->m_recentProjects.constEnd();
+//    for (StringPairListConstIterator it = d->m_recentProjects.constBegin(); it != end; ++it) {
+//        const QPair<QString, QString> &s = *it;
+//        if (s.first.endsWith(QLatin1String(".qws")))
+//            continue;
+//        QAction *action = menu->addAction(Utils::withTildeHomePath(s.first));
+//        action->setData(s.first);
+//        connect(action, SIGNAL(triggered()), this, SLOT(openRecentProject()));
+//        hasRecentProjects = true;
+//    }
+//    menu->setEnabled(hasRecentProjects);
 
-    // add the Clear Menu item
-    if (hasRecentProjects) {
-        menu->addSeparator();
-        QAction *action = menu->addAction(QCoreApplication::translate(
-                                          "Core", Core::Constants::TR_CLEAR_MENU));
-        connect(action, SIGNAL(triggered()), this, SLOT(clearRecentProjects()));
-    }
-    emit recentProjectsChanged();
-}
+//    // add the Clear Menu item
+//    if (hasRecentProjects) {
+//        menu->addSeparator();
+//        QAction *action = menu->addAction(QCoreApplication::translate(
+//                                          "Core", Core::Constants::TR_CLEAR_MENU));
+//        connect(action, SIGNAL(triggered()), this, SLOT(clearRecentProjects()));
+//    }
+//    emit recentProjectsChanged();
+//}
 
-void ProjectExplorerPlugin::clearRecentProjects()
-{
-    d->m_recentProjects.clear();
-    updateWelcomePage();
-}
+//void ProjectExplorerPlugin::clearRecentProjects()
+//{
+//    d->m_recentProjects.clear();
+//    updateWelcomePage();
+//}//#720 ROOPAK - END
 
 void ProjectExplorerPlugin::openRecentProject()
 {
