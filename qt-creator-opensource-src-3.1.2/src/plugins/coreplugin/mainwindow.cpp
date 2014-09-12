@@ -140,7 +140,7 @@ MainWindow::MainWindow() :
     m_focusToEditor(0),
 //    m_newAction(0),//ROOPAK
     m_openAction(0),
-    m_openWithAction(0),
+//    m_openWithAction(0),//#720 ROOPAK
     m_saveAllAction(0),
     m_exitAction(0),
     m_optionsAction(0),
@@ -559,10 +559,10 @@ void MainWindow::registerDefaultActions()
     connect(m_openAction, SIGNAL(triggered()), this, SLOT(openFile()));
 
     // Open With Action
-    m_openWithAction = new QAction(tr("Open File &With..."), this);
-    cmd = ActionManager::registerAction(m_openWithAction, Constants::OPEN_WITH, globalContext);
-    mfile->addAction(cmd, Constants::G_FILE_OPEN);
-    connect(m_openWithAction, SIGNAL(triggered()), this, SLOT(openFileWith()));
+//    m_openWithAction = new QAction(tr("Open File &With..."), this);//#720 ROOPAK - START
+//    cmd = ActionManager::registerAction(m_openWithAction, Constants::OPEN_WITH, globalContext);
+//    mfile->addAction(cmd, Constants::G_FILE_OPEN);
+//    connect(m_openWithAction, SIGNAL(triggered()), this, SLOT(openFileWith()));//#720 ROOPAK - END
 
     // File->Recent Files Menu
     ActionContainer *ac = ActionManager::createMenu(Constants::M_FILE_RECENTFILES);
@@ -943,19 +943,19 @@ void MainWindow::exit()
     QTimer::singleShot(0, this,  SLOT(close()));
 }
 
-void MainWindow::openFileWith()
-{
-    foreach (const QString &fileName, EditorManager::getOpenFileNames()) {
-        bool isExternal;
-        const Id editorId = EditorManager::getOpenWithEditorId(fileName, &isExternal);
-        if (!editorId.isValid())
-            continue;
-        if (isExternal)
-            EditorManager::openExternalEditor(fileName, editorId);
-        else
-            EditorManager::openEditor(fileName, editorId);
-    }
-}
+//void MainWindow::openFileWith()//#720 ROOPAK - START
+//{
+//    foreach (const QString &fileName, EditorManager::getOpenFileNames()) {
+//        bool isExternal;
+//        const Id editorId = EditorManager::getOpenWithEditorId(fileName, &isExternal);
+//        if (!editorId.isValid())
+//            continue;
+//        if (isExternal)
+//            EditorManager::openExternalEditor(fileName, editorId);
+//        else
+//            EditorManager::openEditor(fileName, editorId);
+//    }
+//}//#720 ROOPAK - END
 
 IContext *MainWindow::contextObject(QWidget *widget)
 {
