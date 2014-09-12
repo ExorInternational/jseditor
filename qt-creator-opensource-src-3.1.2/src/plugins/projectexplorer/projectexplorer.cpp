@@ -181,7 +181,7 @@ struct ProjectExplorerPluginPrivate {
     QMenu *m_openWithMenu;
 
     QMultiMap<int, QObject*> m_actionMap;
-    QAction *m_sessionManagerAction;
+//    QAction *m_sessionManagerAction;//#720 ROOPAK
 //    QAction *m_newAction;//ROOPAK
     QAction *m_loadAction;
     Utils::ParameterAction *m_unloadAction;
@@ -643,10 +643,10 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
 //            this, SLOT(updateSessionMenu()));//#720 ROOPAK - END
 
     // session manager action
-    d->m_sessionManagerAction = new QAction(tr("Session Manager..."), this);
-    cmd = ActionManager::registerAction(d->m_sessionManagerAction, Constants::NEWSESSION, globalcontext);
-    mfile->addAction(cmd, Core::Constants::G_FILE_OPEN);
-    cmd->setDefaultKeySequence(QKeySequence());
+//    d->m_sessionManagerAction = new QAction(tr("Session Manager..."), this);//#720 ROOPAK - START
+//    cmd = ActionManager::registerAction(d->m_sessionManagerAction, Constants::NEWSESSION, globalcontext);
+//    mfile->addAction(cmd, Core::Constants::G_FILE_OPEN);
+//    cmd->setDefaultKeySequence(QKeySequence());//#720 ROOPAK - END
 
 
     // XXX same action?
@@ -963,7 +963,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
 //    if (d->m_projectExplorerSettings.environmentId.isNull())
 //        d->m_projectExplorerSettings.environmentId = QUuid::createUuid(); //ROOPAK - END
 
-    connect(d->m_sessionManagerAction, SIGNAL(triggered()), this, SLOT(showSessionManager()));
+//    connect(d->m_sessionManagerAction, SIGNAL(triggered()), this, SLOT(showSessionManager()));//#720 ROOPAK
 //    connect(d->m_newAction, SIGNAL(triggered()), this, SLOT(newProject()));
     connect(d->m_loadAction, SIGNAL(triggered()), this, SLOT(loadAction()));
     connect(d->m_buildProjectOnlyAction, SIGNAL(triggered()), this, SLOT(buildProjectOnly()));
@@ -1249,29 +1249,29 @@ ExtensionSystem::IPlugin::ShutdownFlag ProjectExplorerPlugin::aboutToShutdown()
 //    updateActions();
 //}//ROOPAK
 
-void ProjectExplorerPlugin::showSessionManager()
-{
-    if (debug)
-        qDebug() << "ProjectExplorerPlugin::showSessionManager";
+//void ProjectExplorerPlugin::showSessionManager()//#720 ROOPAK - START
+//{
+//    if (debug)
+//        qDebug() << "ProjectExplorerPlugin::showSessionManager";
 
-//    if (SessionManager::isDefaultVirgin()) {//#720 ROOPAK - START
-//        // do not save new virgin default sessions
-//    } else {
-//        SessionManager::save();
-//    }//#720 ROOPAK - END
-//    SessionDialog sessionDialog(ICore::mainWindow());//ROOPAK - START
-//    sessionDialog.setAutoLoadSession(d->m_projectExplorerSettings.autorestoreLastSession);
-//    sessionDialog.exec();
-//    d->m_projectExplorerSettings.autorestoreLastSession = sessionDialog.autoLoadSession();//ROOPAK - END
+////    if (SessionManager::isDefaultVirgin()) {//#720 ROOPAK - START
+////        // do not save new virgin default sessions
+////    } else {
+////        SessionManager::save();
+////    }//#720 ROOPAK - END
+////    SessionDialog sessionDialog(ICore::mainWindow());//ROOPAK - START
+////    sessionDialog.setAutoLoadSession(d->m_projectExplorerSettings.autorestoreLastSession);
+////    sessionDialog.exec();
+////    d->m_projectExplorerSettings.autorestoreLastSession = sessionDialog.autoLoadSession();//ROOPAK - END
 
-    updateActions();
+//    updateActions();
 
-#if HAS_WELCOME_PAGE
-    IMode *welcomeMode = ModeManager::mode(Core::Constants::MODE_WELCOME);
-    if (ModeManager::currentMode() == welcomeMode)
-        updateWelcomePage();
-#endif
-}
+//#if HAS_WELCOME_PAGE
+//    IMode *welcomeMode = ModeManager::mode(Core::Constants::MODE_WELCOME);
+//    if (ModeManager::currentMode() == welcomeMode)
+//        updateWelcomePage();
+//#endif
+//}//#720 ROOPAK - END
 
 void ProjectExplorerPlugin::setStartupProject(Project *project)
 {
