@@ -185,7 +185,7 @@ struct ProjectExplorerPluginPrivate {
 //    QAction *m_newAction;//ROOPAK
     QAction *m_loadAction;
 //    Utils::ParameterAction *m_unloadAction;//#720 ROOPAK
-    QAction *m_closeAllProjects;
+//    QAction *m_closeAllProjects;//#720 ROOPAK
     QAction *m_buildProjectOnlyAction;
     Utils::ParameterAction *m_buildAction;
     QAction *m_buildActionContextMenu;
@@ -659,10 +659,10 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
 //    mfile->addAction(cmd, Core::Constants::G_FILE_PROJECT);//#720 ROOPAK - END
 
     // unload session action
-    d->m_closeAllProjects = new QAction(tr("Close All Projects and Editors"), this);
-    cmd = ActionManager::registerAction(d->m_closeAllProjects, Constants::CLEARSESSION, globalcontext);
-    mfile->addAction(cmd, Core::Constants::G_FILE_PROJECT);
-    msessionContextMenu->addAction(cmd, Constants::G_SESSION_FILES);
+//    d->m_closeAllProjects = new QAction(tr("Close All Projects and Editors"), this);//#720 ROOPAK - START
+//    cmd = ActionManager::registerAction(d->m_closeAllProjects, Constants::CLEARSESSION, globalcontext);
+//    mfile->addAction(cmd, Core::Constants::G_FILE_PROJECT);
+//    msessionContextMenu->addAction(cmd, Constants::G_SESSION_FILES);//#720 ROOPAK - END
 
     // build session action
     QIcon buildIcon = QIcon(QLatin1String(Constants::ICON_BUILD));
@@ -987,7 +987,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
     connect(d->m_runWithoutDeployAction, SIGNAL(triggered()), this, SLOT(runProjectWithoutDeploy()));
     connect(d->m_cancelBuildAction, SIGNAL(triggered()), this, SLOT(cancelBuild()));
 //    connect(d->m_unloadAction, SIGNAL(triggered()), this, SLOT(unloadProject()));//#720 ROOPAK
-    connect(d->m_closeAllProjects, SIGNAL(triggered()), this, SLOT(closeAllProjects()));
+//    connect(d->m_closeAllProjects, SIGNAL(triggered()), this, SLOT(closeAllProjects()));//#720 ROOPAK
     connect(d->m_addNewFileAction, SIGNAL(triggered()), this, SLOT(addNewFile()));
     connect(d->m_addExistingFilesAction, SIGNAL(triggered()), this, SLOT(addExistingFiles()));
     connect(d->m_addExistingDirectoryAction, SIGNAL(triggered()), this, SLOT(addExistingDirectory()));
@@ -1113,21 +1113,21 @@ void ProjectExplorerPlugin::loadAction()
 //    updateActions();
 //}//#720 ROOPAK - END
 
-void ProjectExplorerPlugin::closeAllProjects()
-{
-    if (debug)
-        qDebug() << "ProjectExplorerPlugin::closeAllProject";
+//void ProjectExplorerPlugin::closeAllProjects()//#720 ROOPAK - START
+//{
+//    if (debug)
+//        qDebug() << "ProjectExplorerPlugin::closeAllProject";
 
-    if (!EditorManager::closeAllEditors())
-        return; // Action has been cancelled
+//    if (!EditorManager::closeAllEditors())
+//        return; // Action has been cancelled
 
-//    SessionManager::closeAllProjects();//#720 ROOPAK
-    updateActions();
+////    SessionManager::closeAllProjects();//#720 ROOPAK
+//    updateActions();
 
-#if HAS_WELCOME_PAGE
-    ModeManager::activateMode(Core::Constants::MODE_WELCOME);
-#endif
-}
+//#if HAS_WELCOME_PAGE
+//    ModeManager::activateMode(Core::Constants::MODE_WELCOME);
+//#endif
+//}//#720 ROOPAK - END
 
 void ProjectExplorerPlugin::extensionsInitialized()
 {

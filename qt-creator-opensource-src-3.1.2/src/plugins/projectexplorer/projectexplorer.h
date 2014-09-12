@@ -173,7 +173,7 @@ private slots:
     void cancelBuild();
     void loadAction();
 //    void unloadProject();//#720 ROOPAK
-    void closeAllProjects();
+//    void closeAllProjects();//#720 ROOPAK
 //    void newProject();//ROOPAK
 //    void showSessionManager();//#720 ROOPAK
 //    void populateOpenWithMenu();//#720 ROOPAK
