@@ -634,13 +634,13 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
 //        this, SLOT(updateRecentProjectMenu()));//#720 ROOPAK - END
 
     // session menu
-    ActionContainer *msession = ActionManager::createMenu(Constants::M_SESSION);
-    msession->menu()->setTitle(tr("Sessions"));
-    msession->setOnAllDisabledBehavior(ActionContainer::Show);
-    mfile->addMenu(msession, Core::Constants::G_FILE_OPEN);
-    d->m_sessionMenu = msession->menu();
-    connect(mfile->menu(), SIGNAL(aboutToShow()),
-            this, SLOT(updateSessionMenu()));
+//    ActionContainer *msession = ActionManager::createMenu(Constants::M_SESSION);//#720 ROOPAK - START
+//    msession->menu()->setTitle(tr("Sessions"));
+//    msession->setOnAllDisabledBehavior(ActionContainer::Show);
+//    mfile->addMenu(msession, Core::Constants::G_FILE_OPEN);
+//    d->m_sessionMenu = msession->menu();
+//    connect(mfile->menu(), SIGNAL(aboutToShow()),
+//            this, SLOT(updateSessionMenu()));//#720 ROOPAK - END
 
     // session manager action
     d->m_sessionManagerAction = new QAction(tr("Session Manager..."), this);
@@ -3051,28 +3051,28 @@ void ProjectExplorerPlugin::populateOpenWithMenu()
 //    DocumentManager::populateOpenWithMenu(d->m_openWithMenu, currentNode()->path());//ROOPAK
 }
 
-void ProjectExplorerPlugin::updateSessionMenu()
-{
-    d->m_sessionMenu->clear();
-    QActionGroup *ag = new QActionGroup(d->m_sessionMenu);
-    connect(ag, SIGNAL(triggered(QAction*)), this, SLOT(setSession(QAction*)));
-//    const QString activeSession = SessionManager::activeSession();//#720 ROOPAK - START
-//    foreach (const QString &session, SessionManager::sessions()) {
-//        QAction *act = ag->addAction(session);
-//        act->setCheckable(true);
-//        if (session == activeSession)
-//            act->setChecked(true);
-//    }//#720 ROOPAK - END
-    d->m_sessionMenu->addActions(ag->actions());
-    d->m_sessionMenu->setEnabled(true);
-}
+//void ProjectExplorerPlugin::updateSessionMenu()//#720 ROOPAK - START
+//{
+//    d->m_sessionMenu->clear();
+//    QActionGroup *ag = new QActionGroup(d->m_sessionMenu);
+//    connect(ag, SIGNAL(triggered(QAction*)), this, SLOT(setSession(QAction*)));
+////    const QString activeSession = SessionManager::activeSession();//#720 ROOPAK - START
+////    foreach (const QString &session, SessionManager::sessions()) {
+////        QAction *act = ag->addAction(session);
+////        act->setCheckable(true);
+////        if (session == activeSession)
+////            act->setChecked(true);
+////    }//#720 ROOPAK - END
+//    d->m_sessionMenu->addActions(ag->actions());
+//    d->m_sessionMenu->setEnabled(true);
+//}
 
-void ProjectExplorerPlugin::setSession(QAction *action)
-{
-    QString session = action->text();
-//    if (session != SessionManager::activeSession())//#720 ROOPAK - START
-//        SessionManager::loadSession(session);//#720 ROOPAK - END
-}
+//void ProjectExplorerPlugin::setSession(QAction *action)
+//{
+//    QString session = action->text();
+////    if (session != SessionManager::activeSession())//#720 ROOPAK - START
+////        SessionManager::loadSession(session);//#720 ROOPAK - END
+//}//#720 ROOPAK - END
 
 //void ProjectExplorerPlugin::setProjectExplorerSettings(const ProjectExplorerSettings &pes)//ROOPAK - START
 //{

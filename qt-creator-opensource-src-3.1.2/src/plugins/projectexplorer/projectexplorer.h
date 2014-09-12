@@ -177,8 +177,8 @@ private slots:
 //    void newProject();//ROOPAK
     void showSessionManager();
     void populateOpenWithMenu();
-    void updateSessionMenu();
-    void setSession(QAction *action);
+//    void updateSessionMenu();//#720 ROOPAK - START
+//    void setSession(QAction *action);//#720 ROOPAK - END
 
     void determineSessionToRestoreAtStartup();
     void restoreSession();
