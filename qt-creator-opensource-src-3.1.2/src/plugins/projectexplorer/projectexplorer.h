@@ -165,7 +165,7 @@ private slots:
     void deployProjectOnly();
     void deployProject();
     void deployProjectContextMenu();
-    void deploySession();
+//    void deploySession();//#720 ROOPAK
     void cleanProjectOnly();
     void cleanProject();
     void cleanProjectContextMenu();

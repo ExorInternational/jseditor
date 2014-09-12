@@ -198,7 +198,7 @@ struct ProjectExplorerPluginPrivate {
     QAction *m_deployProjectOnlyAction;
     Utils::ParameterAction *m_deployAction;
     QAction *m_deployActionContextMenu;
-    QAction *m_deploySessionAction;
+//    QAction *m_deploySessionAction;//#720 ROOPAK
     Utils::ParameterAction *m_cleanAction;
     QAction *m_cleanActionContextMenu;
     QAction *m_cleanSessionAction;
@@ -674,10 +674,10 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
 //    msessionContextMenu->addAction(cmd, Constants::G_SESSION_BUILD);//#720 ROOPAK - END
 
     // deploy session
-    d->m_deploySessionAction = new QAction(tr("Deploy All"), this);
-    cmd = ActionManager::registerAction(d->m_deploySessionAction, Constants::DEPLOYSESSION, globalcontext);
-    mbuild->addAction(cmd, Constants::G_BUILD_DEPLOY);
-    msessionContextMenu->addAction(cmd, Constants::G_SESSION_BUILD);
+//    d->m_deploySessionAction = new QAction(tr("Deploy All"), this);//#720 ROOPAK - START
+//    cmd = ActionManager::registerAction(d->m_deploySessionAction, Constants::DEPLOYSESSION, globalcontext);
+//    mbuild->addAction(cmd, Constants::G_BUILD_DEPLOY);
+//    msessionContextMenu->addAction(cmd, Constants::G_SESSION_BUILD);//#720 ROOPAK - END
 
     // rebuild session action
     QIcon rebuildIcon = QIcon(QLatin1String(Constants::ICON_REBUILD));
@@ -977,7 +977,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
     connect(d->m_deployProjectOnlyAction, SIGNAL(triggered()), this, SLOT(deployProjectOnly()));
     connect(d->m_deployAction, SIGNAL(triggered()), this, SLOT(deployProject()));
     connect(d->m_deployActionContextMenu, SIGNAL(triggered()), this, SLOT(deployProjectContextMenu()));
-    connect(d->m_deploySessionAction, SIGNAL(triggered()), this, SLOT(deploySession()));
+//    connect(d->m_deploySessionAction, SIGNAL(triggered()), this, SLOT(deploySession()));//#720 ROOPAK
     connect(d->m_cleanProjectOnlyAction, SIGNAL(triggered()), this, SLOT(cleanProjectOnly()));
     connect(d->m_cleanAction, SIGNAL(triggered()), this, SLOT(cleanProject()));
     connect(d->m_cleanActionContextMenu, SIGNAL(triggered()), this, SLOT(cleanProjectContextMenu()));
@@ -2157,10 +2157,10 @@ void ProjectExplorerPlugin::deployProjectContextMenu()
     deploy(QList<Project *>() << d->m_currentProject);
 }
 
-void ProjectExplorerPlugin::deploySession()
-{
+//void ProjectExplorerPlugin::deploySession()//#720 ROOPAK - START
+//{
 //    deploy(SessionManager::projectOrder());//#720 ROOPAK
-}
+//}//#720 ROOPAK - END
 
 void ProjectExplorerPlugin::cleanProjectOnly()
 {
@@ -2506,7 +2506,7 @@ void ProjectExplorerPlugin::updateDeployActions()
 //    }//ROOPAK - END
     if (/*!hasProjects ||*/ !hasDeploySettings(0) /*|| BuildManager::isBuilding()*/)//ROOPAK
         enableDeploySessionAction = false;
-    d->m_deploySessionAction->setEnabled(enableDeploySessionAction);
+//    d->m_deploySessionAction->setEnabled(enableDeploySessionAction);//#720 ROOPAK
 
     emit updateRunActions();
 }
