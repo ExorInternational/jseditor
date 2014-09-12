@@ -184,7 +184,7 @@ struct ProjectExplorerPluginPrivate {
 //    QAction *m_sessionManagerAction;//#720 ROOPAK
 //    QAction *m_newAction;//ROOPAK
     QAction *m_loadAction;
-    Utils::ParameterAction *m_unloadAction;
+//    Utils::ParameterAction *m_unloadAction;//#720 ROOPAK
     QAction *m_closeAllProjects;
     QAction *m_buildProjectOnlyAction;
     Utils::ParameterAction *m_buildAction;
@@ -651,12 +651,12 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
 
     // XXX same action?
     // unload action
-    d->m_unloadAction = new Utils::ParameterAction(tr("Close Project"), tr("Close Project \"%1\""),
-                                                      Utils::ParameterAction::EnabledWithParameter, this);
-    cmd = ActionManager::registerAction(d->m_unloadAction, Constants::UNLOAD, globalcontext);
-    cmd->setAttribute(Command::CA_UpdateText);
-    cmd->setDescription(d->m_unloadAction->text());
-    mfile->addAction(cmd, Core::Constants::G_FILE_PROJECT);
+//    d->m_unloadAction = new Utils::ParameterAction(tr("Close Project"), tr("Close Project \"%1\""),//#720 ROOPAK - START
+//                                                      Utils::ParameterAction::EnabledWithParameter, this);
+//    cmd = ActionManager::registerAction(d->m_unloadAction, Constants::UNLOAD, globalcontext);
+//    cmd->setAttribute(Command::CA_UpdateText);
+//    cmd->setDescription(d->m_unloadAction->text());
+//    mfile->addAction(cmd, Core::Constants::G_FILE_PROJECT);//#720 ROOPAK - END
 
     // unload session action
     d->m_closeAllProjects = new QAction(tr("Close All Projects and Editors"), this);
@@ -986,7 +986,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
     connect(d->m_runActionContextMenu, SIGNAL(triggered()), this, SLOT(runProjectContextMenu()));
     connect(d->m_runWithoutDeployAction, SIGNAL(triggered()), this, SLOT(runProjectWithoutDeploy()));
     connect(d->m_cancelBuildAction, SIGNAL(triggered()), this, SLOT(cancelBuild()));
-    connect(d->m_unloadAction, SIGNAL(triggered()), this, SLOT(unloadProject()));
+//    connect(d->m_unloadAction, SIGNAL(triggered()), this, SLOT(unloadProject()));//#720 ROOPAK
     connect(d->m_closeAllProjects, SIGNAL(triggered()), this, SLOT(closeAllProjects()));
     connect(d->m_addNewFileAction, SIGNAL(triggered()), this, SLOT(addNewFile()));
     connect(d->m_addExistingFilesAction, SIGNAL(triggered()), this, SLOT(addExistingFiles()));
@@ -1076,42 +1076,42 @@ void ProjectExplorerPlugin::loadAction()
     updateActions();
 }
 
-void ProjectExplorerPlugin::unloadProject()
-{
-    if (debug)
-        qDebug() << "ProjectExplorerPlugin::unloadProject";
+//void ProjectExplorerPlugin::unloadProject()//#720 ROOPAK - START
+//{
+//    if (debug)
+//        qDebug() << "ProjectExplorerPlugin::unloadProject";
 
-//    if (BuildManager::isBuilding(d->m_currentProject)) {//ROOPAK - START
-//        QMessageBox box;
-//        QPushButton *closeAnyway = box.addButton(tr("Cancel Build && Unload"), QMessageBox::AcceptRole);
-//        QPushButton *cancelClose = box.addButton(tr("Do Not Unload"), QMessageBox::RejectRole);
-//        box.setDefaultButton(cancelClose);
-//        box.setWindowTitle(tr("Unload Project %1?").arg(d->m_currentProject->displayName()));
-//        box.setText(tr("The project %1 is currently being built.").arg(d->m_currentProject->displayName()));
-//        box.setInformativeText(tr("Do you want to cancel the build process and unload the project anyway?"));
-//        box.exec();
-//        if (box.clickedButton() != closeAnyway)
-//            return;
-//        BuildManager::cancel();
-//    }//ROOPAK - END
+////    if (BuildManager::isBuilding(d->m_currentProject)) {//ROOPAK - START
+////        QMessageBox box;
+////        QPushButton *closeAnyway = box.addButton(tr("Cancel Build && Unload"), QMessageBox::AcceptRole);
+////        QPushButton *cancelClose = box.addButton(tr("Do Not Unload"), QMessageBox::RejectRole);
+////        box.setDefaultButton(cancelClose);
+////        box.setWindowTitle(tr("Unload Project %1?").arg(d->m_currentProject->displayName()));
+////        box.setText(tr("The project %1 is currently being built.").arg(d->m_currentProject->displayName()));
+////        box.setInformativeText(tr("Do you want to cancel the build process and unload the project anyway?"));
+////        box.exec();
+////        if (box.clickedButton() != closeAnyway)
+////            return;
+////        BuildManager::cancel();
+////    }//ROOPAK - END
 
-    IDocument *document = d->m_currentProject->document();
+//    IDocument *document = d->m_currentProject->document();
 
-    if (!document || document->filePath().isEmpty()) //nothing to save?
-        return;
+//    if (!document || document->filePath().isEmpty()) //nothing to save?
+//        return;
 
-    if (!DocumentManager::saveModifiedDocumentSilently(document))
-        return;
+//    if (!DocumentManager::saveModifiedDocumentSilently(document))
+//        return;
 
-    addToRecentProjects(document->filePath(), d->m_currentProject->displayName());
-    unloadProject(d->m_currentProject);
-}
+//    addToRecentProjects(document->filePath(), d->m_currentProject->displayName());
+//    unloadProject(d->m_currentProject);
+//}
 
-void ProjectExplorerPlugin::unloadProject(Project *project)
-{
-//    SessionManager::removeProject(project);//#720 ROOPAK
-    updateActions();
-}
+//void ProjectExplorerPlugin::unloadProject(Project *project)
+//{
+////    SessionManager::removeProject(project);//#720 ROOPAK
+//    updateActions();
+//}//#720 ROOPAK - END
 
 void ProjectExplorerPlugin::closeAllProjects()
 {
@@ -1900,7 +1900,7 @@ void ProjectExplorerPlugin::updateActions()
     QString projectName = /*project ? project->displayName() :*/ QString();//#720 ROOPAK
     QString projectNameContextMenu = d->m_currentProject ? d->m_currentProject->displayName() : QString();
 
-    d->m_unloadAction->setParameter(projectNameContextMenu);
+//    d->m_unloadAction->setParameter(projectNameContextMenu);//#720 ROOPAK
 
     // Normal actions
     d->m_buildAction->setParameter(projectName);

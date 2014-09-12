@@ -77,7 +77,7 @@ public:
     Project *openProject(const QString &fileName, QString *error);
     QList<Project *> openProjects(const QStringList &fileNames, QString *error);
     Q_SLOT void openProjectWelcomePage(const QString &fileName);
-    void unloadProject(Project *project);
+//    void unloadProject(Project *project);//#720 ROOPAK
 
     static Project *currentProject();
 //    Node *currentNode() const;//ROOPAK
@@ -172,7 +172,7 @@ private slots:
     void cleanSession();
     void cancelBuild();
     void loadAction();
-    void unloadProject();
+//    void unloadProject();//#720 ROOPAK
     void closeAllProjects();
 //    void newProject();//ROOPAK
 //    void showSessionManager();//#720 ROOPAK
