@@ -3046,10 +3046,10 @@ void ProjectExplorerPlugin::setStartupProject()
     setStartupProject(d->m_currentProject);
 }
 
-void ProjectExplorerPlugin::populateOpenWithMenu()
-{
-//    DocumentManager::populateOpenWithMenu(d->m_openWithMenu, currentNode()->path());//ROOPAK
-}
+//void ProjectExplorerPlugin::populateOpenWithMenu()//#720 ROOPAK - START
+//{
+////    DocumentManager::populateOpenWithMenu(d->m_openWithMenu, currentNode()->path());//ROOPAK
+//}//#720 ROOPAK - END
 
 //void ProjectExplorerPlugin::updateSessionMenu()//#720 ROOPAK - START
 //{
