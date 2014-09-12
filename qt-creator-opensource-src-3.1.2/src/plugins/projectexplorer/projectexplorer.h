@@ -157,7 +157,7 @@ private slots:
     void buildProjectOnly();
     void buildProject();
     void buildProjectContextMenu();
-    void buildSession();
+//    void buildSession();//#720 ROOPAK
     void rebuildProjectOnly();
     void rebuildProject();
     void rebuildProjectContextMenu();

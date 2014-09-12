@@ -189,7 +189,7 @@ struct ProjectExplorerPluginPrivate {
     QAction *m_buildProjectOnlyAction;
     Utils::ParameterAction *m_buildAction;
     QAction *m_buildActionContextMenu;
-    QAction *m_buildSessionAction;
+//    QAction *m_buildSessionAction;//#720 ROOPAK
     QAction *m_rebuildProjectOnlyAction;
     Utils::ParameterAction *m_rebuildAction;
     QAction *m_rebuildActionContextMenu;
@@ -667,11 +667,11 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
     // build session action
     QIcon buildIcon = QIcon(QLatin1String(Constants::ICON_BUILD));
     buildIcon.addFile(QLatin1String(Constants::ICON_BUILD_SMALL));
-    d->m_buildSessionAction = new QAction(buildIcon, tr("Build All"), this);
-    cmd = ActionManager::registerAction(d->m_buildSessionAction, Constants::BUILDSESSION, globalcontext);
-    cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+Shift+B")));
-    mbuild->addAction(cmd, Constants::G_BUILD_BUILD);
-    msessionContextMenu->addAction(cmd, Constants::G_SESSION_BUILD);
+//    d->m_buildSessionAction = new QAction(buildIcon, tr("Build All"), this);//#720 ROOPAK - START
+//    cmd = ActionManager::registerAction(d->m_buildSessionAction, Constants::BUILDSESSION, globalcontext);
+//    cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+Shift+B")));
+//    mbuild->addAction(cmd, Constants::G_BUILD_BUILD);
+//    msessionContextMenu->addAction(cmd, Constants::G_SESSION_BUILD);//#720 ROOPAK - END
 
     // deploy session
     d->m_deploySessionAction = new QAction(tr("Deploy All"), this);
@@ -969,7 +969,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
     connect(d->m_buildProjectOnlyAction, SIGNAL(triggered()), this, SLOT(buildProjectOnly()));
     connect(d->m_buildAction, SIGNAL(triggered()), this, SLOT(buildProject()));
     connect(d->m_buildActionContextMenu, SIGNAL(triggered()), this, SLOT(buildProjectContextMenu()));
-    connect(d->m_buildSessionAction, SIGNAL(triggered()), this, SLOT(buildSession()));
+//    connect(d->m_buildSessionAction, SIGNAL(triggered()), this, SLOT(buildSession()));//#720 ROOPAK
     connect(d->m_rebuildProjectOnlyAction, SIGNAL(triggered()), this, SLOT(rebuildProjectOnly()));
     connect(d->m_rebuildAction, SIGNAL(triggered()), this, SLOT(rebuildProject()));
     connect(d->m_rebuildActionContextMenu, SIGNAL(triggered()), this, SLOT(rebuildProjectContextMenu()));
@@ -1949,11 +1949,11 @@ void ProjectExplorerPlugin::updateActions()
     // Session actions
 //    d->m_closeAllProjects->setEnabled(SessionManager::hasProjects());//#720 ROOPAK
 
-    d->m_buildSessionAction->setEnabled(buildSessionState.first);
+//    d->m_buildSessionAction->setEnabled(buildSessionState.first);//#720 ROOPAK
     d->m_rebuildSessionAction->setEnabled(buildSessionState.first);
     d->m_cleanSessionAction->setEnabled(buildSessionState.first);
 
-    d->m_buildSessionAction->setToolTip(buildSessionState.second);
+//    d->m_buildSessionAction->setToolTip(buildSessionState.second);//#720 ROOPAK
     d->m_rebuildSessionAction->setToolTip(buildSessionState.second);
     d->m_cleanSessionAction->setToolTip(buildSessionState.second);
 
@@ -2112,11 +2112,11 @@ void ProjectExplorerPlugin::buildProjectContextMenu()
           QList<Id>() << Id(Constants::BUILDSTEPS_BUILD));
 }
 
-void ProjectExplorerPlugin::buildSession()
-{
+//void ProjectExplorerPlugin::buildSession()//#720 ROOPAK - START
+//{
 //    queue(SessionManager::projectOrder(),//#720 ROOPAK - START
 //          QList<Id>() << Id(Constants::BUILDSTEPS_BUILD));//#720 ROOPAK - END
-}
+//}//#720 ROOPAK - END
 
 void ProjectExplorerPlugin::rebuildProjectOnly()
 {
