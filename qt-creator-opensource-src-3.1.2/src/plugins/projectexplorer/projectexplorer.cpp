@@ -193,7 +193,7 @@ struct ProjectExplorerPluginPrivate {
     QAction *m_rebuildProjectOnlyAction;
     Utils::ParameterAction *m_rebuildAction;
     QAction *m_rebuildActionContextMenu;
-    QAction *m_rebuildSessionAction;
+//    QAction *m_rebuildSessionAction;//#720 ROOPAK
     QAction *m_cleanProjectOnlyAction;
     QAction *m_deployProjectOnlyAction;
     Utils::ParameterAction *m_deployAction;
@@ -682,10 +682,10 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
     // rebuild session action
     QIcon rebuildIcon = QIcon(QLatin1String(Constants::ICON_REBUILD));
     rebuildIcon.addFile(QLatin1String(Constants::ICON_REBUILD_SMALL));
-    d->m_rebuildSessionAction = new QAction(rebuildIcon, tr("Rebuild All"), this);
-    cmd = ActionManager::registerAction(d->m_rebuildSessionAction, Constants::REBUILDSESSION, globalcontext);
-    mbuild->addAction(cmd, Constants::G_BUILD_REBUILD);
-    msessionContextMenu->addAction(cmd, Constants::G_SESSION_REBUILD);
+//    d->m_rebuildSessionAction = new QAction(rebuildIcon, tr("Rebuild All"), this);//#720 ROOPAK - START
+//    cmd = ActionManager::registerAction(d->m_rebuildSessionAction, Constants::REBUILDSESSION, globalcontext);
+//    mbuild->addAction(cmd, Constants::G_BUILD_REBUILD);
+//    msessionContextMenu->addAction(cmd, Constants::G_SESSION_REBUILD);//#720 ROOPAK - END
 
     // clean session
     QIcon cleanIcon = QIcon(QLatin1String(Constants::ICON_CLEAN));
@@ -973,7 +973,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
     connect(d->m_rebuildProjectOnlyAction, SIGNAL(triggered()), this, SLOT(rebuildProjectOnly()));
     connect(d->m_rebuildAction, SIGNAL(triggered()), this, SLOT(rebuildProject()));
     connect(d->m_rebuildActionContextMenu, SIGNAL(triggered()), this, SLOT(rebuildProjectContextMenu()));
-    connect(d->m_rebuildSessionAction, SIGNAL(triggered()), this, SLOT(rebuildSession()));
+//    connect(d->m_rebuildSessionAction, SIGNAL(triggered()), this, SLOT(rebuildSession()));//#720 ROOPAK
     connect(d->m_deployProjectOnlyAction, SIGNAL(triggered()), this, SLOT(deployProjectOnly()));
     connect(d->m_deployAction, SIGNAL(triggered()), this, SLOT(deployProject()));
     connect(d->m_deployActionContextMenu, SIGNAL(triggered()), this, SLOT(deployProjectContextMenu()));
@@ -1950,11 +1950,11 @@ void ProjectExplorerPlugin::updateActions()
 //    d->m_closeAllProjects->setEnabled(SessionManager::hasProjects());//#720 ROOPAK
 
 //    d->m_buildSessionAction->setEnabled(buildSessionState.first);//#720 ROOPAK
-    d->m_rebuildSessionAction->setEnabled(buildSessionState.first);
+//    d->m_rebuildSessionAction->setEnabled(buildSessionState.first);//#720 ROOPAK
     d->m_cleanSessionAction->setEnabled(buildSessionState.first);
 
 //    d->m_buildSessionAction->setToolTip(buildSessionState.second);//#720 ROOPAK
-    d->m_rebuildSessionAction->setToolTip(buildSessionState.second);
+//    d->m_rebuildSessionAction->setToolTip(buildSessionState.second);//#720 ROOPAK
     d->m_cleanSessionAction->setToolTip(buildSessionState.second);
 
 //    d->m_cancelBuildAction->setEnabled(BuildManager::isBuilding());//ROOPAK
@@ -2136,11 +2136,11 @@ void ProjectExplorerPlugin::rebuildProjectContextMenu()
           QList<Id>() << Id(Constants::BUILDSTEPS_CLEAN) << Id(Constants::BUILDSTEPS_BUILD));
 }
 
-void ProjectExplorerPlugin::rebuildSession()
-{
+//void ProjectExplorerPlugin::rebuildSession()//#720 ROOPAK - START
+//{
 //    queue(SessionManager::projectOrder(),//#720 ROOPAK - START
 //          QList<Id>() << Id(Constants::BUILDSTEPS_CLEAN) << Id(Constants::BUILDSTEPS_BUILD));//#720 ROOPAK - END
-}
+//}//#720 ROOPAK - END
 
 void ProjectExplorerPlugin::deployProjectOnly()
 {

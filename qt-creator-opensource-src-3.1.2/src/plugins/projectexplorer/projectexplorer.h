@@ -161,7 +161,7 @@ private slots:
     void rebuildProjectOnly();
     void rebuildProject();
     void rebuildProjectContextMenu();
-    void rebuildSession();
+//    void rebuildSession();//#720 ROOPAK
     void deployProjectOnly();
     void deployProject();
     void deployProjectContextMenu();
