@@ -27,7 +27,7 @@
 **
 ****************************************************************************/
 
-#include "cpphighlightingsupport.h"
+//#include "cpphighlightingsupport.h"//#720 ROOPAK
 #include "cpplocalsymbols.h"
 
 #include "cppsemanticinfo.h"
@@ -89,9 +89,9 @@ protected:
                         const Identifier *id = member->identifier();
                         unsigned line, column;
                         getTokenStartPosition(member->sourceLocation(), &line, &column);
-                        localUses[member].append(
-                                    HighlightingResult(line, column, id->size(),
-                                                       CppHighlightingSupport::LocalUse));
+//                        localUses[member].append(//#720 ROOPAK - START
+//                                    HighlightingResult(line, column, id->size(),
+//                                                       CppHighlightingSupport::LocalUse));//#720 ROOPAK - END
                     }
                 }
             }
@@ -112,9 +112,9 @@ protected:
                                                    || member->enclosingScope()->isFunction())) {
                         unsigned line, column;
                         getTokenStartPosition(simpleName->identifier_token, &line, &column);
-                        localUses[member].append(
-                                    HighlightingResult(line, column, id->size(),
-                                                       CppHighlightingSupport::LocalUse));
+//                        localUses[member].append(//#720 ROOPAK - START
+//                                    HighlightingResult(line, column, id->size(),
+//                                                       CppHighlightingSupport::LocalUse));//#720 ROOPAK - END
                         return false;
                     }
                 }
