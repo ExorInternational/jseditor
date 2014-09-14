@@ -42,7 +42,7 @@ HEADERS += \
 #    cppsemanticinfo.h \//#720 ROOPAK
 #    cppsnapshotupdater.h \//#720 ROOPAK
     cpptools_global.h \
-    cpptoolsconstants.h \
+#    cpptoolsconstants.h \//#720 ROOPAK
 #    cpptoolseditorsupport.h \//#720 ROOPAK
     cpptoolsplugin.h \
 #    cpptoolsreuse.h \//#720 ROOPAK

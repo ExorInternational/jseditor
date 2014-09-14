@@ -27,7 +27,7 @@
 **
 ****************************************************************************/
 
-#include "cpptoolsconstants.h"
+//#include "cpptoolsconstants.h"//#720 ROOPAK
 #include "cpptoolsplugin.h"
 //#include "cppfilesettingspage.h"//#720 ROOPAK
 //#include "cppcodemodelsettingspage.h"//#720 ROOPAK
@@ -153,7 +153,7 @@ bool CppToolsPlugin::initialize(const QStringList &arguments, QString *error)
 
     // Menus
     ActionContainer *mtools = ActionManager::actionContainer(Core::Constants::M_TOOLS);
-    ActionContainer *mcpptools = ActionManager::createMenu(CppTools::Constants::M_TOOLS_CPP);
+    ActionContainer *mcpptools = ActionManager::createMenu("CppTools.Tools.Menu"/*CppTools::Constants::M_TOOLS_CPP*/);//#720 ROOPAK
     QMenu *menu = mcpptools->menu();
     menu->setTitle(tr("&C++"));
     menu->setEnabled(true);
@@ -163,13 +163,13 @@ bool CppToolsPlugin::initialize(const QStringList &arguments, QString *error)
     Context context(CppEditor::Constants::C_CPPEDITOR);
 
     QAction *switchAction = new QAction(tr("Switch Header/Source"), this);
-    Command *command = ActionManager::registerAction(switchAction, Constants::SWITCH_HEADER_SOURCE, context, true);
+    Command *command = ActionManager::registerAction(switchAction, "CppTools.SwitchHeaderSource"/*Constants::SWITCH_HEADER_SOURCE*/, context, true);//#720 ROOPAK
     command->setDefaultKeySequence(QKeySequence(Qt::Key_F4));
     mcpptools->addAction(command);
     connect(switchAction, SIGNAL(triggered()), this, SLOT(switchHeaderSource()));
 
     QAction *openInNextSplitAction = new QAction(tr("Open Corresponding Header/Source in Next Split"), this);
-    command = ActionManager::registerAction(openInNextSplitAction, Constants::OPEN_HEADER_SOURCE_IN_NEXT_SPLIT, context, true);
+    command = ActionManager::registerAction(openInNextSplitAction, "CppTools.OpenHeaderSourceInNextSplit"/*Constants::OPEN_HEADER_SOURCE_IN_NEXT_SPLIT*/, context, true);//#720 ROOPAK
     command->setDefaultKeySequence(QKeySequence(Utils::HostOsInfo::isMacHost()
                                                 ? tr("Meta+E, F4")
                                                 : tr("Ctrl+E, F4")));

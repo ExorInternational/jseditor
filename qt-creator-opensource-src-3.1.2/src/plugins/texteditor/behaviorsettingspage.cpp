@@ -45,7 +45,7 @@
 #include <utils/hostosinfo.h>
 
 // for opening the respective coding style preferences
-#include <cpptools/cpptoolsconstants.h>
+//#include <cpptools/cpptoolsconstants.h>//#720 ROOPAK
 #include <qmljseditor/qmljseditorconstants.h>
 #include <qmljstools/qmljstoolsconstants.h>
 
@@ -267,8 +267,8 @@ void BehaviorSettingsPage::openCodingStylePreferences(TabSettingsWidget::CodingS
 {
     switch (link) {
     case TextEditor::TabSettingsWidget::CppLink:
-        Core::ICore::showOptionsDialog(CppTools::Constants::CPP_SETTINGS_CATEGORY,
-                                       CppTools::Constants::CPP_CODE_STYLE_SETTINGS_ID);
+//        Core::ICore::showOptionsDialog(CppTools::Constants::CPP_SETTINGS_CATEGORY,//#720 ROOPAK - START
+//                                       CppTools::Constants::CPP_CODE_STYLE_SETTINGS_ID);//#720 ROOPAK - END
         break;
     case TextEditor::TabSettingsWidget::QtQuickLink:
         Core::ICore::showOptionsDialog(QmlJSEditor::Constants::SETTINGS_CATEGORY_QML,
