@@ -31,7 +31,7 @@
 #include "cpptoolsplugin.h"
 #include "cppfilesettingspage.h"
 //#include "cppcodemodelsettingspage.h"//#720 ROOPAK
-#include "cppcodestylesettingspage.h"
+//#include "cppcodestylesettingspage.h"//#720 ROOPAK
 //#include "cppclassesfilter.h"//#720 ROOPAK
 //#include "cppfunctionsfilter.h"//#720 ROOPAK
 //#include "cppcurrentdocumentfilter.h"//#720 ROOPAK
@@ -146,7 +146,7 @@ bool CppToolsPlugin::initialize(const QStringList &arguments, QString *error)
     addAutoReleasedObject(new CppFileSettingsPage(m_fileSettings));
 //    addAutoReleasedObject(new CppCodeModelSettingsPage(m_codeModelSettings));//#720 ROOPAK
 //    addAutoReleasedObject(new SymbolsFindFilter(modelManager));//#720 ROOPAK
-    addAutoReleasedObject(new CppCodeStyleSettingsPage);
+//    addAutoReleasedObject(new CppCodeStyleSettingsPage);//#720 ROOPAK
 
     // Menus
     ActionContainer *mtools = ActionManager::actionContainer(Core::Constants::M_TOOLS);

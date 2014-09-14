@@ -16,7 +16,7 @@ HEADERS += \
     cppcodestylepreferences.h \
 #    cppcodestylepreferencesfactory.h \//#720 ROOPAK
     cppcodestylesettings.h \
-    cppcodestylesettingspage.h \
+#    cppcodestylesettingspage.h \//#720 ROOPAK
 #    cppcompletionassist.h \//#720 ROOPAK
     cppcompletionassistprovider.h \
 #    cppcurrentdocumentfilter.h \//#720 ROOPAK
@@ -70,7 +70,7 @@ SOURCES += \
     cppcodestylepreferences.cpp \
 #    cppcodestylepreferencesfactory.cpp \//#720 ROOPAK
     cppcodestylesettings.cpp \
-    cppcodestylesettingspage.cpp \
+#    cppcodestylesettingspage.cpp \//#720 ROOPAK
 #    cppcompletionassist.cpp \//#720 ROOPAK
     cppcompletionassistprovider.cpp \
 #    cppcurrentdocumentfilter.cpp \//#720 ROOPAK
@@ -111,7 +111,7 @@ SOURCES += \
 FORMS += \
 #    completionsettingspage.ui \//#720 ROOPAK
 #    cppcodemodelsettingspage.ui \//#720 ROOPAK
-    cppcodestylesettingspage.ui \
+#    cppcodestylesettingspage.ui \//#720 ROOPAK
     cppfilesettingspage.ui
 
 #equals(TEST, 1) {//#720 ROOPAK - START
