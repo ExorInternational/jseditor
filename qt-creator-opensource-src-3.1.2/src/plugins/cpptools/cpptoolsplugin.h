@@ -43,7 +43,7 @@ QT_END_NAMESPACE
 
 namespace CppTools {
 
-class CppToolsSettings;
+//class CppToolsSettings;//#720 ROOPAK
 
 namespace Internal {
 

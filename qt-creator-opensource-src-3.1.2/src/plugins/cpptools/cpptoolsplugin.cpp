@@ -38,7 +38,7 @@
 //#include "cppmodelmanager.h"//#720 ROOPAK
 //#include "cpplocatorfilter.h"//#720 ROOPAK
 //#include "symbolsfindfilter.h"//#720 ROOPAK
-#include "cpptoolssettings.h"
+//#include "cpptoolssettings.h"//#720 ROOPAK
 //#include "cpptoolsreuse.h"//#720 ROOPAK
 #include "cppprojectfile.h"
 //#include "cpplocatordata.h"//#720 ROOPAK
