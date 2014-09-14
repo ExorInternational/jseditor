@@ -11,4 +11,4 @@ QTC_PLUGIN_DEPENDS += \
     projectexplorer \
     qtsupport \
     texteditor \
-    cpptools
+#    cpptools//#720 ROOPAK

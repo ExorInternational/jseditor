@@ -6,7 +6,7 @@ QTC_LIB_DEPENDS += \
     utils
 QTC_PLUGIN_DEPENDS += \
     coreplugin \
-    cpptools \
+#    cpptools \//#720 ROOPAK
     projectexplorer
 DEFINES *= \
     QMAKE_AS_LIBRARY \

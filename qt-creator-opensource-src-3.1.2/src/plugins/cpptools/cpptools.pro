@@ -44,7 +44,7 @@ HEADERS += \
     cpptools_global.h \
 #    cpptoolsconstants.h \//#720 ROOPAK
 #    cpptoolseditorsupport.h \//#720 ROOPAK
-    cpptoolsplugin.h \
+#    cpptoolsplugin.h \//#720 ROOPAK
 #    cpptoolsreuse.h \//#720 ROOPAK
 #    cpptoolssettings.h \//#720 ROOPAK
 #    doxygengenerator.h \//#720 ROOPAK
@@ -96,7 +96,7 @@ SOURCES += \
 #    cppsemanticinfo.cpp \//#720 ROOPAK
 #    cppsnapshotupdater.cpp \//#720 ROOPAK
 #    cpptoolseditorsupport.cpp \//#720 ROOPAK
-    cpptoolsplugin.cpp \
+#    cpptoolsplugin.cpp \//#720 ROOPAK
 #    cpptoolsreuse.cpp \//#720 ROOPAK
 #    cpptoolssettings.cpp \//#720 ROOPAK
 #    doxygengenerator.cpp \//#720 ROOPAK

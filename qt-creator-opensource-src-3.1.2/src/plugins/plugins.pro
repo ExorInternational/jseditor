@@ -17,7 +17,7 @@ SUBDIRS   = \
 #    subversion \   #ROOPAK
 #    git \       #ROOPAK
 #    cvs \       #ROOPAK
-    cpptools \
+#    cpptools \//#720 ROOPAK
     qtsupport \
 #    qmakeprojectmanager \  #ROOPAK
 #    locator \ #ROOPAK
