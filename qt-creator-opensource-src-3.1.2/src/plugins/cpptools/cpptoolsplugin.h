@@ -49,7 +49,7 @@ namespace Internal {
 
 //class CppModelManager;//#720 ROOPAK
 struct CppFileSettings;
-class CppCodeModelSettings;
+//class CppCodeModelSettings;//#720 ROOPAK
 
 class CPPTOOLS_EXPORT CppToolsPlugin : public ExtensionSystem::IPlugin
 {
@@ -71,7 +71,7 @@ public:
     void extensionsInitialized();
     ShutdownFlag aboutToShutdown();
 
-    QSharedPointer<CppCodeModelSettings> codeModelSettings() const;
+//    QSharedPointer<CppCodeModelSettings> codeModelSettings() const;//#720 ROOPAK
 
 public slots:
     void switchHeaderSource();
@@ -161,7 +161,7 @@ private slots:
 
 private:
     QSharedPointer<CppFileSettings> m_fileSettings;
-    QSharedPointer<CppCodeModelSettings> m_codeModelSettings;
+//    QSharedPointer<CppCodeModelSettings> m_codeModelSettings;//#720 ROOPAK
     CppToolsSettings *m_settings;
 };
 

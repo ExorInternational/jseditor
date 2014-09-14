@@ -11,7 +11,7 @@ HEADERS += \
 #    cppclassesfilter.h \//#720 ROOPAK
 #    cppcodeformatter.h \//#720 ROOPAK
 #    cppcodemodelinspectordumper.h \//#720 ROOPAK
-    cppcodemodelsettings.h \
+#    cppcodemodelsettings.h \//#720 ROOPAK
 #    cppcodemodelsettingspage.h \//#720 ROOPAK
     cppcodestylepreferences.h \
     cppcodestylepreferencesfactory.h \
@@ -65,7 +65,7 @@ SOURCES += \
 #    cppclassesfilter.cpp \//#720 ROOPAK
 #    cppcodeformatter.cpp \//#720 ROOPAK
 #    cppcodemodelinspectordumper.cpp \//#720 ROOPAK
-    cppcodemodelsettings.cpp \
+#    cppcodemodelsettings.cpp \//#720 ROOPAK
 #    cppcodemodelsettingspage.cpp \//#720 ROOPAK
     cppcodestylepreferences.cpp \
     cppcodestylepreferencesfactory.cpp \

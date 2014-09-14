@@ -65,7 +65,7 @@
 //#720 ADDED BY ROOPAK - START
 #include <coreplugin/editormanager/editormanager.h>
 #include <projectexplorer/project.h>
-#include "cppcodemodelsettings.h"
+//#include "cppcodemodelsettings.h"//#720 ROOPAK
 //#720 ROOPAK - END
 
 using namespace Core;
@@ -81,7 +81,7 @@ static QHash<QString, QString> m_headerSourceMapping;
 
 CppToolsPlugin::CppToolsPlugin()
     : m_fileSettings(new CppFileSettings)
-    , m_codeModelSettings(new CppCodeModelSettings)
+//    , m_codeModelSettings(new CppCodeModelSettings)//#720 ROOPAK
 {
     m_instance = this;
 }
@@ -183,7 +183,7 @@ void CppToolsPlugin::extensionsInitialized()
     m_fileSettings->fromSettings(ICore::settings());
     if (!m_fileSettings->applySuffixesToMimeDB())
         qWarning("Unable to apply cpp suffixes to mime database (cpp mime types not found).\n");
-    m_codeModelSettings->fromSettings(ICore::settings());
+//    m_codeModelSettings->fromSettings(ICore::settings());//#720 ROOPAK
 }
 
 ExtensionSystem::IPlugin::ShutdownFlag CppToolsPlugin::aboutToShutdown()
@@ -191,10 +191,10 @@ ExtensionSystem::IPlugin::ShutdownFlag CppToolsPlugin::aboutToShutdown()
     return SynchronousShutdown;
 }
 
-QSharedPointer<CppCodeModelSettings> CppToolsPlugin::codeModelSettings() const
-{
-    return m_codeModelSettings;
-}
+//QSharedPointer<CppCodeModelSettings> CppToolsPlugin::codeModelSettings() const//#720 ROOPAK - START
+//{
+//    return m_codeModelSettings;
+//}//#720 ROOPAK - END
 
 void CppToolsPlugin::switchHeaderSource()
 {
