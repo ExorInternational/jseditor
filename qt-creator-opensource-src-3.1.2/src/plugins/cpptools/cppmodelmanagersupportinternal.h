@@ -49,7 +49,7 @@ public:
     virtual QString displayName() const;
 
 //    virtual CppCompletionAssistProvider *completionAssistProvider();//#720 ROOPAK
-    virtual CppHighlightingSupport *highlightingSupport(TextEditor::ITextEditor *editor);
+//    virtual CppHighlightingSupport *highlightingSupport(TextEditor::ITextEditor *editor);//#720 ROOPAK
 
 private:
 //    QScopedPointer<CppCompletionAssistProvider> m_completionAssistProvider;//#720 ROOPAK

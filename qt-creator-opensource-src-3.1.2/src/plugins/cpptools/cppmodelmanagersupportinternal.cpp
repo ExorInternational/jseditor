@@ -28,7 +28,7 @@
 ****************************************************************************/
 
 //#include "cppcompletionassist.h"//#720 ROOPAK
-#include "cpphighlightingsupportinternal.h"
+//#include "cpphighlightingsupportinternal.h"//#720 ROOPAK
 #include "cppmodelmanagersupportinternal.h"
 
 #include <QCoreApplication>
@@ -61,7 +61,7 @@ QString ModelManagerSupportInternal::displayName() const
 //    return NULL;//m_completionAssistProvider.data();//#720 ROOPAK
 //}//#720 ROOPAK - END
 
-CppHighlightingSupport *ModelManagerSupportInternal::highlightingSupport(TextEditor::ITextEditor *editor)
-{
-    return new CppHighlightingSupportInternal(editor);
-}
+//CppHighlightingSupport *ModelManagerSupportInternal::highlightingSupport(TextEditor::ITextEditor *editor)//#720 ROOPAK - START
+//{
+//    return new CppHighlightingSupportInternal(editor);
+//}//#720 ROOPAK - END
