@@ -13,7 +13,7 @@ HEADERS += \
 #    cppcodemodelinspectordumper.h \//#720 ROOPAK
 #    cppcodemodelsettings.h \//#720 ROOPAK
 #    cppcodemodelsettingspage.h \//#720 ROOPAK
-    cppcodestylepreferences.h \
+#    cppcodestylepreferences.h \//#720 ROOPAK
 #    cppcodestylepreferencesfactory.h \//#720 ROOPAK
     cppcodestylesettings.h \
 #    cppcodestylesettingspage.h \//#720 ROOPAK
@@ -67,7 +67,7 @@ SOURCES += \
 #    cppcodemodelinspectordumper.cpp \//#720 ROOPAK
 #    cppcodemodelsettings.cpp \//#720 ROOPAK
 #    cppcodemodelsettingspage.cpp \//#720 ROOPAK
-    cppcodestylepreferences.cpp \
+#    cppcodestylepreferences.cpp \//#720 ROOPAK
 #    cppcodestylepreferencesfactory.cpp \//#720 ROOPAK
     cppcodestylesettings.cpp \
 #    cppcodestylesettingspage.cpp \//#720 ROOPAK

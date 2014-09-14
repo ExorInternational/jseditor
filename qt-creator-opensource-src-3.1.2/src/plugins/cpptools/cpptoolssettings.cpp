@@ -30,7 +30,7 @@
 #include "cpptoolssettings.h"
 
 #include "cpptoolsconstants.h"
-#include "cppcodestylepreferences.h"
+//#include "cppcodestylepreferences.h"//#720 ROOPAK
 //#include "cppcodestylepreferencesfactory.h"//#720 ROOPAK
 //#include "commentssettings.h"//#720 ROOPAK
 //#include "completionsettingspage.h"//#720 ROOPAK
@@ -59,11 +59,11 @@ class CppToolsSettingsPrivate
 {
 public:
     CppToolsSettingsPrivate()
-        : m_globalCodeStyle(0)
+//        : m_globalCodeStyle(0)//#720 ROOPAK
 //        , m_completionSettingsPage(0)//#720 ROOPAK
     {}
 
-    CppCodeStylePreferences *m_globalCodeStyle;
+//    CppCodeStylePreferences *m_globalCodeStyle;//#720 ROOPAK
 //    CompletionSettingsPage *m_completionSettingsPage;//#720 ROOPAK
 };
 
@@ -79,7 +79,7 @@ CppToolsSettings::CppToolsSettings(QObject *parent)
     QTC_ASSERT(!m_instance, return);
     m_instance = this;
 
-    qRegisterMetaType<CppTools::CppCodeStyleSettings>("CppTools::CppCodeStyleSettings");
+//    qRegisterMetaType<CppTools::CppCodeStyleSettings>("CppTools::CppCodeStyleSettings");//#720 ROOPAK
 
 //    d->m_completionSettingsPage = new CompletionSettingsPage(this);//#720 ROOPAK - START
 //    ExtensionSystem::PluginManager::addObject(d->m_completionSettingsPage);
@@ -98,12 +98,12 @@ CppToolsSettings::CppToolsSettings(QObject *parent)
 //    TextEditorSettings::registerCodeStylePool(Constants::CPP_SETTINGS_ID, pool);//#720 ROOPAK - END
 
     // global code style settings
-    d->m_globalCodeStyle = new CppCodeStylePreferences(this);
+//    d->m_globalCodeStyle = new CppCodeStylePreferences(this);//#720 ROOPAK
 //    d->m_globalCodeStyle->setDelegatingPool(pool);//#720 ROOPAK
-    d->m_globalCodeStyle->setDisplayName(tr("Global", "Settings"));
-    d->m_globalCodeStyle->setId(idKey);
+//    d->m_globalCodeStyle->setDisplayName(tr("Global", "Settings"));//#720 ROOPAK - START
+//    d->m_globalCodeStyle->setId(idKey);//#720 ROOPAK - END
 //    pool->addCodeStyle(d->m_globalCodeStyle);//#720 ROOPAK
-    TextEditorSettings::registerCodeStyle(CppTools::Constants::CPP_SETTINGS_ID, d->m_globalCodeStyle);
+//    TextEditorSettings::registerCodeStyle(CppTools::Constants::CPP_SETTINGS_ID, d->m_globalCodeStyle);//#720 ROOPAK
 
     /*
     For every language we have exactly 1 pool. The pool contains:
@@ -132,45 +132,45 @@ CppToolsSettings::CppToolsSettings(QObject *parent)
 
     // built-in settings
     // Qt style
-    CppCodeStylePreferences *qtCodeStyle = new CppCodeStylePreferences();
-    qtCodeStyle->setId("qt");
-    qtCodeStyle->setDisplayName(tr("Qt"));
-    qtCodeStyle->setReadOnly(true);
-    TabSettings qtTabSettings;
-    qtTabSettings.m_tabPolicy = TabSettings::SpacesOnlyTabPolicy;
-    qtTabSettings.m_tabSize = 4;
-    qtTabSettings.m_indentSize = 4;
-    qtTabSettings.m_continuationAlignBehavior = TabSettings::ContinuationAlignWithIndent;
-    qtCodeStyle->setTabSettings(qtTabSettings);
+//    CppCodeStylePreferences *qtCodeStyle = new CppCodeStylePreferences();//#720 ROOPAK - START
+//    qtCodeStyle->setId("qt");
+//    qtCodeStyle->setDisplayName(tr("Qt"));
+//    qtCodeStyle->setReadOnly(true);
+//    TabSettings qtTabSettings;
+//    qtTabSettings.m_tabPolicy = TabSettings::SpacesOnlyTabPolicy;
+//    qtTabSettings.m_tabSize = 4;
+//    qtTabSettings.m_indentSize = 4;
+//    qtTabSettings.m_continuationAlignBehavior = TabSettings::ContinuationAlignWithIndent;
+//    qtCodeStyle->setTabSettings(qtTabSettings);//#720 ROOPAK - END
 //    pool->addCodeStyle(qtCodeStyle);//#720 ROOPAK
 
     // GNU style
-    CppCodeStylePreferences *gnuCodeStyle = new CppCodeStylePreferences();
-    gnuCodeStyle->setId("gnu");
-    gnuCodeStyle->setDisplayName(tr("GNU"));
-    gnuCodeStyle->setReadOnly(true);
-    TabSettings gnuTabSettings;
-    gnuTabSettings.m_tabPolicy = TabSettings::MixedTabPolicy;
-    gnuTabSettings.m_tabSize = 8;
-    gnuTabSettings.m_indentSize = 2;
-    gnuTabSettings.m_continuationAlignBehavior = TabSettings::ContinuationAlignWithIndent;
-    gnuCodeStyle->setTabSettings(gnuTabSettings);
-    CppCodeStyleSettings gnuCodeStyleSettings;
-    gnuCodeStyleSettings.indentNamespaceBody = true;
-    gnuCodeStyleSettings.indentBlockBraces = true;
-    gnuCodeStyleSettings.indentSwitchLabels = true;
-    gnuCodeStyleSettings.indentBlocksRelativeToSwitchLabels = true;
-    gnuCodeStyle->setCodeStyleSettings(gnuCodeStyleSettings);
+//    CppCodeStylePreferences *gnuCodeStyle = new CppCodeStylePreferences();//#720 ROOPAK - START
+//    gnuCodeStyle->setId("gnu");
+//    gnuCodeStyle->setDisplayName(tr("GNU"));
+//    gnuCodeStyle->setReadOnly(true);
+//    TabSettings gnuTabSettings;
+//    gnuTabSettings.m_tabPolicy = TabSettings::MixedTabPolicy;
+//    gnuTabSettings.m_tabSize = 8;
+//    gnuTabSettings.m_indentSize = 2;
+//    gnuTabSettings.m_continuationAlignBehavior = TabSettings::ContinuationAlignWithIndent;
+//    gnuCodeStyle->setTabSettings(gnuTabSettings);
+//    CppCodeStyleSettings gnuCodeStyleSettings;
+//    gnuCodeStyleSettings.indentNamespaceBody = true;
+//    gnuCodeStyleSettings.indentBlockBraces = true;
+//    gnuCodeStyleSettings.indentSwitchLabels = true;
+//    gnuCodeStyleSettings.indentBlocksRelativeToSwitchLabels = true;
+//    gnuCodeStyle->setCodeStyleSettings(gnuCodeStyleSettings);//#720 ROOPAK - END
 //    pool->addCodeStyle(gnuCodeStyle);//#720 ROOPAK
 
     // default delegate for global preferences
-    d->m_globalCodeStyle->setCurrentDelegate(qtCodeStyle);
+//    d->m_globalCodeStyle->setCurrentDelegate(qtCodeStyle);//#720 ROOPAK
 
 //    pool->loadCustomCodeStyles();//#720 ROOPAK
 
     // load global settings (after built-in settings are added to the pool)
     QSettings *s = Core::ICore::settings();
-    d->m_globalCodeStyle->fromSettings(QLatin1String(CppTools::Constants::CPP_SETTINGS_ID), s);
+//    d->m_globalCodeStyle->fromSettings(QLatin1String(CppTools::Constants::CPP_SETTINGS_ID), s);//#720 ROOPAK
 
     // legacy handling start (Qt Creator Version < 2.4)
     const bool legacyTransformed =
@@ -187,11 +187,11 @@ CppToolsSettings::CppToolsSettings(QObject *parent)
                                    groups.contains(QLatin1String("CppTabPreferences")) ||
                                    groups.contains(QLatin1String("CppCodeStyleSettings"));
         if (needTransform) {
-            CppCodeStyleSettings legacyCodeStyleSettings;
-            if (groups.contains(QLatin1String("CppCodeStyleSettings"))) {
-                Utils::fromSettings(QLatin1String("CppCodeStyleSettings"),
-                                    QString(), s, &legacyCodeStyleSettings);
-            }
+//            CppCodeStyleSettings legacyCodeStyleSettings;//#720 ROOPAK - START
+//            if (groups.contains(QLatin1String("CppCodeStyleSettings"))) {
+//                Utils::fromSettings(QLatin1String("CppCodeStyleSettings"),
+//                                    QString(), s, &legacyCodeStyleSettings);
+//            }//#720 ROOPAK - END
 
             const QString currentFallback = s->value(QLatin1String("CppTabPreferences/CurrentFallback")).toString();
             TabSettings legacyTabSettings;
@@ -201,18 +201,18 @@ CppToolsSettings::CppToolsSettings(QObject *parent)
                                     QString(), s, &legacyTabSettings);
             } else {
                 // delegating to global
-                legacyTabSettings = TextEditorSettings::codeStyle()->currentTabSettings();
+//                legacyTabSettings = TextEditorSettings::codeStyle()->currentTabSettings();//#720 ROOPAK
             }
 
             // create custom code style out of old settings
             QVariant v;
-            v.setValue(legacyCodeStyleSettings);
+//            v.setValue(legacyCodeStyleSettings);//#720 ROOPAK
 //            TextEditor::ICodeStylePreferences *oldCreator = pool->createCodeStyle(//#720 ROOPAK - START
 //                     "legacy", legacyTabSettings, v, tr("Old Creator"));
 
             // change the current delegate and save
 //            d->m_globalCodeStyle->setCurrentDelegate(oldCreator);//#720 ROOPAK - END
-            d->m_globalCodeStyle->toSettings(QLatin1String(CppTools::Constants::CPP_SETTINGS_ID), s);
+//            d->m_globalCodeStyle->toSettings(QLatin1String(CppTools::Constants::CPP_SETTINGS_ID), s);//#720 ROOPAK
         }
         // mark old settings as transformed
         s->setValue(QLatin1String("CppCodeStyleSettings/LegacyTransformed"), true);
@@ -245,10 +245,10 @@ CppToolsSettings *CppToolsSettings::instance()
     return m_instance;
 }
 
-CppCodeStylePreferences *CppToolsSettings::cppCodeStyle() const
-{
-    return d->m_globalCodeStyle;
-}
+//CppCodeStylePreferences *CppToolsSettings::cppCodeStyle() const//#720 ROOPAK - START
+//{
+//    return d->m_globalCodeStyle;
+//}//#720 ROOPAK - END
 
 //const CommentsSettings &CppToolsSettings::commentsSettings() const//#720 ROOPAK - START
 //{

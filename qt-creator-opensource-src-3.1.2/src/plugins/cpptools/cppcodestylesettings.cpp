@@ -29,7 +29,7 @@
 
 #include "cppcodestylesettings.h"
 
-#include "cppcodestylepreferences.h"
+//#include "cppcodestylepreferences.h"//#720 ROOPAK
 #include "cpptoolsconstants.h"
 #include "cpptoolssettings.h"
 
@@ -235,11 +235,11 @@ CPlusPlus::Overview CppCodeStyleSettings::currentGlobalCodeStyleOverview()
 {
     CPlusPlus::Overview overview;
 
-    CppCodeStylePreferences *cppCodeStylePreferences = CppToolsSettings::instance()->cppCodeStyle();
-    QTC_ASSERT(cppCodeStylePreferences, return overview);
+//    CppCodeStylePreferences *cppCodeStylePreferences = CppToolsSettings::instance()->cppCodeStyle();//#720 ROOPAK - START
+//    QTC_ASSERT(cppCodeStylePreferences, return overview);
 
-    CppCodeStyleSettings settings = cppCodeStylePreferences->currentCodeStyleSettings();
+//    CppCodeStyleSettings settings = cppCodeStylePreferences->currentCodeStyleSettings();
 
-    configureOverviewWithCodeStyleSettings(overview, settings);
+//    configureOverviewWithCodeStyleSettings(overview, settings);//#720 ROOPAK - END
     return overview;
 }
