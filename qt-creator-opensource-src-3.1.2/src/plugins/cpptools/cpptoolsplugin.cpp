@@ -30,7 +30,7 @@
 #include "cpptoolsconstants.h"
 #include "cpptoolsplugin.h"
 #include "cppfilesettingspage.h"
-#include "cppcodemodelsettingspage.h"
+//#include "cppcodemodelsettingspage.h"//#720 ROOPAK
 #include "cppcodestylesettingspage.h"
 //#include "cppclassesfilter.h"//#720 ROOPAK
 //#include "cppfunctionsfilter.h"//#720 ROOPAK
@@ -65,6 +65,7 @@
 //#720 ADDED BY ROOPAK - START
 #include <coreplugin/editormanager/editormanager.h>
 #include <projectexplorer/project.h>
+#include "cppcodemodelsettings.h"
 //#720 ROOPAK - END
 
 using namespace Core;
@@ -143,7 +144,7 @@ bool CppToolsPlugin::initialize(const QStringList &arguments, QString *error)
 //    addAutoReleasedObject(new CppFunctionsFilter(locatorData));//#720 ROOPAK
 //    addAutoReleasedObject(new CppCurrentDocumentFilter(modelManager));//#720 ROOPAK
     addAutoReleasedObject(new CppFileSettingsPage(m_fileSettings));
-    addAutoReleasedObject(new CppCodeModelSettingsPage(m_codeModelSettings));
+//    addAutoReleasedObject(new CppCodeModelSettingsPage(m_codeModelSettings));//#720 ROOPAK
 //    addAutoReleasedObject(new SymbolsFindFilter(modelManager));//#720 ROOPAK
     addAutoReleasedObject(new CppCodeStyleSettingsPage);
 
