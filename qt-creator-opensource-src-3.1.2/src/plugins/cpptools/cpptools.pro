@@ -21,7 +21,7 @@ HEADERS += \
     cppcompletionassistprovider.h \
 #    cppcurrentdocumentfilter.h \//#720 ROOPAK
     cppdoxygen.h \
-    cppfilesettingspage.h \
+#    cppfilesettingspage.h \//#720 ROOPAK
 #    cppfindreferences.h \//#720 ROOPAK
 #    cppfunctionsfilter.h \//#720 ROOPAK
     cpphighlightingsupport.h \
@@ -75,7 +75,7 @@ SOURCES += \
     cppcompletionassistprovider.cpp \
 #    cppcurrentdocumentfilter.cpp \//#720 ROOPAK
     cppdoxygen.cpp \
-    cppfilesettingspage.cpp \
+#    cppfilesettingspage.cpp \//#720 ROOPAK
 #    cppfindreferences.cpp \//#720 ROOPAK
 #    cppfunctionsfilter.cpp \//#720 ROOPAK
     cpphighlightingsupport.cpp \
@@ -112,7 +112,7 @@ FORMS += \
 #    completionsettingspage.ui \//#720 ROOPAK
 #    cppcodemodelsettingspage.ui \//#720 ROOPAK
 #    cppcodestylesettingspage.ui \//#720 ROOPAK
-    cppfilesettingspage.ui
+#    cppfilesettingspage.ui//#720 ROOPAK
 
 #equals(TEST, 1) {//#720 ROOPAK - START
 #    HEADERS += \

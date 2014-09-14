@@ -48,7 +48,7 @@ class CppToolsSettings;
 namespace Internal {
 
 //class CppModelManager;//#720 ROOPAK
-struct CppFileSettings;
+//struct CppFileSettings;//#720 ROOPAK
 //class CppCodeModelSettings;//#720 ROOPAK
 
 class CPPTOOLS_EXPORT CppToolsPlugin : public ExtensionSystem::IPlugin
@@ -160,9 +160,9 @@ private slots:
 #endif
 
 private:
-    QSharedPointer<CppFileSettings> m_fileSettings;
+//    QSharedPointer<CppFileSettings> m_fileSettings;//#720 ROOPAK
 //    QSharedPointer<CppCodeModelSettings> m_codeModelSettings;//#720 ROOPAK
-    CppToolsSettings *m_settings;
+//    CppToolsSettings *m_settings;//#720 ROOPAK
 };
 
 } // namespace Internal

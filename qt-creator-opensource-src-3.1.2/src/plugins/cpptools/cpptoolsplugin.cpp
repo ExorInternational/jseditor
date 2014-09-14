@@ -29,7 +29,7 @@
 
 #include "cpptoolsconstants.h"
 #include "cpptoolsplugin.h"
-#include "cppfilesettingspage.h"
+//#include "cppfilesettingspage.h"//#720 ROOPAK
 //#include "cppcodemodelsettingspage.h"//#720 ROOPAK
 //#include "cppcodestylesettingspage.h"//#720 ROOPAK
 //#include "cppclassesfilter.h"//#720 ROOPAK
@@ -80,7 +80,7 @@ static CppToolsPlugin *m_instance = 0;
 static QHash<QString, QString> m_headerSourceMapping;
 
 CppToolsPlugin::CppToolsPlugin()
-    : m_fileSettings(new CppFileSettings)
+//    : m_fileSettings(new CppFileSettings)//#720 ROOPAK
 //    , m_codeModelSettings(new CppCodeModelSettings)//#720 ROOPAK
 {
     m_instance = this;
@@ -104,22 +104,25 @@ void CppToolsPlugin::clearHeaderSourceCache()
 
 const QStringList &CppToolsPlugin::headerSearchPaths()
 {
-    return m_instance->m_fileSettings->headerSearchPaths;
+    return QStringList();//m_instance->m_fileSettings->headerSearchPaths;//#720 ROOPAK
 }
 
 const QStringList &CppToolsPlugin::sourceSearchPaths()
 {
-    return m_instance->m_fileSettings->sourceSearchPaths;
+    QStringList ret;//#720 ROOPAK
+    return ret;//m_instance->m_fileSettings->sourceSearchPaths;//#720 ROOPAK
 }
 
 const QStringList &CppToolsPlugin::headerPrefixes()
 {
-    return m_instance->m_fileSettings->headerPrefixes;
+    QStringList ret;//#720 ROOPAK
+    return ret;//m_instance->m_fileSettings->headerPrefixes;//#720 ROOPAK
 }
 
 const QStringList &CppToolsPlugin::sourcePrefixes()
 {
-    return m_instance->m_fileSettings->sourcePrefixes;
+    QStringList ret;//#720 ROOPAK
+    return ret;//m_instance->m_fileSettings->sourcePrefixes;//#720 ROOPAK
 }
 
 
@@ -128,7 +131,7 @@ bool CppToolsPlugin::initialize(const QStringList &arguments, QString *error)
     Q_UNUSED(arguments)
     Q_UNUSED(error)
 
-    m_settings = new CppToolsSettings(this); // force registration of cpp tools settings
+//    m_settings = new CppToolsSettings(this); // force registration of cpp tools settings//#720 ROOPAK
 
     // Objects
 //    CppModelManager *modelManager = CppModelManager::instance();//#720 ROOPAK - START
@@ -143,7 +146,7 @@ bool CppToolsPlugin::initialize(const QStringList &arguments, QString *error)
 //    addAutoReleasedObject(new CppClassesFilter(locatorData));//#720 ROOPAK
 //    addAutoReleasedObject(new CppFunctionsFilter(locatorData));//#720 ROOPAK
 //    addAutoReleasedObject(new CppCurrentDocumentFilter(modelManager));//#720 ROOPAK
-    addAutoReleasedObject(new CppFileSettingsPage(m_fileSettings));
+//    addAutoReleasedObject(new CppFileSettingsPage(m_fileSettings));//#720 ROOPAK
 //    addAutoReleasedObject(new CppCodeModelSettingsPage(m_codeModelSettings));//#720 ROOPAK
 //    addAutoReleasedObject(new SymbolsFindFilter(modelManager));//#720 ROOPAK
 //    addAutoReleasedObject(new CppCodeStyleSettingsPage);//#720 ROOPAK
@@ -180,9 +183,9 @@ void CppToolsPlugin::extensionsInitialized()
 {
     // The Cpp editor plugin, which is loaded later on, registers the Cpp mime types,
     // so, apply settings here
-    m_fileSettings->fromSettings(ICore::settings());
-    if (!m_fileSettings->applySuffixesToMimeDB())
-        qWarning("Unable to apply cpp suffixes to mime database (cpp mime types not found).\n");
+//    m_fileSettings->fromSettings(ICore::settings());//#720 ROOPAK - START
+//    if (!m_fileSettings->applySuffixesToMimeDB())
+//        qWarning("Unable to apply cpp suffixes to mime database (cpp mime types not found).\n");//#720 ROOPAK - END
 //    m_codeModelSettings->fromSettings(ICore::settings());//#720 ROOPAK
 }
 
