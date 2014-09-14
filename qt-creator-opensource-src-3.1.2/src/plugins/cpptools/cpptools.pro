@@ -5,7 +5,7 @@ include(../../qtcreatorplugin.pri)
 HEADERS += \
 #    abstracteditorsupport.h \//#720 ROOPAK
 #    builtinindexingsupport.h \//#720 ROOPAK
-    commentssettings.h \
+#    commentssettings.h \//#720 ROOPAK
 #    completionsettingspage.h \//#720 ROOPAK
     cppchecksymbols.h \
 #    cppclassesfilter.h \//#720 ROOPAK
@@ -59,7 +59,7 @@ HEADERS += \
 SOURCES += \
 #    abstracteditorsupport.cpp \//#720 ROOPAK
 #    builtinindexingsupport.cpp \//#720 ROOPAK
-    commentssettings.cpp \
+#    commentssettings.cpp \//#720 ROOPAK
 #    completionsettingspage.cpp \//#720 ROOPAK
     cppchecksymbols.cpp \
 #    cppclassesfilter.cpp \//#720 ROOPAK

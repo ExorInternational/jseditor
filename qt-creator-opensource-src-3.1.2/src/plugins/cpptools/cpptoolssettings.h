@@ -37,7 +37,7 @@
 namespace CppTools
 {
 class CppCodeStylePreferences;
-class CommentsSettings;
+//class CommentsSettings;//#720 ROOPAK
 
 namespace Internal
 {
@@ -58,10 +58,10 @@ public:
     static CppToolsSettings *instance();
 
     CppCodeStylePreferences *cppCodeStyle() const;
-    const CommentsSettings &commentsSettings() const;
+//    const CommentsSettings &commentsSettings() const;//#720 ROOPAK
 
 signals:
-    void commentsSettingsChanged(const CppTools::CommentsSettings &settings);
+//    void commentsSettingsChanged(const CppTools::CommentsSettings &settings);//#720 ROOPAK
 
 private:
     Internal::CppToolsSettingsPrivate *d;

@@ -32,7 +32,7 @@
 #include "cpptoolsconstants.h"
 #include "cppcodestylepreferences.h"
 #include "cppcodestylepreferencesfactory.h"
-#include "commentssettings.h"
+//#include "commentssettings.h"//#720 ROOPAK
 //#include "completionsettingspage.h"//#720 ROOPAK
 
 #include <coreplugin/icore.h>
@@ -250,7 +250,7 @@ CppCodeStylePreferences *CppToolsSettings::cppCodeStyle() const
     return d->m_globalCodeStyle;
 }
 
-const CommentsSettings &CppToolsSettings::commentsSettings() const
-{
-    return CppTools::CommentsSettings();//d->m_completionSettingsPage->commentsSettings();//#720 ROOPAK
-}
+//const CommentsSettings &CppToolsSettings::commentsSettings() const//#720 ROOPAK - START
+//{
+//    return CppTools::CommentsSettings();//d->m_completionSettingsPage->commentsSettings();//#720 ROOPAK
+//}//#720 ROOPAK - END
