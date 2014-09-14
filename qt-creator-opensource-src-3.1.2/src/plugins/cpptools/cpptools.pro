@@ -39,7 +39,7 @@ HEADERS += \
     cppprojectfile.h \
 #    cppqtstyleindenter.h \//#720 ROOPAK
 #    cpprefactoringchanges.h \//#720 ROOPAK
-    cppsemanticinfo.h \
+#    cppsemanticinfo.h \//#720 ROOPAK
 #    cppsnapshotupdater.h \//#720 ROOPAK
     cpptools_global.h \
     cpptoolsconstants.h \
@@ -93,7 +93,7 @@ SOURCES += \
     cppprojectfile.cpp \
 #    cppqtstyleindenter.cpp \//#720 ROOPAK
 #    cpprefactoringchanges.cpp \//#720 ROOPAK
-    cppsemanticinfo.cpp \
+#    cppsemanticinfo.cpp \//#720 ROOPAK
 #    cppsnapshotupdater.cpp \//#720 ROOPAK
 #    cpptoolseditorsupport.cpp \//#720 ROOPAK
     cpptoolsplugin.cpp \
