@@ -6,7 +6,7 @@ HEADERS += \
 #    abstracteditorsupport.h \//#720 ROOPAK
 #    builtinindexingsupport.h \//#720 ROOPAK
     commentssettings.h \
-    completionsettingspage.h \
+#    completionsettingspage.h \//#720 ROOPAK
     cppchecksymbols.h \
 #    cppclassesfilter.h \//#720 ROOPAK
     cppcodeformatter.h \
@@ -60,7 +60,7 @@ SOURCES += \
 #    abstracteditorsupport.cpp \//#720 ROOPAK
 #    builtinindexingsupport.cpp \//#720 ROOPAK
     commentssettings.cpp \
-    completionsettingspage.cpp \
+#    completionsettingspage.cpp \//#720 ROOPAK
     cppchecksymbols.cpp \
 #    cppclassesfilter.cpp \//#720 ROOPAK
     cppcodeformatter.cpp \
@@ -109,7 +109,7 @@ SOURCES += \
 #    typehierarchybuilder.cpp//#720 ROOPAK
 
 FORMS += \
-    completionsettingspage.ui \
+#    completionsettingspage.ui \//#720 ROOPAK
     cppcodemodelsettingspage.ui \
     cppcodestylesettingspage.ui \
     cppfilesettingspage.ui

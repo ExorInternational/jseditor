@@ -33,7 +33,7 @@
 #include "cppcodestylepreferences.h"
 #include "cppcodestylepreferencesfactory.h"
 #include "commentssettings.h"
-#include "completionsettingspage.h"
+//#include "completionsettingspage.h"//#720 ROOPAK
 
 #include <coreplugin/icore.h>
 #include <texteditor/codestylepool.h>
@@ -60,11 +60,11 @@ class CppToolsSettingsPrivate
 public:
     CppToolsSettingsPrivate()
         : m_globalCodeStyle(0)
-        , m_completionSettingsPage(0)
+//        , m_completionSettingsPage(0)//#720 ROOPAK
     {}
 
     CppCodeStylePreferences *m_globalCodeStyle;
-    CompletionSettingsPage *m_completionSettingsPage;
+//    CompletionSettingsPage *m_completionSettingsPage;//#720 ROOPAK
 };
 
 } // namespace Internal
@@ -81,13 +81,13 @@ CppToolsSettings::CppToolsSettings(QObject *parent)
 
     qRegisterMetaType<CppTools::CppCodeStyleSettings>("CppTools::CppCodeStyleSettings");
 
-    d->m_completionSettingsPage = new CompletionSettingsPage(this);
-    ExtensionSystem::PluginManager::addObject(d->m_completionSettingsPage);
+//    d->m_completionSettingsPage = new CompletionSettingsPage(this);//#720 ROOPAK - START
+//    ExtensionSystem::PluginManager::addObject(d->m_completionSettingsPage);
 
-    connect(d->m_completionSettingsPage,
-            SIGNAL(commentsSettingsChanged(CppTools::CommentsSettings)),
-            this,
-            SIGNAL(commentsSettingsChanged(CppTools::CommentsSettings)));
+//    connect(d->m_completionSettingsPage,
+//            SIGNAL(commentsSettingsChanged(CppTools::CommentsSettings)),
+//            this,
+//            SIGNAL(commentsSettingsChanged(CppTools::CommentsSettings)));//#720 ROOPAK - END
 
     // code style factory
     ICodeStylePreferencesFactory *factory = new CppTools::CppCodeStylePreferencesFactory();
@@ -229,7 +229,7 @@ CppToolsSettings::CppToolsSettings(QObject *parent)
 
 CppToolsSettings::~CppToolsSettings()
 {
-    ExtensionSystem::PluginManager::removeObject(d->m_completionSettingsPage);
+//    ExtensionSystem::PluginManager::removeObject(d->m_completionSettingsPage);//#720 ROOPAK
 
     TextEditorSettings::unregisterCodeStyle(Constants::CPP_SETTINGS_ID);
     TextEditorSettings::unregisterCodeStylePool(Constants::CPP_SETTINGS_ID);
@@ -252,5 +252,5 @@ CppCodeStylePreferences *CppToolsSettings::cppCodeStyle() const
 
 const CommentsSettings &CppToolsSettings::commentsSettings() const
 {
-    return d->m_completionSettingsPage->commentsSettings();
+    return CppTools::CommentsSettings();//d->m_completionSettingsPage->commentsSettings();//#720 ROOPAK
 }
