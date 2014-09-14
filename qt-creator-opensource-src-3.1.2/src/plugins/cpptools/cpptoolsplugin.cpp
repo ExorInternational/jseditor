@@ -39,7 +39,7 @@
 //#include "cpplocatorfilter.h"//#720 ROOPAK
 //#include "symbolsfindfilter.h"//#720 ROOPAK
 #include "cpptoolssettings.h"
-#include "cpptoolsreuse.h"
+//#include "cpptoolsreuse.h"//#720 ROOPAK
 #include "cppprojectfile.h"
 //#include "cpplocatordata.h"//#720 ROOPAK
 
@@ -69,7 +69,7 @@
 //#720 ROOPAK - END
 
 using namespace Core;
-using namespace CPlusPlus;
+//using namespace CPlusPlus;//#720 ROOPAK
 
 namespace CppTools {
 namespace Internal {
@@ -201,18 +201,18 @@ ExtensionSystem::IPlugin::ShutdownFlag CppToolsPlugin::aboutToShutdown()
 
 void CppToolsPlugin::switchHeaderSource()
 {
-    QString otherFile = correspondingHeaderOrSource(
-                EditorManager::currentDocument()->filePath());
-    if (!otherFile.isEmpty())
-        EditorManager::openEditor(otherFile);
+//    QString otherFile = correspondingHeaderOrSource(//#720 ROOPAK - START
+//                EditorManager::currentDocument()->filePath());
+//    if (!otherFile.isEmpty())
+//        EditorManager::openEditor(otherFile);//#720 ROOPAK - END
 }
 
 void CppToolsPlugin::switchHeaderSourceInNextSplit()
 {
-    QString otherFile = correspondingHeaderOrSource(
-                EditorManager::currentDocument()->filePath());
-    if (!otherFile.isEmpty())
-        EditorManager::openEditor(otherFile, Id(), EditorManager::OpenInOtherSplit);
+//    QString otherFile = correspondingHeaderOrSource(//#720 ROOPAK - START
+//                EditorManager::currentDocument()->filePath());
+//    if (!otherFile.isEmpty())
+//        EditorManager::openEditor(otherFile, Id(), EditorManager::OpenInOtherSplit);//#720 ROOPAK - END
 }
 
 static QStringList findFilesInProject(const QString &name,
