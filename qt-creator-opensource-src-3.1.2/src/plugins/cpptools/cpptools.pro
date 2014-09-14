@@ -33,7 +33,7 @@ HEADERS += \
 #    cppmodelmanager.h \//#720 ROOPAK
 #    cppmodelmanagerinterface.h \//#720 ROOPAK
     cppmodelmanagersupport.h \
-    cppmodelmanagersupportinternal.h \
+#    cppmodelmanagersupportinternal.h \//#720 ROOPAK
 #    cpppointerdeclarationformatter.h \//#720 ROOPAK
 #    cpppreprocessor.h \//#720 ROOPAK
     cppprojectfile.h \
@@ -87,7 +87,7 @@ SOURCES += \
 #    cppmodelmanager.cpp \//#720 ROOPAK
 #    cppmodelmanagerinterface.cpp \//#720 ROOPAK
     cppmodelmanagersupport.cpp \
-    cppmodelmanagersupportinternal.cpp \
+#    cppmodelmanagersupportinternal.cpp \//#720 ROOPAK
 #    cpppointerdeclarationformatter.cpp \//#720 ROOPAK
 #    cpppreprocessor.cpp \//#720 ROOPAK
     cppprojectfile.cpp \
