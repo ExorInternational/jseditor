@@ -54,6 +54,7 @@
 using namespace CPlusPlus;
 #include "cplusplus/PreprocessorEnvironment.h"
 #include "cplusplus/CppDocument.h"
+#include <texteditor/tabsettings.h>
 //#720 ROOPAK - END
 
 static const char *defaultCodeStyleSnippets[] = {
@@ -469,25 +470,25 @@ void CppCodeStylePreferencesWidget::updatePreview()
             : CppToolsSettings::instance()->cppCodeStyle();
     const CppCodeStyleSettings ccss = cppCodeStylePreferences->currentCodeStyleSettings();
     const TextEditor::TabSettings ts = cppCodeStylePreferences->currentTabSettings();
-    QtStyleCodeFormatter formatter(ts, ccss);
-    foreach (TextEditor::SnippetEditorWidget *preview, m_previews) {
-        preview->baseTextDocument()->setTabSettings(ts);
-        preview->setCodeStyle(cppCodeStylePreferences);
+//    QtStyleCodeFormatter formatter(ts, ccss);//#720 ROOPAK - START
+//    foreach (TextEditor::SnippetEditorWidget *preview, m_previews) {
+//        preview->baseTextDocument()->setTabSettings(ts);
+//        preview->setCodeStyle(cppCodeStylePreferences);
 
-        QTextDocument *doc = preview->document();
-        formatter.invalidateCache(doc);
+//        QTextDocument *doc = preview->document();
+//        formatter.invalidateCache(doc);
 
-        QTextBlock block = doc->firstBlock();
-        QTextCursor tc = preview->textCursor();
-        tc.beginEditBlock();
-        while (block.isValid()) {
-            preview->baseTextDocument()->indenter()->indentBlock(doc, block, QChar::Null, ts);
+//        QTextBlock block = doc->firstBlock();
+//        QTextCursor tc = preview->textCursor();
+//        tc.beginEditBlock();
+//        while (block.isValid()) {
+//            preview->baseTextDocument()->indenter()->indentBlock(doc, block, QChar::Null, ts);
 
-            block = block.next();
-        }
-        applyRefactorings(doc, preview, ccss);
-        tc.endEditBlock();
-    }
+//            block = block.next();
+//        }
+//        applyRefactorings(doc, preview, ccss);
+//        tc.endEditBlock();
+//    }//#720 ROOPAK - END
 }
 
 void CppCodeStylePreferencesWidget::decorateEditors(const TextEditor::FontSettings &fontSettings)

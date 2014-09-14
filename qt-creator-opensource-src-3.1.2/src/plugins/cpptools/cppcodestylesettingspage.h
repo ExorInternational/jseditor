@@ -32,7 +32,7 @@
 
 #include "cpptools_global.h"
 #include "cppcodestylesettings.h"
-#include "cppcodeformatter.h"
+//#include "cppcodeformatter.h"//#720 ROOPAK
 
 #include <coreplugin/dialogs/ioptionspage.h>
 

@@ -29,7 +29,7 @@
 
 #include "cppqtstyleindenter.h"
 
-#include "cppcodeformatter.h"
+//#include "cppcodeformatter.h"//#720 ROOPAK
 #include "cpptoolssettings.h"
 #include "cppcodestylepreferences.h"
 
@@ -90,28 +90,28 @@ void CppQtStyleIndenter::indentBlock(QTextDocument *doc,
 {
     Q_UNUSED(doc)
 
-    CppTools::QtStyleCodeFormatter codeFormatter(tabSettings, codeStyleSettings());
+//    CppTools::QtStyleCodeFormatter codeFormatter(tabSettings, codeStyleSettings());//#720 ROOPAK - START
 
-    codeFormatter.updateStateUntil(block);
-    int indent;
-    int padding;
-    codeFormatter.indentFor(block, &indent, &padding);
+//    codeFormatter.updateStateUntil(block);
+//    int indent;
+//    int padding;
+//    codeFormatter.indentFor(block, &indent, &padding);
 
-    if (isElectricCharacter(typedChar)) {
-        // : should not be electric for labels
-        if (typedChar == QLatin1Char(':') && !colonIsElectric(block.text()))
-            return;
+//    if (isElectricCharacter(typedChar)) {
+//        // : should not be electric for labels
+//        if (typedChar == QLatin1Char(':') && !colonIsElectric(block.text()))
+//            return;
 
-        // only reindent the current line when typing electric characters if the
-        // indent is the same it would be if the line were empty
-        int newlineIndent;
-        int newlinePadding;
-        codeFormatter.indentForNewLineAfter(block.previous(), &newlineIndent, &newlinePadding);
-        if (tabSettings.indentationColumn(block.text()) != newlineIndent + newlinePadding)
-            return;
-    }
+//        // only reindent the current line when typing electric characters if the
+//        // indent is the same it would be if the line were empty
+//        int newlineIndent;
+//        int newlinePadding;
+//        codeFormatter.indentForNewLineAfter(block.previous(), &newlineIndent, &newlinePadding);
+//        if (tabSettings.indentationColumn(block.text()) != newlineIndent + newlinePadding)
+//            return;
+//    }
 
-    tabSettings.indentLine(block, indent + padding, padding);
+//    tabSettings.indentLine(block, indent + padding, padding);//#720 ROOPAK - END
 }
 
 void CppQtStyleIndenter::indent(QTextDocument *doc,
@@ -123,20 +123,20 @@ void CppQtStyleIndenter::indent(QTextDocument *doc,
         QTextBlock block = doc->findBlock(cursor.selectionStart());
         const QTextBlock end = doc->findBlock(cursor.selectionEnd()).next();
 
-        CppTools::QtStyleCodeFormatter codeFormatter(tabSettings, codeStyleSettings());
-        codeFormatter.updateStateUntil(block);
+//        CppTools::QtStyleCodeFormatter codeFormatter(tabSettings, codeStyleSettings());//#720 ROOPAK - START
+//        codeFormatter.updateStateUntil(block);
 
-        QTextCursor tc = cursor;
-        tc.beginEditBlock();
-        do {
-            int indent;
-            int padding;
-            codeFormatter.indentFor(block, &indent, &padding);
-            tabSettings.indentLine(block, indent + padding, padding);
-            codeFormatter.updateLineStateChange(block);
-            block = block.next();
-        } while (block.isValid() && block != end);
-        tc.endEditBlock();
+//        QTextCursor tc = cursor;
+//        tc.beginEditBlock();
+//        do {
+//            int indent;
+//            int padding;
+//            codeFormatter.indentFor(block, &indent, &padding);
+//            tabSettings.indentLine(block, indent + padding, padding);
+//            codeFormatter.updateLineStateChange(block);
+//            block = block.next();
+//        } while (block.isValid() && block != end);
+//        tc.endEditBlock();//#720 ROOPAK - END
     } else {
         indentBlock(doc, cursor.block(), typedChar, tabSettings);
     }
@@ -152,8 +152,8 @@ void CppQtStyleIndenter::setCodeStylePreferences(TextEditor::ICodeStylePreferenc
 
 void CppQtStyleIndenter::invalidateCache(QTextDocument *doc)
 {
-    CppTools::QtStyleCodeFormatter formatter;
-    formatter.invalidateCache(doc);
+//    CppTools::QtStyleCodeFormatter formatter;//#720 ROOPAK - START
+//    formatter.invalidateCache(doc);//#720 ROOPAK - END
 }
 
 CppCodeStyleSettings CppQtStyleIndenter::codeStyleSettings() const

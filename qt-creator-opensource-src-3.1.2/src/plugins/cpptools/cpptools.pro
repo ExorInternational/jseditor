@@ -9,7 +9,7 @@ HEADERS += \
 #    completionsettingspage.h \//#720 ROOPAK
 #    cppchecksymbols.h \//#720 ROOPAK
 #    cppclassesfilter.h \//#720 ROOPAK
-    cppcodeformatter.h \
+#    cppcodeformatter.h \//#720 ROOPAK
 #    cppcodemodelinspectordumper.h \//#720 ROOPAK
     cppcodemodelsettings.h \
     cppcodemodelsettingspage.h \
@@ -63,7 +63,7 @@ SOURCES += \
 #    completionsettingspage.cpp \//#720 ROOPAK
 #    cppchecksymbols.cpp \//#720 ROOPAK
 #    cppclassesfilter.cpp \//#720 ROOPAK
-    cppcodeformatter.cpp \
+#    cppcodeformatter.cpp \//#720 ROOPAK
 #    cppcodemodelinspectordumper.cpp \//#720 ROOPAK
     cppcodemodelsettings.cpp \
     cppcodemodelsettingspage.cpp \
