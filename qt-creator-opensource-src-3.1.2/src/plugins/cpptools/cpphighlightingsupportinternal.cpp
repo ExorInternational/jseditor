@@ -29,7 +29,7 @@
 
 #include "cpphighlightingsupportinternal.h"
 
-#include "cppchecksymbols.h"
+//#include "cppchecksymbols.h"//#720 ROOPAK
 #include "cpptoolsreuse.h"
 
 #include <texteditor/itexteditor.h>
@@ -92,6 +92,9 @@ QFuture<TextEditor::HighlightingResult> CppHighlightingSupportInternal::highligh
         macroUses.append(use);
     }
 
-    LookupContext context(doc, snapshot);
-    return CheckSymbols::go(doc, context, macroUses);
+//    LookupContext context(doc, snapshot);//#720 ROOPAK - START
+//    return CheckSymbols::go(doc, context, macroUses);//#720 ROOPAK - END
+
+    QFuture<TextEditor::HighlightingResult> dummy;
+    return dummy;
 }

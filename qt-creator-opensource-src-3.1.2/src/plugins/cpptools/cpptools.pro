@@ -7,7 +7,7 @@ HEADERS += \
 #    builtinindexingsupport.h \//#720 ROOPAK
 #    commentssettings.h \//#720 ROOPAK
 #    completionsettingspage.h \//#720 ROOPAK
-    cppchecksymbols.h \
+#    cppchecksymbols.h \//#720 ROOPAK
 #    cppclassesfilter.h \//#720 ROOPAK
     cppcodeformatter.h \
 #    cppcodemodelinspectordumper.h \//#720 ROOPAK
@@ -61,7 +61,7 @@ SOURCES += \
 #    builtinindexingsupport.cpp \//#720 ROOPAK
 #    commentssettings.cpp \//#720 ROOPAK
 #    completionsettingspage.cpp \//#720 ROOPAK
-    cppchecksymbols.cpp \
+#    cppchecksymbols.cpp \//#720 ROOPAK
 #    cppclassesfilter.cpp \//#720 ROOPAK
     cppcodeformatter.cpp \
 #    cppcodemodelinspectordumper.cpp \//#720 ROOPAK
