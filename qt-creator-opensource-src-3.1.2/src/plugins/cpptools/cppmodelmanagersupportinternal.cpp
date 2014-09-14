@@ -56,10 +56,10 @@ QString ModelManagerSupportInternal::displayName() const
                                        "Qt Creator Built-in");
 }
 
-CppCompletionAssistProvider *ModelManagerSupportInternal::completionAssistProvider()
-{
-    return NULL;//m_completionAssistProvider.data();//#720 ROOPAK
-}
+//CppCompletionAssistProvider *ModelManagerSupportInternal::completionAssistProvider()//#720 ROOPAK - START
+//{
+//    return NULL;//m_completionAssistProvider.data();//#720 ROOPAK
+//}//#720 ROOPAK - END
 
 CppHighlightingSupport *ModelManagerSupportInternal::highlightingSupport(TextEditor::ITextEditor *editor)
 {

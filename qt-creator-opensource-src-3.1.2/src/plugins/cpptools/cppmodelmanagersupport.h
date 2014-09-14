@@ -38,7 +38,7 @@ namespace TextEditor { class ITextEditor; }
 
 namespace CppTools {
 
-class CppCompletionAssistProvider;
+//class CppCompletionAssistProvider;//#720 ROOPAK
 class CppHighlightingSupport;
 
 class CPPTOOLS_EXPORT ModelManagerSupport
@@ -49,7 +49,7 @@ public:
     virtual QString id() const = 0;
     virtual QString displayName() const = 0;
 
-    virtual CppCompletionAssistProvider *completionAssistProvider() = 0;
+//    virtual CppCompletionAssistProvider *completionAssistProvider() = 0;//#720 ROOPAK
     virtual CppHighlightingSupport *highlightingSupport(TextEditor::ITextEditor *editor) = 0;
 };
 
