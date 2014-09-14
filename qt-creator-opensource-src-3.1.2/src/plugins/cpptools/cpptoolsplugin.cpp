@@ -40,7 +40,7 @@
 //#include "symbolsfindfilter.h"//#720 ROOPAK
 //#include "cpptoolssettings.h"//#720 ROOPAK
 //#include "cpptoolsreuse.h"//#720 ROOPAK
-#include "cppprojectfile.h"
+//#include "cppprojectfile.h"//#720 ROOPAK
 //#include "cpplocatordata.h"//#720 ROOPAK
 
 #include <coreplugin/actionmanager/actioncontainer.h>
@@ -238,30 +238,30 @@ static QStringList findFilesInProject(const QString &name,
 
 // Return the suffixes that should be checked when trying to find a
 // source belonging to a header and vice versa
-static QStringList matchingCandidateSuffixes(ProjectFile::Kind kind)
-{
-    switch (kind) {
-     // Note that C/C++ headers are undistinguishable
-    case ProjectFile::CHeader:
-    case ProjectFile::CXXHeader:
-    case ProjectFile::ObjCHeader:
-    case ProjectFile::ObjCXXHeader:
-        return MimeDatabase::findByType(QLatin1String(Constants::C_SOURCE_MIMETYPE)).suffixes()
-                + MimeDatabase::findByType(QLatin1String(Constants::CPP_SOURCE_MIMETYPE)).suffixes()
-                + MimeDatabase::findByType(QLatin1String(Constants::OBJECTIVE_C_SOURCE_MIMETYPE)).suffixes()
-                + MimeDatabase::findByType(QLatin1String(Constants::OBJECTIVE_CPP_SOURCE_MIMETYPE)).suffixes();
-    case ProjectFile::CSource:
-    case ProjectFile::ObjCSource:
-        return MimeDatabase::findByType(QLatin1String(Constants::C_HEADER_MIMETYPE)).suffixes();
-    case ProjectFile::CXXSource:
-    case ProjectFile::ObjCXXSource:
-    case ProjectFile::CudaSource:
-    case ProjectFile::OpenCLSource:
-        return MimeDatabase::findByType(QLatin1String(Constants::CPP_HEADER_MIMETYPE)).suffixes();
-    default:
-        return QStringList();
-    }
-}
+//static QStringList matchingCandidateSuffixes(ProjectFile::Kind kind)//#720 ROOPAK - START
+//{
+//    switch (kind) {
+//     // Note that C/C++ headers are undistinguishable
+//    case ProjectFile::CHeader:
+//    case ProjectFile::CXXHeader:
+//    case ProjectFile::ObjCHeader:
+//    case ProjectFile::ObjCXXHeader:
+//        return MimeDatabase::findByType(QLatin1String(Constants::C_SOURCE_MIMETYPE)).suffixes()
+//                + MimeDatabase::findByType(QLatin1String(Constants::CPP_SOURCE_MIMETYPE)).suffixes()
+//                + MimeDatabase::findByType(QLatin1String(Constants::OBJECTIVE_C_SOURCE_MIMETYPE)).suffixes()
+//                + MimeDatabase::findByType(QLatin1String(Constants::OBJECTIVE_CPP_SOURCE_MIMETYPE)).suffixes();
+//    case ProjectFile::CSource:
+//    case ProjectFile::ObjCSource:
+//        return MimeDatabase::findByType(QLatin1String(Constants::C_HEADER_MIMETYPE)).suffixes();
+//    case ProjectFile::CXXSource:
+//    case ProjectFile::ObjCXXSource:
+//    case ProjectFile::CudaSource:
+//    case ProjectFile::OpenCLSource:
+//        return MimeDatabase::findByType(QLatin1String(Constants::CPP_HEADER_MIMETYPE)).suffixes();
+//    default:
+//        return QStringList();
+//    }
+//}//#720 ROOPAK - END
 
 static QStringList baseNameWithAllSuffixes(const QString &baseName, const QStringList &suffixes)
 {
@@ -351,67 +351,67 @@ QString correspondingHeaderOrSource(const QString &fileName, bool *wasHeader)
     using namespace Internal;
 
     const QFileInfo fi(fileName);
-    ProjectFile::Kind kind = ProjectFile::classify(fileName);
-    const bool isHeader = ProjectFile::isHeader(kind);
-    if (wasHeader)
-        *wasHeader = isHeader;
-    if (m_headerSourceMapping.contains(fi.absoluteFilePath()))
-        return m_headerSourceMapping.value(fi.absoluteFilePath());
+//    ProjectFile::Kind kind = ProjectFile::classify(fileName);//#720 ROOPAK - START
+//    const bool isHeader = ProjectFile::isHeader(kind);
+//    if (wasHeader)
+//        *wasHeader = isHeader;
+//    if (m_headerSourceMapping.contains(fi.absoluteFilePath()))
+//        return m_headerSourceMapping.value(fi.absoluteFilePath());
 
-    if (debug)
-        qDebug() << Q_FUNC_INFO << fileName <<  kind;
+//    if (debug)
+//        qDebug() << Q_FUNC_INFO << fileName <<  kind;
 
-    if (kind == ProjectFile::Unclassified)
-        return QString();
+//    if (kind == ProjectFile::Unclassified)
+//        return QString();
 
-    const QString baseName = fi.completeBaseName();
-    const QString privateHeaderSuffix = QLatin1String("_p");
-    const QStringList suffixes = matchingCandidateSuffixes(kind);
+//    const QString baseName = fi.completeBaseName();
+//    const QString privateHeaderSuffix = QLatin1String("_p");
+//    const QStringList suffixes = matchingCandidateSuffixes(kind);
 
-    QStringList candidateFileNames = baseNameWithAllSuffixes(baseName, suffixes);
-    if (isHeader) {
-        if (baseName.endsWith(privateHeaderSuffix)) {
-            QString sourceBaseName = baseName;
-            sourceBaseName.truncate(sourceBaseName.size() - privateHeaderSuffix.size());
-            candidateFileNames += baseNameWithAllSuffixes(sourceBaseName, suffixes);
-        }
-    } else {
-        QString privateHeaderBaseName = baseName;
-        privateHeaderBaseName.append(privateHeaderSuffix);
-        candidateFileNames += baseNameWithAllSuffixes(privateHeaderBaseName, suffixes);
-    }
+//    QStringList candidateFileNames = baseNameWithAllSuffixes(baseName, suffixes);
+//    if (isHeader) {
+//        if (baseName.endsWith(privateHeaderSuffix)) {
+//            QString sourceBaseName = baseName;
+//            sourceBaseName.truncate(sourceBaseName.size() - privateHeaderSuffix.size());
+//            candidateFileNames += baseNameWithAllSuffixes(sourceBaseName, suffixes);
+//        }
+//    } else {
+//        QString privateHeaderBaseName = baseName;
+//        privateHeaderBaseName.append(privateHeaderSuffix);
+//        candidateFileNames += baseNameWithAllSuffixes(privateHeaderBaseName, suffixes);
+//    }
 
-    const QDir absoluteDir = fi.absoluteDir();
-    QStringList candidateDirs(absoluteDir.absolutePath());
-    // If directory is not root, try matching against its siblings
-    const QStringList searchPaths = isHeader ? m_instance->sourceSearchPaths()
-                                             : m_instance->headerSearchPaths();
-    candidateDirs += baseDirWithAllDirectories(absoluteDir, searchPaths);
+//    const QDir absoluteDir = fi.absoluteDir();
+//    QStringList candidateDirs(absoluteDir.absolutePath());
+//    // If directory is not root, try matching against its siblings
+//    const QStringList searchPaths = isHeader ? m_instance->sourceSearchPaths()
+//                                             : m_instance->headerSearchPaths();
+//    candidateDirs += baseDirWithAllDirectories(absoluteDir, searchPaths);
 
-    candidateFileNames += baseNamesWithAllPrefixes(candidateFileNames, isHeader);
+//    candidateFileNames += baseNamesWithAllPrefixes(candidateFileNames, isHeader);//#720 ROOPAK
 
     // Try to find a file in the same or sibling directories first
-    foreach (const QString &candidateDir, candidateDirs) {
-        foreach (const QString &candidateFileName, candidateFileNames) {
-            const QString candidateFilePath = candidateDir + QLatin1Char('/') + candidateFileName;
-            const QString normalized = Utils::FileUtils::normalizePathName(candidateFilePath);
-            const QFileInfo candidateFi(normalized);
-            if (candidateFi.isFile()) {
-                m_headerSourceMapping[fi.absoluteFilePath()] = candidateFi.absoluteFilePath();
-                if (!isHeader || !baseName.endsWith(privateHeaderSuffix))
-                    m_headerSourceMapping[candidateFi.absoluteFilePath()] = fi.absoluteFilePath();
-                return candidateFi.absoluteFilePath();
-            }
-        }
-    }
+//    foreach (const QString &candidateDir, candidateDirs) {
+//        foreach (const QString &candidateFileName, candidateFileNames) {
+//            const QString candidateFilePath = candidateDir + QLatin1Char('/') + candidateFileName;
+//            const QString normalized = Utils::FileUtils::normalizePathName(candidateFilePath);
+//            const QFileInfo candidateFi(normalized);
+//            if (candidateFi.isFile()) {
+//                m_headerSourceMapping[fi.absoluteFilePath()] = candidateFi.absoluteFilePath();
+//                if (!isHeader || !baseName.endsWith(privateHeaderSuffix))
+//                    m_headerSourceMapping[candidateFi.absoluteFilePath()] = fi.absoluteFilePath();
+//                return candidateFi.absoluteFilePath();
+//            }
+//        }
+//    }//#720 ROOPAK - END
 
     // Find files in the current project
     ProjectExplorer::Project *currentProject = ProjectExplorer::ProjectExplorerPlugin::currentProject();
     if (currentProject) {
-        const QString path = correspondingHeaderOrSourceInProject(fi, candidateFileNames,
-                                                                  currentProject);
-        if (!path.isEmpty())
-            return path;
+//        const QString path = correspondingHeaderOrSourceInProject(fi, candidateFileNames,//#720 ROOPAK - START
+//                                                                  currentProject);
+//        if (!path.isEmpty())
+//            return path;//#720 ROOPAK - END
     }
 
     // Find files in other projects

@@ -36,7 +36,7 @@ HEADERS += \
 #    cppmodelmanagersupportinternal.h \//#720 ROOPAK
 #    cpppointerdeclarationformatter.h \//#720 ROOPAK
 #    cpppreprocessor.h \//#720 ROOPAK
-    cppprojectfile.h \
+#    cppprojectfile.h \//#720 ROOPAK
 #    cppqtstyleindenter.h \//#720 ROOPAK
 #    cpprefactoringchanges.h \//#720 ROOPAK
 #    cppsemanticinfo.h \//#720 ROOPAK
@@ -90,7 +90,7 @@ SOURCES += \
 #    cppmodelmanagersupportinternal.cpp \//#720 ROOPAK
 #    cpppointerdeclarationformatter.cpp \//#720 ROOPAK
 #    cpppreprocessor.cpp \//#720 ROOPAK
-    cppprojectfile.cpp \
+#    cppprojectfile.cpp \//#720 ROOPAK
 #    cppqtstyleindenter.cpp \//#720 ROOPAK
 #    cpprefactoringchanges.cpp \//#720 ROOPAK
 #    cppsemanticinfo.cpp \//#720 ROOPAK
