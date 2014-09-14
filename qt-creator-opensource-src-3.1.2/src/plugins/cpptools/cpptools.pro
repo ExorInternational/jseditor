@@ -50,7 +50,7 @@ HEADERS += \
 #    doxygengenerator.h \//#720 ROOPAK
 #    functionutils.h \//#720 ROOPAK
 #    includeutils.h \//#720 ROOPAK
-    insertionpointlocator.h \
+#    insertionpointlocator.h \//#720 ROOPAK
 #    searchsymbols.h \//#720 ROOPAK
     symbolfinder.h \
 #    symbolsfindfilter.h \//#720 ROOPAK
@@ -102,7 +102,7 @@ SOURCES += \
 #    doxygengenerator.cpp \//#720 ROOPAK
 #    functionutils.cpp \//#720 ROOPAK
 #    includeutils.cpp \//#720 ROOPAK
-    insertionpointlocator.cpp \
+#    insertionpointlocator.cpp \//#720 ROOPAK
 #    searchsymbols.cpp \//#720 ROOPAK
     symbolfinder.cpp \
 #    symbolsfindfilter.cpp \//#720 ROOPAK
