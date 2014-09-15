@@ -40,7 +40,7 @@
 
 #include <coreplugin/progressmanager/progressmanager.h>
 //#include <projectexplorer/toolchainmanager.h>//#720 ROOPAK
-#include <projectexplorer/projectexplorerconstants.h>
+//#include <projectexplorer/projectexplorerconstants.h>//#720 ROOPAK
 #include <utils/hostosinfo.h>
 #include <utils/pathchooser.h>
 #include <utils/qtcassert.h>
@@ -69,10 +69,10 @@ QtOptionsPage::QtOptionsPage()
 {
     setId(Constants::QTVERSION_SETTINGS_PAGE_ID);
     setDisplayName(QCoreApplication::translate("Qt4ProjectManager", Constants::QTVERSION_SETTINGS_PAGE_NAME));
-    setCategory(ProjectExplorer::Constants::PROJECTEXPLORER_SETTINGS_CATEGORY);
+    setCategory(/*ProjectExplorer::Constants::PROJECTEXPLORER_SETTINGS_CATEGORY*/"K.ProjectExplorer");//#720 ROOPAK - START
     setDisplayCategory(QCoreApplication::translate("ProjectExplorer",
-        ProjectExplorer::Constants::PROJECTEXPLORER_SETTINGS_TR_CATEGORY));
-    setCategoryIcon(QLatin1String(ProjectExplorer::Constants::PROJECTEXPLORER_SETTINGS_CATEGORY_ICON));
+        /*ProjectExplorer::Constants::PROJECTEXPLORER_SETTINGS_TR_CATEGORY*/QT_TRANSLATE_NOOP("ProjectExplorer", "Build & Run")));
+    setCategoryIcon(QLatin1String(/*ProjectExplorer::Constants::PROJECTEXPLORER_SETTINGS_CATEGORY_ICON*/":/core/images/category_buildrun.png"));//#720 ROOPAK - END
 }
 
 QWidget *QtOptionsPage::widget()

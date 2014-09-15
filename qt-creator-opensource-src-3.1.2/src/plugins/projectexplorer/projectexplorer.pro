@@ -54,7 +54,7 @@ HEADERS += projectexplorer.h \
 #    ioutputparser.h \//#720 ROOPAK
 #    projectconfiguration.h \//#720 ROOPAK
 #    gnumakeparser.h \#ROOPAK
-    projectexplorerconstants.h \
+#    projectexplorerconstants.h \//#720 ROOPAK
 #    projectexplorersettings.h \#ROOPAK
 #    corelistenercheckingforrunningbuild.h \#ROOPAK
 #    project.h \//#720 ROOPAK

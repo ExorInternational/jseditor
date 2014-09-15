@@ -245,7 +245,7 @@ ModelManagerInterface::WorkingCopy ModelManager::workingCopyInternal() const
         const QString key = document->filePath();
         if (TextEditor::BaseTextDocument *textDocument = qobject_cast<TextEditor::BaseTextDocument *>(document)) {
             // TODO the language should be a property on the document, not the editor
-            if (documentModel->editorsForDocument(document).first()->context().contains(ProjectExplorer::Constants::LANG_QMLJS))
+            if (documentModel->editorsForDocument(document).first()->context().contains(/*ProjectExplorer::Constants::LANG_QMLJS*/"QMLJS"))//#720 ROOPAK
                 workingCopy.insert(key, textDocument->plainText(), textDocument->document()->revision());
         }
     }

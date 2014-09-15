@@ -65,7 +65,7 @@
 #include <texteditor/codeassist/genericproposal.h>
 #include <texteditor/codeassist/basicproposalitemlistmodel.h>
 #include <qmldesigner/qmldesignerconstants.h>
-#include <projectexplorer/projectexplorerconstants.h>
+//#include <projectexplorer/projectexplorerconstants.h>//#720 ROOPAK
 #include <utils/changeset.h>
 #include <utils/uncommentselection.h>
 #include <utils/qtcassert.h>

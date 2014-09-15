@@ -34,7 +34,7 @@
 
 #include <qmljstools/qmljstoolsconstants.h>
 #include <texteditor/texteditorconstants.h>
-#include <projectexplorer/projectexplorerconstants.h>
+//#include <projectexplorer/projectexplorerconstants.h>//#720 ROOPAK
 
 #include <coreplugin/mimedatabase.h>
 #include <coreplugin/icore.h>
@@ -53,7 +53,7 @@ QmlJSEditor::QmlJSEditor(QmlJSTextEditorWidget *editor)
     setId(Constants::C_QMLJSEDITOR_ID);
     m_context.add(Constants::C_QMLJSEDITOR_ID);
     m_context.add(TextEditor::Constants::C_TEXTEDITOR);
-    m_context.add(ProjectExplorer::Constants::LANG_QMLJS);
+    m_context.add(/*ProjectExplorer::Constants::LANG_QMLJS*/"QMLJS");//#720 ROOPAK
 }
 
 //bool QmlJSEditor::isDesignModePreferred() const               //ROOPAK - START

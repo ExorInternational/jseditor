@@ -242,7 +242,7 @@ struct ProjectExplorerPluginPrivate {
     QString m_lastOpenDirectory;
 //    QPointer<RunConfiguration> m_delayedRunConfiguration;#720 #ROOPAK
     bool m_shouldHaveRunConfiguration;
-    RunMode m_runMode;
+//    RunMode m_runMode;//#720 ROOPAK
     QString m_projectFilterString;
 //    Internal::MiniProjectTargetSelector * m_targetSelector;//ROOPAK
 //    Internal::ProjectExplorerSettings m_projectExplorerSettings;//ROOPAK
@@ -265,7 +265,7 @@ ProjectExplorerPluginPrivate::ProjectExplorerPluginPrivate() :
 //    m_currentProject(0),//#720 ROOPAK
 //    m_currentNode(0),//ROOPAK
     m_shouldHaveRunConfiguration(false),
-    m_runMode(NoRunMode),
+//    m_runMode(NoRunMode),//#720 ROOPAK
     m_projectsMode(0),
 //    m_kitManager(0),//#720 ROOPAK
 //    m_toolChainManager(0),//#720 ROOPAK
@@ -280,12 +280,12 @@ public:
     ProjectsMode(QWidget *proWindow)
     {
         setWidget(proWindow);
-        setContext(Context(Constants::C_PROJECTEXPLORER));
+        setContext(Context(/*Constants::C_PROJECTEXPLORER*/"Project Explorer"));//#720 ROOPAK
         setDisplayName(QCoreApplication::translate("ProjectExplorer::ProjectsMode", "Projects"));
 //        setIcon(QIcon(QLatin1String(":/fancyactionbar/images/mode_Project.png")));//ROOPAK
         setIcon(QApplication::style()->standardIcon(QStyle::SP_FileIcon));//ROOPAK
-        setPriority(Constants::P_MODE_SESSION);
-        setId(Constants::MODE_SESSION);
+        setPriority(/*Constants::P_MODE_SESSION*/85);//#720 ROOPAK
+        setId(/*Constants::MODE_SESSION*/"Project");//#720 ROOPAK
         setContextHelpId(QLatin1String("Managing Projects"));
     }
 };
@@ -413,636 +413,636 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
 //    d->m_proWindow = new ProjectWindow;//ROOPAK
 //    addAutoReleasedObject(d->m_proWindow);//ROOPAK
 
-    Context globalcontext(Core::Constants::C_GLOBAL);
-    Context projecTreeContext(Constants::C_PROJECT_TREE);
+//    Context globalcontext(Core::Constants::C_GLOBAL);
+//    Context projecTreeContext(Constants::C_PROJECT_TREE);
 
-    d->m_projectsMode = new ProjectsMode(new QWidget/*d->m_proWindow*/);//ROOPAK
-    d->m_projectsMode->setEnabled(false);
-    addAutoReleasedObject(d->m_projectsMode);
-//    d->m_proWindow->layout()->addWidget(new FindToolBarPlaceHolder(d->m_proWindow));//ROOPAK
+//    d->m_projectsMode = new ProjectsMode(new QWidget/*d->m_proWindow*/);//ROOPAK
+//    d->m_projectsMode->setEnabled(false);
+//    addAutoReleasedObject(d->m_projectsMode);
+////    d->m_proWindow->layout()->addWidget(new FindToolBarPlaceHolder(d->m_proWindow));//ROOPAK
 
-//    addAutoReleasedObject(new CopyTaskHandler);//ROOPAK
-//    addAutoReleasedObject(new ShowInEditorTaskHandler);//ROOPAK
-//    addAutoReleasedObject(new VcsAnnotateTaskHandler);//ROOPAK
-//    addAutoReleasedObject(new RemoveTaskHandler);//ROOPAK
-//    addAutoReleasedObject(new CoreListener);//ROOPAK
+////    addAutoReleasedObject(new CopyTaskHandler);//ROOPAK
+////    addAutoReleasedObject(new ShowInEditorTaskHandler);//ROOPAK
+////    addAutoReleasedObject(new VcsAnnotateTaskHandler);//ROOPAK
+////    addAutoReleasedObject(new RemoveTaskHandler);//ROOPAK
+////    addAutoReleasedObject(new CoreListener);//ROOPAK
 
-//    d->m_outputPane = new AppOutputPane;      //ROOPAK - START
-//    addAutoReleasedObject(d->m_outputPane);
-//    connect(SessionManager::instance(), SIGNAL(projectRemoved(ProjectExplorer::Project*)),
-//            d->m_outputPane, SLOT(projectRemoved()));
+////    d->m_outputPane = new AppOutputPane;      //ROOPAK - START
+////    addAutoReleasedObject(d->m_outputPane);
+////    connect(SessionManager::instance(), SIGNAL(projectRemoved(ProjectExplorer::Project*)),
+////            d->m_outputPane, SLOT(projectRemoved()));
 
-//    connect(d->m_outputPane, SIGNAL(runControlStarted(ProjectExplorer::RunControl*)),
-//            this, SIGNAL(runControlStarted(ProjectExplorer::RunControl*)));
-//    connect(d->m_outputPane, SIGNAL(runControlFinished(ProjectExplorer::RunControl*)),
-//            this, SIGNAL(runControlFinished(ProjectExplorer::RunControl*)));//ROOPAK - END
+////    connect(d->m_outputPane, SIGNAL(runControlStarted(ProjectExplorer::RunControl*)),
+////            this, SIGNAL(runControlStarted(ProjectExplorer::RunControl*)));
+////    connect(d->m_outputPane, SIGNAL(runControlFinished(ProjectExplorer::RunControl*)),
+////            this, SIGNAL(runControlFinished(ProjectExplorer::RunControl*)));//ROOPAK - END
 
-//    addAutoReleasedObject(new AllProjectsFilter);//ROOPAK
-//    addAutoReleasedObject(new CurrentProjectFilter);//ROOPAK
+////    addAutoReleasedObject(new AllProjectsFilter);//ROOPAK
+////    addAutoReleasedObject(new CurrentProjectFilter);//ROOPAK
 
-//    addAutoReleasedObject(new BuildSettingsPanelFactory);//ROOPAK
-//    addAutoReleasedObject(new RunSettingsPanelFactory);//ROOPAK
-//    addAutoReleasedObject(new EditorSettingsPanelFactory);//ROOPAK
-//    addAutoReleasedObject(new CodeStyleSettingsPanelFactory);//ROOPAK
-//    addAutoReleasedObject(new DependenciesPanelFactory);//ROOPAK
+////    addAutoReleasedObject(new BuildSettingsPanelFactory);//ROOPAK
+////    addAutoReleasedObject(new RunSettingsPanelFactory);//ROOPAK
+////    addAutoReleasedObject(new EditorSettingsPanelFactory);//ROOPAK
+////    addAutoReleasedObject(new CodeStyleSettingsPanelFactory);//ROOPAK
+////    addAutoReleasedObject(new DependenciesPanelFactory);//ROOPAK
 
-//    addAutoReleasedObject(new ProcessStepFactory);//ROOPAK
-//    addAutoReleasedObject(new UnconfiguredProjectPanel);//ROOPAK
+////    addAutoReleasedObject(new ProcessStepFactory);//ROOPAK
+////    addAutoReleasedObject(new UnconfiguredProjectPanel);//ROOPAK
 
-//    addAutoReleasedObject(new AllProjectsFind);//#720 ROOPAK
-//    addAutoReleasedObject(new CurrentProjectFind);//#720 ROOPAK
+////    addAutoReleasedObject(new AllProjectsFind);//#720 ROOPAK
+////    addAutoReleasedObject(new CurrentProjectFind);//#720 ROOPAK
 
-//    addAutoReleasedObject(new LocalApplicationRunControlFactory);//ROOPAK
+////    addAutoReleasedObject(new LocalApplicationRunControlFactory);//ROOPAK
 
-//    addAutoReleasedObject(new ProjectFileWizardExtension);//ROOPAK
+////    addAutoReleasedObject(new ProjectFileWizardExtension);//ROOPAK
 
-    // Settings pages
-//    addAutoReleasedObject(new ProjectExplorerSettingsPage);//ROOPAK
-//    addAutoReleasedObject(new DeviceSettingsPage);//ROOPAK
+//    // Settings pages
+////    addAutoReleasedObject(new ProjectExplorerSettingsPage);//ROOPAK
+////    addAutoReleasedObject(new DeviceSettingsPage);//ROOPAK
 
-    // context menus
-//    ActionContainer *msessionContextMenu =//#720 ROOPAK
-//        ActionManager::createMenu(Constants::M_SESSIONCONTEXT);//#720 ROOPAK - END
-    ActionContainer *mprojectContextMenu =
-        ActionManager::createMenu(Constants::M_PROJECTCONTEXT);
-    ActionContainer *msubProjectContextMenu =
-        ActionManager::createMenu(Constants::M_SUBPROJECTCONTEXT);
-    ActionContainer *mfolderContextMenu =
-        ActionManager::createMenu(Constants::M_FOLDERCONTEXT);
-    ActionContainer *mfileContextMenu =
-        ActionManager::createMenu(Constants::M_FILECONTEXT);
+//    // context menus
+////    ActionContainer *msessionContextMenu =//#720 ROOPAK
+////        ActionManager::createMenu(Constants::M_SESSIONCONTEXT);//#720 ROOPAK - END
+//    ActionContainer *mprojectContextMenu =
+//        ActionManager::createMenu(Constants::M_PROJECTCONTEXT);
+//    ActionContainer *msubProjectContextMenu =
+//        ActionManager::createMenu(Constants::M_SUBPROJECTCONTEXT);
+//    ActionContainer *mfolderContextMenu =
+//        ActionManager::createMenu(Constants::M_FOLDERCONTEXT);
+//    ActionContainer *mfileContextMenu =
+//        ActionManager::createMenu(Constants::M_FILECONTEXT);
 
-//    d->m_sessionContextMenu = msessionContextMenu->menu();//#720 ROOPAK
-    d->m_projectMenu = mprojectContextMenu->menu();
-    d->m_subProjectMenu = msubProjectContextMenu->menu();
-    d->m_folderMenu = mfolderContextMenu->menu();
-    d->m_fileMenu = mfileContextMenu->menu();
+////    d->m_sessionContextMenu = msessionContextMenu->menu();//#720 ROOPAK
+//    d->m_projectMenu = mprojectContextMenu->menu();
+//    d->m_subProjectMenu = msubProjectContextMenu->menu();
+//    d->m_folderMenu = mfolderContextMenu->menu();
+//    d->m_fileMenu = mfileContextMenu->menu();
 
-    ActionContainer *mfile =
-        ActionManager::actionContainer(Core::Constants::M_FILE);
-    ActionContainer *menubar =
-        ActionManager::actionContainer(Core::Constants::MENU_BAR);
+//    ActionContainer *mfile =
+//        ActionManager::actionContainer(Core::Constants::M_FILE);
+//    ActionContainer *menubar =
+//        ActionManager::actionContainer(Core::Constants::MENU_BAR);
 
-    // build menu
-    ActionContainer *mbuild =
-        ActionManager::createMenu(Constants::M_BUILDPROJECT);
-    mbuild->menu()->setTitle(tr("&Build"));
-    menubar->addMenu(mbuild, Core::Constants::G_VIEW);
+//    // build menu
+//    ActionContainer *mbuild =
+//        ActionManager::createMenu(Constants::M_BUILDPROJECT);
+//    mbuild->menu()->setTitle(tr("&Build"));
+//    menubar->addMenu(mbuild, Core::Constants::G_VIEW);
 
-    // debug menu
-    ActionContainer *mdebug =
-        ActionManager::createMenu(Constants::M_DEBUG);
-    mdebug->menu()->setTitle(tr("&Debug"));
-    menubar->addMenu(mdebug, Core::Constants::G_VIEW);
+//    // debug menu
+//    ActionContainer *mdebug =
+//        ActionManager::createMenu(Constants::M_DEBUG);
+//    mdebug->menu()->setTitle(tr("&Debug"));
+//    menubar->addMenu(mdebug, Core::Constants::G_VIEW);
 
-    ActionContainer *mstartdebugging =
-        ActionManager::createMenu(Constants::M_DEBUG_STARTDEBUGGING);
-    mstartdebugging->menu()->setTitle(tr("&Start Debugging"));
-    mdebug->addMenu(mstartdebugging, Core::Constants::G_DEFAULT_ONE);
+//    ActionContainer *mstartdebugging =
+//        ActionManager::createMenu(Constants::M_DEBUG_STARTDEBUGGING);
+//    mstartdebugging->menu()->setTitle(tr("&Start Debugging"));
+//    mdebug->addMenu(mstartdebugging, Core::Constants::G_DEFAULT_ONE);
 
-    //
-    // Groups
-    //
+//    //
+//    // Groups
+//    //
 
-    mbuild->appendGroup(Constants::G_BUILD_BUILD);
-    mbuild->appendGroup(Constants::G_BUILD_DEPLOY);
-    mbuild->appendGroup(Constants::G_BUILD_REBUILD);
-    mbuild->appendGroup(Constants::G_BUILD_CLEAN);
-    mbuild->appendGroup(Constants::G_BUILD_CANCEL);
-    mbuild->appendGroup(Constants::G_BUILD_RUN);
+//    mbuild->appendGroup(Constants::G_BUILD_BUILD);
+//    mbuild->appendGroup(Constants::G_BUILD_DEPLOY);
+//    mbuild->appendGroup(Constants::G_BUILD_REBUILD);
+//    mbuild->appendGroup(Constants::G_BUILD_CLEAN);
+//    mbuild->appendGroup(Constants::G_BUILD_CANCEL);
+//    mbuild->appendGroup(Constants::G_BUILD_RUN);
 
-//    msessionContextMenu->appendGroup(Constants::G_SESSION_BUILD);//#720 ROOPAK - START
-//    msessionContextMenu->appendGroup(Constants::G_SESSION_REBUILD);
-//    msessionContextMenu->appendGroup(Constants::G_SESSION_FILES);
-//    msessionContextMenu->appendGroup(Constants::G_SESSION_OTHER);
-//    msessionContextMenu->appendGroup(Constants::G_PROJECT_TREE);//#720 ROOPAK - END
+////    msessionContextMenu->appendGroup(Constants::G_SESSION_BUILD);//#720 ROOPAK - START
+////    msessionContextMenu->appendGroup(Constants::G_SESSION_REBUILD);
+////    msessionContextMenu->appendGroup(Constants::G_SESSION_FILES);
+////    msessionContextMenu->appendGroup(Constants::G_SESSION_OTHER);
+////    msessionContextMenu->appendGroup(Constants::G_PROJECT_TREE);//#720 ROOPAK - END
 
-    mprojectContextMenu->appendGroup(Constants::G_PROJECT_FIRST);
-    mprojectContextMenu->appendGroup(Constants::G_PROJECT_BUILD);
-    mprojectContextMenu->appendGroup(Constants::G_PROJECT_RUN);
-    mprojectContextMenu->appendGroup(Constants::G_PROJECT_REBUILD);
-    mprojectContextMenu->appendGroup(Constants::G_PROJECT_FILES);
-    mprojectContextMenu->appendGroup(Constants::G_PROJECT_LAST);
-    mprojectContextMenu->appendGroup(Constants::G_PROJECT_TREE);
+//    mprojectContextMenu->appendGroup(Constants::G_PROJECT_FIRST);
+//    mprojectContextMenu->appendGroup(Constants::G_PROJECT_BUILD);
+//    mprojectContextMenu->appendGroup(Constants::G_PROJECT_RUN);
+//    mprojectContextMenu->appendGroup(Constants::G_PROJECT_REBUILD);
+//    mprojectContextMenu->appendGroup(Constants::G_PROJECT_FILES);
+//    mprojectContextMenu->appendGroup(Constants::G_PROJECT_LAST);
+//    mprojectContextMenu->appendGroup(Constants::G_PROJECT_TREE);
 
-    msubProjectContextMenu->appendGroup(Constants::G_PROJECT_FIRST);
-    msubProjectContextMenu->appendGroup(Constants::G_PROJECT_BUILD);
-    msubProjectContextMenu->appendGroup(Constants::G_PROJECT_RUN);
-    msubProjectContextMenu->appendGroup(Constants::G_PROJECT_FILES);
-    msubProjectContextMenu->appendGroup(Constants::G_PROJECT_LAST);
-    msubProjectContextMenu->appendGroup(Constants::G_PROJECT_TREE);
+//    msubProjectContextMenu->appendGroup(Constants::G_PROJECT_FIRST);
+//    msubProjectContextMenu->appendGroup(Constants::G_PROJECT_BUILD);
+//    msubProjectContextMenu->appendGroup(Constants::G_PROJECT_RUN);
+//    msubProjectContextMenu->appendGroup(Constants::G_PROJECT_FILES);
+//    msubProjectContextMenu->appendGroup(Constants::G_PROJECT_LAST);
+//    msubProjectContextMenu->appendGroup(Constants::G_PROJECT_TREE);
 
-    ActionContainer *runMenu = ActionManager::createMenu(Constants::RUNMENUCONTEXTMENU);
-    runMenu->setOnAllDisabledBehavior(ActionContainer::Hide);
-    QIcon runIcon = QIcon(QLatin1String(Constants::ICON_RUN));
-    runIcon.addFile(QLatin1String(Constants::ICON_RUN_SMALL));
-    runMenu->menu()->setIcon(runIcon);
-    runMenu->menu()->setTitle(tr("Run"));
-    msubProjectContextMenu->addMenu(runMenu, ProjectExplorer::Constants::G_PROJECT_RUN);
+//    ActionContainer *runMenu = ActionManager::createMenu(Constants::RUNMENUCONTEXTMENU);
+//    runMenu->setOnAllDisabledBehavior(ActionContainer::Hide);
+//    QIcon runIcon = QIcon(QLatin1String(Constants::ICON_RUN));
+//    runIcon.addFile(QLatin1String(Constants::ICON_RUN_SMALL));
+//    runMenu->menu()->setIcon(runIcon);
+//    runMenu->menu()->setTitle(tr("Run"));
+//    msubProjectContextMenu->addMenu(runMenu, ProjectExplorer::Constants::G_PROJECT_RUN);
 
-    mfolderContextMenu->appendGroup(Constants::G_FOLDER_FILES);
-    mfolderContextMenu->appendGroup(Constants::G_FOLDER_OTHER);
-    mfolderContextMenu->appendGroup(Constants::G_FOLDER_CONFIG);
-    mfolderContextMenu->appendGroup(Constants::G_PROJECT_TREE);
+//    mfolderContextMenu->appendGroup(Constants::G_FOLDER_FILES);
+//    mfolderContextMenu->appendGroup(Constants::G_FOLDER_OTHER);
+//    mfolderContextMenu->appendGroup(Constants::G_FOLDER_CONFIG);
+//    mfolderContextMenu->appendGroup(Constants::G_PROJECT_TREE);
 
-    mfileContextMenu->appendGroup(Constants::G_FILE_OPEN);
-    mfileContextMenu->appendGroup(Constants::G_FILE_OTHER);
-    mfileContextMenu->appendGroup(Constants::G_FILE_CONFIG);
-    mfileContextMenu->appendGroup(Constants::G_PROJECT_TREE);
-    // "open with" submenu
-    ActionContainer * const openWith =
-            ActionManager::createMenu(ProjectExplorer::Constants::M_OPENFILEWITHCONTEXT);
-    openWith->setOnAllDisabledBehavior(ActionContainer::Show);
-    d->m_openWithMenu = openWith->menu();
-    d->m_openWithMenu->setTitle(tr("Open With"));
+//    mfileContextMenu->appendGroup(Constants::G_FILE_OPEN);
+//    mfileContextMenu->appendGroup(Constants::G_FILE_OTHER);
+//    mfileContextMenu->appendGroup(Constants::G_FILE_CONFIG);
+//    mfileContextMenu->appendGroup(Constants::G_PROJECT_TREE);
+//    // "open with" submenu
+//    ActionContainer * const openWith =
+//            ActionManager::createMenu(ProjectExplorer::Constants::M_OPENFILEWITHCONTEXT);
+//    openWith->setOnAllDisabledBehavior(ActionContainer::Show);
+//    d->m_openWithMenu = openWith->menu();
+//    d->m_openWithMenu->setTitle(tr("Open With"));
 
-    connect(d->m_openWithMenu, SIGNAL(triggered(QAction*)),
-            DocumentManager::instance(), SLOT(executeOpenWithMenuAction(QAction*)));
+//    connect(d->m_openWithMenu, SIGNAL(triggered(QAction*)),
+//            DocumentManager::instance(), SLOT(executeOpenWithMenuAction(QAction*)));
 
-    //
-    // Separators
-    //
+//    //
+//    // Separators
+//    //
 
-    Command *cmd;
+//    Command *cmd;
 
-//    msessionContextMenu->addSeparator(projecTreeContext, Constants::G_SESSION_REBUILD);//#720 ROOPAK
+////    msessionContextMenu->addSeparator(projecTreeContext, Constants::G_SESSION_REBUILD);//#720 ROOPAK
 
-//    msessionContextMenu->addSeparator(projecTreeContext, Constants::G_SESSION_FILES);//#720 ROOPAK
-    mprojectContextMenu->addSeparator(projecTreeContext, Constants::G_PROJECT_FILES);
-    msubProjectContextMenu->addSeparator(projecTreeContext, Constants::G_PROJECT_FILES);
-    mfile->addSeparator(globalcontext, Core::Constants::G_FILE_PROJECT);
-    mbuild->addSeparator(globalcontext, Constants::G_BUILD_REBUILD);
-//    msessionContextMenu->addSeparator(globalcontext, Constants::G_SESSION_OTHER);//#720 ROOPAK
-    mbuild->addSeparator(globalcontext, Constants::G_BUILD_CANCEL);
-    mbuild->addSeparator(globalcontext, Constants::G_BUILD_RUN);
-    mprojectContextMenu->addSeparator(globalcontext, Constants::G_PROJECT_REBUILD);
+////    msessionContextMenu->addSeparator(projecTreeContext, Constants::G_SESSION_FILES);//#720 ROOPAK
+//    mprojectContextMenu->addSeparator(projecTreeContext, Constants::G_PROJECT_FILES);
+//    msubProjectContextMenu->addSeparator(projecTreeContext, Constants::G_PROJECT_FILES);
+//    mfile->addSeparator(globalcontext, Core::Constants::G_FILE_PROJECT);
+//    mbuild->addSeparator(globalcontext, Constants::G_BUILD_REBUILD);
+////    msessionContextMenu->addSeparator(globalcontext, Constants::G_SESSION_OTHER);//#720 ROOPAK
+//    mbuild->addSeparator(globalcontext, Constants::G_BUILD_CANCEL);
+//    mbuild->addSeparator(globalcontext, Constants::G_BUILD_RUN);
+//    mprojectContextMenu->addSeparator(globalcontext, Constants::G_PROJECT_REBUILD);
 
-    //
-    // Actions
-    //
+//    //
+//    // Actions
+//    //
 
-    // new action
-//    d->m_newAction = new QAction(tr("New Project..."), this);     //ROOPAK - START
-//    cmd = ActionManager::registerAction(d->m_newAction, Constants::NEWPROJECT, globalcontext);
-//    cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+Shift+N")));
-//    msessionContextMenu->addAction(cmd, Constants::G_SESSION_FILES);//ROOPAK - END
+//    // new action
+////    d->m_newAction = new QAction(tr("New Project..."), this);     //ROOPAK - START
+////    cmd = ActionManager::registerAction(d->m_newAction, Constants::NEWPROJECT, globalcontext);
+////    cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+Shift+N")));
+////    msessionContextMenu->addAction(cmd, Constants::G_SESSION_FILES);//ROOPAK - END
 
-    // open action
-    d->m_loadAction = new QAction(tr("Load Project..."), this);
-    cmd = ActionManager::registerAction(d->m_loadAction, Constants::LOAD, globalcontext);
-#ifndef Q_OS_MAC
-    cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+Shift+O")));
-#endif
-//    msessionContextMenu->addAction(cmd, Constants::G_SESSION_FILES);//#720 ROOPAK
+//    // open action
+//    d->m_loadAction = new QAction(tr("Load Project..."), this);
+//    cmd = ActionManager::registerAction(d->m_loadAction, Constants::LOAD, globalcontext);
+//#ifndef Q_OS_MAC
+//    cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+Shift+O")));
+//#endif
+////    msessionContextMenu->addAction(cmd, Constants::G_SESSION_FILES);//#720 ROOPAK
 
-    // Default open action
-    d->m_openFileAction = new QAction(tr("Open File"), this);
-    cmd = ActionManager::registerAction(d->m_openFileAction, ProjectExplorer::Constants::OPENFILE,
-                       projecTreeContext);
-    mfileContextMenu->addAction(cmd, Constants::G_FILE_OPEN);
+//    // Default open action
+//    d->m_openFileAction = new QAction(tr("Open File"), this);
+//    cmd = ActionManager::registerAction(d->m_openFileAction, ProjectExplorer::Constants::OPENFILE,
+//                       projecTreeContext);
+//    mfileContextMenu->addAction(cmd, Constants::G_FILE_OPEN);
 
-    d->m_searchOnFileSystem = new QAction(FileUtils::msgFindInDirectory(), this);
-    cmd = ActionManager::registerAction(d->m_searchOnFileSystem, ProjectExplorer::Constants::SEARCHONFILESYSTEM, projecTreeContext);
+//    d->m_searchOnFileSystem = new QAction(FileUtils::msgFindInDirectory(), this);
+//    cmd = ActionManager::registerAction(d->m_searchOnFileSystem, ProjectExplorer::Constants::SEARCHONFILESYSTEM, projecTreeContext);
 
-    mfileContextMenu->addAction(cmd, Constants::G_FILE_OTHER);
-    mfolderContextMenu->addAction(cmd, Constants::G_FOLDER_CONFIG);
-    msubProjectContextMenu->addAction(cmd, Constants::G_PROJECT_LAST);
-    mprojectContextMenu->addAction(cmd, Constants::G_PROJECT_LAST);
+//    mfileContextMenu->addAction(cmd, Constants::G_FILE_OTHER);
+//    mfolderContextMenu->addAction(cmd, Constants::G_FOLDER_CONFIG);
+//    msubProjectContextMenu->addAction(cmd, Constants::G_PROJECT_LAST);
+//    mprojectContextMenu->addAction(cmd, Constants::G_PROJECT_LAST);
 
-    d->m_showInGraphicalShell = new QAction(FileUtils::msgGraphicalShellAction(), this);
-    cmd = ActionManager::registerAction(d->m_showInGraphicalShell, ProjectExplorer::Constants::SHOWINGRAPHICALSHELL,
-                       projecTreeContext);
-    mfileContextMenu->addAction(cmd, Constants::G_FILE_OPEN);
-    mfolderContextMenu->addAction(cmd, Constants::G_FOLDER_FILES);
+//    d->m_showInGraphicalShell = new QAction(FileUtils::msgGraphicalShellAction(), this);
+//    cmd = ActionManager::registerAction(d->m_showInGraphicalShell, ProjectExplorer::Constants::SHOWINGRAPHICALSHELL,
+//                       projecTreeContext);
+//    mfileContextMenu->addAction(cmd, Constants::G_FILE_OPEN);
+//    mfolderContextMenu->addAction(cmd, Constants::G_FOLDER_FILES);
 
-    d->m_openTerminalHere = new QAction(FileUtils::msgTerminalAction(), this);
-    cmd = ActionManager::registerAction(d->m_openTerminalHere, ProjectExplorer::Constants::OPENTERMIANLHERE,
-                       projecTreeContext);
-    mfileContextMenu->addAction(cmd, Constants::G_FILE_OPEN);
-    mfolderContextMenu->addAction(cmd, Constants::G_FOLDER_FILES);
+//    d->m_openTerminalHere = new QAction(FileUtils::msgTerminalAction(), this);
+//    cmd = ActionManager::registerAction(d->m_openTerminalHere, ProjectExplorer::Constants::OPENTERMIANLHERE,
+//                       projecTreeContext);
+//    mfileContextMenu->addAction(cmd, Constants::G_FILE_OPEN);
+//    mfolderContextMenu->addAction(cmd, Constants::G_FOLDER_FILES);
 
-    // Open With menu
-    mfileContextMenu->addMenu(openWith, ProjectExplorer::Constants::G_FILE_OPEN);
+//    // Open With menu
+//    mfileContextMenu->addMenu(openWith, ProjectExplorer::Constants::G_FILE_OPEN);
 
-    // recent projects menu
-//    ActionContainer *mrecent =//#720 ROOPAK - START
-//        ActionManager::createMenu(Constants::M_RECENTPROJECTS);
-//    mrecent->menu()->setTitle(tr("Recent P&rojects"));
-//    mrecent->setOnAllDisabledBehavior(ActionContainer::Show);
-//    mfile->addMenu(mrecent, Core::Constants::G_FILE_OPEN);
-//    connect(mfile->menu(), SIGNAL(aboutToShow()),
-//        this, SLOT(updateRecentProjectMenu()));//#720 ROOPAK - END
+//    // recent projects menu
+////    ActionContainer *mrecent =//#720 ROOPAK - START
+////        ActionManager::createMenu(Constants::M_RECENTPROJECTS);
+////    mrecent->menu()->setTitle(tr("Recent P&rojects"));
+////    mrecent->setOnAllDisabledBehavior(ActionContainer::Show);
+////    mfile->addMenu(mrecent, Core::Constants::G_FILE_OPEN);
+////    connect(mfile->menu(), SIGNAL(aboutToShow()),
+////        this, SLOT(updateRecentProjectMenu()));//#720 ROOPAK - END
 
-    // session menu
-//    ActionContainer *msession = ActionManager::createMenu(Constants::M_SESSION);//#720 ROOPAK - START
-//    msession->menu()->setTitle(tr("Sessions"));
-//    msession->setOnAllDisabledBehavior(ActionContainer::Show);
-//    mfile->addMenu(msession, Core::Constants::G_FILE_OPEN);
-//    d->m_sessionMenu = msession->menu();
-//    connect(mfile->menu(), SIGNAL(aboutToShow()),
-//            this, SLOT(updateSessionMenu()));//#720 ROOPAK - END
+//    // session menu
+////    ActionContainer *msession = ActionManager::createMenu(Constants::M_SESSION);//#720 ROOPAK - START
+////    msession->menu()->setTitle(tr("Sessions"));
+////    msession->setOnAllDisabledBehavior(ActionContainer::Show);
+////    mfile->addMenu(msession, Core::Constants::G_FILE_OPEN);
+////    d->m_sessionMenu = msession->menu();
+////    connect(mfile->menu(), SIGNAL(aboutToShow()),
+////            this, SLOT(updateSessionMenu()));//#720 ROOPAK - END
 
-    // session manager action
-//    d->m_sessionManagerAction = new QAction(tr("Session Manager..."), this);//#720 ROOPAK - START
-//    cmd = ActionManager::registerAction(d->m_sessionManagerAction, Constants::NEWSESSION, globalcontext);
-//    mfile->addAction(cmd, Core::Constants::G_FILE_OPEN);
-//    cmd->setDefaultKeySequence(QKeySequence());//#720 ROOPAK - END
+//    // session manager action
+////    d->m_sessionManagerAction = new QAction(tr("Session Manager..."), this);//#720 ROOPAK - START
+////    cmd = ActionManager::registerAction(d->m_sessionManagerAction, Constants::NEWSESSION, globalcontext);
+////    mfile->addAction(cmd, Core::Constants::G_FILE_OPEN);
+////    cmd->setDefaultKeySequence(QKeySequence());//#720 ROOPAK - END
 
 
-    // XXX same action?
-    // unload action
-//    d->m_unloadAction = new Utils::ParameterAction(tr("Close Project"), tr("Close Project \"%1\""),//#720 ROOPAK - START
-//                                                      Utils::ParameterAction::EnabledWithParameter, this);
-//    cmd = ActionManager::registerAction(d->m_unloadAction, Constants::UNLOAD, globalcontext);
+//    // XXX same action?
+//    // unload action
+////    d->m_unloadAction = new Utils::ParameterAction(tr("Close Project"), tr("Close Project \"%1\""),//#720 ROOPAK - START
+////                                                      Utils::ParameterAction::EnabledWithParameter, this);
+////    cmd = ActionManager::registerAction(d->m_unloadAction, Constants::UNLOAD, globalcontext);
+////    cmd->setAttribute(Command::CA_UpdateText);
+////    cmd->setDescription(d->m_unloadAction->text());
+////    mfile->addAction(cmd, Core::Constants::G_FILE_PROJECT);//#720 ROOPAK - END
+
+//    // unload session action
+////    d->m_closeAllProjects = new QAction(tr("Close All Projects and Editors"), this);//#720 ROOPAK - START
+////    cmd = ActionManager::registerAction(d->m_closeAllProjects, Constants::CLEARSESSION, globalcontext);
+////    mfile->addAction(cmd, Core::Constants::G_FILE_PROJECT);
+////    msessionContextMenu->addAction(cmd, Constants::G_SESSION_FILES);//#720 ROOPAK - END
+
+//    // build session action
+//    QIcon buildIcon = QIcon(QLatin1String(Constants::ICON_BUILD));
+//    buildIcon.addFile(QLatin1String(Constants::ICON_BUILD_SMALL));
+////    d->m_buildSessionAction = new QAction(buildIcon, tr("Build All"), this);//#720 ROOPAK - START
+////    cmd = ActionManager::registerAction(d->m_buildSessionAction, Constants::BUILDSESSION, globalcontext);
+////    cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+Shift+B")));
+////    mbuild->addAction(cmd, Constants::G_BUILD_BUILD);
+////    msessionContextMenu->addAction(cmd, Constants::G_SESSION_BUILD);//#720 ROOPAK - END
+
+//    // deploy session
+////    d->m_deploySessionAction = new QAction(tr("Deploy All"), this);//#720 ROOPAK - START
+////    cmd = ActionManager::registerAction(d->m_deploySessionAction, Constants::DEPLOYSESSION, globalcontext);
+////    mbuild->addAction(cmd, Constants::G_BUILD_DEPLOY);
+////    msessionContextMenu->addAction(cmd, Constants::G_SESSION_BUILD);//#720 ROOPAK - END
+
+//    // rebuild session action
+//    QIcon rebuildIcon = QIcon(QLatin1String(Constants::ICON_REBUILD));
+//    rebuildIcon.addFile(QLatin1String(Constants::ICON_REBUILD_SMALL));
+////    d->m_rebuildSessionAction = new QAction(rebuildIcon, tr("Rebuild All"), this);//#720 ROOPAK - START
+////    cmd = ActionManager::registerAction(d->m_rebuildSessionAction, Constants::REBUILDSESSION, globalcontext);
+////    mbuild->addAction(cmd, Constants::G_BUILD_REBUILD);
+////    msessionContextMenu->addAction(cmd, Constants::G_SESSION_REBUILD);//#720 ROOPAK - END
+
+//    // clean session
+//    QIcon cleanIcon = QIcon(QLatin1String(Constants::ICON_CLEAN));
+//    cleanIcon.addFile(QLatin1String(Constants::ICON_CLEAN_SMALL));
+////    d->m_cleanSessionAction = new QAction(cleanIcon, tr("Clean All"), this);//#720 ROOPAK - START
+////    cmd = ActionManager::registerAction(d->m_cleanSessionAction, Constants::CLEANSESSION, globalcontext);
+////    mbuild->addAction(cmd, Constants::G_BUILD_CLEAN);
+////    msessionContextMenu->addAction(cmd, Constants::G_SESSION_REBUILD);//#720 ROOPAK - END
+
+//    // build action
+//    d->m_buildAction = new Utils::ParameterAction(tr("Build Project"), tr("Build Project \"%1\""),
+//                                                     Utils::ParameterAction::AlwaysEnabled, this);
+//    d->m_buildAction->setIcon(buildIcon);
+//    cmd = ActionManager::registerAction(d->m_buildAction, Constants::BUILD, globalcontext);
 //    cmd->setAttribute(Command::CA_UpdateText);
-//    cmd->setDescription(d->m_unloadAction->text());
-//    mfile->addAction(cmd, Core::Constants::G_FILE_PROJECT);//#720 ROOPAK - END
-
-    // unload session action
-//    d->m_closeAllProjects = new QAction(tr("Close All Projects and Editors"), this);//#720 ROOPAK - START
-//    cmd = ActionManager::registerAction(d->m_closeAllProjects, Constants::CLEARSESSION, globalcontext);
-//    mfile->addAction(cmd, Core::Constants::G_FILE_PROJECT);
-//    msessionContextMenu->addAction(cmd, Constants::G_SESSION_FILES);//#720 ROOPAK - END
-
-    // build session action
-    QIcon buildIcon = QIcon(QLatin1String(Constants::ICON_BUILD));
-    buildIcon.addFile(QLatin1String(Constants::ICON_BUILD_SMALL));
-//    d->m_buildSessionAction = new QAction(buildIcon, tr("Build All"), this);//#720 ROOPAK - START
-//    cmd = ActionManager::registerAction(d->m_buildSessionAction, Constants::BUILDSESSION, globalcontext);
-//    cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+Shift+B")));
+//    cmd->setDescription(d->m_buildAction->text());
+//    cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+B")));
 //    mbuild->addAction(cmd, Constants::G_BUILD_BUILD);
-//    msessionContextMenu->addAction(cmd, Constants::G_SESSION_BUILD);//#720 ROOPAK - END
 
-    // deploy session
-//    d->m_deploySessionAction = new QAction(tr("Deploy All"), this);//#720 ROOPAK - START
-//    cmd = ActionManager::registerAction(d->m_deploySessionAction, Constants::DEPLOYSESSION, globalcontext);
+//    // Add to mode bar
+//    ModeManager::addAction(cmd->action(), Constants::P_ACTION_BUILDPROJECT);
+
+//    // deploy action
+//    d->m_deployAction = new Utils::ParameterAction(tr("Deploy Project"), tr("Deploy Project \"%1\""),
+//                                                     Utils::ParameterAction::AlwaysEnabled, this);
+//    cmd = ActionManager::registerAction(d->m_deployAction, Constants::DEPLOY, globalcontext);
+//    cmd->setAttribute(Command::CA_UpdateText);
+//    cmd->setDescription(d->m_deployAction->text());
 //    mbuild->addAction(cmd, Constants::G_BUILD_DEPLOY);
-//    msessionContextMenu->addAction(cmd, Constants::G_SESSION_BUILD);//#720 ROOPAK - END
 
-    // rebuild session action
-    QIcon rebuildIcon = QIcon(QLatin1String(Constants::ICON_REBUILD));
-    rebuildIcon.addFile(QLatin1String(Constants::ICON_REBUILD_SMALL));
-//    d->m_rebuildSessionAction = new QAction(rebuildIcon, tr("Rebuild All"), this);//#720 ROOPAK - START
-//    cmd = ActionManager::registerAction(d->m_rebuildSessionAction, Constants::REBUILDSESSION, globalcontext);
+//    // rebuild action
+//    d->m_rebuildAction = new Utils::ParameterAction(tr("Rebuild Project"), tr("Rebuild Project \"%1\""),
+//                                                       Utils::ParameterAction::AlwaysEnabled, this);
+//    cmd = ActionManager::registerAction(d->m_rebuildAction, Constants::REBUILD, globalcontext);
+//    cmd->setAttribute(Command::CA_UpdateText);
+//    cmd->setDescription(d->m_rebuildAction->text());
 //    mbuild->addAction(cmd, Constants::G_BUILD_REBUILD);
-//    msessionContextMenu->addAction(cmd, Constants::G_SESSION_REBUILD);//#720 ROOPAK - END
 
-    // clean session
-    QIcon cleanIcon = QIcon(QLatin1String(Constants::ICON_CLEAN));
-    cleanIcon.addFile(QLatin1String(Constants::ICON_CLEAN_SMALL));
-//    d->m_cleanSessionAction = new QAction(cleanIcon, tr("Clean All"), this);//#720 ROOPAK - START
-//    cmd = ActionManager::registerAction(d->m_cleanSessionAction, Constants::CLEANSESSION, globalcontext);
+//    // clean action
+//    d->m_cleanAction = new Utils::ParameterAction(tr("Clean Project"), tr("Clean Project \"%1\""),
+//                                                     Utils::ParameterAction::AlwaysEnabled, this);
+//    cmd = ActionManager::registerAction(d->m_cleanAction, Constants::CLEAN, globalcontext);
+//    cmd->setAttribute(Command::CA_UpdateText);
+//    cmd->setDescription(d->m_cleanAction->text());
 //    mbuild->addAction(cmd, Constants::G_BUILD_CLEAN);
-//    msessionContextMenu->addAction(cmd, Constants::G_SESSION_REBUILD);//#720 ROOPAK - END
 
-    // build action
-    d->m_buildAction = new Utils::ParameterAction(tr("Build Project"), tr("Build Project \"%1\""),
-                                                     Utils::ParameterAction::AlwaysEnabled, this);
-    d->m_buildAction->setIcon(buildIcon);
-    cmd = ActionManager::registerAction(d->m_buildAction, Constants::BUILD, globalcontext);
-    cmd->setAttribute(Command::CA_UpdateText);
-    cmd->setDescription(d->m_buildAction->text());
-    cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+B")));
-    mbuild->addAction(cmd, Constants::G_BUILD_BUILD);
+//    // cancel build action
+//    QIcon stopIcon = QIcon(QLatin1String(Constants::ICON_STOP));
+//    stopIcon.addFile(QLatin1String(Constants::ICON_STOP_SMALL));
+//    d->m_cancelBuildAction = new QAction(stopIcon, tr("Cancel Build"), this);
+//    cmd = ActionManager::registerAction(d->m_cancelBuildAction, Constants::CANCELBUILD, globalcontext);
+//    mbuild->addAction(cmd, Constants::G_BUILD_CANCEL);
 
-    // Add to mode bar
-    ModeManager::addAction(cmd->action(), Constants::P_ACTION_BUILDPROJECT);
+//    // run action
+//    d->m_runAction = new QAction(runIcon, tr("Run"), this);
+//    cmd = ActionManager::registerAction(d->m_runAction, Constants::RUN, globalcontext);
+//    cmd->setAttribute(Command::CA_UpdateText);
 
-    // deploy action
-    d->m_deployAction = new Utils::ParameterAction(tr("Deploy Project"), tr("Deploy Project \"%1\""),
-                                                     Utils::ParameterAction::AlwaysEnabled, this);
-    cmd = ActionManager::registerAction(d->m_deployAction, Constants::DEPLOY, globalcontext);
-    cmd->setAttribute(Command::CA_UpdateText);
-    cmd->setDescription(d->m_deployAction->text());
-    mbuild->addAction(cmd, Constants::G_BUILD_DEPLOY);
+//    cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+R")));
+//    mbuild->addAction(cmd, Constants::G_BUILD_RUN);
 
-    // rebuild action
-    d->m_rebuildAction = new Utils::ParameterAction(tr("Rebuild Project"), tr("Rebuild Project \"%1\""),
-                                                       Utils::ParameterAction::AlwaysEnabled, this);
-    cmd = ActionManager::registerAction(d->m_rebuildAction, Constants::REBUILD, globalcontext);
-    cmd->setAttribute(Command::CA_UpdateText);
-    cmd->setDescription(d->m_rebuildAction->text());
-    mbuild->addAction(cmd, Constants::G_BUILD_REBUILD);
+//    ModeManager::addAction(cmd->action(), Constants::P_ACTION_RUN);
 
-    // clean action
-    d->m_cleanAction = new Utils::ParameterAction(tr("Clean Project"), tr("Clean Project \"%1\""),
-                                                     Utils::ParameterAction::AlwaysEnabled, this);
-    cmd = ActionManager::registerAction(d->m_cleanAction, Constants::CLEAN, globalcontext);
-    cmd->setAttribute(Command::CA_UpdateText);
-    cmd->setDescription(d->m_cleanAction->text());
-    mbuild->addAction(cmd, Constants::G_BUILD_CLEAN);
+//    // Run without deployment action
+//    d->m_runWithoutDeployAction = new QAction(tr("Run Without Deployment"), this);
+//    cmd = ActionManager::registerAction(d->m_runWithoutDeployAction, Constants::RUNWITHOUTDEPLOY, globalcontext);
+//    mbuild->addAction(cmd, Constants::G_BUILD_RUN);
 
-    // cancel build action
-    QIcon stopIcon = QIcon(QLatin1String(Constants::ICON_STOP));
-    stopIcon.addFile(QLatin1String(Constants::ICON_STOP_SMALL));
-    d->m_cancelBuildAction = new QAction(stopIcon, tr("Cancel Build"), this);
-    cmd = ActionManager::registerAction(d->m_cancelBuildAction, Constants::CANCELBUILD, globalcontext);
-    mbuild->addAction(cmd, Constants::G_BUILD_CANCEL);
+//    // build action (context menu)
+//    d->m_buildActionContextMenu = new QAction(tr("Build"), this);
+//    cmd = ActionManager::registerAction(d->m_buildActionContextMenu, Constants::BUILDCM, projecTreeContext);
+//    cmd->setAttribute(Command::CA_UpdateText);
+//    mprojectContextMenu->addAction(cmd, Constants::G_PROJECT_BUILD);
 
-    // run action
-    d->m_runAction = new QAction(runIcon, tr("Run"), this);
-    cmd = ActionManager::registerAction(d->m_runAction, Constants::RUN, globalcontext);
-    cmd->setAttribute(Command::CA_UpdateText);
+//    // rebuild action (context menu)
+//    d->m_rebuildActionContextMenu = new QAction(tr("Rebuild"), this);
+//    cmd = ActionManager::registerAction(d->m_rebuildActionContextMenu, Constants::REBUILDCM, projecTreeContext);
+//    cmd->setAttribute(Command::CA_UpdateText);
+//    mprojectContextMenu->addAction(cmd, Constants::G_PROJECT_REBUILD);
 
-    cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+R")));
-    mbuild->addAction(cmd, Constants::G_BUILD_RUN);
+//    // clean action (context menu)
+//    d->m_cleanActionContextMenu = new QAction(tr("Clean"), this);
+//    cmd = ActionManager::registerAction(d->m_cleanActionContextMenu, Constants::CLEANCM, projecTreeContext);
+//    cmd->setAttribute(Command::CA_UpdateText);
+//    mprojectContextMenu->addAction(cmd, Constants::G_PROJECT_REBUILD);
 
-    ModeManager::addAction(cmd->action(), Constants::P_ACTION_RUN);
+//    // build without dependencies action
+//    d->m_buildProjectOnlyAction = new QAction(tr("Build Without Dependencies"), this);
+//    cmd = ActionManager::registerAction(d->m_buildProjectOnlyAction, Constants::BUILDPROJECTONLY, globalcontext);
 
-    // Run without deployment action
-    d->m_runWithoutDeployAction = new QAction(tr("Run Without Deployment"), this);
-    cmd = ActionManager::registerAction(d->m_runWithoutDeployAction, Constants::RUNWITHOUTDEPLOY, globalcontext);
-    mbuild->addAction(cmd, Constants::G_BUILD_RUN);
+//    // rebuild without dependencies action
+//    d->m_rebuildProjectOnlyAction = new QAction(tr("Rebuild Without Dependencies"), this);
+//    cmd = ActionManager::registerAction(d->m_rebuildProjectOnlyAction, Constants::REBUILDPROJECTONLY, globalcontext);
 
-    // build action (context menu)
-    d->m_buildActionContextMenu = new QAction(tr("Build"), this);
-    cmd = ActionManager::registerAction(d->m_buildActionContextMenu, Constants::BUILDCM, projecTreeContext);
-    cmd->setAttribute(Command::CA_UpdateText);
-    mprojectContextMenu->addAction(cmd, Constants::G_PROJECT_BUILD);
+//    // deploy without dependencies action
+//    d->m_deployProjectOnlyAction = new QAction(tr("Deploy Without Dependencies"), this);
+//    cmd = ActionManager::registerAction(d->m_deployProjectOnlyAction, Constants::DEPLOYPROJECTONLY, globalcontext);
 
-    // rebuild action (context menu)
-    d->m_rebuildActionContextMenu = new QAction(tr("Rebuild"), this);
-    cmd = ActionManager::registerAction(d->m_rebuildActionContextMenu, Constants::REBUILDCM, projecTreeContext);
-    cmd->setAttribute(Command::CA_UpdateText);
-    mprojectContextMenu->addAction(cmd, Constants::G_PROJECT_REBUILD);
+//    // clean without dependencies action
+//    d->m_cleanProjectOnlyAction = new QAction(tr("Clean Without Dependencies"), this);
+//    cmd = ActionManager::registerAction(d->m_cleanProjectOnlyAction, Constants::CLEANPROJECTONLY, globalcontext);
 
-    // clean action (context menu)
-    d->m_cleanActionContextMenu = new QAction(tr("Clean"), this);
-    cmd = ActionManager::registerAction(d->m_cleanActionContextMenu, Constants::CLEANCM, projecTreeContext);
-    cmd->setAttribute(Command::CA_UpdateText);
-    mprojectContextMenu->addAction(cmd, Constants::G_PROJECT_REBUILD);
+//    // deploy action (context menu)
+//    d->m_deployActionContextMenu = new QAction(tr("Deploy"), this);
+//    cmd = ActionManager::registerAction(d->m_deployActionContextMenu, Constants::DEPLOYCM, projecTreeContext);
+//    mprojectContextMenu->addAction(cmd, Constants::G_PROJECT_RUN);
 
-    // build without dependencies action
-    d->m_buildProjectOnlyAction = new QAction(tr("Build Without Dependencies"), this);
-    cmd = ActionManager::registerAction(d->m_buildProjectOnlyAction, Constants::BUILDPROJECTONLY, globalcontext);
+//    d->m_runActionContextMenu = new QAction(runIcon, tr("Run"), this);
+//    cmd = ActionManager::registerAction(d->m_runActionContextMenu, Constants::RUNCONTEXTMENU, projecTreeContext);
+//    mprojectContextMenu->addAction(cmd, Constants::G_PROJECT_RUN);
+//    msubProjectContextMenu->addAction(cmd, Constants::G_PROJECT_RUN);
 
-    // rebuild without dependencies action
-    d->m_rebuildProjectOnlyAction = new QAction(tr("Rebuild Without Dependencies"), this);
-    cmd = ActionManager::registerAction(d->m_rebuildProjectOnlyAction, Constants::REBUILDPROJECTONLY, globalcontext);
+//    // add new file action
+//    d->m_addNewFileAction = new QAction(tr("Add New..."), this);
+//    cmd = ActionManager::registerAction(d->m_addNewFileAction, ProjectExplorer::Constants::ADDNEWFILE,
+//                       projecTreeContext);
+//    mprojectContextMenu->addAction(cmd, Constants::G_PROJECT_FILES);
+//    msubProjectContextMenu->addAction(cmd, Constants::G_PROJECT_FILES);
+//    mfolderContextMenu->addAction(cmd, Constants::G_FOLDER_FILES);
 
-    // deploy without dependencies action
-    d->m_deployProjectOnlyAction = new QAction(tr("Deploy Without Dependencies"), this);
-    cmd = ActionManager::registerAction(d->m_deployProjectOnlyAction, Constants::DEPLOYPROJECTONLY, globalcontext);
+//    // add existing file action
+//    d->m_addExistingFilesAction = new QAction(tr("Add Existing Files..."), this);
+//    cmd = ActionManager::registerAction(d->m_addExistingFilesAction, ProjectExplorer::Constants::ADDEXISTINGFILES,
+//                       projecTreeContext);
+//    mprojectContextMenu->addAction(cmd, Constants::G_PROJECT_FILES);
+//    msubProjectContextMenu->addAction(cmd, Constants::G_PROJECT_FILES);
+//    mfolderContextMenu->addAction(cmd, Constants::G_FOLDER_FILES);
 
-    // clean without dependencies action
-    d->m_cleanProjectOnlyAction = new QAction(tr("Clean Without Dependencies"), this);
-    cmd = ActionManager::registerAction(d->m_cleanProjectOnlyAction, Constants::CLEANPROJECTONLY, globalcontext);
+//    // add existing directory action
+//    d->m_addExistingDirectoryAction = new QAction(tr("Add Existing Directory..."), this);
+//    cmd = Core::ActionManager::registerAction(d->m_addExistingDirectoryAction,
+//                                              ProjectExplorer::Constants::ADDEXISTINGDIRECTORY,
+//                                              projecTreeContext);
+//    mprojectContextMenu->addAction(cmd, Constants::G_PROJECT_FILES);
+//    msubProjectContextMenu->addAction(cmd, Constants::G_PROJECT_FILES);
+//    mfolderContextMenu->addAction(cmd, Constants::G_FOLDER_FILES);
 
-    // deploy action (context menu)
-    d->m_deployActionContextMenu = new QAction(tr("Deploy"), this);
-    cmd = ActionManager::registerAction(d->m_deployActionContextMenu, Constants::DEPLOYCM, projecTreeContext);
-    mprojectContextMenu->addAction(cmd, Constants::G_PROJECT_RUN);
+//    // new subproject action
+//    d->m_addNewSubprojectAction = new QAction(tr("New Subproject..."), this);
+//    cmd = ActionManager::registerAction(d->m_addNewSubprojectAction, ProjectExplorer::Constants::ADDNEWSUBPROJECT,
+//                       projecTreeContext);
+//    mprojectContextMenu->addAction(cmd, Constants::G_PROJECT_FILES);
+//    msubProjectContextMenu->addAction(cmd, Constants::G_PROJECT_FILES);
 
-    d->m_runActionContextMenu = new QAction(runIcon, tr("Run"), this);
-    cmd = ActionManager::registerAction(d->m_runActionContextMenu, Constants::RUNCONTEXTMENU, projecTreeContext);
-    mprojectContextMenu->addAction(cmd, Constants::G_PROJECT_RUN);
-    msubProjectContextMenu->addAction(cmd, Constants::G_PROJECT_RUN);
+//    // unload project again, in right position
+//    mprojectContextMenu->addAction(ActionManager::command(Constants::UNLOAD), Constants::G_PROJECT_LAST);
 
-    // add new file action
-    d->m_addNewFileAction = new QAction(tr("Add New..."), this);
-    cmd = ActionManager::registerAction(d->m_addNewFileAction, ProjectExplorer::Constants::ADDNEWFILE,
-                       projecTreeContext);
-    mprojectContextMenu->addAction(cmd, Constants::G_PROJECT_FILES);
-    msubProjectContextMenu->addAction(cmd, Constants::G_PROJECT_FILES);
-    mfolderContextMenu->addAction(cmd, Constants::G_FOLDER_FILES);
+//    // remove file action
+//    d->m_removeFileAction = new QAction(tr("Remove File..."), this);
+//    cmd = ActionManager::registerAction(d->m_removeFileAction, ProjectExplorer::Constants::REMOVEFILE,
+//                       projecTreeContext);
+//    cmd->setDefaultKeySequence(QKeySequence::Delete);
+//    mfileContextMenu->addAction(cmd, Constants::G_FILE_OTHER);
 
-    // add existing file action
-    d->m_addExistingFilesAction = new QAction(tr("Add Existing Files..."), this);
-    cmd = ActionManager::registerAction(d->m_addExistingFilesAction, ProjectExplorer::Constants::ADDEXISTINGFILES,
-                       projecTreeContext);
-    mprojectContextMenu->addAction(cmd, Constants::G_PROJECT_FILES);
-    msubProjectContextMenu->addAction(cmd, Constants::G_PROJECT_FILES);
-    mfolderContextMenu->addAction(cmd, Constants::G_FOLDER_FILES);
+//    //: Remove project from parent profile (Project explorer view); will not physically delete any files.
+//    d->m_removeProjectAction = new QAction(tr("Remove Project..."), this);
+//    cmd = ActionManager::registerAction(d->m_removeProjectAction, ProjectExplorer::Constants::REMOVEPROJECT,
+//                       projecTreeContext);
+//    msubProjectContextMenu->addAction(cmd, Constants::G_PROJECT_FILES);
 
-    // add existing directory action
-    d->m_addExistingDirectoryAction = new QAction(tr("Add Existing Directory..."), this);
-    cmd = Core::ActionManager::registerAction(d->m_addExistingDirectoryAction,
-                                              ProjectExplorer::Constants::ADDEXISTINGDIRECTORY,
-                                              projecTreeContext);
-    mprojectContextMenu->addAction(cmd, Constants::G_PROJECT_FILES);
-    msubProjectContextMenu->addAction(cmd, Constants::G_PROJECT_FILES);
-    mfolderContextMenu->addAction(cmd, Constants::G_FOLDER_FILES);
+//    // delete file action
+//    d->m_deleteFileAction = new QAction(tr("Delete File..."), this);
+//    cmd = ActionManager::registerAction(d->m_deleteFileAction, ProjectExplorer::Constants::DELETEFILE,
+//                             projecTreeContext);
+//    cmd->setDefaultKeySequence(QKeySequence::Delete);
+//    mfileContextMenu->addAction(cmd, Constants::G_FILE_OTHER);
 
-    // new subproject action
-    d->m_addNewSubprojectAction = new QAction(tr("New Subproject..."), this);
-    cmd = ActionManager::registerAction(d->m_addNewSubprojectAction, ProjectExplorer::Constants::ADDNEWSUBPROJECT,
-                       projecTreeContext);
-    mprojectContextMenu->addAction(cmd, Constants::G_PROJECT_FILES);
-    msubProjectContextMenu->addAction(cmd, Constants::G_PROJECT_FILES);
+//    // renamefile action
+//    d->m_renameFileAction = new QAction(tr("Rename..."), this);
+//    cmd = ActionManager::registerAction(d->m_renameFileAction, ProjectExplorer::Constants::RENAMEFILE,
+//                       projecTreeContext);
+//    mfileContextMenu->addAction(cmd, Constants::G_FILE_OTHER);
+//    // Not yet used by anyone, so hide for now
+////    mfolder->addAction(cmd, Constants::G_FOLDER_FILES);
+////    msubProject->addAction(cmd, Constants::G_FOLDER_FILES);
+////    mproject->addAction(cmd, Constants::G_FOLDER_FILES);
 
-    // unload project again, in right position
-    mprojectContextMenu->addAction(ActionManager::command(Constants::UNLOAD), Constants::G_PROJECT_LAST);
+//    // set startup project action
+//    d->m_setStartupProjectAction = new Utils::ParameterAction(tr("Set as Active Project"),
+//                                                              tr("Set \"%1\" as Active Project"),
+//                                                              Utils::ParameterAction::AlwaysEnabled, this);
+//    cmd = ActionManager::registerAction(d->m_setStartupProjectAction, ProjectExplorer::Constants::SETSTARTUP,
+//                             projecTreeContext);
+//    cmd->setAttribute(Command::CA_UpdateText);
+//    cmd->setDescription(d->m_setStartupProjectAction->text());
+//    mprojectContextMenu->addAction(cmd, Constants::G_PROJECT_FIRST);
 
-    // remove file action
-    d->m_removeFileAction = new QAction(tr("Remove File..."), this);
-    cmd = ActionManager::registerAction(d->m_removeFileAction, ProjectExplorer::Constants::REMOVEFILE,
-                       projecTreeContext);
-    cmd->setDefaultKeySequence(QKeySequence::Delete);
-    mfileContextMenu->addAction(cmd, Constants::G_FILE_OTHER);
+//    // Collapse All.
+//    d->m_projectTreeCollapseAllAction = new QAction(tr("Collapse All"), this);
+//    cmd = ActionManager::registerAction(d->m_projectTreeCollapseAllAction, Constants::PROJECTTREE_COLLAPSE_ALL,
+//                             projecTreeContext);
+//    const Id treeGroup = Constants::G_PROJECT_TREE;
+//    mfileContextMenu->addSeparator(globalcontext, treeGroup);
+//    mfileContextMenu->addAction(cmd, treeGroup);
+//    msubProjectContextMenu->addSeparator(globalcontext, treeGroup);
+//    msubProjectContextMenu->addAction(cmd, treeGroup);
+//    mfolderContextMenu->addSeparator(globalcontext, treeGroup);
+//    mfolderContextMenu->addAction(cmd, treeGroup);
+//    mprojectContextMenu->addSeparator(globalcontext, treeGroup);
+//    mprojectContextMenu->addAction(cmd, treeGroup);
+////    msessionContextMenu->addSeparator(globalcontext, treeGroup);//#720 ROOPAK
+////    msessionContextMenu->addAction(cmd, treeGroup);//#720 ROOPAK
 
-    //: Remove project from parent profile (Project explorer view); will not physically delete any files.
-    d->m_removeProjectAction = new QAction(tr("Remove Project..."), this);
-    cmd = ActionManager::registerAction(d->m_removeProjectAction, ProjectExplorer::Constants::REMOVEPROJECT,
-                       projecTreeContext);
-    msubProjectContextMenu->addAction(cmd, Constants::G_PROJECT_FILES);
+//    // target selector
+//    d->m_projectSelectorAction = new QAction(this);
+//    d->m_projectSelectorAction->setCheckable(true);
+//    d->m_projectSelectorAction->setEnabled(false);
+//    QWidget *mainWindow = ICore::mainWindow();
+////    d->m_targetSelector = new Internal::MiniProjectTargetSelector(d->m_projectSelectorAction, mainWindow);//ROOPAK
+////    connect(d->m_projectSelectorAction, SIGNAL(triggered()), d->m_targetSelector, SLOT(show()));//ROOPAK
+//    ModeManager::addProjectSelector(d->m_projectSelectorAction);
 
-    // delete file action
-    d->m_deleteFileAction = new QAction(tr("Delete File..."), this);
-    cmd = ActionManager::registerAction(d->m_deleteFileAction, ProjectExplorer::Constants::DELETEFILE,
-                             projecTreeContext);
-    cmd->setDefaultKeySequence(QKeySequence::Delete);
-    mfileContextMenu->addAction(cmd, Constants::G_FILE_OTHER);
+//    d->m_projectSelectorActionMenu = new QAction(this);
+//    d->m_projectSelectorActionMenu->setEnabled(false);
+//    d->m_projectSelectorActionMenu->setText(tr("Open Build and Run Kit Selector..."));
+////    connect(d->m_projectSelectorActionMenu, SIGNAL(triggered()), d->m_targetSelector, SLOT(toggleVisible()));//ROOPAK
+//    cmd = ActionManager::registerAction(d->m_projectSelectorActionMenu, ProjectExplorer::Constants::SELECTTARGET,
+//                       globalcontext);
+//    mbuild->addAction(cmd, Constants::G_BUILD_RUN);
 
-    // renamefile action
-    d->m_renameFileAction = new QAction(tr("Rename..."), this);
-    cmd = ActionManager::registerAction(d->m_renameFileAction, ProjectExplorer::Constants::RENAMEFILE,
-                       projecTreeContext);
-    mfileContextMenu->addAction(cmd, Constants::G_FILE_OTHER);
-    // Not yet used by anyone, so hide for now
-//    mfolder->addAction(cmd, Constants::G_FOLDER_FILES);
-//    msubProject->addAction(cmd, Constants::G_FOLDER_FILES);
-//    mproject->addAction(cmd, Constants::G_FOLDER_FILES);
+//    d->m_projectSelectorActionQuick = new QAction(this);
+//    d->m_projectSelectorActionQuick->setEnabled(false);
+//    d->m_projectSelectorActionQuick->setText(tr("Quick Switch Kit Selector"));
+////    connect(d->m_projectSelectorActionQuick, SIGNAL(triggered()), d->m_targetSelector, SLOT(nextOrShow()));//ROOPAK
+//    cmd = ActionManager::registerAction(d->m_projectSelectorActionQuick, ProjectExplorer::Constants::SELECTTARGETQUICK, globalcontext);
+//    cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+T")));
 
-    // set startup project action
-    d->m_setStartupProjectAction = new Utils::ParameterAction(tr("Set as Active Project"),
-                                                              tr("Set \"%1\" as Active Project"),
-                                                              Utils::ParameterAction::AlwaysEnabled, this);
-    cmd = ActionManager::registerAction(d->m_setStartupProjectAction, ProjectExplorer::Constants::SETSTARTUP,
-                             projecTreeContext);
-    cmd->setAttribute(Command::CA_UpdateText);
-    cmd->setDescription(d->m_setStartupProjectAction->text());
-    mprojectContextMenu->addAction(cmd, Constants::G_PROJECT_FIRST);
+//    connect(ICore::instance(), SIGNAL(saveSettingsRequested()),
+//        this, SLOT(savePersistentSettings()));
 
-    // Collapse All.
-    d->m_projectTreeCollapseAllAction = new QAction(tr("Collapse All"), this);
-    cmd = ActionManager::registerAction(d->m_projectTreeCollapseAllAction, Constants::PROJECTTREE_COLLAPSE_ALL,
-                             projecTreeContext);
-    const Id treeGroup = Constants::G_PROJECT_TREE;
-    mfileContextMenu->addSeparator(globalcontext, treeGroup);
-    mfileContextMenu->addAction(cmd, treeGroup);
-    msubProjectContextMenu->addSeparator(globalcontext, treeGroup);
-    msubProjectContextMenu->addAction(cmd, treeGroup);
-    mfolderContextMenu->addSeparator(globalcontext, treeGroup);
-    mfolderContextMenu->addAction(cmd, treeGroup);
-    mprojectContextMenu->addSeparator(globalcontext, treeGroup);
-    mprojectContextMenu->addAction(cmd, treeGroup);
-//    msessionContextMenu->addSeparator(globalcontext, treeGroup);//#720 ROOPAK
-//    msessionContextMenu->addAction(cmd, treeGroup);//#720 ROOPAK
+////    addAutoReleasedObject(new ProjectTreeWidgetFactory);//ROOPAK
+////    addAutoReleasedObject(new FolderNavigationWidgetFactory);//ROOPAK
+////    addAutoReleasedObject(new DeployConfigurationFactory);//ROOPAK
 
-    // target selector
-    d->m_projectSelectorAction = new QAction(this);
-    d->m_projectSelectorAction->setCheckable(true);
-    d->m_projectSelectorAction->setEnabled(false);
-    QWidget *mainWindow = ICore::mainWindow();
-//    d->m_targetSelector = new Internal::MiniProjectTargetSelector(d->m_projectSelectorAction, mainWindow);//ROOPAK
-//    connect(d->m_projectSelectorAction, SIGNAL(triggered()), d->m_targetSelector, SLOT(show()));//ROOPAK
-    ModeManager::addProjectSelector(d->m_projectSelectorAction);
+//    QSettings *s = ICore::settings();
+//    const QStringList fileNames =
+//            s->value(QLatin1String("ProjectExplorer/RecentProjects/FileNames")).toStringList();
+//    const QStringList displayNames =
+//            s->value(QLatin1String("ProjectExplorer/RecentProjects/DisplayNames")).toStringList();
+//    if (fileNames.size() == displayNames.size()) {
+//        for (int i = 0; i < fileNames.size(); ++i) {
+//            if (QFileInfo(fileNames.at(i)).isFile())
+//                d->m_recentProjects.append(qMakePair(fileNames.at(i), displayNames.at(i)));
+//        }
+//    }
 
-    d->m_projectSelectorActionMenu = new QAction(this);
-    d->m_projectSelectorActionMenu->setEnabled(false);
-    d->m_projectSelectorActionMenu->setText(tr("Open Build and Run Kit Selector..."));
-//    connect(d->m_projectSelectorActionMenu, SIGNAL(triggered()), d->m_targetSelector, SLOT(toggleVisible()));//ROOPAK
-    cmd = ActionManager::registerAction(d->m_projectSelectorActionMenu, ProjectExplorer::Constants::SELECTTARGET,
-                       globalcontext);
-    mbuild->addAction(cmd, Constants::G_BUILD_RUN);
+////    d->m_projectExplorerSettings.buildBeforeDeploy =              //ROOPAK - START
+////            s->value(QLatin1String("ProjectExplorer/Settings/BuildBeforeDeploy"), true).toBool();
+////    d->m_projectExplorerSettings.deployBeforeRun =
+////            s->value(QLatin1String("ProjectExplorer/Settings/DeployBeforeRun"), true).toBool();
+////    d->m_projectExplorerSettings.saveBeforeBuild =
+////            s->value(QLatin1String("ProjectExplorer/Settings/SaveBeforeBuild"), false).toBool();
+////    d->m_projectExplorerSettings.showCompilerOutput =
+////            s->value(QLatin1String("ProjectExplorer/Settings/ShowCompilerOutput"), false).toBool();
+////    d->m_projectExplorerSettings.showRunOutput =
+////            s->value(QLatin1String("ProjectExplorer/Settings/ShowRunOutput"), true).toBool();
+////    d->m_projectExplorerSettings.showDebugOutput =
+////            s->value(QLatin1String("ProjectExplorer/Settings/ShowDebugOutput"), false).toBool();
+////    d->m_projectExplorerSettings.cleanOldAppOutput =
+////            s->value(QLatin1String("ProjectExplorer/Settings/CleanOldAppOutput"), false).toBool();
+////    d->m_projectExplorerSettings.mergeStdErrAndStdOut =
+////            s->value(QLatin1String("ProjectExplorer/Settings/MergeStdErrAndStdOut"), false).toBool();
+////    d->m_projectExplorerSettings.wrapAppOutput =
+////            s->value(QLatin1String("ProjectExplorer/Settings/WrapAppOutput"), true).toBool();
+////    d->m_projectExplorerSettings.useJom =
+////            s->value(QLatin1String("ProjectExplorer/Settings/UseJom"), true).toBool();
+////    d->m_projectExplorerSettings.autorestoreLastSession =
+////            s->value(QLatin1String("ProjectExplorer/Settings/AutoRestoreLastSession"), false).toBool();
+////    d->m_projectExplorerSettings.prompToStopRunControl =
+////            s->value(QLatin1String("ProjectExplorer/Settings/PromptToStopRunControl"), false).toBool();
+////    d->m_projectExplorerSettings.maxAppOutputLines =
+////            s->value(QLatin1String("ProjectExplorer/Settings/MaxAppOutputLines"), 100000).toInt();
+////    d->m_projectExplorerSettings.environmentId =
+////            QUuid(s->value(QLatin1String("ProjectExplorer/Settings/EnvironmentId")).toByteArray());
+////    if (d->m_projectExplorerSettings.environmentId.isNull())
+////        d->m_projectExplorerSettings.environmentId = QUuid::createUuid(); //ROOPAK - END
 
-    d->m_projectSelectorActionQuick = new QAction(this);
-    d->m_projectSelectorActionQuick->setEnabled(false);
-    d->m_projectSelectorActionQuick->setText(tr("Quick Switch Kit Selector"));
-//    connect(d->m_projectSelectorActionQuick, SIGNAL(triggered()), d->m_targetSelector, SLOT(nextOrShow()));//ROOPAK
-    cmd = ActionManager::registerAction(d->m_projectSelectorActionQuick, ProjectExplorer::Constants::SELECTTARGETQUICK, globalcontext);
-    cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+T")));
+////    connect(d->m_sessionManagerAction, SIGNAL(triggered()), this, SLOT(showSessionManager()));//#720 ROOPAK
+////    connect(d->m_newAction, SIGNAL(triggered()), this, SLOT(newProject()));
+//    connect(d->m_loadAction, SIGNAL(triggered()), this, SLOT(loadAction()));
+//    connect(d->m_buildProjectOnlyAction, SIGNAL(triggered()), this, SLOT(buildProjectOnly()));
+//    connect(d->m_buildAction, SIGNAL(triggered()), this, SLOT(buildProject()));
+//    connect(d->m_buildActionContextMenu, SIGNAL(triggered()), this, SLOT(buildProjectContextMenu()));
+////    connect(d->m_buildSessionAction, SIGNAL(triggered()), this, SLOT(buildSession()));//#720 ROOPAK
+//    connect(d->m_rebuildProjectOnlyAction, SIGNAL(triggered()), this, SLOT(rebuildProjectOnly()));
+//    connect(d->m_rebuildAction, SIGNAL(triggered()), this, SLOT(rebuildProject()));
+//    connect(d->m_rebuildActionContextMenu, SIGNAL(triggered()), this, SLOT(rebuildProjectContextMenu()));
+////    connect(d->m_rebuildSessionAction, SIGNAL(triggered()), this, SLOT(rebuildSession()));//#720 ROOPAK
+//    connect(d->m_deployProjectOnlyAction, SIGNAL(triggered()), this, SLOT(deployProjectOnly()));
+//    connect(d->m_deployAction, SIGNAL(triggered()), this, SLOT(deployProject()));
+//    connect(d->m_deployActionContextMenu, SIGNAL(triggered()), this, SLOT(deployProjectContextMenu()));
+////    connect(d->m_deploySessionAction, SIGNAL(triggered()), this, SLOT(deploySession()));//#720 ROOPAK
+//    connect(d->m_cleanProjectOnlyAction, SIGNAL(triggered()), this, SLOT(cleanProjectOnly()));
+//    connect(d->m_cleanAction, SIGNAL(triggered()), this, SLOT(cleanProject()));
+//    connect(d->m_cleanActionContextMenu, SIGNAL(triggered()), this, SLOT(cleanProjectContextMenu()));
+////    connect(d->m_cleanSessionAction, SIGNAL(triggered()), this, SLOT(cleanSession()));//#720 ROOPAK
+//    connect(d->m_runAction, SIGNAL(triggered()), this, SLOT(runProject()));
+//    connect(d->m_runActionContextMenu, SIGNAL(triggered()), this, SLOT(runProjectContextMenu()));
+//    connect(d->m_runWithoutDeployAction, SIGNAL(triggered()), this, SLOT(runProjectWithoutDeploy()));
+//    connect(d->m_cancelBuildAction, SIGNAL(triggered()), this, SLOT(cancelBuild()));
+////    connect(d->m_unloadAction, SIGNAL(triggered()), this, SLOT(unloadProject()));//#720 ROOPAK
+////    connect(d->m_closeAllProjects, SIGNAL(triggered()), this, SLOT(closeAllProjects()));//#720 ROOPAK
+//    connect(d->m_addNewFileAction, SIGNAL(triggered()), this, SLOT(addNewFile()));
+//    connect(d->m_addExistingFilesAction, SIGNAL(triggered()), this, SLOT(addExistingFiles()));
+//    connect(d->m_addExistingDirectoryAction, SIGNAL(triggered()), this, SLOT(addExistingDirectory()));
+//    connect(d->m_addNewSubprojectAction, SIGNAL(triggered()), this, SLOT(addNewSubproject()));
+//    connect(d->m_removeProjectAction, SIGNAL(triggered()), this, SLOT(removeProject()));
+//    connect(d->m_openFileAction, SIGNAL(triggered()), this, SLOT(openFile()));
+//    connect(d->m_searchOnFileSystem, SIGNAL(triggered()), this, SLOT(searchOnFileSystem()));
+//    connect(d->m_showInGraphicalShell, SIGNAL(triggered()), this, SLOT(showInGraphicalShell()));
+//    connect(d->m_openTerminalHere, SIGNAL(triggered()), this, SLOT(openTerminalHere()));
+//    connect(d->m_removeFileAction, SIGNAL(triggered()), this, SLOT(removeFile()));
+//    connect(d->m_deleteFileAction, SIGNAL(triggered()), this, SLOT(deleteFile()));
+//    connect(d->m_renameFileAction, SIGNAL(triggered()), this, SLOT(renameFile()));
+//    connect(d->m_setStartupProjectAction, SIGNAL(triggered()), this, SLOT(setStartupProject()));
 
-    connect(ICore::instance(), SIGNAL(saveSettingsRequested()),
-        this, SLOT(savePersistentSettings()));
+//    connect(this, SIGNAL(updateRunActions()), this, SLOT(slotUpdateRunActions()));
+//    connect(this, SIGNAL(settingsChanged()), this, SLOT(updateRunWithoutDeployMenu()));
 
-//    addAutoReleasedObject(new ProjectTreeWidgetFactory);//ROOPAK
-//    addAutoReleasedObject(new FolderNavigationWidgetFactory);//ROOPAK
-//    addAutoReleasedObject(new DeployConfigurationFactory);//ROOPAK
+////    QObject *buildManager = new BuildManager(this, d->m_cancelBuildAction);//ROOPAK - START
+////    connect(buildManager, SIGNAL(buildStateChanged(ProjectExplorer::Project*)),
+////            this, SLOT(buildStateChanged(ProjectExplorer::Project*)));
+////    connect(buildManager, SIGNAL(buildQueueFinished(bool)),
+////            this, SLOT(buildQueueFinished(bool)), Qt::QueuedConnection);//ROOPAK - END
 
-    QSettings *s = ICore::settings();
-    const QStringList fileNames =
-            s->value(QLatin1String("ProjectExplorer/RecentProjects/FileNames")).toStringList();
-    const QStringList displayNames =
-            s->value(QLatin1String("ProjectExplorer/RecentProjects/DisplayNames")).toStringList();
-    if (fileNames.size() == displayNames.size()) {
-        for (int i = 0; i < fileNames.size(); ++i) {
-            if (QFileInfo(fileNames.at(i)).isFile())
-                d->m_recentProjects.append(qMakePair(fileNames.at(i), displayNames.at(i)));
-        }
-    }
+//    updateActions();
 
-//    d->m_projectExplorerSettings.buildBeforeDeploy =              //ROOPAK - START
-//            s->value(QLatin1String("ProjectExplorer/Settings/BuildBeforeDeploy"), true).toBool();
-//    d->m_projectExplorerSettings.deployBeforeRun =
-//            s->value(QLatin1String("ProjectExplorer/Settings/DeployBeforeRun"), true).toBool();
-//    d->m_projectExplorerSettings.saveBeforeBuild =
-//            s->value(QLatin1String("ProjectExplorer/Settings/SaveBeforeBuild"), false).toBool();
-//    d->m_projectExplorerSettings.showCompilerOutput =
-//            s->value(QLatin1String("ProjectExplorer/Settings/ShowCompilerOutput"), false).toBool();
-//    d->m_projectExplorerSettings.showRunOutput =
-//            s->value(QLatin1String("ProjectExplorer/Settings/ShowRunOutput"), true).toBool();
-//    d->m_projectExplorerSettings.showDebugOutput =
-//            s->value(QLatin1String("ProjectExplorer/Settings/ShowDebugOutput"), false).toBool();
-//    d->m_projectExplorerSettings.cleanOldAppOutput =
-//            s->value(QLatin1String("ProjectExplorer/Settings/CleanOldAppOutput"), false).toBool();
-//    d->m_projectExplorerSettings.mergeStdErrAndStdOut =
-//            s->value(QLatin1String("ProjectExplorer/Settings/MergeStdErrAndStdOut"), false).toBool();
-//    d->m_projectExplorerSettings.wrapAppOutput =
-//            s->value(QLatin1String("ProjectExplorer/Settings/WrapAppOutput"), true).toBool();
-//    d->m_projectExplorerSettings.useJom =
-//            s->value(QLatin1String("ProjectExplorer/Settings/UseJom"), true).toBool();
-//    d->m_projectExplorerSettings.autorestoreLastSession =
-//            s->value(QLatin1String("ProjectExplorer/Settings/AutoRestoreLastSession"), false).toBool();
-//    d->m_projectExplorerSettings.prompToStopRunControl =
-//            s->value(QLatin1String("ProjectExplorer/Settings/PromptToStopRunControl"), false).toBool();
-//    d->m_projectExplorerSettings.maxAppOutputLines =
-//            s->value(QLatin1String("ProjectExplorer/Settings/MaxAppOutputLines"), 100000).toInt();
-//    d->m_projectExplorerSettings.environmentId =
-//            QUuid(s->value(QLatin1String("ProjectExplorer/Settings/EnvironmentId")).toByteArray());
-//    if (d->m_projectExplorerSettings.environmentId.isNull())
-//        d->m_projectExplorerSettings.environmentId = QUuid::createUuid(); //ROOPAK - END
+//    connect(ICore::instance(), SIGNAL(coreAboutToOpen()),
+//            this, SLOT(determineSessionToRestoreAtStartup()));
+//    connect(ICore::instance(), SIGNAL(coreOpened()), this, SLOT(restoreSession()));
 
-//    connect(d->m_sessionManagerAction, SIGNAL(triggered()), this, SLOT(showSessionManager()));//#720 ROOPAK
-//    connect(d->m_newAction, SIGNAL(triggered()), this, SLOT(newProject()));
-    connect(d->m_loadAction, SIGNAL(triggered()), this, SLOT(loadAction()));
-    connect(d->m_buildProjectOnlyAction, SIGNAL(triggered()), this, SLOT(buildProjectOnly()));
-    connect(d->m_buildAction, SIGNAL(triggered()), this, SLOT(buildProject()));
-    connect(d->m_buildActionContextMenu, SIGNAL(triggered()), this, SLOT(buildProjectContextMenu()));
-//    connect(d->m_buildSessionAction, SIGNAL(triggered()), this, SLOT(buildSession()));//#720 ROOPAK
-    connect(d->m_rebuildProjectOnlyAction, SIGNAL(triggered()), this, SLOT(rebuildProjectOnly()));
-    connect(d->m_rebuildAction, SIGNAL(triggered()), this, SLOT(rebuildProject()));
-    connect(d->m_rebuildActionContextMenu, SIGNAL(triggered()), this, SLOT(rebuildProjectContextMenu()));
-//    connect(d->m_rebuildSessionAction, SIGNAL(triggered()), this, SLOT(rebuildSession()));//#720 ROOPAK
-    connect(d->m_deployProjectOnlyAction, SIGNAL(triggered()), this, SLOT(deployProjectOnly()));
-    connect(d->m_deployAction, SIGNAL(triggered()), this, SLOT(deployProject()));
-    connect(d->m_deployActionContextMenu, SIGNAL(triggered()), this, SLOT(deployProjectContextMenu()));
-//    connect(d->m_deploySessionAction, SIGNAL(triggered()), this, SLOT(deploySession()));//#720 ROOPAK
-    connect(d->m_cleanProjectOnlyAction, SIGNAL(triggered()), this, SLOT(cleanProjectOnly()));
-    connect(d->m_cleanAction, SIGNAL(triggered()), this, SLOT(cleanProject()));
-    connect(d->m_cleanActionContextMenu, SIGNAL(triggered()), this, SLOT(cleanProjectContextMenu()));
-//    connect(d->m_cleanSessionAction, SIGNAL(triggered()), this, SLOT(cleanSession()));//#720 ROOPAK
-    connect(d->m_runAction, SIGNAL(triggered()), this, SLOT(runProject()));
-    connect(d->m_runActionContextMenu, SIGNAL(triggered()), this, SLOT(runProjectContextMenu()));
-    connect(d->m_runWithoutDeployAction, SIGNAL(triggered()), this, SLOT(runProjectWithoutDeploy()));
-    connect(d->m_cancelBuildAction, SIGNAL(triggered()), this, SLOT(cancelBuild()));
-//    connect(d->m_unloadAction, SIGNAL(triggered()), this, SLOT(unloadProject()));//#720 ROOPAK
-//    connect(d->m_closeAllProjects, SIGNAL(triggered()), this, SLOT(closeAllProjects()));//#720 ROOPAK
-    connect(d->m_addNewFileAction, SIGNAL(triggered()), this, SLOT(addNewFile()));
-    connect(d->m_addExistingFilesAction, SIGNAL(triggered()), this, SLOT(addExistingFiles()));
-    connect(d->m_addExistingDirectoryAction, SIGNAL(triggered()), this, SLOT(addExistingDirectory()));
-    connect(d->m_addNewSubprojectAction, SIGNAL(triggered()), this, SLOT(addNewSubproject()));
-    connect(d->m_removeProjectAction, SIGNAL(triggered()), this, SLOT(removeProject()));
-    connect(d->m_openFileAction, SIGNAL(triggered()), this, SLOT(openFile()));
-    connect(d->m_searchOnFileSystem, SIGNAL(triggered()), this, SLOT(searchOnFileSystem()));
-    connect(d->m_showInGraphicalShell, SIGNAL(triggered()), this, SLOT(showInGraphicalShell()));
-    connect(d->m_openTerminalHere, SIGNAL(triggered()), this, SLOT(openTerminalHere()));
-    connect(d->m_removeFileAction, SIGNAL(triggered()), this, SLOT(removeFile()));
-    connect(d->m_deleteFileAction, SIGNAL(triggered()), this, SLOT(deleteFile()));
-    connect(d->m_renameFileAction, SIGNAL(triggered()), this, SLOT(renameFile()));
-    connect(d->m_setStartupProjectAction, SIGNAL(triggered()), this, SLOT(setStartupProject()));
+//    updateWelcomePage();
 
-    connect(this, SIGNAL(updateRunActions()), this, SLOT(slotUpdateRunActions()));
-    connect(this, SIGNAL(settingsChanged()), this, SLOT(updateRunWithoutDeployMenu()));
+//    VariableManager::registerFileVariables(Constants::VAR_CURRENTPROJECT_PREFIX, tr("Current project's main file"));
+//    VariableManager::registerVariable(Constants::VAR_CURRENTPROJECT_BUILDPATH,
+//        tr("Full build path of the current project's active build configuration."));
+//    VariableManager::registerVariable(Constants::VAR_CURRENTPROJECT_NAME, tr("The current project's name."));
+//    VariableManager::registerVariable(Constants::VAR_CURRENTKIT_NAME, tr("The currently active kit's name."));
+//    VariableManager::registerVariable(Constants::VAR_CURRENTKIT_FILESYSTEMNAME,
+//                         tr("The currently active kit's name in a filesystem friendly version."));
+//    VariableManager::registerVariable(Constants::VAR_CURRENTKIT_ID, tr("The currently active kit's id."));
+//    VariableManager::registerVariable(Constants::VAR_CURRENTDEVICE_HOSTADDRESS,
+//            tr("The host address of the device in the currently active kit."));
+//    VariableManager::registerVariable(Constants::VAR_CURRENTDEVICE_SSHPORT,
+//            tr("The SSH port of the device in the currently active kit."));
+//    VariableManager::registerVariable(Constants::VAR_CURRENTDEVICE_USERNAME,
+//            tr("The user name with which to log into the device in the currently active kit."));
+//    VariableManager::registerVariable(Constants::VAR_CURRENTDEVICE_PRIVATEKEYFILE,
+//            tr("The private key file with which to authenticate when logging into the device "
+//               "in the currently active kit."));
+//    VariableManager::registerVariable(Constants::VAR_CURRENTBUILD_NAME, tr("The currently active build configuration's name."));
+//    VariableManager::registerVariable(Constants::VAR_CURRENTBUILD_TYPE, tr("The currently active build configuration's type."));
+//    VariableManager::registerFileVariables(Constants::VAR_CURRENTSESSION_PREFIX, tr("File where current session is saved."));
+//    VariableManager::registerVariable(Constants::VAR_CURRENTSESSION_NAME, tr("Name of current session."));
 
-//    QObject *buildManager = new BuildManager(this, d->m_cancelBuildAction);//ROOPAK - START
-//    connect(buildManager, SIGNAL(buildStateChanged(ProjectExplorer::Project*)),
-//            this, SLOT(buildStateChanged(ProjectExplorer::Project*)));
-//    connect(buildManager, SIGNAL(buildQueueFinished(bool)),
-//            this, SLOT(buildQueueFinished(bool)), Qt::QueuedConnection);//ROOPAK - END
-
-    updateActions();
-
-    connect(ICore::instance(), SIGNAL(coreAboutToOpen()),
-            this, SLOT(determineSessionToRestoreAtStartup()));
-    connect(ICore::instance(), SIGNAL(coreOpened()), this, SLOT(restoreSession()));
-
-    updateWelcomePage();
-
-    VariableManager::registerFileVariables(Constants::VAR_CURRENTPROJECT_PREFIX, tr("Current project's main file"));
-    VariableManager::registerVariable(Constants::VAR_CURRENTPROJECT_BUILDPATH,
-        tr("Full build path of the current project's active build configuration."));
-    VariableManager::registerVariable(Constants::VAR_CURRENTPROJECT_NAME, tr("The current project's name."));
-    VariableManager::registerVariable(Constants::VAR_CURRENTKIT_NAME, tr("The currently active kit's name."));
-    VariableManager::registerVariable(Constants::VAR_CURRENTKIT_FILESYSTEMNAME,
-                         tr("The currently active kit's name in a filesystem friendly version."));
-    VariableManager::registerVariable(Constants::VAR_CURRENTKIT_ID, tr("The currently active kit's id."));
-    VariableManager::registerVariable(Constants::VAR_CURRENTDEVICE_HOSTADDRESS,
-            tr("The host address of the device in the currently active kit."));
-    VariableManager::registerVariable(Constants::VAR_CURRENTDEVICE_SSHPORT,
-            tr("The SSH port of the device in the currently active kit."));
-    VariableManager::registerVariable(Constants::VAR_CURRENTDEVICE_USERNAME,
-            tr("The user name with which to log into the device in the currently active kit."));
-    VariableManager::registerVariable(Constants::VAR_CURRENTDEVICE_PRIVATEKEYFILE,
-            tr("The private key file with which to authenticate when logging into the device "
-               "in the currently active kit."));
-    VariableManager::registerVariable(Constants::VAR_CURRENTBUILD_NAME, tr("The currently active build configuration's name."));
-    VariableManager::registerVariable(Constants::VAR_CURRENTBUILD_TYPE, tr("The currently active build configuration's type."));
-    VariableManager::registerFileVariables(Constants::VAR_CURRENTSESSION_PREFIX, tr("File where current session is saved."));
-    VariableManager::registerVariable(Constants::VAR_CURRENTSESSION_NAME, tr("Name of current session."));
-
-    connect(VariableManager::instance(), SIGNAL(variableUpdateRequested(QByteArray)),
-            this, SLOT(updateVariable(QByteArray)));
+//    connect(VariableManager::instance(), SIGNAL(variableUpdateRequested(QByteArray)),
+//            this, SLOT(updateVariable(QByteArray)));
 
     return true;
 }
@@ -1507,7 +1507,7 @@ void ProjectExplorerPlugin::updateWelcomePage()
 
 void ProjectExplorerPlugin::currentModeChanged(IMode *mode, IMode *oldMode)
 {
-    if (oldMode && oldMode->id() == ProjectExplorer::Constants::MODE_SESSION)
+    if (oldMode && oldMode->id() == "Project"/*ProjectExplorer::Constants::MODE_SESSION*/)//#720 ROOPAK
         ICore::saveSettings();
     if (mode && mode->id() == Core::Constants::MODE_WELCOME)
         updateWelcomePage();
@@ -1784,7 +1784,7 @@ void ProjectExplorerPlugin::buildQueueFinished(bool success)
 //    }
 //    d->m_delayedRunConfiguration = 0;//ROOPAK - END
     d->m_shouldHaveRunConfiguration = false;
-    d->m_runMode = NoRunMode;
+//    d->m_runMode = NoRunMode;//#720 ROOPAK
 }
 
 void ProjectExplorerPlugin::updateExternalFileWarning()
@@ -2027,12 +2027,12 @@ bool ProjectExplorerPlugin::saveModifiedFiles()
 
 QString ProjectExplorerPlugin::displayNameForStepId(Id stepId)
 {
-    if (stepId == Constants::BUILDSTEPS_CLEAN)
-        return tr("Clean");
-    if (stepId == Constants::BUILDSTEPS_BUILD)
-        return tr("Build", "Build step");
-    if (stepId == Constants::BUILDSTEPS_DEPLOY)
-        return tr("Deploy");
+//    if (stepId == Constants::BUILDSTEPS_CLEAN)//#720 ROOPAK - START
+//        return tr("Clean");
+//    if (stepId == Constants::BUILDSTEPS_BUILD)
+//        return tr("Build", "Build step");
+//    if (stepId == Constants::BUILDSTEPS_DEPLOY)
+//        return tr("Deploy");//#720 ROOPAK - END
     return tr("Build", "Build step");
 }
 
@@ -2708,7 +2708,7 @@ void ProjectExplorerPlugin::updateContextMenuActions()
     d->m_showInGraphicalShell->setVisible(true);
     d->m_searchOnFileSystem->setVisible(true);
 
-    ActionContainer *runMenu = ActionManager::actionContainer(Constants::RUNMENUCONTEXTMENU);
+    ActionContainer *runMenu = ActionManager::actionContainer(/*Constants::RUNMENUCONTEXTMENU*/"Project.RunMenu");//#720 ROOPAK
     runMenu->menu()->clear();
 
 //    if (d->m_currentNode && d->m_currentNode->projectNode()) {//ROOPAK - START

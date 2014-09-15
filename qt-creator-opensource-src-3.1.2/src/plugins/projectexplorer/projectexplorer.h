@@ -31,7 +31,7 @@
 #define PROJECTEXPLORER_H
 
 #include "projectexplorer_export.h"
-#include "projectexplorerconstants.h"
+//#include "projectexplorerconstants.h"//#720 ROOPAK//#720 ROOPAK
 
 #include <extensionsystem/iplugin.h>
 
