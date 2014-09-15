@@ -78,7 +78,7 @@
 #include <QAction>
 
 using namespace QmlJSEditor::Constants;
-using namespace ProjectExplorer;
+//using namespace ProjectExplorer;//#720 ROOPAK
 using namespace Core;
 
 enum {

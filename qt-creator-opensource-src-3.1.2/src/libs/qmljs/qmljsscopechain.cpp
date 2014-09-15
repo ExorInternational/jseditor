@@ -314,8 +314,8 @@ void ScopeChain::initializeRootScope()
                 foreach (const ImportInfo &import, otherDoc->bind()->imports()) {
                     if ((import.type() == ImportType::File && m_document->fileName() == import.path())
                             || (import.type() == ImportType::QrcFile
-                                && ModelManagerInterface::instance()->filesAtQrcPath(import.path())
-                                .contains(m_document->fileName()))) {
+                                /*&& ModelManagerInterface::instance()->filesAtQrcPath(import.path())//#720 ROOPAK - START
+                                .contains(m_document->fileName())*/)) {//#720 ROOPAK - END
                         QmlComponentChain *component = new QmlComponentChain(otherDoc);
                         componentScopes.insert(otherDoc.data(), component);
                         chain->addInstantiatingComponent(component);

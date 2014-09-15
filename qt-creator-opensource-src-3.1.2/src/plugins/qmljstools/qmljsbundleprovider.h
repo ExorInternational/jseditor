@@ -37,7 +37,7 @@
 
 namespace ProjectExplorer {
 //class Kit;//#720 ROOPAK
-class Project;
+//class Project;//#720 ROOPAK
 class Target;
 }
 

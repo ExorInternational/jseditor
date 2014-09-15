@@ -57,7 +57,7 @@ HEADERS += projectexplorer.h \
     projectexplorerconstants.h \
 #    projectexplorersettings.h \#ROOPAK
 #    corelistenercheckingforrunningbuild.h \#ROOPAK
-    project.h \
+#    project.h \//#720 ROOPAK
 #    pluginfilefactory.h \#ROOPAK
 #    iprojectmanager.h \//#720 ROOPAK
 #    currentprojectfilter.h \#ROOPAK
@@ -197,7 +197,7 @@ SOURCES += projectexplorer.cpp \
 #    allprojectsfilter.cpp \#ROOPAK
 #    currentprojectfilter.cpp \#ROOPAK
 #    allprojectsfind.cpp \//#720 ROOPAK
-    project.cpp \
+#    project.cpp \//#720 ROOPAK
 #    pluginfilefactory.cpp \#ROOPAK
 #    buildstep.cpp \#ROOPAK
 #    buildconfiguration.cpp \#ROOPAK

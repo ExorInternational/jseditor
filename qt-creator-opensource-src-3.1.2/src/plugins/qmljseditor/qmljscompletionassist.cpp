@@ -654,8 +654,8 @@ IAssistProposal *QmlJSCompletionAssistProcessor::perform(const IAssistInterface 
 
     // currently path-in-stringliteral is the only completion available in imports
     if (contextFinder.isInImport()) {
-        QmlJS::ModelManagerInterface::ProjectInfo pInfo = QmlJS::ModelManagerInterface::instance()
-                ->projectInfo(ProjectExplorer::ProjectExplorerPlugin::currentProject());
+        QmlJS::ModelManagerInterface::ProjectInfo pInfo;// = QmlJS::ModelManagerInterface::instance()//#720 ROOPAK - START
+//                ->projectInfo(ProjectExplorer::ProjectExplorerPlugin::currentProject());//#720 ROOPAK - END
         QmlBundle platform = pInfo.extendedBundle.bundleForLanguage(document->language());
         if (!platform.supportedImports().isEmpty()) {
             QTextCursor tc(qmlInterface->textDocument());

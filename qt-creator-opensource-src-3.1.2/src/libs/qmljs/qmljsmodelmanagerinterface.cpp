@@ -372,180 +372,182 @@ bool pInfoLessThanAll(const ModelManagerInterface::ProjectInfo &p1, const ModelM
 }
 }
 
-QStringList ModelManagerInterface::filesAtQrcPath(const QString &path, const QLocale *locale,
-                                         ProjectExplorer::Project *project,
-                                         QrcResourceSelector resources)
-{
-    QString normPath = QrcParser::normalizedQrcFilePath(path);
-    QList<ProjectInfo> pInfos;
-    if (project)
-        pInfos.append(projectInfo(project));
-    else
-        pInfos = projectInfos();
+//QStringList ModelManagerInterface::filesAtQrcPath(const QString &path, const QLocale *locale,//#720 ROOPAK - START
+//                                         ProjectExplorer::Project *project,
+//                                         QrcResourceSelector resources)
+//{
+////    QString normPath = QrcParser::normalizedQrcFilePath(path);
+////    QList<ProjectInfo> pInfos;
+////    if (project)
+////        pInfos.append(projectInfo(project));
+////    else
+////        pInfos = projectInfos();
 
-    QStringList res;
-    QSet<QString> pathsChecked;
-    foreach (const ModelManagerInterface::ProjectInfo &pInfo, pInfos) {
-        QStringList qrcFilePaths;
-        if (resources == ActiveQrcResources)
-            qrcFilePaths = pInfo.activeResourceFiles;
-        else
-            qrcFilePaths = pInfo.allResourceFiles;
-        foreach (const QString &qrcFilePath, qrcFilePaths) {
-            if (pathsChecked.contains(qrcFilePath))
-                continue;
-            pathsChecked.insert(qrcFilePath);
-            QrcParser::ConstPtr qrcFile = m_qrcCache.parsedPath(qrcFilePath);
-            if (qrcFile.isNull())
-                continue;
-            qrcFile->collectFilesAtPath(normPath, &res, locale);
-        }
-    }
-    res.sort(); // make the result predictable
-    return res;
-}
+//    QStringList res;
+////    QSet<QString> pathsChecked;
+////    foreach (const ModelManagerInterface::ProjectInfo &pInfo, pInfos) {
+////        QStringList qrcFilePaths;
+////        if (resources == ActiveQrcResources)
+////            qrcFilePaths = pInfo.activeResourceFiles;
+////        else
+////            qrcFilePaths = pInfo.allResourceFiles;
+////        foreach (const QString &qrcFilePath, qrcFilePaths) {
+////            if (pathsChecked.contains(qrcFilePath))
+////                continue;
+////            pathsChecked.insert(qrcFilePath);
+////            QrcParser::ConstPtr qrcFile = m_qrcCache.parsedPath(qrcFilePath);
+////            if (qrcFile.isNull())
+////                continue;
+////            qrcFile->collectFilesAtPath(normPath, &res, locale);
+////        }
+////    }
+////    res.sort(); // make the result predictable
+//    return res;
+//}//#720 ROOPAK - END
 
-QMap<QString, QStringList> ModelManagerInterface::filesInQrcPath(const QString &path,
-                                                        const QLocale *locale,
-                                                        ProjectExplorer::Project *project,
-                                                        bool addDirs,
-                                                        QrcResourceSelector resources)
-{
-    QString normPath = QrcParser::normalizedQrcDirectoryPath(path);
-    QList<ProjectInfo> pInfos;
-    if (project) {
-        pInfos.append(projectInfo(project));
-    } else {
-        pInfos = projectInfos();
-        if (resources == ActiveQrcResources) // make the result predictable
-            qSort(pInfos.begin(), pInfos.end(), &pInfoLessThanActive);
-        else
-            qSort(pInfos.begin(), pInfos.end(), &pInfoLessThanAll);
-    }
-    QMap<QString, QStringList> res;
-    QSet<QString> pathsChecked;
-    foreach (const ModelManagerInterface::ProjectInfo &pInfo, pInfos) {
-        QStringList qrcFilePaths;
-        if (resources == ActiveQrcResources)
-            qrcFilePaths = pInfo.activeResourceFiles;
-        else
-            qrcFilePaths = pInfo.allResourceFiles;
-        foreach (const QString &qrcFilePath, qrcFilePaths) {
-            if (pathsChecked.contains(qrcFilePath))
-                continue;
-            pathsChecked.insert(qrcFilePath);
-            QrcParser::ConstPtr qrcFile = m_qrcCache.parsedPath(qrcFilePath);
+//QMap<QString, QStringList> ModelManagerInterface::filesInQrcPath(const QString &path,
+//                                                        const QLocale *locale,
+//                                                        ProjectExplorer::Project *project,
+//                                                        bool addDirs,
+//                                                        QrcResourceSelector resources)
+//{
+//    QString normPath = QrcParser::normalizedQrcDirectoryPath(path);
+//    QList<ProjectInfo> pInfos;
+//    if (project) {
+//        pInfos.append(projectInfo(project));
+//    } else {
+//        pInfos = projectInfos();
+//        if (resources == ActiveQrcResources) // make the result predictable
+//            qSort(pInfos.begin(), pInfos.end(), &pInfoLessThanActive);
+//        else
+//            qSort(pInfos.begin(), pInfos.end(), &pInfoLessThanAll);
+//    }
+//    QMap<QString, QStringList> res;
+//    QSet<QString> pathsChecked;
+//    foreach (const ModelManagerInterface::ProjectInfo &pInfo, pInfos) {
+//        QStringList qrcFilePaths;
+//        if (resources == ActiveQrcResources)
+//            qrcFilePaths = pInfo.activeResourceFiles;
+//        else
+//            qrcFilePaths = pInfo.allResourceFiles;
+//        foreach (const QString &qrcFilePath, qrcFilePaths) {
+//            if (pathsChecked.contains(qrcFilePath))
+//                continue;
+//            pathsChecked.insert(qrcFilePath);
+//            QrcParser::ConstPtr qrcFile = m_qrcCache.parsedPath(qrcFilePath);
 
-            if (qrcFile.isNull())
-                continue;
-            qrcFile->collectFilesInPath(normPath, &res, addDirs, locale);
-        }
-    }
-    return res;
-}
+//            if (qrcFile.isNull())
+//                continue;
+//            qrcFile->collectFilesInPath(normPath, &res, addDirs, locale);
+//        }
+//    }
+//    return res;
+//}//#720 ROOPAK - END
 
 QList<ModelManagerInterface::ProjectInfo> ModelManagerInterface::projectInfos() const
 {
-    QMutexLocker locker(&m_mutex);
+//    QMutexLocker locker(&m_mutex);
 
-    return m_projects.values();
+//    return m_projects.values();
+    QList<ModelManagerInterface::ProjectInfo> ret;
+    return ret;
 }
 
-ModelManagerInterface::ProjectInfo ModelManagerInterface::projectInfo(ProjectExplorer::Project *project) const
-{
-    QMutexLocker locker(&m_mutex);
+//ModelManagerInterface::ProjectInfo ModelManagerInterface::projectInfo(ProjectExplorer::Project *project) const//#720 ROOPAK - START
+//{
+//    QMutexLocker locker(&m_mutex);
 
-    return m_projects.value(project, ProjectInfo());
-}
+//    return m_projects.value(project, ProjectInfo());
+//}
 
-void ModelManagerInterface::updateProjectInfo(const ProjectInfo &pinfo, ProjectExplorer::Project *p)
-{
-    if (! pinfo.isValid() || !p)
-        return;
+//void ModelManagerInterface::updateProjectInfo(const ProjectInfo &pinfo, ProjectExplorer::Project *p)
+//{
+//    if (! pinfo.isValid() || !p)
+//        return;
 
-    Snapshot snapshot;
-    ProjectInfo oldInfo;
-    {
-        QMutexLocker locker(&m_mutex);
-        oldInfo = m_projects.value(p);
-        m_projects.insert(p, pinfo);
-        snapshot = m_validSnapshot;
-    }
+//    Snapshot snapshot;
+//    ProjectInfo oldInfo;
+//    {
+//        QMutexLocker locker(&m_mutex);
+//        oldInfo = m_projects.value(p);
+//        m_projects.insert(p, pinfo);
+//        snapshot = m_validSnapshot;
+//    }
 
-    if (oldInfo.qmlDumpPath != pinfo.qmlDumpPath
-            || oldInfo.qmlDumpEnvironment != pinfo.qmlDumpEnvironment) {
-        m_pluginDumper->scheduleRedumpPlugins();
-        m_pluginDumper->scheduleMaybeRedumpBuiltins(pinfo);
-    }
-
-
-    updateImportPaths();
-
-    // remove files that are no longer in the project and have been deleted
-    QStringList deletedFiles;
-    foreach (const QString &oldFile, oldInfo.sourceFiles) {
-        if (snapshot.document(oldFile)
-                && !pinfo.sourceFiles.contains(oldFile)
-                && !QFile::exists(oldFile)) {
-            deletedFiles += oldFile;
-        }
-    }
-    removeFiles(deletedFiles);
-    foreach (const QString &oldFile, deletedFiles)
-        m_fileToProject.remove(oldFile, p);
-
-    // parse any files not yet in the snapshot
-    QStringList newFiles;
-    foreach (const QString &file, pinfo.sourceFiles) {
-        if (!snapshot.document(file))
-            newFiles += file;
-    }
-    updateSourceFiles(newFiles, false);
-    foreach (const QString &newFile, deletedFiles)
-        m_fileToProject.insert(newFile, p);
-
-    // update qrc cache
-    foreach (const QString &newQrc, pinfo.allResourceFiles)
-        m_qrcCache.addPath(newQrc);
-    foreach (const QString &oldQrc, oldInfo.allResourceFiles)
-        m_qrcCache.removePath(oldQrc);
-
-    int majorVersion, minorVersion, patchVersion;
-    // dump builtin types if the shipped definitions are probably outdated and the
-    // Qt version ships qmlplugindump
-    if (::sscanf(pinfo.qtVersionString.toLatin1().constData(), "%d.%d.%d",
-           &majorVersion, &minorVersion, &patchVersion) != 3)
-        majorVersion = minorVersion = patchVersion = -1;
-
-    if (majorVersion > 4 || (majorVersion == 4 && (minorVersion > 8 || (majorVersion == 8
-                                                                       && patchVersion >= 5)))) {
-        m_pluginDumper->loadBuiltinTypes(pinfo);
-    }
-
-    emit projectInfoUpdated(pinfo);
-}
+//    if (oldInfo.qmlDumpPath != pinfo.qmlDumpPath
+//            || oldInfo.qmlDumpEnvironment != pinfo.qmlDumpEnvironment) {
+//        m_pluginDumper->scheduleRedumpPlugins();
+//        m_pluginDumper->scheduleMaybeRedumpBuiltins(pinfo);
+//    }
 
 
-void ModelManagerInterface::removeProjectInfo(ProjectExplorer::Project *project)
-{
-    ProjectInfo info;
-    info.sourceFiles.clear();
-    // update with an empty project info to clear data
-    updateProjectInfo(info, project);
+//    updateImportPaths();
 
-    {
-        QMutexLocker locker(&m_mutex);
-        m_projects.remove(project);
-    }
-}
+//    // remove files that are no longer in the project and have been deleted
+//    QStringList deletedFiles;
+//    foreach (const QString &oldFile, oldInfo.sourceFiles) {
+//        if (snapshot.document(oldFile)
+//                && !pinfo.sourceFiles.contains(oldFile)
+//                && !QFile::exists(oldFile)) {
+//            deletedFiles += oldFile;
+//        }
+//    }
+//    removeFiles(deletedFiles);
+//    foreach (const QString &oldFile, deletedFiles)
+//        m_fileToProject.remove(oldFile, p);
+
+//    // parse any files not yet in the snapshot
+//    QStringList newFiles;
+//    foreach (const QString &file, pinfo.sourceFiles) {
+//        if (!snapshot.document(file))
+//            newFiles += file;
+//    }
+//    updateSourceFiles(newFiles, false);
+//    foreach (const QString &newFile, deletedFiles)
+//        m_fileToProject.insert(newFile, p);
+
+//    // update qrc cache
+//    foreach (const QString &newQrc, pinfo.allResourceFiles)
+//        m_qrcCache.addPath(newQrc);
+//    foreach (const QString &oldQrc, oldInfo.allResourceFiles)
+//        m_qrcCache.removePath(oldQrc);
+
+//    int majorVersion, minorVersion, patchVersion;
+//    // dump builtin types if the shipped definitions are probably outdated and the
+//    // Qt version ships qmlplugindump
+//    if (::sscanf(pinfo.qtVersionString.toLatin1().constData(), "%d.%d.%d",
+//           &majorVersion, &minorVersion, &patchVersion) != 3)
+//        majorVersion = minorVersion = patchVersion = -1;
+
+//    if (majorVersion > 4 || (majorVersion == 4 && (minorVersion > 8 || (majorVersion == 8
+//                                                                       && patchVersion >= 5)))) {
+//        m_pluginDumper->loadBuiltinTypes(pinfo);
+//    }
+
+//    emit projectInfoUpdated(pinfo);
+//}//#720 ROOPAK - END
+
+
+//void ModelManagerInterface::removeProjectInfo(ProjectExplorer::Project *project)//#720 ROOPAK - START
+//{
+//    ProjectInfo info;
+//    info.sourceFiles.clear();
+//    // update with an empty project info to clear data
+//    updateProjectInfo(info, project);
+
+//    {
+//        QMutexLocker locker(&m_mutex);
+//        m_projects.remove(project);
+//    }
+//}//#720 ROOPAK - END
 
 ModelManagerInterface::ProjectInfo ModelManagerInterface::projectInfoForPath(QString path)
 {
     QMutexLocker locker(&m_mutex);
 
-    foreach (const ProjectInfo &p, m_projects)
-        if (p.sourceFiles.contains(path))
-            return p;
+//    foreach (const ProjectInfo &p, m_projects)//#720 ROOPAK - START
+//        if (p.sourceFiles.contains(path))
+//            return p;//#720 ROOPAK - END
     return ProjectInfo();
 }
 
@@ -626,22 +628,22 @@ static void findNewFileImports(const Document::Ptr &doc, const Snapshot &snapsho
                 }
             }
         } else if (import.type() == ImportType::QrcFile) {
-            QStringList importPaths = ModelManagerInterface::instance()->filesAtQrcPath(importName);
-            foreach (const QString &importPath, importPaths) {
-                if (! snapshot.document(importPath))
-                    *importedFiles += importPath;
-            }
+//            QStringList importPaths = ModelManagerInterface::instance()->filesAtQrcPath(importName);//#720 ROOPAK - START
+//            foreach (const QString &importPath, importPaths) {
+//                if (! snapshot.document(importPath))
+//                    *importedFiles += importPath;
+//            }//#720 ROOPAK - END
         } else if (import.type() == ImportType::QrcDirectory) {
-            QMapIterator<QString,QStringList> dirContents(ModelManagerInterface::instance()->filesInQrcPath(importName));
-            while (dirContents.hasNext()) {
-                dirContents.next();
-                if (Document::isQmlLikeOrJsLanguage(ModelManagerInterface::guessLanguageOfFile(dirContents.key()))) {
-                    foreach (const QString &filePath, dirContents.value()) {
-                        if (! snapshot.document(filePath))
-                            *importedFiles += filePath;
-                    }
-                }
-            }
+//            QMapIterator<QString,QStringList> dirContents(ModelManagerInterface::instance()->filesInQrcPath(importName));//#720 ROOPAK - START
+//            while (dirContents.hasNext()) {
+//                dirContents.next();
+//                if (Document::isQmlLikeOrJsLanguage(ModelManagerInterface::guessLanguageOfFile(dirContents.key()))) {
+//                    foreach (const QString &filePath, dirContents.value()) {
+//                        if (! snapshot.document(filePath))
+//                            *importedFiles += filePath;
+//                    }
+//                }
+//            }//#720 ROOPAK - END
         }
     }
 }
@@ -1011,72 +1013,75 @@ void ModelManagerInterface::updateImportPaths()
     QStringList allImportPaths;
     QmlLanguageBundles activeBundles;
     QmlLanguageBundles extendedBundles;
-    QMapIterator<ProjectExplorer::Project *, ProjectInfo> it(m_projects);
-    while (it.hasNext()) {
-        it.next();
-        foreach (const QString &path, it.value().importPaths) {
-            const QString canonicalPath = QFileInfo(path).canonicalFilePath();
-            if (!canonicalPath.isEmpty())
-                allImportPaths += canonicalPath;
-        }
-    }
-    it.toFront();
-    while (it.hasNext()) {
-        it.next();
-        activeBundles.mergeLanguageBundles(it.value().activeBundle);
-        foreach (Language::Enum l, it.value().activeBundle.languages()) {
-            foreach (const QString &path, it.value().activeBundle.bundleForLanguage(l)
-                 .searchPaths().stringList()) {
-                const QString canonicalPath = QFileInfo(path).canonicalFilePath();
-                if (!canonicalPath.isEmpty())
-                    allImportPaths += canonicalPath;
-            }
-        }
-    }
-    it.toFront();
-    while (it.hasNext()) {
-        it.next();
-        extendedBundles.mergeLanguageBundles(it.value().extendedBundle);
-        foreach (Language::Enum l, it.value().extendedBundle.languages()) {
-            foreach (const QString &path, it.value().extendedBundle.bundleForLanguage(l)
-                     .searchPaths().stringList()) {
-                const QString canonicalPath = QFileInfo(path).canonicalFilePath();
-                if (!canonicalPath.isEmpty())
-                    allImportPaths += canonicalPath;
-            }
-        }
-    }
-    allImportPaths += m_defaultImportPaths;
-    allImportPaths.removeDuplicates();
+//    QMapIterator<ProjectExplorer::Project *, ProjectInfo> it(m_projects);
+//    while (it.hasNext()) {
+//        it.next();
+//        foreach (const QString &path, it.value().importPaths) {
+//            const QString canonicalPath = QFileInfo(path).canonicalFilePath();
+//            if (!canonicalPath.isEmpty())
+//                allImportPaths += canonicalPath;
+//        }
+//    }
+//    it.toFront();
+//    while (it.hasNext()) {
+//        it.next();
+//        activeBundles.mergeLanguageBundles(it.value().activeBundle);
+//        foreach (Language::Enum l, it.value().activeBundle.languages()) {
+//            foreach (const QString &path, it.value().activeBundle.bundleForLanguage(l)
+//                 .searchPaths().stringList()) {
+//                const QString canonicalPath = QFileInfo(path).canonicalFilePath();
+//                if (!canonicalPath.isEmpty())
+//                    allImportPaths += canonicalPath;
+//            }
+//        }
+//    }
+//    it.toFront();
+//    while (it.hasNext()) {
+//        it.next();
+//        extendedBundles.mergeLanguageBundles(it.value().extendedBundle);
+//        foreach (Language::Enum l, it.value().extendedBundle.languages()) {
+//            foreach (const QString &path, it.value().extendedBundle.bundleForLanguage(l)
+//                     .searchPaths().stringList()) {
+//                const QString canonicalPath = QFileInfo(path).canonicalFilePath();
+//                if (!canonicalPath.isEmpty())
+//                    allImportPaths += canonicalPath;
+//            }
+//        }
+//    }
+//    allImportPaths += m_defaultImportPaths;
+//    allImportPaths.removeDuplicates();
 
-    {
-        QMutexLocker l(&m_mutex);
-        m_allImportPaths = allImportPaths;
-        m_activeBundles = activeBundles;
-        m_extendedBundles = extendedBundles;
-    }
+//    {
+//        QMutexLocker l(&m_mutex);
+//        m_allImportPaths = allImportPaths;
+//        m_activeBundles = activeBundles;
+//        m_extendedBundles = extendedBundles;
+//    }
 
 
-    // check if any file in the snapshot imports something new in the new paths
-    Snapshot snapshot = m_validSnapshot;
-    QStringList importedFiles;
-    QSet<QString> scannedPaths;
-    QSet<QString> newLibraries;
-    foreach (const Document::Ptr &doc, snapshot)
-        findNewLibraryImports(doc, snapshot, this, &importedFiles, &scannedPaths, &newLibraries);
+//    // check if any file in the snapshot imports something new in the new paths
+//    Snapshot snapshot = m_validSnapshot;
+//    QStringList importedFiles;
+//    QSet<QString> scannedPaths;
+//    QSet<QString> newLibraries;
+//    foreach (const Document::Ptr &doc, snapshot)
+//        findNewLibraryImports(doc, snapshot, this, &importedFiles, &scannedPaths, &newLibraries);
 
-    updateSourceFiles(importedFiles, true);
+//    updateSourceFiles(importedFiles, true);
 
-    if (!m_shouldScanImports)
-        return;
-    maybeScan(allImportPaths, Language::Qml);
+//    if (!m_shouldScanImports)
+//        return;
+//    maybeScan(allImportPaths, Language::Qml);//#720 ROOPAK - END
 }
 
 ModelManagerInterface::ProjectInfo ModelManagerInterface::defaultProjectInfo() const
 {
-    if (m_projects.isEmpty())
-        return ProjectInfo();
-    return m_projects.begin().value();
+//    if (m_projects.isEmpty())//#720 ROOPAK - START
+//        return ProjectInfo();
+//    return m_projects.begin().value();
+
+    ModelManagerInterface::ProjectInfo ret;
+    return ret;//#720 ROOPAK - END
 }
 
 void ModelManagerInterface::loadPluginTypes(const QString &libraryPath, const QString &importPath,
@@ -1193,25 +1198,27 @@ ModelManagerInterface::CppDataHash ModelManagerInterface::cppData() const
 
 LibraryInfo ModelManagerInterface::builtins(const Document::Ptr &doc) const
 {
-    QList<ProjectExplorer::Project *> projects = m_fileToProject.values(doc->fileName());
+//    QList<ProjectExplorer::Project *> projects = m_fileToProject.values(doc->fileName());//#720 ROOPAK - START
 
-    ProjectExplorer::Project *project = 0;
-    foreach (ProjectExplorer::Project *p, projects) {
-        if (p) {
-            project = p;
-            break;
-        }
-    }
+//    ProjectExplorer::Project *project = 0;
+//    foreach (ProjectExplorer::Project *p, projects) {
+//        if (p) {
+//            project = p;
+//            break;
+//        }
+//    }
 
-    if (!project)
-        return LibraryInfo();
+//    if (!project)
+//        return LibraryInfo();
 
-    QMutexLocker locker(&m_mutex);
-    ProjectInfo info = m_projects.value(project);
-    if (!info.isValid())
-        return LibraryInfo();
+//    QMutexLocker locker(&m_mutex);
+//    ProjectInfo info = m_projects.value(project);
+//    if (!info.isValid())
+//        return LibraryInfo();
 
-    return m_validSnapshot.libraryInfo(info.qtImportsPath);
+//    return m_validSnapshot.libraryInfo(info.qtImportsPath);//#720 ROOPAK - END
+    LibraryInfo ret;
+    return ret;
 }
 
 ViewerContext ModelManagerInterface::completeVContext(const ViewerContext &vCtx,

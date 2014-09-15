@@ -2116,9 +2116,9 @@ ImportInfo ImportInfo::pathImport(const QString &docPath, const QString &path,
         info._type = ImportType::Directory;
     } else if (path.startsWith(QLatin1String("qrc:"))) {
         info._path = path;
-        if (ModelManagerInterface::instance()->filesAtQrcPath(info.path()).isEmpty())
-            info._type = ImportType::QrcDirectory;
-        else
+//        if (ModelManagerInterface::instance()->filesAtQrcPath(info.path()).isEmpty())//#720 ROOPAK - START
+//            info._type = ImportType::QrcDirectory;
+//        else//#720 ROOPAK - END
             info._type = ImportType::QrcFile;
     } else {
         info._type = ImportType::UnknownFile;

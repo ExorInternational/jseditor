@@ -37,7 +37,7 @@
 namespace Utils { class Environment; }
 
 namespace ProjectExplorer {
-    class Project;
+//    class Project;//#720 ROOPAK
 //    class ToolChain;//#720 ROOPAK
 }
 
@@ -61,9 +61,9 @@ public:
     // Copy the source files to a target location and return the chosen target location.
     static QString copy(const QString &qtInstallData, QString *errorMessage);
 
-    static void pathAndEnvironment(ProjectExplorer::Project *project, BaseQtVersion *version,
+//    static void pathAndEnvironment(ProjectExplorer::Project *project, BaseQtVersion *version,//#720 ROOPAK - START
 //                                   ProjectExplorer::ToolChain *toolChain,//#720 ROOPAK
-                                   bool preferDebug, QString *path, Utils::Environment *env);
+//                                   bool preferDebug, QString *path, Utils::Environment *env);//#720 ROOPAK - END
 
 private:
     static QStringList installDirectories(const QString &qtInstallData);

@@ -44,7 +44,7 @@
 #include <coreplugin/icore.h>
 #include <coreplugin/mimedatabase.h>
 #include <coreplugin/variablemanager.h>
-#include <projectexplorer/project.h>
+//#include <projectexplorer/project.h>//#720 ROOPAK
 #include <projectexplorer/projectexplorer.h>
 //#include <projectexplorer/target.h>//#720 ROOPAK
 
@@ -122,11 +122,11 @@ void QtSupportPlugin::updateVariable(const QByteArray &variable)
     if (variable != kHostBins && variable != kInstallBins)
         return;
 
-    ProjectExplorer::Project *project = ProjectExplorer::ProjectExplorerPlugin::currentProject();
-    if (!project /*|| !project->activeTarget()*/) {//#720 ROOPAk
-        VariableManager::remove(variable);
-        return;
-    }
+//    ProjectExplorer::Project *project = ProjectExplorer::ProjectExplorerPlugin::currentProject();//#720 ROOPAK - START
+//    if (!project /*|| !project->activeTarget()*/) {
+//        VariableManager::remove(variable);
+//        return;
+//    }//#720 ROOPAK - END
 
 //    const BaseQtVersion *qtVersion = QtKitInformation::qtVersion(project->activeTarget()->kit());//#720 ROOPAK - START
 //    if (!qtVersion) {

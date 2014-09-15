@@ -312,10 +312,10 @@ Import LinkPrivate::importFileOrDirectory(Document::Ptr doc, const ImportInfo &i
             import.object = importedDoc->bind()->rootObjectValue();
     } else if (importInfo.type() == ImportType::QrcFile) {
         QLocale locale;
-        QStringList filePaths = ModelManagerInterface::instance()
-                ->filesAtQrcPath(path, &locale, 0, ModelManagerInterface::ActiveQrcResources);
-        if (filePaths.isEmpty())
-            filePaths = ModelManagerInterface::instance()->filesAtQrcPath(path);
+        QStringList filePaths;// = ModelManagerInterface::instance()//#720 ROOPAK - START
+//                ->filesAtQrcPath(path, &locale, 0, ModelManagerInterface::ActiveQrcResources);
+//        if (filePaths.isEmpty())
+//            filePaths = ModelManagerInterface::instance()->filesAtQrcPath(path);//#720 ROOPAK - END
         if (!filePaths.isEmpty()) {
             Document::Ptr importedDoc = snapshot.document(filePaths.at(0));
             if (importedDoc)
@@ -326,18 +326,18 @@ Import LinkPrivate::importFileOrDirectory(Document::Ptr doc, const ImportInfo &i
 
         importLibrary(doc, path, &import);
 
-        QMapIterator<QString,QStringList> iter(ModelManagerInterface::instance()
-                                               ->filesInQrcPath(path));
-        while (iter.hasNext()) {
-            iter.next();
-            if (Document::isQmlLikeLanguage(ModelManagerInterface::guessLanguageOfFile(iter.key()))) {
-                Document::Ptr importedDoc = snapshot.document(iter.value().at(0));
-                if (importedDoc && importedDoc->bind()->rootObjectValue()) {
-                    const QString targetName = QFileInfo(iter.key()).baseName();
-                    import.object->setMember(targetName, importedDoc->bind()->rootObjectValue());
-                }
-            }
-        }
+//        QMapIterator<QString,QStringList> iter(ModelManagerInterface::instance()//#720 ROOPAK - START
+//                                               ->filesInQrcPath(path));
+//        while (iter.hasNext()) {
+//            iter.next();
+//            if (Document::isQmlLikeLanguage(ModelManagerInterface::guessLanguageOfFile(iter.key()))) {
+//                Document::Ptr importedDoc = snapshot.document(iter.value().at(0));
+//                if (importedDoc && importedDoc->bind()->rootObjectValue()) {
+//                    const QString targetName = QFileInfo(iter.key()).baseName();
+//                    import.object->setMember(targetName, importedDoc->bind()->rootObjectValue());
+//                }
+//            }
+//        }//#720 ROOPAK - END
     }
     return import;
 }

@@ -52,7 +52,7 @@ namespace ProjectExplorer {
 //class RunControl;
 //class RunConfiguration;//#720 ROOPAK
 //class IRunControlFactory;
-class Project;
+//class Project;//#720 ROOPAK
 //class Node;//ROOPAK
 //class BuildConfiguration;
 //class FolderNode;//ROOPAK
@@ -74,15 +74,15 @@ public:
 
     static ProjectExplorerPlugin *instance();
 
-    Project *openProject(const QString &fileName, QString *error);
-    QList<Project *> openProjects(const QStringList &fileNames, QString *error);
+//    Project *openProject(const QString &fileName, QString *error);//#720 ROOPAK - START
+//    QList<Project *> openProjects(const QStringList &fileNames, QString *error);//#720 ROOPAK - END
     Q_SLOT void openProjectWelcomePage(const QString &fileName);
 //    void unloadProject(Project *project);//#720 ROOPAK
 
-    static Project *currentProject();
+//    static Project *currentProject();//#720 ROOPAK
 //    Node *currentNode() const;//ROOPAK
 
-    void setCurrentFile(Project *project, const QString &file);
+//    void setCurrentFile(Project *project, const QString &file);//#720 ROOPAK
 //    void setCurrentNode(Node *node);//ROOPAK
 
     bool saveModifiedFiles();
@@ -106,19 +106,19 @@ public:
     bool coreAboutToClose();
     QList<QPair<QString, QString> > recentProjects();
 
-    bool canRun(Project *pro, RunMode runMode);
-    QString cannotRunReason(Project *project, RunMode runMode);
-    void runProject(Project *pro, RunMode, const bool forceSkipDeploy = false);
+//    bool canRun(Project *pro, RunMode runMode);//#720 ROOPAK - START
+//    QString cannotRunReason(Project *project, RunMode runMode);
+//    void runProject(Project *pro, RunMode, const bool forceSkipDeploy = false);//#720 ROOPAK - START
 //    void runRunConfiguration(ProjectExplorer::RunConfiguration *rc, RunMode runMode,//#720 ROOPAK
 //                             const bool forceSkipDeploy = false);//#720 ROOPAK
 
 //    void addExistingFiles(ProjectExplorer::FolderNode *projectNode, const QStringList &filePaths);//ROOPAK
     void addExistingFiles(const QStringList &filePaths);
 
-    void buildProject(ProjectExplorer::Project *p);
+//    void buildProject(ProjectExplorer::Project *p);//#720 ROOPAK - START
     /// Normally there's no need to call this function.
     /// This function needs to be called, only if the pages that support a project changed.
-    void requestProjectModeUpdate(ProjectExplorer::Project *p);
+//    void requestProjectModeUpdate(ProjectExplorer::Project *p);//#720 ROOPAK - START
 
 //    QList<RunControl *> runControls() const;//#720 ROOPAK
 
@@ -139,9 +139,9 @@ signals:
     // or the file list of a specific project has changed.
     void fileListChanged();
 
-    void currentProjectChanged(ProjectExplorer::Project *project);
+//    void currentProjectChanged(ProjectExplorer::Project *project);//#720 ROOPAK - START
 //    void currentNodeChanged(ProjectExplorer::Node *node, ProjectExplorer::Project *project);//ROOPAK
-    void aboutToExecuteProject(ProjectExplorer::Project *project, RunMode runMode);
+//    void aboutToExecuteProject(ProjectExplorer::Project *project, RunMode runMode);//#720 ROOPAK - START
     void recentProjectsChanged();
 
     void settingsChanged();
@@ -152,7 +152,7 @@ public slots:
     void openOpenProjectDialog();
 
 private slots:
-    void buildStateChanged(ProjectExplorer::Project * pro);
+//    void buildStateChanged(ProjectExplorer::Project * pro);//#720 ROOPAK
     void buildQueueFinished(bool success);
     void buildProjectOnly();
     void buildProject();
@@ -201,22 +201,22 @@ private slots:
     void deleteFile();
     void renameFile();
     void setStartupProject();
-    void setStartupProject(ProjectExplorer::Project *project);
+//    void setStartupProject(ProjectExplorer::Project *project);//#720 ROOPAK
 
 //    void updateRecentProjectMenu();//#720 ROOPAK
 //    void clearRecentProjects();//#720 ROOPAK
     void openRecentProject();
     void openTerminalHere();
 
-    void invalidateProject(ProjectExplorer::Project *project);
+//    void invalidateProject(ProjectExplorer::Project *project);//#720 ROOPAK
 
     void setCurrentFile(const QString &filePath);
 
     void runControlFinished();
 
-    void projectAdded(ProjectExplorer::Project *pro);
-    void projectRemoved(ProjectExplorer::Project *pro);
-    void projectDisplayNameChanged(ProjectExplorer::Project *pro);
+//    void projectAdded(ProjectExplorer::Project *pro);//#720 ROOPAK - START
+//    void projectRemoved(ProjectExplorer::Project *pro);
+//    void projectDisplayNameChanged(ProjectExplorer::Project *pro);//#720 ROOPAK - END
     void startupProjectChanged(); // Calls updateRunAction
     void activeTargetChanged();
 //    void activeRunConfigurationChanged();//#720 ROOPAK
@@ -278,19 +278,19 @@ private slots:
 #endif
 
 private:
-    void deploy(QList<Project *>);
-    int queue(QList<Project *>, QList<Core::Id> stepIds);
+//    void deploy(QList<Project *>);//#720 ROOPAK - START
+//    int queue(QList<Project *>, QList<Core::Id> stepIds);//#720 ROOPAK - END
     void updateContextMenuActions();
     bool parseArguments(const QStringList &arguments, QString *error);
 //    void executeRunConfiguration(RunConfiguration *, RunMode mode);//#720 ROOPAK
-    bool hasBuildSettings(Project *pro);
+//    bool hasBuildSettings(Project *pro);//#720 ROOPAK
     QPair<bool, QString> buildSettingsEnabledForSession();
-    QPair<bool, QString> buildSettingsEnabled(Project *pro);
-    bool hasDeploySettings(Project *pro);
+//    QPair<bool, QString> buildSettingsEnabled(Project *pro);//#720 ROOPAK
+//    bool hasDeploySettings(Project *pro);//#720 ROOPAK - START
 
 //    void setCurrent(Project *project, QString filePath, Node *node);//ROOPAK
 
-    QStringList allFilesWithDependencies(Project *pro);
+//    QStringList allFilesWithDependencies(Project *pro);//#720 ROOPAK
 //    IRunControlFactory *findRunControlFactory(RunConfiguration *config, RunMode mode);//#720 ROOPAK
 
     void addToRecentProjects(const QString &fileName, const QString &displayName);

@@ -38,7 +38,7 @@
 //#include <cpptools/cppmodelmanagerinterface.h>//#720 ROOPAK
 #include <extensionsystem/pluginmanager.h>
 //#include <projectexplorer/buildconfiguration.h>//ROOPAK
-#include <projectexplorer/project.h>
+//#include <projectexplorer/project.h>//#720 ROOPAK
 #include <projectexplorer/projectexplorer.h>
 //#include <projectexplorer/session.h>//#720 ROOPAK
 //#include <projectexplorer/target.h>//#720 ROOPAK
@@ -74,71 +74,71 @@ using namespace QmlJSTools;
 using namespace QmlJSTools::Internal;
 
 
-ModelManagerInterface::ProjectInfo QmlJSTools::defaultProjectInfoForProject(
-        ProjectExplorer::Project *project)
-{
-    ModelManagerInterface::ProjectInfo projectInfo(project);
-//    ProjectExplorer::Target *activeTarget = 0;//#720 ROOPAK
-    if (project) {
-        QList<MimeGlobPattern> globs;
-        foreach (const MimeType &mimeType, MimeDatabase::mimeTypes())
-            if (mimeType.type() == QLatin1String(Constants::QML_MIMETYPE)
-                    || mimeType.subClassesOf().contains(QLatin1String(Constants::QML_MIMETYPE)))
-                globs << mimeType.globPatterns();
-        if (globs.isEmpty()) {
-            globs.append(MimeGlobPattern(QLatin1String("*.qbs")));
-            globs.append(MimeGlobPattern(QLatin1String("*.qml")));
-            globs.append(MimeGlobPattern(QLatin1String("*.qmltypes")));
-            globs.append(MimeGlobPattern(QLatin1String("*.qmlproject")));
-        }
-        foreach (const QString &filePath
-                 , project->files(ProjectExplorer::Project::ExcludeGeneratedFiles))
-            foreach (const MimeGlobPattern &glob, globs)
-                if (glob.matches(filePath))
-                    projectInfo.sourceFiles << filePath;
-//        activeTarget = project->activeTarget();//#720 ROOPAK
-    }
-//    ProjectExplorer::Kit *activeKit = /*activeTarget ? activeTarget->kit() :*///#720 ROOPAK
-//                                           ProjectExplorer::KitManager::defaultKit();
-//    QtSupport::BaseQtVersion *qtVersion = QtSupport::QtKitInformation::qtVersion(activeKit);//#720 ROOPAK
-
-    bool preferDebugDump = false;
-    bool setPreferDump = false;
-    projectInfo.tryQmlDump = false;
-
-//    if (activeTarget) {//ROOPAK - START
-//        if (ProjectExplorer::BuildConfiguration *bc = activeTarget->activeBuildConfiguration()) {
-//            preferDebugDump = bc->buildType() == ProjectExplorer::BuildConfiguration::Debug;
-//            setPreferDump = true;
+//ModelManagerInterface::ProjectInfo QmlJSTools::defaultProjectInfoForProject(//#720 ROOPAK - START
+//        ProjectExplorer::Project *project)
+//{
+//    ModelManagerInterface::ProjectInfo projectInfo(project);
+////    ProjectExplorer::Target *activeTarget = 0;//#720 ROOPAK
+//    if (project) {
+//        QList<MimeGlobPattern> globs;
+//        foreach (const MimeType &mimeType, MimeDatabase::mimeTypes())
+//            if (mimeType.type() == QLatin1String(Constants::QML_MIMETYPE)
+//                    || mimeType.subClassesOf().contains(QLatin1String(Constants::QML_MIMETYPE)))
+//                globs << mimeType.globPatterns();
+//        if (globs.isEmpty()) {
+//            globs.append(MimeGlobPattern(QLatin1String("*.qbs")));
+//            globs.append(MimeGlobPattern(QLatin1String("*.qml")));
+//            globs.append(MimeGlobPattern(QLatin1String("*.qmltypes")));
+//            globs.append(MimeGlobPattern(QLatin1String("*.qmlproject")));
 //        }
-//    }//ROOPAk - END
-//    if (!setPreferDump && qtVersion)//#720 ROOPAK
-//        preferDebugDump = (qtVersion->defaultBuildConfig() & QtSupport::BaseQtVersion::DebugBuild);
-//    if (qtVersion && qtVersion->isValid()) {
-//        projectInfo.tryQmlDump = project && (
-//                    qtVersion->type() == QLatin1String(QtSupport::Constants::DESKTOPQT)
-//                    || qtVersion->type() == QLatin1String(QtSupport::Constants::SIMULATORQT));
-//        projectInfo.qtQmlPath = qtVersion->qmakeProperty("QT_INSTALL_QML");
-//        projectInfo.qtImportsPath = qtVersion->qmakeProperty("QT_INSTALL_IMPORTS");
-//        projectInfo.qtVersionString = qtVersion->qtVersionString();
-//    }//#720 ROOPAK - END
+////        foreach (const QString &filePath//#720 ROOPAK - START
+////                 , project->files(ProjectExplorer::Project::ExcludeGeneratedFiles))
+////            foreach (const MimeGlobPattern &glob, globs)
+////                if (glob.matches(filePath))
+////                    projectInfo.sourceFiles << filePath;//#720 ROOPAK - END
+////        activeTarget = project->activeTarget();//#720 ROOPAK
+//    }
+////    ProjectExplorer::Kit *activeKit = /*activeTarget ? activeTarget->kit() :*///#720 ROOPAK
+////                                           ProjectExplorer::KitManager::defaultKit();
+////    QtSupport::BaseQtVersion *qtVersion = QtSupport::QtKitInformation::qtVersion(activeKit);//#720 ROOPAK
 
-    if (projectInfo.tryQmlDump) {
-//        ProjectExplorer::ToolChain *toolChain =                                       //#720 ROOPAK - START
-//                ProjectExplorer::ToolChainKitInformation::toolChain(activeKit);
-//        QtSupport::QmlDumpTool::pathAndEnvironment(project, qtVersion,
-//                                                   toolChain,
-//                                                   preferDebugDump, &projectInfo.qmlDumpPath,
-//                                                   &projectInfo.qmlDumpEnvironment);
-//        projectInfo.qmlDumpHasRelocatableFlag = qtVersion->hasQmlDumpWithRelocatableFlag();//#720 ROOPAK - END
-    } else {
-        projectInfo.qmlDumpPath.clear();
-        projectInfo.qmlDumpEnvironment.clear();
-        projectInfo.qmlDumpHasRelocatableFlag = true;
-    }
-    setupProjectInfoQmlBundles(projectInfo);
-    return projectInfo;
-}
+//    bool preferDebugDump = false;
+//    bool setPreferDump = false;
+//    projectInfo.tryQmlDump = false;
+
+////    if (activeTarget) {//ROOPAK - START
+////        if (ProjectExplorer::BuildConfiguration *bc = activeTarget->activeBuildConfiguration()) {
+////            preferDebugDump = bc->buildType() == ProjectExplorer::BuildConfiguration::Debug;
+////            setPreferDump = true;
+////        }
+////    }//ROOPAk - END
+////    if (!setPreferDump && qtVersion)//#720 ROOPAK
+////        preferDebugDump = (qtVersion->defaultBuildConfig() & QtSupport::BaseQtVersion::DebugBuild);
+////    if (qtVersion && qtVersion->isValid()) {
+////        projectInfo.tryQmlDump = project && (
+////                    qtVersion->type() == QLatin1String(QtSupport::Constants::DESKTOPQT)
+////                    || qtVersion->type() == QLatin1String(QtSupport::Constants::SIMULATORQT));
+////        projectInfo.qtQmlPath = qtVersion->qmakeProperty("QT_INSTALL_QML");
+////        projectInfo.qtImportsPath = qtVersion->qmakeProperty("QT_INSTALL_IMPORTS");
+////        projectInfo.qtVersionString = qtVersion->qtVersionString();
+////    }//#720 ROOPAK - END
+
+//    if (projectInfo.tryQmlDump) {
+////        ProjectExplorer::ToolChain *toolChain =                                       //#720 ROOPAK - START
+////                ProjectExplorer::ToolChainKitInformation::toolChain(activeKit);
+////        QtSupport::QmlDumpTool::pathAndEnvironment(project, qtVersion,
+////                                                   toolChain,
+////                                                   preferDebugDump, &projectInfo.qmlDumpPath,
+////                                                   &projectInfo.qmlDumpEnvironment);
+////        projectInfo.qmlDumpHasRelocatableFlag = qtVersion->hasQmlDumpWithRelocatableFlag();//#720 ROOPAK - END
+//    } else {
+//        projectInfo.qmlDumpPath.clear();
+//        projectInfo.qmlDumpEnvironment.clear();
+//        projectInfo.qmlDumpHasRelocatableFlag = true;
+//    }
+//    setupProjectInfoQmlBundles(projectInfo);
+//    return projectInfo;
+//}//#720 ROOPAK - END
 
 void QmlJSTools::setupProjectInfoQmlBundles(ModelManagerInterface::ProjectInfo &projectInfo)
 {
@@ -160,7 +160,7 @@ void QmlJSTools::setupProjectInfoQmlBundles(ModelManagerInterface::ProjectInfo &
 //    }//#720 ROOPAK - END
     projectInfo.extendedBundle = projectInfo.activeBundle;
 
-    if (projectInfo.project) {
+//    if (projectInfo.project) {//#720 ROOPAK - START
 //        QSet<ProjectExplorer::Kit *> currentKits;//#720 ROOPAK - START
 ////        foreach (const ProjectExplorer::Target *t, projectInfo.project->targets())//#720 ROOPAK - START
 ////            if (t->kit())
@@ -171,7 +171,7 @@ void QmlJSTools::setupProjectInfoQmlBundles(ModelManagerInterface::ProjectInfo &
 //                if (bp)
 //                    bp->mergeBundlesForKit(kit, projectInfo.extendedBundle, replacements);
 //        }//#720 ROOPAK - END
-    }
+//    }//#720 ROOPAK - END
 }
 
 QHash<QString,QmlJS::Language::Enum> ModelManager::languageForSuffix() const

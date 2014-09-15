@@ -35,7 +35,7 @@
 #include <coreplugin/icore.h>
 #include <coreplugin/progressmanager/progressmanager.h>
 
-#include <projectexplorer/project.h>
+//#include <projectexplorer/project.h>//#720 ROOPAK
 #include <utils/runextensions.h>
 #include <qmljs/qmljsmodelmanagerinterface.h>
 #include <utils/hostosinfo.h>
@@ -80,18 +80,18 @@ public:
         m_buildTask->run(future);
     }
 
-    void updateProjectWhenDone(QPointer<Project> project, bool preferDebug)
-    {
-        foreach (const ProjectToUpdate &update, m_projectsToUpdate) {
-            if (update.project == project)
-                return;
-        }
+//    void updateProjectWhenDone(QPointer<Project> project, bool preferDebug)//#720 ROOPAK - START
+//    {
+//        foreach (const ProjectToUpdate &update, m_projectsToUpdate) {
+//            if (update.project == project)
+//                return;
+//        }
 
-        ProjectToUpdate update;
-        update.project = project;
-        update.preferDebug = preferDebug;
-        m_projectsToUpdate += update;
-    }
+//        ProjectToUpdate update;
+//        update.project = project;
+//        update.preferDebug = preferDebug;
+//        m_projectsToUpdate += update;
+//    }//#720 ROOPAK - END
 
     bool hasFailed() const
     {
@@ -126,15 +126,15 @@ private slots:
             return;
 
         foreach (const ProjectToUpdate &update, m_projectsToUpdate) {
-            if (!update.project)
-                continue;
-            QmlJS::ModelManagerInterface::ProjectInfo projectInfo = modelManager->projectInfo(update.project);
-            projectInfo.qmlDumpPath = version->qmlDumpTool(update.preferDebug);
-            if (projectInfo.qmlDumpPath.isEmpty())
-                projectInfo.qmlDumpPath = version->qmlDumpTool(!update.preferDebug);
-            projectInfo.qmlDumpEnvironment = version->qmlToolsEnvironment();
-            projectInfo.qmlDumpHasRelocatableFlag = version->hasQmlDumpWithRelocatableFlag();
-            modelManager->updateProjectInfo(projectInfo, update.project);
+//            if (!update.project)//#720 ROOPAK - START
+//                continue;
+//            QmlJS::ModelManagerInterface::ProjectInfo projectInfo = modelManager->projectInfo(update.project);
+//            projectInfo.qmlDumpPath = version->qmlDumpTool(update.preferDebug);
+//            if (projectInfo.qmlDumpPath.isEmpty())
+//                projectInfo.qmlDumpPath = version->qmlDumpTool(!update.preferDebug);
+//            projectInfo.qmlDumpEnvironment = version->qmlToolsEnvironment();
+//            projectInfo.qmlDumpHasRelocatableFlag = version->hasQmlDumpWithRelocatableFlag();
+//            modelManager->updateProjectInfo(projectInfo, update.project);//#720 ROOPAK - END
         }
 
         // clean up
@@ -145,7 +145,7 @@ private slots:
 private:
     class ProjectToUpdate {
     public:
-        QPointer<Project> project;
+//        QPointer<Project> project;//#720 ROOPAK
         bool preferDebug;
     };
 
@@ -312,46 +312,46 @@ QStringList QmlDumpTool::installDirectories(const QString &qtInstallData)
     return directories;
 }
 
-void QmlDumpTool::pathAndEnvironment(Project *project, BaseQtVersion *version,
+//void QmlDumpTool::pathAndEnvironment(Project *project, BaseQtVersion *version,//#720 ROOPAK - START
 //                                     ToolChain *toolChain,//#720 ROOPAK
-                                     bool preferDebug, QString *dumperPath, Utils::Environment *env)
-{
-    QString path;
-    if (version && !version->hasQmlDump() && QmlDumpTool::canBuild(version)) {
-        QmlDumpBuildTask *qmlDumpBuildTask = qmlDumpBuilds()->value(version->uniqueId());
-        if (qmlDumpBuildTask) {
-            if (!qmlDumpBuildTask->hasFailed())
-                qmlDumpBuildTask->updateProjectWhenDone(project, preferDebug);
-        } else {
-//            QmlDumpBuildTask *buildTask = new QmlDumpBuildTask(version, toolChain);//#720 ROOPAK - START
-//            buildTask->updateProjectWhenDone(project, preferDebug);
-//            QFuture<void> task = QtConcurrent::run(&QmlDumpBuildTask::run, buildTask);
-//            const QString taskName = QmlDumpBuildTask::tr("Building helper");
-//            Core::ProgressManager::addTask(task, taskName, "QmakeProjectManager::BuildHelpers");//#720 ROOPAK - END
-        }
-        return;
-    }
+//                                     bool preferDebug, QString *dumperPath, Utils::Environment *env)
+//{
+//    QString path;
+//    if (version && !version->hasQmlDump() && QmlDumpTool::canBuild(version)) {
+//        QmlDumpBuildTask *qmlDumpBuildTask = qmlDumpBuilds()->value(version->uniqueId());
+//        if (qmlDumpBuildTask) {
+////            if (!qmlDumpBuildTask->hasFailed())//#720 ROOPAK - START
+////                qmlDumpBuildTask->updateProjectWhenDone(project, preferDebug);//#720 ROOPAK - END
+//        } else {
+////            QmlDumpBuildTask *buildTask = new QmlDumpBuildTask(version, toolChain);//#720 ROOPAK - START
+////            buildTask->updateProjectWhenDone(project, preferDebug);
+////            QFuture<void> task = QtConcurrent::run(&QmlDumpBuildTask::run, buildTask);
+////            const QString taskName = QmlDumpBuildTask::tr("Building helper");
+////            Core::ProgressManager::addTask(task, taskName, "QmakeProjectManager::BuildHelpers");//#720 ROOPAK - END
+//        }
+//        return;
+//    }
 
-    path = toolForVersion(version, preferDebug);
-    if (path.isEmpty())
-        path = toolForVersion(version, !preferDebug);
+//    path = toolForVersion(version, preferDebug);
+//    if (path.isEmpty())
+//        path = toolForVersion(version, !preferDebug);
 
-    if (!path.isEmpty()) {
-        QFileInfo qmldumpFileInfo(path);
-        if (!qmldumpFileInfo.exists()) {
-            qWarning() << "QmlDumpTool::qmlDumpPath: qmldump executable does not exist at" << path;
-            path.clear();
-        } else if (!qmldumpFileInfo.isFile()) {
-            qWarning() << "QmlDumpTool::qmlDumpPath: " << path << " is not a file";
-            path.clear();
-        }
-    }
+//    if (!path.isEmpty()) {
+//        QFileInfo qmldumpFileInfo(path);
+//        if (!qmldumpFileInfo.exists()) {
+//            qWarning() << "QmlDumpTool::qmlDumpPath: qmldump executable does not exist at" << path;
+//            path.clear();
+//        } else if (!qmldumpFileInfo.isFile()) {
+//            qWarning() << "QmlDumpTool::qmlDumpPath: " << path << " is not a file";
+//            path.clear();
+//        }
+//    }
 
-    if (!path.isEmpty() && version && dumperPath && env) {
-        *dumperPath = path;
-        *env = version->qmlToolsEnvironment();
-    }
-}
+//    if (!path.isEmpty() && version && dumperPath && env) {
+//        *dumperPath = path;
+//        *env = version->qmlToolsEnvironment();
+//    }
+//}//#720 ROOPAK - END
 
 } // namespace QtSupport
 

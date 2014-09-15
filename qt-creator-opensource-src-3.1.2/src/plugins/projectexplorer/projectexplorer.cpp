@@ -34,7 +34,7 @@
 //#include "deployablefile.h"//ROOPAK
 //#include "deployconfiguration.h"//ROOPAK
 //#include "gcctoolchainfactories.h"//ROOPAK
-#include "project.h"
+//#include "project.h"//#720 ROOPAK
 //#include "projectexplorersettings.h"//ROOPAK
 //#include "projectmacroexpander.h"//ROOPAK
 //#include "removetaskhandler.h"//ROOPAK
@@ -228,7 +228,7 @@ struct ProjectExplorerPluginPrivate {
 //    Internal::ProjectWindow *m_proWindow;//ROOPAK
     QString m_sessionToRestoreAtStartup;
 
-    Project *m_currentProject;
+//    Project *m_currentProject;//#720 ROOPAK
     Context m_lastProjectContext;
 //    Node *m_currentNode;//ROOPAK
 
@@ -262,7 +262,7 @@ struct ProjectExplorerPluginPrivate {
 };
 
 ProjectExplorerPluginPrivate::ProjectExplorerPluginPrivate() :
-    m_currentProject(0),
+//    m_currentProject(0),//#720 ROOPAK
 //    m_currentNode(0),//ROOPAK
     m_shouldHaveRunConfiguration(false),
     m_runMode(NoRunMode),
@@ -1069,7 +1069,7 @@ void ProjectExplorerPlugin::loadAction()
     if (filename.isEmpty())
         return;
     QString errorMessage;
-    openProject(filename, &errorMessage);
+//    openProject(filename, &errorMessage);//#720 ROOPAK - START
 
     if (!errorMessage.isEmpty())
         QMessageBox::critical(ICore::mainWindow(), tr("Failed to open project."), errorMessage);
@@ -1159,63 +1159,63 @@ void ProjectExplorerPlugin::loadCustomWizards()
 
 void ProjectExplorerPlugin::updateVariable(const QByteArray &variable)
 {
-    if (variable == Constants::VAR_CURRENTPROJECT_BUILDPATH) {
-        if (currentProject() /*&& currentProject()->activeTarget() && currentProject()->activeTarget()->activeBuildConfiguration()*/) {//ROOPAK
-//            VariableManager::insert(variable,
-//                                          currentProject()->activeTarget()->activeBuildConfiguration()->buildDirectory().toUserOutput());//ROOPAK
-        } else {
-            VariableManager::remove(variable);
-        }
-    } else if (variable == Constants::VAR_CURRENTBUILD_TYPE) {
-        if (currentProject() /*&& currentProject()->activeTarget() && currentProject()->activeTarget()->activeBuildConfiguration()*/) {//ROOPAK
-//            BuildConfiguration::BuildType type = currentProject()->activeTarget()->activeBuildConfiguration()->buildType();//ROOPAK - START
-//            QString typeString;
-//            if (type == BuildConfiguration::Debug)
-//                typeString = tr("debug");
-//            else if (type == BuildConfiguration::Release)
-//                typeString = tr("release");
-//            else
-//                typeString = tr("unknown");
-//            VariableManager::insert(variable, typeString);//ROOPAK - END
-        } else {
-            VariableManager::remove(variable);
-        }
-    } else if (variable == Constants::VAR_CURRENTSESSION_NAME) {
-//        if (!SessionManager::activeSession().isEmpty())//#720 ROOPAK - START
-//            VariableManager::insert(variable, SessionManager::activeSession());
-//        else
-//            VariableManager::remove(variable);//#720 ROOPAK - END
-    } else if (Core::VariableManager::isFileVariable(
-                   variable, ProjectExplorer::Constants::VAR_CURRENTSESSION_PREFIX)) {
-//        if (!SessionManager::activeSession().isEmpty()) {//#720 ROOPAK - START
-//            VariableManager::insert(variable, Core::VariableManager::fileVariableValue(variable,
-//                 ProjectExplorer::Constants::VAR_CURRENTSESSION_PREFIX,
-//                 SessionManager::sessionNameToFileName(SessionManager::activeSession()).toFileInfo()));
+//    if (variable == Constants::VAR_CURRENTPROJECT_BUILDPATH) {//#720 ROOPAK - START
+//        if (currentProject() /*&& currentProject()->activeTarget() && currentProject()->activeTarget()->activeBuildConfiguration()*/) {//ROOPAK
+////            VariableManager::insert(variable,
+////                                          currentProject()->activeTarget()->activeBuildConfiguration()->buildDirectory().toUserOutput());//ROOPAK
 //        } else {
 //            VariableManager::remove(variable);
-//        }//#720 ROOPAK - END
-    } else {
-        QString projectName;
-        QString projectFilePath;
-//        Kit *kit = 0;//#720 ROOPAK
-        QString buildConfigurationName;
-        if (Project *project = currentProject()) {
-            projectName = project->displayName();
-            if (IDocument *doc = project->document())
-                projectFilePath = doc->filePath();
-//            if (Target *target = project->activeTarget()) {//#720 ROOPAK - START
-//                kit = target->kit();
-////                if (BuildConfiguration *buildConfiguration = target->activeBuildConfiguration())//ROOPAK
-////                    buildConfigurationName = buildConfiguration->displayName();//ROOPAK
-//            }//#720 ROOPAK - END
-        }
-//        ProjectMacroExpander expander(projectFilePath, projectName, kit, buildConfigurationName);//ROOPAK - START
-//        QString result;
-//        if (expander.resolveProjectMacro(QString::fromUtf8(variable), &result))
-//            VariableManager::insert(variable, result);
-//        else
-//            VariableManager::remove(variable);//ROOPAK - END
-    }
+//        }
+//    } else if (variable == Constants::VAR_CURRENTBUILD_TYPE) {
+//        if (currentProject() /*&& currentProject()->activeTarget() && currentProject()->activeTarget()->activeBuildConfiguration()*/) {//ROOPAK
+////            BuildConfiguration::BuildType type = currentProject()->activeTarget()->activeBuildConfiguration()->buildType();//ROOPAK - START
+////            QString typeString;
+////            if (type == BuildConfiguration::Debug)
+////                typeString = tr("debug");
+////            else if (type == BuildConfiguration::Release)
+////                typeString = tr("release");
+////            else
+////                typeString = tr("unknown");
+////            VariableManager::insert(variable, typeString);//ROOPAK - END
+//        } else {
+//            VariableManager::remove(variable);
+//        }
+//    } else if (variable == Constants::VAR_CURRENTSESSION_NAME) {
+////        if (!SessionManager::activeSession().isEmpty())//#720 ROOPAK - START
+////            VariableManager::insert(variable, SessionManager::activeSession());
+////        else
+////            VariableManager::remove(variable);//#720 ROOPAK - END
+//    } else if (Core::VariableManager::isFileVariable(
+//                   variable, ProjectExplorer::Constants::VAR_CURRENTSESSION_PREFIX)) {
+////        if (!SessionManager::activeSession().isEmpty()) {//#720 ROOPAK - START
+////            VariableManager::insert(variable, Core::VariableManager::fileVariableValue(variable,
+////                 ProjectExplorer::Constants::VAR_CURRENTSESSION_PREFIX,
+////                 SessionManager::sessionNameToFileName(SessionManager::activeSession()).toFileInfo()));
+////        } else {
+////            VariableManager::remove(variable);
+////        }//#720 ROOPAK - END
+//    } else {
+//        QString projectName;
+//        QString projectFilePath;
+////        Kit *kit = 0;//#720 ROOPAK
+//        QString buildConfigurationName;
+//        if (Project *project = currentProject()) {
+//            projectName = project->displayName();
+//            if (IDocument *doc = project->document())
+//                projectFilePath = doc->filePath();
+////            if (Target *target = project->activeTarget()) {//#720 ROOPAK - START
+////                kit = target->kit();
+//////                if (BuildConfiguration *buildConfiguration = target->activeBuildConfiguration())//ROOPAK
+//////                    buildConfigurationName = buildConfiguration->displayName();//ROOPAK
+////            }//#720 ROOPAK - END
+//        }
+////        ProjectMacroExpander expander(projectFilePath, projectName, kit, buildConfigurationName);//ROOPAK - START
+////        QString result;
+////        if (expander.resolveProjectMacro(QString::fromUtf8(variable), &result))
+////            VariableManager::insert(variable, result);
+////        else
+////            VariableManager::remove(variable);//ROOPAK - END
+//    }//#720 ROOPAK - END
 }
 
 void ProjectExplorerPlugin::updateRunWithoutDeployMenu()
@@ -1273,16 +1273,16 @@ ExtensionSystem::IPlugin::ShutdownFlag ProjectExplorerPlugin::aboutToShutdown()
 //#endif
 //}//#720 ROOPAK - END
 
-void ProjectExplorerPlugin::setStartupProject(Project *project)
-{
-    if (debug)
-        qDebug() << "ProjectExplorerPlugin::setStartupProject";
+//void ProjectExplorerPlugin::setStartupProject(Project *project)//#720 ROOPAK - START
+//{
+//    if (debug)
+//        qDebug() << "ProjectExplorerPlugin::setStartupProject";
 
-    if (!project)
-        return;
-//    SessionManager::setStartupProject(project);//#720 ROOPAK
-    updateActions();
-}
+//    if (!project)
+//        return;
+////    SessionManager::setStartupProject(project);//#720 ROOPAK
+//    updateActions();
+//}//#720 ROOPAK - END
 
 void ProjectExplorerPlugin::savePersistentSettings()
 {
@@ -1338,24 +1338,24 @@ void ProjectExplorerPlugin::savePersistentSettings()
 void ProjectExplorerPlugin::openProjectWelcomePage(const QString &fileName)
 {
     QString errorMessage;
-    openProject(fileName, &errorMessage);
+//    openProject(fileName, &errorMessage);//#720 ROOPAK
     if (!errorMessage.isEmpty())
         QMessageBox::critical(ICore::mainWindow(), tr("Failed to Open Project"), errorMessage);
 }
 
-Project *ProjectExplorerPlugin::openProject(const QString &fileName, QString *errorString)
-{
-    if (debug)
-        qDebug() << "ProjectExplorerPlugin::openProject";
+//Project *ProjectExplorerPlugin::openProject(const QString &fileName, QString *errorString)//#720 ROOPAK - START
+//{
+//    if (debug)
+//        qDebug() << "ProjectExplorerPlugin::openProject";
 
-    QList<Project *> list = openProjects(QStringList() << fileName, errorString);
-    if (!list.isEmpty()) {
-        addToRecentProjects(fileName, list.first()->displayName());
-//        SessionManager::setStartupProject(list.first());//#720 ROOPAK
-        return list.first();
-    }
-    return 0;
-}
+//    QList<Project *> list = openProjects(QStringList() << fileName, errorString);
+//    if (!list.isEmpty()) {
+//        addToRecentProjects(fileName, list.first()->displayName());
+////        SessionManager::setStartupProject(list.first());//#720 ROOPAK
+//        return list.first();
+//    }
+//    return 0;
+//}//#720 ROOPAK - END
 
 //static inline QList<IProjectManager*> allProjectManagers()//#720 ROOPAK - START
 //{
@@ -1372,113 +1372,113 @@ static void appendError(QString *errorString, const QString &error)
     errorString->append(error);
 }
 
-QList<Project *> ProjectExplorerPlugin::openProjects(const QStringList &fileNames, QString *errorString)
-{
-    if (debug)
-        qDebug() << "ProjectExplorerPlugin - opening projects " << fileNames;
+//QList<Project *> ProjectExplorerPlugin::openProjects(const QStringList &fileNames, QString *errorString)//#720 ROOPAK - START
+//{
+//    if (debug)
+//        qDebug() << "ProjectExplorerPlugin - opening projects " << fileNames;
 
-//    const QList<IProjectManager*> projectManagers = allProjectManagers();//#720 ROOPAK
+////    const QList<IProjectManager*> projectManagers = allProjectManagers();//#720 ROOPAK
 
-    QList<Project*> openedPro;
-    foreach (const QString &fileName, fileNames) {
-        QTC_ASSERT(!fileName.isEmpty(), continue);
+//    QList<Project*> openedPro;
+//    foreach (const QString &fileName, fileNames) {
+//        QTC_ASSERT(!fileName.isEmpty(), continue);
 
-        QFileInfo fi = QFileInfo(fileName);
-        QString filePath = fileName;
-        if (fi.exists()) // canonicalFilePath will be empty otherwise!
-            filePath = fi.canonicalFilePath();
-        bool found = false;
-//        foreach (Project *pi, SessionManager::projects()) {//#720 ROOPAK - END
-//            if (filePath == pi->projectFilePath()) {
-//                found = true;
-//                break;
+//        QFileInfo fi = QFileInfo(fileName);
+//        QString filePath = fileName;
+//        if (fi.exists()) // canonicalFilePath will be empty otherwise!
+//            filePath = fi.canonicalFilePath();
+//        bool found = false;
+////        foreach (Project *pi, SessionManager::projects()) {//#720 ROOPAK - END
+////            if (filePath == pi->projectFilePath()) {
+////                found = true;
+////                break;
+////            }
+////        }//#720 ROOPAK - END
+//        if (found) {
+//            appendError(errorString, tr("Failed opening project '%1': Project already open.")
+//                        .arg(QDir::toNativeSeparators(fileName)));
+////            SessionManager::reportProjectLoadingProgress();//#720 ROOPAK
+//            continue;
+//        }
+
+//        if (const MimeType mt = MimeDatabase::findByFile(QFileInfo(fileName))) {
+//            bool foundProjectManager = false;
+////            foreach (IProjectManager *manager, projectManagers) {//#720 ROOPAK - START
+////                if (manager->mimeType() == mt.type()) {
+////                    foundProjectManager = true;
+////                    QString tmp;
+////                    if (Project *pro = manager->openProject(filePath, &tmp)) {
+////                        if (pro->restoreSettings()) {
+////                            connect(pro, SIGNAL(fileListChanged()), this, SIGNAL(fileListChanged()));
+////                            SessionManager::addProject(pro);
+////                            // Make sure we always have a current project / node
+//////                            if (!d->m_currentProject && !openedPro.isEmpty())//ROOPAK
+//////                                setCurrentNode(pro->rootProjectNode());//ROOPAK
+////                            openedPro += pro;
+////                        } else {
+////                            appendError(errorString, tr("Failed opening project '%1': Settings could not be restored.")
+////                                        .arg(QDir::toNativeSeparators(fileName)));
+////                            delete pro;
+////                        }
+////                    }
+////                    if (!tmp.isEmpty())
+////                        appendError(errorString, tmp);
+////                    break;
+////                }
+////            }//#720 ROOPAK - END
+//            if (!foundProjectManager) {
+//                appendError(errorString, tr("Failed opening project '%1': No plugin can open project type '%2'.")
+//                            .arg(QDir::toNativeSeparators(fileName))
+//                            .arg((mt.type())));
 //            }
-//        }//#720 ROOPAK - END
-        if (found) {
-            appendError(errorString, tr("Failed opening project '%1': Project already open.")
-                        .arg(QDir::toNativeSeparators(fileName)));
-//            SessionManager::reportProjectLoadingProgress();//#720 ROOPAK
-            continue;
-        }
+//        } else {
+//            appendError(errorString, tr("Failed opening project '%1': Unknown project type.")
+//                        .arg(QDir::toNativeSeparators(fileName)));
+//        }
+////        SessionManager::reportProjectLoadingProgress();//#720 ROOPAK
+//    }
+//    updateActions();
 
-        if (const MimeType mt = MimeDatabase::findByFile(QFileInfo(fileName))) {
-            bool foundProjectManager = false;
-//            foreach (IProjectManager *manager, projectManagers) {//#720 ROOPAK - START
-//                if (manager->mimeType() == mt.type()) {
-//                    foundProjectManager = true;
-//                    QString tmp;
-//                    if (Project *pro = manager->openProject(filePath, &tmp)) {
-//                        if (pro->restoreSettings()) {
-//                            connect(pro, SIGNAL(fileListChanged()), this, SIGNAL(fileListChanged()));
-//                            SessionManager::addProject(pro);
-//                            // Make sure we always have a current project / node
-////                            if (!d->m_currentProject && !openedPro.isEmpty())//ROOPAK
-////                                setCurrentNode(pro->rootProjectNode());//ROOPAK
-//                            openedPro += pro;
-//                        } else {
-//                            appendError(errorString, tr("Failed opening project '%1': Settings could not be restored.")
-//                                        .arg(QDir::toNativeSeparators(fileName)));
-//                            delete pro;
-//                        }
-//                    }
-//                    if (!tmp.isEmpty())
-//                        appendError(errorString, tmp);
-//                    break;
-//                }
-//            }//#720 ROOPAK - END
-            if (!foundProjectManager) {
-                appendError(errorString, tr("Failed opening project '%1': No plugin can open project type '%2'.")
-                            .arg(QDir::toNativeSeparators(fileName))
-                            .arg((mt.type())));
-            }
-        } else {
-            appendError(errorString, tr("Failed opening project '%1': Unknown project type.")
-                        .arg(QDir::toNativeSeparators(fileName)));
-        }
-//        SessionManager::reportProjectLoadingProgress();//#720 ROOPAK
-    }
-    updateActions();
+//    bool switchToProjectsMode = false;
+//    foreach (Project *p, openedPro) {
+//        if (p->needsConfiguration()) {
+//            switchToProjectsMode = true;
+//            break;
+//        }
+//    }
 
-    bool switchToProjectsMode = false;
-    foreach (Project *p, openedPro) {
-        if (p->needsConfiguration()) {
-            switchToProjectsMode = true;
-            break;
-        }
-    }
+//    if (!openedPro.isEmpty()) {
+//        if (switchToProjectsMode)
+//            ModeManager::activateMode(ProjectExplorer::Constants::MODE_SESSION);
+//        else
+//            ModeManager::activateMode(Core::Constants::MODE_EDIT);
+//        ModeManager::setFocusToCurrentMode();
+//    }
 
-    if (!openedPro.isEmpty()) {
-        if (switchToProjectsMode)
-            ModeManager::activateMode(ProjectExplorer::Constants::MODE_SESSION);
-        else
-            ModeManager::activateMode(Core::Constants::MODE_EDIT);
-        ModeManager::setFocusToCurrentMode();
-    }
+//    return openedPro;
+//}//#720 ROOPAK - END
 
-    return openedPro;
-}
-
-Project *ProjectExplorerPlugin::currentProject()
-{
-    Project *project = m_instance->d->m_currentProject;
-    if (debug) {
-        if (project)
-            qDebug() << "ProjectExplorerPlugin::currentProject returns " << project->displayName();
-        else
-            qDebug() << "ProjectExplorerPlugin::currentProject returns 0";
-    }
-    return project;
-}
+//Project *ProjectExplorerPlugin::currentProject()//#720 ROOPAK - START
+//{
+//    Project *project = m_instance->d->m_currentProject;
+//    if (debug) {
+//        if (project)
+//            qDebug() << "ProjectExplorerPlugin::currentProject returns " << project->displayName();
+//        else
+//            qDebug() << "ProjectExplorerPlugin::currentProject returns 0";
+//    }
+//    return project;
+//}//#720 ROOPAK - END
 
 //Node *ProjectExplorerPlugin::currentNode() const//ROOPAk - START
 //{
 //    return d->m_currentNode;
 //}//ROOPAK - END
 
-void ProjectExplorerPlugin::setCurrentFile(Project *project, const QString &filePath)
-{
+//void ProjectExplorerPlugin::setCurrentFile(Project *project, const QString &filePath)//#720 ROOPAK - START
+//{
 //    setCurrent(project, filePath, 0);//ROOPAK
-}
+//}//#720 ROOPAK - END
 
 void ProjectExplorerPlugin::setCurrentFile(const QString &filePath)
 {
@@ -1690,15 +1690,15 @@ void ProjectExplorerPlugin::loadSession(const QString &session)
 //        contextMenu->popup(globalPos);
 //}//ROOPAk - END
 
-void ProjectExplorerPlugin::buildStateChanged(Project * pro)
-{
-    if (debug) {
-        qDebug() << "buildStateChanged";
-//        qDebug() << pro->projectFilePath() << "isBuilding()" << BuildManager::isBuilding(pro);//ROOPAK
-    }
-    Q_UNUSED(pro)
-    updateActions();
-}
+//void ProjectExplorerPlugin::buildStateChanged(Project * pro)//#720 ROOPAK - START
+//{
+//    if (debug) {
+//        qDebug() << "buildStateChanged";
+////        qDebug() << pro->projectFilePath() << "isBuilding()" << BuildManager::isBuilding(pro);//ROOPAK
+//    }
+//    Q_UNUSED(pro)
+//    updateActions();
+//}//#720 ROOPAK - END
 
 //void ProjectExplorerPlugin::executeRunConfiguration(RunConfiguration *runConfiguration, RunMode runMode)//ROOPAK - START
 //{
@@ -1798,18 +1798,18 @@ void ProjectExplorerPlugin::updateExternalFileWarning()
         infoBar->removeInfo(externalFileId);
         return;
     }
-    if (!d->m_currentProject || !infoBar->canInfoBeAdded(externalFileId))
-        return;
-    Utils::FileName fileName = Utils::FileName::fromString(document->filePath());
-    Utils::FileName projectDir = Utils::FileName::fromString(d->m_currentProject->projectDirectory());
-    if (projectDir.isEmpty() || fileName.isChildOf(projectDir))
-        return;
-    // External file. Test if it under the same VCS
-    QString topLevel;
-    if (VcsManager::findVersionControlForDirectory(projectDir.toString(), &topLevel)
-            && fileName.isChildOf(Utils::FileName::fromString(topLevel))) {
-        return;
-    }
+//    if (!d->m_currentProject || !infoBar->canInfoBeAdded(externalFileId))//#720 ROOPAK - START
+//        return;
+//    Utils::FileName fileName = Utils::FileName::fromString(document->filePath());
+//    Utils::FileName projectDir = Utils::FileName::fromString(d->m_currentProject->projectDirectory());
+//    if (projectDir.isEmpty() || fileName.isChildOf(projectDir))
+//        return;
+//    // External file. Test if it under the same VCS
+//    QString topLevel;
+//    if (VcsManager::findVersionControlForDirectory(projectDir.toString(), &topLevel)
+//            && fileName.isChildOf(Utils::FileName::fromString(topLevel))) {
+//        return;
+//    }//#720 ROOPAK - END
     infoBar->addInfo(InfoBarEntry(externalFileId,
                              tr("<b>Warning:</b> This file is outside the project directory."),
                                         InfoBarEntry::GlobalSuppressionEnabled));
@@ -1821,12 +1821,12 @@ void ProjectExplorerPlugin::updateContext()
     oldContext.add(d->m_lastProjectContext);
 
     Context newContext;
-    if (d->m_currentProject) {
+    /*if (d->m_currentProject) {//#720 ROOPAK - START
         newContext.add(d->m_currentProject->projectContext());
         newContext.add(d->m_currentProject->projectLanguages());
 
         d->m_lastProjectContext = newContext;
-    } else {
+    } else */{                  //#720 ROOPAK - END
         d->m_lastProjectContext = Context();
     }
 
@@ -1893,12 +1893,12 @@ void ProjectExplorerPlugin::updateActions()
 
 //    Project *project = SessionManager::startupProject();//#720 ROOPAK
 
-    QPair<bool, QString> buildActionState = buildSettingsEnabled(/*project*/NULL);//#720 ROOPAK
-    QPair<bool, QString> buildActionContextState = buildSettingsEnabled(d->m_currentProject);
+    QPair<bool, QString> buildActionState;// = buildSettingsEnabled(/*project*/NULL);//#720 ROOPAK
+    QPair<bool, QString> buildActionContextState;// = buildSettingsEnabled(d->m_currentProject);//#720 ROOPAK
     QPair<bool, QString> buildSessionState = buildSettingsEnabledForSession();
 
     QString projectName = /*project ? project->displayName() :*/ QString();//#720 ROOPAK
-    QString projectNameContextMenu = d->m_currentProject ? d->m_currentProject->displayName() : QString();
+    QString projectNameContextMenu ;//= d->m_currentProject ? d->m_currentProject->displayName() : QString();//#720 ROOPAK
 
 //    d->m_unloadAction->setParameter(projectNameContextMenu);//#720 ROOPAK
 
@@ -1970,20 +1970,20 @@ void ProjectExplorerPlugin::updateActions()
 
 // NBS TODO check projectOrder()
 // what we want here is all the projects pro depends on
-QStringList ProjectExplorerPlugin::allFilesWithDependencies(Project *pro)
-{
-    if (debug)
-        qDebug() << "ProjectExplorerPlugin::allFilesWithDependencies(" << pro->projectFilePath() << ")";
+//QStringList ProjectExplorerPlugin::allFilesWithDependencies(Project *pro)//#720 ROOPAK - START
+//{
+//    if (debug)
+//        qDebug() << "ProjectExplorerPlugin::allFilesWithDependencies(" << pro->projectFilePath() << ")";
 
-    QStringList filesToSave;
-//    foreach (Project *p, SessionManager::projectOrder(pro)) {//#720 ROOPAK - END
-//        FindAllFilesVisitor filesVisitor;//ROOPAK
-//        p->rootProjectNode()->accept(&filesVisitor);//ROOPAK
-//        filesToSave << filesVisitor.filePaths();//ROOPAK
-//    }//#720 ROOPAK - END
-    qSort(filesToSave);
-    return filesToSave;
-}
+//    QStringList filesToSave;
+////    foreach (Project *p, SessionManager::projectOrder(pro)) {//#720 ROOPAK - END
+////        FindAllFilesVisitor filesVisitor;//ROOPAK
+////        p->rootProjectNode()->accept(&filesVisitor);//ROOPAK
+////        filesToSave << filesVisitor.filePaths();//ROOPAK
+////    }//#720 ROOPAK - END
+//    qSort(filesToSave);
+//    return filesToSave;
+//}//#720 ROOPAK - END
 
 bool ProjectExplorerPlugin::saveModifiedFiles()
 {
@@ -2016,14 +2016,14 @@ bool ProjectExplorerPlugin::saveModifiedFiles()
 //NBS handle case where there is no activeBuildConfiguration
 // because someone delete all build configurations
 
-void ProjectExplorerPlugin::deploy(QList<Project *> projects)
-{
-    QList<Id> steps;
-//    if (d->m_projectExplorerSettings.buildBeforeDeploy)//ROOPAK
-//        steps << Id(Constants::BUILDSTEPS_BUILD);//ROOPAK
-    steps << Id(Constants::BUILDSTEPS_DEPLOY);
-    queue(projects, steps);
-}
+//void ProjectExplorerPlugin::deploy(QList<Project *> projects)//#720 ROOPAK - START
+//{
+//    QList<Id> steps;
+////    if (d->m_projectExplorerSettings.buildBeforeDeploy)//ROOPAK
+////        steps << Id(Constants::BUILDSTEPS_BUILD);//ROOPAK
+//    steps << Id(Constants::BUILDSTEPS_DEPLOY);
+//    queue(projects, steps);
+//}//#720 ROOPAK - END
 
 QString ProjectExplorerPlugin::displayNameForStepId(Id stepId)
 {
@@ -2036,69 +2036,69 @@ QString ProjectExplorerPlugin::displayNameForStepId(Id stepId)
     return tr("Build", "Build step");
 }
 
-int ProjectExplorerPlugin::queue(QList<Project *> projects, QList<Id> stepIds)
-{
-    if (debug) {
-        QStringList projectNames, stepNames;
-        foreach (const Project *p, projects)
-            projectNames << p->displayName();
-        foreach (const Id id, stepIds)
-            stepNames << id.toString();
-        qDebug() << "Building" << stepNames << "for projects" << projectNames;
-    }
+//int ProjectExplorerPlugin::queue(QList<Project *> projects, QList<Id> stepIds)//#720 ROOPAK - START
+//{
+//    if (debug) {
+//        QStringList projectNames, stepNames;
+//        foreach (const Project *p, projects)
+//            projectNames << p->displayName();
+//        foreach (const Id id, stepIds)
+//            stepNames << id.toString();
+//        qDebug() << "Building" << stepNames << "for projects" << projectNames;
+//    }
 
-    if (!saveModifiedFiles())
-        return -1;
+//    if (!saveModifiedFiles())
+//        return -1;
 
-//    QList<BuildStepList *> stepLists;//ROOPAK
-    QStringList names;
-    QStringList preambleMessage;
+////    QList<BuildStepList *> stepLists;//ROOPAK
+//    QStringList names;
+//    QStringList preambleMessage;
 
-    foreach (Project *pro, projects)
-        if (pro && pro->needsConfiguration())
-            preambleMessage.append(tr("The project %1 is not configured, skipping it.")
-                                   .arg(pro->displayName()) + QLatin1Char('\n'));
-    foreach (Id id, stepIds) {
-        foreach (Project *pro, projects) {
-//            if (!pro || !pro->activeTarget())//#720 ROOPAK - START
-//                continue;
-//            BuildStepList *bsl = 0;
-//            if (id == Constants::BUILDSTEPS_DEPLOY
-//                && pro->activeTarget()->activeDeployConfiguration())
-//                bsl = pro->activeTarget()->activeDeployConfiguration()->stepList();
-//            else if (pro->activeTarget()->activeBuildConfiguration())
-//                bsl = pro->activeTarget()->activeBuildConfiguration()->stepList(id);
+//    foreach (Project *pro, projects)
+//        if (pro && pro->needsConfiguration())
+//            preambleMessage.append(tr("The project %1 is not configured, skipping it.")
+//                                   .arg(pro->displayName()) + QLatin1Char('\n'));
+//    foreach (Id id, stepIds) {
+//        foreach (Project *pro, projects) {
+////            if (!pro || !pro->activeTarget())//#720 ROOPAK - START
+////                continue;
+////            BuildStepList *bsl = 0;
+////            if (id == Constants::BUILDSTEPS_DEPLOY
+////                && pro->activeTarget()->activeDeployConfiguration())
+////                bsl = pro->activeTarget()->activeDeployConfiguration()->stepList();
+////            else if (pro->activeTarget()->activeBuildConfiguration())
+////                bsl = pro->activeTarget()->activeBuildConfiguration()->stepList(id);
 
-//            if (!bsl || bsl->isEmpty())
-//                continue;
-//            stepLists << bsl;//ROOPAK - END
-            names << displayNameForStepId(id);
-        }
-    }
+////            if (!bsl || bsl->isEmpty())
+////                continue;
+////            stepLists << bsl;//ROOPAK - END
+//            names << displayNameForStepId(id);
+//        }
+//    }
 
-//    if (stepLists.isEmpty())//ROOPAK - START
-//        return 0;
+////    if (stepLists.isEmpty())//ROOPAK - START
+////        return 0;
 
-//    if (!BuildManager::buildLists(stepLists, names, preambleMessage))
-//        return -1;//ROOPAK - END
-    return 0/*stepLists.count()*/;//ROOPAK
-}
+////    if (!BuildManager::buildLists(stepLists, names, preambleMessage))
+////        return -1;//ROOPAK - END
+//    return 0/*stepLists.count()*/;//ROOPAK
+//}//#720 ROOPAK - END
 
 void ProjectExplorerPlugin::buildProjectOnly()
 {
 //    queue(QList<Project *>() << SessionManager::startupProject(), QList<Id>() << Id(Constants::BUILDSTEPS_BUILD));//#720 ROOPAK
 }
 
-void ProjectExplorerPlugin::buildProject(Project *p)
-{
+//void ProjectExplorerPlugin::buildProject(Project *p)//#720 ROOPAK - START
+//{
 //    queue(SessionManager::projectOrder(p),//#720 ROOPAK - START
 //          QList<Id>() << Id(Constants::BUILDSTEPS_BUILD));//#720 ROOPAK - END
-}
+//}
 
-void ProjectExplorerPlugin::requestProjectModeUpdate(Project *p)
-{
-//    d->m_proWindow->projectUpdated(p);//ROOPAK
-}
+//void ProjectExplorerPlugin::requestProjectModeUpdate(Project *p)
+//{
+////    d->m_proWindow->projectUpdated(p);//ROOPAK
+//}//#720 ROOPAK - END
 
 void ProjectExplorerPlugin::buildProject()
 {
@@ -2108,8 +2108,8 @@ void ProjectExplorerPlugin::buildProject()
 
 void ProjectExplorerPlugin::buildProjectContextMenu()
 {
-    queue(QList<Project *>() <<  d->m_currentProject,
-          QList<Id>() << Id(Constants::BUILDSTEPS_BUILD));
+//    queue(QList<Project *>() <<  d->m_currentProject,//#720 ROOPAK - START
+//          QList<Id>() << Id(Constants::BUILDSTEPS_BUILD));//#720 ROOPAK - END
 }
 
 //void ProjectExplorerPlugin::buildSession()//#720 ROOPAK - START
@@ -2132,8 +2132,8 @@ void ProjectExplorerPlugin::rebuildProject()
 
 void ProjectExplorerPlugin::rebuildProjectContextMenu()
 {
-    queue(QList<Project *>() <<  d->m_currentProject,
-          QList<Id>() << Id(Constants::BUILDSTEPS_CLEAN) << Id(Constants::BUILDSTEPS_BUILD));
+//    queue(QList<Project *>() <<  d->m_currentProject,//#720 ROOPAK - START
+//          QList<Id>() << Id(Constants::BUILDSTEPS_CLEAN) << Id(Constants::BUILDSTEPS_BUILD));//#720 ROOPAK - END
 }
 
 //void ProjectExplorerPlugin::rebuildSession()//#720 ROOPAK - START
@@ -2154,7 +2154,7 @@ void ProjectExplorerPlugin::deployProject()
 
 void ProjectExplorerPlugin::deployProjectContextMenu()
 {
-    deploy(QList<Project *>() << d->m_currentProject);
+//    deploy(QList<Project *>() << d->m_currentProject);//#720 ROOPAK - START
 }
 
 //void ProjectExplorerPlugin::deploySession()//#720 ROOPAK - START
@@ -2176,8 +2176,8 @@ void ProjectExplorerPlugin::cleanProject()
 
 void ProjectExplorerPlugin::cleanProjectContextMenu()
 {
-    queue(QList<Project *>() <<  d->m_currentProject,
-          QList<Id>() << Id(Constants::BUILDSTEPS_CLEAN));
+//    queue(QList<Project *>() <<  d->m_currentProject,//#720 ROOPAK - START
+//          QList<Id>() << Id(Constants::BUILDSTEPS_CLEAN));//#720 ROOPAK - END
 }
 
 //void ProjectExplorerPlugin::cleanSession()//#720 ROOPAK
@@ -2212,76 +2212,76 @@ void ProjectExplorerPlugin::runProjectContextMenu()
     }
 }
 
-bool ProjectExplorerPlugin::hasBuildSettings(Project *pro)
-{
+//bool ProjectExplorerPlugin::hasBuildSettings(Project *pro)//#720 ROOPAK - START
+//{
 //    foreach (Project *project, SessionManager::projectOrder(pro))//#720 ROOPAK - START
 //        if (project
 //                && project->activeTarget()//#720 ROOPAK
 //                /*&& project->activeTarget()->activeBuildConfiguration()*/)//ROOPAK
 //            return true;//#720 ROOPAK - END
-    return false;
-}
+//    return false;
+//}
 
-QPair<bool, QString> ProjectExplorerPlugin::buildSettingsEnabled(Project *pro)
-{
-    QPair<bool, QString> result;
-    result.first = true;
-    if (!pro) {
-        result.first = false;
-        result.second = tr("No project loaded.");
-    } /*else if (BuildManager::isBuilding(pro)) {//ROOPAK - START
-        result.first = false;
-        result.second = tr("Currently building the active project.");
-    } */else if (pro->needsConfiguration()) {//ROOPAK - END
-        result.first = false;
-        result.second = tr("The project %1 is not configured.").arg(pro->displayName());
-    } else if (!hasBuildSettings(pro)) {
-        result.first = false;
-        result.second = tr("Project has no build settings.");
-    } else {
-//        const QList<Project *> & projects = SessionManager::projectOrder(pro);//#720 ROOPAK - START
-//        foreach (Project *project, projects) {
-//            if (project
-////                    && project->activeTarget()//#720 ROOPAK
-////                    && project->activeTarget()->activeBuildConfiguration()//ROOPAK
-//                    /*&& !project->activeTarget()->activeBuildConfiguration()->isEnabled()*/) {//ROOPAK
-//                result.first = false;
-//                result.second += tr("Building '%1' is disabled:");// %2<br>")//ROOPAK - START
-////                        .arg(project->displayName(),
-////                             project->activeTarget()->activeBuildConfiguration()->disabledReason());//ROOPAK - END
-//            }
-//        }//#720 ROOPAK - END
-    }
-    return result;
-}
+//QPair<bool, QString> ProjectExplorerPlugin::buildSettingsEnabled(Project *pro)//#720 ROOPAK - START
+//{
+//    QPair<bool, QString> result;
+//    result.first = true;
+//    if (!pro) {
+//        result.first = false;
+//        result.second = tr("No project loaded.");
+//    } /*else if (BuildManager::isBuilding(pro)) {//ROOPAK - START
+//        result.first = false;
+//        result.second = tr("Currently building the active project.");
+//    } */else if (pro->needsConfiguration()) {//ROOPAK - END
+//        result.first = false;
+//        result.second = tr("The project %1 is not configured.").arg(pro->displayName());
+//    } else if (!hasBuildSettings(pro)) {
+//        result.first = false;
+//        result.second = tr("Project has no build settings.");
+//    } else {
+////        const QList<Project *> & projects = SessionManager::projectOrder(pro);//#720 ROOPAK - START
+////        foreach (Project *project, projects) {
+////            if (project
+//////                    && project->activeTarget()//#720 ROOPAK
+//////                    && project->activeTarget()->activeBuildConfiguration()//ROOPAK
+////                    /*&& !project->activeTarget()->activeBuildConfiguration()->isEnabled()*/) {//ROOPAK
+////                result.first = false;
+////                result.second += tr("Building '%1' is disabled:");// %2<br>")//ROOPAK - START
+//////                        .arg(project->displayName(),
+//////                             project->activeTarget()->activeBuildConfiguration()->disabledReason());//ROOPAK - END
+////            }
+////        }//#720 ROOPAK - END
+//    }
+//    return result;
+//}//#720 ROOPAK - END
 
 QPair<bool, QString> ProjectExplorerPlugin::buildSettingsEnabledForSession()
 {
     QPair<bool, QString> result;
-    result.first = true;
-    /*if (!SessionManager::hasProjects()) {
-        result.first = false;
-        result.second = tr("No project loaded");
-    } else if (BuildManager::isBuilding()) {//ROOPAK - START
-        result.first = false;
-        result.second = tr("A build is in progress");
-    } else*/ if (!hasBuildSettings(0)) {//ROOPAK - END
-        result.first = false;
-        result.second = tr("Project has no build settings");
-    } else {
-//        foreach (Project *project, SessionManager::projectOrder(0)) {//#720 ROOPAK - START
-//            if (project
-////                    && project->activeTarget()//#720 ROOPAK
-////                    && project->activeTarget()->activeBuildConfiguration()//ROOPAK
-//                    /*&& !project->activeTarget()->activeBuildConfiguration()->isEnabled()*/) {//ROOPAK
-//                result.first = false;
-//                result.second += tr("Building '%1' is disabled:");// %2")//ROOPAK - START
-////                        .arg(project->displayName(),
-////                             project->activeTarget()->activeBuildConfiguration()->disabledReason());//ROOPAK - END
-//                result.second += QLatin1Char('\n');
-//            }
-//        }//#720 ROOPAK - END
-    }
+//    result.first = true;//#720 ROOPAK - START
+//    /*if (!SessionManager::hasProjects()) {
+//        result.first = false;
+//        result.second = tr("No project loaded");
+//    } else if (BuildManager::isBuilding()) {//ROOPAK - START
+//        result.first = false;
+//        result.second = tr("A build is in progress");
+//    } else*/ if (!hasBuildSettings(0)) {//ROOPAK - END
+//        result.first = false;
+//        result.second = tr("Project has no build settings");
+//    } else {
+////        foreach (Project *project, SessionManager::projectOrder(0)) {//#720 ROOPAK - START
+////            if (project
+//////                    && project->activeTarget()//#720 ROOPAK
+//////                    && project->activeTarget()->activeBuildConfiguration()//ROOPAK
+////                    /*&& !project->activeTarget()->activeBuildConfiguration()->isEnabled()*/) {//ROOPAK
+////                result.first = false;
+////                result.second += tr("Building '%1' is disabled:");// %2")//ROOPAK - START
+//////                        .arg(project->displayName(),
+//////                             project->activeTarget()->activeBuildConfiguration()->disabledReason());//ROOPAK - END
+////                result.second += QLatin1Char('\n');
+////            }
+////        }//#720 ROOPAK - END
+//    }//#720 ROOPAK - END
     return result;
 }
 
@@ -2304,25 +2304,25 @@ bool ProjectExplorerPlugin::coreAboutToClose()
     return true;
 }
 
-bool ProjectExplorerPlugin::hasDeploySettings(Project *pro)
-{
+//bool ProjectExplorerPlugin::hasDeploySettings(Project *pro)//#720 ROOPAK - START
+//{
 //    foreach (Project *project, SessionManager::projectOrder(pro))//#720 ROOPAK - START
 //        if (project->activeTarget()
 ////                && project->activeTarget()->activeDeployConfiguration()//ROOPAK
 //                /*&& !project->activeTarget()->activeDeployConfiguration()->stepList()->isEmpty()*/)//ROOPAK
 //            return true;//#720 ROOPAK - END
-    return false;
-}
+//    return false;
+//}//#720 ROOPAK - END
 
-void ProjectExplorerPlugin::runProject(Project *pro, RunMode mode, const bool forceSkipDeploy)
-{
-    if (!pro)
-        return;
+//void ProjectExplorerPlugin::runProject(Project *pro, RunMode mode, const bool forceSkipDeploy)//#720 ROOPAK - START
+//{
+//    if (!pro)
+//        return;
 
-//    if (Target *target = pro->activeTarget())//#720 ROOPAK - START
-//        if (RunConfiguration *rc = target->activeRunConfiguration())
-//            runRunConfiguration(rc, mode, forceSkipDeploy);//#720 ROOPAK - END
-}
+////    if (Target *target = pro->activeTarget())//#720 ROOPAK - START
+////        if (RunConfiguration *rc = target->activeRunConfiguration())
+////            runRunConfiguration(rc, mode, forceSkipDeploy);//#720 ROOPAK - END
+//}//#720 ROOPAK - END
 
 //void ProjectExplorerPlugin::runRunConfiguration(RunConfiguration *rc,             //#720 ROOPAK - START
 //                                                RunMode runMode,
@@ -2360,41 +2360,41 @@ void ProjectExplorerPlugin::runControlFinished()
     emit updateRunActions();
 }
 
-void ProjectExplorerPlugin::projectAdded(ProjectExplorer::Project *pro)
-{
-    if (d->m_projectsMode)
-        d->m_projectsMode->setEnabled(true);
-    // more specific action en and disabling ?
-    connect(pro, SIGNAL(buildConfigurationEnabledChanged()),
-            this, SLOT(updateActions()));
-}
+//void ProjectExplorerPlugin::projectAdded(ProjectExplorer::Project *pro)//#720 ROOPAK - START
+//{
+//    if (d->m_projectsMode)
+//        d->m_projectsMode->setEnabled(true);
+//    // more specific action en and disabling ?
+//    connect(pro, SIGNAL(buildConfigurationEnabledChanged()),
+//            this, SLOT(updateActions()));
+//}
 
-void ProjectExplorerPlugin::projectRemoved(ProjectExplorer::Project * pro)
-{
-//    if (d->m_projectsMode)//#720 ROOPAK - START
-//        d->m_projectsMode->setEnabled(SessionManager::hasProjects());//#720 ROOPAK - END
-    // more specific action en and disabling ?
-    disconnect(pro, SIGNAL(buildConfigurationEnabledChanged()),
-               this, SLOT(updateActions()));
-}
+//void ProjectExplorerPlugin::projectRemoved(ProjectExplorer::Project * pro)
+//{
+////    if (d->m_projectsMode)//#720 ROOPAK - START
+////        d->m_projectsMode->setEnabled(SessionManager::hasProjects());//#720 ROOPAK - END
+//    // more specific action en and disabling ?
+//    disconnect(pro, SIGNAL(buildConfigurationEnabledChanged()),
+//               this, SLOT(updateActions()));
+//}
 
-void ProjectExplorerPlugin::projectDisplayNameChanged(Project *pro)
-{
-    addToRecentProjects(pro->projectFilePath(), pro->displayName());
-    updateActions();
-}
+//void ProjectExplorerPlugin::projectDisplayNameChanged(Project *pro)
+//{
+//    addToRecentProjects(pro->projectFilePath(), pro->displayName());
+//    updateActions();
+//}//#720 ROOPAK - END
 
 void ProjectExplorerPlugin::startupProjectChanged()
 {
-    static QPointer<Project> previousStartupProject = 0;
+//    static QPointer<Project> previousStartupProject = 0;//#720 ROOPAK - START
 //    Project *project = SessionManager::startupProject();
 //    if (project == previousStartupProject)
 //        return;//#720 ROOPAK - END
 
-    if (previousStartupProject) {
-        disconnect(previousStartupProject, SIGNAL(activeTargetChanged(ProjectExplorer::Target*)),
-                   this, SLOT(activeTargetChanged()));
-    }
+//    if (previousStartupProject) {
+//        disconnect(previousStartupProject, SIGNAL(activeTargetChanged(ProjectExplorer::Target*)),
+//                   this, SLOT(activeTargetChanged()));
+//    }//#720 ROOPAK - END
 
 //    previousStartupProject = project;//#720 ROOPAK - START
 
@@ -2464,120 +2464,120 @@ void ProjectExplorerPlugin::activeTargetChanged()
 
 void ProjectExplorerPlugin::updateDeployActions()
 {
-    Project *project = NULL;// SessionManager::startupProject();
+//    Project *project = NULL;// SessionManager::startupProject();//#720 ROOPAK - START
 
-    bool enableDeployActions = false;//project//#720 ROOPAK - START
-            //&& !BuildManager::isBuilding(project)//ROOPAK
-//            && hasDeploySettings(project);//#720 ROOPAK - END
-    bool enableDeployActionsContextMenu = d->m_currentProject
-//                              && !BuildManager::isBuilding(d->m_currentProject)//ROOPAK
-                              && hasDeploySettings(d->m_currentProject);
+//    bool enableDeployActions = false;//project//#720 ROOPAK - START
+//            //&& !BuildManager::isBuilding(project)//ROOPAK
+////            && hasDeploySettings(project);//#720 ROOPAK - END
+//    bool enableDeployActionsContextMenu = d->m_currentProject
+////                              && !BuildManager::isBuilding(d->m_currentProject)//ROOPAK
+//                              && hasDeploySettings(d->m_currentProject);
 
-//    if (d->m_projectExplorerSettings.buildBeforeDeploy) {//ROOPAK - START
-//        if (hasBuildSettings(project)
-//                && !buildSettingsEnabled(project).first)
-//            enableDeployActions = false;
-//        if (hasBuildSettings(d->m_currentProject)
-//                && !buildSettingsEnabled(d->m_currentProject).first)
-//            enableDeployActionsContextMenu = false;
-//    }//ROOPAK - END
+////    if (d->m_projectExplorerSettings.buildBeforeDeploy) {//ROOPAK - START
+////        if (hasBuildSettings(project)
+////                && !buildSettingsEnabled(project).first)
+////            enableDeployActions = false;
+////        if (hasBuildSettings(d->m_currentProject)
+////                && !buildSettingsEnabled(d->m_currentProject).first)
+////            enableDeployActionsContextMenu = false;
+////    }//ROOPAK - END
 
-    const QString projectName = project ? project->displayName() : QString();
-//    bool hasProjects = SessionManager::hasProjects();//#720 ROOPAK
+//    const QString projectName = project ? project->displayName() : QString();
+////    bool hasProjects = SessionManager::hasProjects();//#720 ROOPAK
 
-    d->m_deployAction->setParameter(projectName);
-    d->m_deployAction->setEnabled(enableDeployActions);
+//    d->m_deployAction->setParameter(projectName);
+//    d->m_deployAction->setEnabled(enableDeployActions);
 
-    d->m_deployActionContextMenu->setEnabled(enableDeployActionsContextMenu);
+//    d->m_deployActionContextMenu->setEnabled(enableDeployActionsContextMenu);
 
-    d->m_deployProjectOnlyAction->setEnabled(enableDeployActions);
+//    d->m_deployProjectOnlyAction->setEnabled(enableDeployActions);
 
-    bool enableDeploySessionAction = true;
-//    if (d->m_projectExplorerSettings.buildBeforeDeploy) {//ROOPAK - START
-//        foreach (Project *project, SessionManager::projectOrder(0)) {
-//            if (project
-//                    && project->activeTarget()
-//                    && project->activeTarget()->activeBuildConfiguration()
-//                    && !project->activeTarget()->activeBuildConfiguration()->isEnabled()) {
-//                enableDeploySessionAction = false;
-//                break;
-//            }
-//        }
-//    }//ROOPAK - END
-    if (/*!hasProjects ||*/ !hasDeploySettings(0) /*|| BuildManager::isBuilding()*/)//ROOPAK
-        enableDeploySessionAction = false;
-//    d->m_deploySessionAction->setEnabled(enableDeploySessionAction);//#720 ROOPAK
+//    bool enableDeploySessionAction = true;
+////    if (d->m_projectExplorerSettings.buildBeforeDeploy) {//ROOPAK - START
+////        foreach (Project *project, SessionManager::projectOrder(0)) {
+////            if (project
+////                    && project->activeTarget()
+////                    && project->activeTarget()->activeBuildConfiguration()
+////                    && !project->activeTarget()->activeBuildConfiguration()->isEnabled()) {
+////                enableDeploySessionAction = false;
+////                break;
+////            }
+////        }
+////    }//ROOPAK - END
+//    if (/*!hasProjects ||*/ !hasDeploySettings(0) /*|| BuildManager::isBuilding()*/)//ROOPAK
+//        enableDeploySessionAction = false;
+////    d->m_deploySessionAction->setEnabled(enableDeploySessionAction);//#720 ROOPAK
 
-    emit updateRunActions();
+//    emit updateRunActions();//#720 ROOPAK - END
 }
 
-bool ProjectExplorerPlugin::canRun(Project *project, RunMode runMode)
-{
-    if (!project/* ||
-        !project->activeTarget() ||//#720 ROOPAK
-        !project->activeTarget()->activeRunConfiguration()*/) {
-        return false;
-    }
+//bool ProjectExplorerPlugin::canRun(Project *project, RunMode runMode)//#720 ROOPAK - START
+//{
+//    if (!project/* ||
+//        !project->activeTarget() ||//#720 ROOPAK
+//        !project->activeTarget()->activeRunConfiguration()*/) {
+//        return false;
+//    }
 
-//    if (d->m_projectExplorerSettings.buildBeforeDeploy//ROOPAK - START
-//            && d->m_projectExplorerSettings.deployBeforeRun
-//            && hasBuildSettings(project)
-//            && !buildSettingsEnabled(project).first)
-//        return false;//ROOPAK = END
-
-
-//    RunConfiguration *activeRC = project->activeTarget()->activeRunConfiguration();//#720 ROOPAK - START
-
-//    bool canRun = findRunControlFactory(activeRC, runMode)
-//                  && activeRC->isEnabled();
-    return false/*canRun && !BuildManager::isBuilding()*/;//#720 ROOPAK - END
-}
-
-QString ProjectExplorerPlugin::cannotRunReason(Project *project, RunMode runMode)
-{
-    if (!project)
-        return tr("No active project.");
-
-    if (project->needsConfiguration())
-        return tr("The project %1 is not configured.").arg(project->displayName());
-
-//    if (!project->activeTarget())//#720 ROOPAK - START
-//        return tr("The project '%1' has no active kit.").arg(project->displayName());//#720 ROOPAK - END
-
-//    if (!project->activeTarget()->activeRunConfiguration())//#720 ROOPAK - START
-//        return tr("The kit '%1' for the project '%2' has no active run configuration.")
-//                .arg(project->activeTarget()->displayName(), project->displayName());//#720 ROOPAK - END
+////    if (d->m_projectExplorerSettings.buildBeforeDeploy//ROOPAK - START
+////            && d->m_projectExplorerSettings.deployBeforeRun
+////            && hasBuildSettings(project)
+////            && !buildSettingsEnabled(project).first)
+////        return false;//ROOPAK = END
 
 
-//    if (d->m_projectExplorerSettings.buildBeforeDeploy//ROOPAK - START
-//            && d->m_projectExplorerSettings.deployBeforeRun
-//            && hasBuildSettings(project)) {
-//        QPair<bool, QString> buildState = buildSettingsEnabled(project);
-//        if (!buildState.first)
-//            return buildState.second;
-//    }//ROOPAk - END
+////    RunConfiguration *activeRC = project->activeTarget()->activeRunConfiguration();//#720 ROOPAK - START
+
+////    bool canRun = findRunControlFactory(activeRC, runMode)
+////                  && activeRC->isEnabled();
+//    return false/*canRun && !BuildManager::isBuilding()*/;//#720 ROOPAK - END
+//}
+
+//QString ProjectExplorerPlugin::cannotRunReason(Project *project, RunMode runMode)
+//{
+//    if (!project)
+//        return tr("No active project.");
+
+//    if (project->needsConfiguration())
+//        return tr("The project %1 is not configured.").arg(project->displayName());
+
+////    if (!project->activeTarget())//#720 ROOPAK - START
+////        return tr("The project '%1' has no active kit.").arg(project->displayName());//#720 ROOPAK - END
+
+////    if (!project->activeTarget()->activeRunConfiguration())//#720 ROOPAK - START
+////        return tr("The kit '%1' for the project '%2' has no active run configuration.")
+////                .arg(project->activeTarget()->displayName(), project->displayName());//#720 ROOPAK - END
 
 
-//    RunConfiguration *activeRC = project->activeTarget()->activeRunConfiguration();//#720 ROOPAK - START
-//    if (!activeRC->isEnabled())
-//        return activeRC->disabledReason();
+////    if (d->m_projectExplorerSettings.buildBeforeDeploy//ROOPAK - START
+////            && d->m_projectExplorerSettings.deployBeforeRun
+////            && hasBuildSettings(project)) {
+////        QPair<bool, QString> buildState = buildSettingsEnabled(project);
+////        if (!buildState.first)
+////            return buildState.second;
+////    }//ROOPAk - END
 
-//    // shouldn't actually be shown to the user...
-//    if (!findRunControlFactory(activeRC, runMode))
-//        return tr("Cannot run '%1'.").arg(activeRC->displayName());//#720 ROOPAK - END
 
-//    if (BuildManager::isBuilding())//ROOPAK
-//        return tr("A build is still in progress.");//ROOPAK
-    return QString();
-}
+////    RunConfiguration *activeRC = project->activeTarget()->activeRunConfiguration();//#720 ROOPAK - START
+////    if (!activeRC->isEnabled())
+////        return activeRC->disabledReason();
+
+////    // shouldn't actually be shown to the user...
+////    if (!findRunControlFactory(activeRC, runMode))
+////        return tr("Cannot run '%1'.").arg(activeRC->displayName());//#720 ROOPAK - END
+
+////    if (BuildManager::isBuilding())//ROOPAK
+////        return tr("A build is still in progress.");//ROOPAK
+//    return QString();
+//}//#720 ROOPAK - END
 
 void ProjectExplorerPlugin::slotUpdateRunActions()
 {
-    Project *project = false;//SessionManager::startupProject();//#720 ROOPAK - START
-    const bool state = canRun(project, NormalRunMode);
-    d->m_runAction->setEnabled(state);
-    d->m_runAction->setToolTip(cannotRunReason(project, NormalRunMode));
-    d->m_runWithoutDeployAction->setEnabled(state);
+//    Project *project = false;//SessionManager::startupProject();//#720 ROOPAK - START//#720 ROOPAK - START
+//    const bool state = canRun(project, NormalRunMode);
+//    d->m_runAction->setEnabled(state);
+//    d->m_runAction->setToolTip(cannotRunReason(project, NormalRunMode));
+//    d->m_runWithoutDeployAction->setEnabled(state);//#720 ROOPAK - END
 }
 
 void ProjectExplorerPlugin::cancelBuild()
@@ -2665,28 +2665,28 @@ void ProjectExplorerPlugin::openRecentProject()
     QString fileName = a->data().toString();
     if (!fileName.isEmpty()) {
         QString errorMessage;
-        openProject(fileName, &errorMessage);
+//        openProject(fileName, &errorMessage);//#720 ROOPAK
         if (!errorMessage.isEmpty())
             QMessageBox::critical(ICore::mainWindow(), tr("Failed to open project."), errorMessage);
     }
 }
 
-void ProjectExplorerPlugin::invalidateProject(Project *project)
-{
-    if (debug)
-        qDebug() << "ProjectExplorerPlugin::invalidateProject" << project->displayName();
-    if (d->m_currentProject == project) {
-        //
-        // Workaround for a bug in QItemSelectionModel
-        // - currentChanged etc are not emitted if the
-        // item is removed from the underlying data model
-        //
-//        setCurrent(0, QString(), 0);//ROOPAK
-    }
+//void ProjectExplorerPlugin::invalidateProject(Project *project)//#720 ROOPAK - START
+//{
+//    if (debug)
+//        qDebug() << "ProjectExplorerPlugin::invalidateProject" << project->displayName();
+//    if (d->m_currentProject == project) {
+//        //
+//        // Workaround for a bug in QItemSelectionModel
+//        // - currentChanged etc are not emitted if the
+//        // item is removed from the underlying data model
+//        //
+////        setCurrent(0, QString(), 0);//ROOPAK
+//    }
 
-    disconnect(project, SIGNAL(fileListChanged()), this, SIGNAL(fileListChanged()));
-    updateActions();
-}
+//    disconnect(project, SIGNAL(fileListChanged()), this, SIGNAL(fileListChanged()));
+//    updateActions();
+//}//#720 ROOPAK - END
 
 void ProjectExplorerPlugin::updateContextMenuActions()
 {
@@ -3043,7 +3043,7 @@ void ProjectExplorerPlugin::renameFile()
 
 void ProjectExplorerPlugin::setStartupProject()
 {
-    setStartupProject(d->m_currentProject);
+//    setStartupProject(d->m_currentProject);//#720 ROOPAK - START
 }
 
 //void ProjectExplorerPlugin::populateOpenWithMenu()//#720 ROOPAK - START

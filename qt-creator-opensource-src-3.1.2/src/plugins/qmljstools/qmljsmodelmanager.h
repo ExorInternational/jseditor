@@ -80,8 +80,8 @@ private:
 
 } // namespace Internal
 
-QMLJSTOOLS_EXPORT QmlJS::ModelManagerInterface::ProjectInfo defaultProjectInfoForProject(
-        ProjectExplorer::Project *project);
+//QMLJSTOOLS_EXPORT QmlJS::ModelManagerInterface::ProjectInfo defaultProjectInfoForProject(//#720 ROOPAK - START
+//        ProjectExplorer::Project *project);//#720 ROOPAK - END
 QMLJSTOOLS_EXPORT void setupProjectInfoQmlBundles(QmlJS::ModelManagerInterface::ProjectInfo &projectInfo);
 
 } // namespace QmlJSTools

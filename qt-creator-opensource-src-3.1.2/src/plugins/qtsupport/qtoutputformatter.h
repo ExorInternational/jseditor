@@ -40,7 +40,7 @@
 
 QT_FORWARD_DECLARE_CLASS(QTextCursor)
 
-namespace ProjectExplorer { class Project; }
+//namespace ProjectExplorer { class Project; }//#720 ROOPAK
 
 namespace QtSupport {
 
@@ -56,7 +56,7 @@ class QTSUPPORT_EXPORT QtOutputFormatter
 {
     Q_OBJECT
 public:
-    explicit QtOutputFormatter(ProjectExplorer::Project *project);
+    explicit QtOutputFormatter(/*ProjectExplorer::Project *project*/);//#720 ROOPAK
 
     void appendMessage(const QString &text,
         Utils::OutputFormat format);
@@ -78,7 +78,7 @@ private:
     mutable QRegExp m_qtAssert;
     mutable QRegExp m_qtAssertX;
     mutable QRegExp m_qtTestFail;
-    QPointer<ProjectExplorer::Project> m_project;
+//    QPointer<ProjectExplorer::Project> m_project;//#720 ROOPAK
     QString m_lastLine;
     Utils::FileInProjectFinder m_projectFinder;
 };

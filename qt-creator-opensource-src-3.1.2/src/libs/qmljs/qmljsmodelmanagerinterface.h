@@ -50,7 +50,7 @@
 #include <QStringList>
 #include <QTimer>
 
-namespace ProjectExplorer { class Project; }
+//namespace ProjectExplorer { class Project; }//#720 ROOPAK
 
 namespace QmlJS {
 
@@ -74,24 +74,24 @@ public:
             : tryQmlDump(false), qmlDumpHasRelocatableFlag(true)
         { }
 
-        ProjectInfo(QPointer<ProjectExplorer::Project> project)
-            : project(project)
-            , tryQmlDump(false), qmlDumpHasRelocatableFlag(true)
-        { }
+//        ProjectInfo(QPointer<ProjectExplorer::Project> project)//#720 ROOPAK - START
+//            : project(project)
+//            , tryQmlDump(false), qmlDumpHasRelocatableFlag(true)
+//        { }//#720 ROOPAK - END
 
         operator bool() const
-        { return ! project.isNull(); }
+        { return false/*! project.isNull()*/; }//#720 ROOPAK
 
         bool isValid() const
-        { return ! project.isNull(); }
+        { return false/*!project.isNull()*/; }
 
         bool isNull() const
-        { return project.isNull(); }
+        { return false/*project.isNull()*/; }
 
         QStringList completeImportPaths();
 
     public: // attributes
-        QPointer<ProjectExplorer::Project> project;
+//        QPointer<ProjectExplorer::Project> project;//#720 ROOPAK
         QStringList sourceFiles;
         QStringList importPaths;
         QStringList activeResourceFiles;
@@ -161,18 +161,18 @@ public:
                            bool emitDocumentOnDiskChanged);
     void fileChangedOnDisk(const QString &path);
     void removeFiles(const QStringList &files);
-    QStringList filesAtQrcPath(const QString &path, const QLocale *locale = 0,
-                               ProjectExplorer::Project *project = 0,
-                               QrcResourceSelector resources = AllQrcResources);
-    QMap<QString,QStringList> filesInQrcPath(const QString &path,
-                                             const QLocale *locale = 0,
-                                             ProjectExplorer::Project *project = 0,
-                                             bool addDirs = false,
-                                             QrcResourceSelector resources = AllQrcResources);
+//    QStringList filesAtQrcPath(const QString &path, const QLocale *locale = 0,//#720 ROOPAK - START
+//                               ProjectExplorer::Project *project = 0,
+//                               QrcResourceSelector resources = AllQrcResources);
+//    QMap<QString,QStringList> filesInQrcPath(const QString &path,
+//                                             const QLocale *locale = 0,
+//                                             ProjectExplorer::Project *project = 0,
+//                                             bool addDirs = false,
+//                                             QrcResourceSelector resources = AllQrcResources);//#720 ROOPAK - END
 
     QList<ProjectInfo> projectInfos() const;
-    ProjectInfo projectInfo(ProjectExplorer::Project *project) const;
-    void updateProjectInfo(const ProjectInfo &pinfo, ProjectExplorer::Project *p);
+//    ProjectInfo projectInfo(ProjectExplorer::Project *project) const;//#720 ROOPAK - START
+//    void updateProjectInfo(const ProjectInfo &pinfo, ProjectExplorer::Project *p);//#720 ROOPAK - END
 
     void updateDocument(QmlJS::Document::Ptr doc);
     void updateLibraryInfo(const QString &path, const QmlJS::LibraryInfo &info);
@@ -202,7 +202,7 @@ public:
 
 public slots:
     virtual void resetCodeModel();
-    void removeProjectInfo(ProjectExplorer::Project *project);
+//    void removeProjectInfo(ProjectExplorer::Project *project);//#720 ROOPAK - START
 signals:
     void documentUpdated(QmlJS::Document::Ptr doc);
     void documentChangedOnDisk(QmlJS::Document::Ptr doc);
@@ -271,8 +271,8 @@ private:
     mutable QMutex m_cppDataMutex;
 
     // project integration
-    QMap<ProjectExplorer::Project *, ProjectInfo> m_projects;
-    QMultiHash<QString, ProjectExplorer::Project *> m_fileToProject;
+//    QMap<ProjectExplorer::Project *, ProjectInfo> m_projects;//#720 ROOPAK - START
+//    QMultiHash<QString, ProjectExplorer::Project *> m_fileToProject;//#720 ROOPAK - END
 
     PluginDumper *m_pluginDumper;
 

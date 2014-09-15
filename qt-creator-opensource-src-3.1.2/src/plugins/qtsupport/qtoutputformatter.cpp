@@ -30,16 +30,16 @@
 #include "qtoutputformatter.h"
 
 #include <coreplugin/editormanager/editormanager.h>
-#include <projectexplorer/project.h>
+//#include <projectexplorer/project.h>//#720 ROOPAK
 
 #include <QPlainTextEdit>
 #include <QTextCursor>
 #include <QUrl>
 
-using namespace ProjectExplorer;
+//using namespace ProjectExplorer;//#720 ROOPAK - START
 using namespace QtSupport;
 
-QtOutputFormatter::QtOutputFormatter(ProjectExplorer::Project *project)
+QtOutputFormatter::QtOutputFormatter(/*ProjectExplorer::Project *project*/)//#720 ROOPAK
     : OutputFormatter()
     , m_qmlError(QLatin1String("^((?:file|qrc):///.+"    // url
                                ":\\d+"           // colon, line
@@ -49,15 +49,15 @@ QtOutputFormatter::QtOutputFormatter(ProjectExplorer::Project *project)
     , m_qtAssert(QLatin1String("ASSERT: .* in file (.+, line \\d+)"))
     , m_qtAssertX(QLatin1String("ASSERT failure in .*: \".*\", file (.+, line \\d+)"))
     , m_qtTestFail(QLatin1String("^   Loc: \\[(.*)\\]"))
-    , m_project(project)
+//    , m_project(project)//#720 ROOPAK
 {
-    if (project) {
-        m_projectFinder.setProjectFiles(project->files(Project::ExcludeGeneratedFiles));
-        m_projectFinder.setProjectDirectory(project->projectDirectory());
+//    if (project) {//#720 ROOPAK - START
+//        m_projectFinder.setProjectFiles(project->files(Project::ExcludeGeneratedFiles));
+//        m_projectFinder.setProjectDirectory(project->projectDirectory());
 
-        connect(project, SIGNAL(fileListChanged()),
-                this, SLOT(updateProjectFileList()));
-    }
+//        connect(project, SIGNAL(fileListChanged()),
+//                this, SLOT(updateProjectFileList()));
+//    }//#720 ROOPAK - END
 }
 
 LinkResult QtOutputFormatter::matchLine(const QString &line) const
@@ -248,6 +248,6 @@ void QtOutputFormatter::clearLastLine()
 
 void QtOutputFormatter::updateProjectFileList()
 {
-    if (m_project)
-        m_projectFinder.setProjectFiles(m_project.data()->files(Project::ExcludeGeneratedFiles));
+//    if (m_project)//#720 ROOPAK - START
+//        m_projectFinder.setProjectFiles(m_project.data()->files(Project::ExcludeGeneratedFiles));//#720 ROOPAK - END
 }
