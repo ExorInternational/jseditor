@@ -49,7 +49,7 @@
 namespace {
 
 using namespace QtSupport;
-using namespace ProjectExplorer;
+//using namespace ProjectExplorer;//#720 ROOPAK
 
 class QmlDumpBuildTask;
 

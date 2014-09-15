@@ -45,7 +45,7 @@
 #include <coreplugin/mimedatabase.h>
 #include <coreplugin/variablemanager.h>
 //#include <projectexplorer/project.h>//#720 ROOPAK
-#include <projectexplorer/projectexplorer.h>
+//#include <projectexplorer/projectexplorer.h>//#720 ROOPAK
 //#include <projectexplorer/target.h>//#720 ROOPAK
 
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 1, 0))

@@ -54,7 +54,7 @@
 #include <qmljs/qmljscompletioncontextfinder.h>
 #include <qmljs/qmljsbundle.h>
 #include <qmljs/qmljsscopebuilder.h>
-#include <projectexplorer/projectexplorer.h>
+//#include <projectexplorer/projectexplorer.h>//#720 ROOPAK
 
 #include <QFile>
 #include <QFileInfo>

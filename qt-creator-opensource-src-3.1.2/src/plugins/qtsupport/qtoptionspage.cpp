@@ -52,7 +52,7 @@
 #include <QTextBrowser>
 #include <QDesktopServices>
 
-using namespace ProjectExplorer;
+//using namespace ProjectExplorer;//#720 ROOPAK
 using namespace Utils;
 
 namespace QtSupport {

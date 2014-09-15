@@ -38,7 +38,7 @@
 using namespace QtSupport;
 using namespace QtSupport::Internal;
 using namespace QtSupport::Internal;
-using namespace ProjectExplorer;
+//using namespace ProjectExplorer;//#720 ROOPAK
 
 DebuggingHelperBuildTask::DebuggingHelperBuildTask(const BaseQtVersion *version,
 //                                                   const ToolChain *toolChain,//#720 ROOPAK

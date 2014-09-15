@@ -39,7 +39,7 @@
 #include <proparser/qmakevfs.h>
 //#include <projectexplorer/toolchainmanager.h>//#720 ROOPAK
 //#include <projectexplorer/toolchain.h>//#720 ROOPAK
-#include <projectexplorer/projectexplorer.h>
+//#include <projectexplorer/projectexplorer.h>//#720 ROOPAK
 //#include <projectexplorer/headerpath.h>//#720 ROOPAK
 #include <qtsupport/debugginghelperbuildtask.h>
 #include <qtsupport/qtsupportconstants.h>
@@ -68,7 +68,7 @@
 using namespace Core;
 using namespace QtSupport;
 using namespace QtSupport::Internal;
-using namespace ProjectExplorer;
+//using namespace ProjectExplorer;//#720 ROOPAK
 using namespace Utils;
 
 static const char QTVERSIONAUTODETECTED[] = "isAutodetected";

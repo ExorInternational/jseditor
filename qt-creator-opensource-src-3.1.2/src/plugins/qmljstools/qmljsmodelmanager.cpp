@@ -39,7 +39,7 @@
 #include <extensionsystem/pluginmanager.h>
 //#include <projectexplorer/buildconfiguration.h>//ROOPAK
 //#include <projectexplorer/project.h>//#720 ROOPAK
-#include <projectexplorer/projectexplorer.h>
+//#include <projectexplorer/projectexplorer.h>//#720 ROOPAK
 //#include <projectexplorer/session.h>//#720 ROOPAK
 //#include <projectexplorer/target.h>//#720 ROOPAK
 #include <qmljs/qmljsbind.h>
