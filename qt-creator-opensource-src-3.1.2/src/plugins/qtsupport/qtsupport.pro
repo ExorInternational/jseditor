@@ -27,7 +27,7 @@ HEADERS += \
 #    exampleslistmodel.h \//#720 ROOPAK
 #    screenshotcropper.h \//#720 ROOPAK
     qtconfigwidget.h \
-    qtfeatureprovider.h \
+#    qtfeatureprovider.h \//#720 ROOPAK
 #    desktopqtversionfactory.h \//#720 ROOPAK
 #    simulatorqtversionfactory.h \//#720 ROOPAK
 #    desktopqtversion.h \//#720 ROOPAK

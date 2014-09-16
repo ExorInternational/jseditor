@@ -32,7 +32,7 @@
 //#include "qtkitinformation.h"//#720 ROOPAK
 #include "qtversionfactory.h"
 #include "baseqtversion.h"
-#include "qtfeatureprovider.h"
+//#include "qtfeatureprovider.h"//#720 ROOPAK
 #include "qtsupportconstants.h"
 
 #include <coreplugin/icore.h>
@@ -826,35 +826,35 @@ static BaseQtVersion::QmakeBuildConfigs qmakeBuildConfigFromCmdArgs(QList<QMakeA
     return result;
 }
 
-Core::FeatureSet QtFeatureProvider::availableFeatures(const QString &platformName) const
-{
-    Core::FeatureSet features;
-    foreach (BaseQtVersion *const qtVersion, QtVersionManager::validVersions()) {
-        if (qtVersion->platformName() == platformName || platformName.isEmpty())
-            features |= qtVersion->availableFeatures();
-    }
+//Core::FeatureSet QtFeatureProvider::availableFeatures(const QString &platformName) const//#720 ROOPAK - START
+//{
+//    Core::FeatureSet features;
+//    foreach (BaseQtVersion *const qtVersion, QtVersionManager::validVersions()) {
+//        if (qtVersion->platformName() == platformName || platformName.isEmpty())
+//            features |= qtVersion->availableFeatures();
+//    }
 
-    return features;
-}
+//    return features;
+//}
 
-QStringList QtFeatureProvider::availablePlatforms() const
-{
-    QStringList platforms;
-    foreach (BaseQtVersion *const qtVersion, QtVersionManager::validVersions()) {
-        if (!qtVersion->platformName().isEmpty())
-            platforms.append(qtVersion->platformName());
-    }
-    platforms.removeDuplicates();
-    return platforms;
-}
+//QStringList QtFeatureProvider::availablePlatforms() const
+//{
+//    QStringList platforms;
+//    foreach (BaseQtVersion *const qtVersion, QtVersionManager::validVersions()) {
+//        if (!qtVersion->platformName().isEmpty())
+//            platforms.append(qtVersion->platformName());
+//    }
+//    platforms.removeDuplicates();
+//    return platforms;
+//}
 
-QString QtFeatureProvider::displayNameForPlatform(const QString &string) const
-{
-    foreach (BaseQtVersion *const qtVersion, QtVersionManager::validVersions()) {
-        if (qtVersion->platformName() == string)
-            return qtVersion->platformDisplayName();
-    }
-    return QString();
-}
+//QString QtFeatureProvider::displayNameForPlatform(const QString &string) const
+//{
+//    foreach (BaseQtVersion *const qtVersion, QtVersionManager::validVersions()) {
+//        if (qtVersion->platformName() == string)
+//            return qtVersion->platformDisplayName();
+//    }
+//    return QString();
+//}//#720 ROOPAK - END
 
 } // namespace QtVersion

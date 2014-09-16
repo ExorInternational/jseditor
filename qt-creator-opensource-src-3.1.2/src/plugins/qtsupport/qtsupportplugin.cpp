@@ -31,7 +31,7 @@
 
 //#include "customexecutablerunconfiguration.h"//ROOPAK
 //#include "desktopqtversionfactory.h"//#720 ROOPAK
-#include "qtfeatureprovider.h"
+//#include "qtfeatureprovider.h"//#720 ROOPAK
 //#include "qtkitinformation.h"//#720 ROOPAK
 #include "qtoptionspage.h"
 #include "qtversionmanager.h"
@@ -78,8 +78,8 @@ bool QtSupportPlugin::initialize(const QStringList &arguments, QString *errorMes
 //    addAutoReleasedObject(new WinCeQtVersionFactory);//#720 ROOPAK
 //    addAutoReleasedObject(new UiCodeModelManager);//#720 ROOPAK
 
-    QtFeatureProvider *featureMgr = new QtFeatureProvider;
-    addAutoReleasedObject(featureMgr);
+//    QtFeatureProvider *featureMgr = new QtFeatureProvider;//#720 ROOPAK - START
+//    addAutoReleasedObject(featureMgr);//#720 ROOPAK - END
 
     addAutoReleasedObject(new QtOptionsPage);
 
