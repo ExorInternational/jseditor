@@ -11,7 +11,7 @@ SUBDIRS   = \
 #    diffeditor \   #ROOPAK
 #    imageviewer \  #ROOPAK
 #    bookmarks \    #ROOPAK
-    projectexplorer \
+#    projectexplorer \//#720 ROOPAK
 #    vcsbase \     #ROOPAK
 #    perforce \     #ROOPAK
 #    subversion \   #ROOPAK

@@ -5,9 +5,9 @@ QTC_LIB_DEPENDS += \
     qmljs \
     utils
 QTC_PLUGIN_DEPENDS += \
-    coreplugin \
+    coreplugin #\
 #    cpptools \//#720 ROOPAK
-    projectexplorer
+#    projectexplorer//#720 ROOPAK
 DEFINES *= \
     QMAKE_AS_LIBRARY \
     PROPARSER_THREAD_SAFE \
