@@ -68,7 +68,7 @@ greaterThan(QT_MAJOR_VERSION, 4) {
 }
 
 FORMS   +=  \
-    showbuildlog.ui \
+#    showbuildlog.ui \//#720 ROOPAK
     qtversioninfo.ui \
     debugginghelper.ui \
     qtversionmanager.ui \
