@@ -31,7 +31,7 @@ HEADERS += \
     desktopqtversionfactory.h \
 #    simulatorqtversionfactory.h \//#720 ROOPAK
     desktopqtversion.h \
-    simulatorqtversion.h \
+#    simulatorqtversion.h \//#720 ROOPAK
 #    winceqtversionfactory.h \//#720 ROOPAK
 #    winceqtversion.h//#720 ROOPAK
 
@@ -57,7 +57,7 @@ SOURCES += \
     desktopqtversionfactory.cpp \
 #    simulatorqtversionfactory.cpp \//#720 ROOPAK
     desktopqtversion.cpp \
-    simulatorqtversion.cpp \
+#    simulatorqtversion.cpp \//#720 ROOPAK
 #    winceqtversionfactory.cpp \//#720 ROOPAK
 #    winceqtversion.cpp//#720 ROOPAK
 
