@@ -61,7 +61,7 @@ using namespace Utils;
 
 namespace QtSupport {
 
-using namespace Internal;
+//using namespace Internal;
 
 struct QMakeAssignment
 {

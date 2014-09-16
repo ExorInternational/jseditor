@@ -33,7 +33,7 @@
 //#include "desktopqtversionfactory.h"//#720 ROOPAK
 //#include "qtfeatureprovider.h"//#720 ROOPAK
 //#include "qtkitinformation.h"//#720 ROOPAK
-#include "qtoptionspage.h"
+//#include "qtoptionspage.h"//#720 ROOPAK
 #include "qtversionmanager.h"
 //#include "simulatorqtversionfactory.h"//#720 ROOPAK
 //#include "uicodemodelsupport.h"//#720 ROOPAK
@@ -81,7 +81,7 @@ bool QtSupportPlugin::initialize(const QStringList &arguments, QString *errorMes
 //    QtFeatureProvider *featureMgr = new QtFeatureProvider;//#720 ROOPAK - START
 //    addAutoReleasedObject(featureMgr);//#720 ROOPAK - END
 
-    addAutoReleasedObject(new QtOptionsPage);
+//    addAutoReleasedObject(new QtOptionsPage);//#720 ROOPAK
 
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 1, 0))
     ExamplesWelcomePage *welcomePage;

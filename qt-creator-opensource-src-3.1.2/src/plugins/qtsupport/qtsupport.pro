@@ -17,7 +17,7 @@ HEADERS += \
 #    uicodemodelsupport.h \//#720 ROOPAK
     baseqtversion.h \
     qmldumptool.h \
-    qtoptionspage.h \
+#    qtoptionspage.h \//#720 ROOPAK
 #    customexecutablerunconfiguration.h \#ROOPAK
 #    customexecutableconfigurationwidget.h \#ROOPAK
     debugginghelperbuildtask.h \
@@ -45,7 +45,7 @@ SOURCES += \
 #    uicodemodelsupport.cpp \//#720 ROOPAK
     baseqtversion.cpp \
     qmldumptool.cpp \
-    qtoptionspage.cpp \
+#    qtoptionspage.cpp \//#720 ROOPAK
 #    customexecutablerunconfiguration.cpp \#ROOPAK
 #    customexecutableconfigurationwidget.cpp \#ROOPAK
     debugginghelperbuildtask.cpp \

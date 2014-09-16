@@ -36,8 +36,8 @@
 #include <QCoreApplication>
 
 using namespace QtSupport;
-using namespace QtSupport::Internal;
-using namespace QtSupport::Internal;
+//using namespace QtSupport::Internal;//#720 ROOPAK - START
+//using namespace QtSupport::Internal;//#720 ROOPAK - END
 //using namespace ProjectExplorer;//#720 ROOPAK
 
 DebuggingHelperBuildTask::DebuggingHelperBuildTask(const BaseQtVersion *version,

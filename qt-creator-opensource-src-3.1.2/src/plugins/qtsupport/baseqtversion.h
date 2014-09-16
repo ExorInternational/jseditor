@@ -78,13 +78,13 @@ public:
     bool operator ==(const QtVersionNumber &b) const;
 };
 
-namespace Internal { class QtOptionsPageWidget; }
+//namespace Internal { class QtOptionsPageWidget; }//#720 ROOPAK
 
 class QTSUPPORT_EXPORT BaseQtVersion
 {
     friend class QtVersionFactory;
     friend class QtVersionManager;
-    friend class QtSupport::Internal::QtOptionsPageWidget;
+//    friend class QtSupport::Internal::QtOptionsPageWidget;//#720 ROOPAK
 public:
     virtual ~BaseQtVersion();
 
