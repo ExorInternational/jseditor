@@ -33,7 +33,7 @@ HEADERS += \
     desktopqtversion.h \
     simulatorqtversion.h \
 #    winceqtversionfactory.h \//#720 ROOPAK
-    winceqtversion.h
+#    winceqtversion.h//#720 ROOPAK
 
 SOURCES += \
     qtsupportplugin.cpp \
@@ -59,7 +59,7 @@ SOURCES += \
     desktopqtversion.cpp \
     simulatorqtversion.cpp \
 #    winceqtversionfactory.cpp \//#720 ROOPAK
-    winceqtversion.cpp
+#    winceqtversion.cpp//#720 ROOPAK
 
 greaterThan(QT_MAJOR_VERSION, 4) {
     QT += quick
