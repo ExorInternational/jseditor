@@ -25,7 +25,7 @@ HEADERS += \
     profilereader.h \
 #    qtparser.h \//#720 ROOPAK
     exampleslistmodel.h \
-    screenshotcropper.h \
+#    screenshotcropper.h \//#720 ROOPAK
     qtconfigwidget.h \
     qtfeatureprovider.h \
 #    desktopqtversionfactory.h \//#720 ROOPAK
@@ -52,7 +52,7 @@ SOURCES += \
     profilereader.cpp \
 #    qtparser.cpp \//#720 ROOPAK
     exampleslistmodel.cpp \
-    screenshotcropper.cpp \
+#    screenshotcropper.cpp \//#720 ROOPAK
     qtconfigwidget.cpp \
 #    desktopqtversionfactory.cpp \//#720 ROOPAK
 #    simulatorqtversionfactory.cpp \//#720 ROOPAK
