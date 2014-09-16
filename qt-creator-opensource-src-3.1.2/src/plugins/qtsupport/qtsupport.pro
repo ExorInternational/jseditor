@@ -24,7 +24,7 @@ HEADERS += \
     qtsupportconstants.h \
     profilereader.h \
 #    qtparser.h \//#720 ROOPAK
-    exampleslistmodel.h \
+#    exampleslistmodel.h \//#720 ROOPAK
 #    screenshotcropper.h \//#720 ROOPAK
     qtconfigwidget.h \
     qtfeatureprovider.h \
@@ -51,7 +51,7 @@ SOURCES += \
     debugginghelperbuildtask.cpp \
     profilereader.cpp \
 #    qtparser.cpp \//#720 ROOPAK
-    exampleslistmodel.cpp \
+#    exampleslistmodel.cpp \//#720 ROOPAK
 #    screenshotcropper.cpp \//#720 ROOPAK
     qtconfigwidget.cpp \
 #    desktopqtversionfactory.cpp \//#720 ROOPAK
