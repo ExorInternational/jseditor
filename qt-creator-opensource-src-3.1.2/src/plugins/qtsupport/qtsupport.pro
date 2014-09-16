@@ -29,7 +29,7 @@ HEADERS += \
     qtconfigwidget.h \
     qtfeatureprovider.h \
     desktopqtversionfactory.h \
-    simulatorqtversionfactory.h \
+#    simulatorqtversionfactory.h \//#720 ROOPAK
     desktopqtversion.h \
     simulatorqtversion.h \
 #    winceqtversionfactory.h \//#720 ROOPAK
@@ -55,7 +55,7 @@ SOURCES += \
     screenshotcropper.cpp \
     qtconfigwidget.cpp \
     desktopqtversionfactory.cpp \
-    simulatorqtversionfactory.cpp \
+#    simulatorqtversionfactory.cpp \//#720 ROOPAK
     desktopqtversion.cpp \
     simulatorqtversion.cpp \
 #    winceqtversionfactory.cpp \//#720 ROOPAK
