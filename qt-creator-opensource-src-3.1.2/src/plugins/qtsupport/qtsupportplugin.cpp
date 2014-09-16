@@ -49,7 +49,7 @@
 //#include <projectexplorer/target.h>//#720 ROOPAK
 
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 1, 0))
-#include "gettingstartedwelcomepage.h"
+//#include "gettingstartedwelcomepage.h"//#720 ROOPAK
 #endif
 
 #include <QtPlugin>

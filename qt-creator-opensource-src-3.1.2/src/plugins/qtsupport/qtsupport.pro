@@ -63,8 +63,8 @@ SOURCES += \
 
 greaterThan(QT_MAJOR_VERSION, 4) {
     QT += quick
-    HEADERS += gettingstartedwelcomepage.h
-    SOURCES += gettingstartedwelcomepage.cpp
+#    HEADERS += gettingstartedwelcomepage.h//#720 ROOPAK
+#    SOURCES += gettingstartedwelcomepage.cpp//#720 ROOPAK
 }
 
 FORMS   +=  \
