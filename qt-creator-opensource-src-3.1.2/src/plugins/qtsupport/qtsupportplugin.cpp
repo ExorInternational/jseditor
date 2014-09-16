@@ -30,7 +30,7 @@
 #include "qtsupportplugin.h"
 
 //#include "customexecutablerunconfiguration.h"//ROOPAK
-#include "desktopqtversionfactory.h"
+//#include "desktopqtversionfactory.h"//#720 ROOPAK
 #include "qtfeatureprovider.h"
 //#include "qtkitinformation.h"//#720 ROOPAK
 #include "qtoptionspage.h"
@@ -73,7 +73,7 @@ bool QtSupportPlugin::initialize(const QStringList &arguments, QString *errorMes
         return false;
 
     addAutoReleasedObject(new QtVersionManager);
-    addAutoReleasedObject(new DesktopQtVersionFactory);
+//    addAutoReleasedObject(new DesktopQtVersionFactory);//#720 ROOPAK
 //    addAutoReleasedObject(new SimulatorQtVersionFactory);//#720 ROOPAK
 //    addAutoReleasedObject(new WinCeQtVersionFactory);//#720 ROOPAK
 //    addAutoReleasedObject(new UiCodeModelManager);//#720 ROOPAK
