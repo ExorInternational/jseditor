@@ -11,7 +11,7 @@ HEADERS += \
     qtsupport_global.h \
 #    qtkitconfigwidget.h \//#720 ROOPAK
 #    qtkitinformation.h \//#720 ROOPAK
-    qtoutputformatter.h \
+#    qtoutputformatter.h \//#720 ROOPAK
     qtversionmanager.h \
     qtversionfactory.h \
 #    uicodemodelsupport.h \//#720 ROOPAK
@@ -39,7 +39,7 @@ SOURCES += \
     qtsupportplugin.cpp \
 #    qtkitconfigwidget.cpp \//#720 ROOPAK
 #    qtkitinformation.cpp \//#720 ROOPAK
-    qtoutputformatter.cpp \
+#    qtoutputformatter.cpp \//#720 ROOPAK
     qtversionmanager.cpp \
     qtversionfactory.cpp \
 #    uicodemodelsupport.cpp \//#720 ROOPAK
