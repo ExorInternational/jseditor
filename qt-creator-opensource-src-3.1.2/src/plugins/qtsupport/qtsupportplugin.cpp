@@ -39,7 +39,7 @@
 //#include "uicodemodelsupport.h"//#720 ROOPAK
 //#include "winceqtversionfactory.h"//#720 ROOPAK
 
-#include "profilereader.h"
+//#include "profilereader.h"//#720 ROOPAK
 
 #include <coreplugin/icore.h>
 #include <coreplugin/mimedatabase.h>
@@ -65,9 +65,9 @@ bool QtSupportPlugin::initialize(const QStringList &arguments, QString *errorMes
 {
     Q_UNUSED(arguments);
     Q_UNUSED(errorMessage);
-    QMakeParser::initialize();
-    ProFileEvaluator::initialize();
-    new ProFileCacheManager(this);
+//    QMakeParser::initialize();//#720 ROOPAK - START
+//    ProFileEvaluator::initialize();
+//    new ProFileCacheManager(this);//#720 ROOPAK - END
 
     if (!MimeDatabase::addMimeTypes(QLatin1String(":qtsupport/QtSupport.mimetypes.xml"), errorMessage))
         return false;

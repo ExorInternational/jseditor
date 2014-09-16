@@ -239,7 +239,7 @@ protected:
 //    static QList<ProjectExplorer::Abi> qtAbisFromLibrary(const QList<Utils::FileName> &coreLibraries);//#720 ROOPAK
 
     void ensureMkSpecParsed() const;
-    virtual void parseMkSpec(ProFileEvaluator *) const;
+//    virtual void parseMkSpec(ProFileEvaluator *) const;//#720 ROOPAK
 private:
     void setAutoDetectionSource(const QString &autodetectionSource);
     static int getUniqueId();

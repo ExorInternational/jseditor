@@ -33,7 +33,7 @@
 //#include "qtkitinformation.h"//#720 ROOPAK
 
 #include "qtversionmanager.h"
-#include "profilereader.h"
+//#include "profilereader.h"//#720 ROOPAK
 #include <coreplugin/icore.h>
 #include <coreplugin/progressmanager/progressmanager.h>
 #include <proparser/qmakevfs.h>
@@ -67,7 +67,7 @@
 
 using namespace Core;
 using namespace QtSupport;
-using namespace QtSupport::Internal;
+//using namespace QtSupport::Internal;//#720 ROOPAK
 //using namespace ProjectExplorer;//#720 ROOPAK
 using namespace Utils;
 
@@ -820,48 +820,48 @@ void BaseQtVersion::ensureMkSpecParsed() const
     if (mkspecPath().isEmpty())
         return;
 
-    QMakeVfs vfs;
-    ProFileGlobals option;
-    option.setProperties(versionInfo());
-    option.environment = qmakeRunEnvironment().toProcessEnvironment();
-    ProMessageHandler msgHandler(true);
-    ProFileCacheManager::instance()->incRefCount();
-    QMakeParser parser(ProFileCacheManager::instance()->cache(), &vfs, &msgHandler);
-    ProFileEvaluator evaluator(&option, &parser, &vfs, &msgHandler);
-    evaluator.loadNamedSpec(mkspecPath().toString(), false);
+//    QMakeVfs vfs;//#720 ROOPAK - START
+//    ProFileGlobals option;
+//    option.setProperties(versionInfo());
+//    option.environment = qmakeRunEnvironment().toProcessEnvironment();
+//    ProMessageHandler msgHandler(true);
+//    ProFileCacheManager::instance()->incRefCount();
+//    QMakeParser parser(ProFileCacheManager::instance()->cache(), &vfs, &msgHandler);
+//    ProFileEvaluator evaluator(&option, &parser, &vfs, &msgHandler);
+//    evaluator.loadNamedSpec(mkspecPath().toString(), false);
 
-    parseMkSpec(&evaluator);
+//    parseMkSpec(&evaluator);
 
-    ProFileCacheManager::instance()->decRefCount();
+//    ProFileCacheManager::instance()->decRefCount();//#720 ROOPAK - END
 }
 
-void BaseQtVersion::parseMkSpec(ProFileEvaluator *evaluator) const
-{
-    m_configValues = evaluator->values(QLatin1String("CONFIG"));
-    m_qtConfigValues = evaluator->values(QLatin1String("QT_CONFIG"));
-    m_defaultConfigIsDebugAndRelease = false;
-    m_frameworkBuild = false;
-    foreach (const QString &value, m_configValues) {
-        if (value == QLatin1String("debug"))
-            m_defaultConfigIsDebug = true;
-        else if (value == QLatin1String("release"))
-            m_defaultConfigIsDebug = false;
-        else if (value == QLatin1String("build_all"))
-            m_defaultConfigIsDebugAndRelease = true;
-        else if (value == QLatin1String("qt_framework"))
-            m_frameworkBuild = true;
-    }
-    const QString designerBins = QLatin1String("QT.designer.bins");
-    const QString qmlBins = QLatin1String("QT.qml.bins");
-    const QString declarativeBins = QLatin1String("QT.declarative.bins");
-    const QString libinfix = QLatin1String(MKSPEC_VALUE_LIBINFIX);
-    const QString ns = QLatin1String(MKSPEC_VALUE_NAMESPACE);
-    m_mkspecValues.insert(designerBins, evaluator->value(designerBins));
-    m_mkspecValues.insert(qmlBins, evaluator->value(qmlBins));
-    m_mkspecValues.insert(declarativeBins, evaluator->value(declarativeBins));
-    m_mkspecValues.insert(libinfix, evaluator->value(libinfix));
-    m_mkspecValues.insert(ns, evaluator->value(ns));
-}
+//void BaseQtVersion::parseMkSpec(ProFileEvaluator *evaluator) const//#720 ROOPAK - START
+//{
+//    m_configValues = evaluator->values(QLatin1String("CONFIG"));
+//    m_qtConfigValues = evaluator->values(QLatin1String("QT_CONFIG"));
+//    m_defaultConfigIsDebugAndRelease = false;
+//    m_frameworkBuild = false;
+//    foreach (const QString &value, m_configValues) {
+//        if (value == QLatin1String("debug"))
+//            m_defaultConfigIsDebug = true;
+//        else if (value == QLatin1String("release"))
+//            m_defaultConfigIsDebug = false;
+//        else if (value == QLatin1String("build_all"))
+//            m_defaultConfigIsDebugAndRelease = true;
+//        else if (value == QLatin1String("qt_framework"))
+//            m_frameworkBuild = true;
+//    }
+//    const QString designerBins = QLatin1String("QT.designer.bins");
+//    const QString qmlBins = QLatin1String("QT.qml.bins");
+//    const QString declarativeBins = QLatin1String("QT.declarative.bins");
+//    const QString libinfix = QLatin1String(MKSPEC_VALUE_LIBINFIX);
+//    const QString ns = QLatin1String(MKSPEC_VALUE_NAMESPACE);
+//    m_mkspecValues.insert(designerBins, evaluator->value(designerBins));
+//    m_mkspecValues.insert(qmlBins, evaluator->value(qmlBins));
+//    m_mkspecValues.insert(declarativeBins, evaluator->value(declarativeBins));
+//    m_mkspecValues.insert(libinfix, evaluator->value(libinfix));
+//    m_mkspecValues.insert(ns, evaluator->value(ns));
+//}//#720 ROOPAK - END
 
 FileName BaseQtVersion::mkspec() const
 {

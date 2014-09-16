@@ -22,7 +22,7 @@ HEADERS += \
 #    customexecutableconfigurationwidget.h \#ROOPAK
     debugginghelperbuildtask.h \
     qtsupportconstants.h \
-    profilereader.h \
+#    profilereader.h \//#720 ROOPAK
 #    qtparser.h \//#720 ROOPAK
 #    exampleslistmodel.h \//#720 ROOPAK
 #    screenshotcropper.h \//#720 ROOPAK
@@ -49,7 +49,7 @@ SOURCES += \
 #    customexecutablerunconfiguration.cpp \#ROOPAK
 #    customexecutableconfigurationwidget.cpp \#ROOPAK
     debugginghelperbuildtask.cpp \
-    profilereader.cpp \
+#    profilereader.cpp \//#720 ROOPAK
 #    qtparser.cpp \//#720 ROOPAK
 #    exampleslistmodel.cpp \//#720 ROOPAK
 #    screenshotcropper.cpp \//#720 ROOPAK
