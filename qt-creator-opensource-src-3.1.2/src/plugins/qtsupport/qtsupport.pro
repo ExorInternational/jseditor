@@ -32,7 +32,7 @@ HEADERS += \
     simulatorqtversionfactory.h \
     desktopqtversion.h \
     simulatorqtversion.h \
-    winceqtversionfactory.h \
+#    winceqtversionfactory.h \//#720 ROOPAK
     winceqtversion.h
 
 SOURCES += \
@@ -58,7 +58,7 @@ SOURCES += \
     simulatorqtversionfactory.cpp \
     desktopqtversion.cpp \
     simulatorqtversion.cpp \
-    winceqtversionfactory.cpp \
+#    winceqtversionfactory.cpp \//#720 ROOPAK
     winceqtversion.cpp
 
 greaterThan(QT_MAJOR_VERSION, 4) {
