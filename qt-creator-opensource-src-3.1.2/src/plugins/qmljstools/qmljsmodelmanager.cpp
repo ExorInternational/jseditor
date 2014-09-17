@@ -47,7 +47,7 @@
 #include <qmljs/qmljsplugindumper.h>
 //#include <qtsupport/qmldumptool.h>//#720 ROOPAK
 //#include <qtsupport/qtkitinformation.h>//#720 ROOPAK
-#include <qtsupport/qtsupportconstants.h>
+//#include <qtsupport/qtsupportconstants.h>//#720 ROOPAK
 #include <texteditor/basetextdocument.h>
 #include <utils/function.h>
 #include <utils/hostosinfo.h>

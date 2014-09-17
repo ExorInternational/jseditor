@@ -21,7 +21,7 @@ HEADERS += \
 #    customexecutablerunconfiguration.h \#ROOPAK
 #    customexecutableconfigurationwidget.h \#ROOPAK
 #    debugginghelperbuildtask.h \//#720 ROOPAK
-    qtsupportconstants.h \
+#    qtsupportconstants.h \//#720 ROOPAK
 #    profilereader.h \//#720 ROOPAK
 #    qtparser.h \//#720 ROOPAK
 #    exampleslistmodel.h \//#720 ROOPAK

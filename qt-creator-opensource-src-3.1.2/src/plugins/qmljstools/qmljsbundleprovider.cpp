@@ -33,7 +33,7 @@
 #include <qmljs/qmljsbundle.h>
 #include <qmljs/qmljsconstants.h>
 //#include <qtsupport/qtkitinformation.h>//#720 ROOPAK
-#include <qtsupport/qtsupportconstants.h>
+//#include <qtsupport/qtsupportconstants.h>//#720 ROOPAK
 
 #include <QDir>
 
