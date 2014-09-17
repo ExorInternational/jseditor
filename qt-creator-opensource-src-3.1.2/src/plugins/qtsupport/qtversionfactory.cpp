@@ -29,7 +29,7 @@
 
 #include "qtversionfactory.h"
 //#include "profilereader.h"//#720 ROOPAK
-#include "baseqtversion.h"
+//#include "baseqtversion.h"//#720 ROOPAK
 
 #include <proparser/qmakevfs.h>
 
@@ -55,35 +55,35 @@ bool sortByPriority(QtVersionFactory *a, QtVersionFactory *b)
     return a->priority() > b->priority();
 }
 
-BaseQtVersion *QtVersionFactory::createQtVersionFromQMakePath(const Utils::FileName &qmakePath, bool isAutoDetected, const QString &autoDetectionSource, QString *error)
-{
-    QHash<QString, QString> versionInfo;
-    if (!BaseQtVersion::queryQMakeVariables(qmakePath, Utils::Environment::systemEnvironment(),
-                                            &versionInfo, error))
-        return 0;
-    Utils::FileName mkspec = BaseQtVersion::mkspecFromVersionInfo(versionInfo);
+//BaseQtVersion *QtVersionFactory::createQtVersionFromQMakePath(const Utils::FileName &qmakePath, bool isAutoDetected, const QString &autoDetectionSource, QString *error)//#720 ROOPAK - START
+//{
+//    QHash<QString, QString> versionInfo;
+//    if (!BaseQtVersion::queryQMakeVariables(qmakePath, Utils::Environment::systemEnvironment(),
+//                                            &versionInfo, error))
+//        return 0;
+//    Utils::FileName mkspec = BaseQtVersion::mkspecFromVersionInfo(versionInfo);
 
-//    QMakeVfs vfs;//#720 ROOPAK - START
-//    ProFileGlobals globals;
-//    globals.setProperties(versionInfo);
-//    ProMessageHandler msgHandler(true);
-//    ProFileCacheManager::instance()->incRefCount();
-//    QMakeParser parser(ProFileCacheManager::instance()->cache(), &vfs, &msgHandler);
-//    ProFileEvaluator evaluator(&globals, &parser, &vfs, &msgHandler);
-//    evaluator.loadNamedSpec(mkspec.toString(), false);
+////    QMakeVfs vfs;//#720 ROOPAK - START
+////    ProFileGlobals globals;
+////    globals.setProperties(versionInfo);
+////    ProMessageHandler msgHandler(true);
+////    ProFileCacheManager::instance()->incRefCount();
+////    QMakeParser parser(ProFileCacheManager::instance()->cache(), &vfs, &msgHandler);
+////    ProFileEvaluator evaluator(&globals, &parser, &vfs, &msgHandler);
+////    evaluator.loadNamedSpec(mkspec.toString(), false);
 
-//    QList<QtVersionFactory *> factories = ExtensionSystem::PluginManager::getObjects<QtVersionFactory>();
-//    qSort(factories.begin(), factories.end(), &sortByPriority);
+////    QList<QtVersionFactory *> factories = ExtensionSystem::PluginManager::getObjects<QtVersionFactory>();
+////    qSort(factories.begin(), factories.end(), &sortByPriority);
 
-//    foreach (QtVersionFactory *factory, factories) {
-//        BaseQtVersion *ver = factory->create(qmakePath, &evaluator, isAutoDetected, autoDetectionSource);
-//        if (ver) {
-//            ProFileCacheManager::instance()->decRefCount();
-//            return ver;
-//        }
-//    }
-//    ProFileCacheManager::instance()->decRefCount();//#720 ROOPAK - END
-    if (error)
-        *error = tr("No factory found for qmake: '%1'").arg(qmakePath.toUserOutput());
-    return 0;
-}
+////    foreach (QtVersionFactory *factory, factories) {
+////        BaseQtVersion *ver = factory->create(qmakePath, &evaluator, isAutoDetected, autoDetectionSource);
+////        if (ver) {
+////            ProFileCacheManager::instance()->decRefCount();
+////            return ver;
+////        }
+////    }
+////    ProFileCacheManager::instance()->decRefCount();//#720 ROOPAK - END
+//    if (error)
+//        *error = tr("No factory found for qmake: '%1'").arg(qmakePath.toUserOutput());
+//    return 0;
+//}//#720 ROOPAK - END

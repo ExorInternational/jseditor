@@ -44,7 +44,7 @@ namespace Utils { class FileName; }
 
 namespace QtSupport {
 
-class BaseQtVersion;
+//class BaseQtVersion;//#720 ROOPAK
 
 class QTSUPPORT_EXPORT QtVersionFactory : public QObject
 {
@@ -55,15 +55,15 @@ public:
     ~QtVersionFactory();
 
     virtual bool canRestore(const QString &type) = 0;
-    virtual BaseQtVersion *restore(const QString &type, const QVariantMap &data) = 0;
+//    virtual BaseQtVersion *restore(const QString &type, const QVariantMap &data) = 0;//#720 ROOPAK
 
     /// factories with higher priority are asked first to identify
     /// a qtversion, the priority of the desktop factory is 0 and
     /// the desktop factory claims to handle all paths
     virtual int priority() const = 0;
-    virtual BaseQtVersion *create(const Utils::FileName &qmakePath, ProFileEvaluator *evaluator, bool isAutoDetected = false, const QString &autoDetectionSource = QString()) = 0;
+//    virtual BaseQtVersion *create(const Utils::FileName &qmakePath, ProFileEvaluator *evaluator, bool isAutoDetected = false, const QString &autoDetectionSource = QString()) = 0;//#720 ROOPAK
 
-    static BaseQtVersion *createQtVersionFromQMakePath(const Utils::FileName &qmakePath, bool isAutoDetected = false, const QString &autoDetectionSource = QString(), QString *error = 0);
+//    static BaseQtVersion *createQtVersionFromQMakePath(const Utils::FileName &qmakePath, bool isAutoDetected = false, const QString &autoDetectionSource = QString(), QString *error = 0);//#720 ROOPAK
 };
 
 } // namespace QtSupport
