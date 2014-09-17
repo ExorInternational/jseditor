@@ -45,7 +45,7 @@
 #include <qmljs/qmljsbind.h>
 #include <qmljs/qmljsfindexportedcpptypes.h>
 #include <qmljs/qmljsplugindumper.h>
-#include <qtsupport/qmldumptool.h>
+//#include <qtsupport/qmldumptool.h>//#720 ROOPAK
 //#include <qtsupport/qtkitinformation.h>//#720 ROOPAK
 #include <qtsupport/qtsupportconstants.h>
 #include <texteditor/basetextdocument.h>

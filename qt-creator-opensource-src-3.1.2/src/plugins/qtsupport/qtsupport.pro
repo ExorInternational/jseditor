@@ -16,7 +16,7 @@ HEADERS += \
     qtversionfactory.h \
 #    uicodemodelsupport.h \//#720 ROOPAK
 #    baseqtversion.h \//#720 ROOPAK
-    qmldumptool.h \
+#    qmldumptool.h \//#720 ROOPAK
 #    qtoptionspage.h \//#720 ROOPAK
 #    customexecutablerunconfiguration.h \#ROOPAK
 #    customexecutableconfigurationwidget.h \#ROOPAK
@@ -44,7 +44,7 @@ SOURCES += \
     qtversionfactory.cpp \
 #    uicodemodelsupport.cpp \//#720 ROOPAK
 #    baseqtversion.cpp \//#720 ROOPAK
-    qmldumptool.cpp \
+#    qmldumptool.cpp \//#720 ROOPAK
 #    qtoptionspage.cpp \//#720 ROOPAK
 #    customexecutablerunconfiguration.cpp \#ROOPAK
 #    customexecutableconfigurationwidget.cpp \#ROOPAK
