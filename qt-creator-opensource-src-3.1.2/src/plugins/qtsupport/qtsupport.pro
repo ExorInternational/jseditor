@@ -13,7 +13,7 @@ HEADERS += \
 #    qtkitinformation.h \//#720 ROOPAK
 #    qtoutputformatter.h \//#720 ROOPAK
 #    qtversionmanager.h \//#720 ROOPAK
-    qtversionfactory.h \
+#    qtversionfactory.h \//#720 ROOPAK
 #    uicodemodelsupport.h \//#720 ROOPAK
 #    baseqtversion.h \//#720 ROOPAK
 #    qmldumptool.h \//#720 ROOPAK
@@ -41,7 +41,7 @@ SOURCES += \
 #    qtkitinformation.cpp \//#720 ROOPAK
 #    qtoutputformatter.cpp \//#720 ROOPAK
 #    qtversionmanager.cpp \//#720 ROOPAK
-    qtversionfactory.cpp \
+#    qtversionfactory.cpp \//#720 ROOPAK
 #    uicodemodelsupport.cpp \//#720 ROOPAK
 #    baseqtversion.cpp \//#720 ROOPAK
 #    qmldumptool.cpp \//#720 ROOPAK
