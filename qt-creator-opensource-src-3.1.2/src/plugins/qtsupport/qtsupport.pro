@@ -20,7 +20,7 @@ HEADERS += \
 #    qtoptionspage.h \//#720 ROOPAK
 #    customexecutablerunconfiguration.h \#ROOPAK
 #    customexecutableconfigurationwidget.h \#ROOPAK
-    debugginghelperbuildtask.h \
+#    debugginghelperbuildtask.h \//#720 ROOPAK
     qtsupportconstants.h \
 #    profilereader.h \//#720 ROOPAK
 #    qtparser.h \//#720 ROOPAK
@@ -48,7 +48,7 @@ SOURCES += \
 #    qtoptionspage.cpp \//#720 ROOPAK
 #    customexecutablerunconfiguration.cpp \#ROOPAK
 #    customexecutableconfigurationwidget.cpp \#ROOPAK
-    debugginghelperbuildtask.cpp \
+#    debugginghelperbuildtask.cpp \//#720 ROOPAK
 #    profilereader.cpp \//#720 ROOPAK
 #    qtparser.cpp \//#720 ROOPAK
 #    exampleslistmodel.cpp \//#720 ROOPAK

@@ -41,7 +41,7 @@
 //#include <projectexplorer/toolchain.h>//#720 ROOPAK
 //#include <projectexplorer/projectexplorer.h>//#720 ROOPAK
 //#include <projectexplorer/headerpath.h>//#720 ROOPAK
-#include <qtsupport/debugginghelperbuildtask.h>
+//#include <qtsupport/debugginghelperbuildtask.h>//#720 ROOPAK
 #include <qtsupport/qtsupportconstants.h>
 
 #include <utils/hostosinfo.h>

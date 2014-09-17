@@ -30,7 +30,7 @@
 #include "qmldumptool.h"
 #include "qtsupportconstants.h"
 #include "qtversionmanager.h"
-#include "debugginghelperbuildtask.h"
+//#include "debugginghelperbuildtask.h"//#720 ROOPAK
 
 #include <coreplugin/icore.h>
 #include <coreplugin/progressmanager/progressmanager.h>
@@ -63,21 +63,21 @@ class QmlDumpBuildTask : public QObject
 
 public:
     explicit QmlDumpBuildTask(BaseQtVersion *version/*, ToolChain *toolChain*/)//#720 ROOPAK
-        : m_buildTask(new DebuggingHelperBuildTask(version, /*toolChain,*///#720 ROOPAK
-                                                   DebuggingHelperBuildTask::QmlDump))
-        , m_failed(false)
+//        : m_buildTask(new DebuggingHelperBuildTask(version, /*toolChain,*///#720 ROOPAK//#720 ROOPAK - START
+//                                                   DebuggingHelperBuildTask::QmlDump))//#720 ROOPAK - END
+        : m_failed(false)
     {
         qmlDumpBuilds()->insert(version->uniqueId(), this);
         // Don't open General Messages pane with errors
-        m_buildTask->showOutputOnError(false);
-        connect(m_buildTask, SIGNAL(finished(int,QString,DebuggingHelperBuildTask::Tools)),
-                this, SLOT(finish(int,QString,DebuggingHelperBuildTask::Tools)),
-                Qt::QueuedConnection);
+//        m_buildTask->showOutputOnError(false);//#720 ROOPAK - START
+//        connect(m_buildTask, SIGNAL(finished(int,QString,DebuggingHelperBuildTask::Tools)),
+//                this, SLOT(finish(int,QString,DebuggingHelperBuildTask::Tools)),
+//                Qt::QueuedConnection);//#720 ROOPAK - END
     }
 
     void run(QFutureInterface<void> &future)
     {
-        m_buildTask->run(future);
+//        m_buildTask->run(future);//#720 ROOPAK
     }
 
 //    void updateProjectWhenDone(QPointer<Project> project, bool preferDebug)//#720 ROOPAK - START
@@ -99,48 +99,48 @@ public:
     }
 
 private slots:
-    void finish(int qtId, const QString &output, DebuggingHelperBuildTask::Tools tools)
-    {
-        BaseQtVersion *version = QtVersionManager::version(qtId);
+//    void finish(int qtId, const QString &output, DebuggingHelperBuildTask::Tools tools)//#720 ROOPAK - START
+//    {
+//        BaseQtVersion *version = QtVersionManager::version(qtId);
 
-        QTC_ASSERT(tools == DebuggingHelperBuildTask::QmlDump, return);
-        QString errorMessage;
-        if (!version) {
-            m_failed = true;
-            errorMessage = QString::fromLatin1("Qt version became invalid");
-        } else {
-            if (!version->hasQmlDump()) {
-                m_failed = true;
-                errorMessage = QString::fromLatin1("Could not build QML plugin dumping helper for %1\n"
-                                                   "Output:\n%2").
-                        arg(version->displayName(), output);
-            }
-        }
+//        QTC_ASSERT(tools == DebuggingHelperBuildTask::QmlDump, return);
+//        QString errorMessage;
+//        if (!version) {
+//            m_failed = true;
+//            errorMessage = QString::fromLatin1("Qt version became invalid");
+//        } else {
+//            if (!version->hasQmlDump()) {
+//                m_failed = true;
+//                errorMessage = QString::fromLatin1("Could not build QML plugin dumping helper for %1\n"
+//                                                   "Output:\n%2").
+//                        arg(version->displayName(), output);
+//            }
+//        }
 
-        if (m_failed)
-            qWarning("%s", qPrintable(errorMessage));
+//        if (m_failed)
+//            qWarning("%s", qPrintable(errorMessage));
 
-        // update qmldump path for all the project
-        QmlJS::ModelManagerInterface *modelManager = QmlJS::ModelManagerInterface::instance();
-        if (!modelManager)
-            return;
+//        // update qmldump path for all the project
+//        QmlJS::ModelManagerInterface *modelManager = QmlJS::ModelManagerInterface::instance();
+//        if (!modelManager)
+//            return;
 
-        foreach (const ProjectToUpdate &update, m_projectsToUpdate) {
-//            if (!update.project)//#720 ROOPAK - START
-//                continue;
-//            QmlJS::ModelManagerInterface::ProjectInfo projectInfo = modelManager->projectInfo(update.project);
-//            projectInfo.qmlDumpPath = version->qmlDumpTool(update.preferDebug);
-//            if (projectInfo.qmlDumpPath.isEmpty())
-//                projectInfo.qmlDumpPath = version->qmlDumpTool(!update.preferDebug);
-//            projectInfo.qmlDumpEnvironment = version->qmlToolsEnvironment();
-//            projectInfo.qmlDumpHasRelocatableFlag = version->hasQmlDumpWithRelocatableFlag();
-//            modelManager->updateProjectInfo(projectInfo, update.project);//#720 ROOPAK - END
-        }
+//        foreach (const ProjectToUpdate &update, m_projectsToUpdate) {
+////            if (!update.project)//#720 ROOPAK - START
+////                continue;
+////            QmlJS::ModelManagerInterface::ProjectInfo projectInfo = modelManager->projectInfo(update.project);
+////            projectInfo.qmlDumpPath = version->qmlDumpTool(update.preferDebug);
+////            if (projectInfo.qmlDumpPath.isEmpty())
+////                projectInfo.qmlDumpPath = version->qmlDumpTool(!update.preferDebug);
+////            projectInfo.qmlDumpEnvironment = version->qmlToolsEnvironment();
+////            projectInfo.qmlDumpHasRelocatableFlag = version->hasQmlDumpWithRelocatableFlag();
+////            modelManager->updateProjectInfo(projectInfo, update.project);//#720 ROOPAK - END
+//        }
 
-        // clean up
-        qmlDumpBuilds()->remove(qtId);
-        deleteLater();
-    }
+//        // clean up
+//        qmlDumpBuilds()->remove(qtId);
+//        deleteLater();
+//    }//#720 ROOPAK - END
 
 private:
     class ProjectToUpdate {
@@ -150,7 +150,7 @@ private:
     };
 
     QList<ProjectToUpdate> m_projectsToUpdate;
-    DebuggingHelperBuildTask *m_buildTask; // deletes itself after run()
+//    DebuggingHelperBuildTask *m_buildTask; // deletes itself after run()//#720 ROOPAK
     bool m_failed;
 };
 } // end of anonymous namespace
