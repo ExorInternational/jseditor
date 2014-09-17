@@ -9,6 +9,6 @@ QTC_LIB_DEPENDS += \
 QTC_PLUGIN_DEPENDS += \
     coreplugin \
 #    projectexplorer \//#720 ROOPAK
-    qtsupport \
+#    qtsupport \//#720 ROOPAK
     texteditor \
 #    cpptools//#720 ROOPAK

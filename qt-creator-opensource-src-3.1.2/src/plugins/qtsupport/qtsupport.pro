@@ -7,7 +7,7 @@ DEFINES += QMAKE_LIBRARY
 include(../../shared/proparser/proparser.pri)
 
 HEADERS += \
-    qtsupportplugin.h \
+#    qtsupportplugin.h \//#720 ROOPAK
     qtsupport_global.h \
 #    qtkitconfigwidget.h \//#720 ROOPAK
 #    qtkitinformation.h \//#720 ROOPAK
@@ -36,7 +36,7 @@ HEADERS += \
 #    winceqtversion.h//#720 ROOPAK
 
 SOURCES += \
-    qtsupportplugin.cpp \
+#    qtsupportplugin.cpp \//#720 ROOPAK
 #    qtkitconfigwidget.cpp \//#720 ROOPAK
 #    qtkitinformation.cpp \//#720 ROOPAK
 #    qtoutputformatter.cpp \//#720 ROOPAK

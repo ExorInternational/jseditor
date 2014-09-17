@@ -18,7 +18,7 @@ SUBDIRS   = \
 #    git \       #ROOPAK
 #    cvs \       #ROOPAK
 #    cpptools \//#720 ROOPAK
-    qtsupport \
+#    qtsupport \//#720 ROOPAK
 #    qmakeprojectmanager \  #ROOPAK
 #    locator \ #ROOPAK
 #    debugger \#ROOPAK
