@@ -42,13 +42,13 @@ namespace ProjectExplorer {
 }
 
 namespace QtSupport {
-class BaseQtVersion;
+//class BaseQtVersion;//#720 ROOPAK
 
 class QTSUPPORT_EXPORT QmlDumpTool : public Utils::BuildableHelperLibrary
 {
 public:
-    static bool canBuild(const BaseQtVersion *qtVersion, QString *reason = 0);
-    static QString toolForVersion(BaseQtVersion *version, bool debugDump);
+    static bool canBuild(/*const BaseQtVersion *qtVersion, */QString *reason = 0);//#720 ROOPAK - START
+    static QString toolForVersion(/*BaseQtVersion *version,*/ bool debugDump);//#720 ROOPAK - END
     static QString toolForQtPaths(const QString &qtInstallData,
                                  const QString &qtInstallBins,
                                  const QString &qtInstallHeaders,

@@ -12,7 +12,7 @@ HEADERS += \
 #    qtkitconfigwidget.h \//#720 ROOPAK
 #    qtkitinformation.h \//#720 ROOPAK
 #    qtoutputformatter.h \//#720 ROOPAK
-    qtversionmanager.h \
+#    qtversionmanager.h \//#720 ROOPAK
     qtversionfactory.h \
 #    uicodemodelsupport.h \//#720 ROOPAK
     baseqtversion.h \
@@ -40,7 +40,7 @@ SOURCES += \
 #    qtkitconfigwidget.cpp \//#720 ROOPAK
 #    qtkitinformation.cpp \//#720 ROOPAK
 #    qtoutputformatter.cpp \//#720 ROOPAK
-    qtversionmanager.cpp \
+#    qtversionmanager.cpp \//#720 ROOPAK
     qtversionfactory.cpp \
 #    uicodemodelsupport.cpp \//#720 ROOPAK
     baseqtversion.cpp \
@@ -71,7 +71,7 @@ FORMS   +=  \
 #    showbuildlog.ui \//#720 ROOPAK
 #    qtversioninfo.ui \//#720 ROOPAK
 #    debugginghelper.ui \//#720 ROOPAK
-    qtversionmanager.ui \
+#    qtversionmanager.ui \//#720 ROOPAK
 
 RESOURCES += \
     qtsupport.qrc

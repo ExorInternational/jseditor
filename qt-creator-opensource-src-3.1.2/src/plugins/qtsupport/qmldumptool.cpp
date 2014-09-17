@@ -29,7 +29,7 @@
 
 #include "qmldumptool.h"
 #include "qtsupportconstants.h"
-#include "qtversionmanager.h"
+//#include "qtversionmanager.h"//#720 ROOPAK
 //#include "debugginghelperbuildtask.h"//#720 ROOPAK
 
 #include <coreplugin/icore.h>
@@ -62,12 +62,12 @@ class QmlDumpBuildTask : public QObject
     Q_OBJECT
 
 public:
-    explicit QmlDumpBuildTask(BaseQtVersion *version/*, ToolChain *toolChain*/)//#720 ROOPAK
+    explicit QmlDumpBuildTask(/*BaseQtVersion *version, ToolChain *toolChain*/)//#720 ROOPAK
 //        : m_buildTask(new DebuggingHelperBuildTask(version, /*toolChain,*///#720 ROOPAK//#720 ROOPAK - START
 //                                                   DebuggingHelperBuildTask::QmlDump))//#720 ROOPAK - END
         : m_failed(false)
     {
-        qmlDumpBuilds()->insert(version->uniqueId(), this);
+//        qmlDumpBuilds()->insert(version->uniqueId(), this);//#720 ROOPAK
         // Don't open General Messages pane with errors
 //        m_buildTask->showOutputOnError(false);//#720 ROOPAK - START
 //        connect(m_buildTask, SIGNAL(finished(int,QString,DebuggingHelperBuildTask::Tools)),
@@ -188,44 +188,44 @@ static bool hasPrivateHeaders(const QString &qtInstallHeaders) {
     return QFile::exists(header);
 }
 
-bool QmlDumpTool::canBuild(const BaseQtVersion *qtVersion, QString *reason)
+bool QmlDumpTool::canBuild(/*const BaseQtVersion *qtVersion,*/ QString *reason)//#720 ROOPAK
 {
-    const QString installHeaders = qtVersion->qmakeProperty("QT_INSTALL_HEADERS");
+//    const QString installHeaders = qtVersion->qmakeProperty("QT_INSTALL_HEADERS");//#720 ROOPAK - START
 
-    if (qtVersion->type() != QLatin1String(Constants::DESKTOPQT)
-            && qtVersion->type() != QLatin1String(Constants::SIMULATORQT)) {
-        if (reason)
-            *reason = QCoreApplication::translate("QmakeProjectManager::QmlDumpTool", "Only available for Qt for Desktop and Qt for Qt Simulator.");
-        return false;
-    }
-    if (qtVersion->qtVersion() < QtVersionNumber(4, 7, 1)) {
-        if (reason)
-            *reason = QCoreApplication::translate("QmakeProjectManager::QmlDumpTool", "Only available for Qt 4.7.1 or newer.");
-        return false;
-    }
-    if (qtVersion->qtVersion() >= QtVersionNumber(4, 8, 0)) {
-        if (reason)
-            *reason = QCoreApplication::translate("QmakeProjectManager::QmlDumpTool", "Not needed.");
-        return false;
-    }
+//    if (qtVersion->type() != QLatin1String(Constants::DESKTOPQT)
+//            && qtVersion->type() != QLatin1String(Constants::SIMULATORQT)) {
+//        if (reason)
+//            *reason = QCoreApplication::translate("QmakeProjectManager::QmlDumpTool", "Only available for Qt for Desktop and Qt for Qt Simulator.");
+//        return false;
+//    }
+//    if (qtVersion->qtVersion() < QtVersionNumber(4, 7, 1)) {
+//        if (reason)
+//            *reason = QCoreApplication::translate("QmakeProjectManager::QmlDumpTool", "Only available for Qt 4.7.1 or newer.");
+//        return false;
+//    }
+//    if (qtVersion->qtVersion() >= QtVersionNumber(4, 8, 0)) {
+//        if (reason)
+//            *reason = QCoreApplication::translate("QmakeProjectManager::QmlDumpTool", "Not needed.");
+//        return false;
+//    }
 
 
-    if (!hasPrivateHeaders(installHeaders)) {
-        if (reason)
-            *reason = QCoreApplication::translate("QmakeProjectManager::QmlDumpTool", "Private headers are missing for this Qt version.");
-        return false;
-    }
+//    if (!hasPrivateHeaders(installHeaders)) {
+//        if (reason)
+//            *reason = QCoreApplication::translate("QmakeProjectManager::QmlDumpTool", "Private headers are missing for this Qt version.");
+//        return false;
+//    }//#720 ROOPAK - END
     return true;
 }
 
-QString QmlDumpTool::toolForVersion(BaseQtVersion *version, bool debugDump)
+QString QmlDumpTool::toolForVersion(/*BaseQtVersion *version,*/ bool debugDump)
 {
-    if (version) {
-        const QString qtInstallData = version->qmakeProperty("QT_INSTALL_DATA");
-        const QString qtInstallBins = version->qmakeProperty("QT_INSTALL_BINS");
-        const QString qtInstallHeaders = version->qmakeProperty("QT_INSTALL_HEADERS");
-        return toolForQtPaths(qtInstallData, qtInstallBins, qtInstallHeaders, debugDump);
-    }
+//    if (version) {//#720 ROOPAK - START
+//        const QString qtInstallData = version->qmakeProperty("QT_INSTALL_DATA");
+//        const QString qtInstallBins = version->qmakeProperty("QT_INSTALL_BINS");
+//        const QString qtInstallHeaders = version->qmakeProperty("QT_INSTALL_HEADERS");
+//        return toolForQtPaths(qtInstallData, qtInstallBins, qtInstallHeaders, debugDump);
+//    }//#720 ROOPAK - END
 
     return QString();
 }

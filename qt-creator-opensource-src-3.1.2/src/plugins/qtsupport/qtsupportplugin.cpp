@@ -34,7 +34,7 @@
 //#include "qtfeatureprovider.h"//#720 ROOPAK
 //#include "qtkitinformation.h"//#720 ROOPAK
 //#include "qtoptionspage.h"//#720 ROOPAK
-#include "qtversionmanager.h"
+//#include "qtversionmanager.h"//#720 ROOPAK
 //#include "simulatorqtversionfactory.h"//#720 ROOPAK
 //#include "uicodemodelsupport.h"//#720 ROOPAK
 //#include "winceqtversionfactory.h"//#720 ROOPAK
@@ -72,7 +72,7 @@ bool QtSupportPlugin::initialize(const QStringList &arguments, QString *errorMes
     if (!MimeDatabase::addMimeTypes(QLatin1String(":qtsupport/QtSupport.mimetypes.xml"), errorMessage))
         return false;
 
-    addAutoReleasedObject(new QtVersionManager);
+//    addAutoReleasedObject(new QtVersionManager);//#720 ROOPAK
 //    addAutoReleasedObject(new DesktopQtVersionFactory);//#720 ROOPAK
 //    addAutoReleasedObject(new SimulatorQtVersionFactory);//#720 ROOPAK
 //    addAutoReleasedObject(new WinCeQtVersionFactory);//#720 ROOPAK
@@ -96,7 +96,7 @@ bool QtSupportPlugin::initialize(const QStringList &arguments, QString *errorMes
 
 //    ProjectExplorer::KitManager::registerKitInformation(new QtKitInformation);//#720 ROOPAK
 
-    QtVersionManager::initialized();
+//    QtVersionManager::initialized();//#720 ROOPAK
 
     return true;
 }
@@ -114,7 +114,7 @@ void QtSupportPlugin::extensionsInitialized()
 
 bool QtSupportPlugin::delayedInitialize()
 {
-    return QtVersionManager::delayedInitialize();
+    return false;//QtVersionManager::delayedInitialize();//#720 ROOPAK
 }
 
 void QtSupportPlugin::updateVariable(const QByteArray &variable)

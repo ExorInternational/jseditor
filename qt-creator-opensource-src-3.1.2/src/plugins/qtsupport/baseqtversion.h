@@ -83,7 +83,7 @@ public:
 class QTSUPPORT_EXPORT BaseQtVersion
 {
     friend class QtVersionFactory;
-    friend class QtVersionManager;
+//    friend class QtVersionManager;//#720 ROOPAK
 //    friend class QtSupport::Internal::QtOptionsPageWidget;//#720 ROOPAK
 public:
     virtual ~BaseQtVersion();

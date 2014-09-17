@@ -32,7 +32,7 @@
 #include "qmldumptool.h"
 //#include "qtkitinformation.h"//#720 ROOPAK
 
-#include "qtversionmanager.h"
+//#include "qtversionmanager.h"//#720 ROOPAK
 //#include "profilereader.h"//#720 ROOPAK
 #include <coreplugin/icore.h>
 #include <coreplugin/progressmanager/progressmanager.h>
@@ -139,7 +139,7 @@ bool QtVersionNumber::operator >=(const QtVersionNumber &b) const
 ///////////////
 int BaseQtVersion::getUniqueId()
 {
-    return QtVersionManager::getUniqueId();
+    return 0;//QtVersionManager::getUniqueId();//#720 ROOPAK
 }
 
 BaseQtVersion::BaseQtVersion(const FileName &qmakeCommand, bool isAutodetected, const QString &autodetectionSource)
@@ -408,7 +408,7 @@ void BaseQtVersion::fromMap(const QVariantMap &map)
 {
     m_id = map.value(QLatin1String(Constants::QTVERSIONID)).toInt();
     if (m_id == -1) // this happens on adding from installer, see updateFromInstaller => get a new unique id
-        m_id = QtVersionManager::getUniqueId();
+        m_id = 0;//QtVersionManager::getUniqueId();//#720 ROOPAK
     m_displayName = map.value(QLatin1String(Constants::QTVERSIONNAME)).toString();
     m_isAutodetected = map.value(QLatin1String(QTVERSIONAUTODETECTED)).toBool();
     if (m_isAutodetected)
