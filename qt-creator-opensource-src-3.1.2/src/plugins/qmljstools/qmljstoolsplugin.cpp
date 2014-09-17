@@ -31,7 +31,7 @@
 #include "qmljsmodelmanager.h"
 //#include "qmljsfunctionfilter.h"//#720 ROOPAK
 #include "qmljslocatordata.h"
-#include "qmljscodestylesettingspage.h"
+//#include "qmljscodestylesettingspage.h"//#720 ROOPAK
 #include "qmljstoolsconstants.h"
 #include "qmljstoolssettings.h"
 #include "qmlconsolemanager.h"
@@ -92,7 +92,7 @@ bool QmlJSToolsPlugin::initialize(const QStringList &arguments, QString *error)
     LocatorData *locatorData = new LocatorData;
     addAutoReleasedObject(locatorData);
 //    addAutoReleasedObject(new FunctionFilter(locatorData));//#720 ROOPAK
-    addAutoReleasedObject(new QmlJSCodeStyleSettingsPage);
+//    addAutoReleasedObject(new QmlJSCodeStyleSettingsPage);//#720 ROOPAK
     addAutoReleasedObject(new BasicBundleProvider);
 
     // Menus

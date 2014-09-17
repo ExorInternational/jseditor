@@ -18,7 +18,7 @@ HEADERS += \
 #    $$PWD/qmljsfunctionfilter.h \//#720 ROOPAK
     $$PWD/qmljslocatordata.h \
     $$PWD/qmljsindenter.h \
-    $$PWD/qmljscodestylesettingspage.h \
+#    $$PWD/qmljscodestylesettingspage.h \//#720 ROOPAK
     $$PWD/qmljssemanticinfo.h \
     $$PWD/qmljstools_global.h \
     $$PWD/qmlconsolemanager.h \
@@ -42,7 +42,7 @@ SOURCES += \
 #    $$PWD/qmljsfunctionfilter.cpp \//#720 ROOPAK
     $$PWD/qmljslocatordata.cpp \
     $$PWD/qmljsindenter.cpp \
-    $$PWD/qmljscodestylesettingspage.cpp \
+#    $$PWD/qmljscodestylesettingspage.cpp \//#720 ROOPAK
     $$PWD/qmljssemanticinfo.cpp \
     $$PWD/qmlconsolemanager.cpp \
     $$PWD/qmlconsoleitemmodel.cpp \
@@ -59,8 +59,8 @@ RESOURCES += \
 OTHER_FILES += \
     QmlJSTools.mimetypes.xml
 
-FORMS += \
-    $$PWD/qmljscodestylesettingspage.ui
+#FORMS += \//#720 ROOPAK
+#    $$PWD/qmljscodestylesettingspage.ui//#720 ROOPAK
 
 equals(TEST, 1) {
     SOURCES += \
