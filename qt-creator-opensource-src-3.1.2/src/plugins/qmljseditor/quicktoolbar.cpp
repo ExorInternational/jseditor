@@ -28,7 +28,7 @@
 ****************************************************************************/
 
 #include "quicktoolbar.h"
-#include "quicktoolbarsettingspage.h"
+//#include "quicktoolbarsettingspage.h"//#720 ROOPAK
 
 #include <utils/changeset.h>
 #include <qmleditorwidgets/contextpanewidget.h>
@@ -119,10 +119,10 @@ QuickToolBar::~QuickToolBar()
 
 void QuickToolBar::apply(TextEditor::BaseTextEditor *editor, Document::Ptr document, const ScopeChain *scopeChain, AST::Node *node, bool update, bool force)
 {
-    if (!QuickToolBarSettings::get().enableContextPane && !force && !update) {
-        contextWidget()->hide();
-        return;
-    }
+//    if (!QuickToolBarSettings::get().enableContextPane && !force && !update) {//#720 ROOPAK - START
+//        contextWidget()->hide();
+//        return;
+//    }//#720 ROOPAK - END
 
     if (document.isNull())
         return;
@@ -223,11 +223,11 @@ void QuickToolBar::apply(TextEditor::BaseTextEditor *editor, Document::Ptr docum
             contextWidget()->setIsPropertyChanges(isPropertyChanges);
             if (!update)
                 contextWidget()->setType(m_prototypes);
-            if (!update)
-                contextWidget()->activate(p3 , p1, p2, QuickToolBarSettings::get().pinContextPane);
-            else
-                contextWidget()->rePosition(p3 , p1, p2, QuickToolBarSettings::get().pinContextPane);
-            contextWidget()->setOptions(QuickToolBarSettings::get().enableContextPane, QuickToolBarSettings::get().pinContextPane);
+//            if (!update)//#720 ROOPAK - START
+//                contextWidget()->activate(p3 , p1, p2, QuickToolBarSettings::get().pinContextPane);
+//            else
+//                contextWidget()->rePosition(p3 , p1, p2, QuickToolBarSettings::get().pinContextPane);
+//            contextWidget()->setOptions(QuickToolBarSettings::get().enableContextPane, QuickToolBarSettings::get().pinContextPane);//#720 ROOPAK - END
             contextWidget()->setPath(document->path());
             contextWidget()->setProperties(&propertyReader);
             m_doc = document;
@@ -409,17 +409,17 @@ void QuickToolBar::onPropertyRemovedAndChange(const QString &remove, const QStri
 
 void QuickToolBar::onPinnedChanged(bool b)
 {
-    QuickToolBarSettings settings = QuickToolBarSettings::get();
-    settings.pinContextPane = b;
-    settings.set();
+//    QuickToolBarSettings settings = QuickToolBarSettings::get();//#720 ROOPAK - START
+//    settings.pinContextPane = b;
+//    settings.set();//#720 ROOPAK - END
 }
 
 void QuickToolBar::onEnabledChanged(bool b)
 {
-    QuickToolBarSettings settings = QuickToolBarSettings::get();
-    settings.pinContextPane = b;
-    settings.enableContextPane = b;
-    settings.set();
+//    QuickToolBarSettings settings = QuickToolBarSettings::get();//#720 ROOPAK - START
+//    settings.pinContextPane = b;
+//    settings.enableContextPane = b;
+//    settings.set();//#720 ROOPAK - END
 }
 
 void QuickToolBar::indentLines(int startLine, int endLine)

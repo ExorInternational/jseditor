@@ -41,7 +41,7 @@
 #include "qmljssnippetprovider.h"
 //#include "qmltaskmanager.h"//#720 ROOPAK
 #include "quicktoolbar.h"
-#include "quicktoolbarsettingspage.h"
+//#include "quicktoolbarsettingspage.h"//#720 ROOPAK
 #include "qmljscompletionassist.h"
 #include "qmljsquickfixassist.h"
 #include "qmljshighlighterfactory.h"
@@ -233,7 +233,7 @@ bool QmlJSEditorPlugin::initialize(const QStringList & /*arguments*/, QString *e
     addAutoReleasedObject(new QmlJSOutlineWidgetFactory);
 
     addAutoReleasedObject(new QuickToolBar);
-    addAutoReleasedObject(new Internal::QuickToolBarSettingsPage);
+//    addAutoReleasedObject(new Internal::QuickToolBarSettingsPage);//#720 ROOPAK
 
     connect(Core::EditorManager::instance(), SIGNAL(currentEditorChanged(Core::IEditor*)), SLOT(currentEditorChanged(Core::IEditor*)));
 
