@@ -28,7 +28,7 @@
 ****************************************************************************/
 
 #include "baseqtversion.h"
-#include "qtconfigwidget.h"
+//#include "qtconfigwidget.h"//#720 ROOPAK
 #include "qmldumptool.h"
 //#include "qtkitinformation.h"//#720 ROOPAK
 
@@ -1204,10 +1204,10 @@ bool BaseQtVersion::supportsShadowBuilds() const
 //    return results;
 //}//#720 ROOPAK - END
 
-QtConfigWidget *BaseQtVersion::createConfigurationWidget() const
-{
-    return 0;
-}
+//QtConfigWidget *BaseQtVersion::createConfigurationWidget() const//#720 ROOPAK - START
+//{
+//    return 0;
+//}//#720 ROOPAK - END
 
 static QByteArray runQmakeQuery(const FileName &binary, const Environment &env,
                                 QString *error)

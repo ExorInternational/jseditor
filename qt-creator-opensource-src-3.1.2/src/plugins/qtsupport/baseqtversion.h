@@ -58,7 +58,7 @@ QT_END_NAMESPACE
 
 namespace QtSupport
 {
-class QtConfigWidget;
+//class QtConfigWidget;//#720 ROOPAK
 
 class QTSUPPORT_EXPORT QtVersionNumber
 {
@@ -194,7 +194,7 @@ public:
     virtual bool needsQmlDump() const;
     Utils::Environment qmlToolsEnvironment() const;
 
-    virtual QtConfigWidget *createConfigurationWidget() const;
+//    virtual QtConfigWidget *createConfigurationWidget() const;//#720 ROOPAK
 
     static QString defaultDisplayName(const QString &versionString,
                                       const Utils::FileName &qmakePath,

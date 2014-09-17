@@ -26,7 +26,7 @@ HEADERS += \
 #    qtparser.h \//#720 ROOPAK
 #    exampleslistmodel.h \//#720 ROOPAK
 #    screenshotcropper.h \//#720 ROOPAK
-    qtconfigwidget.h \
+#    qtconfigwidget.h \//#720 ROOPAK
 #    qtfeatureprovider.h \//#720 ROOPAK
 #    desktopqtversionfactory.h \//#720 ROOPAK
 #    simulatorqtversionfactory.h \//#720 ROOPAK
@@ -53,7 +53,7 @@ SOURCES += \
 #    qtparser.cpp \//#720 ROOPAK
 #    exampleslistmodel.cpp \//#720 ROOPAK
 #    screenshotcropper.cpp \//#720 ROOPAK
-    qtconfigwidget.cpp \
+#    qtconfigwidget.cpp \//#720 ROOPAK
 #    desktopqtversionfactory.cpp \//#720 ROOPAK
 #    simulatorqtversionfactory.cpp \//#720 ROOPAK
 #    desktopqtversion.cpp \//#720 ROOPAK
