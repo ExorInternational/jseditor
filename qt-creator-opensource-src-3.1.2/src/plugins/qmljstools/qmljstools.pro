@@ -11,7 +11,7 @@ HEADERS += \
     $$PWD/qmljstoolsplugin.h \
     $$PWD/qmljstoolsconstants.h \
     $$PWD/qmljstoolssettings.h \
-    $$PWD/qmljscodestylepreferencesfactory.h \
+#    $$PWD/qmljscodestylepreferencesfactory.h \//#720 ROOPAK
     $$PWD/qmljsmodelmanager.h \
     $$PWD/qmljsqtstylecodeformatter.h \
     $$PWD/qmljsrefactoringchanges.h \
@@ -35,7 +35,7 @@ SOURCES += \
     $$PWD/qmljsbundleprovider.cpp \
     $$PWD/qmljstoolsplugin.cpp \
     $$PWD/qmljstoolssettings.cpp \
-    $$PWD/qmljscodestylepreferencesfactory.cpp \
+#    $$PWD/qmljscodestylepreferencesfactory.cpp \//#720 ROOPAK
     $$PWD/qmljsmodelmanager.cpp \
     $$PWD/qmljsqtstylecodeformatter.cpp \
     $$PWD/qmljsrefactoringchanges.cpp \

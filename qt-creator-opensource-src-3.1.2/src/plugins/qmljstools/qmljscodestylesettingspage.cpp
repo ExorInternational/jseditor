@@ -162,17 +162,17 @@ QmlJSCodeStyleSettingsPage::QmlJSCodeStyleSettingsPage(/*QSharedPointer<CppFileS
 
 QWidget *QmlJSCodeStyleSettingsPage::widget()
 {
-    if (!m_widget) {
-        TextEditor::SimpleCodeStylePreferences *originalTabPreferences
-                = QmlJSToolsSettings::globalCodeStyle();
-        m_pageTabPreferences = new TextEditor::SimpleCodeStylePreferences(m_widget);
-        m_pageTabPreferences->setDelegatingPool(originalTabPreferences->delegatingPool());
-        m_pageTabPreferences->setTabSettings(originalTabPreferences->tabSettings());
-        m_pageTabPreferences->setCurrentDelegate(originalTabPreferences->currentDelegate());
-        m_pageTabPreferences->setId(originalTabPreferences->id());
-        m_widget = new CodeStyleEditor(TextEditorSettings::codeStyleFactory(QmlJSTools::Constants::QML_JS_SETTINGS_ID),
-                                       m_pageTabPreferences);
-    }
+//    if (!m_widget) {//#720 ROOPAK - START
+//        TextEditor::SimpleCodeStylePreferences *originalTabPreferences
+//                = QmlJSToolsSettings::globalCodeStyle();
+//        m_pageTabPreferences = new TextEditor::SimpleCodeStylePreferences(m_widget);
+//        m_pageTabPreferences->setDelegatingPool(originalTabPreferences->delegatingPool());
+//        m_pageTabPreferences->setTabSettings(originalTabPreferences->tabSettings());
+//        m_pageTabPreferences->setCurrentDelegate(originalTabPreferences->currentDelegate());
+//        m_pageTabPreferences->setId(originalTabPreferences->id());
+//        m_widget = new CodeStyleEditor(TextEditorSettings::codeStyleFactory(QmlJSTools::Constants::QML_JS_SETTINGS_ID),
+//                                       m_pageTabPreferences);
+//    }//#720 ROOPAK - END
     return m_widget;
 }
 

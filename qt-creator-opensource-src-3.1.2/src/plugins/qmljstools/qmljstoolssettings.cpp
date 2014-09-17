@@ -29,7 +29,7 @@
 
 #include "qmljstoolssettings.h"
 #include "qmljstoolsconstants.h"
-#include "qmljscodestylepreferencesfactory.h"
+//#include "qmljscodestylepreferencesfactory.h"//#720 ROOPAK
 
 #include <texteditor/texteditorsettings.h>
 #include <texteditor/simplecodestylepreferences.h>
@@ -56,19 +56,19 @@ QmlJSToolsSettings::QmlJSToolsSettings(QObject *parent)
     QTC_ASSERT(!m_globalCodeStyle, return);
 
     // code style factory
-    ICodeStylePreferencesFactory *factory = new QmlJSCodeStylePreferencesFactory();
-    TextEditorSettings::registerCodeStyleFactory(factory);
+//    ICodeStylePreferencesFactory *factory = new QmlJSCodeStylePreferencesFactory();//#720 ROOPAK - START
+//    TextEditorSettings::registerCodeStyleFactory(factory);
 
     // code style pool
-    CodeStylePool *pool = new CodeStylePool(factory, this);
-    TextEditorSettings::registerCodeStylePool(Constants::QML_JS_SETTINGS_ID, pool);
+//    CodeStylePool *pool = new CodeStylePool(factory, this);
+//    TextEditorSettings::registerCodeStylePool(Constants::QML_JS_SETTINGS_ID, pool);//#720 ROOPAK - END
 
     // global code style settings
     m_globalCodeStyle = new SimpleCodeStylePreferences(this);
-    m_globalCodeStyle->setDelegatingPool(pool);
+//    m_globalCodeStyle->setDelegatingPool(pool);
     m_globalCodeStyle->setDisplayName(tr("Global", "Settings"));
     m_globalCodeStyle->setId(idKey);
-    pool->addCodeStyle(m_globalCodeStyle);
+//    pool->addCodeStyle(m_globalCodeStyle);//#720 ROOPAK
     TextEditorSettings::registerCodeStyle(QmlJSTools::Constants::QML_JS_SETTINGS_ID, m_globalCodeStyle);
 
     // built-in settings
@@ -83,12 +83,12 @@ QmlJSToolsSettings::QmlJSToolsSettings(QObject *parent)
     qtTabSettings.m_indentSize = 4;
     qtTabSettings.m_continuationAlignBehavior = TabSettings::ContinuationAlignWithIndent;
     qtCodeStyle->setTabSettings(qtTabSettings);
-    pool->addCodeStyle(qtCodeStyle);
+//    pool->addCodeStyle(qtCodeStyle);//#720 ROOPAK
 
     // default delegate for global preferences
     m_globalCodeStyle->setCurrentDelegate(qtCodeStyle);
 
-    pool->loadCustomCodeStyles();
+//    pool->loadCustomCodeStyles();//#720 ROOPAK
 
     // load global settings (after built-in settings are added to the pool)
     QSettings *s = Core::ICore::settings();
@@ -121,11 +121,11 @@ QmlJSToolsSettings::QmlJSToolsSettings(QObject *parent)
             }
 
             // create custom code style out of old settings
-            ICodeStylePreferences *oldCreator = pool->createCodeStyle(
-                     "legacy", legacyTabSettings, QVariant(), tr("Old Creator"));
+//            ICodeStylePreferences *oldCreator = pool->createCodeStyle(//#720 ROOPAK - START
+//                     "legacy", legacyTabSettings, QVariant(), tr("Old Creator"));
 
             // change the current delegate and save
-            m_globalCodeStyle->setCurrentDelegate(oldCreator);
+//            m_globalCodeStyle->setCurrentDelegate(oldCreator);//#720 ROOPAK - END
             m_globalCodeStyle->toSettings(QLatin1String(QmlJSTools::Constants::QML_JS_SETTINGS_ID), s);
         }
         // mark old settings as transformed
