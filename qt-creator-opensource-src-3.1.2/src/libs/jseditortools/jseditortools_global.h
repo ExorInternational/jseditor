@@ -1,0 +1,12 @@
+#ifndef AGGREGATION_GLOBAL_H
+#define AGGREGATION_GLOBAL_H
+
+#include <qglobal.h>
+
+#if defined(JSEDITORTOOLS_LIBRARY)
+#  define JSEDITORTOOLS_EXPORT Q_DECL_EXPORT
+#else
+#  define JSEDITORTOOLS_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // AGGREGATION_GLOBAL_H
