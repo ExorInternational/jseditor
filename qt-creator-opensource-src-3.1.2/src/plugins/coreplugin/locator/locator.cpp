@@ -30,7 +30,7 @@
 #include "locator.h"
 #include "locatorconstants.h"
 //#include "locatorfiltersfilter.h"//#720 ROOPAK
-#include "locatormanager.h"
+//#include "locatormanager.h"//#720 ROOPAK
 #include "locatorwidget.h"
 //#include "opendocumentsfilter.h"//#720 ROOPAK
 //#include "filesystemfilter.h"//#720 ROOPAK
@@ -115,7 +115,7 @@ void Locator::initialize(CorePlugin *corePlugin, const QStringList &, QString *)
     ActionContainer *mtools = ActionManager::actionContainer(Core::Constants::M_TOOLS);
     mtools->addAction(cmd);
 
-    m_corePlugin->addObject(new LocatorManager(m_locatorWidget));
+//    m_corePlugin->addObject(new LocatorManager(m_locatorWidget));//#720 ROOPAK
 
 //    m_openDocumentsFilter = new OpenDocumentsFilter;//#720 ROOPAK - START
 //    m_corePlugin->addObject(m_openDocumentsFilter);//#720 ROOPAK - END

@@ -35,7 +35,7 @@
 #include "texteditorconstants.h"
 #include "texteditorplugin.h"
 
-#include <coreplugin/locator/locatormanager.h>
+//#include <coreplugin/locator/locatormanager.h>//#720 ROOPAK
 #include <coreplugin/icore.h>
 #include <coreplugin/coreconstants.h>
 #include <coreplugin/actionmanager/actionmanager.h>
