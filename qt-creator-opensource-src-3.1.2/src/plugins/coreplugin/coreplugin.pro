@@ -14,7 +14,7 @@ include(../../shared/scriptwrapper/scriptwrapper.pri)
 win32-msvc*:QMAKE_CXXFLAGS += -wd4251 -wd4290 -wd4250
 SOURCES += mainwindow.cpp \
     editmode.cpp \
-    tabpositionindicator.cpp \
+#    tabpositionindicator.cpp \//#720 ROOPAK
 #    fancyactionbar.cpp \ #ROOPAK
     fancytabwidget.cpp \
 #    generalsettings.cpp \#ROOPAK
@@ -101,7 +101,7 @@ SOURCES += mainwindow.cpp \
 
 HEADERS += mainwindow.h \
     editmode.h \
-    tabpositionindicator.h \
+#    tabpositionindicator.h \//#720 ROOPAK
 #    fancyactionbar.h \ #ROOPAK
     fancytabwidget.h \
 #    generalsettings.h \#ROOPAK
