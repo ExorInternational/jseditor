@@ -39,7 +39,7 @@
 
 //#720 ADDED BY ROOPAK - START
 #include "qmljs/qmljsdocument.h"
-#include "../qmljstools/qmljssemanticinfo.h"
+#include "../js-qmljstools/js-qmljssemanticinfo.h"
 //#720 ROOPAK - END
 
 namespace JsEditorTools {

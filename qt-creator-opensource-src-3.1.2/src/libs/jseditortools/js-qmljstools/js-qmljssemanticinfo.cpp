@@ -27,7 +27,7 @@
 **
 ****************************************************************************/
 
-#include "qmljssemanticinfo.h"
+#include "js-qmljssemanticinfo.h"
 
 #include <qmljs/qmljsscopebuilder.h>
 

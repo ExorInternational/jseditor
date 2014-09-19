@@ -27,7 +27,7 @@
 **
 ****************************************************************************/
 
-#include "qmljssemanticinfoupdater.h"
+#include "js-qmljssemanticinfoupdater.h"
 //#include "qmljseditorplugin.h"//#720 ROOPAK
 
 #include <qmljs/qmljsmodelmanagerinterface.h>
