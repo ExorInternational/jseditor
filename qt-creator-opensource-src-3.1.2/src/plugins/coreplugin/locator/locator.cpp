@@ -29,7 +29,7 @@
 
 #include "locator.h"
 #include "locatorconstants.h"
-#include "locatorfiltersfilter.h"
+//#include "locatorfiltersfilter.h"//#720 ROOPAK
 #include "locatormanager.h"
 #include "locatorwidget.h"
 //#include "opendocumentsfilter.h"//#720 ROOPAK
@@ -126,7 +126,7 @@ void Locator::initialize(CorePlugin *corePlugin, const QStringList &, QString *)
 //    m_executeFilter = new ExecuteFilter();//#720 ROOPAK - START
 //    m_corePlugin->addObject(m_executeFilter);//#720 ROOPAK - END
 
-    m_corePlugin->addAutoReleasedObject(new LocatorFiltersFilter(this, m_locatorWidget));
+//    m_corePlugin->addAutoReleasedObject(new LocatorFiltersFilter(this, m_locatorWidget));//#720 ROOPAK
 
     connect(ICore::instance(), SIGNAL(saveSettingsRequested()), this, SLOT(saveSettings()));
 }
