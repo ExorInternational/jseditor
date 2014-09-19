@@ -27,8 +27,8 @@
 **
 ****************************************************************************/
 
-#ifndef SEMANTICINFOUPDATER_H
-#define SEMANTICINFOUPDATER_H
+#ifndef JS_SEMANTICINFOUPDATER_H
+#define JS_SEMANTICINFOUPDATER_H
 
 //#include "qmljseditor.h"//#720 ROOPAK
 
@@ -79,4 +79,4 @@ private:
 } // namespace Internal
 } // namespace QmlJSEditor
 
-#endif // SEMANTICINFOUPDATER_H
+#endif // JS_SEMANTICINFOUPDATER_H

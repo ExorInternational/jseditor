@@ -1,5 +1,5 @@
-#ifndef AGGREGATION_GLOBAL_H
-#define AGGREGATION_GLOBAL_H
+#ifndef JSEDITORTOOLS_GLOBAL_H
+#define JSEDITORTOOLS_GLOBAL_H
 
 #include <qglobal.h>
 
@@ -9,4 +9,4 @@
 #  define JSEDITORTOOLS_EXPORT Q_DECL_IMPORT
 #endif
 
-#endif // AGGREGATION_GLOBAL_H
+#endif // JSEDITORTOOLS_GLOBAL_H
