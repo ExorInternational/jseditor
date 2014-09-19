@@ -1,5 +1,5 @@
-include(qmljseditor/qmljseditor.pri)
-include(qmljstools/qmljstools.pri)
+include(js-qmljseditor/js-qmljseditor.pri)
+include(js-qmljstools/js-qmljstools.pri)
 
 HEADERS += jseditortools.h \
     jseditortools_global.h \
