@@ -12,7 +12,7 @@ HEADERS += \
     $$PWD/locatormanager.h \
 #    $$PWD/basefilefilter.h \//#720 ROOPAK
 #    $$PWD/executefilter.h \//#720 ROOPAK
-    $$PWD/locatorsearchutils.h
+#    $$PWD/locatorsearchutils.h//#720 ROOPAK
 
 SOURCES += \
     $$PWD/locator.cpp \
@@ -27,7 +27,7 @@ SOURCES += \
 #    $$PWD/basefilefilter.cpp \//#720 ROOPAK
     $$PWD/ilocatorfilter.cpp \
 #    $$PWD/executefilter.cpp \//#720 ROOPAK
-    $$PWD/locatorsearchutils.cpp
+#    $$PWD/locatorsearchutils.cpp//#720 ROOPAK
 
 FORMS += \
 #    $$PWD/settingspage.ui \//#720 ROOPAK

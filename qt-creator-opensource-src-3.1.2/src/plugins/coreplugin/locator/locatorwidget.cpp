@@ -30,7 +30,7 @@
 #include "locator.h"
 #include "locatorwidget.h"
 #include "locatorconstants.h"
-#include "locatorsearchutils.h"
+//#include "locatorsearchutils.h"//#720 ROOPAK
 #include "ilocatorfilter.h"
 
 #include <coreplugin/coreconstants.h>
@@ -485,8 +485,8 @@ void LocatorWidget::updateCompletionList(const QString &text)
     m_entriesWatcher->future().cancel();
     m_entriesWatcher->future().waitForFinished();
 
-    QFuture<LocatorFilterEntry> future = QtConcurrent::run(runSearch, filters, searchText);
-    m_entriesWatcher->setFuture(future);
+//    QFuture<LocatorFilterEntry> future = QtConcurrent::run(runSearch, filters, searchText);
+//    m_entriesWatcher->setFuture(future);
 }
 
 void LocatorWidget::updateEntries()
