@@ -34,7 +34,7 @@
 using namespace QmlJS;
 using namespace QmlJS::AST;
 
-namespace JsEditorTools {
+namespace NewQmlJSTools {
 
 namespace {
 

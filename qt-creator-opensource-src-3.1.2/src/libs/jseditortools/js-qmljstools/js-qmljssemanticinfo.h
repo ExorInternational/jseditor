@@ -38,7 +38,7 @@
 
 #include <QTextCursor>
 
-namespace JsEditorTools {
+namespace NewQmlJSTools {
 
 class JSEDITORTOOLS_EXPORT Range
 {
@@ -98,6 +98,6 @@ private:
 
 } // namespace QmlJSTools
 
-Q_DECLARE_METATYPE(JsEditorTools::SemanticInfo)
+Q_DECLARE_METATYPE(NewQmlJSTools::SemanticInfo)
 
 #endif // QMLJSSEMANTICINFO_H

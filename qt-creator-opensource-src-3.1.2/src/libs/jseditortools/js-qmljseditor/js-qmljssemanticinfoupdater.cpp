@@ -42,7 +42,7 @@
 
 #include <utils/json.h>
 
-namespace JsEditorTools {
+namespace NewQmlJSEditor {
 namespace Internal {
 
 SemanticInfoUpdater::SemanticInfoUpdater(QObject *parent)
@@ -99,7 +99,7 @@ void SemanticInfoUpdater::run()
         if (done)
             break;
 
-        const JsEditorTools::SemanticInfo info = makeNewSemanticInfo(doc, snapshot);
+        const NewQmlJSTools::SemanticInfo info = makeNewSemanticInfo(doc, snapshot);
 
         m_mutex.lock();
         const bool cancelledOrNewData = m_wasCancelled || m_sourceDocument;
@@ -112,11 +112,11 @@ void SemanticInfoUpdater::run()
     }
 }
 
-JsEditorTools::SemanticInfo SemanticInfoUpdater::makeNewSemanticInfo(const QmlJS::Document::Ptr &doc, const QmlJS::Snapshot &snapshot)
+NewQmlJSTools::SemanticInfo SemanticInfoUpdater::makeNewSemanticInfo(const QmlJS::Document::Ptr &doc, const QmlJS::Snapshot &snapshot)
 {
     using namespace QmlJS;
 
-    JsEditorTools::SemanticInfo semanticInfo;
+    NewQmlJSTools::SemanticInfo semanticInfo;
     semanticInfo.document = doc;
     semanticInfo.snapshot = snapshot;
 
