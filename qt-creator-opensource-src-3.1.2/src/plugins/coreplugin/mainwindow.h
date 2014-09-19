@@ -74,7 +74,7 @@ class ProgressManagerPrivate;
 //class ShortcutSettings;//ROOPAK
 //class ToolSettings;//ROOPAK
 //class MimeTypeSettings;//ROOPAK
-class StatusBarManager;
+//class StatusBarManager;//#720 ROOPAK
 class VersionDialog;
 //class SystemEditor;//ROOPAK
 
@@ -171,7 +171,7 @@ private:
     ProgressManagerPrivate *m_progressManager;
     VariableManager *m_variableManager;
     VcsManager *m_vcsManager;
-    StatusBarManager *m_statusBarManager;
+//    StatusBarManager *m_statusBarManager;//#720 ROOPAK
     ModeManager *m_modeManager;
     MimeDatabase *m_mimeDatabase;
     HelpManager *m_helpManager;

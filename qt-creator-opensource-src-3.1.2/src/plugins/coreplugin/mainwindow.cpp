@@ -45,7 +45,7 @@
 #include "vcsmanager.h"
 #include "variablemanager.h"
 #include "versiondialog.h"
-#include "statusbarmanager.h"
+//#include "statusbarmanager.h"//#720 ROOPAK
 #include "id.h"
 #include "manhattanstyle.h"
 #include "navigationwidget.h"
@@ -124,7 +124,7 @@ MainWindow::MainWindow() :
     m_progressManager(new ProgressManagerPrivate),
     m_variableManager(new VariableManager),
     m_vcsManager(new VcsManager),
-    m_statusBarManager(0),
+//    m_statusBarManager(0),//#720 ROOPAK
     m_modeManager(0),
     m_mimeDatabase(new MimeDatabase),
     m_helpManager(new HelpManager),
@@ -194,7 +194,7 @@ MainWindow::MainWindow() :
     m_navigationWidget = new NavigationWidget(m_toggleSideBarAction);
     m_rightPaneWidget = new RightPaneWidget();
 
-    m_statusBarManager = new StatusBarManager(this);
+//    m_statusBarManager = new StatusBarManager(this);//#720 ROOPAK
     m_messageManager = new MessageManager;
     m_editorManager = new EditorManager(this);
     m_editorManager->hide();
@@ -291,8 +291,8 @@ MainWindow::~MainWindow()
     m_editorManager = 0;
     delete m_progressManager;
     m_progressManager = 0;
-    delete m_statusBarManager;
-    m_statusBarManager = 0;
+//    delete m_statusBarManager;//#720 ROOPAK - START
+//    m_statusBarManager = 0;//#720 ROOPAK - END
     ExtensionSystem::PluginManager::removeObject(m_coreImpl);
     delete m_coreImpl;
     m_coreImpl = 0;
@@ -319,7 +319,7 @@ bool MainWindow::init(QString *errorMessage)
         return false;
 
     ExtensionSystem::PluginManager::addObject(m_coreImpl);
-    m_statusBarManager->init();
+//    m_statusBarManager->init();//#720 ROOPAK
     m_modeManager->init();
     m_progressManager->init(); // needs the status bar manager
 
@@ -342,7 +342,7 @@ bool MainWindow::init(QString *errorMessage)
 void MainWindow::extensionsInitialized()
 {
     m_editorManager->init();
-    m_statusBarManager->extensionsInitalized();
+//    m_statusBarManager->extensionsInitalized();//#720 ROOPAK
     OutputPaneManager::instance()->init();
     m_vcsManager->extensionsInitialized();
     m_navigationWidget->setFactories(ExtensionSystem::PluginManager::getObjects<INavigationWidgetFactory>());
