@@ -41,7 +41,7 @@
 //#include <coreplugin/dialogs/readonlyfilesdialog.h>//ROOPAK
 #include <coreplugin/documentmanager.h>
 #include <coreplugin/editormanager/ieditorfactory.h>
-#include <coreplugin/editormanager/iexternaleditor.h>
+//#include <coreplugin/editormanager/iexternaleditor.h>//#720 ROOPAK
 #include <coreplugin/editortoolbar.h>
 #include <coreplugin/fileutils.h>
 #include <coreplugin/findplaceholder.h>
@@ -1371,16 +1371,16 @@ EditorManager::EditorFactoryList
     return rc;
 }
 
-EditorManager::ExternalEditorList
-        EditorManager::externalEditors(const MimeType &mimeType, bool bestMatchOnly)
-{
-    ExternalEditorList rc;
-    const ExternalEditorList allEditors = ExtensionSystem::PluginManager::getObjects<IExternalEditor>();
-    mimeTypeFactoryRecursion(mimeType, allEditors, bestMatchOnly, &rc);
-    if (debugEditorManager)
-        qDebug() << Q_FUNC_INFO << mimeType.type() << " returns " << rc;
-    return rc;
-}
+//EditorManager::ExternalEditorList//#720 ROOPAK - START
+//        EditorManager::externalEditors(const MimeType &mimeType, bool bestMatchOnly)
+//{
+//    ExternalEditorList rc;
+//    const ExternalEditorList allEditors = ExtensionSystem::PluginManager::getObjects<IExternalEditor>();
+//    mimeTypeFactoryRecursion(mimeType, allEditors, bestMatchOnly, &rc);
+//    if (debugEditorManager)
+//        qDebug() << Q_FUNC_INFO << mimeType.type() << " returns " << rc;
+//    return rc;
+//}//#720 ROOPAK - END
 
 /* For something that has a 'QString id' (IEditorFactory
  * or IExternalEditor), find the one matching a id. */
@@ -1650,16 +1650,17 @@ IEditor *EditorManager::openEditor(Core::Internal::EditorView *view, const QStri
 
 bool EditorManager::openExternalEditor(const QString &fileName, const Core::Id &editorId)
 {
-    IExternalEditor *ee = findById<IExternalEditor>(editorId);
-    if (!ee)
-        return false;
-    QString errorMessage;
-    QApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
-    const bool ok = ee->startEditor(fileName, &errorMessage);
-    QApplication::restoreOverrideCursor();
-    if (!ok)
-        QMessageBox::critical(ICore::mainWindow(), tr("Opening File"), errorMessage);
-    return ok;
+//    IExternalEditor *ee = findById<IExternalEditor>(editorId);//#720 ROOPAK - START
+//    if (!ee)
+//        return false;
+//    QString errorMessage;
+//    QApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
+//    const bool ok = ee->startEditor(fileName, &errorMessage);
+//    QApplication::restoreOverrideCursor();
+//    if (!ok)
+//        QMessageBox::critical(ICore::mainWindow(), tr("Opening File"), errorMessage);
+//    return ok;//#720 ROOPAK - END
+    return false;
 }
 
 QStringList EditorManager::getOpenFileNames()

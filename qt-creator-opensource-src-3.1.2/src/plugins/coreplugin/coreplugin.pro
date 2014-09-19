@@ -33,7 +33,7 @@ SOURCES += mainwindow.cpp \
     editormanager/openeditorsview.cpp \
     editormanager/openeditorswindow.cpp \
     editormanager/ieditorfactory.cpp \
-    editormanager/iexternaleditor.cpp \
+#    editormanager/iexternaleditor.cpp \//#720 ROOPAK
     actionmanager/actionmanager.cpp \
     actionmanager/command.cpp \
     actionmanager/commandbutton.cpp \
@@ -118,7 +118,7 @@ HEADERS += mainwindow.h \
     editormanager/openeditorsview.h \
     editormanager/openeditorswindow.h \
     editormanager/ieditor.h \
-    editormanager/iexternaleditor.h \
+#    editormanager/iexternaleditor.h \//#720 ROOPAK
     editormanager/ieditorfactory.h \
     actionmanager/actioncontainer.h \
     actionmanager/actionmanager.h \

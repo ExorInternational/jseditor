@@ -49,7 +49,7 @@ namespace Core {
 class IContext;
 class IEditor;
 class IEditorFactory;
-class IExternalEditor;
+//class IExternalEditor;
 class MimeType;
 class IDocument;
 class IMode;
@@ -91,7 +91,7 @@ class CORE_EXPORT EditorManager : public QWidget
 
 public:
     typedef QList<IEditorFactory *> EditorFactoryList;
-    typedef QList<IExternalEditor *> ExternalEditorList;
+//    typedef QList<IExternalEditor *> ExternalEditorList;
 
     static EditorManager *instance();
 
@@ -165,7 +165,7 @@ public:
     static void hideEditorStatusBar(const QString &id);
 
     static EditorFactoryList editorFactories(const MimeType &mimeType, bool bestMatchOnly = true);
-    static ExternalEditorList externalEditors(const MimeType &mimeType, bool bestMatchOnly = true);
+//    static ExternalEditorList externalEditors(const MimeType &mimeType, bool bestMatchOnly = true);
 
     static void setReloadSetting(IDocument::ReloadSetting behavior);
     static IDocument::ReloadSetting reloadSetting();
