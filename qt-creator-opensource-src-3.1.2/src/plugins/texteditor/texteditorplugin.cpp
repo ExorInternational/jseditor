@@ -57,7 +57,7 @@
 #include <QTemporaryFile>
 
 //#720 ADDED BY ROOPAK - START
-#include <coreplugin/dialogs/iwizard.h>
+//#include <coreplugin/dialogs/iwizard.h>//#720 ROOPAK
 //#720 ROOPAK - END
 
 using namespace TextEditor;
@@ -101,41 +101,41 @@ static inline QString wizardDisplayCategory()
 
 // A wizard that quickly creates a scratch buffer
 // based on a temporary file without prompting for a path.
-class ScratchFileWizard : public Core::IWizard
-{
-    Q_OBJECT
+//class ScratchFileWizard : public Core::IWizard//#720 ROOPAK - START
+//{
+//    Q_OBJECT
 
-public:
-    ScratchFileWizard()
-    {
-        setWizardKind(FileWizard);
-        setDescription(TextEditorPlugin::tr("Creates a scratch buffer using a temporary file."));
-        setDisplayName(TextEditorPlugin::tr("Scratch Buffer"));
-        setId(QLatin1String("Z.ScratchFile"));
-        setCategory(QLatin1String(wizardCategoryC));
-        setDisplayCategory(wizardDisplayCategory());
-        setFlags(Core::IWizard::PlatformIndependent);
-    }
+//public:
+//    ScratchFileWizard()
+//    {
+//        setWizardKind(FileWizard);
+//        setDescription(TextEditorPlugin::tr("Creates a scratch buffer using a temporary file."));
+//        setDisplayName(TextEditorPlugin::tr("Scratch Buffer"));
+//        setId(QLatin1String("Z.ScratchFile"));
+//        setCategory(QLatin1String(wizardCategoryC));
+//        setDisplayCategory(wizardDisplayCategory());
+//        setFlags(Core::IWizard::PlatformIndependent);
+//    }
 
-    void runWizard(const QString &, QWidget *, const QString &, const QVariantMap &)
-    { createFile(); }
+//    void runWizard(const QString &, QWidget *, const QString &, const QVariantMap &)
+//    { createFile(); }
 
-public Q_SLOTS:
-    virtual void createFile();
-};
+//public Q_SLOTS:
+//    virtual void createFile();
+//};
 
-void ScratchFileWizard::createFile()
-{
-    QString tempPattern = QDir::tempPath();
-    if (!tempPattern.endsWith(QLatin1Char('/')))
-        tempPattern += QLatin1Char('/');
-    tempPattern += QLatin1String("scratchXXXXXX.txt");
-    QTemporaryFile file(tempPattern);
-    file.setAutoRemove(false);
-    QTC_ASSERT(file.open(), return; );
-    file.close();
-    Core::EditorManager::openEditor(file.fileName());
-}
+//void ScratchFileWizard::createFile()
+//{
+//    QString tempPattern = QDir::tempPath();
+//    if (!tempPattern.endsWith(QLatin1Char('/')))
+//        tempPattern += QLatin1Char('/');
+//    tempPattern += QLatin1String("scratchXXXXXX.txt");
+//    QTemporaryFile file(tempPattern);
+//    file.setAutoRemove(false);
+//    QTC_ASSERT(file.open(), return; );
+//    file.close();
+//    Core::EditorManager::openEditor(file.fileName());
+//}//#720 ROOPAK - END
 
 // ExtensionSystem::PluginInterface
 bool TextEditorPlugin::initialize(const QStringList &arguments, QString *errorMessage)
@@ -157,8 +157,8 @@ bool TextEditorPlugin::initialize(const QStringList &arguments, QString *errorMe
 
     // Add text file wizard
 //    addAutoReleasedObject(wizard);//#720 ROOPAK - END
-    ScratchFileWizard *scratchFile = new ScratchFileWizard;
-    addAutoReleasedObject(scratchFile);
+//    ScratchFileWizard *scratchFile = new ScratchFileWizard;//#720 ROOPAK - START
+//    addAutoReleasedObject(scratchFile);//#720 ROOPAK - END
 
     m_settings = new TextEditorSettings(this);
 
@@ -195,7 +195,7 @@ bool TextEditorPlugin::initialize(const QStringList &arguments, QString *errorMe
     scratchBufferShortcut->setWhatsThis(tr("Creates a scratch buffer using a temporary file."));
     scratchBufferShortcut->setContext(Qt::ApplicationShortcut);
     Core::ActionManager::registerShortcut(scratchBufferShortcut, Constants::CREATE_SCRATCH_BUFFER, context);
-    connect(scratchBufferShortcut, SIGNAL(activated()), scratchFile, SLOT(createFile()));
+//    connect(scratchBufferShortcut, SIGNAL(activated()), scratchFile, SLOT(createFile()));//#720 ROOPAK
 
     // Generic highlighter.
     connect(Core::ICore::instance(), SIGNAL(coreOpened()),
@@ -326,4 +326,4 @@ void TextEditorPlugin::updateCurrentSelection(const QString &text)
 
 Q_EXPORT_PLUGIN(TextEditorPlugin)
 
-#include "texteditorplugin.moc"
+//#include "texteditorplugin.moc"//#720 ROOPAK
