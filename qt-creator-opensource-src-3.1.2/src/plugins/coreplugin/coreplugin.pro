@@ -149,7 +149,7 @@ HEADERS += mainwindow.h \
     ioutputpane.h \
     coreconstants.h \
     iversioncontrol.h \
-    ifilewizardextension.h \
+#    ifilewizardextension.h \//#720 ROOPAK
     icorelistener.h \
     versiondialog.h \
     core_global.h \
