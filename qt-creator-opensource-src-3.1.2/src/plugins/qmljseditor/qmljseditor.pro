@@ -11,7 +11,7 @@ HEADERS += \
     qmljseditorfactory.h \
     qmljseditorplugin.h \
     qmlexpressionundercursor.h \
-    qmlfilewizard.h \
+#    qmlfilewizard.h \//#720 ROOPAK
     qmljshighlighter.h \
     qmljshighlighterfactory.h \
     qmljshoverhandler.h \
@@ -44,7 +44,7 @@ SOURCES += \
     qmljseditorfactory.cpp \
     qmljseditorplugin.cpp \
     qmlexpressionundercursor.cpp \
-    qmlfilewizard.cpp \
+#    qmlfilewizard.cpp \//#720 ROOPAK
     qmljshighlighter.cpp \
     qmljshighlighterfactory.cpp \
     qmljshoverhandler.cpp \
