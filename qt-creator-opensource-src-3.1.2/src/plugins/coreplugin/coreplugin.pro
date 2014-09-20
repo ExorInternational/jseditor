@@ -212,7 +212,7 @@ RESOURCES += core.qrc \
 #    fancyactionbar.qrc#ROOPAK
 
 include(find/find.pri)
-include(locator/locator.pri)
+#include(locator/locator.pri)//#720 ROOPAK
 
 win32 {
     SOURCES += progressmanager/progressmanager_win.cpp

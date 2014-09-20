@@ -16,7 +16,7 @@ HEADERS += \
     $$PWD/qmljsqtstylecodeformatter.h \
     $$PWD/qmljsrefactoringchanges.h \
 #    $$PWD/qmljsfunctionfilter.h \//#720 ROOPAK
-    $$PWD/qmljslocatordata.h \
+#    $$PWD/qmljslocatordata.h \//#720 ROOPAK
     $$PWD/qmljsindenter.h \
 #    $$PWD/qmljscodestylesettingspage.h \//#720 ROOPAK
     $$PWD/qmljssemanticinfo.h \
@@ -40,7 +40,7 @@ SOURCES += \
     $$PWD/qmljsqtstylecodeformatter.cpp \
     $$PWD/qmljsrefactoringchanges.cpp \
 #    $$PWD/qmljsfunctionfilter.cpp \//#720 ROOPAK
-    $$PWD/qmljslocatordata.cpp \
+#    $$PWD/qmljslocatordata.cpp \//#720 ROOPAK
     $$PWD/qmljsindenter.cpp \
 #    $$PWD/qmljscodestylesettingspage.cpp \//#720 ROOPAK
     $$PWD/qmljssemanticinfo.cpp \

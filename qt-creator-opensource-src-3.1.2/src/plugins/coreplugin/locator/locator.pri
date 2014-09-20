@@ -7,7 +7,7 @@ HEADERS += \
 #    $$PWD/ilocatorfilter.h \//#720 ROOPAK
 #    $$PWD/opendocumentsfilter.h \//#720 ROOPAK
 #    $$PWD/filesystemfilter.h \//#720 ROOPAK
-    $$PWD/locatorconstants.h \
+#    $$PWD/locatorconstants.h \//#720 ROOPAK
 #    $$PWD/directoryfilter.h \//#720 ROOPAK
 #    $$PWD/locatormanager.h \//#720 ROOPAK
 #    $$PWD/basefilefilter.h \//#720 ROOPAK
