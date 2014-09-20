@@ -27,7 +27,7 @@
 **
 ****************************************************************************/
 
-#include "locator.h"
+//#include "locator.h"//#720 ROOPAK
 #include "locatorwidget.h"
 #include "locatorconstants.h"
 //#include "locatorsearchutils.h"//#720 ROOPAK
@@ -217,8 +217,8 @@ void CompletionList::updatePreferredSize()
 
 // =========== LocatorWidget ===========
 
-LocatorWidget::LocatorWidget(Locator *qop) :
-    m_locatorPlugin(qop),
+LocatorWidget::LocatorWidget(/*Locator *qop*/) :
+//    m_locatorPlugin(qop),//#720 ROOPAK
     m_locatorModel(new LocatorModel(this)),
     m_completionList(new CompletionList(this)),
     m_filterMenu(new QMenu(this)),
@@ -270,7 +270,7 @@ LocatorWidget::LocatorWidget(Locator *qop) :
 
     m_fileLineEdit->setButtonMenu(Utils::FancyLineEdit::Left, m_filterMenu);
 
-    connect(m_refreshAction, SIGNAL(triggered()), m_locatorPlugin, SLOT(refresh()));
+//    connect(m_refreshAction, SIGNAL(triggered()), m_locatorPlugin, SLOT(refresh()));//#720 ROOPAK
     connect(m_configureAction, SIGNAL(triggered()), this, SLOT(showConfigureDialog()));
     connect(m_fileLineEdit, SIGNAL(textChanged(QString)),
         this, SLOT(showPopup()));
@@ -301,29 +301,29 @@ void LocatorWidget::updateFilterList()
     IdActionMap actionCopy = m_filterActionMap;
     m_filterActionMap.clear();
     // register new actions, update existent
-    foreach (ILocatorFilter *filter, m_locatorPlugin->filters()) {
-        if (filter->shortcutString().isEmpty() || filter->isHidden())
-            continue;
-        Id filterId = filter->id();
-        Id locatorId = filterId.withPrefix("Locator.");
-        QAction *action = 0;
-        Command *cmd = 0;
-        if (!actionCopy.contains(filterId)) {
-            // register new action
-            action = new QAction(filter->displayName(), this);
-            cmd = ActionManager::registerAction(action, locatorId,
-                               Context(Core::Constants::C_GLOBAL));
-            cmd->setAttribute(Command::CA_UpdateText);
-            connect(action, SIGNAL(triggered()), this, SLOT(filterSelected()));
-            action->setData(qVariantFromValue(filter));
-        } else {
-            action = actionCopy.take(filterId);
-            action->setText(filter->displayName());
-            cmd = ActionManager::command(locatorId);
-        }
-        m_filterActionMap.insert(filterId, action);
-        m_filterMenu->addAction(cmd->action());
-    }
+//    foreach (ILocatorFilter *filter, m_locatorPlugin->filters()) {//#720 ROOPAK - START
+//        if (filter->shortcutString().isEmpty() || filter->isHidden())
+//            continue;
+//        Id filterId = filter->id();
+//        Id locatorId = filterId.withPrefix("Locator.");
+//        QAction *action = 0;
+//        Command *cmd = 0;
+//        if (!actionCopy.contains(filterId)) {
+//            // register new action
+//            action = new QAction(filter->displayName(), this);
+//            cmd = ActionManager::registerAction(action, locatorId,
+//                               Context(Core::Constants::C_GLOBAL));
+//            cmd->setAttribute(Command::CA_UpdateText);
+//            connect(action, SIGNAL(triggered()), this, SLOT(filterSelected()));
+//            action->setData(qVariantFromValue(filter));
+//        } else {
+//            action = actionCopy.take(filterId);
+//            action->setText(filter->displayName());
+//            cmd = ActionManager::command(locatorId);
+//        }
+//        m_filterActionMap.insert(filterId, action);
+//        m_filterMenu->addAction(cmd->action());
+//    }//#720 ROOPAK - END
 
     // unregister actions that are deleted now
     const IdActionMap::Iterator end = actionCopy.end();
@@ -450,28 +450,28 @@ void LocatorWidget::showPopupNow()
 
 QList<ILocatorFilter *> LocatorWidget::filtersFor(const QString &text, QString &searchText)
 {
-    QList<ILocatorFilter *> filters = m_locatorPlugin->filters();
-    const int whiteSpace = text.indexOf(QLatin1Char(' '));
-    QString prefix;
-    if (whiteSpace >= 0)
-        prefix = text.left(whiteSpace);
-    if (!prefix.isEmpty()) {
-        prefix = prefix.toLower();
-        QList<ILocatorFilter *> prefixFilters;
-        foreach (ILocatorFilter *filter, filters) {
-            if (prefix == filter->shortcutString()) {
-                searchText = text.mid(whiteSpace+1);
-                prefixFilters << filter;
-            }
-        }
-        if (!prefixFilters.isEmpty())
-            return prefixFilters;
-    }
-    searchText = text;
+//    QList<ILocatorFilter *> filters = m_locatorPlugin->filters();//#720 ROOPAK - START
+//    const int whiteSpace = text.indexOf(QLatin1Char(' '));
+//    QString prefix;
+//    if (whiteSpace >= 0)
+//        prefix = text.left(whiteSpace);
+//    if (!prefix.isEmpty()) {
+//        prefix = prefix.toLower();
+//        QList<ILocatorFilter *> prefixFilters;
+//        foreach (ILocatorFilter *filter, filters) {
+//            if (prefix == filter->shortcutString()) {
+//                searchText = text.mid(whiteSpace+1);
+//                prefixFilters << filter;
+//            }
+//        }
+//        if (!prefixFilters.isEmpty())
+//            return prefixFilters;
+//    }
+//    searchText = text;//#720 ROOPAK - END
     QList<ILocatorFilter *> activeFilters;
-    foreach (ILocatorFilter *filter, filters)
-        if (filter->isIncludedByDefault())
-            activeFilters << filter;
+//    foreach (ILocatorFilter *filter, filters)//#720 ROOPAK - START
+//        if (filter->isIncludedByDefault())
+//            activeFilters << filter;//#720 ROOPAK - END
     return activeFilters;
 }
 
@@ -564,12 +564,12 @@ void LocatorWidget::filterSelected()
     // add shortcut string at front or replace existing shortcut string
     if (!currentText.isEmpty()) {
         searchText = currentText;
-        foreach (ILocatorFilter *otherfilter, m_locatorPlugin->filters()) {
-            if (currentText.startsWith(otherfilter->shortcutString() + QLatin1Char(' '))) {
-                searchText = currentText.mid(otherfilter->shortcutString().length() + 1);
-                break;
-            }
-        }
+//        foreach (ILocatorFilter *otherfilter, m_locatorPlugin->filters()) {//#720 ROOPAK - START
+//            if (currentText.startsWith(otherfilter->shortcutString() + QLatin1Char(' '))) {
+//                searchText = currentText.mid(otherfilter->shortcutString().length() + 1);
+//                break;
+//            }
+//        }//#720 ROOPAK - END
     }
     show(filter->shortcutString() + QLatin1Char(' ') + searchText,
          filter->shortcutString().length() + 1,

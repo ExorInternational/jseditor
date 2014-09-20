@@ -41,7 +41,7 @@ namespace Internal {
 
 class EditMode;
 class MainWindow;
-class Locator;
+//class Locator;//#720 ROOPAK
 
 class CorePlugin : public ExtensionSystem::IPlugin
 {
@@ -77,7 +77,7 @@ private:
     EditMode *m_editMode;
 //    DesignMode *m_designMode; //ROOPAK
     FindPlugin *m_findPlugin;
-    Locator *m_locator;
+//    Locator *m_locator;//#720 ROOPAK
 };
 
 } // namespace Internal

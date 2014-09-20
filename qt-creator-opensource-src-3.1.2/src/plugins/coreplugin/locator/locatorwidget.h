@@ -30,7 +30,12 @@
 #ifndef LOCATORWIDGET_H
 #define LOCATORWIDGET_H
 
-#include "locator.h"
+//#include "locator.h"//#720 ROOPAK
+
+//#720 ADDED BY ROOPAK - START
+#include "ilocatorfilter.h"
+#include <QFutureWatcher>
+//#720 ROOPAK - END
 
 #include <QWidget>
 
@@ -56,7 +61,7 @@ class LocatorWidget
     Q_OBJECT
 
 public:
-    explicit LocatorWidget(Locator *qop);
+    explicit LocatorWidget(/*Locator *qop*/);
 
     void updateFilterList();
 
@@ -83,7 +88,7 @@ private:
     void updateCompletionList(const QString &text);
     QList<ILocatorFilter*> filtersFor(const QString &text, QString &searchText);
 
-    Locator *m_locatorPlugin;
+//    Locator *m_locatorPlugin;//#720 ROOPAK
     LocatorModel *m_locatorModel;
 
     CompletionList *m_completionList;
