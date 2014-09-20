@@ -55,7 +55,7 @@ SOURCES += mainwindow.cpp \
     variablemanager.cpp \
     modemanager.cpp \
 #    basefilewizard.cpp \//#720 ROOPAK
-    generatedfile.cpp \
+#    generatedfile.cpp \//#720 ROOPAK
     plugindialog.cpp \
     inavigationwidgetfactory.cpp \
     navigationwidget.cpp \
@@ -158,7 +158,7 @@ HEADERS += mainwindow.h \
     variablemanager.h \
     modemanager.h \
 #    basefilewizard.h \//#720 ROOPAK
-    generatedfile.h \
+#    generatedfile.h \//#720 ROOPAK
     plugindialog.h \
     inavigationwidgetfactory.h \
     navigationwidget.h \
@@ -187,7 +187,7 @@ HEADERS += mainwindow.h \
 #    dialogs/promptoverwritedialog.h \ #ROOPAK
     fileutils.h \
 #    externaltoolmanager.h \#ROOPAK
-    generatedfile.h \
+#    generatedfile.h \//#720 ROOPAK
     featureprovider.h \
     idocument.h \
     idocumentfactory.h \
