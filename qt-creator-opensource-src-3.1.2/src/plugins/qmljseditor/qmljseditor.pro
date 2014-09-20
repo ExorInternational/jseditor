@@ -27,7 +27,7 @@ HEADERS += \
     qmljsfindreferences.h \
     qmljseditoreditable.h \
     qmljsautocompleter.h \
-    jsfilewizard.h \
+#    jsfilewizard.h \//#720 ROOPAK
     qmljssnippetprovider.h \
     qmljsreuse.h \
     qmljsquickfixassist.h \
@@ -61,7 +61,7 @@ SOURCES += \
     qmljsfindreferences.cpp \
     qmljseditoreditable.cpp \
     qmljsautocompleter.cpp \
-    jsfilewizard.cpp \
+#    jsfilewizard.cpp \//#720 ROOPAK
     qmljssnippetprovider.cpp \
     qmljsreuse.cpp \
     qmljsquickfixassist.cpp \
