@@ -65,7 +65,7 @@ SOURCES += mainwindow.cpp \
     findplaceholder.cpp \
     rightpane.cpp \
     sidebar.cpp \
-    fileiconprovider.cpp \
+#    fileiconprovider.cpp \//#720 ROOPAK
     mimedatabase.cpp \
     icore.cpp \
     infobar.cpp \
@@ -168,7 +168,7 @@ HEADERS += mainwindow.h \
     findplaceholder.h \
     rightpane.h \
     sidebar.h \
-    fileiconprovider.h \
+#    fileiconprovider.h \//#720 ROOPAK
     mimedatabase.h \
     settingsdatabase.h \
 #    editormanager/systemeditor.h \ #ROOPAK
