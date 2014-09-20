@@ -54,7 +54,7 @@ SOURCES += mainwindow.cpp \
     coreplugin.cpp \
     variablemanager.cpp \
     modemanager.cpp \
-    basefilewizard.cpp \
+#    basefilewizard.cpp \//#720 ROOPAK
     generatedfile.cpp \
     plugindialog.cpp \
     inavigationwidgetfactory.cpp \
@@ -157,7 +157,7 @@ HEADERS += mainwindow.h \
     coreplugin.h \
     variablemanager.h \
     modemanager.h \
-    basefilewizard.h \
+#    basefilewizard.h \//#720 ROOPAK
     generatedfile.h \
     plugindialog.h \
     inavigationwidgetfactory.h \
