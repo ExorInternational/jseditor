@@ -48,7 +48,7 @@ QT_END_NAMESPACE
 namespace Core {
 
 class ActionManager;
-class StatusBarWidget;
+//class StatusBarWidget;//#720 ROOPAK
 class EditorManager;
 //class ExternalToolManager;//ROOPAK
 class DocumentManager;
@@ -178,7 +178,7 @@ private:
     FancyTabWidget *m_modeStack;
     NavigationWidget *m_navigationWidget;
     RightPaneWidget *m_rightPaneWidget;
-    Core::StatusBarWidget *m_outputView;
+//    Core::StatusBarWidget *m_outputView;//#720 ROOPAK
     VersionDialog *m_versionDialog;
 
     QList<IContext *> m_activeContext;

@@ -50,7 +50,7 @@ SOURCES += mainwindow.cpp \
     progressmanager/progressview.cpp \
     progressmanager/progressbar.cpp \
     progressmanager/futureprogress.cpp \
-    statusbarwidget.cpp \
+#    statusbarwidget.cpp \//#720 ROOPAK
     coreplugin.cpp \
     variablemanager.cpp \
     modemanager.cpp \
@@ -153,7 +153,7 @@ HEADERS += mainwindow.h \
     icorelistener.h \
     versiondialog.h \
     core_global.h \
-    statusbarwidget.h \
+#    statusbarwidget.h \//#720 ROOPAK
     coreplugin.h \
     variablemanager.h \
     modemanager.h \

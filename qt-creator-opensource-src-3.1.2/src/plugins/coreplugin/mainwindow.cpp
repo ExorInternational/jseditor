@@ -51,7 +51,7 @@
 #include "navigationwidget.h"
 #include "rightpane.h"
 #include "editormanager/ieditorfactory.h"
-#include "statusbarwidget.h"
+//#include "statusbarwidget.h"//#720 ROOPAK
 //#include "externaltoolmanager.h"//ROOPAK
 //#include "editormanager/systemeditor.h"//ROOPAK
 
@@ -284,8 +284,8 @@ MainWindow::~MainWindow()
     OutputPaneManager::destroy();
 
     // Now that the OutputPaneManager is gone, is a good time to delete the view
-    ExtensionSystem::PluginManager::removeObject(m_outputView);
-    delete m_outputView;
+//    ExtensionSystem::PluginManager::removeObject(m_outputView);//#720 ROOPAK - START
+//    delete m_outputView;//#720 ROOPAK - END
 
     delete m_editorManager;
     m_editorManager = 0;
@@ -331,10 +331,10 @@ bool MainWindow::init(QString *errorMessage)
 
     // Add widget to the bottom, we create the view here instead of inside the
     // OutputPaneManager, since the StatusBarManager needs to be initialized before
-    m_outputView = new Core::StatusBarWidget;
-    m_outputView->setWidget(OutputPaneManager::instance()->buttonsWidget());
-    m_outputView->setPosition(Core::StatusBarWidget::Second);
-    ExtensionSystem::PluginManager::addObject(m_outputView);
+//    m_outputView = new Core::StatusBarWidget;//#720 ROOPAK - START
+//    m_outputView->setWidget(OutputPaneManager::instance()->buttonsWidget());
+//    m_outputView->setPosition(Core::StatusBarWidget::Second);
+//    ExtensionSystem::PluginManager::addObject(m_outputView);//#720 ROOPAK - END
     MessageManager::init();
     return true;
 }

@@ -35,7 +35,7 @@
 #include "../icontext.h"
 #include "../coreconstants.h"
 #include "../icore.h"
-#include "../statusbarwidget.h"
+//#include "../statusbarwidget.h"//#720 ROOPAK
 
 
 #include <extensionsystem/pluginmanager.h>
@@ -279,8 +279,8 @@ ProgressManagerPrivate::~ProgressManagerPrivate()
 {
     qDeleteAll(m_taskList);
     m_taskList.clear();
-    ExtensionSystem::PluginManager::removeObject(m_statusBarWidgetContainer);
-    delete m_statusBarWidgetContainer;
+//    ExtensionSystem::PluginManager::removeObject(m_statusBarWidgetContainer);//#720 ROOPAK - START
+//    delete m_statusBarWidgetContainer;//#720 ROOPAK - END
     cleanup();
 }
 
@@ -296,7 +296,7 @@ void ProgressManagerPrivate::init()
 {
     readSettings();
 
-    m_statusBarWidgetContainer = new Core::StatusBarWidget;
+//    m_statusBarWidgetContainer = new Core::StatusBarWidget;//#720 ROOPAK
     m_statusBarWidget = new QWidget;
     QHBoxLayout *layout = new QHBoxLayout(m_statusBarWidget);
     layout->setContentsMargins(0, 0, 0, 0);
@@ -318,9 +318,9 @@ void ProgressManagerPrivate::init()
     layout->addWidget(m_summaryProgressWidget);
     ToggleButton *toggleButton = new ToggleButton(m_statusBarWidget);
     layout->addWidget(toggleButton);
-    m_statusBarWidgetContainer->setWidget(m_statusBarWidget);
-    m_statusBarWidgetContainer->setPosition(Core::StatusBarWidget::RightCorner);
-    ExtensionSystem::PluginManager::addObject(m_statusBarWidgetContainer);
+//    m_statusBarWidgetContainer->setWidget(m_statusBarWidget);//#720 ROOPAK - START
+//    m_statusBarWidgetContainer->setPosition(Core::StatusBarWidget::RightCorner);
+//    ExtensionSystem::PluginManager::addObject(m_statusBarWidgetContainer);//#720 ROOPAK - END
     m_statusBarWidget->installEventFilter(this);
 
     QAction *toggleProgressView = new QAction(tr("Toggle Progress Details"), this);
