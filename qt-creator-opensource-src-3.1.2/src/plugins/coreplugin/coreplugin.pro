@@ -71,7 +71,7 @@ SOURCES += mainwindow.cpp \
     infobar.cpp \
     editormanager/ieditor.cpp \
     dialogs/ioptionspage.cpp \
-    dialogs/iwizard.cpp \
+#    dialogs/iwizard.cpp \//#720 ROOPAK
     settingsdatabase.cpp \
     imode.cpp \
 #    editormanager/systemeditor.cpp \ #ROOPAK
@@ -135,7 +135,7 @@ HEADERS += mainwindow.h \
 #    dialogs/readonlyfilesdialog.h \ #ROOPAK
 #    dialogs/shortcutsettings.h \ //ROOPAK
 #    dialogs/openwithdialog.h \#ROOPAK
-    dialogs/iwizard.h \
+#    dialogs/iwizard.h \//#720 ROOPAK
     dialogs/ioptionspage.h \
     progressmanager/progressmanager_p.h \
     progressmanager/progressview.h \

@@ -54,7 +54,7 @@ class EditorManager;
 class DocumentManager;
 class HelpManager;
 class IDocument;
-class IWizard;
+//class IWizard;//#720 ROOPAK
 class MessageManager;
 class MimeDatabase;
 class ModeManager;
@@ -117,10 +117,10 @@ public slots:
     void exit();
     void setFullScreen(bool on);
 
-    void showNewItemDialog(const QString &title,
-                           const QList<IWizard *> &wizards,
-                           const QString &defaultLocation = QString(),
-                           const QVariantMap &extraVariables = QVariantMap());
+//    void showNewItemDialog(const QString &title,//#720 ROOPAK - START
+//                           const QList<IWizard *> &wizards,
+//                           const QString &defaultLocation = QString(),
+//                           const QVariantMap &extraVariables = QVariantMap());//#720 ROOPAK - END
 
     bool showOptionsDialog(Id category = Id(), Id page = Id(), QWidget *parent = 0);
 

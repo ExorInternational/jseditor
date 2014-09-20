@@ -44,7 +44,7 @@ template <class T> class QList;
 QT_END_NAMESPACE
 
 namespace NewCore {
-class IWizard;
+//class IWizard;//#720 ROOPAK
 class Context;
 class IContext;
 class ProgressManager;
@@ -67,10 +67,10 @@ public:
     // it returns a ICore.
     static ICore *instance();
 
-    static void showNewItemDialog(const QString &title,
-                                  const QList<IWizard *> &wizards,
-                                  const QString &defaultLocation = QString(),
-                                  const QVariantMap &extraVariables = QVariantMap());
+//    static void showNewItemDialog(const QString &title,//#720 ROOPAK
+//                                  const QList<IWizard *> &wizards,
+//                                  const QString &defaultLocation = QString(),
+//                                  const QVariantMap &extraVariables = QVariantMap());//#720 ROOPAK - END
 
     static bool showOptionsDialog(Id group, Id page, QWidget *parent = 0);
     static QString msgShowOptionsDialog();

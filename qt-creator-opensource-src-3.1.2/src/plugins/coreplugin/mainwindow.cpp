@@ -101,7 +101,7 @@
 #include <QStyleFactory>
 
 //ADDED BY ROOPAK
-#include "dialogs/iwizard.h"
+//#include "dialogs/iwizard.h"//#720 ROOPAK
 
 using namespace ExtensionSystem;
 
@@ -872,52 +872,52 @@ void MainWindow::setFocusToEditor()
     m_editorManager->doEscapeKeyFocusMoveMagic();
 }
 
-void MainWindow::showNewItemDialog(const QString &title,
-                                          const QList<IWizard *> &wizards,
-                                          const QString &defaultLocation,
-                                          const QVariantMap &extraVariables)
-{
+//void MainWindow::showNewItemDialog(const QString &title,//#720 ROOPAK - START
+//                                          const QList<IWizard *> &wizards,
+//                                          const QString &defaultLocation,
+//                                          const QVariantMap &extraVariables)
+//{
     // Scan for wizards matching the filter and pick one. Don't show
     // dialog if there is only one.
-    IWizard *wizard = 0;
-    QString selectedPlatform;
-    switch (wizards.size()) {
-    case 0:
-        break;
-    case 1:
-        wizard = wizards.front();
-        break;
-    default: {
-//        NewDialog dlg(this);                      //ROOPAK - START
-//        dlg.setWizards(wizards);
-//        dlg.setWindowTitle(title);
-//        wizard = dlg.showDialog();
-//        selectedPlatform = dlg.selectedPlatform();//ROOPAK - END
-    }
-        break;
-    }
+//    IWizard *wizard = 0;
+//    QString selectedPlatform;
+//    switch (wizards.size()) {
+//    case 0:
+//        break;
+//    case 1:
+//        wizard = wizards.front();
+//        break;
+//    default: {
+////        NewDialog dlg(this);                      //ROOPAK - START
+////        dlg.setWizards(wizards);
+////        dlg.setWindowTitle(title);
+////        wizard = dlg.showDialog();
+////        selectedPlatform = dlg.selectedPlatform();//ROOPAK - END
+//    }
+//        break;
+//    }
 
-    if (!wizard)
-        return;
+//    if (!wizard)
+//        return;//#720 ROOPAK - END
 
-    QString path = defaultLocation;
-    if (path.isEmpty()) {
-        switch (wizard->kind()) {
-        case IWizard::ProjectWizard:
-            // Project wizards: Check for projects directory or
-            // use last visited directory of file dialog. Never start
-            // at current.
-            path = DocumentManager::useProjectsDirectory() ?
-                       DocumentManager::projectsDirectory() :
-                       DocumentManager::fileDialogLastVisitedDirectory();
-            break;
-        default:
-            path = DocumentManager::fileDialogInitialDirectory();
-            break;
-        }
-    }
-    wizard->runWizard(path, this, selectedPlatform, extraVariables);
-}
+//    QString path = defaultLocation;
+//    if (path.isEmpty()) {
+//        switch (wizard->kind()) {//#720 ROOPAK - START
+//        case IWizard::ProjectWizard:
+//            // Project wizards: Check for projects directory or
+//            // use last visited directory of file dialog. Never start
+//            // at current.
+//            path = DocumentManager::useProjectsDirectory() ?
+//                       DocumentManager::projectsDirectory() :
+//                       DocumentManager::fileDialogLastVisitedDirectory();
+//            break;
+//        default:
+//            path = DocumentManager::fileDialogInitialDirectory();
+//            break;
+//        }
+//    }
+//    wizard->runWizard(path, this, selectedPlatform, extraVariables);
+//}//#720 ROOPAK - END
 
 bool MainWindow::showOptionsDialog(Id category, Id page, QWidget *parent)
 {

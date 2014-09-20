@@ -326,13 +326,13 @@ ICore::~ICore()
 //    m_mainwindow = 0;
 }
 
-void ICore::showNewItemDialog(const QString &title,
-                              const QList<IWizard *> &wizards,
-                              const QString &defaultLocation,
-                              const QVariantMap &extraVariables)
-{
+//void ICore::showNewItemDialog(const QString &title,//#720 ROOPAK - START
+//                              const QList<IWizard *> &wizards,
+//                              const QString &defaultLocation,
+//                              const QVariantMap &extraVariables)
+//{
 //    m_mainwindow->showNewItemDialog(title, wizards, defaultLocation, extraVariables);
-}
+//}//#720 ROOPAK - END
 
 bool ICore::showOptionsDialog(const Id group, const Id page, QWidget *parent)
 {
