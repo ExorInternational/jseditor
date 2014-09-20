@@ -35,7 +35,7 @@
 #include "fontsettings.h"
 //#include "linenumberfilter.h"//#720 ROOPAK
 #include "texteditorsettings.h"
-#include "textfilewizard.h"
+//#include "textfilewizard.h"//#720 ROOPAK
 #include "plaintexteditorfactory.h"
 #include "plaintexteditor.h"
 #include "outlinefactory.h"
@@ -55,6 +55,10 @@
 #include <QShortcut>
 #include <QDir>
 #include <QTemporaryFile>
+
+//#720 ADDED BY ROOPAK - START
+#include <coreplugin/dialogs/iwizard.h>
+//#720 ROOPAK - END
 
 using namespace TextEditor;
 using namespace TextEditor::Internal;
@@ -141,18 +145,18 @@ bool TextEditorPlugin::initialize(const QStringList &arguments, QString *errorMe
     if (!Core::MimeDatabase::addMimeTypes(QLatin1String(":/texteditor/TextEditor.mimetypes.xml"), errorMessage))
         return false;
 
-    TextFileWizard *wizard = new TextFileWizard(QLatin1String(Constants::C_TEXTEDITOR_MIMETYPE_TEXT),
-                                                QLatin1String("text$"));
-    wizard->setWizardKind(Core::IWizard::FileWizard);
-    wizard->setDescription(tr("Creates a text file. The default file extension is <tt>.txt</tt>. "
-                                       "You can specify a different extension as part of the filename."));
-    wizard->setDisplayName(tr("Text File"));
-    wizard->setCategory(QLatin1String(wizardCategoryC));
-    wizard->setDisplayCategory(wizardDisplayCategory());
-    wizard->setFlags(Core::IWizard::PlatformIndependent);
+//    TextFileWizard *wizard = new TextFileWizard(QLatin1String(Constants::C_TEXTEDITOR_MIMETYPE_TEXT),//#720 ROOPAK - START
+//                                                QLatin1String("text$"));
+//    wizard->setWizardKind(Core::IWizard::FileWizard);
+//    wizard->setDescription(tr("Creates a text file. The default file extension is <tt>.txt</tt>. "
+//                                       "You can specify a different extension as part of the filename."));
+//    wizard->setDisplayName(tr("Text File"));
+//    wizard->setCategory(QLatin1String(wizardCategoryC));
+//    wizard->setDisplayCategory(wizardDisplayCategory());
+//    wizard->setFlags(Core::IWizard::PlatformIndependent);
 
     // Add text file wizard
-    addAutoReleasedObject(wizard);
+//    addAutoReleasedObject(wizard);//#720 ROOPAK - END
     ScratchFileWizard *scratchFile = new ScratchFileWizard;
     addAutoReleasedObject(scratchFile);
 

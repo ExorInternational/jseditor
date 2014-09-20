@@ -63,7 +63,7 @@
 #include <coreplugin/editormanager/editormanager.h>
 //#include <projectexplorer/taskhub.h>//#720 ROOPAK
 #include <texteditor/texteditorconstants.h>
-#include <texteditor/textfilewizard.h>
+//#include <texteditor/textfilewizard.h>//#720 ROOPAK
 #include <utils/qtcassert.h>
 #include <utils/json.h>
 

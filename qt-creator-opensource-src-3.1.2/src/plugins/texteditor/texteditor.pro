@@ -5,7 +5,7 @@ CONFIG += include_source_dir # For the highlighter autotest.
 greaterThan(QT_MAJOR_VERSION, 4): QT += printsupport
 include(../../qtcreatorplugin.pri)
 SOURCES += texteditorplugin.cpp \
-    textfilewizard.cpp \
+#    textfilewizard.cpp \//#720 ROOPAK
     plaintexteditor.cpp \
     plaintexteditorfactory.cpp \
     basetextdocument.cpp \
@@ -111,7 +111,7 @@ SOURCES += texteditorplugin.cpp \
     marginsettings.cpp
 
 HEADERS += texteditorplugin.h \
-    textfilewizard.h \
+#    textfilewizard.h \//#720 ROOPAK
     plaintexteditor.h \
     plaintexteditorfactory.h \
     basetexteditor_p.h \
