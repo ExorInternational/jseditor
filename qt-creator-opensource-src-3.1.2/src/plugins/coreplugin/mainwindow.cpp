@@ -48,7 +48,7 @@
 //#include "statusbarmanager.h"//#720 ROOPAK
 #include "id.h"
 #include "manhattanstyle.h"
-#include "navigationwidget.h"
+//#include "navigationwidget.h"//#720 ROOPAK
 #include "rightpane.h"
 #include "editormanager/ieditorfactory.h"
 //#include "statusbarwidget.h"//#720 ROOPAK
@@ -129,7 +129,7 @@ MainWindow::MainWindow() :
     m_mimeDatabase(new MimeDatabase),
 //    m_helpManager(new HelpManager),//#720 ROOPAK
     m_modeStack(new FancyTabWidget(this)),
-    m_navigationWidget(0),
+//    m_navigationWidget(0),//#720 ROOPAK
     m_rightPaneWidget(0),
     m_versionDialog(0),
 //    m_generalSettings(new GeneralSettings),//ROOPAK
@@ -191,7 +191,7 @@ MainWindow::MainWindow() :
     registerDefaultContainers();
     registerDefaultActions();
 
-    m_navigationWidget = new NavigationWidget(m_toggleSideBarAction);
+//    m_navigationWidget = new NavigationWidget(m_toggleSideBarAction);//#720 ROOPAK
     m_rightPaneWidget = new RightPaneWidget();
 
 //    m_statusBarManager = new StatusBarManager(this);//#720 ROOPAK
@@ -223,20 +223,20 @@ MainWindow::MainWindow() :
 
 void MainWindow::setSidebarVisible(bool visible)
 {
-    if (NavigationWidgetPlaceHolder::current()) {
-        if (m_navigationWidget->isSuppressed() && visible) {
-            m_navigationWidget->setShown(true);
-            m_navigationWidget->setSuppressed(false);
-        } else {
-            m_navigationWidget->setShown(visible);
-        }
-    }
+//    if (NavigationWidgetPlaceHolder::current()) {//#720 ROOPAK - START
+//        if (m_navigationWidget->isSuppressed() && visible) {
+//            m_navigationWidget->setShown(true);
+//            m_navigationWidget->setSuppressed(false);
+//        } else {
+//            m_navigationWidget->setShown(visible);
+//        }
+//    }//#720 ROOPAK - END
 }
 
 void MainWindow::setSuppressNavigationWidget(bool suppress)
 {
-    if (NavigationWidgetPlaceHolder::current())
-        m_navigationWidget->setSuppressed(suppress);
+//    if (NavigationWidgetPlaceHolder::current())//#720 ROOPAK - START
+//        m_navigationWidget->setSuppressed(suppress);//#720 ROOPAK - END
 }
 
 void MainWindow::setOverrideColor(const QColor &color)
@@ -345,7 +345,7 @@ void MainWindow::extensionsInitialized()
 //    m_statusBarManager->extensionsInitalized();//#720 ROOPAK
     OutputPaneManager::instance()->init();
 //    m_vcsManager->extensionsInitialized();//#720 ROOPAK
-    m_navigationWidget->setFactories(ExtensionSystem::PluginManager::getObjects<INavigationWidgetFactory>());
+//    m_navigationWidget->setFactories(ExtensionSystem::PluginManager::getObjects<INavigationWidgetFactory>());//#720 ROOPAK
 
     readSettings();
     updateContext();
@@ -379,7 +379,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
     writeSettings();
 
-    m_navigationWidget->closeSubWidgets();
+//    m_navigationWidget->closeSubWidgets();//#720 ROOPAK
 
     event->accept();
 }
@@ -1082,7 +1082,7 @@ void MainWindow::readSettings()
     settings->endGroup();
 
     m_editorManager->readSettings();
-    m_navigationWidget->restoreSettings(settings);
+//    m_navigationWidget->restoreSettings(settings);//#720 ROOPAK
     m_rightPaneWidget->readSettings(settings);
 }
 
@@ -1103,7 +1103,7 @@ void MainWindow::writeSettings()
     DocumentManager::saveSettings();
     m_actionManager->saveSettings(settings);
     m_editorManager->saveSettings();
-    m_navigationWidget->saveSettings(settings);
+//    m_navigationWidget->saveSettings(settings);//#720 ROOPAK
 }
 
 void MainWindow::updateAdditionalContexts(const Context &remove, const Context &add)

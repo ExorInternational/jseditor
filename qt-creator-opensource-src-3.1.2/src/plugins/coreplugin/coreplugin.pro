@@ -58,7 +58,7 @@ SOURCES += mainwindow.cpp \
 #    generatedfile.cpp \//#720 ROOPAK
     plugindialog.cpp \
     inavigationwidgetfactory.cpp \
-    navigationwidget.cpp \
+#    navigationwidget.cpp \//#720 ROOPAK
     manhattanstyle.cpp \
     minisplitter.cpp \
     styleanimator.cpp \
@@ -161,7 +161,7 @@ HEADERS += mainwindow.h \
 #    generatedfile.h \//#720 ROOPAK
     plugindialog.h \
     inavigationwidgetfactory.h \
-    navigationwidget.h \
+#    navigationwidget.h \//#720 ROOPAK
     manhattanstyle.h \
     minisplitter.h \
     styleanimator.h \

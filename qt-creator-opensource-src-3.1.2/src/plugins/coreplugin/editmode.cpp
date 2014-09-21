@@ -32,7 +32,7 @@
 #include "modemanager.h"
 #include "minisplitter.h"
 #include "outputpane.h"
-#include "navigationwidget.h"
+//#include "navigationwidget.h"//#720 ROOPAK
 #include "rightpane.h"
 #include <coreplugin/editormanager/editormanager.h>
 #include <coreplugin/editormanager/ieditor.h>
@@ -79,10 +79,12 @@ EditMode::EditMode() :
     splitter->setStretchFactor(0, 3);
     splitter->setStretchFactor(1, 0);
 
-    m_splitter->insertWidget(0, new NavigationWidgetPlaceHolder(this));
-    m_splitter->insertWidget(1, splitter);
-    m_splitter->setStretchFactor(0, 0);
-    m_splitter->setStretchFactor(1, 1);
+//    m_splitter->insertWidget(0, new NavigationWidgetPlaceHolder(this));
+//    m_splitter->insertWidget(1, splitter);
+//    m_splitter->setStretchFactor(0, 0);
+//    m_splitter->setStretchFactor(1, 1);
+
+    m_splitter = splitter;//#720 ADDED BY ROOPAK
 
     connect(ModeManager::instance(), SIGNAL(currentModeChanged(Core::IMode*)),
             this, SLOT(grabEditorManager(Core::IMode*)));

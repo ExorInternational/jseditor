@@ -59,7 +59,7 @@ class MessageManager;
 class MimeDatabase;
 class ModeManager;
 class ProgressManager;
-class NavigationWidget;
+//class NavigationWidget;//#720 ROOPAK
 class RightPaneWidget;
 class SettingsDatabase;
 class VariableManager;
@@ -176,7 +176,7 @@ private:
     MimeDatabase *m_mimeDatabase;
 //    HelpManager *m_helpManager;//#720 ROOPAK
     FancyTabWidget *m_modeStack;
-    NavigationWidget *m_navigationWidget;
+//    NavigationWidget *m_navigationWidget;//#720 ROOPAK
     RightPaneWidget *m_rightPaneWidget;
 //    Core::StatusBarWidget *m_outputView;//#720 ROOPAK
     VersionDialog *m_versionDialog;
