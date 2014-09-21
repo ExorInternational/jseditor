@@ -22,7 +22,7 @@ HEADERS += \
     $$PWD/qmljssemanticinfo.h \
     $$PWD/qmljstools_global.h \
 #    $$PWD/qmlconsolemanager.h \//#720 ROOPAK
-    $$PWD/qmlconsoleitemmodel.h \
+#    $$PWD/qmlconsoleitemmodel.h \//#720 ROOPAK
 #    $$PWD/qmlconsolemodel.h \//#720 ROOPAK
 #    $$PWD/qmlconsolepane.h \//#720 ROOPAK
 #    $$PWD/qmlconsoleview.h \//#720 ROOPAK
@@ -45,7 +45,7 @@ SOURCES += \
 #    $$PWD/qmljscodestylesettingspage.cpp \//#720 ROOPAK
     $$PWD/qmljssemanticinfo.cpp \
 #    $$PWD/qmlconsolemanager.cpp \//#720 ROOPAK
-    $$PWD/qmlconsoleitemmodel.cpp \
+#    $$PWD/qmlconsoleitemmodel.cpp \//#720 ROOPAK
 #    $$PWD/qmlconsolepane.cpp \//#720 ROOPAK
 #    $$PWD/qmlconsoleview.cpp \//#720 ROOPAK
 #    $$PWD/qmlconsoleitemdelegate.cpp \//#720 ROOPAK
