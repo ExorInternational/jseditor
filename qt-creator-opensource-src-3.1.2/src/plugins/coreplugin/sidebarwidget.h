@@ -40,8 +40,8 @@ class QToolButton;
 QT_END_NAMESPACE
 
 namespace Core {
-class SideBar;
-class SideBarItem;
+//class SideBar;//#720 ROOPAK
+//class SideBarItem;//#720 ROOPAK
 class Command;
 
 namespace Internal {
@@ -51,7 +51,7 @@ class SideBarWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit SideBarWidget(SideBar *sideBar, const QString &title);
+    explicit SideBarWidget(/*SideBar *sideBar,*/ const QString &title);
     virtual ~SideBarWidget();
 
     QString currentItemId() const;
@@ -73,11 +73,11 @@ private slots:
 
 private:
     SideBarComboBox *m_comboBox;
-    SideBarItem *m_currentItem;
+//    SideBarItem *m_currentItem;//#720 ROOPAK
     QToolBar *m_toolbar;
     QAction *m_splitAction;
     QList<QAction *> m_addedToolBarActions;
-    SideBar *m_sideBar;
+//    SideBar *m_sideBar;//#720 ROOPAK
 };
 
 } // namespace Internal

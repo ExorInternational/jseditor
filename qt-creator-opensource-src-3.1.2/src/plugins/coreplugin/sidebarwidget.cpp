@@ -28,7 +28,7 @@
 ****************************************************************************/
 
 #include "sidebarwidget.h"
-#include "sidebar.h"
+//#include "sidebar.h"//#720 ROOPAK
 #include "navigationsubwidget.h"
 
 #include <coreplugin/coreconstants.h>
@@ -57,9 +57,9 @@ private:
     SideBarWidget *m_sideBarWidget;
 };
 
-SideBarWidget::SideBarWidget(SideBar *sideBar, const QString &id)
-    : m_currentItem(0)
-    , m_sideBar(sideBar)
+SideBarWidget::SideBarWidget(/*SideBar *sideBar,*/ const QString &id)//#720 ROOPAK
+//    : m_currentItem(0)//#720 ROOPAK
+//    , m_sideBar(sideBar)//#720 ROOPAK
 {
     m_comboBox = new SideBarComboBox(this);
     m_comboBox->setMinimumContentsLength(15);
@@ -90,18 +90,18 @@ SideBarWidget::SideBarWidget(SideBar *sideBar, const QString &id)
     setLayout(lay);
     lay->addWidget(m_toolbar);
 
-    QStringList titleList = m_sideBar->availableItemTitles();
-    qSort(titleList);
-    QString t = id;
-    if (titleList.count()) {
-        foreach (const QString &itemTitle, titleList)
-            m_comboBox->addItem(itemTitle, m_sideBar->idForTitle(itemTitle));
+//    QStringList titleList = m_sideBar->availableItemTitles();//#720 ROOPAK - START
+//    qSort(titleList);
+//    QString t = id;
+//    if (titleList.count()) {
+//        foreach (const QString &itemTitle, titleList)
+//            m_comboBox->addItem(itemTitle, m_sideBar->idForTitle(itemTitle));
 
-        m_comboBox->setCurrentIndex(0);
-        if (t.isEmpty())
-            t = m_comboBox->itemData(0, SideBarComboBox::IdRole).toString();
-    }
-    setCurrentItem(t);
+//        m_comboBox->setCurrentIndex(0);
+//        if (t.isEmpty())
+//            t = m_comboBox->itemData(0, SideBarComboBox::IdRole).toString();
+//    }
+//    setCurrentItem(t);//#720 ROOPAK - END
 
     connect(m_comboBox, SIGNAL(currentIndexChanged(int)),
             this, SLOT(setCurrentIndex(int)));
@@ -118,8 +118,8 @@ QString SideBarWidget::currentItemTitle() const
 
 QString SideBarWidget::currentItemId() const
 {
-    if (m_currentItem)
-        return m_currentItem->id();
+//    if (m_currentItem)//#720 ROOPAK - START
+//        return m_currentItem->id();//#720 ROOPAK - END
     return QString();
 }
 
@@ -136,18 +136,18 @@ void SideBarWidget::setCurrentItem(const QString &id)
         m_comboBox->blockSignals(blocked);
     }
 
-    SideBarItem *item = m_sideBar->item(id);
-    if (!item)
-        return;
-    removeCurrentItem();
-    m_currentItem = item;
+//    SideBarItem *item = m_sideBar->item(id);//#720 ROOPAK - START
+//    if (!item)
+//        return;
+//    removeCurrentItem();
+//    m_currentItem = item;
 
-    layout()->addWidget(m_currentItem->widget());
-    m_currentItem->widget()->show();
+//    layout()->addWidget(m_currentItem->widget());
+//    m_currentItem->widget()->show();
 
     // Add buttons and remember their actions for later removal
-    foreach (QToolButton *b, m_currentItem->createToolBarWidgets())
-        m_addedToolBarActions.append(m_toolbar->insertWidget(m_splitAction, b));
+//    foreach (QToolButton *b, m_currentItem->createToolBarWidgets())
+//        m_addedToolBarActions.append(m_toolbar->insertWidget(m_splitAction, b));//#720 ROOPAK - END
 }
 
 void SideBarWidget::updateAvailableItems()
@@ -155,13 +155,13 @@ void SideBarWidget::updateAvailableItems()
     bool blocked = m_comboBox->blockSignals(true);
     QString currentTitle = m_comboBox->currentText();
     m_comboBox->clear();
-    QStringList titleList = m_sideBar->availableItemTitles();
-    if (!currentTitle.isEmpty() && !titleList.contains(currentTitle))
-        titleList.append(currentTitle);
-    qSort(titleList);
+//    QStringList titleList = m_sideBar->availableItemTitles();//#720 ROOPAK - START
+//    if (!currentTitle.isEmpty() && !titleList.contains(currentTitle))
+//        titleList.append(currentTitle);
+//    qSort(titleList);
 
-    foreach (const QString &itemTitle, titleList)
-        m_comboBox->addItem(itemTitle, m_sideBar->idForTitle(itemTitle));
+//    foreach (const QString &itemTitle, titleList)
+//        m_comboBox->addItem(itemTitle, m_sideBar->idForTitle(itemTitle));//#720 ROOPAK - END
 
     int idx = m_comboBox->findText(currentTitle);
 
@@ -169,26 +169,26 @@ void SideBarWidget::updateAvailableItems()
         idx = 0;
 
     m_comboBox->setCurrentIndex(idx);
-    m_splitAction->setEnabled(titleList.count() > 1);
+//    m_splitAction->setEnabled(titleList.count() > 1);//#720 ROOPAK
     m_comboBox->blockSignals(blocked);
 }
 
 void SideBarWidget::removeCurrentItem()
 {
-    if (!m_currentItem)
-        return;
+//    if (!m_currentItem)//#720 ROOPAK - START
+//        return;
 
-    QWidget *w = m_currentItem->widget();
-    w->hide();
-    layout()->removeWidget(w);
-    w->setParent(0);
-    m_sideBar->makeItemAvailable(m_currentItem);
+//    QWidget *w = m_currentItem->widget();
+//    w->hide();
+//    layout()->removeWidget(w);
+//    w->setParent(0);
+////    m_sideBar->makeItemAvailable(m_currentItem);//#720 ROOPAK
 
-    // Delete custom toolbar widgets
-    qDeleteAll(m_addedToolBarActions);
-    m_addedToolBarActions.clear();
+//    // Delete custom toolbar widgets
+//    qDeleteAll(m_addedToolBarActions);
+//    m_addedToolBarActions.clear();
 
-    m_currentItem = 0;
+//    m_currentItem = 0;//#720 ROOPAK - END
 }
 
 void SideBarWidget::setCurrentIndex(int)
@@ -200,10 +200,10 @@ void SideBarWidget::setCurrentIndex(int)
 
 Core::Command *SideBarWidget::command(const QString &id) const
 {
-    const QMap<QString, Core::Command*> shortcutMap = m_sideBar->shortcutMap();
-    QMap<QString, Core::Command*>::const_iterator r = shortcutMap.find(id);
-    if (r != shortcutMap.end())
-        return r.value();
+//    const QMap<QString, Core::Command*> shortcutMap = m_sideBar->shortcutMap();//#720 ROOPAK - START
+//    QMap<QString, Core::Command*>::const_iterator r = shortcutMap.find(id);
+//    if (r != shortcutMap.end())
+//        return r.value();//#720 ROOPAK - END
     return 0;
 }
 
