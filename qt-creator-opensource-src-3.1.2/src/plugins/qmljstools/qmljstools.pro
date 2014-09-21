@@ -29,7 +29,7 @@ HEADERS += \
 #    $$PWD/qmlconsoleitemdelegate.h \//#720 ROOPAK
 #    $$PWD/qmlconsoleedit.h \//#720 ROOPAK
     $$PWD/qmljsinterpreter.h \
-    $$PWD/qmlconsoleproxymodel.h
+#    $$PWD/qmlconsoleproxymodel.h//#720 ROOPAK
 
 SOURCES += \
     $$PWD/qmljsbundleprovider.cpp \
@@ -51,7 +51,7 @@ SOURCES += \
 #    $$PWD/qmlconsoleitemdelegate.cpp \//#720 ROOPAK
 #    $$PWD/qmlconsoleedit.cpp \//#720 ROOPAK
     $$PWD/qmljsinterpreter.cpp \
-    $$PWD/qmlconsoleproxymodel.cpp
+#    $$PWD/qmlconsoleproxymodel.cpp//#720 ROOPAK
 
 RESOURCES += \
     qmljstools.qrc
