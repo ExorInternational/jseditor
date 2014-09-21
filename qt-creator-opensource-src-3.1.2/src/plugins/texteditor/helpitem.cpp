@@ -29,7 +29,7 @@
 
 #include "helpitem.h"
 
-#include <coreplugin/helpmanager.h>
+//#include <coreplugin/helpmanager.h>//#720 ROOPAK
 #include <utils/htmldocextractor.h>
 
 using namespace TextEditor;
@@ -99,39 +99,39 @@ QString HelpItem::extractContent(bool extended) const
             helpLinks.insert(m_helpId, m_helpId);
     }
     foreach (const QUrl &url, helpLinks) {
-        const QString html = QString::fromUtf8(Core::HelpManager::fileData(url));
-        switch (m_category) {
-        case Brief:
-            contents = htmlExtractor.getClassOrNamespaceBrief(html, m_docMark);
-            break;
-        case ClassOrNamespace:
-            contents = htmlExtractor.getClassOrNamespaceDescription(html, m_docMark);
-            break;
-        case Function:
-            contents = htmlExtractor.getFunctionDescription(html, m_docMark);
-            break;
-        case Enum:
-            contents = htmlExtractor.getEnumDescription(html, m_docMark);
-            break;
-        case Typedef:
-            contents = htmlExtractor.getTypedefDescription(html, m_docMark);
-            break;
-        case Macro:
-            contents = htmlExtractor.getMacroDescription(html, m_docMark);
-            break;
-        case QmlComponent:
-            contents = htmlExtractor.getQmlComponentDescription(html, m_docMark);
-            break;
-        case QmlProperty:
-            contents = htmlExtractor.getQmlPropertyDescription(html, m_docMark);
-            break;
-        case QMakeVariableOfFunction:
-            contents = htmlExtractor.getQMakeVariableOrFunctionDescription(html, m_docMark);
-            break;
+//        const QString html = QString::fromUtf8(Core::HelpManager::fileData(url));//#720 ROOPAK - END
+//        switch (m_category) {
+//        case Brief:
+//            contents = htmlExtractor.getClassOrNamespaceBrief(html, m_docMark);
+//            break;
+//        case ClassOrNamespace:
+//            contents = htmlExtractor.getClassOrNamespaceDescription(html, m_docMark);
+//            break;
+//        case Function:
+//            contents = htmlExtractor.getFunctionDescription(html, m_docMark);
+//            break;
+//        case Enum:
+//            contents = htmlExtractor.getEnumDescription(html, m_docMark);
+//            break;
+//        case Typedef:
+//            contents = htmlExtractor.getTypedefDescription(html, m_docMark);
+//            break;
+//        case Macro:
+//            contents = htmlExtractor.getMacroDescription(html, m_docMark);
+//            break;
+//        case QmlComponent:
+//            contents = htmlExtractor.getQmlComponentDescription(html, m_docMark);
+//            break;
+//        case QmlProperty:
+//            contents = htmlExtractor.getQmlPropertyDescription(html, m_docMark);
+//            break;
+//        case QMakeVariableOfFunction:
+//            contents = htmlExtractor.getQMakeVariableOrFunctionDescription(html, m_docMark);
+//            break;
 
-        default:
-            break;
-        }
+//        default:
+//            break;
+//        }//#720 ROOPAK - END
 
         if (!contents.isEmpty())
             break;
@@ -141,7 +141,7 @@ QString HelpItem::extractContent(bool extended) const
 
 QMap<QString, QUrl> HelpItem::retrieveHelpLinks() const
 {
-    if (m_helpLinks.isEmpty())
-        m_helpLinks = Core::HelpManager::linksForIdentifier(m_helpId);
+//    if (m_helpLinks.isEmpty())//#720 ROOPAK - START
+//        m_helpLinks = Core::HelpManager::linksForIdentifier(m_helpId);//#720 ROOPAK - END
     return m_helpLinks;
 }

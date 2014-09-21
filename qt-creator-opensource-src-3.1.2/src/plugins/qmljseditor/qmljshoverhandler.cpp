@@ -35,7 +35,7 @@
 
 #include <coreplugin/editormanager/ieditor.h>
 #include <coreplugin/editormanager/editormanager.h>
-#include <coreplugin/helpmanager.h>
+//#include <coreplugin/helpmanager.h>//#720 ROOPAK
 #include <utils/qtcassert.h>
 #include <extensionsystem/pluginmanager.h>
 #include <qmljs/qmljscontext.h>
@@ -161,22 +161,22 @@ bool HoverHandler::setQmlTypeHelp(const ScopeChain &scopeChain, const Document::
         helpIdPieces.prepend(moduleName);
         helpIdPieces.prepend(QLatin1String("QML"));
         helpId = helpIdPieces.join(QLatin1String("."));
-        if (!HelpManager::linksForIdentifier(helpId).isEmpty())
-            break;
-        if (helpIdPieces.size() > 3) {
-            QString lm = helpIdPieces.value(2);
-            helpIdPieces.removeAt(2);
-            helpId = helpIdPieces.join(QLatin1String("."));
-            if (!HelpManager::linksForIdentifier(helpId).isEmpty())
-                break;
-            helpIdPieces.replace(1, lm);
-            if (!HelpManager::linksForIdentifier(helpId).isEmpty())
-                break;
-        }
-        helpIdPieces.removeAt(1);
-        helpId = helpIdPieces.join(QLatin1String("."));
-        if (!HelpManager::linksForIdentifier(helpId).isEmpty())
-            break;
+//        if (!HelpManager::linksForIdentifier(helpId).isEmpty())//#720 ROOPAK - START
+//            break;
+//        if (helpIdPieces.size() > 3) {
+//            QString lm = helpIdPieces.value(2);
+//            helpIdPieces.removeAt(2);
+//            helpId = helpIdPieces.join(QLatin1String("."));
+//            if (!HelpManager::linksForIdentifier(helpId).isEmpty())
+//                break;
+//            helpIdPieces.replace(1, lm);
+//            if (!HelpManager::linksForIdentifier(helpId).isEmpty())
+//                break;
+//        }
+//        helpIdPieces.removeAt(1);
+//        helpId = helpIdPieces.join(QLatin1String("."));
+//        if (!HelpManager::linksForIdentifier(helpId).isEmpty())
+//            break;//#720 ROOPAK - END
         return false;
     } while (0);
     setLastHelpItemIdentified(TextEditor::HelpItem(helpId, qName.join(QLatin1String(".")),
@@ -485,14 +485,14 @@ bool HoverHandler::setQmlHelpItem(const ScopeChain &scopeChain,
                 do {
                     helpId = QLatin1String("QML.") + moduleName + QLatin1Char('.') + className
                             + QLatin1String("::") + name;
-                    if (!HelpManager::linksForIdentifier(helpId).isEmpty())
-                        break;
-                    helpId = QLatin1String("QML.") + className + QLatin1String("::") + name;
-                    if (!HelpManager::linksForIdentifier(helpId).isEmpty())
-                        break;
-                    helpId = className + QLatin1String("::") + name;
-                    if (!HelpManager::linksForIdentifier(helpId).isEmpty())
-                        break;
+//                    if (!HelpManager::linksForIdentifier(helpId).isEmpty())//#720 ROOPAK - START
+//                        break;
+//                    helpId = QLatin1String("QML.") + className + QLatin1String("::") + name;
+//                    if (!HelpManager::linksForIdentifier(helpId).isEmpty())
+//                        break;
+//                    helpId = className + QLatin1String("::") + name;
+//                    if (!HelpManager::linksForIdentifier(helpId).isEmpty())
+//                        break;//#720 ROOPAK - END
                     helpId.clear();
                 } while (0);
                 if (!helpId.isEmpty()) {

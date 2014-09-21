@@ -52,7 +52,7 @@ class ActionManager;
 class EditorManager;
 //class ExternalToolManager;//ROOPAK
 class DocumentManager;
-class HelpManager;
+//class HelpManager;//#720 ROOPAK
 class IDocument;
 //class IWizard;//#720 ROOPAK
 class MessageManager;
@@ -174,7 +174,7 @@ private:
 //    StatusBarManager *m_statusBarManager;//#720 ROOPAK
     ModeManager *m_modeManager;
     MimeDatabase *m_mimeDatabase;
-    HelpManager *m_helpManager;
+//    HelpManager *m_helpManager;//#720 ROOPAK
     FancyTabWidget *m_modeStack;
     NavigationWidget *m_navigationWidget;
     RightPaneWidget *m_rightPaneWidget;

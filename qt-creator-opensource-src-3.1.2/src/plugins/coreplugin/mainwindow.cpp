@@ -35,7 +35,7 @@
 #include "fancytabwidget.h"
 #include "documentmanager.h"
 //#include "generalsettings.h"//ROOPAK
-#include "helpmanager.h"
+//#include "helpmanager.h"//#720 ROOPAK
 #include "idocumentfactory.h"
 #include "messagemanager.h"
 #include "modemanager.h"
@@ -127,7 +127,7 @@ MainWindow::MainWindow() :
 //    m_statusBarManager(0),//#720 ROOPAK
     m_modeManager(0),
     m_mimeDatabase(new MimeDatabase),
-    m_helpManager(new HelpManager),
+//    m_helpManager(new HelpManager),//#720 ROOPAK
     m_modeStack(new FancyTabWidget(this)),
     m_navigationWidget(0),
     m_rightPaneWidget(0),
@@ -305,8 +305,8 @@ MainWindow::~MainWindow()
     delete m_mimeDatabase;
     m_mimeDatabase = 0;
 
-    delete m_helpManager;
-    m_helpManager = 0;
+//    delete m_helpManager;//#720 ROOPAK - START
+//    m_helpManager = 0;//#720 ROOPAK - END
     delete m_variableManager;
     m_variableManager = 0;
 }

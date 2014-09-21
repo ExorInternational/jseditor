@@ -30,7 +30,7 @@
 #include "coreplugin.h"
 //#include "designmode.h"   //ROOPAK
 #include "editmode.h"
-#include "helpmanager.h"
+//#include "helpmanager.h"//#720 ROOPAK
 #include "mainwindow.h"
 #include "mimedatabase.h"
 #include "modemanager.h"
@@ -124,7 +124,7 @@ void CorePlugin::extensionsInitialized()
 
 bool CorePlugin::delayedInitialize()
 {
-    HelpManager::setupHelpManager();
+//    HelpManager::setupHelpManager();//#720 ROOPAK
 //    m_locator->delayedInitialize();//#720 ROOPAK
     return true;
 }
