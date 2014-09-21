@@ -43,7 +43,7 @@ namespace QmlJSTools {
 
 namespace Internal {
 
-class QmlConsoleView;
+//class QmlConsoleView;//#720 ROOPAK
 class QmlConsoleItemDelegate;
 class QmlConsoleProxyModel;
 class QmlConsoleItemModel;
@@ -86,7 +86,7 @@ private:
     Utils::SavedAction *m_showErrorButtonAction;
     QWidget *m_spacer;
     QLabel *m_statusLabel;
-    QmlConsoleView *m_consoleView;
+//    QmlConsoleView *m_consoleView;//#720 ROOPAK
     QmlConsoleItemDelegate *m_itemDelegate;
     QmlConsoleProxyModel *m_proxyModel;
     QWidget *m_consoleWidget;

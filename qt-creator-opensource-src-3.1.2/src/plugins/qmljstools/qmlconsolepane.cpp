@@ -28,7 +28,7 @@
 ****************************************************************************/
 
 #include "qmlconsolepane.h"
-#include "qmlconsoleview.h"
+//#include "qmlconsoleview.h"//#720 ROOPAK
 #include "qmlconsoleproxymodel.h"
 #include "qmlconsoleitemdelegate.h"
 
@@ -67,7 +67,7 @@ QmlConsolePane::QmlConsolePane(QObject *parent)
     vbox->setMargin(0);
     vbox->setSpacing(0);
 
-    m_consoleView = new QmlConsoleView(m_consoleWidget);
+//    m_consoleView = new QmlConsoleView(m_consoleWidget);//#720 ROOPAK
     m_proxyModel = new QmlConsoleProxyModel(this);
 //    m_proxyModel->setSourceModel(QmlConsoleModel::qmlConsoleItemModel());//#720 ROOPAK - START
 //    connect(QmlConsoleModel::qmlConsoleItemModel(),
@@ -80,24 +80,24 @@ QmlConsolePane::QmlConsolePane(QObject *parent)
 //    //model which will automatically reset the view.
 //    connect(QmlConsoleModel::qmlConsoleItemModel(), SIGNAL(rowsInserted(QModelIndex,int,int)),
 //            m_proxyModel, SLOT(onRowsInserted(QModelIndex,int,int)));//#720 ROOPAK - END
-    m_consoleView->setModel(m_proxyModel);
+//    m_consoleView->setModel(m_proxyModel);//#720 ROOPAK
 
-    connect(m_proxyModel,
-            SIGNAL(setCurrentIndex(QModelIndex,QItemSelectionModel::SelectionFlags)),
-            m_consoleView->selectionModel(),
-            SLOT(setCurrentIndex(QModelIndex,QItemSelectionModel::SelectionFlags)));
-    connect(m_proxyModel, SIGNAL(scrollToBottom()), m_consoleView, SLOT(onScrollToBottom()));
+//    connect(m_proxyModel,                                                             //#720 ROOPAK - START
+//            SIGNAL(setCurrentIndex(QModelIndex,QItemSelectionModel::SelectionFlags)),
+//            m_consoleView->selectionModel(),
+//            SLOT(setCurrentIndex(QModelIndex,QItemSelectionModel::SelectionFlags)));
+//    connect(m_proxyModel, SIGNAL(scrollToBottom()), m_consoleView, SLOT(onScrollToBottom()));//#720 ROOPAK - END
 
     m_itemDelegate = new QmlConsoleItemDelegate(this);
-    connect(m_consoleView->selectionModel(), SIGNAL(currentChanged(QModelIndex,QModelIndex)),
-            m_itemDelegate, SLOT(currentChanged(QModelIndex,QModelIndex)));
-    m_consoleView->setItemDelegate(m_itemDelegate);
+//    connect(m_consoleView->selectionModel(), SIGNAL(currentChanged(QModelIndex,QModelIndex)),//#720 ROOPAK - START
+//            m_itemDelegate, SLOT(currentChanged(QModelIndex,QModelIndex)));
+//    m_consoleView->setItemDelegate(m_itemDelegate);
 
-    Aggregation::Aggregate *aggregate = new Aggregation::Aggregate();
-    aggregate->add(m_consoleView);
-    aggregate->add(new Core::TreeViewFind(m_consoleView));
+//    Aggregation::Aggregate *aggregate = new Aggregation::Aggregate();
+//    aggregate->add(m_consoleView);
+//    aggregate->add(new Core::TreeViewFind(m_consoleView));
 
-    vbox->addWidget(m_consoleView);
+//    vbox->addWidget(m_consoleView);//#720 ROOPAK - END
     vbox->addWidget(new Core::FindToolBarPlaceHolder(m_consoleWidget));
 
     m_showDebugButton = new QToolButton(m_consoleWidget);
