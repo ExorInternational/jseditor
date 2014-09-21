@@ -69,17 +69,17 @@ QmlConsolePane::QmlConsolePane(QObject *parent)
 
     m_consoleView = new QmlConsoleView(m_consoleWidget);
     m_proxyModel = new QmlConsoleProxyModel(this);
-    m_proxyModel->setSourceModel(QmlConsoleModel::qmlConsoleItemModel());
-    connect(QmlConsoleModel::qmlConsoleItemModel(),
-            SIGNAL(selectEditableRow(QModelIndex,QItemSelectionModel::SelectionFlags)),
-            m_proxyModel,
-            SLOT(selectEditableRow(QModelIndex,QItemSelectionModel::SelectionFlags)));
+//    m_proxyModel->setSourceModel(QmlConsoleModel::qmlConsoleItemModel());//#720 ROOPAK - START
+//    connect(QmlConsoleModel::qmlConsoleItemModel(),
+//            SIGNAL(selectEditableRow(QModelIndex,QItemSelectionModel::SelectionFlags)),
+//            m_proxyModel,
+//            SLOT(selectEditableRow(QModelIndex,QItemSelectionModel::SelectionFlags)));
 
-    //Scroll to bottom when rows matching current filter settings are inserted
-    //Not connecting rowsRemoved as the only way to remove rows is to clear the
-    //model which will automatically reset the view.
-    connect(QmlConsoleModel::qmlConsoleItemModel(), SIGNAL(rowsInserted(QModelIndex,int,int)),
-            m_proxyModel, SLOT(onRowsInserted(QModelIndex,int,int)));
+//    //Scroll to bottom when rows matching current filter settings are inserted
+//    //Not connecting rowsRemoved as the only way to remove rows is to clear the
+//    //model which will automatically reset the view.
+//    connect(QmlConsoleModel::qmlConsoleItemModel(), SIGNAL(rowsInserted(QModelIndex,int,int)),
+//            m_proxyModel, SLOT(onRowsInserted(QModelIndex,int,int)));//#720 ROOPAK - END
     m_consoleView->setModel(m_proxyModel);
 
     connect(m_proxyModel,
@@ -171,7 +171,7 @@ int QmlConsolePane::priorityInStatusBar() const
 
 void QmlConsolePane::clearContents()
 {
-    QmlConsoleModel::qmlConsoleItemModel()->clear();
+//    QmlConsoleModel::qmlConsoleItemModel()->clear();//#720 ROOPAK
 }
 
 void QmlConsolePane::visibilityChanged(bool /*visible*/)

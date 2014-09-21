@@ -23,7 +23,7 @@ HEADERS += \
     $$PWD/qmljstools_global.h \
     $$PWD/qmlconsolemanager.h \
     $$PWD/qmlconsoleitemmodel.h \
-    $$PWD/qmlconsolemodel.h \
+#    $$PWD/qmlconsolemodel.h \//#720 ROOPAK
     $$PWD/qmlconsolepane.h \
     $$PWD/qmlconsoleview.h \
     $$PWD/qmlconsoleitemdelegate.h \

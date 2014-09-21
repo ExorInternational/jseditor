@@ -31,7 +31,7 @@
 #define QMLCONSOLEITEMDELEGATE_H
 
 #include "qmlconsoleitemmodel.h"
-#include "qmlconsolemodel.h"
+//#include "qmlconsolemodel.h"//#720 ROOPAK
 
 #include <QStyledItemDelegate>
 
@@ -110,9 +110,9 @@ public:
           m_showExpandableIconArea(showExpandableIconArea)
     {
         m_fontHeight = QFontMetrics(font).height();
-        QmlConsoleItemModel *model = QmlConsoleModel::qmlConsoleItemModel();
-        m_maxFileLength = model->sizeOfFile(font);
-        m_maxLineLength = model->sizeOfLineNumber(font);
+//        QmlConsoleItemModel *model = QmlConsoleModel::qmlConsoleItemModel();//#720 ROOPAK - START
+//        m_maxFileLength = model->sizeOfFile(font);
+//        m_maxLineLength = model->sizeOfLineNumber(font);//#720 ROOPAK - END
     }
 
     int adjustedTop() const { return m_top + ITEM_PADDING; }

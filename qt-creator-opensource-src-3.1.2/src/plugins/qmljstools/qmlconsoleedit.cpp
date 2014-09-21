@@ -29,7 +29,7 @@
 
 #include "qmlconsoleedit.h"
 #include "qmlconsoleitemmodel.h"
-#include "qmlconsolemodel.h"
+//#include "qmlconsolemodel.h"//#720 ROOPAK
 
 #include <utils/qtcassert.h>
 
@@ -84,7 +84,7 @@ void QmlConsoleEdit::keyPressEvent(QKeyEvent *e)
         if (currentScript.isEmpty()) {
             emit editingFinished();
         } else if (m_interpreter.canEvaluate()) {
-            QmlConsoleModel::evaluate(currentScript);
+//            QmlConsoleModel::evaluate(currentScript);//#720 ROOPAK
             emit editingFinished();
         }
         break;

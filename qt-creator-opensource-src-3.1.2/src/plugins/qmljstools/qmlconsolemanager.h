@@ -39,7 +39,7 @@
 namespace QmlJS { class IScriptEvaluator; }
 namespace QmlJSTools {
 
-namespace Internal { class QmlConsoleModel; }
+//namespace Internal { class QmlConsoleModel; }//#720 ROOPAK
 
 class QmlConsoleManagerPrivate;
 class QMLJSTOOLS_EXPORT QmlConsoleManager : public QmlJS::ConsoleManagerInterface
@@ -62,7 +62,7 @@ public:
 
 private:
     QmlConsoleManagerPrivate *d;
-    friend class Internal::QmlConsoleModel;
+//    friend class Internal::QmlConsoleModel;//#720 ROOPAK
 };
 
 } // namespace QmlJSTools

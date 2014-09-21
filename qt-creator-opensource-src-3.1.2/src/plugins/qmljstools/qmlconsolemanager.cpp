@@ -30,7 +30,7 @@
 #include "qmlconsolemanager.h"
 #include "qmlconsolepane.h"
 #include "qmlconsoleitemmodel.h"
-#include "qmlconsolemodel.h"
+//#include "qmlconsolemodel.h"//#720 ROOPAK
 
 #include <extensionsystem/pluginmanager.h>
 
@@ -158,33 +158,33 @@ ConsoleItem *constructLogItemTree(ConsoleItem *parent, const QVariant &result,
     return item;
 }
 
-QmlConsoleItemModel *QmlConsoleModel::qmlConsoleItemModel()
-{
-    QmlConsoleManager *manager = qobject_cast<QmlConsoleManager *>(QmlConsoleManager::instance());
-    if (manager)
-        return manager->d->qmlConsoleItemModel;
-    return 0;
-}
+//QmlConsoleItemModel *QmlConsoleModel::qmlConsoleItemModel()//#720 ROOPAK - START
+//{
+//    QmlConsoleManager *manager = qobject_cast<QmlConsoleManager *>(QmlConsoleManager::instance());
+//    if (manager)
+//        return manager->d->qmlConsoleItemModel;
+//    return 0;
+//}
 
-void QmlConsoleModel::evaluate(const QString &expression)
-{
-    QmlConsoleManager *manager = qobject_cast<QmlConsoleManager *>(QmlConsoleManager::instance());
-    if (manager) {
-        if (manager->d->scriptEvaluator) {
-            QmlConsoleModel::qmlConsoleItemModel()->appendEditableRow();
-            manager->d->scriptEvaluator->evaluateScript(expression);
-        } else {
-            ConsoleItem *root = manager->rootItem();
-            ConsoleItem *item = constructLogItemTree(
-                        root, QCoreApplication::translate("QmlJSTools::Internal::QmlConsoleModel",
-                                                          "Can only evaluate during a QML debug session."));
-            if (item) {
-                QmlConsoleModel::qmlConsoleItemModel()->appendEditableRow();
-                manager->printToConsolePane(item);
-            }
-        }
-    }
-}
+//void QmlConsoleModel::evaluate(const QString &expression)
+//{
+//    QmlConsoleManager *manager = qobject_cast<QmlConsoleManager *>(QmlConsoleManager::instance());
+//    if (manager) {
+//        if (manager->d->scriptEvaluator) {
+//            QmlConsoleModel::qmlConsoleItemModel()->appendEditableRow();
+//            manager->d->scriptEvaluator->evaluateScript(expression);
+//        } else {
+//            ConsoleItem *root = manager->rootItem();
+//            ConsoleItem *item = constructLogItemTree(
+//                        root, QCoreApplication::translate("QmlJSTools::Internal::QmlConsoleModel",
+//                                                          "Can only evaluate during a QML debug session."));
+//            if (item) {
+//                QmlConsoleModel::qmlConsoleItemModel()->appendEditableRow();
+//                manager->printToConsolePane(item);
+//            }
+//        }
+//    }
+//}//#720 ROOPAK - END
 
 } // Internal
 } // QmlJSTools
