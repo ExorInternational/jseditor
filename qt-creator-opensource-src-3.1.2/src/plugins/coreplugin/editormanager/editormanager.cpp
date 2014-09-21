@@ -30,7 +30,7 @@
 #include "editormanager.h"
 #include "editorview.h"
 #include "openeditorswindow.h"
-#include "openeditorsview.h"
+//#include "openeditorsview.h"//#720 ROOPAK
 #include "documentmodel.h"
 #include "ieditor.h"
 
@@ -205,7 +205,7 @@ public:
     Internal::EditorClosingCoreListener *m_coreListener;
 
     QMap<QString, QVariant> m_editorStates;
-    Internal::OpenEditorsViewFactory *m_openEditorsFactory;
+//    Internal::OpenEditorsViewFactory *m_openEditorsFactory;//#720 ROOPAK
 
     DocumentModel *m_documentModel;
 
@@ -453,8 +453,8 @@ EditorManager::~EditorManager()
             ExtensionSystem::PluginManager::removeObject(d->m_coreListener);
             delete d->m_coreListener;
         }
-        ExtensionSystem::PluginManager::removeObject(d->m_openEditorsFactory);
-        delete d->m_openEditorsFactory;
+//        ExtensionSystem::PluginManager::removeObject(d->m_openEditorsFactory);//#720 ROOPAK - START
+//        delete d->m_openEditorsFactory;//#720 ROOPAK - END
     }
 
     // close all extra windows
@@ -477,8 +477,8 @@ void EditorManager::init()
     d->m_coreListener = new EditorClosingCoreListener();
     ExtensionSystem::PluginManager::addObject(d->m_coreListener);
 
-    d->m_openEditorsFactory = new OpenEditorsViewFactory();
-    ExtensionSystem::PluginManager::addObject(d->m_openEditorsFactory);
+//    d->m_openEditorsFactory = new OpenEditorsViewFactory();//#720 ROOPAK - START
+//    ExtensionSystem::PluginManager::addObject(d->m_openEditorsFactory);//#720 ROOPAK - END
 
     VariableManager::registerFileVariables(kCurrentDocumentPrefix, tr("Current document"));
     VariableManager::registerVariable(kCurrentDocumentXPos,

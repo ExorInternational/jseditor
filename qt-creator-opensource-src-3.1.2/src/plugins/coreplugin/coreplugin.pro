@@ -30,7 +30,7 @@ SOURCES += mainwindow.cpp \
     editormanager/editormanager.cpp \
     editormanager/editorview.cpp \
     editormanager/documentmodel.cpp \
-    editormanager/openeditorsview.cpp \
+#    editormanager/openeditorsview.cpp \//#720 ROOPAK
     editormanager/openeditorswindow.cpp \
     editormanager/ieditorfactory.cpp \
 #    editormanager/iexternaleditor.cpp \//#720 ROOPAK
@@ -115,7 +115,7 @@ HEADERS += mainwindow.h \
     editormanager/editormanager.h \
     editormanager/editorview.h \
     editormanager/documentmodel.h \
-    editormanager/openeditorsview.h \
+#    editormanager/openeditorsview.h \//#720 ROOPAK
     editormanager/openeditorswindow.h \
     editormanager/ieditor.h \
 #    editormanager/iexternaleditor.h \//#720 ROOPAK

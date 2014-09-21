@@ -68,7 +68,7 @@ namespace Internal {
 class EditorClosingCoreListener;
 class EditorView;
 class MainWindow;
-class OpenEditorsViewFactory;
+//class OpenEditorsViewFactory;//#720 ROOPAK
 class OpenEditorsWindow;
 class SplitterOrView;
 } // namespace Internal
