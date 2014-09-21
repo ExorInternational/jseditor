@@ -28,7 +28,7 @@
 ****************************************************************************/
 
 #include "iversioncontrol.h"
-#include "vcsmanager.h"
+//#include "vcsmanager.h"//#720 ROOPAK
 
 #include <utils/qtcassert.h>
 

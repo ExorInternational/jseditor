@@ -63,7 +63,7 @@ class NavigationWidget;
 class RightPaneWidget;
 class SettingsDatabase;
 class VariableManager;
-class VcsManager;
+//class VcsManager;//#720 ROOPAK
 
 namespace Internal {
 
@@ -170,7 +170,7 @@ private:
     MessageManager *m_messageManager;
     ProgressManagerPrivate *m_progressManager;
     VariableManager *m_variableManager;
-    VcsManager *m_vcsManager;
+//    VcsManager *m_vcsManager;//#720 ROOPAK
 //    StatusBarManager *m_statusBarManager;//#720 ROOPAK
     ModeManager *m_modeManager;
     MimeDatabase *m_mimeDatabase;

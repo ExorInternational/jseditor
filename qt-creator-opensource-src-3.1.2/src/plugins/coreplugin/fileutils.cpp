@@ -33,7 +33,7 @@
 #include <coreplugin/documentmanager.h>
 #include <coreplugin/icore.h>
 #include <coreplugin/iversioncontrol.h>
-#include <coreplugin/vcsmanager.h>
+//#include <coreplugin/vcsmanager.h>//#720 ROOPAK
 #include <utils/consoleprocess.h>
 #include <utils/hostosinfo.h>
 #include <utils/qtcprocess.h>
@@ -165,7 +165,7 @@ QString FileUtils::msgTerminalAction()
 void FileUtils::removeFile(const QString &filePath, bool deleteFromFS)
 {
     // remove from version control
-    VcsManager::promptToDelete(filePath);
+//    VcsManager::promptToDelete(filePath);//#720 ROOPAK
 
     // remove from file system
     if (deleteFromFS) {
@@ -200,17 +200,17 @@ bool FileUtils::renameFile(const QString &orgFilePath, const QString &newFilePat
         return false;
 
     QString dir = QFileInfo(orgFilePath).absolutePath();
-    IVersionControl *vc = VcsManager::findVersionControlForDirectory(dir);
+//    IVersionControl *vc = VcsManager::findVersionControlForDirectory(dir);//#720 ROOPAK
 
     bool result = false;
-    if (vc && vc->supportsOperation(IVersionControl::MoveOperation))
-        result = vc->vcsMove(orgFilePath, newFilePath);
-    if (!result) // The moving via vcs failed or the vcs does not support moving, fall back
-        result = fileSystemRenameFile(orgFilePath, newFilePath);
-    if (result) {
-        // yeah we moved, tell the filemanager about it
-        Core::DocumentManager::renamedFile(orgFilePath, newFilePath);
-    }
+//    if (vc && vc->supportsOperation(IVersionControl::MoveOperation))//#720 ROOPAK - START
+//        result = vc->vcsMove(orgFilePath, newFilePath);
+//    if (!result) // The moving via vcs failed or the vcs does not support moving, fall back
+//        result = fileSystemRenameFile(orgFilePath, newFilePath);
+//    if (result) {
+//        // yeah we moved, tell the filemanager about it
+//        Core::DocumentManager::renamedFile(orgFilePath, newFilePath);
+//    }//#720 ROOPAK - END
     return result;
 }
 

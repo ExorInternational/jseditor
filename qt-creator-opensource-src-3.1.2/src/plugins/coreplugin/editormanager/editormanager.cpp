@@ -56,7 +56,7 @@
 #include <coreplugin/rightpane.h>
 #include <coreplugin/settingsdatabase.h>
 #include <coreplugin/variablemanager.h>
-#include <coreplugin/vcsmanager.h>
+//#include <coreplugin/vcsmanager.h>//#720 ROOPAK
 
 #include <extensionsystem/pluginmanager.h>
 
@@ -1917,15 +1917,15 @@ void EditorManager::vcsOpenCurrentEditor()
     if (!document)
         return;
 
-    const QString directory = QFileInfo(document->filePath()).absolutePath();
-    IVersionControl *versionControl = VcsManager::findVersionControlForDirectory(directory);
-    if (!versionControl || versionControl->openSupportMode(document->filePath()) == IVersionControl::NoOpen)
-        return;
+//    const QString directory = QFileInfo(document->filePath()).absolutePath();//#720 ROOPAK - START
+//    IVersionControl *versionControl = VcsManager::findVersionControlForDirectory(directory);
+//    if (!versionControl || versionControl->openSupportMode(document->filePath()) == IVersionControl::NoOpen)
+//        return;
 
-    if (!versionControl->vcsOpen(document->filePath())) {
-        QMessageBox::warning(ICore::mainWindow(), tr("Cannot Open File"),
-                             tr("Cannot open the file for editing with VCS."));
-    }
+//    if (!versionControl->vcsOpen(document->filePath())) {
+//        QMessageBox::warning(ICore::mainWindow(), tr("Cannot Open File"),
+//                             tr("Cannot open the file for editing with VCS."));
+//    }//#720 ROOPAK - END
 }
 
 void EditorManager::updateWindowTitle()
@@ -1980,24 +1980,24 @@ void EditorManager::updateMakeWritableWarning()
         // if we do not really show a warning.
         bool promptVCS = false;
         const QString directory = QFileInfo(document->filePath()).absolutePath();
-        IVersionControl *versionControl = VcsManager::findVersionControlForDirectory(directory);
-        if (versionControl && versionControl->openSupportMode(document->filePath()) != IVersionControl::NoOpen) {
-            if (versionControl->settingsFlags() & IVersionControl::AutoOpen) {
-                vcsOpenCurrentEditor();
-                ww = false;
-            } else {
-                promptVCS = true;
-            }
-        }
+//        IVersionControl *versionControl = VcsManager::findVersionControlForDirectory(directory);//#720 ROOPAK - START
+//        if (versionControl && versionControl->openSupportMode(document->filePath()) != IVersionControl::NoOpen) {
+//            if (versionControl->settingsFlags() & IVersionControl::AutoOpen) {
+//                vcsOpenCurrentEditor();
+//                ww = false;
+//            } else {
+//                promptVCS = true;
+//            }
+//        }//#720 ROOPAK - END
 
         if (ww) {
             // we are about to change a read-only file, warn user
             if (promptVCS) {
-                InfoBarEntry info(Id(kMakeWritableWarning),
-                                  tr("<b>Warning:</b> This file was not opened in %1 yet.")
-                                  .arg(versionControl->displayName()));
-                info.setCustomButtonInfo(tr("Open"), m_instance, SLOT(vcsOpenCurrentEditor()));
-                document->infoBar()->addInfo(info);
+//                InfoBarEntry info(Id(kMakeWritableWarning),//#720 ROOPAK - START
+//                                  tr("<b>Warning:</b> This file was not opened in %1 yet.")
+//                                  .arg(versionControl->displayName()));
+//                info.setCustomButtonInfo(tr("Open"), m_instance, SLOT(vcsOpenCurrentEditor()));
+//                document->infoBar()->addInfo(info);//#720 ROOPAK - END
             } else {
                 InfoBarEntry info(Id(kMakeWritableWarning),
                                   tr("<b>Warning:</b> You are changing a read-only file."));

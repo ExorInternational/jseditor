@@ -42,7 +42,7 @@
 #include "mimedatabase.h"
 #include "outputpanemanager.h"
 #include "plugindialog.h"
-#include "vcsmanager.h"
+//#include "vcsmanager.h"//#720 ROOPAK
 #include "variablemanager.h"
 #include "versiondialog.h"
 //#include "statusbarmanager.h"//#720 ROOPAK
@@ -123,7 +123,7 @@ MainWindow::MainWindow() :
 //    m_externalToolManager(0),//ROOPAK
     m_progressManager(new ProgressManagerPrivate),
     m_variableManager(new VariableManager),
-    m_vcsManager(new VcsManager),
+//    m_vcsManager(new VcsManager),//#720 ROOPAK
 //    m_statusBarManager(0),//#720 ROOPAK
     m_modeManager(0),
     m_mimeDatabase(new MimeDatabase),
@@ -275,8 +275,8 @@ MainWindow::~MainWindow()
 //    m_systemEditor = 0;//ROOPAK
     delete m_printer;
     m_printer = 0;
-    delete m_vcsManager;
-    m_vcsManager = 0;
+//    delete m_vcsManager;//#720 ROOPAK - START
+//    m_vcsManager = 0;//#720 ROOPAK - END
     //we need to delete editormanager and statusbarmanager explicitly before the end of the destructor,
     //because they might trigger stuff that tries to access data from editorwindow, like removeContextWidget
 
@@ -344,7 +344,7 @@ void MainWindow::extensionsInitialized()
     m_editorManager->init();
 //    m_statusBarManager->extensionsInitalized();//#720 ROOPAK
     OutputPaneManager::instance()->init();
-    m_vcsManager->extensionsInitialized();
+//    m_vcsManager->extensionsInitialized();//#720 ROOPAK
     m_navigationWidget->setFactories(ExtensionSystem::PluginManager::getObjects<INavigationWidgetFactory>());
 
     readSettings();

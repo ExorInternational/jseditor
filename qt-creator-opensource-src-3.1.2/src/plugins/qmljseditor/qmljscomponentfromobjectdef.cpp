@@ -34,7 +34,7 @@
 #include <coreplugin/icore.h>
 #include <coreplugin/idocument.h>
 #include <coreplugin/iversioncontrol.h>
-#include <coreplugin/vcsmanager.h>
+//#include <coreplugin/vcsmanager.h>//#720 ROOPAK
 
 #include <qmljs/parser/qmljsast_p.h>
 #include <qmljs/qmljsdocument.h>
@@ -121,20 +121,20 @@ public:
 //            }//ROOPAK - END
         }
 
-        Core::IVersionControl *versionControl = Core::VcsManager::findVersionControlForDirectory(path);
-        if (versionControl
-                && versionControl->supportsOperation(Core::IVersionControl::AddOperation)) {
-            const QMessageBox::StandardButton button =
-                    QMessageBox::question(Core::ICore::mainWindow(),
-                                          Core::VcsManager::msgAddToVcsTitle(),
-                                          Core::VcsManager::msgPromptToAddToVcs(QStringList(newFileName), versionControl),
-                                          QMessageBox::Yes | QMessageBox::No);
-            if (button == QMessageBox::Yes && !versionControl->vcsAdd(newFileName)) {
-                QMessageBox::warning(Core::ICore::mainWindow(),
-                                     Core::VcsManager::msgAddToVcsFailedTitle(),
-                                     Core::VcsManager::msgToAddToVcsFailed(QStringList(newFileName), versionControl));
-            }
-        }
+//        Core::IVersionControl *versionControl = Core::VcsManager::findVersionControlForDirectory(path);//#720 ROOPAK - START
+//        if (versionControl
+//                && versionControl->supportsOperation(Core::IVersionControl::AddOperation)) {
+//            const QMessageBox::StandardButton button =
+//                    QMessageBox::question(Core::ICore::mainWindow(),
+//                                          Core::VcsManager::msgAddToVcsTitle(),
+//                                          Core::VcsManager::msgPromptToAddToVcs(QStringList(newFileName), versionControl),
+//                                          QMessageBox::Yes | QMessageBox::No);
+//            if (button == QMessageBox::Yes && !versionControl->vcsAdd(newFileName)) {
+//                QMessageBox::warning(Core::ICore::mainWindow(),
+//                                     Core::VcsManager::msgAddToVcsFailedTitle(),
+//                                     Core::VcsManager::msgToAddToVcsFailed(QStringList(newFileName), versionControl));
+//            }
+//        }//#720 ROOPAK - END
         QString replacement = componentName + QLatin1String(" {\n");
         if (!m_idName.isEmpty())
             replacement += QLatin1String("id: ") + m_idName + QLatin1Char('\n');

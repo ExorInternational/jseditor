@@ -49,7 +49,7 @@ class Context;
 class IContext;
 class ProgressManager;
 class SettingsDatabase;
-class VcsManager;
+//class VcsManager;//#720 ROOPAK
 
 namespace Internal { class MainWindow; }
 

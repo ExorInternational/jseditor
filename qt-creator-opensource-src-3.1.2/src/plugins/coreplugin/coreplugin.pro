@@ -24,7 +24,7 @@ SOURCES += mainwindow.cpp \
 #    messageoutputwindow.cpp \#ROOPAK
     outputpane.cpp \
 #    outputwindow.cpp \//#720 ROOPAK
-    vcsmanager.cpp \
+#    vcsmanager.cpp \//#720 ROOPAK
 #    statusbarmanager.cpp \//#720 ROOPAK
     versiondialog.cpp \
     editormanager/editormanager.cpp \
@@ -110,7 +110,7 @@ HEADERS += mainwindow.h \
 #    messageoutputwindow.h \#ROOPAK
     outputpane.h \
 #    outputwindow.h \//#720 ROOPAK
-    vcsmanager.h \
+#    vcsmanager.h \//#720 ROOPAK
 #    statusbarmanager.h \//#720 ROOPAK
     editormanager/editormanager.h \
     editormanager/editorview.h \
