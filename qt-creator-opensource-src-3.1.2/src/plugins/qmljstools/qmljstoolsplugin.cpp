@@ -34,7 +34,7 @@
 //#include "qmljscodestylesettingspage.h"//#720 ROOPAK
 #include "qmljstoolsconstants.h"
 #include "qmljstoolssettings.h"
-#include "qmlconsolemanager.h"
+//#include "qmlconsolemanager.h"//#720 ROOPAK
 #include "qmljsbundleprovider.h"
 
 #include <coreplugin/icore.h>
@@ -66,7 +66,7 @@ QmlJSToolsPlugin::~QmlJSToolsPlugin()
 {
     m_instance = 0;
     m_modelManager = 0; // deleted automatically
-    m_consoleManager = 0; // deleted automatically
+//    m_consoleManager = 0; // deleted automatically//#720 ROOPAK
 }
 
 bool QmlJSToolsPlugin::initialize(const QStringList &arguments, QString *error)
@@ -80,7 +80,7 @@ bool QmlJSToolsPlugin::initialize(const QStringList &arguments, QString *error)
 
     // Objects
     m_modelManager = new ModelManager(this);
-    m_consoleManager = new QmlConsoleManager(this);
+//    m_consoleManager = new QmlConsoleManager(this);//#720 ROOPAK
 
 //    VCSManager *vcsManager = core->vcsManager();
 //    DocumentManager *fileManager = core->fileManager();

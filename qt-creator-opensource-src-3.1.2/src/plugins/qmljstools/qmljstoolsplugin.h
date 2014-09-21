@@ -42,7 +42,7 @@ QT_END_NAMESPACE
 namespace QmlJSTools {
 
 class QmlJSToolsSettings;
-class QmlConsoleManager;
+//class QmlConsoleManager;//#720 ROOPAK
 
 namespace Internal {
 
@@ -74,7 +74,7 @@ private slots:
 
 private:
     ModelManager *m_modelManager;
-    QmlConsoleManager *m_consoleManager;
+//    QmlConsoleManager *m_consoleManager;//#720 ROOPAK
     QmlJSToolsSettings *m_settings;
     QAction *m_resetCodeModelAction;
 
