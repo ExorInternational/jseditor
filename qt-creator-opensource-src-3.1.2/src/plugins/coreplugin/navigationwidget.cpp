@@ -28,7 +28,7 @@
 ****************************************************************************/
 
 #include "navigationwidget.h"
-#include "navigationsubwidget.h"
+//#include "navigationsubwidget.h"//#720 ROOPAK
 #include "icontext.h"
 #include "icore.h"
 #include "coreconstants.h"
@@ -136,7 +136,7 @@ struct NavigationWidgetPrivate
     explicit NavigationWidgetPrivate(QAction *toggleSideBarAction);
     ~NavigationWidgetPrivate() { delete m_factoryModel; }
 
-    QList<Internal::NavigationSubWidget *> m_subWidgets;
+//    QList<Internal::NavigationSubWidget *> m_subWidgets;//#720 ROOPAK
     QHash<QShortcut *, Core::Id> m_shortcutMap;
     QHash<Core::Id, Core::Command *> m_commandMap;
     QStandardItemModel *m_factoryModel;
@@ -240,20 +240,20 @@ void NavigationWidget::resizeEvent(QResizeEvent *re)
     MiniSplitter::resizeEvent(re);
 }
 
-Internal::NavigationSubWidget *NavigationWidget::insertSubItem(int position,int index)
-{
-    for (int pos = position + 1; pos < d->m_subWidgets.size(); ++pos) {
-        d->m_subWidgets.at(pos)->setPosition(pos + 1);
-    }
+//Internal::NavigationSubWidget *NavigationWidget::insertSubItem(int position,int index)//#720 ROOPAK - START
+//{
+//    for (int pos = position + 1; pos < d->m_subWidgets.size(); ++pos) {
+//        d->m_subWidgets.at(pos)->setPosition(pos + 1);
+//    }
 
-    Internal::NavigationSubWidget *nsw = new Internal::NavigationSubWidget(this, position, index);
-    connect(nsw, SIGNAL(splitMe()), this, SLOT(splitSubWidget()));
-    connect(nsw, SIGNAL(closeMe()), this, SLOT(closeSubWidget()));
-    insertWidget(position, nsw);
-    d->m_subWidgets.insert(position, nsw);
+//    Internal::NavigationSubWidget *nsw = new Internal::NavigationSubWidget(this, position, index);
+//    connect(nsw, SIGNAL(splitMe()), this, SLOT(splitSubWidget()));
+//    connect(nsw, SIGNAL(closeMe()), this, SLOT(closeSubWidget()));
+//    insertWidget(position, nsw);
+//    d->m_subWidgets.insert(position, nsw);
 
-    return nsw;
-}
+//    return nsw;
+//}//#720 ROOPAK - END
 
 void NavigationWidget::activateSubWidget()
 {
@@ -265,49 +265,49 @@ void NavigationWidget::activateSubWidget()
 void NavigationWidget::activateSubWidget(const Id &factoryId)
 {
     setShown(true);
-    foreach (Internal::NavigationSubWidget *subWidget, d->m_subWidgets) {
-        if (subWidget->factory()->id() == factoryId) {
-            subWidget->setFocusWidget();
-            ICore::raiseWindow(this);
-            return;
-        }
-    }
+//    foreach (Internal::NavigationSubWidget *subWidget, d->m_subWidgets) {//#720 ROOPAK - START
+//        if (subWidget->factory()->id() == factoryId) {
+//            subWidget->setFocusWidget();
+//            ICore::raiseWindow(this);
+//            return;
+//        }
+//    }//#720 ROOPAK - END
 
     int index = factoryIndex(factoryId);
     if (index >= 0) {
-        d->m_subWidgets.first()->setFactoryIndex(index);
-        d->m_subWidgets.first()->setFocusWidget();
+//        d->m_subWidgets.first()->setFactoryIndex(index);//#720 ROOPAK - START
+//        d->m_subWidgets.first()->setFocusWidget();//#720 ROOPAK - END
         ICore::raiseWindow(this);
     }
 }
 
 void NavigationWidget::splitSubWidget()
 {
-    Internal::NavigationSubWidget *original = qobject_cast<Internal::NavigationSubWidget *>(sender());
-    int pos = indexOf(original) + 1;
-    insertSubItem(pos, original->factoryIndex());
+//    Internal::NavigationSubWidget *original = qobject_cast<Internal::NavigationSubWidget *>(sender());//#720 ROOPAK - START
+//    int pos = indexOf(original) + 1;
+//    insertSubItem(pos, original->factoryIndex());//#720 ROOPAK - END
 }
 
 void NavigationWidget::closeSubWidget()
 {
-    if (d->m_subWidgets.count() != 1) {
-        Internal::NavigationSubWidget *subWidget = qobject_cast<Internal::NavigationSubWidget *>(sender());
-        subWidget->saveSettings();
-        d->m_subWidgets.removeOne(subWidget);
-        subWidget->hide();
-        subWidget->deleteLater();
-    } else {
-        setShown(false);
-    }
+//    if (d->m_subWidgets.count() != 1) {//#720 ROOPAK - START
+//        Internal::NavigationSubWidget *subWidget = qobject_cast<Internal::NavigationSubWidget *>(sender());
+//        subWidget->saveSettings();
+//        d->m_subWidgets.removeOne(subWidget);
+//        subWidget->hide();
+//        subWidget->deleteLater();
+//    } else {
+//        setShown(false);
+//    }//#720 ROOPAK - END
 }
 
 void NavigationWidget::saveSettings(QSettings *settings)
 {
     QStringList viewIds;
-    for (int i=0; i<d->m_subWidgets.count(); ++i) {
-        d->m_subWidgets.at(i)->saveSettings();
-        viewIds.append(d->m_subWidgets.at(i)->factory()->id().toString());
-    }
+//    for (int i=0; i<d->m_subWidgets.count(); ++i) {//#720 ROOPAK - START
+//        d->m_subWidgets.at(i)->saveSettings();
+//        viewIds.append(d->m_subWidgets.at(i)->factory()->id().toString());
+//    }//#720 ROOPAK - END
     settings->setValue(QLatin1String("Navigation/Views"), viewIds);
     settings->setValue(QLatin1String("Navigation/Visible"), isShown());
     settings->setValue(QLatin1String("Navigation/VerticalPosition"), saveState());
@@ -340,16 +340,16 @@ void NavigationWidget::restoreSettings(QSettings *settings)
         int index = factoryIndex(Id::fromString(id));
         if (index >= 0) {
             // Only add if the id was actually found!
-            insertSubItem(position, index);
+//            insertSubItem(position, index);//#720 ROOPAK
             ++position;
         } else {
             restoreSplitterState = false;
         }
     }
 
-    if (d->m_subWidgets.isEmpty())
+//    if (d->m_subWidgets.isEmpty())//#720 ROOPAK - START
         // Make sure we have at least the projects widget
-        insertSubItem(0, qMax(0, factoryIndex("Projects")));
+//        insertSubItem(0, qMax(0, factoryIndex("Projects")));//#720 ROOPAK - END
 
     setShown(settings->value(QLatin1String("Navigation/Visible"), true).toBool());
 
@@ -374,11 +374,11 @@ void NavigationWidget::restoreSettings(QSettings *settings)
 
 void NavigationWidget::closeSubWidgets()
 {
-    foreach (Internal::NavigationSubWidget *subWidget, d->m_subWidgets) {
-        subWidget->saveSettings();
-        delete subWidget;
-    }
-    d->m_subWidgets.clear();
+//    foreach (Internal::NavigationSubWidget *subWidget, d->m_subWidgets) {//#720 ROOPAK - START
+//        subWidget->saveSettings();
+//        delete subWidget;
+//    }
+//    d->m_subWidgets.clear();//#720 ROOPAK - END
 }
 
 void NavigationWidget::setShown(bool b)

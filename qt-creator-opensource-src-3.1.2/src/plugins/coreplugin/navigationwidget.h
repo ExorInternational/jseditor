@@ -48,7 +48,7 @@ class IMode;
 class Command;
 class NavigationWidget;
 struct NavigationWidgetPrivate;
-namespace Internal { class NavigationSubWidget; }
+//namespace Internal { class NavigationSubWidget; }//#720 ROOPAK
 
 class CORE_EXPORT NavigationWidgetPlaceHolder : public QWidget
 {
@@ -117,7 +117,7 @@ private slots:
 
 private:
     void updateToggleText();
-    Internal::NavigationSubWidget *insertSubItem(int position, int index);
+//    Internal::NavigationSubWidget *insertSubItem(int position, int index);//#720 ROOPAK
     int factoryIndex(const Id &id);
 
     NavigationWidgetPrivate *d;

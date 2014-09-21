@@ -79,7 +79,7 @@ SOURCES += mainwindow.cpp \
     editortoolbar.cpp \
 #    helpmanager.cpp \//#720 ROOPAK
     outputpanemanager.cpp \
-    navigationsubwidget.cpp \
+#    navigationsubwidget.cpp \//#720 ROOPAK
 #    sidebarwidget.cpp \//#720 ROOPAK
 #    externaltool.cpp \#ROOPAK
 #    dialogs/externaltoolconfig.cpp \ #ROOPAK
@@ -176,7 +176,7 @@ HEADERS += mainwindow.h \
     editortoolbar.h \
 #    helpmanager.h \//#720 ROOPAK
     outputpanemanager.h \
-    navigationsubwidget.h \
+#    navigationsubwidget.h \//#720 ROOPAK
 #    sidebarwidget.h \//#720 ROOPAK
 #    externaltool.h \#ROOPAK
 #    dialogs/externaltoolconfig.h \ #ROOPAK
