@@ -48,7 +48,7 @@
 #include <coreplugin/icore.h>
 #include <coreplugin/icorelistener.h>
 #include <coreplugin/infobar.h>
-#include <coreplugin/iversioncontrol.h>
+//#include <coreplugin/iversioncontrol.h>//#720 ROOPAK
 #include <coreplugin/mimedatabase.h>
 #include <coreplugin/modemanager.h>
 #include <coreplugin/outputpane.h>

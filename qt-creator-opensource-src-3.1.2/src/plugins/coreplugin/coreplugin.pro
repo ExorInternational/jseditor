@@ -94,7 +94,7 @@ SOURCES += mainwindow.cpp \
     textdocument.cpp \
     documentmanager.cpp \
 #    removefiledialog.cpp \#ROOPAK
-    iversioncontrol.cpp \
+#    iversioncontrol.cpp \//#720 ROOPAK
 #    dialogs/addtovcsdialog.cpp \    #ROOPAK
     icorelistener.cpp \
     ioutputpane.cpp
@@ -148,7 +148,7 @@ HEADERS += mainwindow.h \
     imode.h \
     ioutputpane.h \
     coreconstants.h \
-    iversioncontrol.h \
+#    iversioncontrol.h \//#720 ROOPAK
 #    ifilewizardextension.h \//#720 ROOPAK
     icorelistener.h \
     versiondialog.h \

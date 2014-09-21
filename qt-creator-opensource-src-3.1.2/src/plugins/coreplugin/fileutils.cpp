@@ -32,7 +32,7 @@
 #include <coreplugin/coreconstants.h>
 #include <coreplugin/documentmanager.h>
 #include <coreplugin/icore.h>
-#include <coreplugin/iversioncontrol.h>
+//#include <coreplugin/iversioncontrol.h>//#720 ROOPAK
 //#include <coreplugin/vcsmanager.h>//#720 ROOPAK
 #include <utils/consoleprocess.h>
 #include <utils/hostosinfo.h>

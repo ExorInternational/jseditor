@@ -53,7 +53,7 @@ class IEditorFactory;
 class MimeType;
 class IDocument;
 class IMode;
-class IVersionControl;
+//class IVersionControl;//#720 ROOPAK
 
 class EditorToolBar;
 

@@ -33,7 +33,7 @@
 
 #include <coreplugin/icore.h>
 #include <coreplugin/idocument.h>
-#include <coreplugin/iversioncontrol.h>
+//#include <coreplugin/iversioncontrol.h>//#720 ROOPAK
 //#include <coreplugin/vcsmanager.h>//#720 ROOPAK
 
 #include <qmljs/parser/qmljsast_p.h>
