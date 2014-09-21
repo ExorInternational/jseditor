@@ -57,7 +57,7 @@ SOURCES += mainwindow.cpp \
 #    basefilewizard.cpp \//#720 ROOPAK
 #    generatedfile.cpp \//#720 ROOPAK
     plugindialog.cpp \
-    inavigationwidgetfactory.cpp \
+#    inavigationwidgetfactory.cpp \//#720 ROOPAK
 #    navigationwidget.cpp \//#720 ROOPAK
     manhattanstyle.cpp \
     minisplitter.cpp \
@@ -160,7 +160,7 @@ HEADERS += mainwindow.h \
 #    basefilewizard.h \//#720 ROOPAK
 #    generatedfile.h \//#720 ROOPAK
     plugindialog.h \
-    inavigationwidgetfactory.h \
+#    inavigationwidgetfactory.h \//#720 ROOPAK
 #    navigationwidget.h \//#720 ROOPAK
     manhattanstyle.h \
     minisplitter.h \

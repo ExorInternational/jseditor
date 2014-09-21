@@ -70,7 +70,7 @@
 #include <coreplugin/editormanager/editormanager.h>
 #include <coreplugin/editormanager/ieditor.h>
 #include <coreplugin/icorelistener.h>
-#include <coreplugin/inavigationwidgetfactory.h>
+//#include <coreplugin/inavigationwidgetfactory.h>//#720 ROOPAK
 #include <coreplugin/progressmanager/progressmanager_p.h>
 #include <coreplugin/progressmanager/progressview.h>
 #include <coreplugin/settingsdatabase.h>
