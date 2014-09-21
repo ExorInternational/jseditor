@@ -38,7 +38,7 @@
 //#include "textfilewizard.h"//#720 ROOPAK
 #include "plaintexteditorfactory.h"
 #include "plaintexteditor.h"
-#include "outlinefactory.h"
+//#include "outlinefactory.h"//#720 ROOPAK
 #include "snippets/plaintextsnippetprovider.h"
 #include "basetextmarkregistry.h"
 #include <texteditor/generichighlighter/manager.h>
@@ -204,8 +204,8 @@ bool TextEditorPlugin::initialize(const QStringList &arguments, QString *errorMe
     // Add text snippet provider.
     addAutoReleasedObject(new PlainTextSnippetProvider);
 
-    m_outlineFactory = new OutlineFactory;
-    addAutoReleasedObject(m_outlineFactory);
+//    m_outlineFactory = new OutlineFactory;//#720 ROOPAK - START
+//    addAutoReleasedObject(m_outlineFactory);//#720 ROOPAK - END
 
     m_baseTextMarkRegistry = new BaseTextMarkRegistry(this);
 
@@ -216,7 +216,7 @@ void TextEditorPlugin::extensionsInitialized()
 {
     m_searchResultWindow = Core::SearchResultWindow::instance();
 
-    m_outlineFactory->setWidgetFactories(ExtensionSystem::PluginManager::getObjects<TextEditor::IOutlineWidgetFactory>());
+//    m_outlineFactory->setWidgetFactories(ExtensionSystem::PluginManager::getObjects<TextEditor::IOutlineWidgetFactory>());//#720 ROOPAK
 
     connect(m_settings, SIGNAL(fontSettingsChanged(TextEditor::FontSettings)),
             this, SLOT(updateSearchResultsFont(TextEditor::FontSettings)));

@@ -58,7 +58,7 @@ SOURCES += texteditorplugin.cpp \
     generichighlighter/definitiondownloader.cpp \
     refactoringchanges.cpp \
     refactoroverlay.cpp \
-    outlinefactory.cpp \
+#    outlinefactory.cpp \//#720 ROOPAK
     basehoverhandler.cpp \
     helpitem.cpp \
     autocompleter.cpp \
@@ -171,7 +171,7 @@ HEADERS += texteditorplugin.h \
     generichighlighter/definitiondownloader.h \
     refactoringchanges.h \
     refactoroverlay.h \
-    outlinefactory.h \
+#    outlinefactory.h \//#720 ROOPAK
     ioutlinewidget.h \
     basehoverhandler.h \
     helpitem.h \

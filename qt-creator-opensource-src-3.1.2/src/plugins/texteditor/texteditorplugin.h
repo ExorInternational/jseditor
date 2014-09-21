@@ -44,7 +44,7 @@ namespace Internal {
 
 //class LineNumberFilter;//#720 ROOPAK
 class PlainTextEditorFactory;
-class OutlineFactory;
+//class OutlineFactory;//#720 ROOPAK
 class BaseTextMarkRegistry;
 
 class TextEditorPlugin : public ExtensionSystem::IPlugin
@@ -87,7 +87,7 @@ private:
     PlainTextEditorFactory *m_editorFactory;
 //    LineNumberFilter *m_lineNumberFilter;//#720 ROOPAK
     Core::SearchResultWindow *m_searchResultWindow;
-    OutlineFactory *m_outlineFactory;
+//    OutlineFactory *m_outlineFactory;//#720 ROOPAK
     BaseTextMarkRegistry *m_baseTextMarkRegistry;
 };
 
