@@ -76,7 +76,7 @@ SOURCES += mainwindow.cpp \
     imode.cpp \
 #    editormanager/systemeditor.cpp \ #ROOPAK
 #    designmode.cpp \                        #ROOPAK
-    editortoolbar.cpp \
+#    editortoolbar.cpp \//#720 ROOPAK
 #    helpmanager.cpp \//#720 ROOPAK
     outputpanemanager.cpp \
 #    navigationsubwidget.cpp \//#720 ROOPAK
@@ -173,7 +173,7 @@ HEADERS += mainwindow.h \
     settingsdatabase.h \
 #    editormanager/systemeditor.h \ #ROOPAK
 #    designmode.h \                 #ROOPAK
-    editortoolbar.h \
+#    editortoolbar.h \//#720 ROOPAK
 #    helpmanager.h \//#720 ROOPAK
     outputpanemanager.h \
 #    navigationsubwidget.h \//#720 ROOPAK

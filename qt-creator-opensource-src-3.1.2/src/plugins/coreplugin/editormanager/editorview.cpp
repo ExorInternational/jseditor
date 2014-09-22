@@ -31,7 +31,7 @@
 #include "editormanager.h"
 #include "documentmodel.h"
 
-#include <coreplugin/editortoolbar.h>
+//#include <coreplugin/editortoolbar.h>//#720 ROOPAK
 #include <coreplugin/coreconstants.h>
 #include <coreplugin/icore.h>
 #include <coreplugin/infobar.h>
@@ -61,7 +61,7 @@ using namespace Core::Internal;
 EditorView::EditorView(SplitterOrView *parentSplitterOrView, QWidget *parent) :
     QWidget(parent),
     m_parentSplitterOrView(parentSplitterOrView),
-    m_toolBar(EditorManager::createToolBar(this)),
+//    m_toolBar(EditorManager::createToolBar(this)),//#720 ROOPAK
     m_container(new QStackedWidget(this)),
     m_infoBarDisplay(new InfoBarDisplay(this)),
     m_statusHLine(new QFrame(this)),
@@ -72,15 +72,15 @@ EditorView::EditorView(SplitterOrView *parentSplitterOrView, QWidget *parent) :
     tl->setSpacing(0);
     tl->setMargin(0);
     {
-        connect(m_toolBar, SIGNAL(goBackClicked()), this, SLOT(goBackInNavigationHistory()));
-        connect(m_toolBar, SIGNAL(goForwardClicked()), this, SLOT(goForwardInNavigationHistory()));
-        connect(m_toolBar, SIGNAL(closeClicked()), this, SLOT(closeView()));
-        connect(m_toolBar, SIGNAL(listSelectionActivated(int)), this, SLOT(listSelectionActivated(int)));
-        connect(m_toolBar, SIGNAL(horizontalSplitClicked()), this, SLOT(splitHorizontally()));
-        connect(m_toolBar, SIGNAL(verticalSplitClicked()), this, SLOT(splitVertically()));
-        connect(m_toolBar, SIGNAL(splitNewWindowClicked()), this, SLOT(splitNewWindow()));
-        connect(m_toolBar, SIGNAL(closeSplitClicked()), this, SLOT(closeSplit()));
-        tl->addWidget(m_toolBar);
+//        connect(m_toolBar, SIGNAL(goBackClicked()), this, SLOT(goBackInNavigationHistory()));//#720 ROOPAK - START
+//        connect(m_toolBar, SIGNAL(goForwardClicked()), this, SLOT(goForwardInNavigationHistory()));
+//        connect(m_toolBar, SIGNAL(closeClicked()), this, SLOT(closeView()));
+//        connect(m_toolBar, SIGNAL(listSelectionActivated(int)), this, SLOT(listSelectionActivated(int)));
+//        connect(m_toolBar, SIGNAL(horizontalSplitClicked()), this, SLOT(splitHorizontally()));
+//        connect(m_toolBar, SIGNAL(verticalSplitClicked()), this, SLOT(splitVertically()));
+//        connect(m_toolBar, SIGNAL(splitNewWindowClicked()), this, SLOT(splitNewWindow()));
+//        connect(m_toolBar, SIGNAL(closeSplitClicked()), this, SLOT(closeSplit()));
+//        tl->addWidget(m_toolBar);//#720 ROOPAK - END
     }
 
     m_infoBarDisplay->setTarget(tl, 1);
@@ -187,12 +187,12 @@ void EditorView::hideEditorStatusBar(const QString &id)
 
 void EditorView::setCloseSplitEnabled(bool enable)
 {
-    m_toolBar->setCloseSplitEnabled(enable);
+//    m_toolBar->setCloseSplitEnabled(enable);//#720 ROOPAK
 }
 
 void EditorView::setCloseSplitIcon(const QIcon &icon)
 {
-    m_toolBar->setCloseSplitIcon(icon);
+//    m_toolBar->setCloseSplitIcon(icon);//#720 ROOPAK
 }
 
 void EditorView::updateEditorHistory(IEditor *editor, QList<EditLocation> &history)
@@ -262,7 +262,7 @@ void EditorView::addEditor(IEditor *editor)
 
     m_container->addWidget(editor->widget());
     m_widgetEditorMap.insert(editor->widget(), editor);
-    m_toolBar->addEditor(editor);
+//    m_toolBar->addEditor(editor);//#720 ROOPAK
 
     if (editor == currentEditor())
         setCurrentEditor(editor);
@@ -287,7 +287,7 @@ void EditorView::removeEditor(IEditor *editor)
     m_container->removeWidget(editor->widget());
     m_widgetEditorMap.remove(editor->widget());
     editor->widget()->setParent(0);
-    m_toolBar->removeToolbarForEditor(editor);
+//    m_toolBar->removeToolbarForEditor(editor);//#720 ROOPAK
 
     if (wasCurrent)
         setCurrentEditor(m_editors.count() ? m_editors.last() : 0);
@@ -340,7 +340,7 @@ void EditorView::setCurrentEditor(IEditor *editor)
 {
     if (!editor || m_container->indexOf(editor->widget()) == -1) {
         QTC_CHECK(!editor);
-        m_toolBar->setCurrentEditor(0);
+//        m_toolBar->setCurrentEditor(0);//#720 ROOPAK
         m_infoBarDisplay->setInfoBar(0);
         m_container->setCurrentIndex(0);
         return;
@@ -352,7 +352,7 @@ void EditorView::setCurrentEditor(IEditor *editor)
     const int idx = m_container->indexOf(editor->widget());
     QTC_ASSERT(idx >= 0, return);
     m_container->setCurrentIndex(idx);
-    m_toolBar->setCurrentEditor(editor);
+//    m_toolBar->setCurrentEditor(editor);//#720 ROOPAK
 
     updateEditorHistory(editor);
 
@@ -430,8 +430,8 @@ void EditorView::cutForwardNavigationHistory()
 
 void EditorView::updateNavigatorActions()
 {
-    m_toolBar->setCanGoBack(canGoBack());
-    m_toolBar->setCanGoForward(canGoForward());
+//    m_toolBar->setCanGoBack(canGoBack());//#720 ROOPAK - START
+//    m_toolBar->setCanGoForward(canGoForward());//#720 ROOPAK - END
 }
 
 void EditorView::copyNavigationHistoryFrom(EditorView* other)

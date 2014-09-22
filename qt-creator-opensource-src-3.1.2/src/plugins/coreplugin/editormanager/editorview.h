@@ -58,7 +58,7 @@ class IDocument;
 class IEditor;
 class InfoBarDisplay;
 class DocumentModel;
-class EditorToolBar;
+//class EditorToolBar;//#720 ROOPAK
 
 namespace Internal {
 
@@ -125,7 +125,7 @@ private:
     void checkProjectLoaded(IEditor *editor);
 
     SplitterOrView *m_parentSplitterOrView;
-    EditorToolBar *m_toolBar;
+//    EditorToolBar *m_toolBar;//#720 ROOPAK
 
     QStackedWidget *m_container;
     InfoBarDisplay *m_infoBarDisplay;

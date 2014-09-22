@@ -55,7 +55,7 @@ class IDocument;
 class IMode;
 //class IVersionControl;//#720 ROOPAK
 
-class EditorToolBar;
+//class EditorToolBar;//#720 ROOPAK
 
 enum MakeWritableResult {
     OpenedWithVersionControl,
@@ -95,7 +95,7 @@ public:
 
     static EditorManager *instance();
 
-    static EditorToolBar *createToolBar(QWidget *parent = 0);
+//    static EditorToolBar *createToolBar(QWidget *parent = 0);//#720 ROOPAK
 
     enum OpenEditorFlag {
         NoFlags = 0,
@@ -289,7 +289,7 @@ private:
     friend class Core::Internal::MainWindow;
     friend class Core::Internal::SplitterOrView;
     friend class Core::Internal::EditorView;
-    friend class Core::EditorToolBar;
+//    friend class Core::EditorToolBar;//#720 ROOPAK
 };
 
 } // namespace Core

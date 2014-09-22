@@ -42,7 +42,7 @@
 #include <coreplugin/documentmanager.h>
 #include <coreplugin/editormanager/ieditorfactory.h>
 //#include <coreplugin/editormanager/iexternaleditor.h>//#720 ROOPAK
-#include <coreplugin/editortoolbar.h>
+//#include <coreplugin/editortoolbar.h>//#720 ROOPAK
 #include <coreplugin/fileutils.h>
 #include <coreplugin/findplaceholder.h>
 #include <coreplugin/icore.h>
@@ -497,10 +497,10 @@ void EditorManager::updateAutoSave()
         d->m_autoSaveTimer->stop();
 }
 
-EditorToolBar *EditorManager::createToolBar(QWidget *parent)
-{
-    return new EditorToolBar(parent);
-}
+//EditorToolBar *EditorManager::createToolBar(QWidget *parent)//#720 ROOPAK - START
+//{
+//    return new EditorToolBar(parent);
+//}//#720 ROOPAK - END
 
 void EditorManager::removeEditor(IEditor *editor)
 {
