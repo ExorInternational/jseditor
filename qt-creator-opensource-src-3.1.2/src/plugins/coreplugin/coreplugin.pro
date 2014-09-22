@@ -61,7 +61,7 @@ SOURCES += mainwindow.cpp \
 #    navigationwidget.cpp \//#720 ROOPAK
 #    manhattanstyle.cpp \//#720 ROOPAK
     minisplitter.cpp \
-    styleanimator.cpp \
+#    styleanimator.cpp \//#720 ROOPAK
     findplaceholder.cpp \
     rightpane.cpp \
 #    sidebar.cpp \//#720 ROOPAK
@@ -164,7 +164,7 @@ HEADERS += mainwindow.h \
 #    navigationwidget.h \//#720 ROOPAK
 #    manhattanstyle.h \//#720 ROOPAK
     minisplitter.h \
-    styleanimator.h \
+#    styleanimator.h \//#720 ROOPAK
     findplaceholder.h \
     rightpane.h \
 #    sidebar.h \//#720 ROOPAK
