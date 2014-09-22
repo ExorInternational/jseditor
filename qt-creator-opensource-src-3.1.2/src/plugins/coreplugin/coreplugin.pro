@@ -89,7 +89,7 @@ SOURCES += mainwindow.cpp \
 #    mimetypesettings.cpp \#ROOPAK
 #    dialogs/promptoverwritedialog.cpp \ #ROOPAK
     fileutils.cpp \
-    featureprovider.cpp \
+#    featureprovider.cpp \//#720 ROOPAK
     idocument.cpp \
     textdocument.cpp \
     documentmanager.cpp \
@@ -188,7 +188,7 @@ HEADERS += mainwindow.h \
     fileutils.h \
 #    externaltoolmanager.h \#ROOPAK
 #    generatedfile.h \//#720 ROOPAK
-    featureprovider.h \
+#    featureprovider.h \//#720 ROOPAK
     idocument.h \
     idocumentfactory.h \
     textdocument.h \
