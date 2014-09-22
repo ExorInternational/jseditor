@@ -408,15 +408,14 @@ FancyTabWidget::FancyTabWidget(QWidget *parent)
     selectionLayout->addWidget(m_cornerWidgetContainer, 0);
 
     m_modesStack = new QStackedLayout;
-    m_statusBar = new QStatusBar;
-    m_statusBar->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Fixed);
+//    m_statusBar = new QStatusBar;//#720 ROOPAK - START
+//    m_statusBar->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Fixed);//#720 ROOPAK - END
 
     QVBoxLayout *vlayout = new QVBoxLayout;
     vlayout->setMargin(0);
     vlayout->setSpacing(0);
     vlayout->addLayout(m_modesStack);
-    vlayout->addWidget(m_statusBar);
-
+//    vlayout->addWidget(m_statusBar);//#720 ROOPAK
     QHBoxLayout *mainLayout = new QHBoxLayout;
     mainLayout->setMargin(0);
     mainLayout->setSpacing(1);
@@ -496,10 +495,10 @@ int FancyTabWidget::currentIndex() const
     return m_tabBar->currentIndex();
 }
 
-QStatusBar *FancyTabWidget::statusBar() const
-{
-    return m_statusBar;
-}
+//QStatusBar *FancyTabWidget::statusBar() const//#720 ROOPAK - START
+//{
+//    return m_statusBar;
+//}//#720 ROOPAK - END
 
 void FancyTabWidget::setCurrentIndex(int index)
 {

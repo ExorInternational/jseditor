@@ -99,7 +99,7 @@ public:
     inline SettingsDatabase *settingsDatabase() const { return m_settingsDatabase; }
     virtual QPrinter *printer() const;
     IContext * currentContextObject() const;
-    QStatusBar *statusBar() const;
+//    QStatusBar *statusBar() const;//#720 ROOPAK
 
     void updateAdditionalContexts(const Context &remove, const Context &add);
 

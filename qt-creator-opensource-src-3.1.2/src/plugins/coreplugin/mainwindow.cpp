@@ -202,18 +202,18 @@ MainWindow::MainWindow() :
     setCentralWidget(m_modeStack);
 
     m_progressManager->progressView()->setParent(this);
-    m_progressManager->progressView()->setReferenceWidget(m_modeStack->statusBar());
+    m_progressManager->progressView()->setReferenceWidget(/*m_modeStack->statusBar()*/NULL);
 
     connect(QApplication::instance(), SIGNAL(focusChanged(QWidget*,QWidget*)),
             this, SLOT(updateFocusWidget(QWidget*,QWidget*)));
     // Add a small Toolbutton for toggling the navigation widget
-    statusBar()->insertPermanentWidget(0, m_toggleSideBarButton);
+//    statusBar()->insertPermanentWidget(0, m_toggleSideBarButton);//#720 ROOPAK
 
 //    setUnifiedTitleAndToolBarOnMac(true);
     //if (Utils::HostOsInfo::isAnyUnixHost())
         //signal(SIGINT, handleSigInt);
 
-    statusBar()->setProperty("p_styled", true);
+//    statusBar()->setProperty("p_styled", true);//#720 ROOPAK
     setAcceptDrops(true);
 
 #if defined(Q_OS_MAC)
@@ -446,10 +446,10 @@ IContext *MainWindow::currentContextObject() const
     return m_activeContext.isEmpty() ? 0 : m_activeContext.first();
 }
 
-QStatusBar *MainWindow::statusBar() const
-{
-    return m_modeStack->statusBar();
-}
+//QStatusBar *MainWindow::statusBar() const//#720 ROOPAK - START
+//{
+//    return m_modeStack->statusBar();
+//}//#720 ROOPAK - END
 
 void MainWindow::registerDefaultContainers()
 {

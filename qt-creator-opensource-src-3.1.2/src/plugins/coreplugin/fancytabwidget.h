@@ -39,7 +39,7 @@
 QT_BEGIN_NAMESPACE
 class QPainter;
 class QStackedLayout;
-class QStatusBar;
+//class QStatusBar;//#720 ROOPAK
 QT_END_NAMESPACE
 
 namespace Core {
@@ -156,7 +156,7 @@ public:
     void paintEvent(QPaintEvent *event);
 
     int currentIndex() const;
-    QStatusBar *statusBar() const;
+//    QStatusBar *statusBar() const;//#720 ROOPAK
 
     void setTabEnabled(int index, bool enable);
     bool isTabEnabled(int index) const;
@@ -179,7 +179,7 @@ private:
     QWidget *m_cornerWidgetContainer;
     QStackedLayout *m_modesStack;
     QWidget *m_selectionWidget;
-    QStatusBar *m_statusBar;
+//    QStatusBar *m_statusBar;//#720 ROOPAK
 };
 
 } // namespace Internal
