@@ -1,8 +1,8 @@
 QTC_LIB_NAME = JsEditorTools
 
 QTC_LIB_DEPENDS += \
-    qmljs
+    qmljs \
 #    aggregation \
-#    extensionsystem \
+    extensionsystem
 #    ssh \
 #    utils
