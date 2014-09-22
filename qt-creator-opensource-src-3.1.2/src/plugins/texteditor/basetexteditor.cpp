@@ -56,7 +56,7 @@
 #include <coreplugin/coreconstants.h>
 #include <coreplugin/editormanager/editormanager.h>
 #include <coreplugin/infobar.h>
-#include <coreplugin/manhattanstyle.h>
+//#include <coreplugin/manhattanstyle.h>//#720 ROOPAK
 #include <coreplugin/find/basetextfind.h>
 #include <utils/linecolumnlabel.h>
 #include <utils/hostosinfo.h>
@@ -3779,8 +3779,8 @@ void BaseTextEditorWidget::drawFoldingMarker(QPainter *painter, const QPalette &
                                        bool hovered) const
 {
     QStyle *s = style();
-    if (ManhattanStyle *ms = qobject_cast<ManhattanStyle*>(s))
-        s = ms->baseStyle();
+//    if (ManhattanStyle *ms = qobject_cast<ManhattanStyle*>(s))//#720 ROOPAK - START
+//        s = ms->baseStyle();//#720 ROOPAK - END
 
     if (!qstrcmp(s->metaObject()->className(), "OxygenStyle")) {
         painter->save();

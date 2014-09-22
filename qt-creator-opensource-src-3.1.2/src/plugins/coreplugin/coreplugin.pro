@@ -59,7 +59,7 @@ SOURCES += mainwindow.cpp \
     plugindialog.cpp \
 #    inavigationwidgetfactory.cpp \//#720 ROOPAK
 #    navigationwidget.cpp \//#720 ROOPAK
-    manhattanstyle.cpp \
+#    manhattanstyle.cpp \//#720 ROOPAK
     minisplitter.cpp \
     styleanimator.cpp \
     findplaceholder.cpp \
@@ -162,7 +162,7 @@ HEADERS += mainwindow.h \
     plugindialog.h \
 #    inavigationwidgetfactory.h \//#720 ROOPAK
 #    navigationwidget.h \//#720 ROOPAK
-    manhattanstyle.h \
+#    manhattanstyle.h \//#720 ROOPAK
     minisplitter.h \
     styleanimator.h \
     findplaceholder.h \

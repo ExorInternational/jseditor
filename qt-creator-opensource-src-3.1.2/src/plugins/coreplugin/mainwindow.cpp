@@ -47,7 +47,7 @@
 #include "versiondialog.h"
 //#include "statusbarmanager.h"//#720 ROOPAK
 #include "id.h"
-#include "manhattanstyle.h"
+//#include "manhattanstyle.h"//#720 ROOPAK
 //#include "navigationwidget.h"//#720 ROOPAK
 #include "rightpane.h"
 #include "editormanager/ieditorfactory.h"
@@ -179,7 +179,7 @@ MainWindow::MainWindow() :
             }
         }
     }
-    qApp->setStyle(new ManhattanStyle(baseName));
+//    qApp->setStyle(new ManhattanStyle(baseName));//#720 ROOPAK
 
     setDockNestingEnabled(true);
 
