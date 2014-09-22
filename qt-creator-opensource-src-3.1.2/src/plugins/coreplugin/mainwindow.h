@@ -75,7 +75,7 @@ class ProgressManagerPrivate;
 //class ToolSettings;//ROOPAK
 //class MimeTypeSettings;//ROOPAK
 //class StatusBarManager;//#720 ROOPAK
-class VersionDialog;
+//class VersionDialog;//#720 ROOPAK
 //class SystemEditor;//ROOPAK
 
 class MainWindow : public Utils::AppMainWindow
@@ -142,11 +142,11 @@ private slots:
 //    void openRecentFile();//#720 ROOPAK
     void setFocusToEditor();
     void saveAll();
-    void aboutQtCreator();
+//    void aboutQtCreator();//#720 ROOPAK
     void aboutPlugins();
     void updateFocusWidget(QWidget *old, QWidget *now);
     void setSidebarVisible(bool visible);
-    void destroyVersionDialog();
+//    void destroyVersionDialog();//#720 ROOPAK
     void openDelayedFiles();
     void restoreWindowState();
 
@@ -179,7 +179,7 @@ private:
 //    NavigationWidget *m_navigationWidget;//#720 ROOPAK
     RightPaneWidget *m_rightPaneWidget;
 //    Core::StatusBarWidget *m_outputView;//#720 ROOPAK
-    VersionDialog *m_versionDialog;
+//    VersionDialog *m_versionDialog;//#720 ROOPAK
 
     QList<IContext *> m_activeContext;
 

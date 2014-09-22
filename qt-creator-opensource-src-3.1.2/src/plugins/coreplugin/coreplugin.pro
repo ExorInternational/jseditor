@@ -26,7 +26,7 @@ SOURCES += mainwindow.cpp \
 #    outputwindow.cpp \//#720 ROOPAK
 #    vcsmanager.cpp \//#720 ROOPAK
 #    statusbarmanager.cpp \//#720 ROOPAK
-    versiondialog.cpp \
+#    versiondialog.cpp \//#720 ROOPAK
     editormanager/editormanager.cpp \
     editormanager/editorview.cpp \
     editormanager/documentmodel.cpp \
@@ -151,7 +151,7 @@ HEADERS += mainwindow.h \
 #    iversioncontrol.h \//#720 ROOPAK
 #    ifilewizardextension.h \//#720 ROOPAK
     icorelistener.h \
-    versiondialog.h \
+#    versiondialog.h \//#720 ROOPAK
     core_global.h \
 #    statusbarwidget.h \//#720 ROOPAK
     coreplugin.h \

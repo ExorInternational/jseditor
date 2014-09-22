@@ -44,7 +44,7 @@
 #include "plugindialog.h"
 //#include "vcsmanager.h"//#720 ROOPAK
 #include "variablemanager.h"
-#include "versiondialog.h"
+//#include "versiondialog.h"//#720 ROOPAK
 //#include "statusbarmanager.h"//#720 ROOPAK
 #include "id.h"
 //#include "manhattanstyle.h"//#720 ROOPAK
@@ -131,7 +131,7 @@ MainWindow::MainWindow() :
     m_modeStack(new FancyTabWidget(this)),
 //    m_navigationWidget(0),//#720 ROOPAK
     m_rightPaneWidget(0),
-    m_versionDialog(0),
+//    m_versionDialog(0),//#720 ROOPAK
 //    m_generalSettings(new GeneralSettings),//ROOPAK
 //    m_shortcutSettings(new ShortcutSettings),//ROOPAK
 //    m_toolSettings(new ToolSettings),//ROOPAK
@@ -752,17 +752,17 @@ void MainWindow::registerDefaultActions()
         mhelp->addSeparator(globalContext, Constants::G_HELP_ABOUT);
 
     // About IDE Action
-    icon = QIcon::fromTheme(QLatin1String("help-about"));
-    if (Utils::HostOsInfo::isMacHost())
-        tmpaction = new QAction(icon, tr("About &Qt Creator"), this); // it's convention not to add dots to the about menu
-    else
-        tmpaction = new QAction(icon, tr("About &Qt Creator..."), this);
-    cmd = ActionManager::registerAction(tmpaction, Constants::ABOUT_QTCREATOR, globalContext);
-    if (Utils::HostOsInfo::isMacHost())
-        cmd->action()->setMenuRole(QAction::ApplicationSpecificRole);
-    mhelp->addAction(cmd, Constants::G_HELP_ABOUT);
-    tmpaction->setEnabled(true);
-    connect(tmpaction, SIGNAL(triggered()), this,  SLOT(aboutQtCreator()));
+//    icon = QIcon::fromTheme(QLatin1String("help-about"));//#720 ROOPAK - START
+//    if (Utils::HostOsInfo::isMacHost())
+//        tmpaction = new QAction(icon, tr("About &Qt Creator"), this); // it's convention not to add dots to the about menu
+//    else
+//        tmpaction = new QAction(icon, tr("About &Qt Creator..."), this);
+//    cmd = ActionManager::registerAction(tmpaction, Constants::ABOUT_QTCREATOR, globalContext);
+//    if (Utils::HostOsInfo::isMacHost())
+//        cmd->action()->setMenuRole(QAction::ApplicationSpecificRole);
+//    mhelp->addAction(cmd, Constants::G_HELP_ABOUT);
+//    tmpaction->setEnabled(true);
+//    connect(tmpaction, SIGNAL(triggered()), this,  SLOT(aboutQtCreator()));//#720 ROOPAK - END
 
     //About Plugins Action
     tmpaction = new QAction(tr("About &Plugins..."), this);
@@ -1181,23 +1181,23 @@ void MainWindow::updateContext()
 //    }
 //}//#720 ROOPAK - END
 
-void MainWindow::aboutQtCreator()
-{
-    if (!m_versionDialog) {
-        m_versionDialog = new VersionDialog(this);
-        connect(m_versionDialog, SIGNAL(finished(int)),
-                this, SLOT(destroyVersionDialog()));
-    }
-    m_versionDialog->show();
-}
+//void MainWindow::aboutQtCreator()//#720 ROOPAK - START
+//{
+//    if (!m_versionDialog) {
+//        m_versionDialog = new VersionDialog(this);
+//        connect(m_versionDialog, SIGNAL(finished(int)),
+//                this, SLOT(destroyVersionDialog()));
+//    }
+//    m_versionDialog->show();
+//}//#720 ROOPAK - END
 
-void MainWindow::destroyVersionDialog()
-{
-    if (m_versionDialog) {
-        m_versionDialog->deleteLater();
-        m_versionDialog = 0;
-    }
-}
+//void MainWindow::destroyVersionDialog()//#720 ROOPAK - START
+//{
+//    if (m_versionDialog) {
+//        m_versionDialog->deleteLater();
+//        m_versionDialog = 0;
+//    }
+//}//#720 ROOPAK - END
 
 void MainWindow::aboutPlugins()
 {
