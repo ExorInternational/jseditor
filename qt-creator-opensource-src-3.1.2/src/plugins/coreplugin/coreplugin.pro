@@ -36,7 +36,7 @@ SOURCES += mainwindow.cpp \
 #    editormanager/iexternaleditor.cpp \//#720 ROOPAK
     actionmanager/actionmanager.cpp \
     actionmanager/command.cpp \
-    actionmanager/commandbutton.cpp \
+#    actionmanager/commandbutton.cpp \//#720 ROOPAK
     actionmanager/actioncontainer.cpp \
 #    actionmanager/commandsfile.cpp \#ROOPAK
 #    dialogs/saveitemsdialog.cpp \#ROOPAK
@@ -123,7 +123,7 @@ HEADERS += mainwindow.h \
     actionmanager/actioncontainer.h \
     actionmanager/actionmanager.h \
     actionmanager/command.h \
-    actionmanager/commandbutton.h \
+#    actionmanager/commandbutton.h \//#720 ROOPAK
     actionmanager/actionmanager_p.h \
     actionmanager/command_p.h \
     actionmanager/actioncontainer_p.h \
