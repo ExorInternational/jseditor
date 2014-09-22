@@ -12,7 +12,7 @@ SUBDIRS   = \
 #    glsl \ #ROOPAK
 #    ssh \#ROOPAK
 #    zeroconf #ROOPAK
-    jseditortools #//#720 ADDED BY ROOPAK
+#    jseditortools #//#720 ADDED BY ROOPAK
 
 for(l, SUBDIRS) {
     QTC_LIB_DEPENDS =
