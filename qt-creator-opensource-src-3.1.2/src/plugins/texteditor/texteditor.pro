@@ -108,7 +108,9 @@ SOURCES += texteditorplugin.cpp \
     circularclipboardassist.cpp \
     itextmark.cpp \
     codeassist/keywordscompletionassist.cpp \
-    marginsettings.cpp
+    marginsettings.cpp \
+    cpptools-completionsettingspage.cpp \#720 - ADDED BY ROOPAK FROM CPPTOOLS
+    cpptools-commentssettings.cpp #720 - ADDED BY ROOPAK FROM CPPTOOLS
 
 HEADERS += texteditorplugin.h \
 #    textfilewizard.h \//#720 ROOPAK
@@ -226,7 +228,9 @@ HEADERS += texteditorplugin.h \
     itextmark.h \
     codeassist/keywordscompletionassist.h \
     basetextmarkregistry.h \
-    marginsettings.h
+    marginsettings.h \
+    cpptools-completionsettingspage.h \#720 - ADDED BY ROOPAK FROM CPPTOOLS
+    cpptools-commentssettings.h#720 - ADDED BY ROOPAK FROM CPPTOOLS
 
 FORMS += \
     displaysettingspage.ui \
@@ -238,7 +242,8 @@ FORMS += \
     behaviorsettingswidget.ui \
     behaviorsettingspage.ui \
     tabsettingswidget.ui \
-    codestyleselectorwidget.ui
+    codestyleselectorwidget.ui \
+    cpptools-completionsettingspage.ui #720 - ADDED BY ROOPAK FROM CPPTOOLS
 RESOURCES += texteditor.qrc
 
 equals(TEST, 1) {

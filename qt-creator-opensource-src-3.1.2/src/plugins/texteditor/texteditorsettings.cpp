@@ -52,6 +52,10 @@
 
 #include <QApplication>
 
+//#720 - ADDED BY ROOPAK
+#include "cpptools-completionsettingspage.h"
+//#720 END ROOPAK
+
 using namespace TextEditor;
 using namespace TextEditor::Constants;
 using namespace TextEditor::Internal;
@@ -75,6 +79,7 @@ public:
     QMap<QString, Core::Id> m_mimeTypeToLanguage;
 
     CompletionSettings m_completionSettings;
+    CompletionSettingsPage *m_completionSettingsPage;
 };
 
 } // namespace Internal
@@ -90,6 +95,14 @@ TextEditorSettings::TextEditorSettings(QObject *parent)
     QTC_ASSERT(!m_instance, return);
     m_instance = this;
     d = new Internal::TextEditorSettingsPrivate;
+
+    d->m_completionSettingsPage = new CompletionSettingsPage(this);//#720 ROOPAK - START
+    ExtensionSystem::PluginManager::addObject(d->m_completionSettingsPage);
+
+    connect(d->m_completionSettingsPage,
+            SIGNAL(commentsSettingsChanged(TextEditor::CommentsSettings)),
+            this,
+            SIGNAL(commentsSettingsChanged(TextEditor::CommentsSettings)));//#720 ROOPAK - END
 
     // Note: default background colors are coming from FormatDescription::background()
 
@@ -316,6 +329,8 @@ TextEditorSettings::~TextEditorSettings()
     ExtensionSystem::PluginManager::removeObject(d->m_displaySettingsPage);
     ExtensionSystem::PluginManager::removeObject(d->m_highlighterSettingsPage);
     ExtensionSystem::PluginManager::removeObject(d->m_snippetsSettingsPage);
+
+    ExtensionSystem::PluginManager::removeObject(d->m_completionSettingsPage);//#720 ROOPAK
 
     delete d;
 
