@@ -60,6 +60,17 @@ LIBS += -L$$IDE_LIBRARY_PATH
 DEFINES += QT_CREATOR QT_NO_CAST_TO_ASCII QT_NO_CAST_FROM_ASCII
 !macx:DEFINES += QT_USE_FAST_OPERATOR_PLUS QT_USE_FAST_CONCATENATION
 
+unix {
+    CONFIG(debug, debug|release):OBJECTS_DIR = $${OUT_PWD}/.obj/debug-shared
+    CONFIG(release, debug|release):OBJECTS_DIR = $${OUT_PWD}/.obj/release-shared
+
+    CONFIG(debug, debug|release):MOC_DIR = $${OUT_PWD}/.moc/debug-shared
+    CONFIG(release, debug|release):MOC_DIR = $${OUT_PWD}/.moc/release-shared
+
+    RCC_DIR = $${OUT_PWD}/.rcc
+    UI_DIR = $${OUT_PWD}/.uic
+}
+
 # recursively resolve plugin deps
 done_plugins =
 for(ever) {
