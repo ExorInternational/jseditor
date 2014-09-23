@@ -39,7 +39,7 @@ isEmpty(IDE_BUILD_TREE) {
 IDE_APP_PATH = $$IDE_BUILD_TREE/bin
 IDE_APP_TARGET   = TestApp
 IDE_LIBRARY_PATH = $$IDE_BUILD_TREE/$$IDE_LIBRARY_BASENAME/TestApp
-IDE_PLUGIN_PATH  = $$IDE_LIBRARY_PATH/plugins
+#IDE_PLUGIN_PATH  = $$IDE_LIBRARY_PATH/plugins
 
 INCLUDEPATH += \
     $$IDE_BUILD_TREE/src \ # for <app/app_version.h>
@@ -48,12 +48,12 @@ INCLUDEPATH += \
 #   $$IDE_SOURCE_TREE/tools  \
 #    $$IDE_SOURCE_TREE/src/plugins
 
-QTC_PLUGIN_DIRS = $$(QTC_PLUGIN_DIRS)
-QTC_PLUGIN_DIRS = $$split(QTC_PLUGIN_DIRS, $$QMAKE_DIRLIST_SEP)
-QTC_PLUGIN_DIRS += $$IDE_SOURCE_TREE/src/plugins
-for(dir, QTC_PLUGIN_DIRS) {
-    INCLUDEPATH += $$dir
-}
+#QTC_PLUGIN_DIRS = $$(QTC_PLUGIN_DIRS)
+#QTC_PLUGIN_DIRS = $$split(QTC_PLUGIN_DIRS, $$QMAKE_DIRLIST_SEP)
+#QTC_PLUGIN_DIRS += $$IDE_SOURCE_TREE/src/plugins
+#for(dir, QTC_PLUGIN_DIRS) {
+#    INCLUDEPATH += $$dir
+#}
 
 LIBS += -L$$IDE_LIBRARY_PATH
 
@@ -72,27 +72,27 @@ unix {
 }
 
 # recursively resolve plugin deps
-done_plugins =
-for(ever) {
-    isEmpty(QTC_PLUGIN_DEPENDS): \
-        break()
-    done_plugins += $$QTC_PLUGIN_DEPENDS
-    for(dep, QTC_PLUGIN_DEPENDS) {
-        dependencies_file =
-        for(dir, QTC_PLUGIN_DIRS) {
-            exists($$dir/$$dep/$${dep}_dependencies.pri) {
-                dependencies_file = $$dir/$$dep/$${dep}_dependencies.pri
-                break()
-            }
-        }
-        isEmpty(dependencies_file): \
-            error("Plugin dependency $$dep not found")
-        include($$dependencies_file)
-        LIBS += -l$$qtLibraryName($$QTC_PLUGIN_NAME)
-    }
-    QTC_PLUGIN_DEPENDS = $$unique(QTC_PLUGIN_DEPENDS)
-    QTC_PLUGIN_DEPENDS -= $$unique(done_plugins)
-}
+#done_plugins =
+#for(ever) {
+#    isEmpty(QTC_PLUGIN_DEPENDS): \
+#        break()
+#    done_plugins += $$QTC_PLUGIN_DEPENDS
+#    for(dep, QTC_PLUGIN_DEPENDS) {
+#        dependencies_file =
+#        for(dir, QTC_PLUGIN_DIRS) {
+#            exists($$dir/$$dep/$${dep}_dependencies.pri) {
+#                dependencies_file = $$dir/$$dep/$${dep}_dependencies.pri
+#                break()
+#            }
+#        }
+#        isEmpty(dependencies_file): \
+#            error("Plugin dependency $$dep not found")
+#        include($$dependencies_file)
+#        LIBS += -l$$qtLibraryName($$QTC_PLUGIN_NAME)
+#    }
+#    QTC_PLUGIN_DEPENDS = $$unique(QTC_PLUGIN_DEPENDS)
+#    QTC_PLUGIN_DEPENDS -= $$unique(done_plugins)
+#}
 
 # recursively resolve library deps
 done_libs =
