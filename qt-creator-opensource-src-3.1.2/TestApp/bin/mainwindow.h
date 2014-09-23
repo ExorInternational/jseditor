@@ -17,6 +17,8 @@ public:
 
 private:
     Ui::MainWindow *ui;
+private slots:
+    void onFileOpenClicked();
 };
 
 #endif // MAINWINDOW_H
