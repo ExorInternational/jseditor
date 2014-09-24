@@ -59,7 +59,7 @@ class QmlJSEditorDocument;
 namespace Internal {
 
 class QmlJSEditorFactory;
-class QmlJSPreviewRunner;
+//class QmlJSPreviewRunner;//#720 ROOPAK
 class QmlJSQuickFixAssistProvider;
 //class QmlTaskManager;//#720 ROOPAK
 

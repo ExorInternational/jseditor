@@ -15,7 +15,7 @@ HEADERS += \
     qmljshighlighter.h \
     qmljshighlighterfactory.h \
     qmljshoverhandler.h \
-    qmljspreviewrunner.h \
+#    qmljspreviewrunner.h \//#720 ROOPAK
     qmljscomponentfromobjectdef.h \
     qmljsoutline.h \
     qmloutlinemodel.h \
@@ -48,7 +48,7 @@ SOURCES += \
     qmljshighlighter.cpp \
     qmljshighlighterfactory.cpp \
     qmljshoverhandler.cpp \
-    qmljspreviewrunner.cpp \
+#    qmljspreviewrunner.cpp \//#720 ROOPAK
     qmljscomponentfromobjectdef.cpp \
     qmljsoutline.cpp \
     qmloutlinemodel.cpp \

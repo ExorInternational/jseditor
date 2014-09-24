@@ -37,7 +37,7 @@
 //#include "qmlfilewizard.h"//#720 ROOPAK
 //#include "jsfilewizard.h"//#720 ROOPAK
 #include "qmljsoutline.h"
-#include "qmljspreviewrunner.h"
+//#include "qmljspreviewrunner.h"//#720 ROOPAK
 #include "qmljssnippetprovider.h"
 //#include "qmltaskmanager.h"//#720 ROOPAK
 #include "quicktoolbar.h"
