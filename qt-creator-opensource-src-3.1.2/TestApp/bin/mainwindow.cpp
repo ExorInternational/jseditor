@@ -25,5 +25,5 @@ void MainWindow::onFileOpenClicked()
 {
     QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"),
                                                      "/home",
-                                                     tr("Images (*.js)"));
+                                                     tr("Javascript Files (*.js)"));
 }
