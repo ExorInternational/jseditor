@@ -1,13 +1,13 @@
 TEMPLATE  = subdirs
 
 SUBDIRS   = \
-#    aggregation \
-#    extensionsystem \
+    aggregation \
+    extensionsystem \
     utils \
-#    languageutils \
-#    cplusplus \
-#    qmljs \
-#    qmleditorwidgets \
+    languageutils \
+    cplusplus \
+    qmljs \
+    qmleditorwidgets \
 #    jseditortools #//#720 ADDED BY ROOPAK
 
 for(l, SUBDIRS) {
