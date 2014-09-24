@@ -1,4 +1,4 @@
-!isEmpty(TESTAPP_PRI_INCLUDED):error("TestApp2.pri already included")
+!isEmpty(TESTAPP_PRI_INCLUDED):error("TestApp.pri already included")
 #include(src/libs/utils/utils-lib.pri)
 TESTAPP_PRI_INCLUDED = 1
 
@@ -43,8 +43,8 @@ IDE_LIBRARY_PATH = $$IDE_BUILD_TREE/$$IDE_LIBRARY_BASENAME/TestApp
 
 INCLUDEPATH += \
     $$IDE_BUILD_TREE/src \ # for <app/app_version.h>
-    $$IDE_SOURCE_TREE/src/libs \
-    $$IDE_SOURCE_TREE/src/libs/3rdparty  \
+    $$IDE_SOURCE_TREE/src/libs #\
+#    $$IDE_SOURCE_TREE/src/libs/3rdparty  \
 #   $$IDE_SOURCE_TREE/tools  \
 #    $$IDE_SOURCE_TREE/src/plugins
 

@@ -14,8 +14,8 @@ FORMS         = mainwindow.ui
 #RESOURCES     = application.qrc
 
 
-#LIBS *= \
-#        -l$$qtLibraryName(Utils) \
+LIBS *= \
+        -l$$qtLibraryName(Utils) \
 #        -l$$qtLibraryName(LanguageUtils) \
 #        -l$$qtLibraryName(CPlusPlus) \
 #        -l$$qtLibraryName(QmlJS) \

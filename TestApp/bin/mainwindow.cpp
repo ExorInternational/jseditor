@@ -3,10 +3,14 @@
 
 #include <QFileDialog>
 
+//#include <utils/proxyaction.h>//test - remove it
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+//    Utils::ProxyAction *pA = new Utils::ProxyAction();//test - remove it
+
     ui->setupUi(this);
     this->setWindowState(Qt::WindowMaximized);
 

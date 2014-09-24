@@ -35,7 +35,7 @@ SUBDIRS = \
 #         ./src/libs/aggregation \
 #         ./src/libs/extensionsystem \
 #         ./src/libs/qmleditorwidgets \
-#         src \
+         src  \
          bin \
 
 
