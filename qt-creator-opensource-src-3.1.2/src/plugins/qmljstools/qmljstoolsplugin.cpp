@@ -35,7 +35,7 @@
 #include "qmljstoolsconstants.h"
 #include "qmljstoolssettings.h"
 //#include "qmlconsolemanager.h"//#720 ROOPAK
-#include "qmljsbundleprovider.h"
+//#include "qmljsbundleprovider.h"//#720 ROOPAK
 
 #include <coreplugin/icore.h>
 #include <coreplugin/coreconstants.h>
@@ -93,7 +93,7 @@ bool QmlJSToolsPlugin::initialize(const QStringList &arguments, QString *error)
 //    addAutoReleasedObject(locatorData);//#720 ROOPAK - END
 //    addAutoReleasedObject(new FunctionFilter(locatorData));//#720 ROOPAK
 //    addAutoReleasedObject(new QmlJSCodeStyleSettingsPage);//#720 ROOPAK
-    addAutoReleasedObject(new BasicBundleProvider);
+//    addAutoReleasedObject(new BasicBundleProvider);//#720 ROOPAK
 
     // Menus
     ActionContainer *mtools = ActionManager::actionContainer(Core::Constants::M_TOOLS);

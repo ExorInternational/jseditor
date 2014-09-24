@@ -30,7 +30,7 @@
 #include "qmljsmodelmanager.h"
 #include "qmljstoolsconstants.h"
 #include "qmljssemanticinfo.h"
-#include "qmljsbundleprovider.h"
+//#include "qmljsbundleprovider.h"//#720 ROOPAK
 
 #include <coreplugin/icore.h>
 #include <coreplugin/messagemanager.h>
@@ -151,8 +151,8 @@ void QmlJSTools::setupProjectInfoQmlBundles(ModelManagerInterface::ProjectInfo &
     replacements.insert(QLatin1String("$(QT_INSTALL_IMPORTS)"), projectInfo.qtImportsPath);
     replacements.insert(QLatin1String("$(QT_INSTALL_QML)"), projectInfo.qtQmlPath);
 
-    QList<IBundleProvider *> bundleProviders =
-            ExtensionSystem::PluginManager::getObjects<IBundleProvider>();
+//    QList<IBundleProvider *> bundleProviders =//#720 ROOPAK - START
+//            ExtensionSystem::PluginManager::getObjects<IBundleProvider>();//#720 ROOPAK - END
 
 //    foreach (IBundleProvider *bp, bundleProviders) {//#720 ROOPAK - START
 //        if (bp)

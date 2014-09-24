@@ -7,7 +7,7 @@ DEFINES += QMLJSTOOLS_LIBRARY
 }
 
 HEADERS += \
-    $$PWD/qmljsbundleprovider.h \
+#    $$PWD/qmljsbundleprovider.h \//#720 ROOPAK
     $$PWD/qmljstoolsplugin.h \
     $$PWD/qmljstoolsconstants.h \
     $$PWD/qmljstoolssettings.h \
@@ -32,7 +32,7 @@ HEADERS += \
 #    $$PWD/qmlconsoleproxymodel.h//#720 ROOPAK
 
 SOURCES += \
-    $$PWD/qmljsbundleprovider.cpp \
+#    $$PWD/qmljsbundleprovider.cpp \//#720 ROOPAK
     $$PWD/qmljstoolsplugin.cpp \
     $$PWD/qmljstoolssettings.cpp \
 #    $$PWD/qmljscodestylepreferencesfactory.cpp \//#720 ROOPAK
