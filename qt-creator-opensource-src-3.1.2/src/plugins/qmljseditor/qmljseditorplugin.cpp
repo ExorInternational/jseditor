@@ -40,7 +40,7 @@
 //#include "qmljspreviewrunner.h"//#720 ROOPAK
 #include "qmljssnippetprovider.h"
 //#include "qmltaskmanager.h"//#720 ROOPAK
-#include "quicktoolbar.h"
+//#include "quicktoolbar.h"//#720 ROOPAK
 //#include "quicktoolbarsettingspage.h"//#720 ROOPAK
 #include "qmljscompletionassist.h"
 #include "qmljsquickfixassist.h"
@@ -199,13 +199,13 @@ bool QmlJSEditorPlugin::initialize(const QStringList & /*arguments*/, QString *e
     connect(m_reformatFileAction, SIGNAL(triggered()), this, SLOT(reformatFile()));
     qmlToolsMenu->addAction(cmd);
 
-    QAction *showQuickToolbar = new QAction(tr("Show Qt Quick Toolbar"), this);
-    cmd = Core::ActionManager::registerAction(showQuickToolbar, Constants::SHOW_QT_QUICK_HELPER, context);
-    cmd->setDefaultKeySequence(Core::UseMacShortcuts ? QKeySequence(Qt::META + Qt::ALT + Qt::Key_Space)
-                                                     : QKeySequence(Qt::CTRL + Qt::ALT + Qt::Key_Space));
-    connect(showQuickToolbar, SIGNAL(triggered()), this, SLOT(showContextPane()));
-    contextMenu->addAction(cmd);
-    qmlToolsMenu->addAction(cmd);
+//    QAction *showQuickToolbar = new QAction(tr("Show Qt Quick Toolbar"), this);//#720 ROOPAK - START
+//    cmd = Core::ActionManager::registerAction(showQuickToolbar, Constants::SHOW_QT_QUICK_HELPER, context);
+//    cmd->setDefaultKeySequence(Core::UseMacShortcuts ? QKeySequence(Qt::META + Qt::ALT + Qt::Key_Space)
+//                                                     : QKeySequence(Qt::CTRL + Qt::ALT + Qt::Key_Space));
+//    connect(showQuickToolbar, SIGNAL(triggered()), this, SLOT(showContextPane()));
+//    contextMenu->addAction(cmd);
+//    qmlToolsMenu->addAction(cmd);//#720 ROOPAK - END
 
     // Insert marker for "Refactoring" menu:
     Core::Command *sep = contextMenu->addSeparator(globalContext);
@@ -232,7 +232,7 @@ bool QmlJSEditorPlugin::initialize(const QStringList & /*arguments*/, QString *e
 
     addAutoReleasedObject(new QmlJSOutlineWidgetFactory);
 
-    addAutoReleasedObject(new QuickToolBar);
+//    addAutoReleasedObject(new QuickToolBar);//#720 ROOPAK
 //    addAutoReleasedObject(new Internal::QuickToolBarSettingsPage);//#720 ROOPAK
 
     connect(Core::EditorManager::instance(), SIGNAL(currentEditorChanged(Core::IEditor*)), SLOT(currentEditorChanged(Core::IEditor*)));

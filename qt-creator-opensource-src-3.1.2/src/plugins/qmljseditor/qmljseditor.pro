@@ -22,7 +22,7 @@ HEADERS += \
 #    qmltaskmanager.h \//#720 ROOPAK
     qmljsoutlinetreeview.h \
 #    quicktoolbarsettingspage.h \//#720 ROOPAK
-    quicktoolbar.h \
+#    quicktoolbar.h \//#720 ROOPAK
     qmljscomponentnamedialog.h \
     qmljsfindreferences.h \
     qmljseditoreditable.h \
@@ -56,7 +56,7 @@ SOURCES += \
     qmljsquickfixes.cpp \
     qmljsoutlinetreeview.cpp \
 #    quicktoolbarsettingspage.cpp \//#720 ROOPAK
-    quicktoolbar.cpp \
+#    quicktoolbar.cpp \//#720 ROOPAK
     qmljscomponentnamedialog.cpp \
     qmljsfindreferences.cpp \
     qmljseditoreditable.cpp \
