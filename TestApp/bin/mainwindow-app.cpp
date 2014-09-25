@@ -1,13 +1,13 @@
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
+#include "mainwindow-app.h"
+#include "ui_mainwindow-app.h"
 
 #include <QFileDialog>
 
 //#include <utils/proxyaction.h>//test - remove it
 
-MainWindow::MainWindow(QWidget *parent) :
+MainWindowApp::MainWindowApp(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindowApp)
 {
 //    Utils::ProxyAction *pA = new Utils::ProxyAction();//test - remove it
 
@@ -21,11 +21,11 @@ MainWindow::MainWindow(QWidget *parent) :
     fileMenu->addAction("Exit", qApp, SLOT(quit()));
 }
 
-MainWindow::~MainWindow()
+MainWindowApp::~MainWindowApp()
 {
     delete ui;
 }
-void MainWindow::onFileOpenClicked()
+void MainWindowApp::onFileOpenClicked()
 {
     QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"),
                                                      "/home",

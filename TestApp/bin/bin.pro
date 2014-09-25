@@ -5,10 +5,10 @@ TEMPLATE = app
 TARGET = $$IDE_APP_TARGET
 DESTDIR = $$IDE_APP_PATH
 
-HEADERS       = mainwindow.h
+HEADERS       = mainwindow-app.h
 SOURCES       = main.cpp \
-                mainwindow.cpp
-FORMS         = mainwindow.ui
+                mainwindow-app.cpp
+FORMS         = mainwindow-app.ui
 
 #! [0]
 #RESOURCES     = application.qrc
