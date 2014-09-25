@@ -9,6 +9,10 @@ HEADERS += \
     $$PWD/coreconstants.h \
     $$PWD/fancytabwidget.h \
     $$PWD/documentmanager.h \
+    $$PWD/idocumentfactory.h \
+    $$PWD/messagemanager.h \
+    $$PWD/ioutputpane.h \
+    $$PWD/modemanager.h \
 
 SOURCES += \
     $$PWD/icore.cpp \
@@ -18,3 +22,6 @@ SOURCES += \
     $$PWD/mainwindow.cpp \
     $$PWD/fancytabwidget.cpp \
     $$PWD/documentmanager.cpp \
+    $$PWD/messagemanager.cpp \
+    $$PWD/ioutputpane.cpp \
+    $$PWD/modemanager.cpp \
