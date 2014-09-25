@@ -27,7 +27,7 @@
 **
 ****************************************************************************/
 
-#include "js-qmljssemanticinfoupdater.h"
+#include "qmljssemanticinfoupdater.h"
 //#include "qmljseditorplugin.h"//#720 ROOPAK
 
 #include <qmljs/qmljsmodelmanagerinterface.h>
@@ -42,7 +42,7 @@
 
 #include <utils/json.h>
 
-namespace NewQmlJSEditor {
+namespace QmlJSEditor {
 namespace Internal {
 
 SemanticInfoUpdater::SemanticInfoUpdater(QObject *parent)
@@ -99,7 +99,7 @@ void SemanticInfoUpdater::run()
         if (done)
             break;
 
-        const NewQmlJSTools::SemanticInfo info = makeNewSemanticInfo(doc, snapshot);
+        const QmlJSTools::SemanticInfo info = makeNewSemanticInfo(doc, snapshot);
 
         m_mutex.lock();
         const bool cancelledOrNewData = m_wasCancelled || m_sourceDocument;
@@ -112,11 +112,11 @@ void SemanticInfoUpdater::run()
     }
 }
 
-NewQmlJSTools::SemanticInfo SemanticInfoUpdater::makeNewSemanticInfo(const QmlJS::Document::Ptr &doc, const QmlJS::Snapshot &snapshot)
+QmlJSTools::SemanticInfo SemanticInfoUpdater::makeNewSemanticInfo(const QmlJS::Document::Ptr &doc, const QmlJS::Snapshot &snapshot)
 {
     using namespace QmlJS;
 
-    NewQmlJSTools::SemanticInfo semanticInfo;
+    QmlJSTools::SemanticInfo semanticInfo;
     semanticInfo.document = doc;
     semanticInfo.snapshot = snapshot;
 

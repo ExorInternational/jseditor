@@ -27,7 +27,7 @@
 **
 ****************************************************************************/
 
-#include "js-icore.h"
+#include "icore.h"
 
 #include <app/app_version.h>
 #include <extensionsystem/pluginmanager.h>
@@ -297,10 +297,10 @@
 #include <QDir>
 #include <QStatusBar>
 
-using namespace NewCore::Internal;
+using namespace Core::Internal;
 using namespace ExtensionSystem;
 
-namespace NewCore {
+namespace Core {
 
 // The Core Singleton
 static ICore *m_instance = 0;

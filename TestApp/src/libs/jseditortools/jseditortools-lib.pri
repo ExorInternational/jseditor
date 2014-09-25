@@ -1,6 +1,6 @@
-include(js-qmljseditor/js-qmljseditor.pri)
-include(js-qmljstools/js-qmljstools.pri)
-include(js-coreplugin/js-coreplugin.pri)
+include(qmljseditor/qmljseditor.pri)
+include(qmljstools/qmljstools.pri)
+include(coreplugin/coreplugin.pri)
 
 HEADERS += jseditortools.h \
     jseditortools_global.h \

@@ -40,7 +40,7 @@ class QDataStream;
 class QVariant;
 QT_END_NAMESPACE
 
-namespace NewCore {
+namespace Core {
 
 class JSEDITORTOOLS_EXPORT Id
 {
@@ -85,12 +85,12 @@ inline uint qHash(const Id &id) { return id.uniqueIdentifier(); }
 
 } // namespace Core
 
-Q_DECLARE_METATYPE(NewCore::Id)
-Q_DECLARE_METATYPE(QList<NewCore::Id>)
+Q_DECLARE_METATYPE(Core::Id)
+Q_DECLARE_METATYPE(QList<Core::Id>)
 
 QT_BEGIN_NAMESPACE
-QDataStream &operator<<(QDataStream &ds, const NewCore::Id &id);
-QDataStream &operator>>(QDataStream &ds, NewCore::Id &id);
+QDataStream &operator<<(QDataStream &ds, const Core::Id &id);
+QDataStream &operator>>(QDataStream &ds, Core::Id &id);
 QT_END_NAMESPACE
 
 #endif // CORE_ID_H

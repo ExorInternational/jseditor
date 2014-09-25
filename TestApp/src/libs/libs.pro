@@ -8,7 +8,7 @@ SUBDIRS   = \
     cplusplus \
     qmljs \
     qmleditorwidgets \
-#    jseditortools #//#720 ADDED BY ROOPAK
+    jseditortools #//#720 ADDED BY ROOPAK
 
 for(l, SUBDIRS) {
     QTC_LIB_DEPENDS =

@@ -27,7 +27,7 @@
 **
 ****************************************************************************/
 
-#include "js-id.h"
+#include "id.h"
 
 #include <utils/qtcassert.h>
 
@@ -38,7 +38,7 @@
 
 #include <string.h>
 
-namespace NewCore {
+namespace Core {
 
 /*!
     \class Core::Id
@@ -351,16 +351,16 @@ QString Id::suffixAfter(Id baseId) const
 
 QT_BEGIN_NAMESPACE
 
-QDataStream &operator<<(QDataStream &ds, const NewCore::Id &id)
+QDataStream &operator<<(QDataStream &ds, const Core::Id &id)
 {
     return ds << id.name();
 }
 
-QDataStream &operator>>(QDataStream &ds, NewCore::Id &id)
+QDataStream &operator>>(QDataStream &ds, Core::Id &id)
 {
     QByteArray ba;
     ds >> ba;
-    id = NewCore::Id::fromName(ba);
+    id = Core::Id::fromName(ba);
     return ds;
 }
 

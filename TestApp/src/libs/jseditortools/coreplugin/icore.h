@@ -31,7 +31,7 @@
 #define JS_ICORE_H
 
 #include "../jseditortools_global.h"
-#include "js-id.h"
+#include "id.h"
 
 #include <QObject>
 #include <QSettings>
@@ -43,7 +43,7 @@ class QWidget;
 template <class T> class QList;
 QT_END_NAMESPACE
 
-namespace NewCore {
+namespace Core {
 //class IWizard;//#720 ROOPAK
 class Context;
 class IContext;
@@ -128,10 +128,10 @@ signals:
     void saveSettingsRequested();
     void optionsDialogRequested();
     void coreAboutToClose();
-    void contextAboutToChange(const QList<NewCore::IContext *> &context);
-    void contextChanged(const QList<NewCore::IContext *> &context, const NewCore::Context &additionalContexts);
+    void contextAboutToChange(const QList<Core::IContext *> &context);
+    void contextChanged(const QList<Core::IContext *> &context, const Core::Context &additionalContexts);
 };
 
-} // namespace NewCore
+} // namespace Core
 
 #endif // JS_ICORE_H

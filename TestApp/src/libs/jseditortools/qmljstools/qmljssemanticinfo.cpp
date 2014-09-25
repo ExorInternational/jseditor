@@ -27,14 +27,14 @@
 **
 ****************************************************************************/
 
-#include "js-qmljssemanticinfo.h"
+#include "qmljssemanticinfo.h"
 
 #include <qmljs/qmljsscopebuilder.h>
 
 using namespace QmlJS;
 using namespace QmlJS::AST;
 
-namespace NewQmlJSTools {
+namespace QmlJSTools {
 
 namespace {
 

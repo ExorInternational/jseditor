@@ -39,10 +39,10 @@
 
 //#720 ADDED BY ROOPAK - START
 #include "qmljs/qmljsdocument.h"
-#include "../js-qmljstools/js-qmljssemanticinfo.h"
+#include "../qmljstools/qmljssemanticinfo.h"
 //#720 ROOPAK - END
 
-namespace NewQmlJSEditor {
+namespace QmlJSEditor {
 namespace Internal {
 
 class SemanticInfoUpdater: public QThread
@@ -58,13 +58,13 @@ public:
     void reupdate(const QmlJS::Snapshot &snapshot);
 
 Q_SIGNALS:
-    void updated(const NewQmlJSTools::SemanticInfo &semanticInfo);
+    void updated(const QmlJSTools::SemanticInfo &semanticInfo);
 
 protected:
     virtual void run();
 
 private:
-    NewQmlJSTools::SemanticInfo makeNewSemanticInfo(const QmlJS::Document::Ptr &doc,
+    QmlJSTools::SemanticInfo makeNewSemanticInfo(const QmlJS::Document::Ptr &doc,
                                                  const QmlJS::Snapshot &snapshot);
 
 private:
@@ -73,7 +73,7 @@ private:
     bool m_wasCancelled;
     QmlJS::Document::Ptr m_sourceDocument;
     QmlJS::Snapshot m_sourceSnapshot;
-    NewQmlJSTools::SemanticInfo m_lastSemanticInfo;
+    QmlJSTools::SemanticInfo m_lastSemanticInfo;
 };
 
 } // namespace Internal
