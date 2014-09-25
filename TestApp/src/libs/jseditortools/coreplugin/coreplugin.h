@@ -27,38 +27,61 @@
 **
 ****************************************************************************/
 
-#ifndef APPMAINWINDOW_H
-#define APPMAINWINDOW_H
+#ifndef COREPLUGIN_H
+#define COREPLUGIN_H
 
-#include "utils_global.h"
-#include <QMainWindow>
+#include <extensionsystem/iplugin.h>
+#include "../jseditortools_global.h"
 
-namespace Utils {
+namespace Core {
 
-class QTCREATOR_UTILS_EXPORT AppMainWindow : public QObject/*QMainWindow*/
+//class DesignMode; //ROOPAK
+class FindPlugin;
+
+namespace Internal {
+
+class EditMode;
+class MainWindow;
+//class Locator;//#720 ROOPAK
+
+class JSEDITORTOOLS_EXPORT CorePlugin : public ExtensionSystem::IPlugin
 {
     Q_OBJECT
+//    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "Core.json")
+
 public:
-    AppMainWindow(QMainWindow *mainWindow);
+    CorePlugin();
+    ~CorePlugin();
+
+    bool initialize(const QStringList &arguments, QString *errorMessage = 0);
+    void extensionsInitialized();
+    bool delayedInitialize();
+    ShutdownFlag aboutToShutdown();
+    QObject *remoteCommand(const QStringList & /* options */, const QStringList &args);
 
 public slots:
-    void raiseWindow();
+    void fileOpenRequest(const QString&);
 
-signals:
-    void deviceChange();
-
-#ifdef Q_OS_WIN
-protected:
-    virtual bool winEvent(MSG *message, long *result);
-    virtual bool event(QEvent *event);
+private slots:
+#if defined(WITH_TESTS)
+    void testVcsManager_data();
+    void testVcsManager();
+    // Locator:
+    void test_basefilefilter();
+    void test_basefilefilter_data();
 #endif
 
 private:
-    const int m_deviceEventId;
-protected:
-    QMainWindow *m_mainWindow;
+    void parseArguments(const QStringList & arguments);
+
+    MainWindow *m_mainWindow;
+    EditMode *m_editMode;
+//    DesignMode *m_designMode; //ROOPAK
+    FindPlugin *m_findPlugin;
+//    Locator *m_locator;//#720 ROOPAK
 };
 
-} // Utils
+} // namespace Internal
+} // namespace Core
 
-#endif // APPMAINWINDOW_H
+#endif // COREPLUGIN_H

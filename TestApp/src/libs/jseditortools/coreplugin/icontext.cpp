@@ -27,38 +27,4 @@
 **
 ****************************************************************************/
 
-#ifndef APPMAINWINDOW_H
-#define APPMAINWINDOW_H
-
-#include "utils_global.h"
-#include <QMainWindow>
-
-namespace Utils {
-
-class QTCREATOR_UTILS_EXPORT AppMainWindow : public QObject/*QMainWindow*/
-{
-    Q_OBJECT
-public:
-    AppMainWindow(QMainWindow *mainWindow);
-
-public slots:
-    void raiseWindow();
-
-signals:
-    void deviceChange();
-
-#ifdef Q_OS_WIN
-protected:
-    virtual bool winEvent(MSG *message, long *result);
-    virtual bool event(QEvent *event);
-#endif
-
-private:
-    const int m_deviceEventId;
-protected:
-    QMainWindow *m_mainWindow;
-};
-
-} // Utils
-
-#endif // APPMAINWINDOW_H
+#include "icontext.h"

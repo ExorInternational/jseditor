@@ -52,16 +52,17 @@ public:
     explicit DeviceNotifyEvent(int id) : QEvent(static_cast<QEvent::Type>(id)) {}
 };
 
-AppMainWindow::AppMainWindow() :
+AppMainWindow::AppMainWindow(QMainWindow *mainWindow) :
         m_deviceEventId(QEvent::registerEventType(QEvent::User + 2))
 {
+    m_mainWindow = mainWindow;
 }
 
 void AppMainWindow::raiseWindow()
 {
-    setWindowState(windowState() & ~Qt::WindowMinimized);
+    m_mainWindow->setWindowState(m_mainWindow->windowState() & ~Qt::WindowMinimized);
 
-    raise();
+    m_mainWindow->raise();
 
 #if defined(QTC_USE_QX11INFO)
     // Do the same as QWidget::activateWindow(), but with two differences
@@ -72,7 +73,7 @@ void AppMainWindow::raiseWindow()
     e.xclient.type = ClientMessage;
     e.xclient.message_type = XInternAtom(QX11Info::display(), "_NET_ACTIVE_WINDOW", 1);
     e.xclient.display = QX11Info::display();
-    e.xclient.window = winId();
+    e.xclient.window = m_mainWindow->winId();
     e.xclient.format = 32;
     e.xclient.data.l[0] = 2;     // pager!
     e.xclient.data.l[1] = QX11Info::appTime(); // X11 time!
@@ -82,7 +83,7 @@ void AppMainWindow::raiseWindow()
     XSendEvent(QX11Info::display(), QX11Info::appRootWindow(),
                false, SubstructureNotifyMask | SubstructureRedirectMask, &e);
 #else
-    activateWindow();
+    m_mainWindow->activateWindow();
 #endif
 }
 
@@ -94,7 +95,7 @@ bool AppMainWindow::event(QEvent *event)
         emit deviceChange();
         return true;
     }
-    return QMainWindow::event(event);
+    return false;//QMainWindow::event(event);
 }
 
 bool AppMainWindow::winEvent(MSG *msg, long *result)
