@@ -27,8 +27,8 @@
 **
 ****************************************************************************/
 
-#ifndef JS_CORE_ID_H
-#define JS_CORE_ID_H
+#ifndef CORE_ID_H
+#define CORE_ID_H
 
 #include "../jseditortools_global.h"
 

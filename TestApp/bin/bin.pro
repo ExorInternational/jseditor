@@ -16,12 +16,12 @@ FORMS         = mainwindow-app.ui
 
 LIBS *= \
         -l$$qtLibraryName(Utils) \
-#        -l$$qtLibraryName(LanguageUtils) \
-#        -l$$qtLibraryName(CPlusPlus) \
-#        -l$$qtLibraryName(QmlJS) \
-#        -l$$qtLibraryName(Aggregation) \
-#        -l$$qtLibraryName(ExtensionSystem) \
-#        -l$$qtLibraryName(QmlEditorWidgets) \
+        -l$$qtLibraryName(LanguageUtils) \
+        -l$$qtLibraryName(CPlusPlus) \
+        -l$$qtLibraryName(QmlJS) \
+        -l$$qtLibraryName(Aggregation) \
+        -l$$qtLibraryName(ExtensionSystem) \
+        -l$$qtLibraryName(QmlEditorWidgets) \
 #        -l$$qtLibraryName(QtcSsh) \
 
 #win32 {
@@ -46,5 +46,5 @@ LIBS *= \
 DEFINES -= QT_NO_CAST_TO_ASCII QT_NO_CAST_FROM_ASCII
 
 
-#INCLUDEPATH += $$PWD/../src/libs/jseditortools
-#LIBS *= -l$$qtLibraryName(JsEditorTools) \
+INCLUDEPATH += $$PWD/../src/libs/jseditortools
+LIBS *= -l$$qtLibraryName(JsEditorTools) \

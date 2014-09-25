@@ -287,8 +287,8 @@
     specified by \a additionalContexts changed.
 */
 
-//#include "mainwindow.h"//#720 ROOPAK
-//#include "documentmanager.h"
+#include "mainwindow.h"
+#include "documentmanager.h"
 
 #include <utils/hostosinfo.h>
 
@@ -304,17 +304,17 @@ namespace Core {
 
 // The Core Singleton
 static ICore *m_instance = 0;
-//static MainWindow *m_mainwindow;//#720 ROOPAK
+static MainWindow *m_mainwindow;
 
 ICore *ICore::instance()
 {
     return m_instance;
 }
 
-ICore::ICore(/*MainWindow *mainwindow*/)
+ICore::ICore(MainWindow *mainwindow)
 {
     m_instance = this;
-//    m_mainwindow = mainwindow;
+    m_mainwindow = mainwindow;
     // Save settings once after all plugins are initialized:
     connect(ExtensionSystem::PluginManager::instance(), SIGNAL(initializationDone()),
             this, SLOT(saveSettings()));
@@ -323,7 +323,7 @@ ICore::ICore(/*MainWindow *mainwindow*/)
 ICore::~ICore()
 {
     m_instance = 0;
-//    m_mainwindow = 0;
+    m_mainwindow = 0;
 }
 
 //void ICore::showNewItemDialog(const QString &title,//#720 ROOPAK - START
@@ -336,7 +336,7 @@ ICore::~ICore()
 
 bool ICore::showOptionsDialog(const Id group, const Id page, QWidget *parent)
 {
-    return false;//m_mainwindow->showOptionsDialog(group, page, parent);
+    return m_mainwindow->showOptionsDialog(group, page, parent);
 }
 
 QString ICore::msgShowOptionsDialog()
@@ -350,9 +350,9 @@ bool ICore::showWarningWithOptions(const QString &title, const QString &text,
                                    Id settingsId,
                                    QWidget *parent)
 {
-    return false;//m_mainwindow->showWarningWithOptions(title, text,
-//                                                details, settingsCategory,
-//                                                settingsId, parent);
+    return m_mainwindow->showWarningWithOptions(title, text,
+                                                details, settingsCategory,
+                                                settingsId, parent);
 }
 
 QSettings *ICore::settings(QSettings::Scope scope)
@@ -365,12 +365,12 @@ QSettings *ICore::settings(QSettings::Scope scope)
 
 SettingsDatabase *ICore::settingsDatabase()
 {
-    return NULL;//m_mainwindow->settingsDatabase();
+    return m_mainwindow->settingsDatabase();
 }
 
 QPrinter *ICore::printer()
 {
-    return NULL;// m_mainwindow->printer();
+    return m_mainwindow->printer();
 }
 
 QString ICore::userInterfaceLanguage()
@@ -458,24 +458,24 @@ QString ICore::buildCompatibilityString()
 
 IContext *ICore::currentContextObject()
 {
-    return NULL;//m_mainwindow->currentContextObject();
+    return m_mainwindow->currentContextObject();
 }
 
 
 QWidget *ICore::mainWindow()
 {
-    return NULL;//m_mainwindow;
+    return m_mainwindow;
 }
 
 QWidget *ICore::dialogParent()
 {
     QWidget *active = QApplication::activeModalWidget();
-    return active ? active : NULL/*m_mainwindow*/;
+    return active ? active : m_mainwindow;
 }
 
 QStatusBar *ICore::statusBar()
 {
-    return NULL;//m_mainwindow->statusBar();
+    return m_mainwindow->statusBar();
 }
 
 void ICore::raiseWindow(QWidget *widget)
@@ -483,9 +483,9 @@ void ICore::raiseWindow(QWidget *widget)
     if (!widget)
         return;
     QWidget *window = widget->window();
-    /*if (window == m_mainwindow) {
+    if (window == m_mainwindow) {
         m_mainwindow->raiseWindow();
-    } else */{
+    } else {
         window->raise();
         window->activateWindow();
     }
@@ -493,22 +493,22 @@ void ICore::raiseWindow(QWidget *widget)
 
 void ICore::updateAdditionalContexts(const Context &remove, const Context &add)
 {
-//    m_mainwindow->updateAdditionalContexts(remove, add);
+    m_mainwindow->updateAdditionalContexts(remove, add);
 }
 
 void ICore::addContextObject(IContext *context)
 {
-//    m_mainwindow->addContextObject(context);
+    m_mainwindow->addContextObject(context);
 }
 
 void ICore::removeContextObject(IContext *context)
 {
-//    m_mainwindow->removeContextObject(context);
+    m_mainwindow->removeContextObject(context);
 }
 
 void ICore::openFiles(const QStringList &arguments, ICore::OpenFilesFlags flags)
 {
-//    m_mainwindow->openFiles(arguments, flags);
+    m_mainwindow->openFiles(arguments, flags);
 }
 
 void ICore::emitNewItemsDialogRequested()

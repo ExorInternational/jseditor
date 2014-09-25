@@ -27,8 +27,8 @@
 **
 ****************************************************************************/
 
-#ifndef JS_ICORE_H
-#define JS_ICORE_H
+#ifndef ICORE_H
+#define ICORE_H
 
 #include "../jseditortools_global.h"
 #include "id.h"
@@ -51,14 +51,14 @@ class ProgressManager;
 class SettingsDatabase;
 //class VcsManager;//#720 ROOPAK
 
-namespace Internal { /*class MainWindow;*/ }
+namespace Internal { class MainWindow; }
 
 class JSEDITORTOOLS_EXPORT ICore : public QObject
 {
     Q_OBJECT
 
-//    friend class Internal::MainWindow;
-    explicit ICore(/*Internal::MainWindow *mw*/);
+    friend class Internal::MainWindow;
+    explicit ICore(Internal::MainWindow *mw);
     ~ICore();
 
 public:
@@ -67,7 +67,7 @@ public:
     // it returns a ICore.
     static ICore *instance();
 
-//    static void showNewItemDialog(const QString &title,//#720 ROOPAK
+//    static void showNewItemDialog(const QString &title,//#720 ROOPAK - START
 //                                  const QList<IWizard *> &wizards,
 //                                  const QString &defaultLocation = QString(),
 //                                  const QVariantMap &extraVariables = QVariantMap());//#720 ROOPAK - END
@@ -134,4 +134,4 @@ signals:
 
 } // namespace Core
 
-#endif // JS_ICORE_H
+#endif // ICORE_H
