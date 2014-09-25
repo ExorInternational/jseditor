@@ -27,10 +27,10 @@
 **
 ****************************************************************************/
 
-#ifndef JS_SEMANTICINFOUPDATER_H
-#define JS_SEMANTICINFOUPDATER_H
+#ifndef SEMANTICINFOUPDATER_H
+#define SEMANTICINFOUPDATER_H
 
-//#include "qmljseditor.h"//#720 ROOPAK
+#include "qmljseditor.h"//#720 ROOPAK
 
 #include <QWaitCondition>
 #include <QModelIndex>

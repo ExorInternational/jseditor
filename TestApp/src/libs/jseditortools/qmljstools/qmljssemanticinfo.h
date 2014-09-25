@@ -27,8 +27,8 @@
 **
 ****************************************************************************/
 
-#ifndef JS_QMLJSSEMANTICINFO_H
-#define JS_QMLJSSEMANTICINFO_H
+#ifndef QMLJSSEMANTICINFO_H
+#define QMLJSSEMANTICINFO_H
 
 #include "jseditortools_global.h"
 
@@ -100,4 +100,4 @@ private:
 
 Q_DECLARE_METATYPE(QmlJSTools::SemanticInfo)
 
-#endif // JS_QMLJSSEMANTICINFO_H
+#endif // QMLJSSEMANTICINFO_H

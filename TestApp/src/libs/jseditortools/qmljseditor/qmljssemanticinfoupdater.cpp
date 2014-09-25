@@ -28,7 +28,7 @@
 ****************************************************************************/
 
 #include "qmljssemanticinfoupdater.h"
-//#include "qmljseditorplugin.h"//#720 ROOPAK
+#include "qmljseditorplugin.h"
 
 #include <qmljs/qmljsmodelmanagerinterface.h>
 #include <qmljs/qmljsdocument.h>
@@ -36,9 +36,9 @@
 #include <qmljs/jsoncheck.h>
 #include <qmljs/qmljscontext.h>
 #include <qmljs/qmljslink.h>
-//#include <qmljstools/qmljsmodelmanager.h>//#720 ROOPAK
+#include <qmljstools/qmljsmodelmanager.h>
 
-//#include <coreplugin/icore.h>//#720 ROOPAK
+#include <coreplugin/icore.h>
 
 #include <utils/json.h>
 

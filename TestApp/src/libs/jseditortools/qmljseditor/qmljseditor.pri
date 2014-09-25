@@ -1,6 +1,6 @@
 HEADERS += \
-    $$PWD/qmljssemanticinfoupdater.h \
+#    $$PWD/qmljssemanticinfoupdater.h \
 
 SOURCES += \
-    $$PWD/qmljssemanticinfoupdater.cpp \
+#    $$PWD/qmljssemanticinfoupdater.cpp \
 

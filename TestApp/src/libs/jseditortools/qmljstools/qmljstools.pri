@@ -1,5 +1,5 @@
 HEADERS += \
-    $$PWD/qmljssemanticinfo.h \
+#    $$PWD/qmljssemanticinfo.h \
 
 SOURCES += \
-    $$PWD/qmljssemanticinfo.cpp \
+#    $$PWD/qmljssemanticinfo.cpp \
