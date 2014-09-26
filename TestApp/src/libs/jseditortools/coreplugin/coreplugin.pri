@@ -37,6 +37,12 @@ HEADERS += \
     $$PWD/dialogs/settingsdialog.h \
     $$PWD/dialogs/ioptionspage.h \
     $$PWD/icorelistener.h \
+    $$PWD/progressmanager/progressmanager_p.h \
+    $$PWD/progressmanager/progressview.h \
+    $$PWD/progressmanager/progressbar.h \
+    $$PWD/progressmanager/futureprogress.h \
+    $$PWD/progressmanager/progressmanager.h \
+    $$PWD/settingsdatabase.h \
 
 SOURCES += \
     $$PWD/icore.cpp \
@@ -70,5 +76,10 @@ SOURCES += \
     $$PWD/dialogs/settingsdialog.cpp \
     $$PWD/dialogs/ioptionspage.cpp \
     $$PWD/icorelistener.cpp \
+    $$PWD/progressmanager/progressmanager.cpp \
+    $$PWD/progressmanager/progressview.cpp \
+    $$PWD/progressmanager/progressbar.cpp \
+    $$PWD/progressmanager/futureprogress.cpp \
+    $$PWD/settingsdatabase.cpp \
 
 include(find/find.pri)

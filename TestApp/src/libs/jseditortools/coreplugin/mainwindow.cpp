@@ -128,7 +128,7 @@ MainWindow::MainWindow(QMainWindow *mainWindow) :
     m_modeManager(0),
     m_mimeDatabase(new MimeDatabase),
 //    m_helpManager(new HelpManager),//#720 ROOPAK
-    m_modeStack(new FancyTabWidget(this)),
+    m_modeStack(new FancyTabWidget(this->mainwindow())),//#720 ROOPAK
 //    m_navigationWidget(0),//#720 ROOPAK
     m_rightPaneWidget(0),
 //    m_versionDialog(0),//#720 ROOPAK
@@ -157,7 +157,7 @@ MainWindow::MainWindow(QMainWindow *mainWindow) :
 
     Utils::HistoryCompleter::setSettings(PluginManager::settings());
 
-    setWindowTitle(tr("Qt Creator"));
+    mainwindow()->setWindowTitle(tr("Qt Creator"));
     if (!Utils::HostOsInfo::isMacHost())
         QApplication::setWindowIcon(QIcon(QLatin1String(Constants::ICON_QTLOGO_128)));
     QCoreApplication::setApplicationName(QLatin1String("QtCreator"));
@@ -181,10 +181,10 @@ MainWindow::MainWindow(QMainWindow *mainWindow) :
     }
 //    qApp->setStyle(new ManhattanStyle(baseName));//#720 ROOPAK
 
-    setDockNestingEnabled(true);
+    mainwindow()->setDockNestingEnabled(true);
 
-    setCorner(Qt::BottomLeftCorner, Qt::LeftDockWidgetArea);
-    setCorner(Qt::BottomRightCorner, Qt::BottomDockWidgetArea);
+    mainwindow()->setCorner(Qt::BottomLeftCorner, Qt::LeftDockWidgetArea);
+    mainwindow()->setCorner(Qt::BottomRightCorner, Qt::BottomDockWidgetArea);
 
     m_modeManager = new ModeManager(this, m_modeStack);
 
@@ -196,12 +196,12 @@ MainWindow::MainWindow(QMainWindow *mainWindow) :
 
 //    m_statusBarManager = new StatusBarManager(this);//#720 ROOPAK
     m_messageManager = new MessageManager;
-    m_editorManager = new EditorManager(this);
+    m_editorManager = new EditorManager(this->mainwindow());
     m_editorManager->hide();
 //    m_externalToolManager = new ExternalToolManager();//ROOPAK
-    setCentralWidget(m_modeStack);
+    mainwindow()->setCentralWidget(m_modeStack);
 
-    m_progressManager->progressView()->setParent(this);
+    m_progressManager->progressView()->setParent(this->mainwindow());
     m_progressManager->progressView()->setReferenceWidget(/*m_modeStack->statusBar()*/NULL);
 
     connect(QApplication::instance(), SIGNAL(focusChanged(QWidget*,QWidget*)),
@@ -214,7 +214,7 @@ MainWindow::MainWindow(QMainWindow *mainWindow) :
         //signal(SIGINT, handleSigInt);
 
 //    statusBar()->setProperty("p_styled", true);//#720 ROOPAK
-    setAcceptDrops(true);
+    mainwindow()->setAcceptDrops(true);
 
 #if defined(Q_OS_MAC)
     MacFullScreen::addFullScreen(this);
@@ -456,7 +456,7 @@ void MainWindow::registerDefaultContainers()
     ActionContainer *menubar = ActionManager::createMenuBar(Constants::MENU_BAR);
 
     if (!Utils::HostOsInfo::isMacHost()) // System menu bar on Mac
-        setMenuBar(menubar->menuBar());
+        mainwindow()->setMenuBar(menubar->menuBar());
     menubar->appendGroup(Constants::G_FILE);
     menubar->appendGroup(Constants::G_EDIT);
     menubar->appendGroup(Constants::G_VIEW);
@@ -537,7 +537,7 @@ void MainWindow::registerDefaultActions()
 
     // Return to editor shortcut: Note this requires Qt to fix up
     // handling of shortcut overrides in menus, item views, combos....
-    m_focusToEditor = new QShortcut(this);
+    m_focusToEditor = new QShortcut(this->mainwindow());
     Command *cmd = ActionManager::registerShortcut(m_focusToEditor, Constants::S_RETURNTOEDITOR, globalContext);
     cmd->setDefaultKeySequence(QKeySequence(Qt::Key_Escape));
     connect(m_focusToEditor, SIGNAL(activated()), this, SLOT(setFocusToEditor()));
@@ -923,7 +923,7 @@ bool MainWindow::showOptionsDialog(Id category, Id page, QWidget *parent)
 {
     emit m_coreImpl->optionsDialogRequested();
     if (!parent)
-        parent = this;
+        parent = this->mainwindow();
     SettingsDialog *dialog = SettingsDialog::getSettingsDialog(parent, category, page);
     return dialog->execDialog();
 }
@@ -991,20 +991,20 @@ void MainWindow::changeEvent(QEvent *e)
 {
     QMainWindow::changeEvent(e);
     if (e->type() == QEvent::ActivationChange) {
-        if (isActiveWindow()) {
+        if (mainwindow()->isActiveWindow()) {
             if (debugMainWindow)
                 qDebug() << "main window activated";
             emit windowActivated();
         }
     } else if (e->type() == QEvent::WindowStateChange) {
         if (Utils::HostOsInfo::isMacHost()) {
-            bool minimized = isMinimized();
+            bool minimized = mainwindow()->isMinimized();
             if (debugMainWindow)
                 qDebug() << "main window state changed to minimized=" << minimized;
             m_minimizeAction->setEnabled(!minimized);
             m_zoomAction->setEnabled(!minimized);
         } else {
-            bool isFullScreen = (windowState() & Qt::WindowFullScreen) != 0;
+            bool isFullScreen = (mainwindow()->windowState() & Qt::WindowFullScreen) != 0;
             m_toggleFullScreenAction->setChecked(isFullScreen);
         }
     }
@@ -1030,7 +1030,7 @@ void MainWindow::updateFocusWidget(QWidget *old, QWidget *now)
     }
 
     // ignore toplevels that define no context, like popups without parent
-    if (!newContext.isEmpty() || qApp->focusWidget() == focusWidget())
+    if (!newContext.isEmpty() || qApp->focusWidget() == mainwindow()->focusWidget())
         updateContextObject(newContext);
 }
 
@@ -1051,7 +1051,7 @@ void MainWindow::aboutToShutdown()
     disconnect(QApplication::instance(), SIGNAL(focusChanged(QWidget*,QWidget*)),
                this, SLOT(updateFocusWidget(QWidget*,QWidget*)));
     m_activeContext.clear();
-    hide();
+    mainwindow()->hide();
 }
 
 static const char settingsGroup[] = "MainWindow";
@@ -1094,8 +1094,8 @@ void MainWindow::writeSettings()
     if (!(m_overrideColor.isValid() && Utils::StyleHelper::baseColor() == m_overrideColor))
         settings->setValue(QLatin1String(colorKey), Utils::StyleHelper::requestedBaseColor());
 
-    settings->setValue(QLatin1String(windowGeometryKey), saveGeometry());
-    settings->setValue(QLatin1String(windowStateKey), saveState());
+    settings->setValue(QLatin1String(windowGeometryKey), mainwindow()->saveGeometry());
+    settings->setValue(QLatin1String(windowStateKey), mainwindow()->saveState());
     settings->setValue(QLatin1String(modeSelectorVisibleKey), ModeManager::isModeSelectorVisible());
 
     settings->endGroup();
@@ -1201,7 +1201,7 @@ void MainWindow::updateContext()
 
 void MainWindow::aboutPlugins()
 {
-    PluginDialog dialog(this);
+    PluginDialog dialog(this->mainwindow());
     dialog.exec();
 }
 
@@ -1218,15 +1218,15 @@ void MainWindow::setFullScreen(bool on)
     Q_UNUSED(on)
     MacFullScreen::toggleFullScreen(this);
 #else
-    if (bool(windowState() & Qt::WindowFullScreen) == on)
+    if (bool(mainwindow()->windowState() & Qt::WindowFullScreen) == on)
         return;
 
     if (on) {
-        setWindowState(windowState() | Qt::WindowFullScreen);
+        mainwindow()->setWindowState(mainwindow()->windowState() | Qt::WindowFullScreen);
         //statusBar()->hide();
         //menuBar()->hide();
     } else {
-        setWindowState(windowState() & ~Qt::WindowFullScreen);
+        mainwindow()->setWindowState(mainwindow()->windowState() & ~Qt::WindowFullScreen);
         //menuBar()->show();
         //statusBar()->show();
     }
@@ -1244,7 +1244,7 @@ bool MainWindow::showWarningWithOptions(const QString &title,
                                         QWidget *parent)
 {
     if (parent == 0)
-        parent = this;
+        parent = this->mainwindow();
     QMessageBox msgBox(QMessageBox::Warning, title, text,
                        QMessageBox::Ok, parent);
     if (!details.isEmpty())
@@ -1262,11 +1262,11 @@ void MainWindow::restoreWindowState()
 {
     QSettings *settings = PluginManager::settings();
     settings->beginGroup(QLatin1String(settingsGroup));
-    if (!restoreGeometry(settings->value(QLatin1String(windowGeometryKey)).toByteArray()))
-        resize(1008, 700); // size without window decoration
-    restoreState(settings->value(QLatin1String(windowStateKey)).toByteArray());
+    if (!mainwindow()->restoreGeometry(settings->value(QLatin1String(windowGeometryKey)).toByteArray()))
+        mainwindow()->resize(1008, 700); // size without window decoration
+    mainwindow()->restoreState(settings->value(QLatin1String(windowStateKey)).toByteArray());
     settings->endGroup();
-    show();
+    mainwindow()->show();
 }
 
 } // namespace Internal

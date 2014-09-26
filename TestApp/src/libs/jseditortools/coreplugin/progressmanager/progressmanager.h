@@ -27,26 +27,59 @@
 **
 ****************************************************************************/
 
-#ifndef IEDITORFACTORY_H
-#define IEDITORFACTORY_H
+#ifndef PROGRESSMANAGER_H
+#define PROGRESSMANAGER_H
 
-#include <coreplugin/idocumentfactory.h>
+//#include <coreplugin/core_global.h>//#720 ROOPAK
+#include "coreplugin/../jseditortools_global.h"//#720 ROOPAK
+#include <coreplugin/id.h>
+
+#include <QObject>
+#include <QFuture>
 
 namespace Core {
+class FutureProgress;
 
-class IEditor;
+namespace Internal { class ProgressManagerPrivate; }
 
-class JSEDITORTOOLS_EXPORT IEditorFactory : public Core::IDocumentFactory//#720 ROOPAK
+class JSEDITORTOOLS_EXPORT ProgressManager : public QObject//#720 ROOPAK
 {
     Q_OBJECT
-
 public:
-    IEditorFactory(QObject *parent = 0) : IDocumentFactory(parent) {}
+    enum ProgressFlag {
+        KeepOnFinish = 0x01,
+        ShowInApplicationIcon = 0x02
+    };
+    Q_DECLARE_FLAGS(ProgressFlags, ProgressFlag)
 
-    virtual IEditor *createEditor() = 0;
-    virtual IDocument *open(const QString &);
+    static QObject *instance();
+
+    static FutureProgress *addTask(const QFuture<void> &future, const QString &title,
+                                   Core::Id type, ProgressFlags flags = 0);
+    static void setApplicationLabel(const QString &text);
+
+public slots:
+    static void cancelTasks(const Core::Id type);
+
+signals:
+    void taskStarted(Core::Id type);
+    void allTasksFinished(Core::Id type);
+
+protected:
+    virtual void doCancelTasks(Core::Id type) = 0;
+    virtual FutureProgress *doAddTask(const QFuture<void> &future, const QString &title,
+                                      Core::Id type, ProgressFlags flags = 0) = 0;
+    virtual void doSetApplicationLabel(const QString &text) = 0;
+
+private:
+    ProgressManager();
+    ~ProgressManager();
+
+    friend class Core::Internal::ProgressManagerPrivate;
 };
 
 } // namespace Core
 
-#endif // IEDITORFACTORY_H
+Q_DECLARE_OPERATORS_FOR_FLAGS(Core::ProgressManager::ProgressFlags)
+
+#endif //PROGRESSMANAGER_H

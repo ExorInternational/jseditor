@@ -27,26 +27,53 @@
 **
 ****************************************************************************/
 
-#ifndef IEDITORFACTORY_H
-#define IEDITORFACTORY_H
+#ifndef PROGRESSVIEW_H
+#define PROGRESSVIEW_H
 
-#include <coreplugin/idocumentfactory.h>
+#include "progressmanager.h"
+
+#include <QWidget>
+
+
+QT_BEGIN_NAMESPACE
+class QVBoxLayout;
+QT_END_NAMESPACE
 
 namespace Core {
 
-class IEditor;
+namespace Internal {
 
-class JSEDITORTOOLS_EXPORT IEditorFactory : public Core::IDocumentFactory//#720 ROOPAK
+class ProgressView : public QWidget
 {
     Q_OBJECT
 
 public:
-    IEditorFactory(QObject *parent = 0) : IDocumentFactory(parent) {}
+    ProgressView(QWidget *parent = 0);
+    ~ProgressView();
 
-    virtual IEditor *createEditor() = 0;
-    virtual IDocument *open(const QString &);
+    void addProgressWidget(QWidget *widget);
+    void removeProgressWidget(QWidget *widget);
+
+    bool isHovered() const;
+
+    void setReferenceWidget(QWidget *widget);
+
+protected:
+    bool event(QEvent *event);
+    bool eventFilter(QObject *obj, QEvent *event);
+
+signals:
+    void hoveredChanged(bool hovered);
+
+private:
+    void reposition();
+
+    QVBoxLayout *m_layout;
+    QWidget *m_referenceWidget;
+    bool m_hovered;
 };
 
+} // namespace Internal
 } // namespace Core
 
-#endif // IEDITORFACTORY_H
+#endif // PROGRESSVIEW_H

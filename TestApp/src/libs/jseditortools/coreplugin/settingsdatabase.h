@@ -27,26 +27,46 @@
 **
 ****************************************************************************/
 
-#ifndef IEDITORFACTORY_H
-#define IEDITORFACTORY_H
+#ifndef SETTINGSDATABASE_H
+#define SETTINGSDATABASE_H
 
-#include <coreplugin/idocumentfactory.h>
+//#include "core_global.h"//#720 ROOPAK
+#include "../jseditortools_global.h"//#720 ROOPAK
+
+#include <QObject>
+#include <QString>
+#include <QStringList>
+#include <QVariant>
 
 namespace Core {
 
-class IEditor;
+namespace Internal { class SettingsDatabasePrivate; }
 
-class JSEDITORTOOLS_EXPORT IEditorFactory : public Core::IDocumentFactory//#720 ROOPAK
+class JSEDITORTOOLS_EXPORT SettingsDatabase : public QObject//#720 ROOPAK
 {
-    Q_OBJECT
-
 public:
-    IEditorFactory(QObject *parent = 0) : IDocumentFactory(parent) {}
+    SettingsDatabase(const QString &path, const QString &application, QObject *parent = 0);
+    ~SettingsDatabase();
 
-    virtual IEditor *createEditor() = 0;
-    virtual IDocument *open(const QString &);
+    void setValue(const QString &key, const QVariant &value);
+    QVariant value(const QString &key, const QVariant &defaultValue = QVariant()) const;
+    bool contains(const QString &key) const;
+    void remove(const QString &key);
+
+    void beginGroup(const QString &prefix);
+    void endGroup();
+    QString group() const;
+    QStringList childKeys() const;
+
+    void beginTransaction();
+    void endTransaction();
+
+    void sync();
+
+private:
+    Internal::SettingsDatabasePrivate *d;
 };
 
 } // namespace Core
 
-#endif // IEDITORFACTORY_H
+#endif // SETTINGSDATABASE_H

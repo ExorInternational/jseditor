@@ -38,7 +38,7 @@
 
 namespace Core {
 
-class CORE_EXPORT IOptionsPage : public QObject
+class JSEDITORTOOLS_EXPORT IOptionsPage : public QObject//#720 ROOPAK
 {
     Q_OBJECT
 
@@ -82,7 +82,7 @@ protected:
     before the options pages get available.)
 */
 
-class CORE_EXPORT IOptionsPageProvider : public QObject
+class JSEDITORTOOLS_EXPORT IOptionsPageProvider : public QObject//#720 ROOPAK
 {
     Q_OBJECT
 
