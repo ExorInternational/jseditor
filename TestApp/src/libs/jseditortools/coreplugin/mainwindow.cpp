@@ -150,6 +150,8 @@ MainWindow::MainWindow(QMainWindow *mainWindow) :
     m_zoomAction(0),
     m_toggleSideBarButton(new QToolButton)
 {
+    m_mainWindow->installEventFilter(this);
+
     ActionManager::initialize(); // must be done before registering any actions
 
     (void) new DocumentManager(this);
@@ -986,10 +988,23 @@ void MainWindow::removeContextObject(IContext *context)
     if (m_activeContext.removeAll(context) > 0)
         updateContextObject(m_activeContext);
 }
-
+bool MainWindow::eventFilter( QObject *dist, QEvent *event )
+{
+    if(dist == m_mainWindow)
+    {
+        if( event->type() == QEvent::ActivationChange ||  event->type() == QEvent::WindowStateChange)
+            changeEvent(event);
+        else if(event->type() == QEvent::Close)
+            closeEvent((QCloseEvent *)event);
+        else if(event->type() == QEvent::DragEnter)
+            dragEnterEvent((QDragEnterEvent *)event);
+        else if(event->type() == QEvent::Drop)
+            dropEvent((QDropEvent *)event);
+    }
+}
 void MainWindow::changeEvent(QEvent *e)
 {
-    QMainWindow::changeEvent(e);
+//    QMainWindow::changeEvent(e);//#720 ROOPAK TODO - COMMENTED OUT. NEED TO CHECK ITSVALIDITY WHEN APP IS IN RUNNING STATE
     if (e->type() == QEvent::ActivationChange) {
         if (mainwindow()->isActiveWindow()) {
             if (debugMainWindow)

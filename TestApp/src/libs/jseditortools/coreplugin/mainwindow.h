@@ -136,6 +136,8 @@ protected:
     virtual void dragEnterEvent(QDragEnterEvent *event);
     virtual void dropEvent(QDropEvent *event);
 
+    bool eventFilter( QObject *dist, QEvent *event );//#720 ROOPAK
+
 private slots:
     void openFile();
 //    void aboutToShowRecentFiles();//#720 ROOPAK
