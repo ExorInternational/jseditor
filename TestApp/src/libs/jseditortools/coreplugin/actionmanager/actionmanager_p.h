@@ -27,38 +27,73 @@
 **
 ****************************************************************************/
 
-#ifndef APPMAINWINDOW_H
-#define APPMAINWINDOW_H
+#ifndef ACTIONMANAGERPRIVATE_H
+#define ACTIONMANAGERPRIVATE_H
 
-#include "utils_global.h"
-#include <QMainWindow>
+#include <coreplugin/actionmanager/command_p.h>
+#include <coreplugin/actionmanager/actioncontainer_p.h>
+#include <coreplugin/icontext.h>
 
-namespace Utils {
+#include <QMap>
+#include <QHash>
+#include <QMultiHash>
+#include <QTimer>
 
-class QTCREATOR_UTILS_EXPORT AppMainWindow : public QObject/*QMainWindow*/
+QT_BEGIN_NAMESPACE
+class QLabel;
+class QSettings;
+QT_END_NAMESPACE
+
+namespace Core {
+
+namespace Internal {
+
+class ActionContainerPrivate;
+class MainWindow;
+class CommandPrivate;
+
+class ActionManagerPrivate : public QObject
 {
     Q_OBJECT
+
 public:
-    AppMainWindow(QMainWindow *mainWindow);
-    QMainWindow *mainwindow() { return m_mainWindow; }
+    typedef QHash<Core::Id, CommandPrivate *> IdCmdMap;
+    typedef QHash<Core::Id, ActionContainerPrivate *> IdContainerMap;
+
+    explicit ActionManagerPrivate();
+    ~ActionManagerPrivate();
+
+    void initialize();
+
+    void setContext(const Context &context);
+    bool hasContext(int context) const;
+
+    void saveSettings(QSettings *settings);
+
+    void showShortcutPopup(const QString &shortcut);
+    bool hasContext(const Context &context) const;
+    Action *overridableAction(Id id);
+
+    void readUserSettings(Id id, CommandPrivate *cmd);
+
 public slots:
-    void raiseWindow();
+    void containerDestroyed();
 
-signals:
-    void deviceChange();
+    void actionTriggered();
+    void shortcutTriggered();
 
-#ifdef Q_OS_WIN
-protected:
-    virtual bool winEvent(MSG *message, long *result);
-    virtual bool event(QEvent *event);
-#endif
+public:
+    IdCmdMap m_idCmdMap;
 
-private:
-    const int m_deviceEventId;
-protected:
-    QMainWindow *m_mainWindow;
+    IdContainerMap m_idContainerMap;
+
+    Context m_context;
+
+    QLabel *m_presentationLabel;
+    QTimer m_presentationLabelTimer;
 };
 
-} // Utils
+} // namespace Internal
+} // namespace Core
 
-#endif // APPMAINWINDOW_H
+#endif // ACTIONMANAGERPRIVATE_H

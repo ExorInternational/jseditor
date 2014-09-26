@@ -464,18 +464,18 @@ IContext *ICore::currentContextObject()
 
 QWidget *ICore::mainWindow()
 {
-    return m_mainwindow;
+    return m_mainwindow->mainwindow();
 }
 
 QWidget *ICore::dialogParent()
 {
     QWidget *active = QApplication::activeModalWidget();
-    return active ? active : m_mainwindow;
+    return active ? active : m_mainwindow->mainwindow();
 }
 
 QStatusBar *ICore::statusBar()
 {
-    return m_mainwindow->statusBar();
+    return m_mainwindow->mainwindow()->statusBar();
 }
 
 void ICore::raiseWindow(QWidget *widget)
@@ -483,7 +483,7 @@ void ICore::raiseWindow(QWidget *widget)
     if (!widget)
         return;
     QWidget *window = widget->window();
-    if (window == m_mainwindow) {
+    if (window == m_mainwindow->mainwindow()) {
         m_mainwindow->raiseWindow();
     } else {
         window->raise();

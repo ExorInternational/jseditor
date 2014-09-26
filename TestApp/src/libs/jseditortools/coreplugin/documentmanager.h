@@ -177,7 +177,7 @@ private:
     To also reload the IDocument in the destructor class set modifiedReload to true
 
   */
-class CORE_EXPORT FileChangeBlocker
+class JSEDITORTOOLS_EXPORT FileChangeBlocker
 {
 public:
     explicit FileChangeBlocker(const QString &fileName);

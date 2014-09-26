@@ -27,38 +27,26 @@
 **
 ****************************************************************************/
 
-#ifndef APPMAINWINDOW_H
-#define APPMAINWINDOW_H
+#ifndef IEDITORFACTORY_H
+#define IEDITORFACTORY_H
 
-#include "utils_global.h"
-#include <QMainWindow>
+#include <coreplugin/idocumentfactory.h>
 
-namespace Utils {
+namespace Core {
 
-class QTCREATOR_UTILS_EXPORT AppMainWindow : public QObject/*QMainWindow*/
+class IEditor;
+
+class CORE_EXPORT IEditorFactory : public Core::IDocumentFactory
 {
     Q_OBJECT
+
 public:
-    AppMainWindow(QMainWindow *mainWindow);
-    QMainWindow *mainwindow() { return m_mainWindow; }
-public slots:
-    void raiseWindow();
+    IEditorFactory(QObject *parent = 0) : IDocumentFactory(parent) {}
 
-signals:
-    void deviceChange();
-
-#ifdef Q_OS_WIN
-protected:
-    virtual bool winEvent(MSG *message, long *result);
-    virtual bool event(QEvent *event);
-#endif
-
-private:
-    const int m_deviceEventId;
-protected:
-    QMainWindow *m_mainWindow;
+    virtual IEditor *createEditor() = 0;
+    virtual IDocument *open(const QString &);
 };
 
-} // Utils
+} // namespace Core
 
-#endif // APPMAINWINDOW_H
+#endif // IEDITORFACTORY_H

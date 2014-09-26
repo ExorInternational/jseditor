@@ -27,38 +27,55 @@
 **
 ****************************************************************************/
 
-#ifndef APPMAINWINDOW_H
-#define APPMAINWINDOW_H
+#ifndef ACTIONCONTAINER_H
+#define ACTIONCONTAINER_H
 
-#include "utils_global.h"
-#include <QMainWindow>
+#include "coreplugin/icontext.h"
 
-namespace Utils {
+#include <QObject>
 
-class QTCREATOR_UTILS_EXPORT AppMainWindow : public QObject/*QMainWindow*/
+QT_BEGIN_NAMESPACE
+class QMenu;
+class QMenuBar;
+class QAction;
+QT_END_NAMESPACE
+
+namespace Core {
+
+class Command;
+
+class ActionContainer : public QObject
 {
     Q_OBJECT
+
 public:
-    AppMainWindow(QMainWindow *mainWindow);
-    QMainWindow *mainwindow() { return m_mainWindow; }
-public slots:
-    void raiseWindow();
+    enum OnAllDisabledBehavior {
+        Disable,
+        Hide,
+        Show
+    };
 
-signals:
-    void deviceChange();
+    virtual void setOnAllDisabledBehavior(OnAllDisabledBehavior behavior) = 0;
+    virtual ActionContainer::OnAllDisabledBehavior onAllDisabledBehavior() const = 0;
 
-#ifdef Q_OS_WIN
-protected:
-    virtual bool winEvent(MSG *message, long *result);
-    virtual bool event(QEvent *event);
-#endif
+    virtual Id id() const = 0;
 
-private:
-    const int m_deviceEventId;
-protected:
-    QMainWindow *m_mainWindow;
+    virtual QMenu *menu() const = 0;
+    virtual QMenuBar *menuBar() const = 0;
+
+    virtual QAction *insertLocation(Id group) const = 0;
+    virtual void appendGroup(Id group) = 0;
+    virtual void insertGroup(Id before, Id group) = 0;
+    virtual void addAction(Command *action, Id group = Id()) = 0;
+    virtual void addMenu(ActionContainer *menu, Id group = Id()) = 0;
+    virtual void addMenu(ActionContainer *before, ActionContainer *menu, Id group = Id()) = 0;
+    virtual Command *addSeparator(const Context &context, Id group = Id(), QAction **outSeparator = 0) = 0;
+
+    // This clears this menu and submenus from all actions and submenus.
+    // It does not destroy the submenus and commands, just removes them from their parents.
+    virtual void clear() = 0;
 };
 
-} // Utils
+} // namespace Core
 
-#endif // APPMAINWINDOW_H
+#endif // ACTIONCONTAINER_H

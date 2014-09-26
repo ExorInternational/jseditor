@@ -13,6 +13,23 @@ HEADERS += \
     $$PWD/messagemanager.h \
     $$PWD/ioutputpane.h \
     $$PWD/modemanager.h \
+    $$PWD/editmode.h \
+    $$PWD/imode.h \
+    $$PWD/mimedatabase.h \
+    $$PWD/infobar.h \
+    $$PWD/actionmanager/actioncontainer.h \
+    $$PWD/actionmanager/actionmanager.h \
+    $$PWD/actionmanager/command.h \
+    $$PWD/actionmanager/actionmanager_p.h \
+    $$PWD/actionmanager/command_p.h \
+    $$PWD/actionmanager/actioncontainer_p.h \
+    $$PWD/editormanager/editormanager.h \
+    $$PWD/editormanager/editorview.h \
+    $$PWD/editormanager/documentmodel.h \
+    $$PWD/editormanager/openeditorswindow.h \
+    $$PWD/editormanager/ieditor.h \
+    $$PWD/editormanager/ieditorfactory.h \
+    $$PWD/idocument.h \
 
 SOURCES += \
     $$PWD/icore.cpp \
@@ -25,3 +42,17 @@ SOURCES += \
     $$PWD/messagemanager.cpp \
     $$PWD/ioutputpane.cpp \
     $$PWD/modemanager.cpp \
+    $$PWD/editmode.cpp \
+    $$PWD/imode.cpp \
+    $$PWD/mimedatabase.cpp \
+    $$PWD/infobar.cpp \
+    $$PWD/actionmanager/actionmanager.cpp \
+    $$PWD/actionmanager/command.cpp \
+    $$PWD/actionmanager/actioncontainer.cpp \
+    $$PWD/editormanager/editormanager.cpp \
+    $$PWD/editormanager/editorview.cpp \
+    $$PWD/editormanager/documentmodel.cpp \
+    $$PWD/editormanager/openeditorswindow.cpp \
+    $$PWD/editormanager/ieditorfactory.cpp \
+    $$PWD/editormanager/ieditor.cpp \
+    $$PWD/idocument.cpp \

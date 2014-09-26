@@ -27,38 +27,24 @@
 **
 ****************************************************************************/
 
-#ifndef APPMAINWINDOW_H
-#define APPMAINWINDOW_H
+#include "imode.h"
 
-#include "utils_global.h"
-#include <QMainWindow>
-
-namespace Utils {
-
-class QTCREATOR_UTILS_EXPORT AppMainWindow : public QObject/*QMainWindow*/
+using namespace Core;
+IMode::IMode(QObject *parent)
+    : IContext(parent),
+    m_isEnabled(true)
 {
-    Q_OBJECT
-public:
-    AppMainWindow(QMainWindow *mainWindow);
-    QMainWindow *mainwindow() { return m_mainWindow; }
-public slots:
-    void raiseWindow();
+}
 
-signals:
-    void deviceChange();
+void IMode::setEnabled(bool enabled)
+{
+    if (m_isEnabled == enabled)
+        return;
+    m_isEnabled = enabled;
+    emit enabledStateChanged(m_isEnabled);
+}
 
-#ifdef Q_OS_WIN
-protected:
-    virtual bool winEvent(MSG *message, long *result);
-    virtual bool event(QEvent *event);
-#endif
-
-private:
-    const int m_deviceEventId;
-protected:
-    QMainWindow *m_mainWindow;
-};
-
-} // Utils
-
-#endif // APPMAINWINDOW_H
+bool IMode::isEnabled() const
+{
+    return m_isEnabled;
+}

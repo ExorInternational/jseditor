@@ -27,38 +27,47 @@
 **
 ****************************************************************************/
 
-#ifndef APPMAINWINDOW_H
-#define APPMAINWINDOW_H
+#ifndef IMODE_H
+#define IMODE_H
 
-#include "utils_global.h"
-#include <QMainWindow>
+#include "icontext.h"
+#include "id.h"
 
-namespace Utils {
+#include <QIcon>
 
-class QTCREATOR_UTILS_EXPORT AppMainWindow : public QObject/*QMainWindow*/
+namespace Core {
+
+class CORE_EXPORT IMode : public IContext
 {
     Q_OBJECT
+    Q_PROPERTY(bool enabled READ isEnabled WRITE setEnabled)
+
 public:
-    AppMainWindow(QMainWindow *mainWindow);
-    QMainWindow *mainwindow() { return m_mainWindow; }
-public slots:
-    void raiseWindow();
+    IMode(QObject *parent = 0);
+
+    QString displayName() const { return m_displayName; }
+    QIcon icon() const { return m_icon; }
+    int priority() const { return m_priority; }
+    Id id() const { return m_id; }
+    bool isEnabled() const;
+
+    void setEnabled(bool enabled);
+    void setDisplayName(const QString &displayName) { m_displayName = displayName; }
+    void setIcon(const QIcon &icon) { m_icon = icon; }
+    void setPriority(int priority) { m_priority = priority; }
+    void setId(Id id) { m_id = id; }
 
 signals:
-    void deviceChange();
-
-#ifdef Q_OS_WIN
-protected:
-    virtual bool winEvent(MSG *message, long *result);
-    virtual bool event(QEvent *event);
-#endif
+    void enabledStateChanged(bool enabled);
 
 private:
-    const int m_deviceEventId;
-protected:
-    QMainWindow *m_mainWindow;
+    QString m_displayName;
+    QIcon m_icon;
+    int m_priority;
+    Id m_id;
+    bool m_isEnabled;
 };
 
-} // Utils
+} // namespace Core
 
-#endif // APPMAINWINDOW_H
+#endif // IMODE_H

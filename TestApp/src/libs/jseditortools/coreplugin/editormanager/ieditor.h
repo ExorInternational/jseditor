@@ -27,38 +27,52 @@
 **
 ****************************************************************************/
 
-#ifndef APPMAINWINDOW_H
-#define APPMAINWINDOW_H
+#ifndef IEDITOR_H
+#define IEDITOR_H
 
-#include "utils_global.h"
-#include <QMainWindow>
+#include <coreplugin/core_global.h>
+#include <coreplugin/icontext.h>
 
-namespace Utils {
+#include <QMetaType>
 
-class QTCREATOR_UTILS_EXPORT AppMainWindow : public QObject/*QMainWindow*/
+namespace Core {
+
+class IDocument;
+
+class CORE_EXPORT IEditor : public IContext
 {
     Q_OBJECT
+
 public:
-    AppMainWindow(QMainWindow *mainWindow);
-    QMainWindow *mainwindow() { return m_mainWindow; }
-public slots:
-    void raiseWindow();
+    IEditor(QObject *parent = 0) : IContext(parent) {}
+    virtual ~IEditor() {}
 
-signals:
-    void deviceChange();
+    void setId(Core::Id id);
+    Core::Id id() const;
 
-#ifdef Q_OS_WIN
-protected:
-    virtual bool winEvent(MSG *message, long *result);
-    virtual bool event(QEvent *event);
-#endif
+    virtual bool open(QString *errorString, const QString &fileName, const QString &realFileName) = 0;
+    virtual IDocument *document() = 0;
+
+    virtual bool duplicateSupported() const { return false; }
+    virtual IEditor *duplicate() { return 0; }
+
+    virtual QByteArray saveState() const { return QByteArray(); }
+    virtual bool restoreState(const QByteArray &/*state*/) { return true; }
+
+    virtual int currentLine() const { return 0; }
+    virtual int currentColumn() const { return 0; }
+    virtual void gotoLine(int line, int column = 0) { Q_UNUSED(line) Q_UNUSED(column) }
+
+    virtual QWidget *toolBar() = 0;
+
+//    virtual bool isDesignModePreferred() const { return false; } //ROOPAK
 
 private:
-    const int m_deviceEventId;
-protected:
-    QMainWindow *m_mainWindow;
+    Core::Id m_id;
 };
 
-} // Utils
+} // namespace Core
 
-#endif // APPMAINWINDOW_H
+Q_DECLARE_METATYPE(Core::IEditor*)
+
+#endif // IEDITOR_H

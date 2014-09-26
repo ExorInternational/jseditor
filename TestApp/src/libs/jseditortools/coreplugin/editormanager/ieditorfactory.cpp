@@ -27,38 +27,14 @@
 **
 ****************************************************************************/
 
-#ifndef APPMAINWINDOW_H
-#define APPMAINWINDOW_H
+#include "ieditorfactory.h"
 
-#include "utils_global.h"
-#include <QMainWindow>
+#include <utils/qtcassert.h>
 
-namespace Utils {
-
-class QTCREATOR_UTILS_EXPORT AppMainWindow : public QObject/*QMainWindow*/
+Core::IDocument *Core::IEditorFactory::open(const QString &)
 {
-    Q_OBJECT
-public:
-    AppMainWindow(QMainWindow *mainWindow);
-    QMainWindow *mainwindow() { return m_mainWindow; }
-public slots:
-    void raiseWindow();
-
-signals:
-    void deviceChange();
-
-#ifdef Q_OS_WIN
-protected:
-    virtual bool winEvent(MSG *message, long *result);
-    virtual bool event(QEvent *event);
-#endif
-
-private:
-    const int m_deviceEventId;
-protected:
-    QMainWindow *m_mainWindow;
-};
-
-} // Utils
-
-#endif // APPMAINWINDOW_H
+    qWarning("This should never be called, use IEditorFactor::createEditor, "
+             "or EditorManager::openEditor instead!");
+    QTC_CHECK(false);
+    return 0;
+}

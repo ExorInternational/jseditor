@@ -27,38 +27,39 @@
 **
 ****************************************************************************/
 
-#ifndef APPMAINWINDOW_H
-#define APPMAINWINDOW_H
+#ifndef EDITMODE_H
+#define EDITMODE_H
 
-#include "utils_global.h"
-#include <QMainWindow>
+#include <coreplugin/imode.h>
 
-namespace Utils {
+QT_BEGIN_NAMESPACE
+class QSplitter;
+class QVBoxLayout;
+QT_END_NAMESPACE
 
-class QTCREATOR_UTILS_EXPORT AppMainWindow : public QObject/*QMainWindow*/
+namespace Core {
+
+class EditorManager;
+
+namespace Internal {
+
+class EditMode : public Core::IMode
 {
     Q_OBJECT
+
 public:
-    AppMainWindow(QMainWindow *mainWindow);
-    QMainWindow *mainwindow() { return m_mainWindow; }
-public slots:
-    void raiseWindow();
+    EditMode();
+    ~EditMode();
 
-signals:
-    void deviceChange();
-
-#ifdef Q_OS_WIN
-protected:
-    virtual bool winEvent(MSG *message, long *result);
-    virtual bool event(QEvent *event);
-#endif
+private slots:
+    void grabEditorManager(Core::IMode *mode);
 
 private:
-    const int m_deviceEventId;
-protected:
-    QMainWindow *m_mainWindow;
+    QSplitter *m_splitter;
+    QVBoxLayout *m_rightSplitWidgetLayout;
 };
 
-} // Utils
+} // namespace Internal
+} // namespace Core
 
-#endif // APPMAINWINDOW_H
+#endif // EDITMODE_H

@@ -27,38 +27,70 @@
 **
 ****************************************************************************/
 
-#ifndef APPMAINWINDOW_H
-#define APPMAINWINDOW_H
+#ifndef OPENEDITORSWINDOW_H
+#define OPENEDITORSWINDOW_H
 
-#include "utils_global.h"
-#include <QMainWindow>
+#include "editorview.h"
 
-namespace Utils {
+#include <QFrame>
+#include <QIcon>
+#include <QList>
 
-class QTCREATOR_UTILS_EXPORT AppMainWindow : public QObject/*QMainWindow*/
+QT_BEGIN_NAMESPACE
+class QTreeWidgetItem;
+class QTreeWidget;
+QT_END_NAMESPACE
+
+namespace Core {
+
+class IDocument;
+class IEditor;
+class DocumentModel;
+
+namespace Internal {
+
+class EditorHistoryItem;
+
+class OpenEditorsWindow : public QFrame
 {
     Q_OBJECT
+
 public:
-    AppMainWindow(QMainWindow *mainWindow);
-    QMainWindow *mainwindow() { return m_mainWindow; }
+    enum Mode {ListMode, HistoryMode };
+
+    explicit OpenEditorsWindow(QWidget *parent = 0);
+
+    void setEditors(const QList<EditLocation> &globalHistory, EditorView *view, DocumentModel *model);
+
+    bool eventFilter(QObject *src, QEvent *e);
+    void focusInEvent(QFocusEvent *);
+    void setVisible(bool visible);
+    void selectNextEditor();
+    void selectPreviousEditor();
+
 public slots:
-    void raiseWindow();
+    void selectAndHide();
 
-signals:
-    void deviceChange();
-
-#ifdef Q_OS_WIN
-protected:
-    virtual bool winEvent(MSG *message, long *result);
-    virtual bool event(QEvent *event);
-#endif
+private slots:
+    void editorClicked(QTreeWidgetItem *item);
+    void selectEditor(QTreeWidgetItem *item);
 
 private:
-    const int m_deviceEventId;
-protected:
-    QMainWindow *m_mainWindow;
+    static void updateItem(QTreeWidgetItem *item, IEditor *editor);
+    void addHistoryItems(const QList<EditLocation> &history, EditorView *view,
+                         DocumentModel *model, QSet<IDocument*> &documentsDone);
+    void ensureCurrentVisible();
+    bool isCentering();
+    void centerOnItem(int selectedIndex);
+    void selectUpDown(bool up);
+
+    bool isSameFile(IEditor *editorA, IEditor *editorB) const;
+
+    const QIcon m_emptyIcon;
+    QTreeWidget *m_editorList;
 };
 
-} // Utils
+} // namespace Internal
+} // namespace Core
 
-#endif // APPMAINWINDOW_H
+#endif // OPENEDITORSWINDOW_H
