@@ -5,7 +5,11 @@
 
 namespace JsEditorTools {
 
-
+class JSEDITORTOOLS_EXPORT JsEditorToolsDummy {
+public:
+    JsEditorToolsDummy();
+    ~JsEditorToolsDummy();
+};
 
 }// namespace JsEditorTools
 

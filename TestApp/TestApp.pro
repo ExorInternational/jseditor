@@ -42,4 +42,12 @@ SUBDIRS = \
 target.path = $$OUT_PWD
 INSTALLS += target
 
+contains(QT_ARCH, i386): ARCHITECTURE = x86
+else: ARCHITECTURE = $$QT_ARCH
+
+macx: PLATFORM = "mac"
+else:win32: PLATFORM = "windows"
+else:linux-*: PLATFORM = "linux-$${ARCHITECTURE}"
+else: PLATFORM = "unknown"
+
 

@@ -1,3 +1,9 @@
+contains(CONFIG, dll) {
+    DEFINES += BUILD_JSEDITORTOOLS_LIB
+} else {
+    DEFINES += BUILD_JSEDITORTOOLS_STATIC_LIB
+}
+
 include(qmljseditor/qmljseditor.pri)
 include(qmljstools/qmljstools.pri)
 #include(coreplugin/coreplugin.pri)

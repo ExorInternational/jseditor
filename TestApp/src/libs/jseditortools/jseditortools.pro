@@ -1,6 +1,6 @@
-include(../../qtcreatorlibrary.pri)
+#DEFINES += JSEDITORTOOLS_LIBRARY
 
-DEFINES += JSEDITORTOOLS_LIBRARY
+include(../../qtcreatorlibrary.pri)
 
 include(jseditortools-lib.pri)
 
