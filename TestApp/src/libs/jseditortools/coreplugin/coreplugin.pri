@@ -30,6 +30,13 @@ HEADERS += \
     $$PWD/editormanager/ieditor.h \
     $$PWD/editormanager/ieditorfactory.h \
     $$PWD/idocument.h \
+    $$PWD/outputpanemanager.h \
+    $$PWD/plugindialog.h \
+    $$PWD/variablemanager.h \
+    $$PWD/rightpane.h \
+    $$PWD/dialogs/settingsdialog.h \
+    $$PWD/dialogs/ioptionspage.h \
+    $$PWD/icorelistener.h \
 
 SOURCES += \
     $$PWD/icore.cpp \
@@ -56,6 +63,12 @@ SOURCES += \
     $$PWD/editormanager/ieditorfactory.cpp \
     $$PWD/editormanager/ieditor.cpp \
     $$PWD/idocument.cpp \
-
+    $$PWD/outputpanemanager.cpp \
+    $$PWD/plugindialog.cpp \
+    $$PWD/variablemanager.cpp \
+    $$PWD/rightpane.cpp \
+    $$PWD/dialogs/settingsdialog.cpp \
+    $$PWD/dialogs/ioptionspage.cpp \
+    $$PWD/icorelistener.cpp \
 
 include(find/find.pri)

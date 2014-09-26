@@ -27,53 +27,32 @@
 **
 ****************************************************************************/
 
-#ifndef IEDITOR_H
-#define IEDITOR_H
+#include "icorelistener.h"
 
-//#include <coreplugin/core_global.h>//#720 ROOPAK
-#include "coreplugin/../jseditortools_global.h"//#720 ROOPAK
-#include <coreplugin/icontext.h>
+/*!
+    \class Core::ICoreListener
 
-#include <QMetaType>
+    \brief The ICoreListener class provides a hook for plugins to veto on
+    certain events emitted from the core plugin.
 
-namespace Core {
+    Implement this interface to prevent certain events from occurring. For
+    example, to prevent the closing of the whole application
+    or to prevent the closing of an editor window under certain conditions.
 
-class IDocument;
+    For example, if the application window requests a close,
+    \c ICoreListener::coreAboutToClose() is called (in arbitrary order) on all
+    registered objects implementing this interface. If one if these calls
+    returns \c false, the process is aborted and the event is ignored.  If all
+    calls return \c true, the corresponding signal is emitted and the event is
+    accepted or performed.
 
-class JSEDITORTOOLS_EXPORT IEditor : public IContext
-{
-    Q_OBJECT
-
-public:
-    IEditor(QObject *parent = 0) : IContext(parent) {}
-    virtual ~IEditor() {}
-
-    void setId(Core::Id id);
-    Core::Id id() const;
-
-    virtual bool open(QString *errorString, const QString &fileName, const QString &realFileName) = 0;
-    virtual IDocument *document() = 0;
-
-    virtual bool duplicateSupported() const { return false; }
-    virtual IEditor *duplicate() { return 0; }
-
-    virtual QByteArray saveState() const { return QByteArray(); }
-    virtual bool restoreState(const QByteArray &/*state*/) { return true; }
-
-    virtual int currentLine() const { return 0; }
-    virtual int currentColumn() const { return 0; }
-    virtual void gotoLine(int line, int column = 0) { Q_UNUSED(line) Q_UNUSED(column) }
-
-    virtual QWidget *toolBar() = 0;
-
-//    virtual bool isDesignModePreferred() const { return false; } //ROOPAK
-
-private:
-    Core::Id m_id;
-};
-
-} // namespace Core
-
-Q_DECLARE_METATYPE(Core::IEditor*)
-
-#endif // IEDITOR_H
+    Guidelines for implementing the class:
+    \list
+        \li Return \c false from the implemented function if you want to prevent
+            the event.
+        \li Add your implementing object to the plugin managers objects:
+            \c{ExtensionSystem::PluginManager::instance()->addObject(yourImplementingObject)}
+        \li Do not forget to remove the object again at deconstruction
+            (for example, in the destructor of your plugin).
+    \endlist
+*/

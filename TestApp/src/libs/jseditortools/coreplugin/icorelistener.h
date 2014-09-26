@@ -27,53 +27,27 @@
 **
 ****************************************************************************/
 
-#ifndef IEDITOR_H
-#define IEDITOR_H
+#ifndef ICORELISTENER_H
+#define ICORELISTENER_H
 
-//#include <coreplugin/core_global.h>//#720 ROOPAK
-#include "coreplugin/../jseditortools_global.h"//#720 ROOPAK
-#include <coreplugin/icontext.h>
-
-#include <QMetaType>
+//#include "core_global.h"//#720 ROOPAK
+#include "../jseditortools_global.h"//#720 ROOPAK
+#include <QObject>
 
 namespace Core {
+class IEditor;
 
-class IDocument;
-
-class JSEDITORTOOLS_EXPORT IEditor : public IContext
+class JSEDITORTOOLS_EXPORT ICoreListener : public QObject//#720 ROOPAK
 {
     Q_OBJECT
-
 public:
-    IEditor(QObject *parent = 0) : IContext(parent) {}
-    virtual ~IEditor() {}
+    ICoreListener(QObject *parent = 0) : QObject(parent) {}
+    virtual ~ICoreListener() {}
 
-    void setId(Core::Id id);
-    Core::Id id() const;
-
-    virtual bool open(QString *errorString, const QString &fileName, const QString &realFileName) = 0;
-    virtual IDocument *document() = 0;
-
-    virtual bool duplicateSupported() const { return false; }
-    virtual IEditor *duplicate() { return 0; }
-
-    virtual QByteArray saveState() const { return QByteArray(); }
-    virtual bool restoreState(const QByteArray &/*state*/) { return true; }
-
-    virtual int currentLine() const { return 0; }
-    virtual int currentColumn() const { return 0; }
-    virtual void gotoLine(int line, int column = 0) { Q_UNUSED(line) Q_UNUSED(column) }
-
-    virtual QWidget *toolBar() = 0;
-
-//    virtual bool isDesignModePreferred() const { return false; } //ROOPAK
-
-private:
-    Core::Id m_id;
+    virtual bool editorAboutToClose(IEditor * /*editor*/) { return true; }
+    virtual bool coreAboutToClose() { return true; }
 };
 
 } // namespace Core
 
-Q_DECLARE_METATYPE(Core::IEditor*)
-
-#endif // IEDITOR_H
+#endif // ICORELISTENER_H

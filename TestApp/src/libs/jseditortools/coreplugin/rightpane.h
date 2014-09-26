@@ -27,53 +27,74 @@
 **
 ****************************************************************************/
 
-#ifndef IEDITOR_H
-#define IEDITOR_H
+#ifndef RIGHTPANE_H
+#define RIGHTPANE_H
 
-//#include <coreplugin/core_global.h>//#720 ROOPAK
-#include "coreplugin/../jseditortools_global.h"//#720 ROOPAK
-#include <coreplugin/icontext.h>
+//#include "core_global.h"//#720 ROOPAK
+#include "../jseditortools_global.h"//#720 ROOPAK
 
-#include <QMetaType>
+#include <QWidget>
+#include <QPointer>
+
+QT_BEGIN_NAMESPACE
+class QSettings;
+QT_END_NAMESPACE
 
 namespace Core {
 
-class IDocument;
+class IMode;
+class RightPaneWidget;
 
-class JSEDITORTOOLS_EXPORT IEditor : public IContext
+class JSEDITORTOOLS_EXPORT RightPanePlaceHolder : public QWidget//#720 ROOPAK
+{
+    friend class Core::RightPaneWidget;
+    Q_OBJECT
+
+public:
+    explicit RightPanePlaceHolder(Core::IMode *mode, QWidget *parent = 0);
+    ~RightPanePlaceHolder();
+    static RightPanePlaceHolder *current();
+
+private slots:
+    void currentModeChanged(Core::IMode *);
+
+private:
+    void applyStoredSize(int width);
+    Core::IMode *m_mode;
+    static RightPanePlaceHolder* m_current;
+};
+
+class JSEDITORTOOLS_EXPORT RightPaneWidget : public QWidget//#720 ROOPAK
 {
     Q_OBJECT
 
 public:
-    IEditor(QObject *parent = 0) : IContext(parent) {}
-    virtual ~IEditor() {}
+    RightPaneWidget();
+    ~RightPaneWidget();
 
-    void setId(Core::Id id);
-    Core::Id id() const;
+    void saveSettings(QSettings *settings);
+    void readSettings(QSettings *settings);
 
-    virtual bool open(QString *errorString, const QString &fileName, const QString &realFileName) = 0;
-    virtual IDocument *document() = 0;
+    bool isShown();
+    void setShown(bool b);
 
-    virtual bool duplicateSupported() const { return false; }
-    virtual IEditor *duplicate() { return 0; }
+    static RightPaneWidget *instance();
 
-    virtual QByteArray saveState() const { return QByteArray(); }
-    virtual bool restoreState(const QByteArray &/*state*/) { return true; }
+    void setWidget(QWidget *widget);
 
-    virtual int currentLine() const { return 0; }
-    virtual int currentColumn() const { return 0; }
-    virtual void gotoLine(int line, int column = 0) { Q_UNUSED(line) Q_UNUSED(column) }
+    int storedWidth();
 
-    virtual QWidget *toolBar() = 0;
-
-//    virtual bool isDesignModePreferred() const { return false; } //ROOPAK
+protected:
+    void resizeEvent(QResizeEvent *);
 
 private:
-    Core::Id m_id;
+    void clearWidget();
+    bool m_shown;
+    int m_width;
+    QPointer<QWidget> m_widget;
+    static RightPaneWidget *m_instance;
 };
 
 } // namespace Core
 
-Q_DECLARE_METATYPE(Core::IEditor*)
-
-#endif // IEDITOR_H
+#endif // RIGHTPANE_H
