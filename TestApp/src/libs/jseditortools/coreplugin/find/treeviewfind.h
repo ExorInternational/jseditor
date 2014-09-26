@@ -40,7 +40,7 @@ QT_END_NAMESPACE
 namespace Core {
 class ItemModelFindPrivate;
 
-class CORE_EXPORT TreeViewFind : public IFindSupport
+class JSEDITORTOOLS_EXPORT TreeViewFind : public IFindSupport
 {
     Q_OBJECT
 public:

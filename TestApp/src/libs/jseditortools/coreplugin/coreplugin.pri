@@ -1,5 +1,7 @@
 INCLUDEPATH +=
 
+QT += sql
+
 HEADERS += \
     $$PWD/icore.h \
     $$PWD/id.h \
@@ -43,6 +45,10 @@ HEADERS += \
     $$PWD/progressmanager/futureprogress.h \
     $$PWD/progressmanager/progressmanager.h \
     $$PWD/settingsdatabase.h \
+    $$PWD/minisplitter.h \
+    $$PWD/outputpane.h \
+    $$PWD/fileutils.h \
+    $$PWD/findplaceholder.h \
 
 SOURCES += \
     $$PWD/icore.cpp \
@@ -81,5 +87,9 @@ SOURCES += \
     $$PWD/progressmanager/progressbar.cpp \
     $$PWD/progressmanager/futureprogress.cpp \
     $$PWD/settingsdatabase.cpp \
+    $$PWD/minisplitter.cpp \
+    $$PWD/outputpane.cpp \
+    $$PWD/fileutils.cpp \
+    $$PWD/findplaceholder.cpp \
 
 include(find/find.pri)

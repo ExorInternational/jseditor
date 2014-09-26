@@ -41,7 +41,7 @@ QT_END_NAMESPACE
 
 namespace Core {
 
-class CORE_EXPORT IFindFilter : public QObject
+class JSEDITORTOOLS_EXPORT IFindFilter : public QObject
 {
     Q_OBJECT
 public:

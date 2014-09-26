@@ -27,54 +27,70 @@
 **
 ****************************************************************************/
 
-#ifndef IFINDSUPPORT_H
-#define IFINDSUPPORT_H
+#include "minisplitter.h"
 
-#include "textfindconstants.h"
+#include <utils/stylehelper.h>
 
-#include <QObject>
-#include <QString>
+#include <QPaintEvent>
+#include <QPainter>
+#include <QSplitterHandle>
 
 namespace Core {
+namespace Internal {
 
-class JSEDITORTOOLS_EXPORT IFindSupport : public QObject
+class MiniSplitterHandle : public QSplitterHandle
 {
-    Q_OBJECT
-
 public:
-    enum Result { Found, NotFound, NotYetFound };
-
-    IFindSupport() : QObject(0) {}
-    virtual ~IFindSupport() {}
-
-    virtual bool supportsReplace() const = 0;
-    virtual FindFlags supportedFindFlags() const = 0;
-    virtual void resetIncrementalSearch() = 0;
-    virtual void clearResults() = 0;
-    virtual QString currentFindString() const = 0;
-    virtual QString completedFindString() const = 0;
-
-    virtual void highlightAll(const QString &txt, FindFlags findFlags);
-    virtual Result findIncremental(const QString &txt, FindFlags findFlags) = 0;
-    virtual Result findStep(const QString &txt, FindFlags findFlags) = 0;
-    virtual void replace(const QString &before, const QString &after,
-                         FindFlags findFlags);
-    virtual bool replaceStep(const QString &before, const QString &after,
-        FindFlags findFlags);
-    virtual int replaceAll(const QString &before, const QString &after,
-        FindFlags findFlags);
-
-    virtual void defineFindScope(){}
-    virtual void clearFindScope(){}
-
-    static void showWrapIndicator(QWidget *parent);
-
-signals:
-    void changed();
+    MiniSplitterHandle(Qt::Orientation orientation, QSplitter *parent)
+            : QSplitterHandle(orientation, parent)
+    {
+        setMask(QRegion(contentsRect()));
+        setAttribute(Qt::WA_MouseNoMask, true);
+    }
+protected:
+    void resizeEvent(QResizeEvent *event);
+    void paintEvent(QPaintEvent *event);
 };
 
-inline void IFindSupport::highlightAll(const QString &, FindFlags) {}
-
+} // namespace Internal
 } // namespace Core
 
-#endif // IFINDSUPPORT_H
+using namespace Core;
+using namespace Core::Internal;
+
+void MiniSplitterHandle::resizeEvent(QResizeEvent *event)
+{
+    if (orientation() == Qt::Horizontal)
+        setContentsMargins(2, 0, 2, 0);
+    else
+        setContentsMargins(0, 2, 0, 2);
+    setMask(QRegion(contentsRect()));
+    QSplitterHandle::resizeEvent(event);
+}
+
+void MiniSplitterHandle::paintEvent(QPaintEvent *event)
+{
+    QPainter painter(this);
+    painter.fillRect(event->rect(), Utils::StyleHelper::borderColor());
+}
+
+QSplitterHandle *MiniSplitter::createHandle()
+{
+    return new MiniSplitterHandle(orientation(), this);
+}
+
+MiniSplitter::MiniSplitter(QWidget *parent)
+    : QSplitter(parent)
+{
+    setHandleWidth(1);
+    setChildrenCollapsible(false);
+    setProperty("minisplitter", true);
+}
+
+MiniSplitter::MiniSplitter(Qt::Orientation orientation)
+    : QSplitter(orientation)
+{
+    setHandleWidth(1);
+    setChildrenCollapsible(false);
+    setProperty("minisplitter", true);
+}

@@ -27,54 +27,52 @@
 **
 ****************************************************************************/
 
-#ifndef IFINDSUPPORT_H
-#define IFINDSUPPORT_H
+#ifndef OUTPUTPANE_H
+#define OUTPUTPANE_H
 
-#include "textfindconstants.h"
+//#include "core_global.h"//#720 ROOPAK
+#include "../jseditortools_global.h"//#720 ROOPAK
 
-#include <QObject>
-#include <QString>
+#include <QWidget>
+
+QT_BEGIN_NAMESPACE
+class QSplitter;
+QT_END_NAMESPACE
 
 namespace Core {
 
-class JSEDITORTOOLS_EXPORT IFindSupport : public QObject
+class IMode;
+
+namespace Internal { class OutputPaneManager; }
+struct OutputPanePlaceHolderPrivate;
+
+class JSEDITORTOOLS_EXPORT OutputPanePlaceHolder : public QWidget//#720 ROOPAK
 {
     Q_OBJECT
+    friend class Core::Internal::OutputPaneManager; // needs to set m_visible and thus access m_current
 
 public:
-    enum Result { Found, NotFound, NotYetFound };
+    explicit OutputPanePlaceHolder(Core::IMode *mode, QSplitter *parent = 0);
+    ~OutputPanePlaceHolder();
 
-    IFindSupport() : QObject(0) {}
-    virtual ~IFindSupport() {}
+    static OutputPanePlaceHolder *getCurrent();
+    static bool isCurrentVisible();
 
-    virtual bool supportsReplace() const = 0;
-    virtual FindFlags supportedFindFlags() const = 0;
-    virtual void resetIncrementalSearch() = 0;
-    virtual void clearResults() = 0;
-    virtual QString currentFindString() const = 0;
-    virtual QString completedFindString() const = 0;
+    void unmaximize();
+    bool isMaximized() const;
+    void setDefaultHeight(int height);
+    void ensureSizeHintAsMinimum();
 
-    virtual void highlightAll(const QString &txt, FindFlags findFlags);
-    virtual Result findIncremental(const QString &txt, FindFlags findFlags) = 0;
-    virtual Result findStep(const QString &txt, FindFlags findFlags) = 0;
-    virtual void replace(const QString &before, const QString &after,
-                         FindFlags findFlags);
-    virtual bool replaceStep(const QString &before, const QString &after,
-        FindFlags findFlags);
-    virtual int replaceAll(const QString &before, const QString &after,
-        FindFlags findFlags);
+private slots:
+    void currentModeChanged(Core::IMode *);
 
-    virtual void defineFindScope(){}
-    virtual void clearFindScope(){}
+private:
+    bool canMaximizeOrMinimize() const;
+    void maximizeOrMinimize(bool maximize);
 
-    static void showWrapIndicator(QWidget *parent);
-
-signals:
-    void changed();
+    OutputPanePlaceHolderPrivate *d;
 };
-
-inline void IFindSupport::highlightAll(const QString &, FindFlags) {}
 
 } // namespace Core
 
-#endif // IFINDSUPPORT_H
+#endif // OUTPUTPANE_H

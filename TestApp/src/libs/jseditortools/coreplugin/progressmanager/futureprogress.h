@@ -30,7 +30,8 @@
 #ifndef FUTUREPROGRESS_H
 #define FUTUREPROGRESS_H
 
-#include <coreplugin/core_global.h>
+//#include <coreplugin/core_global.h>//#720 ROOPAK
+#include "coreplugin/../jseditortools_global.h"//#720 ROOPAK
 #include <coreplugin/id.h>
 
 #include <QString>
@@ -40,7 +41,7 @@
 namespace Core {
 class FutureProgressPrivate;
 
-class CORE_EXPORT FutureProgress : public QWidget
+class JSEDITORTOOLS_EXPORT FutureProgress : public QWidget//#720 ROOPAK
 {
     Q_OBJECT
 

@@ -27,54 +27,31 @@
 **
 ****************************************************************************/
 
-#ifndef IFINDSUPPORT_H
-#define IFINDSUPPORT_H
+#ifndef MINISPLITTER_H
+#define MINISPLITTER_H
 
-#include "textfindconstants.h"
+//#include "core_global.h"//#720 ROOPAK
+#include "../jseditortools_global.h"//#720 ROOPAK
 
-#include <QObject>
-#include <QString>
+#include <QSplitter>
+
+QT_BEGIN_NAMESPACE
+class QSplitterHandle;
+QT_END_NAMESPACE
 
 namespace Core {
 
-class JSEDITORTOOLS_EXPORT IFindSupport : public QObject
+/*! This is a simple helper-class to obtain mac-style 1-pixel wide splitters */
+class JSEDITORTOOLS_EXPORT MiniSplitter : public QSplitter
 {
-    Q_OBJECT
-
 public:
-    enum Result { Found, NotFound, NotYetFound };
+    MiniSplitter(QWidget *parent = 0);
+    MiniSplitter(Qt::Orientation orientation);
 
-    IFindSupport() : QObject(0) {}
-    virtual ~IFindSupport() {}
-
-    virtual bool supportsReplace() const = 0;
-    virtual FindFlags supportedFindFlags() const = 0;
-    virtual void resetIncrementalSearch() = 0;
-    virtual void clearResults() = 0;
-    virtual QString currentFindString() const = 0;
-    virtual QString completedFindString() const = 0;
-
-    virtual void highlightAll(const QString &txt, FindFlags findFlags);
-    virtual Result findIncremental(const QString &txt, FindFlags findFlags) = 0;
-    virtual Result findStep(const QString &txt, FindFlags findFlags) = 0;
-    virtual void replace(const QString &before, const QString &after,
-                         FindFlags findFlags);
-    virtual bool replaceStep(const QString &before, const QString &after,
-        FindFlags findFlags);
-    virtual int replaceAll(const QString &before, const QString &after,
-        FindFlags findFlags);
-
-    virtual void defineFindScope(){}
-    virtual void clearFindScope(){}
-
-    static void showWrapIndicator(QWidget *parent);
-
-signals:
-    void changed();
+protected:
+    QSplitterHandle *createHandle();
 };
-
-inline void IFindSupport::highlightAll(const QString &, FindFlags) {}
 
 } // namespace Core
 
-#endif // IFINDSUPPORT_H
+#endif // MINISPLITTER_H

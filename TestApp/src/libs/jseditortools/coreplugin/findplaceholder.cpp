@@ -27,54 +27,59 @@
 **
 ****************************************************************************/
 
-#ifndef IFINDSUPPORT_H
-#define IFINDSUPPORT_H
+#include "findplaceholder.h"
 
-#include "textfindconstants.h"
+#include <extensionsystem/pluginmanager.h>
 
-#include <QObject>
-#include <QString>
+#include <QVBoxLayout>
 
-namespace Core {
 
-class JSEDITORTOOLS_EXPORT IFindSupport : public QObject
+using namespace Core;
+
+FindToolBarPlaceHolder *FindToolBarPlaceHolder::m_current = 0;
+
+FindToolBarPlaceHolder::FindToolBarPlaceHolder(QWidget *owner, QWidget *parent)
+    : QWidget(parent), m_owner(owner), m_subWidget(0)
 {
-    Q_OBJECT
+    setLayout(new QVBoxLayout);
+    setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Maximum);
+    layout()->setMargin(0);
+    ExtensionSystem::PluginManager::addObject(this);
+}
 
-public:
-    enum Result { Found, NotFound, NotYetFound };
+FindToolBarPlaceHolder::~FindToolBarPlaceHolder()
+{
+    ExtensionSystem::PluginManager::removeObject(this);
+    if (m_subWidget) {
+        m_subWidget->setVisible(false);
+        m_subWidget->setParent(0);
+    }
+    if (m_current == this)
+        m_current = 0;
+}
 
-    IFindSupport() : QObject(0) {}
-    virtual ~IFindSupport() {}
+QWidget *FindToolBarPlaceHolder::owner() const
+{
+    return m_owner;
+}
 
-    virtual bool supportsReplace() const = 0;
-    virtual FindFlags supportedFindFlags() const = 0;
-    virtual void resetIncrementalSearch() = 0;
-    virtual void clearResults() = 0;
-    virtual QString currentFindString() const = 0;
-    virtual QString completedFindString() const = 0;
+void FindToolBarPlaceHolder::setWidget(QWidget *widget)
+{
+    if (m_subWidget) {
+        m_subWidget->setVisible(false);
+        m_subWidget->setParent(0);
+    }
+    m_subWidget = widget;
+    if (m_subWidget)
+        layout()->addWidget(m_subWidget);
+}
 
-    virtual void highlightAll(const QString &txt, FindFlags findFlags);
-    virtual Result findIncremental(const QString &txt, FindFlags findFlags) = 0;
-    virtual Result findStep(const QString &txt, FindFlags findFlags) = 0;
-    virtual void replace(const QString &before, const QString &after,
-                         FindFlags findFlags);
-    virtual bool replaceStep(const QString &before, const QString &after,
-        FindFlags findFlags);
-    virtual int replaceAll(const QString &before, const QString &after,
-        FindFlags findFlags);
+FindToolBarPlaceHolder *FindToolBarPlaceHolder::getCurrent()
+{
+    return m_current;
+}
 
-    virtual void defineFindScope(){}
-    virtual void clearFindScope(){}
-
-    static void showWrapIndicator(QWidget *parent);
-
-signals:
-    void changed();
-};
-
-inline void IFindSupport::highlightAll(const QString &, FindFlags) {}
-
-} // namespace Core
-
-#endif // IFINDSUPPORT_H
+void FindToolBarPlaceHolder::setCurrent(FindToolBarPlaceHolder *placeHolder)
+{
+    m_current = placeHolder;
+}

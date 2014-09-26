@@ -41,7 +41,7 @@ QT_END_NAMESPACE
 namespace Core {
 struct BaseTextFindPrivate;
 
-class CORE_EXPORT BaseTextFind : public IFindSupport
+class JSEDITORTOOLS_EXPORT BaseTextFind : public IFindSupport
 {
     Q_OBJECT
 
