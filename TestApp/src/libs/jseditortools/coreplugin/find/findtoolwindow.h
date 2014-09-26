@@ -27,47 +27,61 @@
 **
 ****************************************************************************/
 
-#ifndef IMODE_H
-#define IMODE_H
+#ifndef FINDTOOLWINDOW_H
+#define FINDTOOLWINDOW_H
 
-#include "icontext.h"
-#include "id.h"
+#include "ui_finddialog.h"
+#include "findplugin.h"
 
-#include <QIcon>
+#include <QList>
+
+QT_FORWARD_DECLARE_CLASS(QCompleter)
 
 namespace Core {
+class IFindFilter;
 
-class JSEDITORTOOLS_EXPORT IMode : public IContext//#720 ROOPAK
+namespace Internal {
+
+class FindToolWindow : public QWidget
 {
     Q_OBJECT
-    Q_PROPERTY(bool enabled READ isEnabled WRITE setEnabled)
 
 public:
-    IMode(QObject *parent = 0);
+    explicit FindToolWindow(FindPlugin *plugin, QWidget *parent = 0);
+    ~FindToolWindow();
+    static FindToolWindow *instance();
 
-    QString displayName() const { return m_displayName; }
-    QIcon icon() const { return m_icon; }
-    int priority() const { return m_priority; }
-    Id id() const { return m_id; }
-    bool isEnabled() const;
+    void setFindFilters(const QList<IFindFilter *> &filters);
 
-    void setEnabled(bool enabled);
-    void setDisplayName(const QString &displayName) { m_displayName = displayName; }
-    void setIcon(const QIcon &icon) { m_icon = icon; }
-    void setPriority(int priority) { m_priority = priority; }
-    void setId(Id id) { m_id = id; }
+    void setFindText(const QString &text);
+    void setCurrentFilter(IFindFilter *filter);
+    void readSettings();
+    void writeSettings();
 
-signals:
-    void enabledStateChanged(bool enabled);
+protected:
+    bool event(QEvent *event);
+    bool eventFilter(QObject *obj, QEvent *event);
+
+private slots:
+    void search();
+    void replace();
+    void setCurrentFilter(int index);
+    void updateButtonStates();
+    void updateFindFlags();
 
 private:
-    QString m_displayName;
-    QIcon m_icon;
-    int m_priority;
-    Id m_id;
-    bool m_isEnabled;
+    void acceptAndGetParameters(QString *term, IFindFilter **filter);
+
+    Ui::FindDialog m_ui;
+    FindPlugin *m_plugin;
+    QList<IFindFilter *> m_filters;
+    QCompleter *m_findCompleter;
+    QWidgetList m_configWidgets;
+    IFindFilter *m_currentFilter;
+    QWidget *m_configWidget;
 };
 
+} // namespace Internal
 } // namespace Core
 
-#endif // IMODE_H
+#endif // FINDTOOLWINDOW_H

@@ -43,6 +43,7 @@ namespace Internal {
 class EditMode;
 class MainWindow;
 //class Locator;//#720 ROOPAK
+class QMainWindow;//#720 ROOPAK
 
 class JSEDITORTOOLS_EXPORT CorePlugin : public ExtensionSystem::IPlugin
 {
@@ -50,7 +51,7 @@ class JSEDITORTOOLS_EXPORT CorePlugin : public ExtensionSystem::IPlugin
 //    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "Core.json")
 
 public:
-    CorePlugin();
+    CorePlugin(QMainWindow *mainWindow);
     ~CorePlugin();
 
     bool initialize(const QStringList &arguments, QString *errorMessage = 0);

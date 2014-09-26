@@ -27,47 +27,56 @@
 **
 ****************************************************************************/
 
-#ifndef IMODE_H
-#define IMODE_H
+#ifndef SEARCHRESULTTREEITEMS_H
+#define SEARCHRESULTTREEITEMS_H
 
-#include "icontext.h"
-#include "id.h"
+#include "searchresultwindow.h"
 
-#include <QIcon>
+#include <QString>
+#include <QList>
 
 namespace Core {
+namespace Internal {
 
-class JSEDITORTOOLS_EXPORT IMode : public IContext//#720 ROOPAK
+class SearchResultTreeItem
 {
-    Q_OBJECT
-    Q_PROPERTY(bool enabled READ isEnabled WRITE setEnabled)
-
 public:
-    IMode(QObject *parent = 0);
+    explicit SearchResultTreeItem(const SearchResultItem &item = SearchResultItem(),
+                                  SearchResultTreeItem *parent = NULL);
+    virtual ~SearchResultTreeItem();
 
-    QString displayName() const { return m_displayName; }
-    QIcon icon() const { return m_icon; }
-    int priority() const { return m_priority; }
-    Id id() const { return m_id; }
-    bool isEnabled() const;
+    bool isLeaf() const;
+    SearchResultTreeItem *parent() const;
+    SearchResultTreeItem *childAt(int index) const;
+    int insertionIndex(const QString &text, SearchResultTreeItem **existingItem) const;
+    int insertionIndex(const SearchResultItem &item, SearchResultTreeItem **existingItem) const;
+    void insertChild(int index, SearchResultTreeItem *child);
+    void insertChild(int index, const SearchResultItem &item);
+    void appendChild(const SearchResultItem &item);
+    int childrenCount() const;
+    int rowOfItem() const;
+    void clearChildren();
 
-    void setEnabled(bool enabled);
-    void setDisplayName(const QString &displayName) { m_displayName = displayName; }
-    void setIcon(const QIcon &icon) { m_icon = icon; }
-    void setPriority(int priority) { m_priority = priority; }
-    void setId(Id id) { m_id = id; }
+    bool isUserCheckable() const;
+    void setIsUserCheckable(bool isUserCheckable);
 
-signals:
-    void enabledStateChanged(bool enabled);
+    Qt::CheckState checkState() const;
+    void setCheckState(Qt::CheckState checkState);
+
+    bool isGenerated() const { return m_isGenerated; }
+    void setGenerated(bool value) { m_isGenerated = value; }
+
+    SearchResultItem item;
 
 private:
-    QString m_displayName;
-    QIcon m_icon;
-    int m_priority;
-    Id m_id;
-    bool m_isEnabled;
+    SearchResultTreeItem *m_parent;
+    QList<SearchResultTreeItem *> m_children;
+    bool m_isUserCheckable;
+    bool m_isGenerated;
+    Qt::CheckState m_checkState;
 };
 
+} // namespace Internal
 } // namespace Core
 
-#endif // IMODE_H
+#endif // SEARCHRESULTTREEITEMS_H

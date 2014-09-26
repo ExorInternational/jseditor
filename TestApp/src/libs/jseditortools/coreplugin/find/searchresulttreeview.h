@@ -27,47 +27,47 @@
 **
 ****************************************************************************/
 
-#ifndef IMODE_H
-#define IMODE_H
+#ifndef SEARCHRESULTTREEVIEW_H
+#define SEARCHRESULTTREEVIEW_H
 
-#include "icontext.h"
-#include "id.h"
+#include "searchresultwindow.h"
 
-#include <QIcon>
+#include <QTreeView>
 
 namespace Core {
+namespace Internal {
 
-class JSEDITORTOOLS_EXPORT IMode : public IContext//#720 ROOPAK
+class SearchResultTreeModel;
+class SearchResultColor;
+
+class SearchResultTreeView : public QTreeView
 {
     Q_OBJECT
-    Q_PROPERTY(bool enabled READ isEnabled WRITE setEnabled)
 
 public:
-    IMode(QObject *parent = 0);
+    explicit SearchResultTreeView(QWidget *parent = 0);
 
-    QString displayName() const { return m_displayName; }
-    QIcon icon() const { return m_icon; }
-    int priority() const { return m_priority; }
-    Id id() const { return m_id; }
-    bool isEnabled() const;
+    void setAutoExpandResults(bool expand);
+    void setTextEditorFont(const QFont &font, const SearchResultColor color);
 
-    void setEnabled(bool enabled);
-    void setDisplayName(const QString &displayName) { m_displayName = displayName; }
-    void setIcon(const QIcon &icon) { m_icon = icon; }
-    void setPriority(int priority) { m_priority = priority; }
-    void setId(Id id) { m_id = id; }
+    SearchResultTreeModel *model() const;
+    void addResults(const QList<SearchResultItem> &items, SearchResult::AddMode mode);
 
 signals:
-    void enabledStateChanged(bool enabled);
+    void jumpToSearchResult(const SearchResultItem &item);
 
-private:
-    QString m_displayName;
-    QIcon m_icon;
-    int m_priority;
-    Id m_id;
-    bool m_isEnabled;
+public slots:
+    void clear();
+    void emitJumpToSearchResult(const QModelIndex &index);
+
+protected:
+    void keyPressEvent(QKeyEvent *e);
+
+    SearchResultTreeModel *m_model;
+    bool m_autoExpandResults;
 };
 
+} // namespace Internal
 } // namespace Core
 
-#endif // IMODE_H
+#endif // SEARCHRESULTTREEVIEW_H

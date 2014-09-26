@@ -61,7 +61,7 @@ public:
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
     QModelIndex index(int row, int column = 0, const QModelIndex &parent = QModelIndex()) const;
 
-    struct CORE_EXPORT Entry {
+    struct JSEDITORTOOLS_EXPORT Entry {//#720 ROOPAK
         Entry();
         IDocument *document;
         QString fileName() const;

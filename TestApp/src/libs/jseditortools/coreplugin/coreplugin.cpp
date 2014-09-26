@@ -46,14 +46,15 @@
 #include <QtPlugin>
 #include <QDebug>
 #include <QDateTime>
+#include <QMainWindow>//#720 ROOPAK
 
 using namespace Core;
 using namespace Core::Internal;
 
-CorePlugin::CorePlugin() : m_editMode(0)/*, m_designMode(0)*/ //ROOPAK
+CorePlugin::CorePlugin(QMainWindow *mainWindow) : m_editMode(0)/*, m_designMode(0)*/ //ROOPAK
 {
     qRegisterMetaType<Core::Id>();
-    m_mainWindow = new MainWindow;
+    m_mainWindow = new MainWindow(mainWindow);//#720 ROOPAK
     m_findPlugin = new FindPlugin;
 //    m_locator = new Locator;//#720 ROOPAK
 }
@@ -149,4 +150,4 @@ ExtensionSystem::IPlugin::ShutdownFlag CorePlugin::aboutToShutdown()
     return SynchronousShutdown;
 }
 
-Q_EXPORT_PLUGIN(CorePlugin)
+//Q_EXPORT_PLUGIN(CorePlugin)//#720 ROOPAK

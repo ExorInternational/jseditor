@@ -27,47 +27,49 @@
 **
 ****************************************************************************/
 
-#ifndef IMODE_H
-#define IMODE_H
+#ifndef IFINDFILTER_H
+#define IFINDFILTER_H
 
-#include "icontext.h"
-#include "id.h"
+#include "textfindconstants.h"
 
-#include <QIcon>
+QT_BEGIN_NAMESPACE
+class QWidget;
+class QSettings;
+class QKeySequence;
+class Pixmap;
+QT_END_NAMESPACE
 
 namespace Core {
 
-class JSEDITORTOOLS_EXPORT IMode : public IContext//#720 ROOPAK
+class CORE_EXPORT IFindFilter : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(bool enabled READ isEnabled WRITE setEnabled)
-
 public:
-    IMode(QObject *parent = 0);
 
-    QString displayName() const { return m_displayName; }
-    QIcon icon() const { return m_icon; }
-    int priority() const { return m_priority; }
-    Id id() const { return m_id; }
-    bool isEnabled() const;
+    virtual ~IFindFilter() {}
 
-    void setEnabled(bool enabled);
-    void setDisplayName(const QString &displayName) { m_displayName = displayName; }
-    void setIcon(const QIcon &icon) { m_icon = icon; }
-    void setPriority(int priority) { m_priority = priority; }
-    void setId(Id id) { m_id = id; }
+    virtual QString id() const = 0;
+    virtual QString displayName() const = 0;
+    ///
+    virtual bool isEnabled() const = 0;
+    virtual QKeySequence defaultShortcut() const;
+    virtual bool isReplaceSupported() const { return false; }
+    virtual FindFlags supportedFindFlags() const;
 
+    virtual void findAll(const QString &txt, FindFlags findFlags) = 0;
+    virtual void replaceAll(const QString &txt, FindFlags findFlags)
+    { Q_UNUSED(txt) Q_UNUSED(findFlags) }
+
+    virtual QWidget *createConfigWidget() { return 0; }
+    virtual void writeSettings(QSettings *settings) { Q_UNUSED(settings) }
+    virtual void readSettings(QSettings *settings) { Q_UNUSED(settings) }
+
+    static QPixmap pixmapForFindFlags(FindFlags flags);
+    static QString descriptionForFindFlags(FindFlags flags);
 signals:
-    void enabledStateChanged(bool enabled);
-
-private:
-    QString m_displayName;
-    QIcon m_icon;
-    int m_priority;
-    Id m_id;
-    bool m_isEnabled;
+    void enabledChanged(bool enabled);
 };
 
 } // namespace Core
 
-#endif // IMODE_H
+#endif // IFINDFILTER_H

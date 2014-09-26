@@ -27,47 +27,49 @@
 **
 ****************************************************************************/
 
-#ifndef IMODE_H
-#define IMODE_H
+#ifndef TREEVIEWFIND_H
+#define TREEVIEWFIND_H
 
-#include "icontext.h"
-#include "id.h"
+#include "ifindsupport.h"
 
-#include <QIcon>
+QT_BEGIN_NAMESPACE
+class QTreeView;
+class QModelIndex;
+QT_END_NAMESPACE
 
 namespace Core {
+class ItemModelFindPrivate;
 
-class JSEDITORTOOLS_EXPORT IMode : public IContext//#720 ROOPAK
+class CORE_EXPORT TreeViewFind : public IFindSupport
 {
     Q_OBJECT
-    Q_PROPERTY(bool enabled READ isEnabled WRITE setEnabled)
-
 public:
-    IMode(QObject *parent = 0);
+    explicit TreeViewFind(QTreeView *view, int role = Qt::DisplayRole);
+    virtual ~TreeViewFind();
 
-    QString displayName() const { return m_displayName; }
-    QIcon icon() const { return m_icon; }
-    int priority() const { return m_priority; }
-    Id id() const { return m_id; }
-    bool isEnabled() const;
+    bool supportsReplace() const;
+    FindFlags supportedFindFlags() const;
+    void resetIncrementalSearch();
+    void clearResults();
+    QString currentFindString() const;
+    QString completedFindString() const;
 
-    void setEnabled(bool enabled);
-    void setDisplayName(const QString &displayName) { m_displayName = displayName; }
-    void setIcon(const QIcon &icon) { m_icon = icon; }
-    void setPriority(int priority) { m_priority = priority; }
-    void setId(Id id) { m_id = id; }
-
-signals:
-    void enabledStateChanged(bool enabled);
+    virtual void highlightAll(const QString &txt, FindFlags findFlags);
+    Result findIncremental(const QString &txt, FindFlags findFlags);
+    Result findStep(const QString &txt, FindFlags findFlags);
 
 private:
-    QString m_displayName;
-    QIcon m_icon;
-    int m_priority;
-    Id m_id;
-    bool m_isEnabled;
+    Result find(const QString &txt, FindFlags findFlags,
+                bool startFromCurrentIndex, bool *wrapped);
+    QModelIndex nextIndex(const QModelIndex &idx, bool *wrapped) const;
+    QModelIndex prevIndex(const QModelIndex &idx, bool *wrapped) const;
+    QModelIndex followingIndex(const QModelIndex &idx, bool backward,
+                               bool *wrapped);
+
+private:
+    ItemModelFindPrivate *d;
 };
 
 } // namespace Core
 
-#endif // IMODE_H
+#endif // TREEVIEWFIND_H

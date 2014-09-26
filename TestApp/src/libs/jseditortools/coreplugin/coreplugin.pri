@@ -56,3 +56,6 @@ SOURCES += \
     $$PWD/editormanager/ieditorfactory.cpp \
     $$PWD/editormanager/ieditor.cpp \
     $$PWD/idocument.cpp \
+
+
+include(find/find.pri)

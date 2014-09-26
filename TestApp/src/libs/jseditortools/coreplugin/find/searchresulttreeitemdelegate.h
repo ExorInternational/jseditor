@@ -27,47 +27,29 @@
 **
 ****************************************************************************/
 
-#ifndef IMODE_H
-#define IMODE_H
+#ifndef SEARCHRESULTTREEITEMDELEGATE_H
+#define SEARCHRESULTTREEITEMDELEGATE_H
 
-#include "icontext.h"
-#include "id.h"
-
-#include <QIcon>
+#include <QItemDelegate>
 
 namespace Core {
+namespace Internal {
 
-class JSEDITORTOOLS_EXPORT IMode : public IContext//#720 ROOPAK
+class SearchResultTreeItemDelegate: public QItemDelegate
 {
-    Q_OBJECT
-    Q_PROPERTY(bool enabled READ isEnabled WRITE setEnabled)
-
 public:
-    IMode(QObject *parent = 0);
-
-    QString displayName() const { return m_displayName; }
-    QIcon icon() const { return m_icon; }
-    int priority() const { return m_priority; }
-    Id id() const { return m_id; }
-    bool isEnabled() const;
-
-    void setEnabled(bool enabled);
-    void setDisplayName(const QString &displayName) { m_displayName = displayName; }
-    void setIcon(const QIcon &icon) { m_icon = icon; }
-    void setPriority(int priority) { m_priority = priority; }
-    void setId(Id id) { m_id = id; }
-
-signals:
-    void enabledStateChanged(bool enabled);
+    SearchResultTreeItemDelegate(QObject *parent = 0);
+    void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
 
 private:
-    QString m_displayName;
-    QIcon m_icon;
-    int m_priority;
-    Id m_id;
-    bool m_isEnabled;
+    int drawLineNumber(QPainter *painter, const QStyleOptionViewItemV3 &option, const QRect &rect, const QModelIndex &index) const;
+    void drawText(QPainter *painter, const QStyleOptionViewItem &option,
+                           const QRect &rect, const QModelIndex &index) const;
+
+    static const int m_minimumLineNumberDigits = 6;
 };
 
+} // namespace Internal
 } // namespace Core
 
-#endif // IMODE_H
+#endif // SEARCHRESULTTREEITEMDELEGATE_H

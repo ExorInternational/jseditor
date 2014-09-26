@@ -27,47 +27,54 @@
 **
 ****************************************************************************/
 
-#ifndef IMODE_H
-#define IMODE_H
+#ifndef IFINDSUPPORT_H
+#define IFINDSUPPORT_H
 
-#include "icontext.h"
-#include "id.h"
+#include "textfindconstants.h"
 
-#include <QIcon>
+#include <QObject>
+#include <QString>
 
 namespace Core {
 
-class JSEDITORTOOLS_EXPORT IMode : public IContext//#720 ROOPAK
+class CORE_EXPORT IFindSupport : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(bool enabled READ isEnabled WRITE setEnabled)
 
 public:
-    IMode(QObject *parent = 0);
+    enum Result { Found, NotFound, NotYetFound };
 
-    QString displayName() const { return m_displayName; }
-    QIcon icon() const { return m_icon; }
-    int priority() const { return m_priority; }
-    Id id() const { return m_id; }
-    bool isEnabled() const;
+    IFindSupport() : QObject(0) {}
+    virtual ~IFindSupport() {}
 
-    void setEnabled(bool enabled);
-    void setDisplayName(const QString &displayName) { m_displayName = displayName; }
-    void setIcon(const QIcon &icon) { m_icon = icon; }
-    void setPriority(int priority) { m_priority = priority; }
-    void setId(Id id) { m_id = id; }
+    virtual bool supportsReplace() const = 0;
+    virtual FindFlags supportedFindFlags() const = 0;
+    virtual void resetIncrementalSearch() = 0;
+    virtual void clearResults() = 0;
+    virtual QString currentFindString() const = 0;
+    virtual QString completedFindString() const = 0;
+
+    virtual void highlightAll(const QString &txt, FindFlags findFlags);
+    virtual Result findIncremental(const QString &txt, FindFlags findFlags) = 0;
+    virtual Result findStep(const QString &txt, FindFlags findFlags) = 0;
+    virtual void replace(const QString &before, const QString &after,
+                         FindFlags findFlags);
+    virtual bool replaceStep(const QString &before, const QString &after,
+        FindFlags findFlags);
+    virtual int replaceAll(const QString &before, const QString &after,
+        FindFlags findFlags);
+
+    virtual void defineFindScope(){}
+    virtual void clearFindScope(){}
+
+    static void showWrapIndicator(QWidget *parent);
 
 signals:
-    void enabledStateChanged(bool enabled);
-
-private:
-    QString m_displayName;
-    QIcon m_icon;
-    int m_priority;
-    Id m_id;
-    bool m_isEnabled;
+    void changed();
 };
+
+inline void IFindSupport::highlightAll(const QString &, FindFlags) {}
 
 } // namespace Core
 
-#endif // IMODE_H
+#endif // IFINDSUPPORT_H
