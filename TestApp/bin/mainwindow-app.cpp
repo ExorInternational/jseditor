@@ -15,9 +15,9 @@ MainWindowApp::MainWindowApp(QWidget *parent) :
 
     ui->mainToolBar->hide();
 
-    QMenu *fileMenu = ui->menuBar->addMenu("File");
-    fileMenu->addAction("Open", this, SLOT(onFileOpenClicked()));
-    fileMenu->addAction("Exit", qApp, SLOT(quit()));
+//    QMenu *fileMenu = ui->menuBar->addMenu("File");
+//    fileMenu->addAction("Open", this, SLOT(onFileOpenClicked()));
+//    fileMenu->addAction("Exit", qApp, SLOT(quit()));
 
     m_pCorePlugin = new Core::Internal::CorePlugin(this);
 }
