@@ -50,7 +50,7 @@ class BaseTextMarkRegistry;
 class TextEditorPlugin : public ExtensionSystem::IPlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "TextEditor.json")
+//    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "TextEditor.json")
 
 public:
     TextEditorPlugin();

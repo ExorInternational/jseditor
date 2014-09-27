@@ -3,12 +3,23 @@
 
 #include "jseditortools_global.h"
 
+class QMainWindow;
+
+namespace Core {
+namespace Internal {
+class CorePlugin;
+}
+}
+
 namespace JsEditorTools {
 
-class JSEDITORTOOLS_EXPORT JsEditorToolsDummy {
+class JSEDITORTOOLS_EXPORT JsEditorToolsLib {
 public:
-    JsEditorToolsDummy();
-    ~JsEditorToolsDummy();
+    JsEditorToolsLib(QMainWindow *mainWindow);
+    ~JsEditorToolsLib();
+private:
+    QMainWindow *m_MainWindow;
+    Core::Internal::CorePlugin *m_pCorePlugin;
 };
 
 }// namespace JsEditorTools

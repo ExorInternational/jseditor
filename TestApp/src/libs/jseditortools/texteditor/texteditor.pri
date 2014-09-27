@@ -115,6 +115,7 @@ HEADERS += \
     $$PWD/cpptools-commentssettings.h \#720 - ADDED BY ROOPAK FROM CPPTOOLS
     $$PWD/texteditor_global.h \
     $$PWD/convenience.h \
+    $$PWD/extraencodingsettings.h \
 
 SOURCES += \
     $$PWD/texteditorplugin.cpp \
@@ -220,6 +221,7 @@ SOURCES += \
     $$PWD/cpptools-completionsettingspage.cpp \#720 - ADDED BY ROOPAK FROM CPPTOOLS
     $$PWD/cpptools-commentssettings.cpp \#720 - ADDED BY ROOPAK FROM CPPTOOLS
     $$PWD/convenience.cpp \
+    $$PWD/extraencodingsettings.cpp \
 
 FORMS += \
     $$PWD/behaviorsettingswidget.ui \

@@ -1,12 +1,16 @@
 #include "jseditortools.h"
+#include <jseditortools/coreplugin/coreplugin.h>
 
 using namespace JsEditorTools;
 
-JsEditorToolsDummy::JsEditorToolsDummy()
+JsEditorToolsLib::JsEditorToolsLib(QMainWindow *mainWindow)
 {
-
+    m_MainWindow = mainWindow;
+    m_pCorePlugin = new Core::Internal::CorePlugin(m_MainWindow);
 }
-JsEditorToolsDummy::~JsEditorToolsDummy()
+JsEditorToolsLib::~JsEditorToolsLib()
 {
-
+    if(m_pCorePlugin)
+        delete m_pCorePlugin;
+    m_pCorePlugin = 0;
 }

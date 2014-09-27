@@ -324,6 +324,6 @@ void TextEditorPlugin::updateCurrentSelection(const QString &text)
     }
 }
 
-Q_EXPORT_PLUGIN(TextEditorPlugin)
+//Q_EXPORT_PLUGIN(TextEditorPlugin)
 
 //#include "texteditorplugin.moc"//#720 ROOPAK
