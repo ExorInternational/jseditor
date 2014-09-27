@@ -27,64 +27,33 @@
 **
 ****************************************************************************/
 
-#ifndef COREPLUGIN_H
-#define COREPLUGIN_H
+#include "progressmanager_p.h"
 
-#include <extensionsystem/iplugin.h>
-#include "core_global.h"
-
-class QMainWindow;//#720 ROOPAK
-
-namespace Core {
-
-//class DesignMode; //ROOPAK
-class FindPlugin;
-
-namespace Internal {
-
-class EditMode;
-class MainWindow;
-//class Locator;//#720 ROOPAK
-
-
-class CORE_EXPORT CorePlugin : public ExtensionSystem::IPlugin
+void Core::Internal::ProgressManagerPrivate::initInternal()
 {
-    Q_OBJECT
-//    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "Core.json")
+}
 
-public:
-    CorePlugin(QMainWindow *mainWindow);
-    ~CorePlugin();
+void Core::Internal::ProgressManagerPrivate::cleanup()
+{
+}
 
-    bool initialize(const QStringList &arguments, QString *errorMessage = 0);
-    void extensionsInitialized();
-    bool delayedInitialize();
-    ShutdownFlag aboutToShutdown();
-    QObject *remoteCommand(const QStringList & /* options */, const QStringList &args);
+void Core::Internal::ProgressManagerPrivate::doSetApplicationLabel(const QString &text)
+{
+    Q_UNUSED(text)
+}
 
-public slots:
-    void fileOpenRequest(const QString&);
+void Core::Internal::ProgressManagerPrivate::setApplicationProgressRange(int min, int max)
+{
+    Q_UNUSED(min)
+    Q_UNUSED(max)
+}
 
-private slots:
-#if defined(WITH_TESTS)
-    void testVcsManager_data();
-    void testVcsManager();
-    // Locator:
-    void test_basefilefilter();
-    void test_basefilefilter_data();
-#endif
+void Core::Internal::ProgressManagerPrivate::setApplicationProgressValue(int value)
+{
+    Q_UNUSED(value)
+}
 
-private:
-    void parseArguments(const QStringList & arguments);
-
-    MainWindow *m_mainWindow;
-    EditMode *m_editMode;
-//    DesignMode *m_designMode; //ROOPAK
-    FindPlugin *m_findPlugin;
-//    Locator *m_locator;//#720 ROOPAK
-};
-
-} // namespace Internal
-} // namespace Core
-
-#endif // COREPLUGIN_H
+void Core::Internal::ProgressManagerPrivate::setApplicationProgressVisible(bool visible)
+{
+    Q_UNUSED(visible)
+}

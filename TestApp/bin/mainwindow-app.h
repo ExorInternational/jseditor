@@ -7,6 +7,12 @@ namespace Ui {
 class MainWindowApp;
 }
 
+namespace Core {
+namespace Internal {
+class CorePlugin;
+}
+}
+
 class MainWindowApp : public QMainWindow
 {
     Q_OBJECT
@@ -14,11 +20,11 @@ class MainWindowApp : public QMainWindow
 public:
     explicit MainWindowApp(QWidget *parent = 0);
     ~MainWindowApp();
-
-private:
-    Ui::MainWindowApp *ui;
 private slots:
     void onFileOpenClicked();
+private:
+    Ui::MainWindowApp *ui;
+    Core::Internal::CorePlugin *m_pCorePlugin;
 };
 
 #endif // MAINWINDOW_APP_H

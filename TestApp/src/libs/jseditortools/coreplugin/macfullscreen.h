@@ -27,64 +27,22 @@
 **
 ****************************************************************************/
 
-#ifndef COREPLUGIN_H
-#define COREPLUGIN_H
+#ifndef MACFULLSCREEN_H
+#define MACFULLSCREEN_H
 
-#include <extensionsystem/iplugin.h>
-#include "core_global.h"
-
-class QMainWindow;//#720 ROOPAK
+#include "mainwindow.h"
 
 namespace Core {
-
-//class DesignMode; //ROOPAK
-class FindPlugin;
-
 namespace Internal {
+namespace MacFullScreen {
 
-class EditMode;
-class MainWindow;
-//class Locator;//#720 ROOPAK
+bool supportsFullScreen();
+// adds fullscreen button to window for lion
+void addFullScreen(Core::Internal::MainWindow *window);
+void toggleFullScreen(Core::Internal::MainWindow *window);
 
+} // MacFullScreen
+} // Internal
+} // Core
 
-class CORE_EXPORT CorePlugin : public ExtensionSystem::IPlugin
-{
-    Q_OBJECT
-//    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "Core.json")
-
-public:
-    CorePlugin(QMainWindow *mainWindow);
-    ~CorePlugin();
-
-    bool initialize(const QStringList &arguments, QString *errorMessage = 0);
-    void extensionsInitialized();
-    bool delayedInitialize();
-    ShutdownFlag aboutToShutdown();
-    QObject *remoteCommand(const QStringList & /* options */, const QStringList &args);
-
-public slots:
-    void fileOpenRequest(const QString&);
-
-private slots:
-#if defined(WITH_TESTS)
-    void testVcsManager_data();
-    void testVcsManager();
-    // Locator:
-    void test_basefilefilter();
-    void test_basefilefilter_data();
-#endif
-
-private:
-    void parseArguments(const QStringList & arguments);
-
-    MainWindow *m_mainWindow;
-    EditMode *m_editMode;
-//    DesignMode *m_designMode; //ROOPAK
-    FindPlugin *m_findPlugin;
-//    Locator *m_locator;//#720 ROOPAK
-};
-
-} // namespace Internal
-} // namespace Core
-
-#endif // COREPLUGIN_H
+#endif // MACFULLSCREEN_H

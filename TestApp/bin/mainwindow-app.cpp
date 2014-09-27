@@ -3,7 +3,7 @@
 
 #include <QFileDialog>
 
-#include <jseditortools/coreplugin/icore.h>//test - remove it
+#include <jseditortools/coreplugin/coreplugin.h>//test - remove it
 
 MainWindowApp::MainWindowApp(QWidget *parent) :
     QMainWindow(parent),
@@ -18,6 +18,8 @@ MainWindowApp::MainWindowApp(QWidget *parent) :
     QMenu *fileMenu = ui->menuBar->addMenu("File");
     fileMenu->addAction("Open", this, SLOT(onFileOpenClicked()));
     fileMenu->addAction("Exit", qApp, SLOT(quit()));
+
+    m_pCorePlugin = new Core::Internal::CorePlugin(this);
 }
 
 MainWindowApp::~MainWindowApp()

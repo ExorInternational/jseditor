@@ -94,3 +94,26 @@ SOURCES += \
     $$PWD/findplaceholder.cpp \
 
 include(find/find.pri)
+
+win32 {
+    SOURCES += $$PWD/progressmanager/progressmanager_win.cpp
+    greaterThan(QT_MAJOR_VERSION, 4): QT += gui-private # Uses QPlatformNativeInterface.
+    LIBS += -lole32 -luser32
+}
+else:macx {
+    HEADERS += macfullscreen.h
+    OBJECTIVE_SOURCES += \
+        $$PWD/progressmanager/progressmanager_mac.mm \
+        $$PWD/macfullscreen.mm
+    LIBS += -framework AppKit
+}
+else:unix {
+    SOURCES += $$PWD/progressmanager/progressmanager_x11.cpp
+    IMAGE_SIZE_LIST = 16 24 32 48 64 128 256 512
+
+    for(imagesize, IMAGE_SIZE_LIST) {
+        eval(image$${imagesize}.files = images/logo/$${imagesize}/QtProject-qtcreator.png)
+        eval(image$${imagesize}.path = $$QTC_PREFIX/share/icons/hicolor/$${imagesize}x$${imagesize}/apps)
+        INSTALLS += image$${imagesize}
+    }
+}
