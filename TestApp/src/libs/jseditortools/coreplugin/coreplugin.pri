@@ -50,6 +50,7 @@ HEADERS += \
     $$PWD/outputpane.h \
     $$PWD/fileutils.h \
     $$PWD/findplaceholder.h \
+    $$PWD/textdocument.h \
 
 SOURCES += \
     $$PWD/icore.cpp \
@@ -92,6 +93,7 @@ SOURCES += \
     $$PWD/outputpane.cpp \
     $$PWD/fileutils.cpp \
     $$PWD/findplaceholder.cpp \
+    $$PWD/textdocument.cpp \
 
 include(find/find.pri)
 

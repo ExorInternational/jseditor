@@ -7,6 +7,7 @@ contains(CONFIG, dll) {
 include(qmljseditor/qmljseditor.pri)
 include(qmljstools/qmljstools.pri)
 include(coreplugin/coreplugin.pri)
+include(texteditor/texteditor.pri)
 
 HEADERS += jseditortools.h \
     jseditortools_global.h \
