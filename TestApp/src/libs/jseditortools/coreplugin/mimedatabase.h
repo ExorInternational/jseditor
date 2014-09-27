@@ -30,8 +30,7 @@
 #ifndef MIMEDATABASE_H
 #define MIMEDATABASE_H
 
-//#include <coreplugin/core_global.h>
-#include "../jseditortools_global.h"//#720 ROOPAK
+#include <coreplugin/core_global.h>
 #include <QStringList>
 #include <QSharedDataPointer>
 #include <QSharedPointer>
@@ -56,7 +55,7 @@ namespace Internal {
     class MainWindow;
 }
 
-class JSEDITORTOOLS_EXPORT IMagicMatcher//#720 ROOPAK
+class CORE_EXPORT IMagicMatcher
 {
     Q_DISABLE_COPY(IMagicMatcher)
 
@@ -74,7 +73,7 @@ public:
     virtual ~IMagicMatcher() {}
 };
 
-class JSEDITORTOOLS_EXPORT MagicRule//#720 ROOPAK
+class CORE_EXPORT MagicRule
 {
     Q_DISABLE_COPY(MagicRule)
 public:
@@ -98,7 +97,7 @@ private:
     const int m_endPos;
 };
 
-class JSEDITORTOOLS_EXPORT MagicStringRule : public MagicRule//#720 ROOPAK
+class CORE_EXPORT MagicStringRule : public MagicRule
 {
 public:
     MagicStringRule(const QString &s, int startPos, int endPos);
@@ -114,7 +113,7 @@ private:
     const QByteArray m_pattern;
 };
 
-class JSEDITORTOOLS_EXPORT MagicByteRule : public MagicRule//#720 ROOPAK
+class CORE_EXPORT MagicByteRule : public MagicRule
 {
 public:
     MagicByteRule(const QString &s, int startPos, int endPos);
@@ -133,7 +132,7 @@ private:
     QList<int> m_bytes;
 };
 
-class JSEDITORTOOLS_EXPORT MagicRuleMatcher : public IMagicMatcher//#720 ROOPAK
+class CORE_EXPORT MagicRuleMatcher : public IMagicMatcher
 {
     Q_DISABLE_COPY(MagicRuleMatcher)
 public:
@@ -159,7 +158,7 @@ private:
     int m_priority;
 };
 
-class JSEDITORTOOLS_EXPORT MimeGlobPattern//#720 ROOPAK
+class CORE_EXPORT MimeGlobPattern
 {
 public:
     static const unsigned MaxWeight = 100;
@@ -180,7 +179,7 @@ private:
 };
 
 
-class JSEDITORTOOLS_EXPORT MimeType//#720 ROOPAK
+class CORE_EXPORT MimeType
 {
 public:
     typedef IMagicMatcher::IMagicMatcherList IMagicMatcherList;
@@ -255,7 +254,7 @@ private:
     QSharedDataPointer<MimeTypeData> m_d;
 };
 
-class JSEDITORTOOLS_EXPORT MimeDatabase//#720 ROOPAK
+class CORE_EXPORT MimeDatabase
 {
     Q_DISABLE_COPY(MimeDatabase)
 public:

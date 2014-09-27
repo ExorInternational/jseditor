@@ -30,8 +30,7 @@
 #ifndef RIGHTPANE_H
 #define RIGHTPANE_H
 
-//#include "core_global.h"//#720 ROOPAK
-#include "../jseditortools_global.h"//#720 ROOPAK
+#include "core_global.h"
 
 #include <QWidget>
 #include <QPointer>
@@ -45,7 +44,7 @@ namespace Core {
 class IMode;
 class RightPaneWidget;
 
-class JSEDITORTOOLS_EXPORT RightPanePlaceHolder : public QWidget//#720 ROOPAK
+class CORE_EXPORT RightPanePlaceHolder : public QWidget
 {
     friend class Core::RightPaneWidget;
     Q_OBJECT
@@ -64,7 +63,7 @@ private:
     static RightPanePlaceHolder* m_current;
 };
 
-class JSEDITORTOOLS_EXPORT RightPaneWidget : public QWidget//#720 ROOPAK
+class CORE_EXPORT RightPaneWidget : public QWidget
 {
     Q_OBJECT
 

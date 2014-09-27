@@ -30,8 +30,7 @@
 #ifndef IEDITOR_H
 #define IEDITOR_H
 
-//#include <coreplugin/core_global.h>//#720 ROOPAK
-#include "coreplugin/../jseditortools_global.h"//#720 ROOPAK
+#include <coreplugin/core_global.h>
 #include <coreplugin/icontext.h>
 
 #include <QMetaType>
@@ -40,7 +39,7 @@ namespace Core {
 
 class IDocument;
 
-class JSEDITORTOOLS_EXPORT IEditor : public IContext
+class CORE_EXPORT IEditor : public IContext
 {
     Q_OBJECT
 

@@ -30,14 +30,13 @@
 #ifndef ICORELISTENER_H
 #define ICORELISTENER_H
 
-//#include "core_global.h"//#720 ROOPAK
-#include "../jseditortools_global.h"//#720 ROOPAK
+#include "core_global.h"
 #include <QObject>
 
 namespace Core {
 class IEditor;
 
-class JSEDITORTOOLS_EXPORT ICoreListener : public QObject//#720 ROOPAK
+class CORE_EXPORT ICoreListener : public QObject
 {
     Q_OBJECT
 public:

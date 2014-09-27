@@ -30,8 +30,7 @@
 #ifndef DOCUMENTMODEL_H
 #define DOCUMENTMODEL_H
 
-//#include "../core_global.h"//#720 ROOPAK
-#include "coreplugin/../jseditortools_global.h"//#720 ROOPAK
+#include "../core_global.h"
 #include "../id.h"
 
 #include <QAbstractItemModel>
@@ -44,7 +43,7 @@ struct DocumentModelPrivate;
 class IEditor;
 class IDocument;
 
-class JSEDITORTOOLS_EXPORT DocumentModel : public QAbstractItemModel//#720 ROOPAK
+class CORE_EXPORT DocumentModel : public QAbstractItemModel
 {
     Q_OBJECT
 
@@ -61,7 +60,7 @@ public:
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
     QModelIndex index(int row, int column = 0, const QModelIndex &parent = QModelIndex()) const;
 
-    struct JSEDITORTOOLS_EXPORT Entry {//#720 ROOPAK
+    struct CORE_EXPORT Entry {
         Entry();
         IDocument *document;
         QString fileName() const;

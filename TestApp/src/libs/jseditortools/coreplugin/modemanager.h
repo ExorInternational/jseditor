@@ -30,8 +30,7 @@
 #ifndef MODEMANAGER_H
 #define MODEMANAGER_H
 
-//#include <coreplugin/core_global.h>//#720 ROOPAK
-#include "../jseditortools_global.h"//#720 ROOPAK
+#include <coreplugin/core_global.h>
 #include <coreplugin/id.h>
 #include <QObject>
 
@@ -48,7 +47,7 @@ namespace Internal {
     class FancyTabWidget;
 }
 
-class JSEDITORTOOLS_EXPORT ModeManager : public QObject
+class CORE_EXPORT ModeManager : public QObject
 {
     Q_OBJECT
 

@@ -3,6 +3,7 @@ INCLUDEPATH +=
 QT += sql
 
 HEADERS += \
+    $$PWD/core_global.h \
     $$PWD/icore.h \
     $$PWD/id.h \
     $$PWD/icontext.h \

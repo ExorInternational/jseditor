@@ -30,8 +30,7 @@
 #ifndef INFOBAR_H
 #define INFOBAR_H
 
-//#include "core_global.h"
-#include "../jseditortools_global.h"//#720 ROOPAK
+#include "core_global.h"
 #include <coreplugin/id.h>
 
 #include <QObject>
@@ -46,7 +45,7 @@ namespace Core {
 class InfoBar;
 class InfoBarDisplay;
 
-class JSEDITORTOOLS_EXPORT InfoBarEntry//#720 ROOPAK
+class CORE_EXPORT InfoBarEntry
 {
 public:
     enum GlobalSuppressionMode
@@ -75,7 +74,7 @@ private:
     friend class InfoBarDisplay;
 };
 
-class JSEDITORTOOLS_EXPORT InfoBar : public QObject//#720 ROOPAK
+class CORE_EXPORT InfoBar : public QObject
 {
     Q_OBJECT
 
@@ -102,7 +101,7 @@ private:
     friend class InfoBarDisplay;
 };
 
-class JSEDITORTOOLS_EXPORT InfoBarDisplay : public QObject//#720 ROOPAK
+class CORE_EXPORT InfoBarDisplay : public QObject
 {
     Q_OBJECT
 

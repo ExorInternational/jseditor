@@ -37,7 +37,7 @@
 
 namespace Core {
 
-class JSEDITORTOOLS_EXPORT IFindSupport : public QObject
+class CORE_EXPORT IFindSupport : public QObject
 {
     Q_OBJECT
 

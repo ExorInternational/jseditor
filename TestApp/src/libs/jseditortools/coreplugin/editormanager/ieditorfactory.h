@@ -36,7 +36,7 @@ namespace Core {
 
 class IEditor;
 
-class JSEDITORTOOLS_EXPORT IEditorFactory : public Core::IDocumentFactory//#720 ROOPAK
+class CORE_EXPORT IEditorFactory : public Core::IDocumentFactory//#720 ROOPAK
 {
     Q_OBJECT
 

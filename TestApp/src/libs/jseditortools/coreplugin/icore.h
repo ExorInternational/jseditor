@@ -53,7 +53,7 @@ class SettingsDatabase;
 
 namespace Internal { class MainWindow; }
 
-class JSEDITORTOOLS_EXPORT ICore : public QObject
+class CORE_EXPORT ICore : public QObject
 {
     Q_OBJECT
 

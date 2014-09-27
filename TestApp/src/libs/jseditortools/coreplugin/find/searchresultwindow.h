@@ -49,7 +49,7 @@ namespace Internal {
 class FindPlugin;
 class SearchResultWindow;
 
-class JSEDITORTOOLS_EXPORT SearchResultItem
+class CORE_EXPORT SearchResultItem
 {
 public:
     SearchResultItem()
@@ -82,7 +82,7 @@ public:
     QVariant userData; // user data for identification of the item
 };
 
-class JSEDITORTOOLS_EXPORT SearchResult : public QObject
+class CORE_EXPORT SearchResult : public QObject
 {
     Q_OBJECT
 
@@ -127,7 +127,7 @@ private:
     QVariant m_userData;
 };
 
-class JSEDITORTOOLS_EXPORT SearchResultWindow : public Core::IOutputPane
+class CORE_EXPORT SearchResultWindow : public Core::IOutputPane
 {
     Q_OBJECT
 

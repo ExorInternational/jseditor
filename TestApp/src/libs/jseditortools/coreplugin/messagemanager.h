@@ -30,8 +30,7 @@
 #ifndef MESSAGEMANAGER_H
 #define MESSAGEMANAGER_H
 
-//#include "core_global.h"
-#include "../jseditortools_global.h"
+#include "core_global.h"
 #include "ioutputpane.h"
 #include <QMetaType>
 
@@ -41,7 +40,7 @@ namespace Core {
 
 namespace Internal { class MainWindow; }
 
-class JSEDITORTOOLS_EXPORT MessageManager : public QObject
+class CORE_EXPORT MessageManager : public QObject
 {
     Q_OBJECT
 

@@ -37,7 +37,7 @@
 
 namespace Core {
 
-class JSEDITORTOOLS_EXPORT IMode : public IContext//#720 ROOPAK
+class CORE_EXPORT IMode : public IContext
 {
     Q_OBJECT
     Q_PROPERTY(bool enabled READ isEnabled WRITE setEnabled)

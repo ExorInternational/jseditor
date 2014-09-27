@@ -30,8 +30,7 @@
 #ifndef TEXTFINDCONSTANTS_H
 #define TEXTFINDCONSTANTS_H
 
-//#include <coreplugin/core_global.h>//#720 ROOPAK
-#include "coreplugin/../jseditortools_global.h"//#720 ROOPAK
+#include <coreplugin/core_global.h>
 
 #include <QMetaType>
 #include <QFlags>
@@ -75,7 +74,7 @@ enum FindFlag {
 Q_DECLARE_FLAGS(FindFlags, FindFlag)
 
 // defined in findplugin.cpp
-QTextDocument::FindFlags JSEDITORTOOLS_EXPORT textDocumentFlagsForFindFlags(FindFlags flags);//#720 ROOPAK
+QTextDocument::FindFlags CORE_EXPORT textDocumentFlagsForFindFlags(FindFlags flags);
 
 } // namespace Core
 

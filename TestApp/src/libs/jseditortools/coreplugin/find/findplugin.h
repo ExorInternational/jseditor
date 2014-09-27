@@ -48,7 +48,7 @@ class FindToolBar;
 class CurrentDocumentFind;
 } // namespace Internal
 
-class JSEDITORTOOLS_EXPORT FindPlugin : public QObject
+class CORE_EXPORT FindPlugin : public QObject
 {
     Q_OBJECT
 

@@ -30,7 +30,7 @@
 #ifndef CORE_ID_H
 #define CORE_ID_H
 
-#include "../jseditortools_global.h"
+#include "core_global.h"
 
 #include <QMetaType>
 #include <QString>
@@ -42,7 +42,7 @@ QT_END_NAMESPACE
 
 namespace Core {
 
-class JSEDITORTOOLS_EXPORT Id
+class CORE_EXPORT Id
 {
 public:
     enum { IdsPerPlugin = 10000, ReservedPlugins = 1000 };

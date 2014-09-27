@@ -30,15 +30,14 @@
 #ifndef FINDPLACEHOLDER_H
 #define FINDPLACEHOLDER_H
 
-//#include "core_global.h"//#720 ROOPAK
-#include "../jseditortools_global.h"//#720 ROOPAK
+#include "core_global.h"
 
 #include <QPointer>
 #include <QWidget>
 
 namespace Core {
 
-class JSEDITORTOOLS_EXPORT FindToolBarPlaceHolder : public QWidget//#720 ROOPAK
+class CORE_EXPORT FindToolBarPlaceHolder : public QWidget
 {
     Q_OBJECT
 public:

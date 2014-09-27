@@ -320,7 +320,7 @@ bool Id::operator==(const char *name) const
 }
 
 // For debugging purposes
-JSEDITORTOOLS_EXPORT const char *nameForId(int id)
+CORE_EXPORT const char *nameForId(int id)
 {
     return stringFromId.value(id).str;
 }

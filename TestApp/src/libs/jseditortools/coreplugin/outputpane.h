@@ -30,8 +30,7 @@
 #ifndef OUTPUTPANE_H
 #define OUTPUTPANE_H
 
-//#include "core_global.h"//#720 ROOPAK
-#include "../jseditortools_global.h"//#720 ROOPAK
+#include "core_global.h"
 
 #include <QWidget>
 
@@ -46,7 +45,7 @@ class IMode;
 namespace Internal { class OutputPaneManager; }
 struct OutputPanePlaceHolderPrivate;
 
-class JSEDITORTOOLS_EXPORT OutputPanePlaceHolder : public QWidget//#720 ROOPAK
+class CORE_EXPORT OutputPanePlaceHolder : public QWidget
 {
     Q_OBJECT
     friend class Core::Internal::OutputPaneManager; // needs to set m_visible and thus access m_current

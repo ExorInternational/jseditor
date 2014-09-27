@@ -30,8 +30,7 @@
 #ifndef IOUTPUTPANE_H
 #define IOUTPUTPANE_H
 
-//#include "core_global.h"
-#include "../jseditortools_global.h"
+#include "core_global.h"
 
 #include <QObject>
 #include <QList>
@@ -43,7 +42,7 @@ QT_END_NAMESPACE
 
 namespace Core {
 
-class JSEDITORTOOLS_EXPORT IOutputPane : public QObject
+class CORE_EXPORT IOutputPane : public QObject
 {
     Q_OBJECT
 

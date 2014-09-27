@@ -30,8 +30,7 @@
 #ifndef SETTINGSDATABASE_H
 #define SETTINGSDATABASE_H
 
-//#include "core_global.h"//#720 ROOPAK
-#include "../jseditortools_global.h"//#720 ROOPAK
+#include "core_global.h"
 
 #include <QObject>
 #include <QString>
@@ -42,7 +41,7 @@ namespace Core {
 
 namespace Internal { class SettingsDatabasePrivate; }
 
-class JSEDITORTOOLS_EXPORT SettingsDatabase : public QObject//#720 ROOPAK
+class CORE_EXPORT SettingsDatabase : public QObject
 {
 public:
     SettingsDatabase(const QString &path, const QString &application, QObject *parent = 0);

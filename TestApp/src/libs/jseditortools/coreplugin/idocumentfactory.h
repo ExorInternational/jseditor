@@ -39,7 +39,7 @@ namespace Core {
 
 class IDocument;
 
-class JSEDITORTOOLS_EXPORT IDocumentFactory : public QObject
+class CORE_EXPORT IDocumentFactory : public QObject
 {
     Q_OBJECT
 

@@ -30,8 +30,7 @@
 #ifndef ICONTEXT_H
 #define ICONTEXT_H
 
-//#include <coreplugin/core_global.h>
-#include "../jseditortools_global.h"//#720 ROOPAK
+#include <coreplugin/core_global.h>
 #include <coreplugin/id.h>
 
 #include <QList>
@@ -41,7 +40,7 @@
 
 namespace Core {
 
-class JSEDITORTOOLS_EXPORT Context
+class CORE_EXPORT Context
 {
 public:
     Context() {}
@@ -69,7 +68,7 @@ private:
     QList<Id> d;
 };
 
-class JSEDITORTOOLS_EXPORT IContext : public QObject
+class CORE_EXPORT IContext : public QObject
 {
     Q_OBJECT
 public:

@@ -30,8 +30,7 @@
 #ifndef PROGRESSMANAGER_H
 #define PROGRESSMANAGER_H
 
-//#include <coreplugin/core_global.h>//#720 ROOPAK
-#include "coreplugin/../jseditortools_global.h"//#720 ROOPAK
+#include <coreplugin/core_global.h>
 #include <coreplugin/id.h>
 
 #include <QObject>
@@ -42,7 +41,7 @@ class FutureProgress;
 
 namespace Internal { class ProgressManagerPrivate; }
 
-class JSEDITORTOOLS_EXPORT ProgressManager : public QObject//#720 ROOPAK
+class CORE_EXPORT ProgressManager : public QObject
 {
     Q_OBJECT
 public:

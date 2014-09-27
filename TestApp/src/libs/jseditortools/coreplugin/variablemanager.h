@@ -30,8 +30,7 @@
 #ifndef VARIABLEMANAGER_H
 #define VARIABLEMANAGER_H
 
-//#include "core_global.h"//#720 ROOPAK
-#include "../jseditortools_global.h"//#720 ROOPAK
+#include "core_global.h"
 
 #include <QObject>
 #include <QString>
@@ -44,7 +43,7 @@ namespace Core {
 
 namespace Internal { class MainWindow; }
 
-class JSEDITORTOOLS_EXPORT VariableManager : public QObject//#720 ROOPAK
+class CORE_EXPORT VariableManager : public QObject
 {
     Q_OBJECT
 

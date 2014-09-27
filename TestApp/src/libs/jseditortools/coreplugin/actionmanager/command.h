@@ -30,8 +30,7 @@
 #ifndef COMMAND_H
 #define COMMAND_H
 
-//#include <coreplugin/core_global.h>//#720 ROOPAK
-#include "coreplugin/../jseditortools_global.h"//#720 ROOPAK
+#include <coreplugin/core_global.h>
 #include <coreplugin/id.h>
 
 #include <QObject>
@@ -53,7 +52,7 @@ enum { UseMacShortcuts = 1 };
 enum { UseMacShortcuts = 0 };
 #endif
 
-class JSEDITORTOOLS_EXPORT Command : public QObject
+class CORE_EXPORT Command : public QObject
 {
     Q_OBJECT
 public:

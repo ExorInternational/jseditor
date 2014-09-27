@@ -30,8 +30,7 @@
 #ifndef ACTIONMANAGER_H
 #define ACTIONMANAGER_H
 
-//#include "coreplugin/core_global.h"//#720 ROOPAK
-#include "coreplugin/../jseditortools_global.h"//#720 ROOPAK
+#include "coreplugin/core_global.h"
 #include "coreplugin/id.h"
 #include <coreplugin/actionmanager/command.h>
 
@@ -51,7 +50,7 @@ class ActionContainer;
 
 namespace Internal { class MainWindow; }
 
-class JSEDITORTOOLS_EXPORT ActionManager : public QObject//#720 ROOPAK
+class CORE_EXPORT ActionManager : public QObject//#720 ROOPAK
 {
     Q_OBJECT
 public:

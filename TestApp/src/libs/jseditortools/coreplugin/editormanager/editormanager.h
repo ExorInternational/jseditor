@@ -30,8 +30,7 @@
 #ifndef EDITORMANAGER_H
 #define EDITORMANAGER_H
 
-//#include "../core_global.h"//#720 ROOPAK
-#include "coreplugin/../jseditortools_global.h"//#720 ROOPAK
+#include "../core_global.h"
 
 #include "documentmodel.h"
 
@@ -74,7 +73,7 @@ class OpenEditorsWindow;
 class SplitterOrView;
 } // namespace Internal
 
-class JSEDITORTOOLS_EXPORT EditorManagerPlaceHolder : public QWidget//#720 ROOPAK
+class CORE_EXPORT EditorManagerPlaceHolder : public QWidget
 {
     Q_OBJECT
 public:
@@ -86,7 +85,7 @@ private:
     Core::IMode *m_mode;
 };
 
-class JSEDITORTOOLS_EXPORT EditorManager : public QWidget//#720 ROOPAK
+class CORE_EXPORT EditorManager : public QWidget
 {
     Q_OBJECT
 

@@ -30,8 +30,7 @@
 #ifndef CORE_FILEUTILS_H
 #define CORE_FILEUTILS_H
 
-//#include "coreplugin/core_global.h"//#720 ROOPAK
-#include "../jseditortools_global.h"//#720 ROOPAK
+#include "coreplugin/core_global.h"
 
 QT_BEGIN_NAMESPACE
 class QWidget;
@@ -39,7 +38,7 @@ QT_END_NAMESPACE
 
 namespace Core {
 
-struct JSEDITORTOOLS_EXPORT FileUtils//#720 ROOPAK
+struct CORE_EXPORT FileUtils
 {
     // Helpers for common directory browser options.
     static void showInGraphicalShell(QWidget *parent, const QString &path);

@@ -49,7 +49,7 @@ class IDocument;
 
 namespace Internal { class MainWindow; }
 
-class JSEDITORTOOLS_EXPORT DocumentManager : public QObject
+class CORE_EXPORT DocumentManager : public QObject
 {
     Q_OBJECT
 public:
@@ -177,7 +177,7 @@ private:
     To also reload the IDocument in the destructor class set modifiedReload to true
 
   */
-class JSEDITORTOOLS_EXPORT FileChangeBlocker
+class CORE_EXPORT FileChangeBlocker
 {
 public:
     explicit FileChangeBlocker(const QString &fileName);

@@ -30,8 +30,7 @@
 #ifndef MINISPLITTER_H
 #define MINISPLITTER_H
 
-//#include "core_global.h"//#720 ROOPAK
-#include "../jseditortools_global.h"//#720 ROOPAK
+#include "core_global.h"
 
 #include <QSplitter>
 
@@ -42,7 +41,7 @@ QT_END_NAMESPACE
 namespace Core {
 
 /*! This is a simple helper-class to obtain mac-style 1-pixel wide splitters */
-class JSEDITORTOOLS_EXPORT MiniSplitter : public QSplitter
+class CORE_EXPORT MiniSplitter : public QSplitter
 {
 public:
     MiniSplitter(QWidget *parent = 0);

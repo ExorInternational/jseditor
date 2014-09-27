@@ -31,7 +31,7 @@
 #define COREPLUGIN_H
 
 #include <extensionsystem/iplugin.h>
-#include "../jseditortools_global.h"
+#include "core_global.h"
 
 namespace Core {
 
@@ -45,7 +45,7 @@ class MainWindow;
 //class Locator;//#720 ROOPAK
 class QMainWindow;//#720 ROOPAK
 
-class JSEDITORTOOLS_EXPORT CorePlugin : public ExtensionSystem::IPlugin
+class CORE_EXPORT CorePlugin : public ExtensionSystem::IPlugin
 {
     Q_OBJECT
 //    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "Core.json")

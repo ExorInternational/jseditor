@@ -30,8 +30,7 @@
 #ifndef IDOCUMENT_H
 #define IDOCUMENT_H
 
-//#include "core_global.h"//#720 ROOPAK
-#include "../jseditortools_global.h"//#720 ROOPAK
+#include "core_global.h"
 #include <QObject>
 
 namespace Core {
@@ -39,7 +38,7 @@ namespace Core {
 class MimeType;
 class InfoBar;
 
-class JSEDITORTOOLS_EXPORT IDocument : public QObject//#720 ROOPAK
+class CORE_EXPORT IDocument : public QObject
 {
     Q_OBJECT
 
