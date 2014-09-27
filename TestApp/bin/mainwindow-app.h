@@ -7,12 +7,6 @@ namespace Ui {
 class MainWindowApp;
 }
 
-//namespace Core {
-//namespace Internal {
-//class CorePlugin;
-//}
-//}
-
 namespace JsEditorTools {
 class JsEditorToolsLib;
 }
@@ -28,7 +22,6 @@ private slots:
     void onFileOpenClicked();
 private:
     Ui::MainWindowApp *ui;
-//    Core::Internal::CorePlugin *m_pCorePlugin;
     JsEditorTools::JsEditorToolsLib *m_pJsEditorTools;
 };
 
