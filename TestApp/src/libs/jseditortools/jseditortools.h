@@ -5,6 +5,10 @@
 
 class QMainWindow;
 
+namespace ExtensionSystem {
+class PluginManager;
+}
+
 namespace Core {
 namespace Internal {
 class CorePlugin;
@@ -37,6 +41,8 @@ public:
     ~JsEditorToolsLib();
 private:
     QMainWindow *m_MainWindow;
+
+    ExtensionSystem::PluginManager *m_pPluginManager;
     Core::Internal::CorePlugin *m_pCorePlugin;
     TextEditor::Internal::TextEditorPlugin *m_pTextEditorPlugin;
     QmlJSTools::Internal::QmlJSToolsPlugin *m_pQmlJSToolsPlugin;

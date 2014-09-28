@@ -13,12 +13,6 @@ MainWindowApp::MainWindowApp(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowState(Qt::WindowMaximized);
 
-//    ui->mainToolBar->hide();
-
-//    QMenu *fileMenu = ui->menuBar->addMenu("File");
-//    fileMenu->addAction("Open", this, SLOT(onFileOpenClicked()));
-//    fileMenu->addAction("Exit", qApp, SLOT(quit()));
-
     m_pJsEditorTools = new JsEditorTools::JsEditorToolsLib(this);
 }
 
