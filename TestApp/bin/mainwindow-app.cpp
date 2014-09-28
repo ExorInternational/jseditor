@@ -13,7 +13,7 @@ MainWindowApp::MainWindowApp(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowState(Qt::WindowMaximized);
 
-    ui->mainToolBar->hide();
+//    ui->mainToolBar->hide();
 
 //    QMenu *fileMenu = ui->menuBar->addMenu("File");
 //    fileMenu->addAction("Open", this, SLOT(onFileOpenClicked()));

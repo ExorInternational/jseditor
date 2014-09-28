@@ -95,6 +95,9 @@ SOURCES += \
     $$PWD/findplaceholder.cpp \
     $$PWD/textdocument.cpp \
 
+RESOURCES += \
+    $$PWD/core.qrc \
+
 include(find/find.pri)
 
 win32 {
