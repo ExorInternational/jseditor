@@ -27,61 +27,50 @@
 **
 ****************************************************************************/
 
-#ifndef QMLJSTOOLS_H
-#define QMLJSTOOLS_H
+#ifndef QMLJSEDITORDOCUMENT_H
+#define QMLJSEDITORDOCUMENT_H
 
-#include <coreplugin/id.h>
-#include <extensionsystem/iplugin.h>
+#include "qmljseditor_global.h"
 
-QT_BEGIN_NAMESPACE
-class QFileInfo;
-class QDir;
-class QAction;
-QT_END_NAMESPACE
+#include <qmljs/qmljsdocument.h>
+#include <qmljstools/qmljssemanticinfo.h>
+#include <texteditor/basetextdocument.h>
 
-namespace QmlJSTools {
+#include <QTextLayout>
 
-class QmlJSToolsSettings;
-//class QmlConsoleManager;//#720 ROOPAK
+namespace QmlJSEditor {
 
 namespace Internal {
+class QmlJSEditorDocumentPrivate;
+class QmlOutlineModel;
+} // Internal
 
-class ModelManager;
-
-class QmlJSToolsPlugin : public ExtensionSystem::IPlugin
+class QMLJSEDITOR_EXPORT QmlJSEditorDocument : public TextEditor::BaseTextDocument
 {
     Q_OBJECT
-//    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "QmlJSTools.json")//#720 ROOPAK
-
 public:
-    static QmlJSToolsPlugin *instance() { return m_instance; }
+    QmlJSEditorDocument();
+    ~QmlJSEditorDocument();
 
-    QmlJSToolsPlugin();
-    ~QmlJSToolsPlugin();
+    const QmlJSTools::SemanticInfo &semanticInfo() const;
+    bool isSemanticInfoOutdated() const;
+    QVector<QTextLayout::FormatRange> diagnosticRanges() const;
+    void setDiagnosticRanges(const QVector<QTextLayout::FormatRange> &ranges);
+    Internal::QmlOutlineModel *outlineModel() const;
 
-    bool initialize(const QStringList &arguments, QString *errorMessage);
-    void extensionsInitialized();
-    ShutdownFlag aboutToShutdown();
-    ModelManager *modelManager() { return m_modelManager; }
+signals:
+    void updateCodeWarnings(QmlJS::Document::Ptr doc);
+    void semanticInfoUpdated(const QmlJSTools::SemanticInfo &semanticInfo);
 
-private slots:
-    void onTaskStarted(Core::Id type);
-    void onAllTasksFinished(Core::Id type);
-
-#ifdef WITH_TESTS
-    void test_basic();
-#endif
+protected:
+    void applyFontSettings();
+    void triggerPendingUpdates();
 
 private:
-    ModelManager *m_modelManager;
-//    QmlConsoleManager *m_consoleManager;//#720 ROOPAK
-    QmlJSToolsSettings *m_settings;
-    QAction *m_resetCodeModelAction;
-
-    static QmlJSToolsPlugin *m_instance;
+    friend class Internal::QmlJSEditorDocumentPrivate; // sending signals
+    Internal::QmlJSEditorDocumentPrivate *d;
 };
 
-} // namespace Internal
-} // namespace CppTools
+} // QmlJSEditor
 
-#endif // QMLJSTOOLS_H
+#endif // QMLJSEDITORDOCUMENT_H

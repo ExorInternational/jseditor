@@ -142,4 +142,4 @@ void QmlJSToolsPlugin::onAllTasksFinished(Core::Id type)
         m_resetCodeModelAction->setEnabled(true);
 }
 
-Q_EXPORT_PLUGIN(QmlJSToolsPlugin)
+//Q_EXPORT_PLUGIN(QmlJSToolsPlugin)//#720 ROOPAK

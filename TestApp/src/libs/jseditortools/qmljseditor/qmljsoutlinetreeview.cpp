@@ -27,61 +27,60 @@
 **
 ****************************************************************************/
 
-#ifndef QMLJSTOOLS_H
-#define QMLJSTOOLS_H
+#include "qmljsoutlinetreeview.h"
+#include "qmloutlinemodel.h"
 
-#include <coreplugin/id.h>
-#include <extensionsystem/iplugin.h>
+#include <utils/annotateditemdelegate.h>
+#include <QMenu>
 
-QT_BEGIN_NAMESPACE
-class QFileInfo;
-class QDir;
-class QAction;
-QT_END_NAMESPACE
-
-namespace QmlJSTools {
-
-class QmlJSToolsSettings;
-//class QmlConsoleManager;//#720 ROOPAK
-
+namespace QmlJSEditor {
 namespace Internal {
 
-class ModelManager;
-
-class QmlJSToolsPlugin : public ExtensionSystem::IPlugin
+QmlJSOutlineTreeView::QmlJSOutlineTreeView(QWidget *parent) :
+    Utils::NavigationTreeView(parent)
 {
-    Q_OBJECT
-//    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "QmlJSTools.json")//#720 ROOPAK
+    // see also CppOutlineTreeView
+    setFocusPolicy(Qt::NoFocus);
+    setExpandsOnDoubleClick(false);
 
-public:
-    static QmlJSToolsPlugin *instance() { return m_instance; }
+    setDragEnabled(true);
+    viewport()->setAcceptDrops(true);
+    setDropIndicatorShown(true);
+    setDragDropMode(InternalMove);
 
-    QmlJSToolsPlugin();
-    ~QmlJSToolsPlugin();
+    setRootIsDecorated(false);
 
-    bool initialize(const QStringList &arguments, QString *errorMessage);
-    void extensionsInitialized();
-    ShutdownFlag aboutToShutdown();
-    ModelManager *modelManager() { return m_modelManager; }
+    Utils::AnnotatedItemDelegate *itemDelegate = new Utils::AnnotatedItemDelegate(this);
+    itemDelegate->setDelimiter(QLatin1String(" "));
+    itemDelegate->setAnnotationRole(QmlOutlineModel::AnnotationRole);
+    setItemDelegateForColumn(0, itemDelegate);
+}
 
-private slots:
-    void onTaskStarted(Core::Id type);
-    void onAllTasksFinished(Core::Id type);
+void QmlJSOutlineTreeView::contextMenuEvent(QContextMenuEvent *event)
+{
+    if (!event)
+        return;
 
-#ifdef WITH_TESTS
-    void test_basic();
-#endif
+    QMenu contextMenu;
 
-private:
-    ModelManager *m_modelManager;
-//    QmlConsoleManager *m_consoleManager;//#720 ROOPAK
-    QmlJSToolsSettings *m_settings;
-    QAction *m_resetCodeModelAction;
+    contextMenu.addAction(tr("Expand All"), this, SLOT(expandAll()));
+    contextMenu.addAction(tr("Collapse All"), this, SLOT(collapseAllExceptRoot()));
 
-    static QmlJSToolsPlugin *m_instance;
-};
+    contextMenu.exec(event->globalPos());
+
+    event->accept();
+}
+
+void QmlJSOutlineTreeView::collapseAllExceptRoot()
+{
+    if (!model())
+        return;
+    const QModelIndex rootElementIndex = model()->index(0, 0, rootIndex());
+    int rowCount = model()->rowCount(rootElementIndex);
+    for (int i = 0; i < rowCount; ++i) {
+        collapse(model()->index(i, 0, rootElementIndex));
+    }
+}
 
 } // namespace Internal
-} // namespace CppTools
-
-#endif // QMLJSTOOLS_H
+} // namespace QmlJSEditor

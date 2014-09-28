@@ -27,61 +27,59 @@
 **
 ****************************************************************************/
 
-#ifndef QMLJSTOOLS_H
-#define QMLJSTOOLS_H
+#include "qmljsquickfix.h"
+#include "qmljscomponentfromobjectdef.h"
+#include "qmljseditor.h"
+#include "qmljsquickfixassist.h"
 
-#include <coreplugin/id.h>
 #include <extensionsystem/iplugin.h>
+#include <extensionsystem/pluginmanager.h>
 
-QT_BEGIN_NAMESPACE
-class QFileInfo;
-class QDir;
-class QAction;
-QT_END_NAMESPACE
+#include <qmljs/qmljsmodelmanagerinterface.h>
+#include <qmljs/parser/qmljsast_p.h>
 
-namespace QmlJSTools {
+#include <QDebug>
 
-class QmlJSToolsSettings;
-//class QmlConsoleManager;//#720 ROOPAK
+using namespace QmlJS;
+using namespace QmlJS::AST;
+using namespace QmlJSTools;
+using TextEditor::RefactoringChanges;
 
-namespace Internal {
+namespace QmlJSEditor {
 
-class ModelManager;
+using namespace Internal;
 
-class QmlJSToolsPlugin : public ExtensionSystem::IPlugin
+QmlJSQuickFixOperation::QmlJSQuickFixOperation(const QmlJSQuickFixInterface &interface,
+                                               int priority)
+    : QuickFixOperation(priority)
+    , m_interface(interface)
 {
-    Q_OBJECT
-//    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "QmlJSTools.json")//#720 ROOPAK
+}
 
-public:
-    static QmlJSToolsPlugin *instance() { return m_instance; }
+void QmlJSQuickFixOperation::perform()
+{
+    QmlJSRefactoringChanges refactoring(QmlJS::ModelManagerInterface::instance(),
+                                        m_interface->semanticInfo().snapshot);
+    QmlJSRefactoringFilePtr current = refactoring.file(fileName());
 
-    QmlJSToolsPlugin();
-    ~QmlJSToolsPlugin();
+    performChanges(current, refactoring);
+}
 
-    bool initialize(const QStringList &arguments, QString *errorMessage);
-    void extensionsInitialized();
-    ShutdownFlag aboutToShutdown();
-    ModelManager *modelManager() { return m_modelManager; }
+const QmlJSQuickFixAssistInterface *QmlJSQuickFixOperation::assistInterface() const
+{
+    return m_interface.data();
+}
 
-private slots:
-    void onTaskStarted(Core::Id type);
-    void onAllTasksFinished(Core::Id type);
+QString QmlJSQuickFixOperation::fileName() const
+{
+    return m_interface->semanticInfo().document->fileName();
+}
 
-#ifdef WITH_TESTS
-    void test_basic();
-#endif
 
-private:
-    ModelManager *m_modelManager;
-//    QmlConsoleManager *m_consoleManager;//#720 ROOPAK
-    QmlJSToolsSettings *m_settings;
-    QAction *m_resetCodeModelAction;
+void QmlJSQuickFixFactory::matchingOperations(const QuickFixInterface &interface,
+    QuickFixOperations &result)
+{
+    match(interface.staticCast<const QmlJSQuickFixAssistInterface>(), result);
+}
 
-    static QmlJSToolsPlugin *m_instance;
-};
-
-} // namespace Internal
-} // namespace CppTools
-
-#endif // QMLJSTOOLS_H
+} // namespace QmlJSEditor

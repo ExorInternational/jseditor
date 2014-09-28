@@ -27,61 +27,58 @@
 **
 ****************************************************************************/
 
-#ifndef QMLJSTOOLS_H
-#define QMLJSTOOLS_H
+#ifndef QMLJSEDITORDOCUMENT_P_H
+#define QMLJSEDITORDOCUMENT_P_H
 
-#include <coreplugin/id.h>
-#include <extensionsystem/iplugin.h>
+#include <qmljs/qmljsdocument.h>
+#include <qmljstools/qmljssemanticinfo.h>
 
-QT_BEGIN_NAMESPACE
-class QFileInfo;
-class QDir;
-class QAction;
-QT_END_NAMESPACE
+#include <QObject>
+#include <QTextLayout>
+#include <QTimer>
 
-namespace QmlJSTools {
+namespace QmlJSEditor {
 
-class QmlJSToolsSettings;
-//class QmlConsoleManager;//#720 ROOPAK
+class QmlJSEditorDocument;
 
 namespace Internal {
 
-class ModelManager;
+class QmlOutlineModel;
+class SemanticHighlighter;
+class SemanticInfoUpdater;
 
-class QmlJSToolsPlugin : public ExtensionSystem::IPlugin
+class QmlJSEditorDocumentPrivate : public QObject
 {
     Q_OBJECT
-//    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "QmlJSTools.json")//#720 ROOPAK
 
 public:
-    static QmlJSToolsPlugin *instance() { return m_instance; }
+    QmlJSEditorDocumentPrivate(QmlJSEditorDocument *parent);
+    ~QmlJSEditorDocumentPrivate();
 
-    QmlJSToolsPlugin();
-    ~QmlJSToolsPlugin();
+public slots:
+    void invalidateFormatterCache();
+    void reparseDocument();
+    void onDocumentUpdated(QmlJS::Document::Ptr doc);
+    void reupdateSemanticInfo();
+    void acceptNewSemanticInfo(const QmlJSTools::SemanticInfo &semanticInfo);
+    void updateOutlineModel();
 
-    bool initialize(const QStringList &arguments, QString *errorMessage);
-    void extensionsInitialized();
-    ShutdownFlag aboutToShutdown();
-    ModelManager *modelManager() { return m_modelManager; }
-
-private slots:
-    void onTaskStarted(Core::Id type);
-    void onAllTasksFinished(Core::Id type);
-
-#ifdef WITH_TESTS
-    void test_basic();
-#endif
-
-private:
-    ModelManager *m_modelManager;
-//    QmlConsoleManager *m_consoleManager;//#720 ROOPAK
-    QmlJSToolsSettings *m_settings;
-    QAction *m_resetCodeModelAction;
-
-    static QmlJSToolsPlugin *m_instance;
+public:
+    QmlJSEditorDocument *q;
+    QTimer m_updateDocumentTimer; // used to compress multiple document changes
+    QTimer m_reupdateSemanticInfoTimer; // used to compress multiple libraryInfo changes
+    int m_semanticInfoDocRevision; // document revision to which the semantic info is currently updated to
+    SemanticInfoUpdater *m_semanticInfoUpdater;
+    QmlJSTools::SemanticInfo m_semanticInfo;
+    QVector<QTextLayout::FormatRange> m_diagnosticRanges;
+    Internal::SemanticHighlighter *m_semanticHighlighter;
+    bool m_semanticHighlightingNecessary;
+    bool m_outlineModelNeedsUpdate;
+    QTimer m_updateOutlineModelTimer;
+    Internal::QmlOutlineModel *m_outlineModel;
 };
 
-} // namespace Internal
-} // namespace CppTools
+} // Internal
+} // QmlJSEditor
 
-#endif // QMLJSTOOLS_H
+#endif // QMLJSEDITORDOCUMENT_P_H

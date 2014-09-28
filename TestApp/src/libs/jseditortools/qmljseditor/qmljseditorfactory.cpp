@@ -27,61 +27,47 @@
 **
 ****************************************************************************/
 
-#ifndef QMLJSTOOLS_H
-#define QMLJSTOOLS_H
+#include "qmljseditorfactory.h"
+#include "qmljseditoreditable.h"
+#include "qmljseditor.h"
+#include "qmljseditorconstants.h"
+#include "qmljseditorplugin.h"
 
-#include <coreplugin/id.h>
-#include <extensionsystem/iplugin.h>
+#include <qmljstools/qmljstoolsconstants.h>
+#include <texteditor/texteditoractionhandler.h>
+#include <texteditor/texteditorsettings.h>
 
-QT_BEGIN_NAMESPACE
-class QFileInfo;
-class QDir;
-class QAction;
-QT_END_NAMESPACE
+#include <QCoreApplication>
 
-namespace QmlJSTools {
-
-class QmlJSToolsSettings;
-//class QmlConsoleManager;//#720 ROOPAK
-
+namespace QmlJSEditor {
 namespace Internal {
 
-class ModelManager;
-
-class QmlJSToolsPlugin : public ExtensionSystem::IPlugin
+QmlJSEditorFactory::QmlJSEditorFactory(QObject *parent)
+  : Core::IEditorFactory(parent)
 {
-    Q_OBJECT
-//    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "QmlJSTools.json")//#720 ROOPAK
+    setId(Constants::C_QMLJSEDITOR_ID);
+    setDisplayName(qApp->translate("OpenWith::Editors", Constants::C_QMLJSEDITOR_DISPLAY_NAME));
 
-public:
-    static QmlJSToolsPlugin *instance() { return m_instance; }
+    addMimeType(QmlJSTools::Constants::QML_MIMETYPE);
+    addMimeType(QmlJSTools::Constants::QMLPROJECT_MIMETYPE);
+    addMimeType(QmlJSTools::Constants::QBS_MIMETYPE);
+    addMimeType(QmlJSTools::Constants::QMLTYPES_MIMETYPE);
+    addMimeType(QmlJSTools::Constants::JS_MIMETYPE);
+    addMimeType(QmlJSTools::Constants::JSON_MIMETYPE);
+    new TextEditor::TextEditorActionHandler(this, Constants::C_QMLJSEDITOR_ID,
+          TextEditor::TextEditorActionHandler::Format
+        | TextEditor::TextEditorActionHandler::UnCommentSelection
+        | TextEditor::TextEditorActionHandler::UnCollapseAll
+        | TextEditor::TextEditorActionHandler::FollowSymbolUnderCursor);
 
-    QmlJSToolsPlugin();
-    ~QmlJSToolsPlugin();
+}
 
-    bool initialize(const QStringList &arguments, QString *errorMessage);
-    void extensionsInitialized();
-    ShutdownFlag aboutToShutdown();
-    ModelManager *modelManager() { return m_modelManager; }
-
-private slots:
-    void onTaskStarted(Core::Id type);
-    void onAllTasksFinished(Core::Id type);
-
-#ifdef WITH_TESTS
-    void test_basic();
-#endif
-
-private:
-    ModelManager *m_modelManager;
-//    QmlConsoleManager *m_consoleManager;//#720 ROOPAK
-    QmlJSToolsSettings *m_settings;
-    QAction *m_resetCodeModelAction;
-
-    static QmlJSToolsPlugin *m_instance;
-};
+Core::IEditor *QmlJSEditorFactory::createEditor()
+{
+    QmlJSTextEditorWidget *rc = new QmlJSTextEditorWidget();
+    TextEditor::TextEditorSettings::initializeEditor(rc);
+    return rc->editor();
+}
 
 } // namespace Internal
-} // namespace CppTools
-
-#endif // QMLJSTOOLS_H
+} // namespace QmlJSEditor

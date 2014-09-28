@@ -27,61 +27,49 @@
 **
 ****************************************************************************/
 
-#ifndef QMLJSTOOLS_H
-#define QMLJSTOOLS_H
+#ifndef QMLEXPRESSIONUNDERCURSOR_H
+#define QMLEXPRESSIONUNDERCURSOR_H
 
-#include <coreplugin/id.h>
-#include <extensionsystem/iplugin.h>
+#include <qmljs/parser/qmljsastfwd_p.h>
+#include <qmljs/qmljsdocument.h>
 
-QT_BEGIN_NAMESPACE
-class QFileInfo;
-class QDir;
-class QAction;
-QT_END_NAMESPACE
+#include <QTextCursor>
 
-namespace QmlJSTools {
-
-class QmlJSToolsSettings;
-//class QmlConsoleManager;//#720 ROOPAK
-
+namespace QmlJSEditor {
 namespace Internal {
 
-class ModelManager;
-
-class QmlJSToolsPlugin : public ExtensionSystem::IPlugin
+class QmlExpressionUnderCursor
 {
-    Q_OBJECT
-//    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "QmlJSTools.json")//#720 ROOPAK
-
 public:
-    static QmlJSToolsPlugin *instance() { return m_instance; }
+    QmlExpressionUnderCursor();
 
-    QmlJSToolsPlugin();
-    ~QmlJSToolsPlugin();
+    QmlJS::AST::ExpressionNode * operator()(const QTextCursor &cursor);
 
-    bool initialize(const QStringList &arguments, QString *errorMessage);
-    void extensionsInitialized();
-    ShutdownFlag aboutToShutdown();
-    ModelManager *modelManager() { return m_modelManager; }
+    QmlJS::AST::ExpressionNode *expressionNode() const;
 
-private slots:
-    void onTaskStarted(Core::Id type);
-    void onAllTasksFinished(Core::Id type);
+    int expressionOffset() const
+    { return _expressionOffset; }
 
-#ifdef WITH_TESTS
-    void test_basic();
-#endif
+    int expressionLength() const
+    { return _expressionLength; }
+
+    QString text() const
+    { return _text; }
 
 private:
-    ModelManager *m_modelManager;
-//    QmlConsoleManager *m_consoleManager;//#720 ROOPAK
-    QmlJSToolsSettings *m_settings;
-    QAction *m_resetCodeModelAction;
+    void parseExpression(const QTextBlock &block);
 
-    static QmlJSToolsPlugin *m_instance;
+    void tryExpression(const QString &text);
+
+private:
+    QmlJS::AST::ExpressionNode *_expressionNode;
+    int _expressionOffset;
+    int _expressionLength;
+    QmlJS::Document::Ptr exprDoc;
+    QString _text;
 };
 
 } // namespace Internal
-} // namespace CppTools
+} // namespace QmlJSEditor
 
-#endif // QMLJSTOOLS_H
+#endif // QMLEXPRESSIONUNDERCURSOR_H

@@ -27,61 +27,19 @@
 **
 ****************************************************************************/
 
-#ifndef QMLJSTOOLS_H
-#define QMLJSTOOLS_H
+#ifndef QMLJSEDITOR_GLOBAL_H
+#define QMLJSEDITOR_GLOBAL_H
 
-#include <coreplugin/id.h>
-#include <extensionsystem/iplugin.h>
+//#include <QtGlobal>
 
-QT_BEGIN_NAMESPACE
-class QFileInfo;
-class QDir;
-class QAction;
-QT_END_NAMESPACE
+//#if defined(QMLJSEDITOR_LIBRARY)
+//#  define QMLJSEDITOR_EXPORT Q_DECL_EXPORT
+//#else
+//#  define QMLJSEDITOR_EXPORT Q_DECL_IMPORT
+//#endif
 
-namespace QmlJSTools {
+#include <texteditor/../jseditortools_global.h>//#720 ROOPAK
 
-class QmlJSToolsSettings;
-//class QmlConsoleManager;//#720 ROOPAK
+#define QMLJSEDITOR_EXPORT JSEDITORTOOLS_EXPORT
 
-namespace Internal {
-
-class ModelManager;
-
-class QmlJSToolsPlugin : public ExtensionSystem::IPlugin
-{
-    Q_OBJECT
-//    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "QmlJSTools.json")//#720 ROOPAK
-
-public:
-    static QmlJSToolsPlugin *instance() { return m_instance; }
-
-    QmlJSToolsPlugin();
-    ~QmlJSToolsPlugin();
-
-    bool initialize(const QStringList &arguments, QString *errorMessage);
-    void extensionsInitialized();
-    ShutdownFlag aboutToShutdown();
-    ModelManager *modelManager() { return m_modelManager; }
-
-private slots:
-    void onTaskStarted(Core::Id type);
-    void onAllTasksFinished(Core::Id type);
-
-#ifdef WITH_TESTS
-    void test_basic();
-#endif
-
-private:
-    ModelManager *m_modelManager;
-//    QmlConsoleManager *m_consoleManager;//#720 ROOPAK
-    QmlJSToolsSettings *m_settings;
-    QAction *m_resetCodeModelAction;
-
-    static QmlJSToolsPlugin *m_instance;
-};
-
-} // namespace Internal
-} // namespace CppTools
-
-#endif // QMLJSTOOLS_H
+#endif // QMLJSEDITOR_GLOBAL_H

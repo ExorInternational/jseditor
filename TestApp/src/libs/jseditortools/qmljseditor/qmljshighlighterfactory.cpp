@@ -27,61 +27,25 @@
 **
 ****************************************************************************/
 
-#ifndef QMLJSTOOLS_H
-#define QMLJSTOOLS_H
+#include "qmljshighlighterfactory.h"
+#include "qmljseditorconstants.h"
+#include "qmljshighlighter.h"
+#include <qmljstools/qmljstoolsconstants.h>
 
-#include <coreplugin/id.h>
-#include <extensionsystem/iplugin.h>
+using namespace QmlJSEditor::Internal;
 
-QT_BEGIN_NAMESPACE
-class QFileInfo;
-class QDir;
-class QAction;
-QT_END_NAMESPACE
-
-namespace QmlJSTools {
-
-class QmlJSToolsSettings;
-//class QmlConsoleManager;//#720 ROOPAK
-
-namespace Internal {
-
-class ModelManager;
-
-class QmlJSToolsPlugin : public ExtensionSystem::IPlugin
+QmlJSHighlighterFactory::QmlJSHighlighterFactory()
 {
-    Q_OBJECT
-//    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "QmlJSTools.json")//#720 ROOPAK
+    setId(Constants::C_QMLJSEDITOR_ID);
+    addMimeType(QmlJSTools::Constants::QML_MIMETYPE);
+    addMimeType(QmlJSTools::Constants::QMLPROJECT_MIMETYPE);
+    addMimeType(QmlJSTools::Constants::QBS_MIMETYPE);
+    addMimeType(QmlJSTools::Constants::QMLTYPES_MIMETYPE);
+    addMimeType(QmlJSTools::Constants::JS_MIMETYPE);
+    addMimeType(QmlJSTools::Constants::JSON_MIMETYPE);
+}
 
-public:
-    static QmlJSToolsPlugin *instance() { return m_instance; }
-
-    QmlJSToolsPlugin();
-    ~QmlJSToolsPlugin();
-
-    bool initialize(const QStringList &arguments, QString *errorMessage);
-    void extensionsInitialized();
-    ShutdownFlag aboutToShutdown();
-    ModelManager *modelManager() { return m_modelManager; }
-
-private slots:
-    void onTaskStarted(Core::Id type);
-    void onAllTasksFinished(Core::Id type);
-
-#ifdef WITH_TESTS
-    void test_basic();
-#endif
-
-private:
-    ModelManager *m_modelManager;
-//    QmlConsoleManager *m_consoleManager;//#720 ROOPAK
-    QmlJSToolsSettings *m_settings;
-    QAction *m_resetCodeModelAction;
-
-    static QmlJSToolsPlugin *m_instance;
-};
-
-} // namespace Internal
-} // namespace CppTools
-
-#endif // QMLJSTOOLS_H
+TextEditor::SyntaxHighlighter *QmlJSHighlighterFactory::createHighlighter() const
+{
+    return new Highlighter;
+}

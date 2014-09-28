@@ -27,61 +27,44 @@
 **
 ****************************************************************************/
 
-#ifndef QMLJSTOOLS_H
-#define QMLJSTOOLS_H
+#include "qmljssnippetprovider.h"
+#include "qmljshighlighter.h"
+#include "qmljseditor.h"
+#include "qmljsautocompleter.h"
+#include "qmljseditorconstants.h"
 
-#include <coreplugin/id.h>
-#include <extensionsystem/iplugin.h>
+#include <texteditor/texteditorsettings.h>
+#include <texteditor/texteditorconstants.h>
+#include <texteditor/snippets/snippeteditor.h>
 
-QT_BEGIN_NAMESPACE
-class QFileInfo;
-class QDir;
-class QAction;
-QT_END_NAMESPACE
+#include <qmljstools/qmljsindenter.h>
 
-namespace QmlJSTools {
+#include <QLatin1String>
+#include <QCoreApplication>
 
-class QmlJSToolsSettings;
-//class QmlConsoleManager;//#720 ROOPAK
+using namespace QmlJSEditor;
+using namespace Internal;
 
-namespace Internal {
+QmlJSSnippetProvider::QmlJSSnippetProvider() :
+    TextEditor::ISnippetProvider()
+{}
 
-class ModelManager;
+QmlJSSnippetProvider::~QmlJSSnippetProvider()
+{}
 
-class QmlJSToolsPlugin : public ExtensionSystem::IPlugin
+QString QmlJSSnippetProvider::groupId() const
 {
-    Q_OBJECT
-//    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "QmlJSTools.json")//#720 ROOPAK
+    return QLatin1String(Constants::QML_SNIPPETS_GROUP_ID);
+}
 
-public:
-    static QmlJSToolsPlugin *instance() { return m_instance; }
+QString QmlJSSnippetProvider::displayName() const
+{
+    return QCoreApplication::translate("QmlJSEditor::Internal::QmlJSSnippetProvider", "QML");
+}
 
-    QmlJSToolsPlugin();
-    ~QmlJSToolsPlugin();
-
-    bool initialize(const QStringList &arguments, QString *errorMessage);
-    void extensionsInitialized();
-    ShutdownFlag aboutToShutdown();
-    ModelManager *modelManager() { return m_modelManager; }
-
-private slots:
-    void onTaskStarted(Core::Id type);
-    void onAllTasksFinished(Core::Id type);
-
-#ifdef WITH_TESTS
-    void test_basic();
-#endif
-
-private:
-    ModelManager *m_modelManager;
-//    QmlConsoleManager *m_consoleManager;//#720 ROOPAK
-    QmlJSToolsSettings *m_settings;
-    QAction *m_resetCodeModelAction;
-
-    static QmlJSToolsPlugin *m_instance;
-};
-
-} // namespace Internal
-} // namespace CppTools
-
-#endif // QMLJSTOOLS_H
+void QmlJSSnippetProvider::decorateEditor(TextEditor::SnippetEditorWidget *editor) const
+{
+    editor->setSyntaxHighlighter(new Highlighter);
+    editor->baseTextDocument()->setIndenter(new Indenter);
+    editor->setAutoCompleter(new AutoCompleter);
+}

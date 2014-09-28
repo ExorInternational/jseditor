@@ -27,61 +27,36 @@
 **
 ****************************************************************************/
 
-#ifndef QMLJSTOOLS_H
-#define QMLJSTOOLS_H
+#ifndef IOUTLINEWIDGET_H
+#define IOUTLINEWIDGET_H
 
-#include <coreplugin/id.h>
-#include <extensionsystem/iplugin.h>
+#include <texteditor/texteditor_global.h>
+#include <QWidget>
 
-QT_BEGIN_NAMESPACE
-class QFileInfo;
-class QDir;
-class QAction;
-QT_END_NAMESPACE
+namespace Core { class IEditor; }
 
-namespace QmlJSTools {
+namespace TextEditor {
 
-class QmlJSToolsSettings;
-//class QmlConsoleManager;//#720 ROOPAK
-
-namespace Internal {
-
-class ModelManager;
-
-class QmlJSToolsPlugin : public ExtensionSystem::IPlugin
+class TEXTEDITOR_EXPORT IOutlineWidget : public QWidget
 {
     Q_OBJECT
-//    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "QmlJSTools.json")//#720 ROOPAK
-
 public:
-    static QmlJSToolsPlugin *instance() { return m_instance; }
+    IOutlineWidget(QWidget *parent = 0) : QWidget(parent) {}
 
-    QmlJSToolsPlugin();
-    ~QmlJSToolsPlugin();
+    virtual QList<QAction*> filterMenuActions() const = 0;
+    virtual void setCursorSynchronization(bool syncWithCursor) = 0;
 
-    bool initialize(const QStringList &arguments, QString *errorMessage);
-    void extensionsInitialized();
-    ShutdownFlag aboutToShutdown();
-    ModelManager *modelManager() { return m_modelManager; }
-
-private slots:
-    void onTaskStarted(Core::Id type);
-    void onAllTasksFinished(Core::Id type);
-
-#ifdef WITH_TESTS
-    void test_basic();
-#endif
-
-private:
-    ModelManager *m_modelManager;
-//    QmlConsoleManager *m_consoleManager;//#720 ROOPAK
-    QmlJSToolsSettings *m_settings;
-    QAction *m_resetCodeModelAction;
-
-    static QmlJSToolsPlugin *m_instance;
+    virtual void restoreSettings(int position) { Q_UNUSED(position); }
+    virtual void saveSettings(int position) { Q_UNUSED(position); }
 };
 
-} // namespace Internal
-} // namespace CppTools
+class TEXTEDITOR_EXPORT IOutlineWidgetFactory : public QObject {
+    Q_OBJECT
+public:
+    virtual bool supportsEditor(Core::IEditor *editor) const = 0;
+    virtual IOutlineWidget *createWidget(Core::IEditor *editor) = 0;
+};
 
-#endif // QMLJSTOOLS_H
+} // namespace TextEditor
+
+#endif // IOUTLINEWIDGET_H

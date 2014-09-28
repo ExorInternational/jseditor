@@ -116,6 +116,8 @@ HEADERS += \
     $$PWD/texteditor_global.h \
     $$PWD/convenience.h \
     $$PWD/extraencodingsettings.h \
+    $$PWD/ioutlinewidget.h \
+    $$PWD/ihighlighterfactory.h \
 
 SOURCES += \
     $$PWD/texteditorplugin.cpp \

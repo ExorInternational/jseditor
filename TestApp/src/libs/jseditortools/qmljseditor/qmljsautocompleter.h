@@ -27,61 +27,32 @@
 **
 ****************************************************************************/
 
-#ifndef QMLJSTOOLS_H
-#define QMLJSTOOLS_H
+#ifndef QMLJSAUTOCOMPLETER_H
+#define QMLJSAUTOCOMPLETER_H
 
-#include <coreplugin/id.h>
-#include <extensionsystem/iplugin.h>
+#include <texteditor/autocompleter.h>
 
-QT_BEGIN_NAMESPACE
-class QFileInfo;
-class QDir;
-class QAction;
-QT_END_NAMESPACE
-
-namespace QmlJSTools {
-
-class QmlJSToolsSettings;
-//class QmlConsoleManager;//#720 ROOPAK
-
+namespace QmlJSEditor {
 namespace Internal {
 
-class ModelManager;
-
-class QmlJSToolsPlugin : public ExtensionSystem::IPlugin
+class AutoCompleter : public TextEditor::AutoCompleter
 {
-    Q_OBJECT
-//    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "QmlJSTools.json")//#720 ROOPAK
-
 public:
-    static QmlJSToolsPlugin *instance() { return m_instance; }
+    AutoCompleter();
+    virtual ~AutoCompleter();
 
-    QmlJSToolsPlugin();
-    ~QmlJSToolsPlugin();
-
-    bool initialize(const QStringList &arguments, QString *errorMessage);
-    void extensionsInitialized();
-    ShutdownFlag aboutToShutdown();
-    ModelManager *modelManager() { return m_modelManager; }
-
-private slots:
-    void onTaskStarted(Core::Id type);
-    void onAllTasksFinished(Core::Id type);
-
-#ifdef WITH_TESTS
-    void test_basic();
-#endif
-
-private:
-    ModelManager *m_modelManager;
-//    QmlConsoleManager *m_consoleManager;//#720 ROOPAK
-    QmlJSToolsSettings *m_settings;
-    QAction *m_resetCodeModelAction;
-
-    static QmlJSToolsPlugin *m_instance;
+    virtual bool contextAllowsAutoParentheses(const QTextCursor &cursor,
+                                              const QString &textToInsert = QString()) const;
+    virtual bool contextAllowsElectricCharacters(const QTextCursor &cursor) const;
+    virtual bool isInComment(const QTextCursor &cursor) const;
+    virtual QString insertMatchingBrace(const QTextCursor &tc,
+                                          const QString &text,
+                                          QChar la,
+                                          int *skippedChars) const;
+    virtual QString insertParagraphSeparator(const QTextCursor &tc) const;
 };
 
-} // namespace Internal
-} // namespace CppTools
+} // Internal
+} // QmlJSEditor
 
-#endif // QMLJSTOOLS_H
+#endif // QMLJSAUTOCOMPLETER_H

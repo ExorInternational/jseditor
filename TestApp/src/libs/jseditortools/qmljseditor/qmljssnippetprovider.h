@@ -27,61 +27,27 @@
 **
 ****************************************************************************/
 
-#ifndef QMLJSTOOLS_H
-#define QMLJSTOOLS_H
+#ifndef QMLJSSNIPPETPROVIDER_H
+#define QMLJSSNIPPETPROVIDER_H
 
-#include <coreplugin/id.h>
-#include <extensionsystem/iplugin.h>
+#include <texteditor/snippets/isnippetprovider.h>
 
-QT_BEGIN_NAMESPACE
-class QFileInfo;
-class QDir;
-class QAction;
-QT_END_NAMESPACE
-
-namespace QmlJSTools {
-
-class QmlJSToolsSettings;
-//class QmlConsoleManager;//#720 ROOPAK
-
+namespace QmlJSEditor {
 namespace Internal {
 
-class ModelManager;
-
-class QmlJSToolsPlugin : public ExtensionSystem::IPlugin
+class QmlJSSnippetProvider : public TextEditor::ISnippetProvider
 {
-    Q_OBJECT
-//    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "QmlJSTools.json")//#720 ROOPAK
+public:
+    QmlJSSnippetProvider();
+    virtual ~QmlJSSnippetProvider();
 
 public:
-    static QmlJSToolsPlugin *instance() { return m_instance; }
-
-    QmlJSToolsPlugin();
-    ~QmlJSToolsPlugin();
-
-    bool initialize(const QStringList &arguments, QString *errorMessage);
-    void extensionsInitialized();
-    ShutdownFlag aboutToShutdown();
-    ModelManager *modelManager() { return m_modelManager; }
-
-private slots:
-    void onTaskStarted(Core::Id type);
-    void onAllTasksFinished(Core::Id type);
-
-#ifdef WITH_TESTS
-    void test_basic();
-#endif
-
-private:
-    ModelManager *m_modelManager;
-//    QmlConsoleManager *m_consoleManager;//#720 ROOPAK
-    QmlJSToolsSettings *m_settings;
-    QAction *m_resetCodeModelAction;
-
-    static QmlJSToolsPlugin *m_instance;
+    virtual QString groupId() const;
+    virtual QString displayName() const;
+    virtual void decorateEditor(TextEditor::SnippetEditorWidget *editor) const;
 };
 
-} // namespace Internal
-} // namespace CppTools
+} // Internal
+} // QmlJSEditor
 
-#endif // QMLJSTOOLS_H
+#endif // QMLJSSNIPPETPROVIDER_H

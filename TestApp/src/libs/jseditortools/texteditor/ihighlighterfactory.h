@@ -27,61 +27,40 @@
 **
 ****************************************************************************/
 
-#ifndef QMLJSTOOLS_H
-#define QMLJSTOOLS_H
+#ifndef IHIGHLIGHTERFACTORY_H
+#define IHIGHLIGHTERFACTORY_H
 
+#include <texteditor/texteditor_global.h>
 #include <coreplugin/id.h>
-#include <extensionsystem/iplugin.h>
 
-QT_BEGIN_NAMESPACE
-class QFileInfo;
-class QDir;
-class QAction;
-QT_END_NAMESPACE
+#include <QObject>
+#include <QStringList>
 
-namespace QmlJSTools {
+namespace TextEditor {
 
-class QmlJSToolsSettings;
-//class QmlConsoleManager;//#720 ROOPAK
+class SyntaxHighlighter;
 
-namespace Internal {
-
-class ModelManager;
-
-class QmlJSToolsPlugin : public ExtensionSystem::IPlugin
+class TEXTEDITOR_EXPORT IHighlighterFactory : public QObject
 {
     Q_OBJECT
-//    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "QmlJSTools.json")//#720 ROOPAK
-
 public:
-    static QmlJSToolsPlugin *instance() { return m_instance; }
+    virtual TextEditor::SyntaxHighlighter *createHighlighter() const = 0;
 
-    QmlJSToolsPlugin();
-    ~QmlJSToolsPlugin();
+    Core::Id id() const { return m_id; }
+    QStringList mimeTypes() const { return m_mimeTypes; }
 
-    bool initialize(const QStringList &arguments, QString *errorMessage);
-    void extensionsInitialized();
-    ShutdownFlag aboutToShutdown();
-    ModelManager *modelManager() { return m_modelManager; }
-
-private slots:
-    void onTaskStarted(Core::Id type);
-    void onAllTasksFinished(Core::Id type);
-
-#ifdef WITH_TESTS
-    void test_basic();
-#endif
+protected:
+    void setId(Core::Id id) { m_id = id; }
+    void setMimeTypes(const QStringList &mimeTypes) { m_mimeTypes = mimeTypes; }
+    void addMimeType(const char *mimeType) { m_mimeTypes.append(QLatin1String(mimeType)); }
+    void addMimeType(const QString &mimeType) { m_mimeTypes.append(mimeType); }
 
 private:
-    ModelManager *m_modelManager;
-//    QmlConsoleManager *m_consoleManager;//#720 ROOPAK
-    QmlJSToolsSettings *m_settings;
-    QAction *m_resetCodeModelAction;
-
-    static QmlJSToolsPlugin *m_instance;
+    Core::Id m_id;
+    QStringList m_mimeTypes;
 };
 
-} // namespace Internal
-} // namespace CppTools
+} // TextEditor
 
-#endif // QMLJSTOOLS_H
+#endif // IHIGHLIGHTERFACTORY_H
+

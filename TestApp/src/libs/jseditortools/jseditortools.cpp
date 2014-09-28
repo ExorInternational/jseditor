@@ -2,6 +2,7 @@
 #include <jseditortools/coreplugin/coreplugin.h>
 #include <jseditortools/texteditor/texteditorplugin.h>
 #include <jseditortools/qmljstools/qmljstoolsplugin.h>
+#include <jseditortools/qmljseditor/qmljseditorplugin.h>
 
 #include <QStringList>
 
@@ -26,17 +27,29 @@ JsEditorToolsLib::JsEditorToolsLib(QMainWindow *mainWindow)
     m_pQmlJSToolsPlugin->initialize(arguments, &err);
     m_pQmlJSToolsPlugin->extensionsInitialized();
 
+    m_pQmlJSEditorPlugin = new QmlJSEditor::Internal::QmlJSEditorPlugin();
+    m_pQmlJSEditorPlugin->initialize(arguments, &err);
+    m_pQmlJSEditorPlugin->extensionsInitialized();
+
 }
 JsEditorToolsLib::~JsEditorToolsLib()
 {
+    m_pQmlJSEditorPlugin->aboutToShutdown();
+    if(m_pQmlJSEditorPlugin)
+        delete m_pQmlJSEditorPlugin;
+    m_pQmlJSEditorPlugin = 0;
+
+    m_pQmlJSToolsPlugin->aboutToShutdown();
     if(m_pQmlJSToolsPlugin)
         delete m_pQmlJSToolsPlugin;
     m_pQmlJSToolsPlugin = 0;
 
+    m_pTextEditorPlugin->aboutToShutdown();
     if(m_pTextEditorPlugin)
         delete m_pTextEditorPlugin;
     m_pTextEditorPlugin = 0;
 
+    m_pCorePlugin->aboutToShutdown();
     if(m_pCorePlugin)
         delete m_pCorePlugin;
     m_pCorePlugin = 0;
