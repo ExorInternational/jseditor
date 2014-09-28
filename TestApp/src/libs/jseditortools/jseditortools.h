@@ -17,6 +17,12 @@ class TextEditorPlugin;
 }
 }
 
+namespace QmlJSTools {
+namespace Internal {
+class QmlJSToolsPlugin;
+}
+}
+
 namespace JsEditorTools {
 
 class JSEDITORTOOLS_EXPORT JsEditorToolsLib {
@@ -27,6 +33,7 @@ private:
     QMainWindow *m_MainWindow;
     Core::Internal::CorePlugin *m_pCorePlugin;
     TextEditor::Internal::TextEditorPlugin *m_pTextEditorPlugin;
+    QmlJSTools::Internal::QmlJSToolsPlugin *m_pQmlJSToolsPlugin;
 };
 
 }// namespace JsEditorTools
