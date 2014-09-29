@@ -111,7 +111,6 @@ JsEditorToolsLib::JsEditorToolsLib(QMainWindow *mainWindow)
 
     m_pCorePlugin = new Core::Internal::CorePlugin(m_MainWindow);
     m_pCorePlugin->initialize(arguments, &err);
-    m_pCorePlugin->extensionsInitialized();
 
     m_pTextEditorPlugin = new TextEditor::Internal::TextEditorPlugin();
     m_pTextEditorPlugin->initialize(arguments, &err);
@@ -125,6 +124,7 @@ JsEditorToolsLib::JsEditorToolsLib(QMainWindow *mainWindow)
     m_pQmlJSEditorPlugin->initialize(arguments, &err);
     m_pQmlJSEditorPlugin->extensionsInitialized();
 
+    m_pCorePlugin->extensionsInitialized();//this should be called only in the final step(after the other plugins are loaded).
 }
 JsEditorToolsLib::~JsEditorToolsLib()
 {
