@@ -29,7 +29,7 @@
 
 #include "icore.h"
 
-#include <app/app_version.h>
+//#include <app/app_version.h>//#720 - ROOPAK
 #include <extensionsystem/pluginmanager.h>
 
 #include <QSysInfo>

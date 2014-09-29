@@ -9,7 +9,7 @@
 using namespace JsEditorTools;
 
 #include <extensionsystem/pluginmanager.h>
-#include <app/app_version.h>
+//#include <app/app_version.h>//#720 - ROOPAK
 
 #include <QSettings>
 #include <QFileInfo>

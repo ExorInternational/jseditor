@@ -59,7 +59,7 @@
 #include "macfullscreen.h"
 #endif
 
-#include <app/app_version.h>
+//#include <app/app_version.h>//#720 - ROOPAK
 #include <coreplugin/actionmanager/actioncontainer.h>
 #include <coreplugin/actionmanager/actionmanager.h>
 #include <coreplugin/actionmanager/actionmanager_p.h>

@@ -9,4 +9,6 @@
 #  define JSEDITORTOOLS_EXPORT Q_DECL_IMPORT
 #endif
 
+#include <app_version_new.h>
+
 #endif // JSEDITORTOOLS_GLOBAL_H
