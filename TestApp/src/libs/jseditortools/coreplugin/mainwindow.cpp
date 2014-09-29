@@ -1001,6 +1001,8 @@ bool MainWindow::eventFilter( QObject *dist, QEvent *event )
         else if(event->type() == QEvent::Drop)
             dropEvent((QDropEvent *)event);
     }
+
+    return true;
 }
 void MainWindow::changeEvent(QEvent *e)
 {

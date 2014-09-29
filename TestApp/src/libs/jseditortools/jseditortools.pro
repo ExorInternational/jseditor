@@ -1,4 +1,4 @@
-#DEFINES += JSEDITORTOOLS_LIBRARY
+DEFINES += JSEDITORTOOLS_LIBRARY
 
 include(../../qtcreatorlibrary.pri)
 
