@@ -24,9 +24,4 @@ MainWindowApp::~MainWindowApp()
         delete m_pJsEditorTools;
     m_pJsEditorTools = 0;
 }
-void MainWindowApp::onFileOpenClicked()
-{
-    QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"),
-                                                     "/home",
-                                                     tr("Javascript Files (*.js)"));
-}
+

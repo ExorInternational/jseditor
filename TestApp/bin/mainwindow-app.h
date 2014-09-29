@@ -18,8 +18,6 @@ class MainWindowApp : public QMainWindow
 public:
     explicit MainWindowApp(QWidget *parent = 0);
     ~MainWindowApp();
-private slots:
-    void onFileOpenClicked();
 private:
     Ui::MainWindowApp *ui;
     JsEditorTools::JsEditorToolsLib *m_pJsEditorTools;
