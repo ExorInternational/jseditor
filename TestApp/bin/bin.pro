@@ -49,4 +49,4 @@ DEFINES -= QT_NO_CAST_TO_ASCII QT_NO_CAST_FROM_ASCII
 INCLUDEPATH += $$PWD/../src/libs/jseditortools
 LIBS *= -l$$qtLibraryName(JsEditorTools) \
 
-QMAKE_SUBSTITUTES += $$PWD/app_version.h.in
+#QMAKE_SUBSTITUTES += $$PWD/app_version.h.in
