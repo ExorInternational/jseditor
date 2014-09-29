@@ -1002,7 +1002,7 @@ bool MainWindow::eventFilter( QObject *dist, QEvent *event )
             dropEvent((QDropEvent *)event);
     }
 
-    return true;
+    return false;
 }
 void MainWindow::changeEvent(QEvent *e)
 {

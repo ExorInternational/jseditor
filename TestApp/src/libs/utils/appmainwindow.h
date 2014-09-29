@@ -49,12 +49,12 @@ signals:
 
 #ifdef Q_OS_WIN
 protected:
-    virtual bool winEvent(MSG *message, long *result);
-    virtual bool event(QEvent *event);
+//    virtual bool winEvent(MSG *message, long *result);
+//    virtual bool event(QEvent *event);
 #endif
 
 private:
-    const int m_deviceEventId;
+//    const int m_deviceEventId;
 protected:
     QMainWindow *m_mainWindow;
 };

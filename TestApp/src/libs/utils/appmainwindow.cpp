@@ -52,8 +52,8 @@ public:
     explicit DeviceNotifyEvent(int id) : QEvent(static_cast<QEvent::Type>(id)) {}
 };
 
-AppMainWindow::AppMainWindow(QMainWindow *mainWindow) :
-        m_deviceEventId(QEvent::registerEventType(QEvent::User + 2))
+AppMainWindow::AppMainWindow(QMainWindow *mainWindow)/* :
+        m_deviceEventId(QEvent::registerEventType(QEvent::User + 2))*/
 {
     m_mainWindow = mainWindow;
 }
@@ -88,26 +88,37 @@ void AppMainWindow::raiseWindow()
 }
 
 #ifdef Q_OS_WIN
-bool AppMainWindow::event(QEvent *event)
-{
-    if (event->type() == m_deviceEventId) {
-        event->accept();
-        emit deviceChange();
-        return true;
-    }
-    return false;//QMainWindow::event(event);
-}
 
-bool AppMainWindow::winEvent(MSG *msg, long *result)
-{
-    if (msg->message == WM_DEVICECHANGE) {
-        if (msg->wParam & 0x7 /* DBT_DEVNODES_CHANGED */) {
-            *result = TRUE;
-            QCoreApplication::postEvent(this, new DeviceNotifyEvent(m_deviceEventId));
-        }
-    }
-    return false;
-}
+//bool AppMainWindow::eventFilter( QObject *dist, QEvent *event )//#720 ROOPAK
+//{
+//    if(dist == m_mainWindow)
+//    {
+//        return this->event(event);
+//    }
+
+//    return true;
+//}
+//bool AppMainWindow::event(QEvent *event)
+//{
+//    if (event->type() == m_deviceEventId) {
+//        event->accept();
+//        emit deviceChange();
+//        return true;
+//    }
+//    return true;//QMainWindow::event(event);
+   
+//}
+
+//bool AppMainWindow::winEvent(MSG *msg, long *result)
+//{
+//    if (msg->message == WM_DEVICECHANGE) {
+//        if (msg->wParam & 0x7 /* DBT_DEVNODES_CHANGED */) {
+//            *result = TRUE;
+//            QCoreApplication::postEvent(this, new DeviceNotifyEvent(m_deviceEventId));
+//        }
+//    }
+//    return false;
+//}
 #endif
 
 } // namespace Utils
