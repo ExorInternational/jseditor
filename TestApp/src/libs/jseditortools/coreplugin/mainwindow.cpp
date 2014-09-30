@@ -1092,7 +1092,7 @@ void MainWindow::readSettings()
                                   QColor(Utils::StyleHelper::DEFAULT_BASE_COLOR)).value<QColor>());
     }
 
-    bool modeSelectorVisible = settings->value(QLatin1String(modeSelectorVisibleKey), true).toBool();
+    bool modeSelectorVisible = false;//settings->value(QLatin1String(modeSelectorVisibleKey), true).toBool();//#720 - ROOPAK
     ModeManager::setModeSelectorVisible(modeSelectorVisible);
     m_toggleModeSelectorAction->setChecked(modeSelectorVisible);
 
