@@ -159,9 +159,9 @@ MainWindow::MainWindow(QMainWindow *mainWindow) :
 
     Utils::HistoryCompleter::setSettings(PluginManager::settings());
 
-    mainwindow()->setWindowTitle(tr("Qt Creator"));
-    if (!Utils::HostOsInfo::isMacHost())
-        QApplication::setWindowIcon(QIcon(QLatin1String(Constants::ICON_QTLOGO_128)));
+//    mainwindow()->setWindowTitle(tr("Qt Creator"));//#720 ROOPAK - START
+//    if (!Utils::HostOsInfo::isMacHost())
+//        QApplication::setWindowIcon(QIcon(QLatin1String(Constants::ICON_QTLOGO_128)));//#720 ROOPAK - END
     QCoreApplication::setApplicationName(QLatin1String("QtCreator"));
     QCoreApplication::setApplicationVersion(QLatin1String(Core::Constants::IDE_VERSION_LONG));
     QCoreApplication::setOrganizationName(QLatin1String(Constants::IDE_SETTINGSVARIANT_STR));
