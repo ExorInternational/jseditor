@@ -36,7 +36,7 @@
 #include <qmljs/qmljsqrcparser.h>
 #include <qmljs/qmljsconstants.h>
 
-#include <cplusplus/CppDocument.h>
+//#include <cplusplus/CppDocument.h>//#720 ROOPAK
 #include <utils/qtcoverride.h>
 
 #include <QFuture>

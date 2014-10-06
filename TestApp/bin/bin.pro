@@ -17,7 +17,7 @@ FORMS         = mainwindow-app.ui
 LIBS *= \
         -l$$qtLibraryName(Utils) \
         -l$$qtLibraryName(LanguageUtils) \
-        -l$$qtLibraryName(CPlusPlus) \
+#        -l$$qtLibraryName(CPlusPlus) \//#720 ROOPAK
         -l$$qtLibraryName(QmlJS) \
         -l$$qtLibraryName(Aggregation) \
         -l$$qtLibraryName(ExtensionSystem) \
