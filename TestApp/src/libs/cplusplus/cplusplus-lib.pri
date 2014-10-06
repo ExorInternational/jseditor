@@ -58,7 +58,7 @@ HEADERS += \
     $$PWD/findcdbbreakpoint.h \
     $$PWD/PPToken.h \
     $$PWD/Dumpers.h \
-    $$PWD/cppmodelmanagerbase.h
+#    $$PWD/cppmodelmanagerbase.h//#720 ROOPAK
 
 SOURCES += \
     $$PWD/SimpleLexer.cpp \
@@ -87,6 +87,6 @@ SOURCES += \
     $$PWD/findcdbbreakpoint.cpp \
     $$PWD/PPToken.cpp \
     $$PWD/Dumpers.cpp \
-    $$PWD/cppmodelmanagerbase.cpp
+#    $$PWD/cppmodelmanagerbase.cpp//#720 ROOPAK
 
 RESOURCES += $$PWD/cplusplus.qrc

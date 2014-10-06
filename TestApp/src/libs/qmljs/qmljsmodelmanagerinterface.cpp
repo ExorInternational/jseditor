@@ -35,7 +35,7 @@
 #include "qmljsplugindumper.h"
 #include "qmljstypedescriptionreader.h"
 
-#include <cplusplus/cppmodelmanagerbase.h>
+//#include <cplusplus/cppmodelmanagerbase.h>//#720 ROOPAK
 #include <utils/function.h>
 #include <utils/hostosinfo.h>
 
@@ -1127,14 +1127,14 @@ void ModelManagerInterface::startCppQmlTypeUpdate()
         return;
     }
 
-    CPlusPlus::CppModelManagerBase *cppModelManager =
-            CPlusPlus::CppModelManagerBase::instance();
-    if (!cppModelManager)
-        return;
+//    CPlusPlus::CppModelManagerBase *cppModelManager =//#720 ROOPAK - START
+//            CPlusPlus::CppModelManagerBase::instance();
+//    if (!cppModelManager)
+//        return;
 
-    m_cppQmlTypesUpdater = QtConcurrent::run(
-                &ModelManagerInterface::updateCppQmlTypes,
-                this, cppModelManager->snapshot(), m_queuedCppDocuments);
+//    m_cppQmlTypesUpdater = QtConcurrent::run(
+//                &ModelManagerInterface::updateCppQmlTypes,
+//                this, cppModelManager->snapshot(), m_queuedCppDocuments);//#720 ROOPAK - END
     m_queuedCppDocuments.clear();
 }
 
