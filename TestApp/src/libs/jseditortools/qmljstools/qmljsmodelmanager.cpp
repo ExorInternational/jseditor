@@ -43,7 +43,7 @@
 //#include <projectexplorer/session.h>//#720 ROOPAK
 //#include <projectexplorer/target.h>//#720 ROOPAK
 #include <qmljs/qmljsbind.h>
-#include <qmljs/qmljsfindexportedcpptypes.h>
+//#include <qmljs/qmljsfindexportedcpptypes.h>//#720 ROOPAK
 #include <qmljs/qmljsplugindumper.h>
 //#include <qtsupport/qmldumptool.h>//#720 ROOPAK
 //#include <qtsupport/qtkitinformation.h>//#720 ROOPAK

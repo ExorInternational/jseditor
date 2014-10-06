@@ -29,7 +29,7 @@
 
 #include "qmljsbind.h"
 #include "qmljsconstants.h"
-#include "qmljsfindexportedcpptypes.h"
+//#include "qmljsfindexportedcpptypes.h"//#720 ROOPAK
 #include "qmljsinterpreter.h"
 #include "qmljsmodelmanagerinterface.h"
 #include "qmljsplugindumper.h"
@@ -1101,13 +1101,13 @@ void ModelManagerInterface::maybeQueueCppQmlTypeUpdate(const CPlusPlus::Document
     }
 
     // keep source and AST alive if we want to scan for register calls
-    const bool scan = FindExportedCppTypes::maybeExportsTypes(doc);
-    if (!scan)
-        doc->releaseSourceAndAST();
+//    const bool scan = FindExportedCppTypes::maybeExportsTypes(doc);//#720 ROOPAK - START
+//    if (!scan)
+//        doc->releaseSourceAndAST();
 
-    // delegate actual queuing to the gui thread
-    QMetaObject::invokeMethod(this, "queueCppQmlTypeUpdate",
-                              Q_ARG(CPlusPlus::Document::Ptr, doc), Q_ARG(bool, scan));
+//     //delegate actual queuing to the gui thread
+//    QMetaObject::invokeMethod(this, "queueCppQmlTypeUpdate",
+//                              Q_ARG(CPlusPlus::Document::Ptr, doc), Q_ARG(bool, scan));//#720 ROOPAK - END
 }
 
 void ModelManagerInterface::queueCppQmlTypeUpdate(const CPlusPlus::Document::Ptr &doc, bool scan)
@@ -1150,7 +1150,7 @@ void ModelManagerInterface::updateCppQmlTypes(QFutureInterface<void> &interface,
 {
     CppDataHash newData = qmlModelManager->cppData();
 
-    FindExportedCppTypes finder(snapshot);
+//    FindExportedCppTypes finder(snapshot);//#720 ROOPAK
 
     bool hasNewInfo = false;
     typedef QPair<CPlusPlus::Document::Ptr, bool> DocScanPair;
@@ -1166,10 +1166,10 @@ void ModelManagerInterface::updateCppQmlTypes(QFutureInterface<void> &interface,
             continue;
         }
 
-        finder(doc);
+//        finder(doc);//#720 ROOPAK
 
-        QList<LanguageUtils::FakeMetaObject::ConstPtr> exported = finder.exportedTypes();
-        QHash<QString, QString> contextProperties = finder.contextProperties();
+        QList<LanguageUtils::FakeMetaObject::ConstPtr> exported;// = finder.exportedTypes();//#720 ROOPAK - START
+        QHash<QString, QString> contextProperties;// = finder.contextProperties();//#720 ROOPAK - END
         if (exported.isEmpty() && contextProperties.isEmpty()) {
             hasNewInfo = hasNewInfo || newData.remove(fileName) > 0;
         } else {

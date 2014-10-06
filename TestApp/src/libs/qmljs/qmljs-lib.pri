@@ -11,7 +11,7 @@ HEADERS += \
     $$PWD/qmljsbind.h \
     $$PWD/qmljsbundle.h \
     $$PWD/qmljsevaluate.h \
-    $$PWD/qmljsfindexportedcpptypes.h \
+#    $$PWD/qmljsfindexportedcpptypes.h \//#720 ROOPAK
     $$PWD/qmljsdocument.h \
     $$PWD/qmljsscanner.h \
     $$PWD/qmljsinterpreter.h \
@@ -49,7 +49,7 @@ SOURCES += \
     $$PWD/qmljsbind.cpp \
     $$PWD/qmljsbundle.cpp \
     $$PWD/qmljsevaluate.cpp \
-    $$PWD/qmljsfindexportedcpptypes.cpp \
+#    $$PWD/qmljsfindexportedcpptypes.cpp \//#720 ROOPAK
     $$PWD/qmljsdocument.cpp \
     $$PWD/qmljsscanner.cpp \
     $$PWD/qmljsinterpreter.cpp \
