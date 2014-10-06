@@ -37,7 +37,7 @@
 #include "qmljsqrcparser.h"
 #include "qmljsviewercontext.h"
 
-#include <cplusplus/CppDocument.h>
+//#include <cplusplus/CppDocument.h>//#720 ROOPAK
 #include <utils/environment.h>
 
 #include <QFuture>
@@ -211,8 +211,8 @@ signals:
     void projectInfoUpdated(const ProjectInfo &pinfo);
     void projectPathChanged(const QString &projectPath);
 protected slots:
-    void maybeQueueCppQmlTypeUpdate(const CPlusPlus::Document::Ptr &doc);
-    void queueCppQmlTypeUpdate(const CPlusPlus::Document::Ptr &doc, bool scan);
+//    void maybeQueueCppQmlTypeUpdate(const CPlusPlus::Document::Ptr &doc);//#720 ROOPAK - START
+//    void queueCppQmlTypeUpdate(const CPlusPlus::Document::Ptr &doc, bool scan);//#720 ROOPAK - END
     void asyncReset();
     virtual void startCppQmlTypeUpdate();
 protected:
@@ -240,10 +240,10 @@ protected:
                     ModelManagerInterface *modelManager,
                     QmlJS::Language::Enum mainLanguage,
                     bool emitDocChangedOnDisk);
-    static void updateCppQmlTypes(QFutureInterface<void> &interface,
-                                  ModelManagerInterface *qmlModelManager,
-                                  CPlusPlus::Snapshot snapshot,
-                                  QHash<QString, QPair<CPlusPlus::Document::Ptr, bool> > documents);
+//    static void updateCppQmlTypes(QFutureInterface<void> &interface,//#720 ROOPAK - START
+//                                  ModelManagerInterface *qmlModelManager,
+//                                  CPlusPlus::Snapshot snapshot,
+//                                  QHash<QString, QPair<CPlusPlus::Document::Ptr, bool> > documents);//#720 ROOPAK - END
 
     void maybeScan(const QStringList &importPaths, Language::Enum defaultLanguage);
     void updateImportPaths();
@@ -263,7 +263,7 @@ private:
 
     QTimer *m_updateCppQmlTypesTimer;
     QTimer *m_asyncResetTimer;
-    QHash<QString, QPair<CPlusPlus::Document::Ptr, bool> > m_queuedCppDocuments;
+//    QHash<QString, QPair<CPlusPlus::Document::Ptr, bool> > m_queuedCppDocuments;//#720 ROOPAK
     QFuture<void> m_cppQmlTypesUpdater;
     QrcCache m_qrcCache;
 

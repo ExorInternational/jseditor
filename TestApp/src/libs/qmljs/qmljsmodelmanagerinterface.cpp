@@ -1091,33 +1091,33 @@ void ModelManagerInterface::loadPluginTypes(const QString &libraryPath, const QS
 }
 
 // is called *inside a c++ parsing thread*, to allow hanging on to source and ast
-void ModelManagerInterface::maybeQueueCppQmlTypeUpdate(const CPlusPlus::Document::Ptr &doc)
-{
-    // avoid scanning documents without source code available
-    doc->keepSourceAndAST();
-    if (doc->utf8Source().isEmpty()) {
-        doc->releaseSourceAndAST();
-        return;
-    }
-
-    // keep source and AST alive if we want to scan for register calls
-//    const bool scan = FindExportedCppTypes::maybeExportsTypes(doc);//#720 ROOPAK - START
-//    if (!scan)
+//void ModelManagerInterface::maybeQueueCppQmlTypeUpdate(const CPlusPlus::Document::Ptr &doc)//#720 ROOPAK - START
+//{
+//    // avoid scanning documents without source code available
+//    doc->keepSourceAndAST();
+//    if (doc->utf8Source().isEmpty()) {
 //        doc->releaseSourceAndAST();
+//        return;
+//    }
 
-//     //delegate actual queuing to the gui thread
-//    QMetaObject::invokeMethod(this, "queueCppQmlTypeUpdate",
-//                              Q_ARG(CPlusPlus::Document::Ptr, doc), Q_ARG(bool, scan));//#720 ROOPAK - END
-}
+//    // keep source and AST alive if we want to scan for register calls
+////    const bool scan = FindExportedCppTypes::maybeExportsTypes(doc);//#720 ROOPAK - START
+////    if (!scan)
+////        doc->releaseSourceAndAST();
 
-void ModelManagerInterface::queueCppQmlTypeUpdate(const CPlusPlus::Document::Ptr &doc, bool scan)
-{
-    QPair<CPlusPlus::Document::Ptr, bool> prev = m_queuedCppDocuments.value(doc->fileName());
-    if (prev.first && prev.second)
-        prev.first->releaseSourceAndAST();
-    m_queuedCppDocuments.insert(doc->fileName(), qMakePair(doc, scan));
-    m_updateCppQmlTypesTimer->start();
-}
+////     //delegate actual queuing to the gui thread
+////    QMetaObject::invokeMethod(this, "queueCppQmlTypeUpdate",
+////                              Q_ARG(CPlusPlus::Document::Ptr, doc), Q_ARG(bool, scan));//#720 ROOPAK - END
+//}
+
+//void ModelManagerInterface::queueCppQmlTypeUpdate(const CPlusPlus::Document::Ptr &doc, bool scan)
+//{
+//    QPair<CPlusPlus::Document::Ptr, bool> prev = m_queuedCppDocuments.value(doc->fileName());
+//    if (prev.first && prev.second)
+//        prev.first->releaseSourceAndAST();
+//    m_queuedCppDocuments.insert(doc->fileName(), qMakePair(doc, scan));
+//    m_updateCppQmlTypesTimer->start();
+//}
 
 void ModelManagerInterface::startCppQmlTypeUpdate()
 {
@@ -1135,7 +1135,7 @@ void ModelManagerInterface::startCppQmlTypeUpdate()
 //    m_cppQmlTypesUpdater = QtConcurrent::run(
 //                &ModelManagerInterface::updateCppQmlTypes,
 //                this, cppModelManager->snapshot(), m_queuedCppDocuments);//#720 ROOPAK - END
-    m_queuedCppDocuments.clear();
+//    m_queuedCppDocuments.clear();//#720 ROOPAK
 }
 
 void ModelManagerInterface::asyncReset()
@@ -1143,52 +1143,52 @@ void ModelManagerInterface::asyncReset()
     m_asyncResetTimer->start();
 }
 
-void ModelManagerInterface::updateCppQmlTypes(QFutureInterface<void> &interface,
-                                     ModelManagerInterface *qmlModelManager,
-                                     CPlusPlus::Snapshot snapshot,
-                                     QHash<QString, QPair<CPlusPlus::Document::Ptr, bool> > documents)
-{
-    CppDataHash newData = qmlModelManager->cppData();
+//void ModelManagerInterface::updateCppQmlTypes(QFutureInterface<void> &interface,//#720 ROOPAK - START
+//                                     ModelManagerInterface *qmlModelManager,
+//                                     CPlusPlus::Snapshot snapshot,
+//                                     QHash<QString, QPair<CPlusPlus::Document::Ptr, bool> > documents)
+//{
+//    CppDataHash newData = qmlModelManager->cppData();
 
-//    FindExportedCppTypes finder(snapshot);//#720 ROOPAK
+////    FindExportedCppTypes finder(snapshot);//#720 ROOPAK
 
-    bool hasNewInfo = false;
-    typedef QPair<CPlusPlus::Document::Ptr, bool> DocScanPair;
-    foreach (const DocScanPair &pair, documents) {
-        if (interface.isCanceled())
-            return;
+//    bool hasNewInfo = false;
+//    typedef QPair<CPlusPlus::Document::Ptr, bool> DocScanPair;
+//    foreach (const DocScanPair &pair, documents) {
+//        if (interface.isCanceled())
+//            return;
 
-        CPlusPlus::Document::Ptr doc = pair.first;
-        const bool scan = pair.second;
-        const QString fileName = doc->fileName();
-        if (!scan) {
-            hasNewInfo = hasNewInfo || newData.remove(fileName) > 0;
-            continue;
-        }
+//        CPlusPlus::Document::Ptr doc = pair.first;
+//        const bool scan = pair.second;
+//        const QString fileName = doc->fileName();
+//        if (!scan) {
+//            hasNewInfo = hasNewInfo || newData.remove(fileName) > 0;
+//            continue;
+//        }
 
-//        finder(doc);//#720 ROOPAK
+////        finder(doc);//#720 ROOPAK
 
-        QList<LanguageUtils::FakeMetaObject::ConstPtr> exported;// = finder.exportedTypes();//#720 ROOPAK - START
-        QHash<QString, QString> contextProperties;// = finder.contextProperties();//#720 ROOPAK - END
-        if (exported.isEmpty() && contextProperties.isEmpty()) {
-            hasNewInfo = hasNewInfo || newData.remove(fileName) > 0;
-        } else {
-            CppData &data = newData[fileName];
-            // currently we have no simple way to compare, so we assume the worse
-            hasNewInfo = true;
-            data.exportedTypes = exported;
-            data.contextProperties = contextProperties;
-        }
+//        QList<LanguageUtils::FakeMetaObject::ConstPtr> exported;// = finder.exportedTypes();//#720 ROOPAK - START
+//        QHash<QString, QString> contextProperties;// = finder.contextProperties();//#720 ROOPAK - END
+//        if (exported.isEmpty() && contextProperties.isEmpty()) {
+//            hasNewInfo = hasNewInfo || newData.remove(fileName) > 0;
+//        } else {
+//            CppData &data = newData[fileName];
+//            // currently we have no simple way to compare, so we assume the worse
+//            hasNewInfo = true;
+//            data.exportedTypes = exported;
+//            data.contextProperties = contextProperties;
+//        }
 
-        doc->releaseSourceAndAST();
-    }
+//        doc->releaseSourceAndAST();
+//    }
 
-    QMutexLocker locker(&qmlModelManager->m_cppDataMutex);
-    qmlModelManager->m_cppDataHash = newData;
-    if (hasNewInfo)
-        // one could get away with re-linking the cpp types...
-        QMetaObject::invokeMethod(qmlModelManager, "asyncReset");
-}
+//    QMutexLocker locker(&qmlModelManager->m_cppDataMutex);
+//    qmlModelManager->m_cppDataHash = newData;
+//    if (hasNewInfo)
+//        // one could get away with re-linking the cpp types...
+//        QMetaObject::invokeMethod(qmlModelManager, "asyncReset");
+//}//#720 ROOPAK - END
 
 ModelManagerInterface::CppDataHash ModelManagerInterface::cppData() const
 {
