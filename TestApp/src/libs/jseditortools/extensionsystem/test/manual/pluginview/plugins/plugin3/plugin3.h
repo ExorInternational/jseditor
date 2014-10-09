@@ -27,15 +27,30 @@
 **
 ****************************************************************************/
 
-#ifndef EXTENSIONSYSTEM_GLOBAL_H
-#define EXTENSIONSYSTEM_GLOBAL_H
+#ifndef PLUGIN3_H
+#define PLUGIN3_H
 
-#include <qglobal.h>
+#include <extensionsystem/iplugin.h>
 
-#if defined(EXTENSIONSYSTEM_LIBRARY)
-#  define EXTENSIONSYSTEM_EXPORT Q_DECL_EXPORT
-#else
-#  define EXTENSIONSYSTEM_EXPORT Q_DECL_IMPORT
-#endif
+#include <QObject>
+#include <QString>
 
-#endif // EXTENSIONSYSTEM_GLOBAL_H
+namespace Plugin3 {
+
+class MyPlugin3 : public ExtensionSystem::IPlugin
+{
+    Q_OBJECT
+
+public:
+    MyPlugin3();
+
+    bool initialize(const QStringList &arguments, QString *errorString);
+    void extensionsInitialized();
+
+private:
+    bool initializeCalled;
+};
+
+} // namespace Plugin3
+
+#endif // PLUGIN3_H

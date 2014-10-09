@@ -2,7 +2,7 @@ TEMPLATE  = subdirs
 
 SUBDIRS   = \
     aggregation \
-    extensionsystem \
+#    extensionsystem \//#720 ROOPAK
     utils \
     languageutils \
 #    cplusplus \//#720 ROOPAK

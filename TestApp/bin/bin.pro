@@ -19,8 +19,9 @@ LIBS *= \
         -l$$qtLibraryName(LanguageUtils) \
 #        -l$$qtLibraryName(CPlusPlus) \//#720 ROOPAK
         -l$$qtLibraryName(QmlJS) \
+        -l$$qtLibraryName(JsEditorTools) \
         -l$$qtLibraryName(Aggregation) \
-        -l$$qtLibraryName(ExtensionSystem) \
+#        -l$$qtLibraryName(ExtensionSystem) \//#720 ROOPAK
         -l$$qtLibraryName(QmlEditorWidgets) \
 #        -l$$qtLibraryName(QtcSsh) \
 
@@ -47,6 +48,6 @@ DEFINES -= QT_NO_CAST_TO_ASCII QT_NO_CAST_FROM_ASCII
 
 
 INCLUDEPATH += $$PWD/../src/libs/jseditortools
-LIBS *= -l$$qtLibraryName(JsEditorTools) \
+#LIBS *= -l$$qtLibraryName(JsEditorTools) \
 
 #QMAKE_SUBSTITUTES += $$PWD/app_version.h.in
