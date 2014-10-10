@@ -4,5 +4,5 @@ HEADERS = \
 
 
 SOURCES = \
-    $$PWD/aggregate.cpp
+    $$PWD/aggregate.cpp \
 
