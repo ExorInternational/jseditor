@@ -30,12 +30,16 @@
 #ifndef AGGREGATION_GLOBAL_H
 #define AGGREGATION_GLOBAL_H
 
-#include <qglobal.h>
+//#include <qglobal.h>//#720 ROOPAK - START
 
-#if defined(AGGREGATION_LIBRARY)
-#  define AGGREGATION_EXPORT Q_DECL_EXPORT
-#else
-#  define AGGREGATION_EXPORT Q_DECL_IMPORT
-#endif
+//#if defined(AGGREGATION_LIBRARY)
+//#  define AGGREGATION_EXPORT Q_DECL_EXPORT
+//#else
+//#  define AGGREGATION_EXPORT Q_DECL_IMPORT
+//#endif
+
+#include <aggregation/../jseditortools_global.h>
+
+#define AGGREGATION_EXPORT JSEDITORTOOLS_EXPORT//#720 ROOPAK - END
 
 #endif // AGGREGATION_GLOBAL_H

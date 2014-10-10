@@ -1,7 +1,7 @@
 TEMPLATE  = subdirs
 
 SUBDIRS   = \
-    aggregation \
+#    aggregation \//#720 ROOPAK
 #    extensionsystem \//#720 ROOPAK
     utils \
     languageutils \
