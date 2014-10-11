@@ -7,7 +7,7 @@ SUBDIRS   = \
     languageutils \
 #    cplusplus \//#720 ROOPAK
     qmljs \
-    qmleditorwidgets \
+#    qmleditorwidgets \//#720 ROOPAK
     jseditortools #//#720 ADDED BY ROOPAK
 
 for(l, SUBDIRS) {

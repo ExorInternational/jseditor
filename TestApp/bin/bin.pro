@@ -22,7 +22,7 @@ LIBS *= \
         -l$$qtLibraryName(JsEditorTools) \
 #        -l$$qtLibraryName(Aggregation) \//#720 ROOPAK
 #        -l$$qtLibraryName(ExtensionSystem) \//#720 ROOPAK
-        -l$$qtLibraryName(QmlEditorWidgets) \
+#        -l$$qtLibraryName(QmlEditorWidgets) \//#720 ROOPAK
 #        -l$$qtLibraryName(QtcSsh) \
 
 #win32 {
