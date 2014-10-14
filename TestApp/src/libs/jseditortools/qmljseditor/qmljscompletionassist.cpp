@@ -46,7 +46,7 @@
 
 #include <qmljs/qmljsmodelmanagerinterface.h>
 #include <qmljs/parser/qmljsast_p.h>
-#include <qmljs/qmljsinterpreter.h>
+#include <qmljs/qmljsinterpreter_renamed.h>
 #include <qmljs/qmljscontext.h>
 #include <qmljs/qmljsscopechain.h>
 #include <qmljs/qmljsscanner.h>

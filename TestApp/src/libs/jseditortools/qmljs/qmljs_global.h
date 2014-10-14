@@ -27,55 +27,21 @@
 **
 ****************************************************************************/
 
-#ifndef QMLJSINDENTER_H
-#define QMLJSINDENTER_H
+#ifndef QMLJS_GLOBAL_H
+#define QMLJS_GLOBAL_H
 
-#include <qmljs/qmljs_global.h>
-#include <qmljs/qmljslineinfo.h>
+//#include <qglobal.h>
 
-#include <QRegExp>
+//#if defined(QMLJS_BUILD_DIR)
+//#  define QMLJS_EXPORT Q_DECL_EXPORT
+//#elif defined(QML_BUILD_STATIC_LIB)
+//#  define QMLJS_EXPORT
+//#else
+//#  define QMLJS_EXPORT Q_DECL_IMPORT
+//#endif
 
-QT_FORWARD_DECLARE_CLASS(QTextBlock)
+#include <qmljs/../jseditortools_global.h>
 
-namespace QmlJS {
+#define QMLJS_EXPORT JSEDITORTOOLS_EXPORT
 
-class QMLJS_EXPORT QmlJSIndenter : public LineInfo
-{
-    Q_DISABLE_COPY(QmlJSIndenter)
-
-public:
-    QmlJSIndenter();
-    ~QmlJSIndenter();
-
-    void setTabSize(int size);
-    void setIndentSize(int size);
-
-    int indentForBottomLine(QTextBlock firstBlock, QTextBlock lastBlock, QChar typedIn);
-
-private:
-    bool isOnlyWhiteSpace(const QString &t) const;
-    int columnForIndex(const QString &t, int index) const;
-    int indentOfLine(const QString &t) const;
-
-    void eraseChar(QString &t, int k, QChar ch) const;
-    QChar lastParen() const;
-    bool okay(QChar typedIn, QChar okayCh) const;
-
-    int indentWhenBottomLineStartsInMultiLineComment();
-    int indentForContinuationLine();
-    int indentForStandaloneLine();
-
-private:
-    int ppHardwareTabSize;
-    int ppIndentSize;
-    int ppContinuationIndentSize;
-    int ppCommentOffset;
-
-private:
-    QRegExp caseOrDefault;
-};
-
-} // namespace QmlJS
-
-#endif // QMLJSINDENTER_H
-
+#endif // QMLJS_GLOBAL_H

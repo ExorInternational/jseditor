@@ -65,7 +65,7 @@
     as comments and string literals are removed beforehand.
 */
 
-#include <qmljs/qmljsindenter.h>
+#include <qmljs/qmljsindenter_renamed.h>
 
 #include <QDebug>
 #include <QTextBlock>

@@ -27,8 +27,8 @@
 **
 ****************************************************************************/
 
-#ifndef QMLJS_INTERPRETER_H
-#define QMLJS_INTERPRETER_H
+#ifndef QMLJS_INTERPRETER_COPIED_H
+#define QMLJS_INTERPRETER_COPIED_H
 
 #include <qmljs/qmljsdocument.h>
 #include <qmljs/qmljs_global.h>
@@ -984,4 +984,4 @@ private:
 
 } // namespace QmlJS
 
-#endif // QMLJS_INTERPRETER_H
+#endif // QMLJS_INTERPRETER_COPIED_H

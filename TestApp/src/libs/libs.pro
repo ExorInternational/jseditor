@@ -6,7 +6,7 @@ SUBDIRS   = \
     utils \
     languageutils \
 #    cplusplus \//#720 ROOPAK
-    qmljs \
+#    qmljs \//#720 ROOPAK
 #    qmleditorwidgets \//#720 ROOPAK
     jseditortools #//#720 ADDED BY ROOPAK
 

@@ -31,7 +31,7 @@
 #define QMLJS_VALUEOWNER_H
 
 #include "qmljs_global.h"
-#include "qmljsinterpreter.h"
+#include "qmljsinterpreter_renamed.h"
 
 #include <QList>
 

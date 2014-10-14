@@ -33,7 +33,7 @@
 #include "parser/qmljslexer_p.h"
 #include "parser/qmljsengine_p.h"
 
-#include "qmljsinterpreter.h"
+#include "qmljsinterpreter_renamed.h"
 #include "qmljsutils.h"
 
 #include <QDir>

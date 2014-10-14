@@ -27,7 +27,7 @@
 **
 ****************************************************************************/
 
-#include "qmljsinterpreter.h"
+#include "qmljsinterpreter_renamed.h"
 #include "qmljsevaluate.h"
 #include "qmljsscopebuilder.h"
 #include "qmljsscopechain.h"

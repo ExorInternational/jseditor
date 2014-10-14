@@ -1,8 +1,8 @@
-HEADERS = \
+HEADERS += \
     $$PWD/aggregation_global.h \
     $$PWD/aggregate.h \
 
 
-SOURCES = \
+SOURCES += \
     $$PWD/aggregate.cpp \
 

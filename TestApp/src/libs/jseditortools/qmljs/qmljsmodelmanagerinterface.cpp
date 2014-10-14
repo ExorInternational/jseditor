@@ -30,7 +30,7 @@
 #include "qmljsbind.h"
 #include "qmljsconstants.h"
 //#include "qmljsfindexportedcpptypes.h"//#720 ROOPAK
-#include "qmljsinterpreter.h"
+#include "qmljsinterpreter_renamed.h"
 #include "qmljsmodelmanagerinterface.h"
 #include "qmljsplugindumper.h"
 #include "qmljstypedescriptionreader.h"

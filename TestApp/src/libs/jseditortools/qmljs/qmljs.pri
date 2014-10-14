@@ -1,8 +1,8 @@
-contains(CONFIG, dll) {
-    DEFINES += QMLJS_BUILD_DIR
-} else {
-    DEFINES += QML_BUILD_STATIC_LIB
-}
+#contains(CONFIG, dll) {
+#    DEFINES += QMLJS_BUILD_DIR
+#} else {
+#    DEFINES += QML_BUILD_STATIC_LIB
+#}
 
 include(parser/parser.pri)
 
@@ -14,7 +14,7 @@ HEADERS += \
 #    $$PWD/qmljsfindexportedcpptypes.h \//#720 ROOPAK
     $$PWD/qmljsdocument.h \
     $$PWD/qmljsscanner.h \
-    $$PWD/qmljsinterpreter.h \
+    $$PWD/qmljsinterpreter_renamed.h \
     $$PWD/qmljslink.h \
     $$PWD/qmljscheck.h \
     $$PWD/qmljsscopebuilder.h \
@@ -52,7 +52,7 @@ SOURCES += \
 #    $$PWD/qmljsfindexportedcpptypes.cpp \//#720 ROOPAK
     $$PWD/qmljsdocument.cpp \
     $$PWD/qmljsscanner.cpp \
-    $$PWD/qmljsinterpreter.cpp \
+    $$PWD/qmljsinterpreter_renamed.cpp \
     $$PWD/qmljslink.cpp \
     $$PWD/qmljscheck.cpp \
     $$PWD/qmljsscopebuilder.cpp \
@@ -89,12 +89,12 @@ OTHER_FILES += \
 
 contains(QT, gui) {
     SOURCES += \
-        $$PWD/qmljsindenter.cpp \
+        $$PWD/qmljsindenter_renamed.cpp \#//720 - ROOPAK - Renamed to avoid conflict with a file in qmljstools with the same file name.
         $$PWD/qmljscodeformatter.cpp \
         $$PWD/qmljsreformatter.cpp
 
     HEADERS += \
-        $$PWD/qmljsindenter.h \
+        $$PWD/qmljsindenter_renamed.h \#//720 - ROOPAK - Renamed to avoid conflict with a file in qmljstools with the same file name.
         $$PWD/qmljscodeformatter.h \
         $$PWD/qmljsreformatter.h
 }

@@ -28,7 +28,7 @@
 ****************************************************************************/
 
 #include "qmljsimportdependencies.h"
-#include "qmljsinterpreter.h"
+#include "qmljsinterpreter_renamed.h"
 #include "qmljsqrcparser.h"
 
 #include <utils/qtcassert.h>

@@ -18,7 +18,7 @@ LIBS *= \
         -l$$qtLibraryName(Utils) \
         -l$$qtLibraryName(LanguageUtils) \
 #        -l$$qtLibraryName(CPlusPlus) \//#720 ROOPAK
-        -l$$qtLibraryName(QmlJS) \
+#        -l$$qtLibraryName(QmlJS) \//#720 ROOPAK
         -l$$qtLibraryName(JsEditorTools) \
 #        -l$$qtLibraryName(Aggregation) \//#720 ROOPAK
 #        -l$$qtLibraryName(ExtensionSystem) \//#720 ROOPAK

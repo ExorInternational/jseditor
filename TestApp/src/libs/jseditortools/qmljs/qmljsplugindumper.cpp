@@ -30,7 +30,7 @@
 #include "qmljsplugindumper.h"
 #include "qmljsmodelmanagerinterface.h"
 
-#include <qmljs/qmljsinterpreter.h>
+#include <qmljs/qmljsinterpreter_renamed.h>
 //#include <projectexplorer/session.h>
 //#include <coreplugin/messagemanager.h>
 #include <utils/filesystemwatcher.h>
