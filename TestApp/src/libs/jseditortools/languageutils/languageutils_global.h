@@ -30,14 +30,18 @@
 #ifndef LANGUAGEUTILS_GLOBAL_H
 #define LANGUAGEUTILS_GLOBAL_H
 
-#include <qglobal.h>
+//#include <qglobal.h>
 
-#if defined(LANGUAGEUTILS_BUILD_DIR)
-#  define LANGUAGEUTILS_EXPORT Q_DECL_EXPORT
-#elif defined(LANGUAGEUTILS_BUILD_STATIC_LIB)
-#  define LANGUAGEUTILS_EXPORT
-#else
-#  define LANGUAGEUTILS_EXPORT Q_DECL_IMPORT
-#endif
+//#if defined(LANGUAGEUTILS_BUILD_DIR)
+//#  define LANGUAGEUTILS_EXPORT Q_DECL_EXPORT
+//#elif defined(LANGUAGEUTILS_BUILD_STATIC_LIB)
+//#  define LANGUAGEUTILS_EXPORT
+//#else
+//#  define LANGUAGEUTILS_EXPORT Q_DECL_IMPORT
+//#endif
+
+#include <languageutils/../jseditortools_global.h>//#720 ROOPAK
+
+#define LANGUAGEUTILS_EXPORT JSEDITORTOOLS_EXPORT
 
 #endif // LANGUAGEUTILS_GLOBAL_H

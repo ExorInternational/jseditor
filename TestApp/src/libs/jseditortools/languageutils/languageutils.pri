@@ -1,8 +1,8 @@
-contains(CONFIG, dll) {
-    DEFINES += LANGUAGEUTILS_BUILD_DIR
-} else {
-    DEFINES += LANGUAGEUTILS_BUILD_STATIC_LIB
-}
+#contains(CONFIG, dll) {
+#    DEFINES += LANGUAGEUTILS_BUILD_DIR
+#} else {
+#    DEFINES += LANGUAGEUTILS_BUILD_STATIC_LIB
+#}
 
 HEADERS += \
     $$PWD/languageutils_global.h \

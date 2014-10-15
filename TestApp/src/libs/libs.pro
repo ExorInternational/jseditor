@@ -4,7 +4,7 @@ SUBDIRS   = \
 #    aggregation \//#720 ROOPAK
 #    extensionsystem \//#720 ROOPAK
     utils \
-    languageutils \
+#    languageutils \//#720 ROOPAK
 #    cplusplus \//#720 ROOPAK
 #    qmljs \//#720 ROOPAK
 #    qmleditorwidgets \//#720 ROOPAK
