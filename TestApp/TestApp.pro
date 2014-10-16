@@ -22,9 +22,9 @@ CONFIG   += ordered
 
 #INSTALLS += extra_libs
 
-app_info.input = $$PWD/src/app/app_version.h.in
-app_info.output = $$OUT_PWD/src/app/app_version.h
-QMAKE_SUBSTITUTES += app_info
+#app_info.input = $$PWD/src/app/app_version.h.in//#720 ROOPAK - START
+#app_info.output = $$OUT_PWD/src/app/app_version.h
+#QMAKE_SUBSTITUTES += app_info//#720 ROOPAK - END
 
 SUBDIRS = \
 ##         ./src/libs/3rdparty/botan \

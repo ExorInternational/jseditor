@@ -42,7 +42,7 @@ IDE_LIBRARY_PATH = $$IDE_BUILD_TREE/$$IDE_LIBRARY_BASENAME/TestApp
 #IDE_PLUGIN_PATH  = $$IDE_LIBRARY_PATH/plugins
 
 INCLUDEPATH += \
-    $$IDE_BUILD_TREE/src \ # for <app/app_version.h>
+#    $$IDE_BUILD_TREE/src \ # for <app/app_version.h>//#720 ROOPAK
     $$IDE_SOURCE_TREE/src/libs #\
 #    $$IDE_SOURCE_TREE/src/libs/3rdparty  \
 #   $$IDE_SOURCE_TREE/tools  \
