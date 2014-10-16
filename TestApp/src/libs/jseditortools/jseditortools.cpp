@@ -47,7 +47,7 @@ static QSettings *createUserSettings()
 {
     return new QSettings(QSettings::IniFormat, QSettings::UserScope,
                          QLatin1String(Core::Constants::IDE_SETTINGSVARIANT_STR),
-                         QLatin1String("QtCreator"));
+                         QLatin1String(Core::Constants::IDE_APPNAME_STR));
 }
 
 static inline QSettings *userSettings()
@@ -103,7 +103,7 @@ JsEditorToolsLib::JsEditorToolsLib(QMainWindow *mainWindow)
     QSettings *settings = userSettings();
     QSettings *globalSettings = new QSettings(QSettings::IniFormat, QSettings::SystemScope,
                                               QLatin1String(Core::Constants::IDE_SETTINGSVARIANT_STR),
-                                              QLatin1String("QtCreator"));
+                                              QLatin1String(Core::Constants::IDE_APPNAME_STR));
     m_pPluginManager = new ExtensionSystem::PluginManager();
     PluginManager::setFileExtension(QLatin1String("pluginspec"));
     PluginManager::setGlobalSettings(globalSettings);

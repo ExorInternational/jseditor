@@ -115,7 +115,7 @@ MainWindow::MainWindow(QMainWindow *mainWindow) :
     m_coreImpl(new ICore(this)),
     m_additionalContexts(Constants::C_GLOBAL),
     m_settingsDatabase(new SettingsDatabase(QFileInfo(PluginManager::settings()->fileName()).path(),
-                                            QLatin1String("QtCreator"),
+                                            QLatin1String(/*"QtCreator"*/Core::Constants::IDE_APPNAME_STR),
                                             this)),
     m_printer(0),
     m_actionManager(new ActionManager(this)),
@@ -162,7 +162,7 @@ MainWindow::MainWindow(QMainWindow *mainWindow) :
 //    mainwindow()->setWindowTitle(tr("Qt Creator"));//#720 ROOPAK - START
 //    if (!Utils::HostOsInfo::isMacHost())
 //        QApplication::setWindowIcon(QIcon(QLatin1String(Constants::ICON_QTLOGO_128)));//#720 ROOPAK - END
-    QCoreApplication::setApplicationName(QLatin1String("QtCreator"));
+    QCoreApplication::setApplicationName(QLatin1String(Core::Constants::IDE_APPNAME_STR));
     QCoreApplication::setApplicationVersion(QLatin1String(Core::Constants::IDE_VERSION_LONG));
     QCoreApplication::setOrganizationName(QLatin1String(Constants::IDE_SETTINGSVARIANT_STR));
     QString baseName = QApplication::style()->objectName();

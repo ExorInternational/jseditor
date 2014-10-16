@@ -389,7 +389,8 @@ QString ICore::userResourcePath()
 {
     // Create qtcreator dir if it doesn't yet exist
     const QString configDir = QFileInfo(settings(QSettings::UserScope)->fileName()).path();
-    const QString urp = configDir + QLatin1String("/qtcreator");
+    QString dir = QLatin1String("/") +  QLatin1String(Core::Constants::IDE_APPNAME_STR);
+    const QString urp = configDir + (/*"/qtcreator"*/dir);
 
     QFileInfo fi(urp + QLatin1Char('/'));
     if (!fi.exists()) {
