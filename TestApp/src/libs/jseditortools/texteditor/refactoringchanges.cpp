@@ -33,7 +33,7 @@
 #include <coreplugin/icore.h>
 //#include <coreplugin/dialogs/readonlyfilesdialog.h>//ROOPAK
 #include <utils/qtcassert.h>
-#include <utils/fileutils.h>
+#include <utils/fileutils_renamed.h>
 
 #include <QFile>
 #include <QFileInfo>

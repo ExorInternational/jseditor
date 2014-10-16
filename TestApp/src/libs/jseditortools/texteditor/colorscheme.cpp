@@ -31,7 +31,7 @@
 
 #include "texteditorconstants.h"
 
-#include <utils/fileutils.h>
+#include <utils/fileutils_renamed.h>
 
 #include <QFile>
 #include <QCoreApplication>

@@ -34,7 +34,7 @@
 //#include <projectexplorer/session.h>
 //#include <coreplugin/messagemanager.h>
 #include <utils/filesystemwatcher.h>
-#include <utils/fileutils.h>
+#include <utils/fileutils_renamed.h>
 
 #include <QDir>
 

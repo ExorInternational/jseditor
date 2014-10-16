@@ -4,6 +4,7 @@ contains(CONFIG, dll) {
     DEFINES += BUILD_JSEDITORTOOLS_STATIC_LIB
 }
 
+include(utils/utils.pri)
 include(languageutils/languageutils.pri)
 include(qmljs/qmljs.pri)
 include(aggregation/aggregation.pri)

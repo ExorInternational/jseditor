@@ -30,7 +30,7 @@
 #include "json.h"
 
 #include <utils/qtcassert.h>
-#include <utils/fileutils.h>
+#include <utils/fileutils_renamed.h>
 
 #include <QDir>
 #include <QStringBuilder>

@@ -32,7 +32,7 @@
 
 #include "texteditor_global.h"
 
-#include <utils/fileutils.h>
+#include <utils/fileutils_renamed.h>
 
 #include <QObject>
 

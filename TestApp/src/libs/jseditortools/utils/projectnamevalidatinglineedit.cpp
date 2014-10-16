@@ -30,7 +30,7 @@
 #include "projectnamevalidatinglineedit.h"
 #include "filenamevalidatinglineedit.h"
 
-#include "fileutils.h"
+#include "fileutils_renamed.h"
 
 namespace Utils {
 

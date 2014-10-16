@@ -27,7 +27,7 @@
 **
 ****************************************************************************/
 
-#include "fileutils.h"
+#include "fileutils_renamed.h"
 #include "savefile.h"
 
 #include "hostosinfo.h"

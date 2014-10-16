@@ -3,7 +3,7 @@ TEMPLATE  = subdirs
 SUBDIRS   = \
 #    aggregation \//#720 ROOPAK
 #    extensionsystem \//#720 ROOPAK
-    utils \
+#    utils \//#720 ROOPAK
 #    languageutils \//#720 ROOPAK
 #    cplusplus \//#720 ROOPAK
 #    qmljs \//#720 ROOPAK

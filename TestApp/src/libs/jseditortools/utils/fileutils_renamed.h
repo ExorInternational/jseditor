@@ -27,8 +27,8 @@
 **
 ****************************************************************************/
 
-#ifndef FILEUTILS_H
-#define FILEUTILS_H
+#ifndef FILEUTILS_RENAMED_H
+#define FILEUTILS_RENAMED_H
 
 #include "utils_global.h"
 

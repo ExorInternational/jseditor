@@ -27,49 +27,21 @@
 **
 ****************************************************************************/
 
-#ifndef PERSISTENTSETTINGS_H
-#define PERSISTENTSETTINGS_H
+#ifndef UTILS_GLOBAL_H
+#define UTILS_GLOBAL_H
 
-#include "fileutils.h"
+//#include <qglobal.h>//#720 ROOPAK - START
 
-#include <QVariant>
+//#if defined(QTCREATOR_UTILS_LIB)
+//#  define QTCREATOR_UTILS_EXPORT Q_DECL_EXPORT
+//#elif  defined(QTCREATOR_UTILS_STATIC_LIB) // Abuse single files for manual tests
+//#  define QTCREATOR_UTILS_EXPORT
+//#else
+//#  define QTCREATOR_UTILS_EXPORT Q_DECL_IMPORT
+//#endif
 
-QT_BEGIN_NAMESPACE
-class QWidget;
-QT_END_NAMESPACE
+#include <utils/../jseditortools_global.h>
 
-namespace Utils {
+#define QTCREATOR_UTILS_EXPORT JSEDITORTOOLS_EXPORT//#720 ROOPAK - END
 
-class QTCREATOR_UTILS_EXPORT PersistentSettingsReader
-{
-public:
-    PersistentSettingsReader();
-    QVariant restoreValue(const QString &variable) const;
-    QVariantMap restoreValues() const;
-    bool load(const FileName &fileName);
-
-private:
-    QMap<QString, QVariant> m_valueMap;
-};
-
-class QTCREATOR_UTILS_EXPORT PersistentSettingsWriter
-{
-public:
-    PersistentSettingsWriter(const FileName &fileName, const QString &docType);
-    ~PersistentSettingsWriter();
-
-    bool save(const QVariantMap &data, QWidget *parent) const;
-
-    Utils::FileName fileName() const;
-
-private:
-    bool write(const QVariantMap &data, QWidget *parent) const;
-
-    const Utils::FileName m_fileName;
-    const QString m_docType;
-    mutable QMap<QString, QVariant> m_savedData;
-};
-
-} // namespace Utils
-
-#endif // PERSISTENTSETTINGS_H
+#endif // UTILS_GLOBAL_H

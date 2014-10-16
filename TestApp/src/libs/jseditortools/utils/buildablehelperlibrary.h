@@ -31,7 +31,7 @@
 #define BUILDABLEHELPERLIBRARY_H
 
 #include "environment.h"
-#include "fileutils.h"
+#include "fileutils_renamed.h"
 
 QT_FORWARD_DECLARE_CLASS(QFileInfo)
 

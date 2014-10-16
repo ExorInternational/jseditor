@@ -1,8 +1,8 @@
-dll {
-    DEFINES += QTCREATOR_UTILS_LIB
-} else {
-    DEFINES += QTCREATOR_UTILS_STATIC_LIB
-}
+#dll {//#720 ROOPAK - START
+#    DEFINES += QTCREATOR_UTILS_LIB
+#} else {
+#    DEFINES += QTCREATOR_UTILS_STATIC_LIB
+#}//#720 ROOPAK - END
 
 QT += script network
 
@@ -38,7 +38,7 @@ SOURCES += $$PWD/environment.cpp \
     $$PWD/savedaction.cpp \
     $$PWD/synchronousprocess.cpp \
     $$PWD/savefile.cpp \
-    $$PWD/fileutils.cpp \
+    $$PWD/fileutils_renamed.cpp \
     $$PWD/textfileformat.cpp \
     $$PWD/consoleprocess.cpp \
     $$PWD/uncommentselection.cpp \
@@ -122,7 +122,7 @@ HEADERS += \
     $$PWD/consoleprocess_p.h \
     $$PWD/synchronousprocess.h \
     $$PWD/savefile.h \
-    $$PWD/fileutils.h \
+    $$PWD/fileutils_renamed.h \
     $$PWD/textfileformat.h \
     $$PWD/uncommentselection.h \
     $$PWD/parameteraction.h \

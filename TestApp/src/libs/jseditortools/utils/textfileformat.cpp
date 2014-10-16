@@ -28,7 +28,7 @@
 ****************************************************************************/
 
 #include "textfileformat.h"
-#include "fileutils.h"
+#include "fileutils_renamed.h"
 #include "qtcassert.h"
 
 #include <QTextCodec>

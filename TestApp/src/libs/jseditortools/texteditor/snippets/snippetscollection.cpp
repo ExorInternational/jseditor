@@ -33,7 +33,7 @@
 
 #include <coreplugin/icore.h>
 #include <extensionsystem/pluginmanager.h>
-#include <utils/fileutils.h>
+#include <utils/fileutils_renamed.h>
 
 #include <QLatin1String>
 #include <QFile>

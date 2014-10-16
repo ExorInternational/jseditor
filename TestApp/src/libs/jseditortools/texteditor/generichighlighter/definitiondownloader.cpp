@@ -29,7 +29,7 @@
 
 #include "definitiondownloader.h"
 
-#include <utils/fileutils.h>
+#include <utils/fileutils_renamed.h>
 
 #include <QLatin1Char>
 #include <QEventLoop>

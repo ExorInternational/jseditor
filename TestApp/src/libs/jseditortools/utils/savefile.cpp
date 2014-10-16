@@ -29,7 +29,7 @@
 
 #include "savefile.h"
 #include "qtcassert.h"
-#include "fileutils.h"
+#include "fileutils_renamed.h"
 #ifdef Q_OS_WIN
 #  include <windows.h>
 #else

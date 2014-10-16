@@ -32,7 +32,7 @@
 #include <coreplugin/editormanager/editormanager.h>
 #include <coreplugin/find/findplugin.h>
 #include <utils/filesearch.h>
-#include <utils/fileutils.h>
+#include <utils/fileutils_renamed.h>
 #include <utils/qtcassert.h>
 
 #include <QDebug>

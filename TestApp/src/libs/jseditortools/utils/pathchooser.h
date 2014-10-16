@@ -30,7 +30,7 @@
 #ifndef PATHCHOOSER_H
 #define PATHCHOOSER_H
 
-#include "fileutils.h"
+#include "fileutils_renamed.h"
 
 #include <QWidget>
 

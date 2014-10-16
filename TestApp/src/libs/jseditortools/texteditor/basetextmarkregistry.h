@@ -30,7 +30,7 @@
 #ifndef BASETEXTMARKREGISTRY_H
 #define BASETEXTMARKREGISTRY_H
 
-#include <utils/fileutils.h>
+#include <utils/fileutils_renamed.h>
 
 #include <QObject>
 #include <QHash>
