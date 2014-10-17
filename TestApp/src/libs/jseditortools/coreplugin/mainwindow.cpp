@@ -102,6 +102,7 @@
 
 //ADDED BY ROOPAK
 //#include "dialogs/iwizard.h"//#720 ROOPAK
+#include <QFileDialog>
 
 using namespace ExtensionSystem;
 
@@ -546,11 +547,11 @@ void MainWindow::registerDefaultActions()
 
     // New File Action
     QIcon icon = QIcon::fromTheme(QLatin1String("document-new"), QIcon(QLatin1String(Constants::ICON_NEWFILE)));
-//    m_newAction = new QAction(icon, tr("&New File or Project..."), this);//ROOPAK - START
-//    cmd = ActionManager::registerAction(m_newAction, Constants::NEW, globalContext);
-//    cmd->setDefaultKeySequence(QKeySequence::New);
-//    mfile->addAction(cmd, Constants::G_FILE_NEW);
-//    connect(m_newAction, SIGNAL(triggered()), this, SLOT(newFile()));//ROOPAK - END
+    m_newAction = new QAction(icon, tr("&New File"), this);
+    cmd = ActionManager::registerAction(m_newAction, Constants::NEW, globalContext);
+    cmd->setDefaultKeySequence(QKeySequence::New);
+    mfile->addAction(cmd, Constants::G_FILE_NEW);
+    connect(m_newAction, SIGNAL(triggered()), this, SLOT(newFile()));
 
     // Open Action
     icon = QIcon::fromTheme(QLatin1String("document-open"), QIcon(QLatin1String(Constants::ICON_OPENFILE)));
@@ -789,10 +790,23 @@ void MainWindow::registerDefaultActions()
     }
 }
 
-//void MainWindow::newFile()//ROOPAK - START
-//{
-//    showNewItemDialog(tr("New", "Title of dialog"), IWizard::allWizards(), QString());
-//}//ROOPAK - END
+void MainWindow::newFile()
+{
+//    showNewItemDialog(tr("New", "Title of dialog"), IWizard::allWizards(), QString());//#720 ROOPAK
+
+    QString fileName = QFileDialog::getSaveFileName(NULL, QString(QLatin1String("New File")),
+                                QString(QLatin1String("%1/Untitled.js")).arg(QDir::homePath()),
+                                QString(QLatin1String("Javascript Files(*.js)")) );
+
+    if(!fileName.isEmpty()) {
+        QFile fileNew(QDir::toNativeSeparators(fileName));
+        fileNew.open(QIODevice::WriteOnly);
+
+        QStringList filesList;
+        filesList.append(fileNew.fileName());
+        openFiles(filesList, ICore::SwitchMode);
+    }//#720 ROOPAK - END
+}
 
 void MainWindow::openFile()
 {
