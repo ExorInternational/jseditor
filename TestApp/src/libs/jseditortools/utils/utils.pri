@@ -185,3 +185,7 @@ FORMS += $$PWD/filewizardpage.ui \
     $$PWD/newclasswidget.ui
 
 RESOURCES += $$PWD/utils.qrc
+
+win32: LIBS += -luser32 -lshell32
+# PortsGatherer
+win32: LIBS += -liphlpapi -lws2_32
