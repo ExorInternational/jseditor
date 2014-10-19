@@ -471,9 +471,9 @@ void MainWindow::registerDefaultContainers()
     ActionContainer *filemenu = ActionManager::createMenu(Constants::M_FILE);
     menubar->addMenu(filemenu, Constants::G_FILE);
     filemenu->menu()->setTitle(tr("&File"));
-    filemenu->appendGroup(Constants::G_FILE_NEW);
+//    filemenu->appendGroup(Constants::G_FILE_NEW);//#720 ROOPAK
     filemenu->appendGroup(Constants::G_FILE_OPEN);
-    filemenu->appendGroup(Constants::G_FILE_PROJECT);
+//    filemenu->appendGroup(Constants::G_FILE_PROJECT);//#720 ROOPAK
     filemenu->appendGroup(Constants::G_FILE_SAVE);
     filemenu->appendGroup(Constants::G_FILE_CLOSE);
     filemenu->appendGroup(Constants::G_FILE_PRINT);
@@ -547,19 +547,19 @@ void MainWindow::registerDefaultActions()
 
     // New File Action
     QIcon icon = QIcon::fromTheme(QLatin1String("document-new"), QIcon(QLatin1String(Constants::ICON_NEWFILE)));
-    m_newAction = new QAction(icon, tr("&New File"), this);
-    cmd = ActionManager::registerAction(m_newAction, Constants::NEW, globalContext);
-    cmd->setDefaultKeySequence(QKeySequence::New);
-    mfile->addAction(cmd, Constants::G_FILE_NEW);
-    connect(m_newAction, SIGNAL(triggered()), this, SLOT(newFile()));
+//    m_newAction = new QAction(icon, tr("&New File"), this);//#720 ROOPAK - START
+//    cmd = ActionManager::registerAction(m_newAction, Constants::NEW, globalContext);
+//    cmd->setDefaultKeySequence(QKeySequence::New);
+//    mfile->addAction(cmd, Constants::G_FILE_NEW);
+//    connect(m_newAction, SIGNAL(triggered()), this, SLOT(newFile()));//#720 ROOPAK - END
 
     // Open Action
-    icon = QIcon::fromTheme(QLatin1String("document-open"), QIcon(QLatin1String(Constants::ICON_OPENFILE)));
-    m_openAction = new QAction(icon, tr("&Open File or Project..."), this);
-    cmd = ActionManager::registerAction(m_openAction, Constants::OPEN, globalContext);
-    cmd->setDefaultKeySequence(QKeySequence::Open);
-    mfile->addAction(cmd, Constants::G_FILE_OPEN);
-    connect(m_openAction, SIGNAL(triggered()), this, SLOT(openFile()));
+//    icon = QIcon::fromTheme(QLatin1String("document-open"), QIcon(QLatin1String(Constants::ICON_OPENFILE)));
+//    m_openAction = new QAction(icon, tr("&Open File or Project..."), this);
+//    cmd = ActionManager::registerAction(m_openAction, Constants::OPEN, globalContext);
+//    cmd->setDefaultKeySequence(QKeySequence::Open);
+//    mfile->addAction(cmd, Constants::G_FILE_OPEN);
+//    connect(m_openAction, SIGNAL(triggered()), this, SLOT(openFile()));
 
     // Open With Action
 //    m_openWithAction = new QAction(tr("Open File &With..."), this);//#720 ROOPAK - START
@@ -794,49 +794,49 @@ void MainWindow::newFile()
 {
 //    showNewItemDialog(tr("New", "Title of dialog"), IWizard::allWizards(), QString());//#720 ROOPAK
 
-    QString fileName = QFileDialog::getSaveFileName(NULL, QString(QLatin1String("New File")),
-                                QString(QLatin1String("%1/Untitled.js")).arg(QDir::homePath()),
-                                QString(QLatin1String("Javascript Files(*.js)")) );
+//    QString fileName = QFileDialog::getSaveFileName(NULL, QString(QLatin1String("New File")),
+//                                QString(QLatin1String("%1/Untitled.js")).arg(QDir::homePath()),
+//                                QString(QLatin1String("Javascript Files(*.js)")) );
 
-    if(!fileName.isEmpty()) {
-        QFile fileNew(QDir::toNativeSeparators(fileName));
-        fileNew.open(QIODevice::WriteOnly);
+//    if(!fileName.isEmpty()) {
+//        QFile fileNew(QDir::toNativeSeparators(fileName));
+//        fileNew.open(QIODevice::WriteOnly);
 
-        QStringList filesList;
-        filesList.append(fileNew.fileName());
-        openFiles(filesList, ICore::SwitchMode);
-    }//#720 ROOPAK - END
+//        QStringList filesList;
+//        filesList.append(fileNew.fileName());
+//        openFiles(filesList, ICore::SwitchMode);
+//    }//#720 ROOPAK - END
 }
 
 void MainWindow::openFile()
 {
-    openFiles(EditorManager::getOpenFileNames(), ICore::SwitchMode);
+//    openFiles(EditorManager::getOpenFileNames(), ICore::SwitchMode);
 }
 
-static QList<IDocumentFactory*> getNonEditorDocumentFactories()
-{
-    const QList<IDocumentFactory*> allFileFactories =
-        ExtensionSystem::PluginManager::getObjects<IDocumentFactory>();
-    QList<IDocumentFactory*> nonEditorFileFactories;
-    foreach (IDocumentFactory *factory, allFileFactories) {
-        if (!qobject_cast<IEditorFactory *>(factory))
-            nonEditorFileFactories.append(factory);
-    }
-    return nonEditorFileFactories;
-}
+//static QList<IDocumentFactory*> getNonEditorDocumentFactories()
+//{
+//    const QList<IDocumentFactory*> allFileFactories =
+//        ExtensionSystem::PluginManager::getObjects<IDocumentFactory>();
+//    QList<IDocumentFactory*> nonEditorFileFactories;
+//    foreach (IDocumentFactory *factory, allFileFactories) {
+//        if (!qobject_cast<IEditorFactory *>(factory))
+//            nonEditorFileFactories.append(factory);
+//    }
+//    return nonEditorFileFactories;
+//}
 
-static IDocumentFactory *findDocumentFactory(const QList<IDocumentFactory*> &fileFactories,
-                                     const QFileInfo &fi)
-{
-    if (const MimeType mt = MimeDatabase::findByFile(fi)) {
-        const QString type = mt.type();
-        foreach (IDocumentFactory *factory, fileFactories) {
-            if (factory->mimeTypes().contains(type))
-                return factory;
-        }
-    }
-    return 0;
-}
+//static IDocumentFactory *findDocumentFactory(const QList<IDocumentFactory*> &fileFactories,
+//                                     const QFileInfo &fi)
+//{
+//    if (const MimeType mt = MimeDatabase::findByFile(fi)) {
+//        const QString type = mt.type();
+//        foreach (IDocumentFactory *factory, fileFactories) {
+//            if (factory->mimeTypes().contains(type))
+//                return factory;
+//        }
+//    }
+//    return 0;
+//}
 
 /*! Either opens \a fileNames with editors or loads a project.
  *
@@ -850,37 +850,37 @@ static IDocumentFactory *findDocumentFactory(const QList<IDocumentFactory*> &fil
  */
 IDocument *MainWindow::openFiles(const QStringList &fileNames, ICore::OpenFilesFlags flags)
 {
-    QList<IDocumentFactory*> nonEditorFileFactories = getNonEditorDocumentFactories();
-    IDocument *res = 0;
+//    QList<IDocumentFactory*> nonEditorFileFactories = getNonEditorDocumentFactories();
+//    IDocument *res = 0;
 
-    foreach (const QString &fileName, fileNames) {
-        const QFileInfo fi(fileName);
-        const QString absoluteFilePath = fi.absoluteFilePath();
-        if (IDocumentFactory *documentFactory = findDocumentFactory(nonEditorFileFactories, fi)) {
-            IDocument *document = documentFactory->open(absoluteFilePath);
-            if (!document) {
-                if (flags & ICore::StopOnLoadFail)
-                    return res;
-            } else {
-                if (!res)
-                    res = document;
-                if (flags & ICore::SwitchMode)
-                    ModeManager::activateMode(Id(Core::Constants::MODE_EDIT));
-            }
-        } else {
-            QFlags<EditorManager::OpenEditorFlag> emFlags;
-            if (flags & ICore::CanContainLineNumbers)
-                emFlags |=  EditorManager::CanContainLineNumber;
-            IEditor *editor = EditorManager::openEditor(absoluteFilePath, Id(), emFlags);
-            if (!editor) {
-                if (flags & ICore::StopOnLoadFail)
-                    return res;
-            } else if (!res) {
-                res = editor->document();
-            }
-        }
-    }
-    return res;
+//    foreach (const QString &fileName, fileNames) {
+//        const QFileInfo fi(fileName);
+//        const QString absoluteFilePath = fi.absoluteFilePath();
+//        if (IDocumentFactory *documentFactory = findDocumentFactory(nonEditorFileFactories, fi)) {
+//            IDocument *document = documentFactory->open(absoluteFilePath);
+//            if (!document) {
+//                if (flags & ICore::StopOnLoadFail)
+//                    return res;
+//            } else {
+//                if (!res)
+//                    res = document;
+//                if (flags & ICore::SwitchMode)
+//                    ModeManager::activateMode(Id(Core::Constants::MODE_EDIT));
+//            }
+//        } else {
+//            QFlags<EditorManager::OpenEditorFlag> emFlags;
+//            if (flags & ICore::CanContainLineNumbers)
+//                emFlags |=  EditorManager::CanContainLineNumber;
+//            IEditor *editor = EditorManager::openEditor(absoluteFilePath, Id(), emFlags);
+//            if (!editor) {
+//                if (flags & ICore::StopOnLoadFail)
+//                    return res;
+//            } else if (!res) {
+//                res = editor->document();
+//            }
+//        }
+//    }
+//    return res;
 }
 
 void MainWindow::setFocusToEditor()

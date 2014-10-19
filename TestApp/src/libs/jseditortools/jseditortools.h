@@ -2,8 +2,10 @@
 #define JSEDITORTOOLS_H
 
 #include "jseditortools_global.h"
+#include <coreplugin/icore.h>
 
 class QMainWindow;
+class QStringList;
 
 namespace ExtensionSystem {
 class PluginManager;
@@ -13,6 +15,7 @@ namespace Core {
 namespace Internal {
 class CorePlugin;
 }
+class IDocument;
 }
 
 namespace TextEditor {
@@ -39,6 +42,9 @@ class JSEDITORTOOLS_EXPORT JsEditorToolsLib {
 public:
     JsEditorToolsLib(QMainWindow *mainWindow);
     ~JsEditorToolsLib();
+
+    void newFileInEditor();
+    void openFileInEditor();
 private:
     QMainWindow *m_MainWindow;
 
@@ -47,6 +53,8 @@ private:
     TextEditor::Internal::TextEditorPlugin *m_pTextEditorPlugin;
     QmlJSTools::Internal::QmlJSToolsPlugin *m_pQmlJSToolsPlugin;
     QmlJSEditor::Internal::QmlJSEditorPlugin *m_pQmlJSEditorPlugin;
+
+    Core::IDocument *openFiles(const QStringList &fileNames, Core::ICore::OpenFilesFlags flags);
 };
 
 }// namespace JsEditorTools

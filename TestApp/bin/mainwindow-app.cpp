@@ -2,6 +2,7 @@
 #include "ui_mainwindow-app.h"
 
 #include <QFileDialog>
+#include <QMenuBar>
 
 #include <jseditortools/jseditortools.h>
 
@@ -14,6 +15,7 @@ MainWindowApp::MainWindowApp(QWidget *parent) :
     this->setWindowState(Qt::WindowMaximized);
 
     m_pJsEditorTools = new JsEditorTools::JsEditorToolsLib(this);
+    createMenus();
 }
 
 MainWindowApp::~MainWindowApp()
@@ -25,3 +27,19 @@ MainWindowApp::~MainWindowApp()
     m_pJsEditorTools = 0;
 }
 
+void MainWindowApp::createMenus()
+{
+    QMenuBar *menuBar = new QMenuBar(ui->dockWidget);
+    m_pFileMenu = menuBar->addMenu("File");
+    m_pFileMenu->addAction("New", this, SLOT(onFileNew()));
+    m_pFileMenu->addAction("Open", this, SLOT(onFileOpen()));
+}
+
+void MainWindowApp::onFileNew()
+{
+    m_pJsEditorTools->newFileInEditor();
+}
+void MainWindowApp::onFileOpen()
+{
+    m_pJsEditorTools->openFileInEditor();
+}
