@@ -881,6 +881,8 @@ IDocument *MainWindow::openFiles(const QStringList &fileNames, ICore::OpenFilesF
 //        }
 //    }
 //    return res;
+
+    return NULL;
 }
 
 void MainWindow::setFocusToEditor()
