@@ -18,15 +18,16 @@ class JSEditorMenuItems : public QObject
 public:
     explicit JSEditorMenuItems(QObject *parent = 0);
 
-    void newFileInEditor();
-    void openFileInEditor();
-
+    QActionGroup *getFileMenuItems(){ return m_pFileMenuActions; }
 signals:
 
 public slots:
+    void newFileInEditor();
+    void openFileInEditor();
 
 private:
     Core::IDocument *openFiles(const QStringList &fileNames, Core::ICore::OpenFilesFlags flags);
+
     //Menu groups
     void createActionGroups();
     QActionGroup *m_pFileMenuActions;

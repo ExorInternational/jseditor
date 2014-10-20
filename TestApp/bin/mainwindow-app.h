@@ -19,8 +19,8 @@ public:
     explicit MainWindowApp(QWidget *parent = 0);
     ~MainWindowApp();
 private slots:
-    void onFileNew();
-    void onFileOpen();
+//    void onFileNew();
+//    void onFileOpen();
 private:
     void createMenus();
 

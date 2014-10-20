@@ -32,15 +32,20 @@ void MainWindowApp::createMenus()
 {
     QMenuBar *menuBar = new QMenuBar(ui->dockWidget);
     m_pFileMenu = menuBar->addMenu("File");
-    m_pFileMenu->addAction("New", this, SLOT(onFileNew()));
-    m_pFileMenu->addAction("Open", this, SLOT(onFileOpen()));
+//    m_pFileMenu->addAction("New", this, SLOT(onFileNew()));
+//    m_pFileMenu->addAction("Open", this, SLOT(onFileOpen()));
+    QList<QAction *>fileMenuActions = m_pJsEditorTools->getJSEditorMenuItems()->getFileMenuItems()->actions();
+    for(int i=0; i<fileMenuActions.count(); i++)
+    {
+        m_pFileMenu->addAction(fileMenuActions.at(i));
+    }
 }
 
-void MainWindowApp::onFileNew()
-{
-    m_pJsEditorTools->getJSEditorMenuItems()->newFileInEditor();
-}
-void MainWindowApp::onFileOpen()
-{
-    m_pJsEditorTools->getJSEditorMenuItems()->openFileInEditor();
-}
+//void MainWindowApp::onFileNew()
+//{
+//    m_pJsEditorTools->getJSEditorMenuItems()->newFileInEditor();
+//}
+//void MainWindowApp::onFileOpen()
+//{
+//    m_pJsEditorTools->getJSEditorMenuItems()->openFileInEditor();
+//}

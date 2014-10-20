@@ -10,6 +10,9 @@
 #include <jseditortools/coreplugin/editormanager/editormanager.h>
 #include <jseditortools/coreplugin/editormanager/ieditor.h>
 #include <jseditortools/extensionsystem/pluginmanager.h>
+#include <jseditortools/coreplugin/actionmanager/command.h>
+#include <jseditortools/coreplugin/actionmanager/actionmanager.h>
+#include <jseditortools/coreplugin/actionmanager/actioncontainer_p.h>
 
 #include <QFileDialog>
 
@@ -20,12 +23,8 @@ using namespace ExtensionSystem;
 JSEditorMenuItems::JSEditorMenuItems(QObject *parent) :
     QObject(parent)
 {
+    m_pFileMenuActions = NULL;
     createActionGroups();
-}
-
-void JSEditorMenuItems::createActionGroups()
-{
-
 }
 
 void JSEditorMenuItems::newFileInEditor()
@@ -105,4 +104,48 @@ IDocument *JSEditorMenuItems::openFiles(const QStringList &fileNames, ICore::Ope
         }
     }
     return res;
+}
+
+void JSEditorMenuItems::createActionGroups()
+{
+    if(m_pFileMenuActions == NULL) {
+        m_pFileMenuActions = new QActionGroup(this);
+
+        Context globalContext(Constants::C_GLOBAL);
+
+        ActionContainer *filemenu = ActionManager::createMenu(Constants::M_FILE);
+        filemenu->appendGroup(Constants::G_FILE_NEW);
+        filemenu->appendGroup(Constants::G_FILE_OPEN);
+
+        ActionContainer *mfile = ActionManager::actionContainer(Constants::M_FILE);
+
+        //New Action
+        QIcon icon = QIcon::fromTheme(QLatin1String("document-new"), QIcon(QLatin1String(Constants::ICON_NEWFILE)));
+        QAction *newAction = new QAction(icon, tr("&New File"), this);//#720 ROOPAK - START
+        Command *cmd = ActionManager::registerAction(newAction, Constants::NEW, globalContext);
+        cmd->setDefaultKeySequence(QKeySequence::New);
+//        mfile->addAction(cmd, Constants::G_FILE_NEW);
+        connect(newAction, SIGNAL(triggered()), this, SLOT(newFileInEditor()));
+        m_pFileMenuActions->addAction(newAction);
+
+        // Open Action
+        icon = QIcon::fromTheme(QLatin1String("document-open"), QIcon(QLatin1String(Constants::ICON_OPENFILE)));
+        QAction *openAction = new QAction(icon, tr("&Open File or Project..."), this);
+        cmd = ActionManager::registerAction(openAction, Constants::OPEN, globalContext);
+        cmd->setDefaultKeySequence(QKeySequence::Open);
+//        mfile->addAction(cmd, Constants::G_FILE_OPEN);
+        connect(openAction, SIGNAL(triggered()), this, SLOT(openFileInEditor()));
+        m_pFileMenuActions->addAction(openAction);
+
+        // Save Action
+//        icon = QIcon::fromTheme(QLatin1String("document-save"), QIcon(QLatin1String(Constants::ICON_SAVEFILE)));
+//        QAction *tmpaction = new QAction(icon, tr("&Save"), this);
+//        tmpaction->setEnabled(false);
+//        cmd = ActionManager::registerAction(tmpaction, Constants::SAVE, globalContext);
+//        cmd->setDefaultKeySequence(QKeySequence::Save);
+//        cmd->setAttribute(Command::CA_UpdateText);
+//        cmd->setDescription(tr("Save"));
+//        mfile->addAction(cmd, Constants::G_FILE_SAVE);
+//        m_pFileMenuActions->addAction(tmpaction);
+    }
 }
