@@ -5,6 +5,7 @@
 #include <QMenuBar>
 
 #include <jseditortools/jseditortools.h>
+#include <jseditortools/jseditormenuitems.h>
 
 MainWindowApp::MainWindowApp(QWidget *parent) :
     QMainWindow(parent),
@@ -37,9 +38,9 @@ void MainWindowApp::createMenus()
 
 void MainWindowApp::onFileNew()
 {
-    m_pJsEditorTools->newFileInEditor();
+    m_pJsEditorTools->getJSEditorMenuItems()->newFileInEditor();
 }
 void MainWindowApp::onFileOpen()
 {
-    m_pJsEditorTools->openFileInEditor();
+    m_pJsEditorTools->getJSEditorMenuItems()->openFileInEditor();
 }

@@ -3,32 +3,17 @@
 #include <jseditortools/texteditor/texteditorplugin.h>
 #include <jseditortools/qmljstools/qmljstoolsplugin.h>
 #include <jseditortools/qmljseditor/qmljseditorplugin.h>
-
-#include <QStringList>
-
-using namespace JsEditorTools;
-
 #include <extensionsystem/pluginmanager.h>
 //#include <app/app_version.h>//#720 - ROOPAK
+#include <jseditortools/jseditormenuitems.h>
 
+#include <QStringList>
 #include <QSettings>
 #include <QFileInfo>
 #include <QDir>
-#include <QFileDialog>
 
-//#720 ROOPAK - START
-#include <jseditortools/coreplugin/idocument.h>
-#include <jseditortools/coreplugin/idocumentfactory.h>
-#include <jseditortools/coreplugin/editormanager/ieditorfactory.h>
-#include <jseditortools/coreplugin/mimedatabase.h>
-#include <jseditortools/coreplugin/modemanager.h>
-#include <jseditortools/coreplugin/coreconstants.h>
-#include <jseditortools/coreplugin/editormanager/editormanager.h>
-#include <jseditortools/coreplugin/editormanager/ieditor.h>
-//#720 ROOPAK - END
-
+using namespace JsEditorTools;
 using namespace ExtensionSystem;
-using namespace Core;
 
 static bool copyRecursively(const QString &srcFilePath,
                             const QString &tgtFilePath)
@@ -138,6 +123,8 @@ JsEditorToolsLib::JsEditorToolsLib(QMainWindow *mainWindow)
     m_pQmlJSEditorPlugin->extensionsInitialized();
 
     m_pCorePlugin->extensionsInitialized();//this should be called only in the final step(after the other plugins are loaded).
+
+    m_pJSEditorMenuItems = new JSEditorMenuItems(this);
 }
 JsEditorToolsLib::~JsEditorToolsLib()
 {
@@ -164,85 +151,11 @@ JsEditorToolsLib::~JsEditorToolsLib()
     if(m_pPluginManager)
         delete m_pPluginManager;
     m_pPluginManager = 0;
+
+    if(m_pJSEditorMenuItems)
+        delete m_pJSEditorMenuItems;
+    m_pJSEditorMenuItems = 0;
 }
 
 ////////////////////////////////////////ADDITIONAL SLOTS ADDED BY ROOPAK/////////#720 ROOPAK
 
-void JsEditorToolsLib::newFileInEditor()
-{
-    QString fileName = QFileDialog::getSaveFileName(NULL, QString(QLatin1String("New File")),
-                                QString(QLatin1String("%1/Untitled.js")).arg(QDir::homePath()),
-                                QString(QLatin1String("Javascript Files(*.js)")) );
-
-    if(!fileName.isEmpty()) {
-        QFile fileNew(QDir::toNativeSeparators(fileName));
-        fileNew.open(QIODevice::WriteOnly);
-
-        QStringList filesList;
-        filesList.append(fileNew.fileName());
-        openFiles(filesList, ICore::SwitchMode);
-    }//#720 ROOPAK - END
-}
-void JsEditorToolsLib::openFileInEditor()
-{
-     openFiles(EditorManager::getOpenFileNames(), ICore::SwitchMode);
-}
-
-static QList<IDocumentFactory*> getNonEditorDocumentFactories()
-{
-    const QList<IDocumentFactory*> allFileFactories =
-        ExtensionSystem::PluginManager::getObjects<IDocumentFactory>();
-    QList<IDocumentFactory*> nonEditorFileFactories;
-    foreach (IDocumentFactory *factory, allFileFactories) {
-        if (!qobject_cast<IEditorFactory *>(factory))
-            nonEditorFileFactories.append(factory);
-    }
-    return nonEditorFileFactories;
-}
-static IDocumentFactory *findDocumentFactory(const QList<IDocumentFactory*> &fileFactories,
-                                     const QFileInfo &fi)
-{
-    if (const MimeType mt = MimeDatabase::findByFile(fi)) {
-        const QString type = mt.type();
-        foreach (IDocumentFactory *factory, fileFactories) {
-            if (factory->mimeTypes().contains(type))
-                return factory;
-        }
-    }
-    return 0;
-}
-
-IDocument *JsEditorToolsLib::openFiles(const QStringList &fileNames, ICore::OpenFilesFlags flags)
-{
-    QList<IDocumentFactory*> nonEditorFileFactories = getNonEditorDocumentFactories();
-    IDocument *res = 0;
-
-    foreach (const QString &fileName, fileNames) {
-        const QFileInfo fi(fileName);
-        const QString absoluteFilePath = fi.absoluteFilePath();
-        if (IDocumentFactory *documentFactory = findDocumentFactory(nonEditorFileFactories, fi)) {
-            IDocument *document = documentFactory->open(absoluteFilePath);
-            if (!document) {
-                if (flags & ICore::StopOnLoadFail)
-                    return res;
-            } else {
-                if (!res)
-                    res = document;
-                if (flags & ICore::SwitchMode)
-                    ModeManager::activateMode(Id(Core::Constants::MODE_EDIT));
-            }
-        } else {
-            QFlags<EditorManager::OpenEditorFlag> emFlags;
-            if (flags & ICore::CanContainLineNumbers)
-                emFlags |=  EditorManager::CanContainLineNumber;
-            IEditor *editor = EditorManager::openEditor(absoluteFilePath, Id(), emFlags);
-            if (!editor) {
-                if (flags & ICore::StopOnLoadFail)
-                    return res;
-            } else if (!res) {
-                res = editor->document();
-            }
-        }
-    }
-    return res;
-}

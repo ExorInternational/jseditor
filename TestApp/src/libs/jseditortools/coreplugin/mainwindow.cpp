@@ -472,7 +472,7 @@ void MainWindow::registerDefaultContainers()
     menubar->addMenu(filemenu, Constants::G_FILE);
     filemenu->menu()->setTitle(tr("&File"));
 //    filemenu->appendGroup(Constants::G_FILE_NEW);//#720 ROOPAK
-    filemenu->appendGroup(Constants::G_FILE_OPEN);
+//    filemenu->appendGroup(Constants::G_FILE_OPEN);//#720 ROOPAK
 //    filemenu->appendGroup(Constants::G_FILE_PROJECT);//#720 ROOPAK
     filemenu->appendGroup(Constants::G_FILE_SAVE);
     filemenu->appendGroup(Constants::G_FILE_CLOSE);
