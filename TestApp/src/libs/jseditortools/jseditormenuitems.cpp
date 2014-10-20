@@ -138,14 +138,17 @@ void JSEditorMenuItems::createActionGroups()
         m_pFileMenuActions->addAction(openAction);
 
         // Save Action
-//        icon = QIcon::fromTheme(QLatin1String("document-save"), QIcon(QLatin1String(Constants::ICON_SAVEFILE)));
-//        QAction *tmpaction = new QAction(icon, tr("&Save"), this);
-//        tmpaction->setEnabled(false);
-//        cmd = ActionManager::registerAction(tmpaction, Constants::SAVE, globalContext);
-//        cmd->setDefaultKeySequence(QKeySequence::Save);
-//        cmd->setAttribute(Command::CA_UpdateText);
-//        cmd->setDescription(tr("Save"));
+        icon = QIcon::fromTheme(QLatin1String("document-save"), QIcon(QLatin1String(Constants::ICON_SAVEFILE)));
+        QAction *tmpaction = new QAction(icon, tr("&Save"), this);
+        tmpaction->setEnabled(false);
+        cmd = ActionManager::registerAction(tmpaction, Constants::SAVE, globalContext);
+        cmd->setDefaultKeySequence(QKeySequence::Save);
+        cmd->setAttribute(Command::CA_UpdateText);
+        cmd->setDescription(tr("Save"));
 //        mfile->addAction(cmd, Constants::G_FILE_SAVE);
 //        m_pFileMenuActions->addAction(tmpaction);
+        QAction *pSaveAction = ActionManager::command(Constants::SAVE)->action();
+        pSaveAction->setText(QLatin1String("&Save"));//Otherwise initially the action loads with empty string
+         m_pFileMenuActions->addAction(pSaveAction);
     }
 }
