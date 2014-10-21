@@ -120,7 +120,7 @@ void JSEditorMenuItems::createActionGroups()
         filemenu->appendGroup(Constants::G_FILE_NEW);
         filemenu->appendGroup(Constants::G_FILE_OPEN);
 
-        ActionContainer *mfile = ActionManager::actionContainer(Constants::M_FILE);
+//        ActionContainer *mfile = ActionManager::actionContainer(Constants::M_FILE);
 
         //New Action
         QIcon icon = QIcon::fromTheme(QLatin1String("document-new"), QIcon(QLatin1String(Constants::ICON_NEWFILE)));
@@ -172,5 +172,20 @@ void JSEditorMenuItems::createActionGroups()
 //          mfile->addAction(cmd, Constants::G_FILE_SAVE);
           connect(saveAllAction, SIGNAL(triggered()), this, SLOT(saveAll()));
           m_pFileMenuActions->addAction(saveAllAction);
+
+          // Print Action
+//          icon = QIcon::fromTheme(QLatin1String("document-print"));
+//          tmpaction = new QAction(icon, tr("&Print..."), this);
+//          tmpaction->setEnabled(false);
+//          cmd = ActionManager::registerAction(tmpaction, Constants::PRINT, globalContext);
+//          cmd->setDefaultKeySequence(QKeySequence::Print);
+//          mfile->addAction(cmd, Constants::G_FILE_PRINT);
+
+          //we dont need tht above comment for the print action. But for the 'Save', 'Save as'
+          //actions, the above type of code is required otherwise the filename will not be
+          //shown along with them.
+          QAction *pPrintAction = ActionManager::command(Constants::PRINT)->action();
+          pPrintAction->setText(QLatin1String("&Print..."));//Otherwise initially the action loads with empty string
+          m_pFileMenuActions->addAction(pPrintAction);
     }
 }

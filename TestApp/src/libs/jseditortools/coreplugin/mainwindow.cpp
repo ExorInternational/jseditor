@@ -600,13 +600,13 @@ void MainWindow::registerDefaultActions()
 //    mfile->addAction(cmd, Constants::G_FILE_SAVE);
 //    connect(m_saveAllAction, SIGNAL(triggered()), this, SLOT(saveAll()));
 
-    // Print Action
-    icon = QIcon::fromTheme(QLatin1String("document-print"));
-    QAction *tmpaction = new QAction(icon, tr("&Print..."), this);
-    tmpaction->setEnabled(false);
-    cmd = ActionManager::registerAction(tmpaction, Constants::PRINT, globalContext);
-    cmd->setDefaultKeySequence(QKeySequence::Print);
-    mfile->addAction(cmd, Constants::G_FILE_PRINT);
+//    // Print Action
+//    icon = QIcon::fromTheme(QLatin1String("document-print"));
+//    QAction *tmpaction = new QAction(icon, tr("&Print..."), this);
+//    tmpaction->setEnabled(false);
+//    cmd = ActionManager::registerAction(tmpaction, Constants::PRINT, globalContext);
+//    cmd->setDefaultKeySequence(QKeySequence::Print);
+//    mfile->addAction(cmd, Constants::G_FILE_PRINT);
 
     // Exit Action
     icon = QIcon::fromTheme(QLatin1String("application-exit"));
@@ -618,7 +618,7 @@ void MainWindow::registerDefaultActions()
 
     // Undo Action
     icon = QIcon::fromTheme(QLatin1String("edit-undo"), QIcon(QLatin1String(Constants::ICON_UNDO)));
-    tmpaction = new QAction(icon, tr("&Undo"), this);
+    QAction *tmpaction = new QAction(icon, tr("&Undo"), this);
     cmd = ActionManager::registerAction(tmpaction, Constants::UNDO, globalContext);
     cmd->setDefaultKeySequence(QKeySequence::Undo);
     cmd->setAttribute(Command::CA_UpdateText);
