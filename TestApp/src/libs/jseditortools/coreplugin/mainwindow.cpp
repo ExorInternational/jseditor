@@ -583,15 +583,15 @@ void MainWindow::registerDefaultActions()
 //    cmd->setDescription(tr("Save"));
 //    mfile->addAction(cmd, Constants::G_FILE_SAVE);
 
-    // Save As Action
-    icon = QIcon::fromTheme(QLatin1String("document-save-as"));
-    QAction *tmpaction = new QAction(icon, tr("Save &As..."), this);
-    tmpaction->setEnabled(false);
-    cmd = ActionManager::registerAction(tmpaction, Constants::SAVEAS, globalContext);
-    cmd->setDefaultKeySequence(QKeySequence(UseMacShortcuts ? tr("Ctrl+Shift+S") : QString()));
-    cmd->setAttribute(Command::CA_UpdateText);
-    cmd->setDescription(tr("Save As..."));
-    mfile->addAction(cmd, Constants::G_FILE_SAVE);
+//    // Save As Action
+//    icon = QIcon::fromTheme(QLatin1String("document-save-as"));
+//    QAction *tmpaction = new QAction(icon, tr("Save &As..."), this);
+//    tmpaction->setEnabled(false);
+//    cmd = ActionManager::registerAction(tmpaction, Constants::SAVEAS, globalContext);
+//    cmd->setDefaultKeySequence(QKeySequence(UseMacShortcuts ? tr("Ctrl+Shift+S") : QString()));
+//    cmd->setAttribute(Command::CA_UpdateText);
+//    cmd->setDescription(tr("Save As..."));
+//    mfile->addAction(cmd, Constants::G_FILE_SAVE);
 
     // SaveAll Action
     m_saveAllAction = new QAction(tr("Save A&ll"), this);
@@ -602,7 +602,7 @@ void MainWindow::registerDefaultActions()
 
     // Print Action
     icon = QIcon::fromTheme(QLatin1String("document-print"));
-    tmpaction = new QAction(icon, tr("&Print..."), this);
+    QAction *tmpaction = new QAction(icon, tr("&Print..."), this);
     tmpaction->setEnabled(false);
     cmd = ActionManager::registerAction(tmpaction, Constants::PRINT, globalContext);
     cmd->setDefaultKeySequence(QKeySequence::Print);

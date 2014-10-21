@@ -130,7 +130,7 @@ void JSEditorMenuItems::createActionGroups()
 
         // Open Action
         icon = QIcon::fromTheme(QLatin1String("document-open"), QIcon(QLatin1String(Constants::ICON_OPENFILE)));
-        QAction *openAction = new QAction(icon, tr("&Open File or Project..."), this);
+        QAction *openAction = new QAction(icon, tr("&Open File"), this);
         cmd = ActionManager::registerAction(openAction, Constants::OPEN, globalContext);
         cmd->setDefaultKeySequence(QKeySequence::Open);
 //        mfile->addAction(cmd, Constants::G_FILE_OPEN);
@@ -146,9 +146,21 @@ void JSEditorMenuItems::createActionGroups()
         cmd->setAttribute(Command::CA_UpdateText);
         cmd->setDescription(tr("Save"));
 //        mfile->addAction(cmd, Constants::G_FILE_SAVE);
-//        m_pFileMenuActions->addAction(tmpaction);
         QAction *pSaveAction = ActionManager::command(Constants::SAVE)->action();
         pSaveAction->setText(QLatin1String("&Save"));//Otherwise initially the action loads with empty string
          m_pFileMenuActions->addAction(pSaveAction);
+
+         // Save As Action
+         icon = QIcon::fromTheme(QLatin1String("document-save-as"));
+         tmpaction = new QAction(icon, tr("Save &As..."), this);
+         tmpaction->setEnabled(false);
+         cmd = ActionManager::registerAction(tmpaction, Constants::SAVEAS, globalContext);
+         cmd->setDefaultKeySequence(QKeySequence(UseMacShortcuts ? tr("Ctrl+Shift+S") : QString()));
+         cmd->setAttribute(Command::CA_UpdateText);
+         cmd->setDescription(tr("Save As..."));
+//         mfile->addAction(cmd, Constants::G_FILE_SAVE);
+         QAction *pSaveAsAction = ActionManager::command(Constants::SAVEAS)->action();
+         pSaveAsAction->setText(QLatin1String("Save &As..."));//Otherwise initially the action loads with empty string
+          m_pFileMenuActions->addAction(pSaveAsAction);
     }
 }
