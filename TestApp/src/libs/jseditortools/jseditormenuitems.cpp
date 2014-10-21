@@ -188,6 +188,9 @@ void JSEditorMenuItems::createActionGroups()
           pPrintAction->setText(QLatin1String("&Print..."));//Otherwise initially the action loads with empty string
           m_pFileMenuActions->addAction(pPrintAction);
 
+          QAction *pCloseAction = ActionManager::command(Constants::CLOSE)->action();
+          m_pFileMenuActions->addAction(pCloseAction);
+
           QAction *pCloseAllAction = ActionManager::command(Constants::CLOSEALL)->action();
           m_pFileMenuActions->addAction(pCloseAllAction);
     }

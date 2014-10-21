@@ -305,7 +305,7 @@ EditorManager::EditorManager(QWidget *parent) :
     cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+W")));
     cmd->setAttribute(Core::Command::CA_UpdateText);
     cmd->setDescription(d->m_closeCurrentEditorAction->text());
-    mfile->addAction(cmd, Constants::G_FILE_CLOSE);
+//    mfile->addAction(cmd, Constants::G_FILE_CLOSE);
     connect(d->m_closeCurrentEditorAction, SIGNAL(triggered()), this, SLOT(closeEditor()));
 
     if (Utils::HostOsInfo::isWindowsHost()) {
