@@ -140,6 +140,10 @@ void JSEditorMenuItems::createActionGroups()
         connect(openAction, SIGNAL(triggered()), this, SLOT(openFileInEditor()));
         m_pFileMenuActions->addAction(openAction);
 
+        QAction *separator1 = new QAction(this);
+        separator1->setSeparator(true);
+        m_pFileMenuActions->addAction(separator1);
+
         // Save Action
         icon = QIcon::fromTheme(QLatin1String("document-save"), QIcon(QLatin1String(Constants::ICON_SAVEFILE)));
         QAction *tmpaction = new QAction(icon, tr("&Save"), this);
@@ -173,6 +177,20 @@ void JSEditorMenuItems::createActionGroups()
           connect(saveAllAction, SIGNAL(triggered()), this, SLOT(saveAll()));
           m_pFileMenuActions->addAction(saveAllAction);
 
+          QAction *separator2 = new QAction(this);
+          separator2->setSeparator(true);
+          m_pFileMenuActions->addAction(separator2);
+
+          QAction *pCloseAction = ActionManager::command(Constants::CLOSE)->action();
+          m_pFileMenuActions->addAction(pCloseAction);
+
+          QAction *pCloseAllAction = ActionManager::command(Constants::CLOSEALL)->action();
+          m_pFileMenuActions->addAction(pCloseAllAction);
+
+          QAction *separator3 = new QAction(this);
+          separator3->setSeparator(true);
+          m_pFileMenuActions->addAction(separator3);
+
           // Print Action
 //          icon = QIcon::fromTheme(QLatin1String("document-print"));
 //          tmpaction = new QAction(icon, tr("&Print..."), this);
@@ -187,11 +205,5 @@ void JSEditorMenuItems::createActionGroups()
           QAction *pPrintAction = ActionManager::command(Constants::PRINT)->action();
           pPrintAction->setText(QLatin1String("&Print..."));//Otherwise initially the action loads with empty string
           m_pFileMenuActions->addAction(pPrintAction);
-
-          QAction *pCloseAction = ActionManager::command(Constants::CLOSE)->action();
-          m_pFileMenuActions->addAction(pCloseAction);
-
-          QAction *pCloseAllAction = ActionManager::command(Constants::CLOSEALL)->action();
-          m_pFileMenuActions->addAction(pCloseAllAction);
     }
 }
