@@ -320,7 +320,7 @@ EditorManager::EditorManager(QWidget *parent) :
     // Close All Action
     cmd = ActionManager::registerAction(d->m_closeAllEditorsAction, Constants::CLOSEALL, editManagerContext, true);
     cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+Shift+W")));
-    mfile->addAction(cmd, Constants::G_FILE_CLOSE);
+//    mfile->addAction(cmd, Constants::G_FILE_CLOSE);
     connect(d->m_closeAllEditorsAction, SIGNAL(triggered()), this, SLOT(closeAllEditors()));
 
     // Close All Others Action

@@ -609,12 +609,12 @@ void MainWindow::registerDefaultActions()
 //    mfile->addAction(cmd, Constants::G_FILE_PRINT);
 
     // Exit Action
-    icon = QIcon::fromTheme(QLatin1String("application-exit"));
-    m_exitAction = new QAction(icon, tr("E&xit"), this);
-    cmd = ActionManager::registerAction(m_exitAction, Constants::EXIT, globalContext);
-    cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+Q")));
-    mfile->addAction(cmd, Constants::G_FILE_OTHER);
-    connect(m_exitAction, SIGNAL(triggered()), this, SLOT(exit()));
+//    icon = QIcon::fromTheme(QLatin1String("application-exit"));
+//    m_exitAction = new QAction(icon, tr("E&xit"), this);
+//    cmd = ActionManager::registerAction(m_exitAction, Constants::EXIT, globalContext);
+//    cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+Q")));
+//    mfile->addAction(cmd, Constants::G_FILE_OTHER);
+//    connect(m_exitAction, SIGNAL(triggered()), this, SLOT(exit()));
 
     // Undo Action
     icon = QIcon::fromTheme(QLatin1String("edit-undo"), QIcon(QLatin1String(Constants::ICON_UNDO)));
