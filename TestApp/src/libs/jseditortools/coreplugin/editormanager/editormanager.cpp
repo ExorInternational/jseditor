@@ -282,7 +282,7 @@ EditorManager::EditorManager(QWidget *parent) :
                                        Constants::REVERTTOSAVED, editManagerContext);
     cmd->setAttribute(Command::CA_UpdateText);
     cmd->setDescription(tr("Revert File to Saved"));
-    mfile->addAction(cmd, Constants::G_FILE_SAVE);
+//    mfile->addAction(cmd, Constants::G_FILE_SAVE);
     connect(d->m_revertToSavedAction, SIGNAL(triggered()), this, SLOT(revertToSaved()));
 
     // Save Action
@@ -325,7 +325,7 @@ EditorManager::EditorManager(QWidget *parent) :
 
     // Close All Others Action
     cmd = ActionManager::registerAction(d->m_closeOtherEditorsAction, Constants::CLOSEOTHERS, editManagerContext, true);
-    mfile->addAction(cmd, Constants::G_FILE_CLOSE);
+//    mfile->addAction(cmd, Constants::G_FILE_CLOSE);
     cmd->setAttribute(Core::Command::CA_UpdateText);
     connect(d->m_closeOtherEditorsAction, SIGNAL(triggered()), this, SLOT(closeOtherEditors()));
 

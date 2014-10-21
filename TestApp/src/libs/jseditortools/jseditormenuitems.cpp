@@ -177,6 +177,9 @@ void JSEditorMenuItems::createActionGroups()
           connect(saveAllAction, SIGNAL(triggered()), this, SLOT(saveAll()));
           m_pFileMenuActions->addAction(saveAllAction);
 
+          QAction *pRevertToSavedAction = ActionManager::command(Constants::REVERTTOSAVED)->action();
+          m_pFileMenuActions->addAction(pRevertToSavedAction);
+
           QAction *separator2 = new QAction(this);
           separator2->setSeparator(true);
           m_pFileMenuActions->addAction(separator2);
@@ -186,6 +189,12 @@ void JSEditorMenuItems::createActionGroups()
 
           QAction *pCloseAllAction = ActionManager::command(Constants::CLOSEALL)->action();
           m_pFileMenuActions->addAction(pCloseAllAction);
+
+          QAction *pCloseOthers = ActionManager::command(Constants::CLOSEOTHERS)->action();
+          m_pFileMenuActions->addAction(pCloseOthers);
+
+          //CLOSEALLEXCEPTVISIBLE is not added since its for other editors used in Qt Creator.
+          //For this library we only have one editor(text editor).
 
           QAction *separator3 = new QAction(this);
           separator3->setSeparator(true);
