@@ -24,6 +24,7 @@ signals:
 public slots:
     void newFileInEditor();
     void openFileInEditor();
+    void saveAll();
 
 private:
     Core::IDocument *openFiles(const QStringList &fileNames, Core::ICore::OpenFilesFlags flags);

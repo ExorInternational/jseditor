@@ -13,6 +13,7 @@
 #include <jseditortools/coreplugin/actionmanager/command.h>
 #include <jseditortools/coreplugin/actionmanager/actionmanager.h>
 #include <jseditortools/coreplugin/actionmanager/actioncontainer_p.h>
+#include <jseditortools/coreplugin/documentmanager.h>
 
 #include <QFileDialog>
 
@@ -25,26 +26,6 @@ JSEditorMenuItems::JSEditorMenuItems(QObject *parent) :
 {
     m_pFileMenuActions = NULL;
     createActionGroups();
-}
-
-void JSEditorMenuItems::newFileInEditor()
-{
-    QString fileName = QFileDialog::getSaveFileName(NULL, QString(QLatin1String("New File")),
-                                QString(QLatin1String("%1/Untitled.js")).arg(QDir::homePath()),
-                                QString(QLatin1String("Javascript Files(*.js)")) );
-
-    if(!fileName.isEmpty()) {
-        QFile fileNew(QDir::toNativeSeparators(fileName));
-        fileNew.open(QIODevice::WriteOnly);
-
-        QStringList filesList;
-        filesList.append(fileNew.fileName());
-        openFiles(filesList, ICore::SwitchMode);
-    }//#720 ROOPAK - END
-}
-void JSEditorMenuItems::openFileInEditor()
-{
-     openFiles(EditorManager::getOpenFileNames(), ICore::SwitchMode);
 }
 
 static QList<IDocumentFactory*> getNonEditorDocumentFactories()
@@ -105,7 +86,29 @@ IDocument *JSEditorMenuItems::openFiles(const QStringList &fileNames, ICore::Ope
     }
     return res;
 }
+void JSEditorMenuItems::newFileInEditor()
+{
+    QString fileName = QFileDialog::getSaveFileName(NULL, QString(QLatin1String("New File")),
+                                QString(QLatin1String("%1/Untitled.js")).arg(QDir::homePath()),
+                                QString(QLatin1String("Javascript Files(*.js)")) );
 
+    if(!fileName.isEmpty()) {
+        QFile fileNew(QDir::toNativeSeparators(fileName));
+        fileNew.open(QIODevice::WriteOnly);
+
+        QStringList filesList;
+        filesList.append(fileNew.fileName());
+        openFiles(filesList, ICore::SwitchMode);
+    }//#720 ROOPAK - END
+}
+void JSEditorMenuItems::openFileInEditor()
+{
+     openFiles(EditorManager::getOpenFileNames(), ICore::SwitchMode);
+}
+void JSEditorMenuItems::saveAll()
+{
+    DocumentManager::saveAllModifiedDocumentsSilently();
+}
 void JSEditorMenuItems::createActionGroups()
 {
     if(m_pFileMenuActions == NULL) {
@@ -162,5 +165,12 @@ void JSEditorMenuItems::createActionGroups()
          QAction *pSaveAsAction = ActionManager::command(Constants::SAVEAS)->action();
          pSaveAsAction->setText(QLatin1String("Save &As..."));//Otherwise initially the action loads with empty string
           m_pFileMenuActions->addAction(pSaveAsAction);
+
+          QAction *saveAllAction = new QAction(tr("Save A&ll"), this);
+          cmd = ActionManager::registerAction(saveAllAction, Constants::SAVEALL, globalContext);
+          cmd->setDefaultKeySequence(QKeySequence(UseMacShortcuts ? QString() : tr("Ctrl+Shift+S")));
+//          mfile->addAction(cmd, Constants::G_FILE_SAVE);
+          connect(saveAllAction, SIGNAL(triggered()), this, SLOT(saveAll()));
+          m_pFileMenuActions->addAction(saveAllAction);
     }
 }
