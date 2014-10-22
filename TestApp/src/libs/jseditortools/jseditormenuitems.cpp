@@ -114,20 +114,28 @@ void JSEditorMenuItems::createActionGroups()
     if(m_pFileMenuActions == NULL) {
         m_pFileMenuActions = new QActionGroup(this);
 
+        createFileMenuItems();
+    }
+}
+
+void JSEditorMenuItems::createFileMenuItems()
+{
+    if(m_pFileMenuActions)
+    {
         Context globalContext(Constants::C_GLOBAL);
 
-        ActionContainer *filemenu = ActionManager::createMenu(Constants::M_FILE);
-//        filemenu->appendGroup(Constants::G_FILE_NEW);
-//        filemenu->appendGroup(Constants::G_FILE_OPEN);
+//        ActionContainer *filemenu = ActionManager::createMenu(Constants::M_FILE);
+    //        filemenu->appendGroup(Constants::G_FILE_NEW);
+    //        filemenu->appendGroup(Constants::G_FILE_OPEN);
 
-//        ActionContainer *mfile = ActionManager::actionContainer(Constants::M_FILE);
+    //        ActionContainer *mfile = ActionManager::actionContainer(Constants::M_FILE);
 
         //New Action
         QIcon icon = QIcon::fromTheme(QLatin1String("document-new"), QIcon(QLatin1String(Constants::ICON_NEWFILE)));
         QAction *newAction = new QAction(icon, tr("&New File"), this);//#720 ROOPAK - START
         Command *cmd = ActionManager::registerAction(newAction, Constants::NEW, globalContext);
         cmd->setDefaultKeySequence(QKeySequence::New);
-//        mfile->addAction(cmd, Constants::G_FILE_NEW);
+    //        mfile->addAction(cmd, Constants::G_FILE_NEW);
         connect(newAction, SIGNAL(triggered()), this, SLOT(newFileInEditor()));
         m_pFileMenuActions->addAction(newAction);
 
@@ -136,7 +144,7 @@ void JSEditorMenuItems::createActionGroups()
         QAction *openAction = new QAction(icon, tr("&Open File"), this);
         cmd = ActionManager::registerAction(openAction, Constants::OPEN, globalContext);
         cmd->setDefaultKeySequence(QKeySequence::Open);
-//        mfile->addAction(cmd, Constants::G_FILE_OPEN);
+    //        mfile->addAction(cmd, Constants::G_FILE_OPEN);
         connect(openAction, SIGNAL(triggered()), this, SLOT(openFileInEditor()));
         m_pFileMenuActions->addAction(openAction);
 
@@ -152,7 +160,7 @@ void JSEditorMenuItems::createActionGroups()
         cmd->setDefaultKeySequence(QKeySequence::Save);
         cmd->setAttribute(Command::CA_UpdateText);
         cmd->setDescription(tr("Save"));
-//        mfile->addAction(cmd, Constants::G_FILE_SAVE);
+    //        mfile->addAction(cmd, Constants::G_FILE_SAVE);
         QAction *pSaveAction = ActionManager::command(Constants::SAVE)->action();
         pSaveAction->setText(QLatin1String("&Save"));//Otherwise initially the action loads with empty string
          m_pFileMenuActions->addAction(pSaveAction);
@@ -165,7 +173,7 @@ void JSEditorMenuItems::createActionGroups()
          cmd->setDefaultKeySequence(QKeySequence(UseMacShortcuts ? tr("Ctrl+Shift+S") : QString()));
          cmd->setAttribute(Command::CA_UpdateText);
          cmd->setDescription(tr("Save As..."));
-//         mfile->addAction(cmd, Constants::G_FILE_SAVE);
+    //         mfile->addAction(cmd, Constants::G_FILE_SAVE);
          QAction *pSaveAsAction = ActionManager::command(Constants::SAVEAS)->action();
          pSaveAsAction->setText(QLatin1String("Save &As..."));//Otherwise initially the action loads with empty string
           m_pFileMenuActions->addAction(pSaveAsAction);
@@ -173,7 +181,7 @@ void JSEditorMenuItems::createActionGroups()
           QAction *saveAllAction = new QAction(tr("Save A&ll"), this);
           cmd = ActionManager::registerAction(saveAllAction, Constants::SAVEALL, globalContext);
           cmd->setDefaultKeySequence(QKeySequence(UseMacShortcuts ? QString() : tr("Ctrl+Shift+S")));
-//          mfile->addAction(cmd, Constants::G_FILE_SAVE);
+    //          mfile->addAction(cmd, Constants::G_FILE_SAVE);
           connect(saveAllAction, SIGNAL(triggered()), this, SLOT(saveAll()));
           m_pFileMenuActions->addAction(saveAllAction);
 
@@ -201,12 +209,12 @@ void JSEditorMenuItems::createActionGroups()
           m_pFileMenuActions->addAction(separator3);
 
           // Print Action
-//          icon = QIcon::fromTheme(QLatin1String("document-print"));
-//          tmpaction = new QAction(icon, tr("&Print..."), this);
-//          tmpaction->setEnabled(false);
-//          cmd = ActionManager::registerAction(tmpaction, Constants::PRINT, globalContext);
-//          cmd->setDefaultKeySequence(QKeySequence::Print);
-//          mfile->addAction(cmd, Constants::G_FILE_PRINT);
+    //          icon = QIcon::fromTheme(QLatin1String("document-print"));
+    //          tmpaction = new QAction(icon, tr("&Print..."), this);
+    //          tmpaction->setEnabled(false);
+    //          cmd = ActionManager::registerAction(tmpaction, Constants::PRINT, globalContext);
+    //          cmd->setDefaultKeySequence(QKeySequence::Print);
+    //          mfile->addAction(cmd, Constants::G_FILE_PRINT);
 
           //we dont need tht above comment for the print action. But for the 'Save', 'Save as'
           //actions, the above type of code is required otherwise the filename will not be

@@ -27,6 +27,7 @@ public slots:
     void saveAll();
 
 private:
+    void createFileMenuItems();
     Core::IDocument *openFiles(const QStringList &fileNames, Core::ICore::OpenFilesFlags flags);
 
     //Menu groups
