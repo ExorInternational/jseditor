@@ -117,8 +117,8 @@ void JSEditorMenuItems::createActionGroups()
         Context globalContext(Constants::C_GLOBAL);
 
         ActionContainer *filemenu = ActionManager::createMenu(Constants::M_FILE);
-        filemenu->appendGroup(Constants::G_FILE_NEW);
-        filemenu->appendGroup(Constants::G_FILE_OPEN);
+//        filemenu->appendGroup(Constants::G_FILE_NEW);
+//        filemenu->appendGroup(Constants::G_FILE_OPEN);
 
 //        ActionContainer *mfile = ActionManager::actionContainer(Constants::M_FILE);
 

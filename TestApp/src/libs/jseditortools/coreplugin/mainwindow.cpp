@@ -474,10 +474,10 @@ void MainWindow::registerDefaultContainers()
 //    filemenu->appendGroup(Constants::G_FILE_NEW);//#720 ROOPAK
 //    filemenu->appendGroup(Constants::G_FILE_OPEN);//#720 ROOPAK
 //    filemenu->appendGroup(Constants::G_FILE_PROJECT);//#720 ROOPAK
-    filemenu->appendGroup(Constants::G_FILE_SAVE);
-    filemenu->appendGroup(Constants::G_FILE_CLOSE);
-    filemenu->appendGroup(Constants::G_FILE_PRINT);
-    filemenu->appendGroup(Constants::G_FILE_OTHER);
+//    filemenu->appendGroup(Constants::G_FILE_SAVE);
+//    filemenu->appendGroup(Constants::G_FILE_CLOSE);
+//    filemenu->appendGroup(Constants::G_FILE_PRINT);
+//    filemenu->appendGroup(Constants::G_FILE_OTHER);
 //    connect(filemenu->menu(), SIGNAL(aboutToShow()), this, SLOT(aboutToShowRecentFiles()));//#720 ROOPAK
 
 
@@ -528,10 +528,10 @@ void MainWindow::registerDefaultActions()
     Context globalContext(Constants::C_GLOBAL);
 
     // File menu separators
-    mfile->addSeparator(globalContext, Constants::G_FILE_SAVE);
-    mfile->addSeparator(globalContext, Constants::G_FILE_PRINT);
-    mfile->addSeparator(globalContext, Constants::G_FILE_CLOSE);
-    mfile->addSeparator(globalContext, Constants::G_FILE_OTHER);
+//    mfile->addSeparator(globalContext, Constants::G_FILE_SAVE);
+//    mfile->addSeparator(globalContext, Constants::G_FILE_PRINT);
+//    mfile->addSeparator(globalContext, Constants::G_FILE_CLOSE);
+//    mfile->addSeparator(globalContext, Constants::G_FILE_OTHER);
     // Edit menu separators
     medit->addSeparator(globalContext, Constants::G_EDIT_COPYPASTE);
     medit->addSeparator(globalContext, Constants::G_EDIT_SELECTALL);

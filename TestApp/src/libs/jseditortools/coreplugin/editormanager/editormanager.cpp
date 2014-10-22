@@ -331,7 +331,7 @@ EditorManager::EditorManager(QWidget *parent) :
 
     // Close All Others Except Visible Action
     cmd = ActionManager::registerAction(d->m_closeAllEditorsExceptVisibleAction, Constants::CLOSEALLEXCEPTVISIBLE, editManagerContext, true);
-    mfile->addAction(cmd, Constants::G_FILE_CLOSE);
+//    mfile->addAction(cmd, Constants::G_FILE_CLOSE);
     connect(d->m_closeAllEditorsExceptVisibleAction, SIGNAL(triggered()), this, SLOT(closeAllEditorsExceptVisible()));
 
     //Save XXX Context Actions
