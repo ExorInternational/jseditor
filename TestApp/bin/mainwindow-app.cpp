@@ -39,6 +39,8 @@ void MainWindowApp::createMenus()
     {
         m_pFileMenu->addAction(fileMenuActions.at(i));
     }
+
+    menuBar->addMenu(m_pJsEditorTools->getJSEditorMenuItems()->getEditMenu());
 }
 
 //void MainWindowApp::onFileNew()

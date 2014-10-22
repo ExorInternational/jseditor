@@ -19,6 +19,7 @@ public:
     explicit JSEditorMenuItems(QObject *parent = 0);
 
     QActionGroup *getFileMenuItems(){ return m_pFileMenuActions; }
+    QMenu *getEditMenu(){ return m_pEditMenu; }
 signals:
 
 public slots:
@@ -27,13 +28,16 @@ public slots:
     void saveAll();
 
 private:
-    void createFileMenuItems();
     Core::IDocument *openFiles(const QStringList &fileNames, Core::ICore::OpenFilesFlags flags);
 
     //Menu groups
     void createActionGroups();
+
+    void createFileMenuItems();
     QActionGroup *m_pFileMenuActions;
 
+    void createEditMenuItems();
+    QMenu *m_pEditMenu;
 };
 
 }// namespace JsEditorTools

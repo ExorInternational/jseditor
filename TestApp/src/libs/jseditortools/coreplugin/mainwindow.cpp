@@ -617,28 +617,28 @@ void MainWindow::registerDefaultActions()
 //    connect(m_exitAction, SIGNAL(triggered()), this, SLOT(exit()));
 
     // Undo Action
-    icon = QIcon::fromTheme(QLatin1String("edit-undo"), QIcon(QLatin1String(Constants::ICON_UNDO)));
-    QAction *tmpaction = new QAction(icon, tr("&Undo"), this);
-    cmd = ActionManager::registerAction(tmpaction, Constants::UNDO, globalContext);
-    cmd->setDefaultKeySequence(QKeySequence::Undo);
-    cmd->setAttribute(Command::CA_UpdateText);
-    cmd->setDescription(tr("Undo"));
-    medit->addAction(cmd, Constants::G_EDIT_UNDOREDO);
-    tmpaction->setEnabled(false);
+//    icon = QIcon::fromTheme(QLatin1String("edit-undo"), QIcon(QLatin1String(Constants::ICON_UNDO)));
+//    QAction *tmpaction = new QAction(icon, tr("&Undo"), this);
+//    cmd = ActionManager::registerAction(tmpaction, Constants::UNDO, globalContext);
+//    cmd->setDefaultKeySequence(QKeySequence::Undo);
+//    cmd->setAttribute(Command::CA_UpdateText);
+//    cmd->setDescription(tr("Undo"));
+//    medit->addAction(cmd, Constants::G_EDIT_UNDOREDO);
+//    tmpaction->setEnabled(false);
 
-    // Redo Action
-    icon = QIcon::fromTheme(QLatin1String("edit-redo"), QIcon(QLatin1String(Constants::ICON_REDO)));
-    tmpaction = new QAction(icon, tr("&Redo"), this);
-    cmd = ActionManager::registerAction(tmpaction, Constants::REDO, globalContext);
-    cmd->setDefaultKeySequence(QKeySequence::Redo);
-    cmd->setAttribute(Command::CA_UpdateText);
-    cmd->setDescription(tr("Redo"));
-    medit->addAction(cmd, Constants::G_EDIT_UNDOREDO);
-    tmpaction->setEnabled(false);
+//    // Redo Action
+//    icon = QIcon::fromTheme(QLatin1String("edit-redo"), QIcon(QLatin1String(Constants::ICON_REDO)));
+//    QAction *tmpaction = new QAction(icon, tr("&Redo"), this);
+//    cmd = ActionManager::registerAction(tmpaction, Constants::REDO, globalContext);
+//    cmd->setDefaultKeySequence(QKeySequence::Redo);
+//    cmd->setAttribute(Command::CA_UpdateText);
+//    cmd->setDescription(tr("Redo"));
+//    medit->addAction(cmd, Constants::G_EDIT_UNDOREDO);
+//    tmpaction->setEnabled(false);
 
     // Cut Action
     icon = QIcon::fromTheme(QLatin1String("edit-cut"), QIcon(QLatin1String(Constants::ICON_CUT)));
-    tmpaction = new QAction(icon, tr("Cu&t"), this);
+    QAction *tmpaction = new QAction(icon, tr("Cu&t"), this);
     cmd = ActionManager::registerAction(tmpaction, Constants::CUT, globalContext);
     cmd->setDefaultKeySequence(QKeySequence::Cut);
     medit->addAction(cmd, Constants::G_EDIT_COPYPASTE);

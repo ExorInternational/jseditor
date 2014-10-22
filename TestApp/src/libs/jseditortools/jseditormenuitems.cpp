@@ -25,6 +25,7 @@ JSEditorMenuItems::JSEditorMenuItems(QObject *parent) :
     QObject(parent)
 {
     m_pFileMenuActions = NULL;
+    m_pEditMenu = NULL;
     createActionGroups();
 }
 
@@ -111,17 +112,16 @@ void JSEditorMenuItems::saveAll()
 }
 void JSEditorMenuItems::createActionGroups()
 {
-    if(m_pFileMenuActions == NULL) {
-        m_pFileMenuActions = new QActionGroup(this);
-
-        createFileMenuItems();
-    }
+    createFileMenuItems();
+    createEditMenuItems();
 }
 
 void JSEditorMenuItems::createFileMenuItems()
 {
-    if(m_pFileMenuActions)
+    if(m_pFileMenuActions == NULL)
     {
+        m_pFileMenuActions = new QActionGroup(this);
+
         Context globalContext(Constants::C_GLOBAL);
 
 //        ActionContainer *filemenu = ActionManager::createMenu(Constants::M_FILE);
@@ -222,5 +222,50 @@ void JSEditorMenuItems::createFileMenuItems()
           QAction *pPrintAction = ActionManager::command(Constants::PRINT)->action();
           pPrintAction->setText(QLatin1String("&Print..."));//Otherwise initially the action loads with empty string
           m_pFileMenuActions->addAction(pPrintAction);
+    }
+}
+
+void JSEditorMenuItems::createEditMenuItems()
+{
+    if(m_pEditMenu == NULL)
+    {
+        m_pEditMenu = new QMenu(QLatin1String("Edit"), NULL);
+        
+//        m_pEditMenuActions->addAction(QLatin1String("1"));
+//        m_pEditMenuActions->addAction(QLatin1String("2"));
+
+//        QMenu *pMenu = new QMenu(QLatin1String("Ad"), NULL);
+//        pMenu->addAction(QLatin1String("3"));
+//        pMenu->addAction(QLatin1String("4"));
+//        m_pEditMenuActions->addMenu(pMenu);
+
+        Context globalContext(Constants::C_GLOBAL);
+
+        QIcon icon = QIcon::fromTheme(QLatin1String("edit-undo"), QIcon(QLatin1String(Constants::ICON_UNDO)));
+        QAction *tmpaction = new QAction(icon, tr("&Undo"), this);
+        Command *cmd = ActionManager::registerAction(tmpaction, Constants::UNDO, globalContext);
+        cmd->setDefaultKeySequence(QKeySequence::Undo);
+        cmd->setAttribute(Command::CA_UpdateText);
+        cmd->setDescription(tr("Undo"));
+//        medit->addAction(cmd, Constants::G_EDIT_UNDOREDO);
+        tmpaction->setEnabled(false);
+        QAction *pUndoAction = ActionManager::command(Constants::UNDO)->action();
+        pUndoAction->setText(QLatin1String("&Undo"));//Otherwise initially the action loads with empty string
+         m_pEditMenu->addAction(pUndoAction);
+
+         // Redo Action
+         icon = QIcon::fromTheme(QLatin1String("edit-redo"), QIcon(QLatin1String(Constants::ICON_REDO)));
+         tmpaction = new QAction(icon, tr("&Redo"), this);
+         cmd = ActionManager::registerAction(tmpaction, Constants::REDO, globalContext);
+         cmd->setDefaultKeySequence(QKeySequence::Redo);
+         cmd->setAttribute(Command::CA_UpdateText);
+         cmd->setDescription(tr("Redo"));
+//         medit->addAction(cmd, Constants::G_EDIT_UNDOREDO);
+         tmpaction->setEnabled(false);
+         QAction *pRedoAction = ActionManager::command(Constants::REDO)->action();
+         pRedoAction->setText(QLatin1String("&Redo"));//Otherwise initially the action loads with empty string
+         m_pEditMenu->addAction(pRedoAction);
+
+         m_pEditMenu->addSeparator();
     }
 }
