@@ -267,5 +267,53 @@ void JSEditorMenuItems::createEditMenuItems()
          m_pEditMenu->addAction(pRedoAction);
 
          m_pEditMenu->addSeparator();
+
+         // Cut Action
+         icon = QIcon::fromTheme(QLatin1String("edit-cut"), QIcon(QLatin1String(Constants::ICON_CUT)));
+         tmpaction = new QAction(icon, tr("Cu&t"), this);
+         cmd = ActionManager::registerAction(tmpaction, Constants::CUT, globalContext);
+         cmd->setDefaultKeySequence(QKeySequence::Cut);
+//         medit->addAction(cmd, Constants::G_EDIT_COPYPASTE);
+         tmpaction->setEnabled(false);
+         QAction *pCutAction = ActionManager::command(Constants::CUT)->action();
+         pCutAction->setText(QLatin1String("Cu&t"));//Otherwise initially the action loads with empty string
+         m_pEditMenu->addAction(pCutAction);
+
+         // Copy Action
+         icon = QIcon::fromTheme(QLatin1String("edit-copy"), QIcon(QLatin1String(Constants::ICON_COPY)));
+         tmpaction = new QAction(icon, tr("&Copy"), this);
+         cmd = ActionManager::registerAction(tmpaction, Constants::COPY, globalContext);
+         cmd->setDefaultKeySequence(QKeySequence::Copy);
+//         medit->addAction(cmd, Constants::G_EDIT_COPYPASTE);
+         tmpaction->setEnabled(false);
+         QAction *pCopyAction = ActionManager::command(Constants::COPY)->action();
+         pCopyAction->setText(QLatin1String("&Copy"));//Otherwise initially the action loads with empty string
+         m_pEditMenu->addAction(pCopyAction);
+
+         // Paste Action
+         icon = QIcon::fromTheme(QLatin1String("edit-paste"), QIcon(QLatin1String(Constants::ICON_PASTE)));
+         tmpaction = new QAction(icon, tr("&Paste"), this);
+         cmd = ActionManager::registerAction(tmpaction, Constants::PASTE, globalContext);
+         cmd->setDefaultKeySequence(QKeySequence::Paste);
+//         medit->addAction(cmd, Constants::G_EDIT_COPYPASTE);
+         tmpaction->setEnabled(false);
+         QAction *pPasteAction = ActionManager::command(Constants::PASTE)->action();
+         pPasteAction->setText(QLatin1String("&Paste"));//Otherwise initially the action loads with empty string
+         m_pEditMenu->addAction(pPasteAction);
+
+         m_pEditMenu->addSeparator();
+
+         // Select All
+         icon = QIcon::fromTheme(QLatin1String("edit-select-all"));
+         tmpaction = new QAction(icon, tr("Select &All"), this);
+         cmd = ActionManager::registerAction(tmpaction, Constants::SELECTALL, globalContext);
+         cmd->setDefaultKeySequence(QKeySequence::SelectAll);
+//         medit->addAction(cmd, Constants::G_EDIT_SELECTALL);
+         tmpaction->setEnabled(false);
+         QAction *pSelectAllAction = ActionManager::command(Constants::SELECTALL)->action();
+         pSelectAllAction->setText(QLatin1String("Select &All"));//Otherwise initially the action loads with empty string
+         m_pEditMenu->addAction(pSelectAllAction);
+
+         m_pEditMenu->addSeparator();
     }
 }
