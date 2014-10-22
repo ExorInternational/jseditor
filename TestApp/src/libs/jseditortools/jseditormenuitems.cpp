@@ -14,6 +14,7 @@
 #include <jseditortools/coreplugin/actionmanager/actionmanager.h>
 #include <jseditortools/coreplugin/actionmanager/actioncontainer_p.h>
 #include <jseditortools/coreplugin/documentmanager.h>
+#include <jseditortools/texteditor/texteditorconstants.h>
 
 #include <QFileDialog>
 
@@ -313,6 +314,9 @@ void JSEditorMenuItems::createEditMenuItems()
          QAction *pSelectAllAction = ActionManager::command(Constants::SELECTALL)->action();
          pSelectAllAction->setText(QLatin1String("Select &All"));//Otherwise initially the action loads with empty string
          m_pEditMenu->addAction(pSelectAllAction);
+
+         QAction *pCircularPasteAction = ActionManager::command(TextEditor::Constants::CIRCULAR_PASTE)->action();
+         m_pEditMenu->addAction(pCircularPasteAction);
 
          m_pEditMenu->addSeparator();
     }

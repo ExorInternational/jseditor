@@ -211,7 +211,7 @@ void TextEditorActionHandler::createActions()
             QKeySequence(), G_EDIT_OTHER, editMenu);
     m_circularPasteAction = registerAction(CIRCULAR_PASTE,
             SLOT(circularPasteAction()), false, tr("Paste from Clipboard History"),
-            QKeySequence(tr("Ctrl+Shift+V")), G_EDIT_COPYPASTE, editMenu);
+            QKeySequence(tr("Ctrl+Shift+V")), G_EDIT_COPYPASTE, NULL);//#720 ROOPAK
 
     // register "Edit -> Advanced" Menu Actions
     Core::ActionContainer *advancedEditMenu = Core::ActionManager::actionContainer(M_EDIT_ADVANCED);
