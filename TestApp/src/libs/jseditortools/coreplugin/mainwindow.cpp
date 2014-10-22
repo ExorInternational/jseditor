@@ -460,7 +460,7 @@ void MainWindow::registerDefaultContainers()
 
     if (!Utils::HostOsInfo::isMacHost()) // System menu bar on Mac
         mainwindow()->setMenuBar(menubar->menuBar());
-    menubar->appendGroup(Constants::G_FILE);
+//    menubar->appendGroup(Constants::G_FILE);
     menubar->appendGroup(Constants::G_EDIT);
     menubar->appendGroup(Constants::G_VIEW);
     menubar->appendGroup(Constants::G_TOOLS);
@@ -468,9 +468,9 @@ void MainWindow::registerDefaultContainers()
     menubar->appendGroup(Constants::G_HELP);
 
     // File Menu
-    ActionContainer *filemenu = ActionManager::createMenu(Constants::M_FILE);
-    menubar->addMenu(filemenu, Constants::G_FILE);
-    filemenu->menu()->setTitle(tr("&File"));
+//    ActionContainer *filemenu = ActionManager::createMenu(Constants::M_FILE);
+//    menubar->addMenu(filemenu, Constants::G_FILE);
+//    filemenu->menu()->setTitle(tr("&File"));
 //    filemenu->appendGroup(Constants::G_FILE_NEW);//#720 ROOPAK
 //    filemenu->appendGroup(Constants::G_FILE_OPEN);//#720 ROOPAK
 //    filemenu->appendGroup(Constants::G_FILE_PROJECT);//#720 ROOPAK
@@ -519,7 +519,7 @@ void MainWindow::registerDefaultContainers()
 
 void MainWindow::registerDefaultActions()
 {
-    ActionContainer *mfile = ActionManager::actionContainer(Constants::M_FILE);
+//    ActionContainer *mfile = ActionManager::actionContainer(Constants::M_FILE);
     ActionContainer *medit = ActionManager::actionContainer(Constants::M_EDIT);
     ActionContainer *mtools = ActionManager::actionContainer(Constants::M_TOOLS);
     ActionContainer *mwindow = ActionManager::actionContainer(Constants::M_WINDOW);
