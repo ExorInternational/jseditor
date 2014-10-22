@@ -302,6 +302,9 @@ void JSEditorMenuItems::createEditMenuItems()
          pPasteAction->setText(QLatin1String("&Paste"));//Otherwise initially the action loads with empty string
          m_pEditMenu->addAction(pPasteAction);
 
+         QAction *pCircularPasteAction = ActionManager::command(TextEditor::Constants::CIRCULAR_PASTE)->action();
+         m_pEditMenu->addAction(pCircularPasteAction);
+
          m_pEditMenu->addSeparator();
 
          // Select All
@@ -314,9 +317,6 @@ void JSEditorMenuItems::createEditMenuItems()
          QAction *pSelectAllAction = ActionManager::command(Constants::SELECTALL)->action();
          pSelectAllAction->setText(QLatin1String("Select &All"));//Otherwise initially the action loads with empty string
          m_pEditMenu->addAction(pSelectAllAction);
-
-         QAction *pCircularPasteAction = ActionManager::command(TextEditor::Constants::CIRCULAR_PASTE)->action();
-         m_pEditMenu->addAction(pCircularPasteAction);
 
          m_pEditMenu->addSeparator();
     }
