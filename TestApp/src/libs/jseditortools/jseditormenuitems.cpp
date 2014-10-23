@@ -25,7 +25,7 @@ using namespace ExtensionSystem;
 JSEditorMenuItems::JSEditorMenuItems(QObject *parent) :
     QObject(parent)
 {
-    m_pFileMenuActions = NULL;
+    m_pFileMenu = NULL;
     m_pEditMenu = NULL;
     createActionGroups();
 }
@@ -119,9 +119,9 @@ void JSEditorMenuItems::createActionGroups()
 
 void JSEditorMenuItems::createFileMenuItems()
 {
-    if(m_pFileMenuActions == NULL)
+    if(m_pFileMenu == NULL)
     {
-        m_pFileMenuActions = new QActionGroup(this);
+        m_pFileMenu = new QMenu(QLatin1String("File"), NULL);
 
         Context globalContext(Constants::C_GLOBAL);
 
@@ -138,7 +138,7 @@ void JSEditorMenuItems::createFileMenuItems()
         cmd->setDefaultKeySequence(QKeySequence::New);
     //        mfile->addAction(cmd, Constants::G_FILE_NEW);
         connect(newAction, SIGNAL(triggered()), this, SLOT(newFileInEditor()));
-        m_pFileMenuActions->addAction(newAction);
+        m_pFileMenu->addAction(newAction);
 
         // Open Action
         icon = QIcon::fromTheme(QLatin1String("document-open"), QIcon(QLatin1String(Constants::ICON_OPENFILE)));
@@ -147,11 +147,9 @@ void JSEditorMenuItems::createFileMenuItems()
         cmd->setDefaultKeySequence(QKeySequence::Open);
     //        mfile->addAction(cmd, Constants::G_FILE_OPEN);
         connect(openAction, SIGNAL(triggered()), this, SLOT(openFileInEditor()));
-        m_pFileMenuActions->addAction(openAction);
+        m_pFileMenu->addAction(openAction);
 
-        QAction *separator1 = new QAction(this);
-        separator1->setSeparator(true);
-        m_pFileMenuActions->addAction(separator1);
+        m_pFileMenu->addSeparator();
 
         // Save Action
         icon = QIcon::fromTheme(QLatin1String("document-save"), QIcon(QLatin1String(Constants::ICON_SAVEFILE)));
@@ -164,7 +162,7 @@ void JSEditorMenuItems::createFileMenuItems()
     //        mfile->addAction(cmd, Constants::G_FILE_SAVE);
         QAction *pSaveAction = ActionManager::command(Constants::SAVE)->action();
         pSaveAction->setText(QLatin1String("&Save"));//Otherwise initially the action loads with empty string
-         m_pFileMenuActions->addAction(pSaveAction);
+         m_pFileMenu->addAction(pSaveAction);
 
          // Save As Action
          icon = QIcon::fromTheme(QLatin1String("document-save-as"));
@@ -177,52 +175,48 @@ void JSEditorMenuItems::createFileMenuItems()
     //         mfile->addAction(cmd, Constants::G_FILE_SAVE);
          QAction *pSaveAsAction = ActionManager::command(Constants::SAVEAS)->action();
          pSaveAsAction->setText(QLatin1String("Save &As..."));//Otherwise initially the action loads with empty string
-          m_pFileMenuActions->addAction(pSaveAsAction);
+          m_pFileMenu->addAction(pSaveAsAction);
 
           QAction *saveAllAction = new QAction(tr("Save A&ll"), this);
           cmd = ActionManager::registerAction(saveAllAction, Constants::SAVEALL, globalContext);
           cmd->setDefaultKeySequence(QKeySequence(UseMacShortcuts ? QString() : tr("Ctrl+Shift+S")));
     //          mfile->addAction(cmd, Constants::G_FILE_SAVE);
           connect(saveAllAction, SIGNAL(triggered()), this, SLOT(saveAll()));
-          m_pFileMenuActions->addAction(saveAllAction);
+          m_pFileMenu->addAction(saveAllAction);
 
           QAction *pRevertToSavedAction = ActionManager::command(Constants::REVERTTOSAVED)->action();
-          m_pFileMenuActions->addAction(pRevertToSavedAction);
+          m_pFileMenu->addAction(pRevertToSavedAction);
 
-          QAction *separator2 = new QAction(this);
-          separator2->setSeparator(true);
-          m_pFileMenuActions->addAction(separator2);
+          m_pFileMenu->addSeparator();
 
           QAction *pCloseAction = ActionManager::command(Constants::CLOSE)->action();
-          m_pFileMenuActions->addAction(pCloseAction);
+          m_pFileMenu->addAction(pCloseAction);
 
           QAction *pCloseAllAction = ActionManager::command(Constants::CLOSEALL)->action();
-          m_pFileMenuActions->addAction(pCloseAllAction);
+          m_pFileMenu->addAction(pCloseAllAction);
 
           QAction *pCloseOthers = ActionManager::command(Constants::CLOSEOTHERS)->action();
-          m_pFileMenuActions->addAction(pCloseOthers);
+          m_pFileMenu->addAction(pCloseOthers);
 
           //CLOSEALLEXCEPTVISIBLE is not added since its for other editors used in Qt Creator.
           //For this library we only have one editor(text editor).
 
-          QAction *separator3 = new QAction(this);
-          separator3->setSeparator(true);
-          m_pFileMenuActions->addAction(separator3);
+          m_pFileMenu->addSeparator();
 
           // Print Action
-    //          icon = QIcon::fromTheme(QLatin1String("document-print"));
-    //          tmpaction = new QAction(icon, tr("&Print..."), this);
-    //          tmpaction->setEnabled(false);
-    //          cmd = ActionManager::registerAction(tmpaction, Constants::PRINT, globalContext);
-    //          cmd->setDefaultKeySequence(QKeySequence::Print);
-    //          mfile->addAction(cmd, Constants::G_FILE_PRINT);
+//          icon = QIcon::fromTheme(QLatin1String("document-print"));
+//          tmpaction = new QAction(icon, tr("&Print..."), this);
+//          tmpaction->setEnabled(false);
+//          cmd = ActionManager::registerAction(tmpaction, Constants::PRINT, globalContext);
+//          cmd->setDefaultKeySequence(QKeySequence::Print);
+//          mfile->addAction(cmd, Constants::G_FILE_PRINT);
 
           //we dont need tht above comment for the print action. But for the 'Save', 'Save as'
           //actions, the above type of code is required otherwise the filename will not be
           //shown along with them.
           QAction *pPrintAction = ActionManager::command(Constants::PRINT)->action();
           pPrintAction->setText(QLatin1String("&Print..."));//Otherwise initially the action loads with empty string
-          m_pFileMenuActions->addAction(pPrintAction);
+          m_pFileMenu->addAction(pPrintAction);
     }
 }
 

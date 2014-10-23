@@ -18,7 +18,7 @@ class JSEditorMenuItems : public QObject
 public:
     explicit JSEditorMenuItems(QObject *parent = 0);
 
-    QActionGroup *getFileMenuItems(){ return m_pFileMenuActions; }
+    QMenu *getFileMenu(){ return m_pFileMenu; }
     QMenu *getEditMenu(){ return m_pEditMenu; }
 signals:
 
@@ -34,7 +34,7 @@ private:
     void createActionGroups();
 
     void createFileMenuItems();
-    QActionGroup *m_pFileMenuActions;
+    QMenu *m_pFileMenu;
 
     void createEditMenuItems();
     QMenu *m_pEditMenu;
