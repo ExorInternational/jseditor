@@ -218,29 +218,29 @@ void TextEditorActionHandler::createActions()
     m_formatAction = registerAction(AUTO_INDENT_SELECTION,
             SLOT(formatAction()), true, tr("Auto-&indent Selection"),
             QKeySequence(tr("Ctrl+I")),
-            G_EDIT_FORMAT, advancedEditMenu);
+            G_EDIT_FORMAT, NULL);//#720 ROOPAK
     m_rewrapParagraphAction = registerAction(REWRAP_PARAGRAPH,
             SLOT(rewrapParagraphAction()), true, tr("&Rewrap Paragraph"),
             QKeySequence(Core::UseMacShortcuts ? tr("Meta+E, R") : tr("Ctrl+E, R")),
-            G_EDIT_FORMAT, advancedEditMenu);
+            G_EDIT_FORMAT, NULL);//#720 ROOPAK
     m_visualizeWhitespaceAction = registerAction(VISUALIZE_WHITESPACE,
             SLOT(setVisualizeWhitespace(bool)), false, tr("&Visualize Whitespace"),
             QKeySequence(Core::UseMacShortcuts ? tr("Meta+E, Meta+V") : tr("Ctrl+E, Ctrl+V")),
-            G_EDIT_FORMAT, advancedEditMenu);
+            G_EDIT_FORMAT, NULL);//#720 ROOPAK
     m_visualizeWhitespaceAction->setCheckable(true);
     m_cleanWhitespaceAction = registerAction(CLEAN_WHITESPACE,
             SLOT(setTextWrapping(bool)), true, tr("Clean Whitespace"),
             QKeySequence(),
-            G_EDIT_FORMAT, advancedEditMenu);
+            G_EDIT_FORMAT, NULL);//#720 ROOPAK
     m_textWrappingAction = registerAction(TEXT_WRAPPING,
             SLOT(setTextWrapping(bool)), false, tr("Enable Text &Wrapping"),
             QKeySequence(Core::UseMacShortcuts ? tr("Meta+E, Meta+W") : tr("Ctrl+E, Ctrl+W")),
-            G_EDIT_FORMAT, advancedEditMenu);
+            G_EDIT_FORMAT, NULL);//#720 ROOPAK
     m_textWrappingAction->setCheckable(true);
     m_unCommentSelectionAction = registerAction(UN_COMMENT_SELECTION,
             SLOT(unCommentSelection()), true, tr("Toggle Comment &Selection"),
             QKeySequence(tr("Ctrl+/")),
-            G_EDIT_FORMAT, advancedEditMenu);
+            G_EDIT_FORMAT, NULL);//#720 ROOPAK
     m_foldAction = registerAction(FOLD,
             SLOT(fold()), true, tr("Fold"),
             QKeySequence(tr("Ctrl+<")),

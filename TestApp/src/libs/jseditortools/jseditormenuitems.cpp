@@ -27,6 +27,7 @@ JSEditorMenuItems::JSEditorMenuItems(QObject *parent) :
 {
     m_pFileMenu = NULL;
     m_pEditMenu = NULL;
+    m_pEditAdvancedMenu = NULL;
     createActionGroups();
 }
 
@@ -313,5 +314,37 @@ void JSEditorMenuItems::createEditMenuItems()
          m_pEditMenu->addAction(pSelectAllAction);
 
          m_pEditMenu->addSeparator();
+
+         createEditAdvancedMenu();
+         m_pEditMenu->addMenu(m_pEditAdvancedMenu);
+
+         m_pEditMenu->addSeparator();
+    }
+}
+void JSEditorMenuItems::createEditAdvancedMenu()
+{
+    if(m_pEditAdvancedMenu == NULL)
+    {
+        m_pEditAdvancedMenu = new QMenu(QLatin1String("Ad&vanced"), NULL);
+
+        QAction *pAutoIndentSelectionAction = ActionManager::command(TextEditor::Constants::AUTO_INDENT_SELECTION)->action();
+        m_pEditAdvancedMenu->addAction(pAutoIndentSelectionAction);
+
+        QAction *pRewrapParagraphAction = ActionManager::command(TextEditor::Constants::REWRAP_PARAGRAPH)->action();
+        m_pEditAdvancedMenu->addAction(pRewrapParagraphAction);
+
+        QAction *pVisualizeWhiteSpaceAction = ActionManager::command(TextEditor::Constants::VISUALIZE_WHITESPACE)->action();
+        m_pEditAdvancedMenu->addAction(pVisualizeWhiteSpaceAction);
+
+        QAction *pCleanWhiteSpaceAction = ActionManager::command(TextEditor::Constants::CLEAN_WHITESPACE)->action();
+        m_pEditAdvancedMenu->addAction(pCleanWhiteSpaceAction);
+
+        QAction *pTextWrappingAction = ActionManager::command(TextEditor::Constants::TEXT_WRAPPING)->action();
+        m_pEditAdvancedMenu->addAction(pTextWrappingAction);
+
+        QAction *pToggleCommentAction = ActionManager::command(TextEditor::Constants::UN_COMMENT_SELECTION)->action();
+        m_pEditAdvancedMenu->addAction(pToggleCommentAction);
+
+        m_pEditAdvancedMenu->addSeparator();
     }
 }

@@ -38,6 +38,8 @@ private:
 
     void createEditMenuItems();
     QMenu *m_pEditMenu;
+    void createEditAdvancedMenu();
+    QMenu *m_pEditAdvancedMenu;
 };
 
 }// namespace JsEditorTools
