@@ -244,43 +244,43 @@ void TextEditorActionHandler::createActions()
     m_foldAction = registerAction(FOLD,
             SLOT(fold()), true, tr("Fold"),
             QKeySequence(tr("Ctrl+<")),
-            G_EDIT_COLLAPSING, advancedEditMenu);
+            G_EDIT_COLLAPSING, NULL);//#720 ROOPAK
     m_unfoldAction = registerAction(UNFOLD,
             SLOT(unfold()), true, tr("Unfold"),
             QKeySequence(tr("Ctrl+>")),
-            G_EDIT_COLLAPSING, advancedEditMenu);
+            G_EDIT_COLLAPSING, NULL);//#720 ROOPAK
     m_unfoldAllAction = registerAction(UNFOLD_ALL,
             SLOT(unfoldAll()), true, tr("Toggle &Fold All"),
             QKeySequence(),
-            G_EDIT_COLLAPSING, advancedEditMenu);
+            G_EDIT_COLLAPSING, NULL);//#720 ROOPAK
     m_increaseFontSizeAction = registerAction(INCREASE_FONT_SIZE,
             SLOT(increaseFontSize()), false, tr("Increase Font Size"),
             QKeySequence(tr("Ctrl++")),
-            G_EDIT_FONT, advancedEditMenu);
+            G_EDIT_FONT, NULL);//#720 ROOPAK
     m_decreaseFontSizeAction = registerAction(DECREASE_FONT_SIZE,
             SLOT(decreaseFontSize()), false, tr("Decrease Font Size"),
             QKeySequence(tr("Ctrl+-")),
-            G_EDIT_FONT, advancedEditMenu);
+            G_EDIT_FONT, NULL);//#720 ROOPAK
     m_resetFontSizeAction = registerAction(RESET_FONT_SIZE,
             SLOT(resetFontSize()), false, tr("Reset Font Size"),
             QKeySequence(Core::UseMacShortcuts ? tr("Meta+0") : tr("Ctrl+0")),
-            G_EDIT_FONT, advancedEditMenu);
+            G_EDIT_FONT, NULL);//#720 ROOPAK
     m_gotoBlockStartAction = registerAction(GOTO_BLOCK_START,
             SLOT(gotoBlockStart()), true, tr("Go to Block Start"),
             QKeySequence(tr("Ctrl+[")),
-            G_EDIT_BLOCKS, advancedEditMenu);
+            G_EDIT_BLOCKS, NULL);//#720 ROOPAK
     m_gotoBlockEndAction = registerAction(GOTO_BLOCK_END,
             SLOT(gotoBlockEnd()), true, tr("Go to Block End"),
             QKeySequence(tr("Ctrl+]")),
-            G_EDIT_BLOCKS, advancedEditMenu);
+            G_EDIT_BLOCKS, NULL);//#720 ROOPAK
     m_selectBlockUpAction = registerAction(SELECT_BLOCK_UP,
             SLOT(selectBlockUp()), true, tr("Select Block Up"),
             QKeySequence(tr("Ctrl+U")),
-            G_EDIT_BLOCKS, advancedEditMenu);
+            G_EDIT_BLOCKS, NULL);//#720 ROOPAK
     m_selectBlockDownAction = registerAction(SELECT_BLOCK_DOWN,
             SLOT(selectBlockDown()), true, tr("Select Block Down"),
             QKeySequence(),
-            G_EDIT_BLOCKS, advancedEditMenu);
+            G_EDIT_BLOCKS, NULL);//#720 ROOPAK
 
     // register GOTO Actions
     registerAction(GOTO_LINE_START,

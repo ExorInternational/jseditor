@@ -346,5 +346,41 @@ void JSEditorMenuItems::createEditAdvancedMenu()
         m_pEditAdvancedMenu->addAction(pToggleCommentAction);
 
         m_pEditAdvancedMenu->addSeparator();
+
+        QAction *pFoldAction = ActionManager::command(TextEditor::Constants::FOLD)->action();
+        m_pEditAdvancedMenu->addAction(pFoldAction);
+
+        QAction *pUnfoldAction = ActionManager::command(TextEditor::Constants::UNFOLD)->action();
+        m_pEditAdvancedMenu->addAction(pUnfoldAction);
+
+        QAction *pUnfoldAllAction = ActionManager::command(TextEditor::Constants::UNFOLD_ALL)->action();
+        m_pEditAdvancedMenu->addAction(pUnfoldAllAction);
+
+        m_pEditAdvancedMenu->addSeparator();
+
+        QAction *pGotoBlockAction = ActionManager::command(TextEditor::Constants::GOTO_BLOCK_START)->action();
+        m_pEditAdvancedMenu->addAction(pGotoBlockAction);
+
+        QAction *pGotoBlockEndAction = ActionManager::command(TextEditor::Constants::GOTO_BLOCK_END)->action();
+        m_pEditAdvancedMenu->addAction(pGotoBlockEndAction);
+
+        QAction *pSelectBlockUpAction = ActionManager::command(TextEditor::Constants::SELECT_BLOCK_UP)->action();
+        m_pEditAdvancedMenu->addAction(pSelectBlockUpAction);
+
+        QAction *pSelectBlockDownAction = ActionManager::command(TextEditor::Constants::SELECT_BLOCK_DOWN)->action();
+        m_pEditAdvancedMenu->addAction(pSelectBlockDownAction);
+
+        m_pEditAdvancedMenu->addSeparator();
+
+        QAction *pIncreaseFontSizeAction = ActionManager::command(TextEditor::Constants::INCREASE_FONT_SIZE)->action();
+        m_pEditAdvancedMenu->addAction(pIncreaseFontSizeAction);
+
+        QAction *pDecreaseFontSizeAction = ActionManager::command(TextEditor::Constants::DECREASE_FONT_SIZE)->action();
+        m_pEditAdvancedMenu->addAction(pDecreaseFontSizeAction);
+
+        QAction *pResetFontSizeAction = ActionManager::command(TextEditor::Constants::RESET_FONT_SIZE)->action();
+        m_pEditAdvancedMenu->addAction(pResetFontSizeAction);
+
+        m_pEditAdvancedMenu->addSeparator();
     }
 }
