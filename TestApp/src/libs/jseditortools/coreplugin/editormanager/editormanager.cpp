@@ -274,7 +274,7 @@ EditorManager::EditorManager(QWidget *parent) :
     // combined context for edit & design modes
     const Context editDesignContext(Constants::C_EDITORMANAGER/*, Constants::C_DESIGN_MODE*/);//ROOPAK
 
-    ActionContainer *mfile = ActionManager::actionContainer(Constants::M_FILE);
+//    ActionContainer *mfile = ActionManager::actionContainer(Constants::M_FILE);
 
     // Revert to saved
     d->m_revertToSavedAction->setIcon(QIcon::fromTheme(QLatin1String("document-revert")));
@@ -409,21 +409,21 @@ EditorManager::EditorManager(QWidget *parent) :
     mwindow->addAction(cmd, Constants::G_WINDOW_SPLIT);
     connect(d->m_gotoNextSplitAction, SIGNAL(triggered()), this, SLOT(gotoNextSplit()));
 
-    ActionContainer *medit = ActionManager::actionContainer(Constants::M_EDIT);
-    ActionContainer *advancedMenu = ActionManager::createMenu(Constants::M_EDIT_ADVANCED);
-    medit->addMenu(advancedMenu, Constants::G_EDIT_ADVANCED);
-    advancedMenu->menu()->setTitle(tr("Ad&vanced"));
-    advancedMenu->appendGroup(Constants::G_EDIT_FORMAT);
-    advancedMenu->appendGroup(Constants::G_EDIT_COLLAPSING);
-    advancedMenu->appendGroup(Constants::G_EDIT_BLOCKS);
-    advancedMenu->appendGroup(Constants::G_EDIT_FONT);
-    advancedMenu->appendGroup(Constants::G_EDIT_EDITOR);
+//    ActionContainer *medit = ActionManager::actionContainer(Constants::M_EDIT);//#720 ROOPAK - START
+//    ActionContainer *advancedMenu = ActionManager::createMenu(Constants::M_EDIT_ADVANCED);
+//    medit->addMenu(advancedMenu, Constants::G_EDIT_ADVANCED);
+//    advancedMenu->menu()->setTitle(tr("Ad&vanced"));
+//    advancedMenu->appendGroup(Constants::G_EDIT_FORMAT);
+//    advancedMenu->appendGroup(Constants::G_EDIT_COLLAPSING);
+//    advancedMenu->appendGroup(Constants::G_EDIT_BLOCKS);
+//    advancedMenu->appendGroup(Constants::G_EDIT_FONT);
+//    advancedMenu->appendGroup(Constants::G_EDIT_EDITOR);
 
-    // Advanced menu separators
-    advancedMenu->addSeparator(editManagerContext, Constants::G_EDIT_COLLAPSING);
-    advancedMenu->addSeparator(editManagerContext, Constants::G_EDIT_BLOCKS);
-    advancedMenu->addSeparator(editManagerContext, Constants::G_EDIT_FONT);
-    advancedMenu->addSeparator(editManagerContext, Constants::G_EDIT_EDITOR);
+//    // Advanced menu separators
+//    advancedMenu->addSeparator(editManagerContext, Constants::G_EDIT_COLLAPSING);
+//    advancedMenu->addSeparator(editManagerContext, Constants::G_EDIT_BLOCKS);
+//    advancedMenu->addSeparator(editManagerContext, Constants::G_EDIT_FONT);
+//    advancedMenu->addSeparator(editManagerContext, Constants::G_EDIT_EDITOR);//#720 ROOPAK - END
 
     // other setup
     SplitterOrView *firstRoot = new SplitterOrView();

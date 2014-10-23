@@ -28,6 +28,7 @@ JSEditorMenuItems::JSEditorMenuItems(QObject *parent) :
     m_pFileMenu = NULL;
     m_pEditMenu = NULL;
     m_pEditAdvancedMenu = NULL;
+    m_pEditFindReplaceMenu = NULL;
     createActionGroups();
 }
 
@@ -319,6 +320,9 @@ void JSEditorMenuItems::createEditMenuItems()
          m_pEditMenu->addMenu(m_pEditAdvancedMenu);
 
          m_pEditMenu->addSeparator();
+
+         createEditFindReplaceMenu();
+         m_pEditMenu->addMenu(m_pEditFindReplaceMenu);
     }
 }
 void JSEditorMenuItems::createEditAdvancedMenu()
@@ -382,5 +386,13 @@ void JSEditorMenuItems::createEditAdvancedMenu()
         m_pEditAdvancedMenu->addAction(pResetFontSizeAction);
 
         m_pEditAdvancedMenu->addSeparator();
+    }
+}
+
+void JSEditorMenuItems::createEditFindReplaceMenu()
+{
+    if(m_pEditFindReplaceMenu == NULL)
+    {
+        m_pEditFindReplaceMenu = new QMenu(QLatin1String("&Find/Replace"), NULL);
     }
 }

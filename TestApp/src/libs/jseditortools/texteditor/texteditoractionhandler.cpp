@@ -214,7 +214,7 @@ void TextEditorActionHandler::createActions()
             QKeySequence(tr("Ctrl+Shift+V")), G_EDIT_COPYPASTE, NULL);//#720 ROOPAK
 
     // register "Edit -> Advanced" Menu Actions
-    Core::ActionContainer *advancedEditMenu = Core::ActionManager::actionContainer(M_EDIT_ADVANCED);
+//    Core::ActionContainer *advancedEditMenu = Core::ActionManager::actionContainer(M_EDIT_ADVANCED);
     m_formatAction = registerAction(AUTO_INDENT_SELECTION,
             SLOT(formatAction()), true, tr("Auto-&indent Selection"),
             QKeySequence(tr("Ctrl+I")),
