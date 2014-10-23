@@ -16,6 +16,7 @@
 #include <jseditortools/coreplugin/documentmanager.h>
 #include <jseditortools/texteditor/texteditorconstants.h>
 #include <jseditortools/coreplugin/find/textfindconstants.h>
+#include <jseditortools/coreplugin/find/ifindfilter.h>
 
 #include <QFileDialog>
 
@@ -412,6 +413,16 @@ void JSEditorMenuItems::createEditFindReplaceAdvancedFindMenu()
     {
         m_pEditFindReplaceAdvancedFindMenu = new QMenu(QLatin1String("Advanced Find"), NULL);
 
+        QAction *pAdvancedFindAction = ActionManager::command(Constants::ADVANCED_FIND)->action();
+        m_pEditFindReplaceAdvancedFindMenu->addAction(pAdvancedFindAction);
 
+
+        QList<IFindFilter*> findInterfaces =
+            ExtensionSystem::PluginManager::getObjects<IFindFilter>();
+        foreach (IFindFilter *filter, findInterfaces) {
+            const Core::Id base("FindFilter.");
+            QAction *pFindFilterAction = ActionManager::command(base.withSuffix(filter->id()))->action();
+            m_pEditFindReplaceAdvancedFindMenu->addAction(pFindFilterAction);
+        }
     }
 }

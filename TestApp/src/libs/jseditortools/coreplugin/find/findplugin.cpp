@@ -201,14 +201,14 @@ void FindPlugin::setupMenu()
     mfind->addSeparator(globalcontext, Constants::G_FIND_FLAGS);
     mfind->addSeparator(globalcontext, Constants::G_FIND_ACTIONS);
 
-    Core::ActionContainer *mfindadvanced = Core::ActionManager::createMenu(Constants::M_FIND_ADVANCED);
-    mfindadvanced->menu()->setTitle(tr("Advanced Find"));
-    mfind->addMenu(mfindadvanced, Constants::G_FIND_FILTERS);
+//    Core::ActionContainer *mfindadvanced = Core::ActionManager::createMenu(Constants::M_FIND_ADVANCED);//#720 ROOPAK - START
+//    mfindadvanced->menu()->setTitle(tr("Advanced Find"));
+//    mfind->addMenu(mfindadvanced, Constants::G_FIND_FILTERS);//#720 ROOPAK - END
     d->m_openFindDialog = new QAction(tr("Open Advanced Find..."), this);
     d->m_openFindDialog->setIconText(tr("Advanced..."));
     cmd = Core::ActionManager::registerAction(d->m_openFindDialog, Constants::ADVANCED_FIND, globalcontext);
     cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+Shift+F")));
-    mfindadvanced->addAction(cmd);
+//    mfindadvanced->addAction(cmd);//#720 ROOPAK
     connect(d->m_openFindDialog, SIGNAL(triggered()), this, SLOT(openFindFilter()));
 }
 
@@ -219,7 +219,7 @@ void FindPlugin::setupFilterMenuItems()
     Core::Command *cmd;
     Core::Context globalcontext(Core::Constants::C_GLOBAL);
 
-    Core::ActionContainer *mfindadvanced = Core::ActionManager::actionContainer(Constants::M_FIND_ADVANCED);
+//    Core::ActionContainer *mfindadvanced = Core::ActionManager::actionContainer(Constants::M_FIND_ADVANCED);//#720 ROOPAK
     d->m_filterActions.clear();
     bool haveEnabledFilters = false;
     const Core::Id base("FindFilter.");
@@ -233,7 +233,7 @@ void FindPlugin::setupFilterMenuItems()
         cmd = Core::ActionManager::registerAction(action,
             base.withSuffix(filter->id()), globalcontext);
         cmd->setDefaultKeySequence(filter->defaultShortcut());
-        mfindadvanced->addAction(cmd);
+//        mfindadvanced->addAction(cmd);
         d->m_filterActions.insert(filter, action);
         connect(action, SIGNAL(triggered(bool)), this, SLOT(openFindFilter()));
         connect(filter, SIGNAL(enabledChanged(bool)), this, SLOT(filterChanged()));
