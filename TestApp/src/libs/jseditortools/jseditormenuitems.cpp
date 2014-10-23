@@ -15,6 +15,7 @@
 #include <jseditortools/coreplugin/actionmanager/actioncontainer_p.h>
 #include <jseditortools/coreplugin/documentmanager.h>
 #include <jseditortools/texteditor/texteditorconstants.h>
+#include <jseditortools/coreplugin/find/textfindconstants.h>
 
 #include <QFileDialog>
 
@@ -29,6 +30,7 @@ JSEditorMenuItems::JSEditorMenuItems(QObject *parent) :
     m_pEditMenu = NULL;
     m_pEditAdvancedMenu = NULL;
     m_pEditFindReplaceMenu = NULL;
+    m_pEditFindReplaceAdvancedFindMenu = NULL;
     createActionGroups();
 }
 
@@ -394,5 +396,22 @@ void JSEditorMenuItems::createEditFindReplaceMenu()
     if(m_pEditFindReplaceMenu == NULL)
     {
         m_pEditFindReplaceMenu = new QMenu(QLatin1String("&Find/Replace"), NULL);
+
+        QAction *pFindInDocAction = ActionManager::command(Constants::FIND_IN_DOCUMENT)->action();
+        pFindInDocAction->setEnabled(false);
+        m_pEditFindReplaceMenu->addAction(pFindInDocAction);
+
+        createEditFindReplaceAdvancedFindMenu();
+        m_pEditFindReplaceMenu->addMenu(m_pEditFindReplaceAdvancedFindMenu);
+    }
+}
+
+void JSEditorMenuItems::createEditFindReplaceAdvancedFindMenu()
+{
+    if(m_pEditFindReplaceAdvancedFindMenu == NULL)
+    {
+        m_pEditFindReplaceAdvancedFindMenu = new QMenu(QLatin1String("Advanced Find"), NULL);
+
+
     }
 }

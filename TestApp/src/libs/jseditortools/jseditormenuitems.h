@@ -42,6 +42,8 @@ private:
     QMenu *m_pEditAdvancedMenu;
     void createEditFindReplaceMenu();
     QMenu *m_pEditFindReplaceMenu;
+    void createEditFindReplaceAdvancedFindMenu();
+    QMenu *m_pEditFindReplaceAdvancedFindMenu;
 };
 
 }// namespace JsEditorTools
