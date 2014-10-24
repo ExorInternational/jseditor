@@ -420,6 +420,30 @@ void JSEditorMenuItems::createEditFindReplaceMenu()
         m_pEditFindReplaceMenu->addAction(pPreserveCaseAction);
 
         m_pEditFindReplaceMenu->addSeparator();
+
+        QAction *pFindNextAction = ActionManager::command(Constants::FIND_NEXT)->action();
+        m_pEditFindReplaceMenu->addAction(pFindNextAction);
+
+        QAction *pFindPreviosuAction = ActionManager::command(Constants::FIND_PREVIOUS)->action();
+        m_pEditFindReplaceMenu->addAction(pFindPreviosuAction);
+
+        QAction *pFindNextSelectedAction = ActionManager::command(Constants::FIND_NEXT_SELECTED)->action();
+        m_pEditFindReplaceMenu->addAction(pFindNextSelectedAction);
+
+        QAction *pFindPrevSelectedAction = ActionManager::command(Constants::FIND_PREV_SELECTED)->action();
+        m_pEditFindReplaceMenu->addAction(pFindPrevSelectedAction);
+
+        QAction *pReplaceAction = ActionManager::command(Constants::REPLACE)->action();
+        m_pEditFindReplaceMenu->addAction(pReplaceAction);
+
+        QAction *pReplaceNextAction = ActionManager::command(Constants::REPLACE_NEXT)->action();
+        m_pEditFindReplaceMenu->addAction(pReplaceNextAction);
+
+        QAction *pReplacePrevAction = ActionManager::command(Constants::REPLACE_PREVIOUS)->action();
+        m_pEditFindReplaceMenu->addAction(pReplacePrevAction);
+
+        QAction *pReplaceAllAction = ActionManager::command(Constants::REPLACE_ALL)->action();
+        m_pEditFindReplaceMenu->addAction(pReplaceAllAction);
     }
 }
 

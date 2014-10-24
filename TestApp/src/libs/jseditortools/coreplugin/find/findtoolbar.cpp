@@ -168,33 +168,33 @@ FindToolBar::FindToolBar(FindPlugin *plugin, CurrentDocumentFind *currentDocumen
     m_findNextAction = new QAction(tr("Find Next"), this);
     cmd = Core::ActionManager::registerAction(m_findNextAction, Constants::FIND_NEXT, globalcontext);
     cmd->setDefaultKeySequence(QKeySequence::FindNext);
-    mfind->addAction(cmd, Constants::G_FIND_ACTIONS);
+//    mfind->addAction(cmd, Constants::G_FIND_ACTIONS);//#720 ROOPAK
     connect(m_findNextAction, SIGNAL(triggered()), this, SLOT(invokeFindNext()));
     m_ui.findNextButton->setDefaultAction(cmd->action());
 
     m_findPreviousAction = new QAction(tr("Find Previous"), this);
     cmd = Core::ActionManager::registerAction(m_findPreviousAction, Constants::FIND_PREVIOUS, globalcontext);
     cmd->setDefaultKeySequence(QKeySequence::FindPrevious);
-    mfind->addAction(cmd, Constants::G_FIND_ACTIONS);
+//    mfind->addAction(cmd, Constants::G_FIND_ACTIONS);//#720 ROOPAK
     connect(m_findPreviousAction, SIGNAL(triggered()), this, SLOT(invokeFindPrevious()));
     m_ui.findPreviousButton->setDefaultAction(cmd->action());
 
     m_findNextSelectedAction = new QAction(tr("Find Next (Selected)"), this);
     cmd = Core::ActionManager::registerAction(m_findNextSelectedAction, Constants::FIND_NEXT_SELECTED, globalcontext);
     cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+F3")));
-    mfind->addAction(cmd, Constants::G_FIND_ACTIONS);
+//    mfind->addAction(cmd, Constants::G_FIND_ACTIONS);//#720 ROOPAK
     connect(m_findNextSelectedAction, SIGNAL(triggered()), this, SLOT(findNextSelected()));
 
     m_findPreviousSelectedAction = new QAction(tr("Find Previous (Selected)"), this);
     cmd = Core::ActionManager::registerAction(m_findPreviousSelectedAction, Constants::FIND_PREV_SELECTED, globalcontext);
     cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+Shift+F3")));
-    mfind->addAction(cmd, Constants::G_FIND_ACTIONS);
+//    mfind->addAction(cmd, Constants::G_FIND_ACTIONS);//#720 ROOPAK
     connect(m_findPreviousSelectedAction, SIGNAL(triggered()), this, SLOT(findPreviousSelected()));
 
     m_replaceAction = new QAction(tr("Replace"), this);
     cmd = Core::ActionManager::registerAction(m_replaceAction, Constants::REPLACE, globalcontext);
     cmd->setDefaultKeySequence(QKeySequence());
-    mfind->addAction(cmd, Constants::G_FIND_ACTIONS);
+//    mfind->addAction(cmd, Constants::G_FIND_ACTIONS);//#720 ROOPAK
     connect(m_replaceAction, SIGNAL(triggered()), this, SLOT(invokeReplace()));
     m_ui.replaceButton->setDefaultAction(cmd->action());
 
@@ -202,7 +202,7 @@ FindToolBar::FindToolBar(FindPlugin *plugin, CurrentDocumentFind *currentDocumen
     m_replaceNextAction->setIconText(tr("Replace && Find")); // work around bug in Qt that kills ampersands in tool button
     cmd = Core::ActionManager::registerAction(m_replaceNextAction, Constants::REPLACE_NEXT, globalcontext);
     cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+=")));
-    mfind->addAction(cmd, Constants::G_FIND_ACTIONS);
+//    mfind->addAction(cmd, Constants::G_FIND_ACTIONS);//#720 ROOPAK
     connect(m_replaceNextAction, SIGNAL(triggered()), this, SLOT(invokeReplaceNext()));
     m_ui.replaceNextButton->setDefaultAction(cmd->action());
 
@@ -210,12 +210,12 @@ FindToolBar::FindToolBar(FindPlugin *plugin, CurrentDocumentFind *currentDocumen
     cmd = Core::ActionManager::registerAction(m_replacePreviousAction, Constants::REPLACE_PREVIOUS, globalcontext);
     // shortcut removed, clashes with Ctrl++ on many keyboard layouts
     //cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+Shift+=")));
-    mfind->addAction(cmd, Constants::G_FIND_ACTIONS);
+//    mfind->addAction(cmd, Constants::G_FIND_ACTIONS);//#720 ROOPAK
     connect(m_replacePreviousAction, SIGNAL(triggered()), this, SLOT(invokeReplacePrevious()));
 
     m_replaceAllAction = new QAction(tr("Replace All"), this);
     cmd = Core::ActionManager::registerAction(m_replaceAllAction, Constants::REPLACE_ALL, globalcontext);
-    mfind->addAction(cmd, Constants::G_FIND_ACTIONS);
+//    mfind->addAction(cmd, Constants::G_FIND_ACTIONS);//#720 ROOPAK
     connect(m_replaceAllAction, SIGNAL(triggered()), this, SLOT(invokeReplaceAll()));
     m_ui.replaceAllButton->setDefaultAction(cmd->action());
 
