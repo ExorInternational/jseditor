@@ -404,6 +404,22 @@ void JSEditorMenuItems::createEditFindReplaceMenu()
 
         createEditFindReplaceAdvancedFindMenu();
         m_pEditFindReplaceMenu->addMenu(m_pEditFindReplaceAdvancedFindMenu);
+
+        m_pEditFindReplaceMenu->addSeparator();
+
+        QAction *pCaseSensitiveAction = ActionManager::command(Constants::CASE_SENSITIVE)->action();
+        m_pEditFindReplaceMenu->addAction(pCaseSensitiveAction);
+
+        QAction *pWholeWorldAction = ActionManager::command(Constants::WHOLE_WORDS)->action();
+        m_pEditFindReplaceMenu->addAction(pWholeWorldAction);
+
+        QAction *pRegularExpressionAction = ActionManager::command(Constants::REGULAR_EXPRESSIONS)->action();
+        m_pEditFindReplaceMenu->addAction(pRegularExpressionAction);
+
+        QAction *pPreserveCaseAction = ActionManager::command(Constants::PRESERVE_CASE)->action();
+        m_pEditFindReplaceMenu->addAction(pPreserveCaseAction);
+
+        m_pEditFindReplaceMenu->addSeparator();
     }
 }
 

@@ -224,7 +224,7 @@ FindToolBar::FindToolBar(FindPlugin *plugin, CurrentDocumentFind *currentDocumen
     m_caseSensitiveAction->setCheckable(true);
     m_caseSensitiveAction->setChecked(false);
     cmd = Core::ActionManager::registerAction(m_caseSensitiveAction, Constants::CASE_SENSITIVE, globalcontext);
-    mfind->addAction(cmd, Constants::G_FIND_FLAGS);
+//    mfind->addAction(cmd, Constants::G_FIND_FLAGS);
     connect(m_caseSensitiveAction, SIGNAL(toggled(bool)), this, SLOT(setCaseSensitive(bool)));
 
     m_wholeWordAction = new QAction(tr("Whole Words Only"), this);
@@ -232,7 +232,7 @@ FindToolBar::FindToolBar(FindPlugin *plugin, CurrentDocumentFind *currentDocumen
     m_wholeWordAction->setCheckable(true);
     m_wholeWordAction->setChecked(false);
     cmd = Core::ActionManager::registerAction(m_wholeWordAction, Constants::WHOLE_WORDS, globalcontext);
-    mfind->addAction(cmd, Constants::G_FIND_FLAGS);
+//    mfind->addAction(cmd, Constants::G_FIND_FLAGS);
     connect(m_wholeWordAction, SIGNAL(toggled(bool)), this, SLOT(setWholeWord(bool)));
 
     m_regularExpressionAction = new QAction(tr("Use Regular Expressions"), this);
@@ -240,7 +240,7 @@ FindToolBar::FindToolBar(FindPlugin *plugin, CurrentDocumentFind *currentDocumen
     m_regularExpressionAction->setCheckable(true);
     m_regularExpressionAction->setChecked(false);
     cmd = Core::ActionManager::registerAction(m_regularExpressionAction, Constants::REGULAR_EXPRESSIONS, globalcontext);
-    mfind->addAction(cmd, Constants::G_FIND_FLAGS);
+//    mfind->addAction(cmd, Constants::G_FIND_FLAGS);
     connect(m_regularExpressionAction, SIGNAL(toggled(bool)), this, SLOT(setRegularExpressions(bool)));
 
     m_preserveCaseAction = new QAction(tr("Preserve Case when Replacing"), this);
@@ -248,7 +248,7 @@ FindToolBar::FindToolBar(FindPlugin *plugin, CurrentDocumentFind *currentDocumen
     m_preserveCaseAction->setCheckable(true);
     m_preserveCaseAction->setChecked(false);
     cmd = Core::ActionManager::registerAction(m_preserveCaseAction, Constants::PRESERVE_CASE, globalcontext);
-    mfind->addAction(cmd, Constants::G_FIND_FLAGS);
+//    mfind->addAction(cmd, Constants::G_FIND_FLAGS);
     connect(m_preserveCaseAction, SIGNAL(toggled(bool)), this, SLOT(setPreserveCase(bool)));
 
     connect(m_currentDocumentFind, SIGNAL(candidateChanged()), this, SLOT(adaptToCandidate()));
