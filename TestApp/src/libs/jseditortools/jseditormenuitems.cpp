@@ -17,6 +17,8 @@
 #include <jseditortools/texteditor/texteditorconstants.h>
 #include <jseditortools/coreplugin/find/textfindconstants.h>
 #include <jseditortools/coreplugin/find/ifindfilter.h>
+#include <jseditortools/qmljstools/qmljstoolsconstants.h>
+#include <jseditortools/qmljseditor/qmljseditorconstants.h>
 
 #include <QFileDialog>
 
@@ -28,10 +30,14 @@ JSEditorMenuItems::JSEditorMenuItems(QObject *parent) :
     QObject(parent)
 {
     m_pFileMenu = NULL;
+
     m_pEditMenu = NULL;
     m_pEditAdvancedMenu = NULL;
     m_pEditFindReplaceMenu = NULL;
     m_pEditFindReplaceAdvancedFindMenu = NULL;
+
+    m_pToolsMenu = NULL;
+    m_pToolsQMLJSMenu = NULL;
     createActionGroups();
 }
 
@@ -120,6 +126,7 @@ void JSEditorMenuItems::createActionGroups()
 {
     createFileMenuItems();
     createEditMenuItems();
+    createToolsMenuItems();
 }
 
 void JSEditorMenuItems::createFileMenuItems()
@@ -470,5 +477,43 @@ void JSEditorMenuItems::createEditFindReplaceAdvancedFindMenu()
             QAction *pFindFilterAction = ActionManager::command(base.withSuffix(filter->id()))->action();
             m_pEditFindReplaceAdvancedFindMenu->addAction(pFindFilterAction);
         }
+    }
+}
+
+void JSEditorMenuItems::createToolsMenuItems()
+{
+    if(m_pToolsMenu == NULL)
+    {
+        m_pToolsMenu = new QMenu(QLatin1String("&Tools"), NULL);
+
+        createToolsQMLJSMenu();
+        m_pToolsMenu->addMenu(m_pToolsQMLJSMenu);
+    }
+}
+void JSEditorMenuItems::createToolsQMLJSMenu()
+{
+    if(m_pToolsQMLJSMenu == NULL)
+    {
+        m_pToolsQMLJSMenu = new QMenu(QLatin1String("&QML/JS"), NULL);
+
+        QAction *pResetCodeModelAction = ActionManager::command(QmlJSTools::Constants::RESET_CODEMODEL)->action();
+        m_pToolsQMLJSMenu->addAction(pResetCodeModelAction);
+
+        m_pToolsQMLJSMenu->addSeparator();
+
+        QAction *pSollowSymbolUnderCursorAction = ActionManager::command(TextEditor::Constants::FOLLOW_SYMBOL_UNDER_CURSOR)->action();
+        m_pToolsQMLJSMenu->addAction(pSollowSymbolUnderCursorAction);
+
+        QAction *pFindUsagesAction = ActionManager::command(QmlJSEditor::Constants::FIND_USAGES)->action();
+        m_pToolsQMLJSMenu->addAction(pFindUsagesAction);
+
+        QAction *pRenameUsagesAction = ActionManager::command(QmlJSEditor::Constants::RENAME_USAGES)->action();
+        m_pToolsQMLJSMenu->addAction(pRenameUsagesAction);
+
+        QAction *pRunSemanticAction = ActionManager::command(QmlJSEditor::Constants::RUN_SEMANTIC_SCAN)->action();
+        m_pToolsQMLJSMenu->addAction(pRunSemanticAction);
+
+        QAction *pReformatFileAction = ActionManager::command(QmlJSEditor::Constants::REFORMAT_FILE)->action();
+        m_pToolsQMLJSMenu->addAction(pReformatFileAction);
     }
 }

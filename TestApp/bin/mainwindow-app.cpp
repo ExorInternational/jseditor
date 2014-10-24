@@ -31,7 +31,9 @@ MainWindowApp::~MainWindowApp()
 void MainWindowApp::createMenus()
 {
     QMenuBar *menuBar = new QMenuBar(ui->dockWidget);
+    menuBar->resize(400, menuBar->size().height());
     menuBar->addMenu(m_pJsEditorTools->getJSEditorMenuItems()->getFileMenu());
     menuBar->addMenu(m_pJsEditorTools->getJSEditorMenuItems()->getEditMenu());
+    menuBar->addMenu(m_pJsEditorTools->getJSEditorMenuItems()->getToolsMenu());
 }
 

@@ -172,32 +172,32 @@ bool QmlJSEditorPlugin::initialize(const QStringList & /*arguments*/, QString *e
     Core::Command *cmd;
     cmd = Core::ActionManager::command(TextEditor::Constants::FOLLOW_SYMBOL_UNDER_CURSOR);
     contextMenu->addAction(cmd);
-    qmlToolsMenu->addAction(cmd);
+//    qmlToolsMenu->addAction(cmd);//#720 ROOPAK
 
     QAction *findUsagesAction = new QAction(tr("Find Usages"), this);
     cmd = Core::ActionManager::registerAction(findUsagesAction, Constants::FIND_USAGES, context);
     cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+Shift+U")));
     connect(findUsagesAction, SIGNAL(triggered()), this, SLOT(findUsages()));
     contextMenu->addAction(cmd);
-    qmlToolsMenu->addAction(cmd);
+//    qmlToolsMenu->addAction(cmd);//#720 ROOPAK
 
     QAction *renameUsagesAction = new QAction(tr("Rename Symbol Under Cursor"), this);
     cmd = Core::ActionManager::registerAction(renameUsagesAction, Constants::RENAME_USAGES, context);
     cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+Shift+R")));
     connect(renameUsagesAction, SIGNAL(triggered()), this, SLOT(renameUsages()));
     contextMenu->addAction(cmd);
-    qmlToolsMenu->addAction(cmd);
+//    qmlToolsMenu->addAction(cmd);//#720 ROOPAK
 
     QAction *semanticScan = new QAction(tr("Run Checks"), this);
     cmd = Core::ActionManager::registerAction(semanticScan, Core::Id(Constants::RUN_SEMANTIC_SCAN), globalContext);
     cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+Shift+C")));
     connect(semanticScan, SIGNAL(triggered()), this, SLOT(runSemanticScan()));
-    qmlToolsMenu->addAction(cmd);
+//    qmlToolsMenu->addAction(cmd);//#720 ROOPAK
 
     m_reformatFileAction = new QAction(tr("Reformat File"), this);
     cmd = Core::ActionManager::registerAction(m_reformatFileAction, Core::Id(Constants::REFORMAT_FILE), context);
     connect(m_reformatFileAction, SIGNAL(triggered()), this, SLOT(reformatFile()));
-    qmlToolsMenu->addAction(cmd);
+//    qmlToolsMenu->addAction(cmd);//#720 ROOPAK
 
 //    QAction *showQuickToolbar = new QAction(tr("Show Qt Quick Toolbar"), this);//#720 ROOPAK - START
 //    cmd = Core::ActionManager::registerAction(showQuickToolbar, Constants::SHOW_QT_QUICK_HELPER, context);

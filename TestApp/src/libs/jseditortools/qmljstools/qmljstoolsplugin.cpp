@@ -109,7 +109,7 @@ bool QmlJSToolsPlugin::initialize(const QStringList &arguments, QString *error)
     Command *cmd = ActionManager::registerAction(
                 m_resetCodeModelAction, Constants::RESET_CODEMODEL, globalContext);
     connect(m_resetCodeModelAction, SIGNAL(triggered()), m_modelManager, SLOT(resetCodeModel()));
-    mqmljstools->addAction(cmd);
+//    mqmljstools->addAction(cmd);//#720 ROOPAK
 
     // watch task progress
     connect(ProgressManager::instance(), SIGNAL(taskStarted(Core::Id)),

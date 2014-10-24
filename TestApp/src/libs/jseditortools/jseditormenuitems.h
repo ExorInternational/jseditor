@@ -20,6 +20,7 @@ public:
 
     QMenu *getFileMenu(){ return m_pFileMenu; }
     QMenu *getEditMenu(){ return m_pEditMenu; }
+    QMenu *getToolsMenu(){ return m_pToolsMenu; }
 signals:
 
 public slots:
@@ -44,6 +45,11 @@ private:
     QMenu *m_pEditFindReplaceMenu;
     void createEditFindReplaceAdvancedFindMenu();
     QMenu *m_pEditFindReplaceAdvancedFindMenu;
+
+    void createToolsMenuItems();
+    QMenu *m_pToolsMenu;
+    void createToolsQMLJSMenu();
+    QMenu *m_pToolsQMLJSMenu;
 };
 
 }// namespace JsEditorTools
