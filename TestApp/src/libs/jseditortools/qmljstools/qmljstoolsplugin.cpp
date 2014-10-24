@@ -97,11 +97,11 @@ bool QmlJSToolsPlugin::initialize(const QStringList &arguments, QString *error)
 
     // Menus
     ActionContainer *mtools = ActionManager::actionContainer(Core::Constants::M_TOOLS);
-    ActionContainer *mqmljstools = ActionManager::createMenu(Constants::M_TOOLS_QMLJS);
-    QMenu *menu = mqmljstools->menu();
-    menu->setTitle(tr("&QML/JS"));
-    menu->setEnabled(true);
-    mtools->addMenu(mqmljstools);
+//    ActionContainer *mqmljstools = ActionManager::createMenu(Constants::M_TOOLS_QMLJS);//#720 ROOPAK - START
+//    QMenu *menu = mqmljstools->menu();
+//    menu->setTitle(tr("&QML/JS"));
+//    menu->setEnabled(true);
+//    mtools->addMenu(mqmljstools);//#720 ROOPAK - END
 
     // Update context in global context
     m_resetCodeModelAction = new QAction(tr("Reset Code Model"), this);

@@ -164,10 +164,10 @@ bool QmlJSEditorPlugin::initialize(const QStringList & /*arguments*/, QString *e
 //    addAutoReleasedObject(wizard);//#720 ROOPAK - END
 
     Core::ActionContainer *contextMenu = Core::ActionManager::createMenu(Constants::M_CONTEXT);
-    Core::ActionContainer *qmlToolsMenu = Core::ActionManager::actionContainer(Core::Id(QmlJSTools::Constants::M_TOOLS_QMLJS));
+//    Core::ActionContainer *qmlToolsMenu = Core::ActionManager::actionContainer(Core::Id(QmlJSTools::Constants::M_TOOLS_QMLJS));//#720 ROOPAK
 
     Core::Context globalContext(Core::Constants::C_GLOBAL);
-    qmlToolsMenu->addSeparator(globalContext);
+//    qmlToolsMenu->addSeparator(globalContext);//#720 ROOPAK
 
     Core::Command *cmd;
     cmd = Core::ActionManager::command(TextEditor::Constants::FOLLOW_SYMBOL_UNDER_CURSOR);
