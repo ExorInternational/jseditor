@@ -205,10 +205,10 @@ void TextEditorActionHandler::createActions()
             QKeySequence(Utils::HostOsInfo::isMacHost() ? tr("Meta+E, F2") : tr("Ctrl+E, F2")));
 
     // register "Edit" Menu Actions
-    Core::ActionContainer *editMenu = Core::ActionManager::actionContainer(M_EDIT);
+//    Core::ActionContainer *editMenu = Core::ActionManager::actionContainer(M_EDIT);//#720 ROOPAK
     m_selectEncodingAction = registerAction(SELECT_ENCODING,
             SLOT(selectEncoding()), false, tr("Select Encoding..."),
-            QKeySequence(), G_EDIT_OTHER, editMenu);
+            QKeySequence(), G_EDIT_OTHER, NULL);//#720 ROOPAK
     m_circularPasteAction = registerAction(CIRCULAR_PASTE,
             SLOT(circularPasteAction()), false, tr("Paste from Clipboard History"),
             QKeySequence(tr("Ctrl+Shift+V")), G_EDIT_COPYPASTE, NULL);//#720 ROOPAK

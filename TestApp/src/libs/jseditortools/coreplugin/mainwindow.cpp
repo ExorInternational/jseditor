@@ -673,7 +673,7 @@ void MainWindow::registerDefaultActions()
     QAction *tmpaction = new QAction(icon, tr("&Go to Line..."), this);
     cmd = ActionManager::registerAction(tmpaction, Constants::GOTO, globalContext);
     cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+L")));
-    medit->addAction(cmd, Constants::G_EDIT_OTHER);
+//    medit->addAction(cmd, Constants::G_EDIT_OTHER);//#720 ROOPAK
     tmpaction->setEnabled(false);
 
     // Options Action

@@ -326,6 +326,12 @@ void JSEditorMenuItems::createEditMenuItems()
 
          createEditFindReplaceMenu();
          m_pEditMenu->addMenu(m_pEditFindReplaceMenu);
+
+         QAction *pGotoLineAction = ActionManager::command(Constants::GOTO)->action();
+         m_pEditMenu->addAction(pGotoLineAction);
+
+         QAction *pSelectEncodingAction = ActionManager::command(TextEditor::Constants::SELECT_ENCODING)->action();
+         m_pEditMenu->addAction(pSelectEncodingAction);
     }
 }
 void JSEditorMenuItems::createEditAdvancedMenu()
