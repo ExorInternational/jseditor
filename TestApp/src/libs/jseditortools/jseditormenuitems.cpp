@@ -488,6 +488,9 @@ void JSEditorMenuItems::createToolsMenuItems()
 
         createToolsQMLJSMenu();
         m_pToolsMenu->addMenu(m_pToolsQMLJSMenu);
+
+        QAction *pOptionsAction = ActionManager::command(Constants::OPTIONS)->action();
+        m_pToolsMenu->addAction(pOptionsAction);
     }
 }
 void JSEditorMenuItems::createToolsQMLJSMenu()

@@ -96,7 +96,7 @@ bool QmlJSToolsPlugin::initialize(const QStringList &arguments, QString *error)
 //    addAutoReleasedObject(new BasicBundleProvider);//#720 ROOPAK
 
     // Menus
-    ActionContainer *mtools = ActionManager::actionContainer(Core::Constants::M_TOOLS);
+//    ActionContainer *mtools = ActionManager::actionContainer(Core::Constants::M_TOOLS);//#720 ROOPAK
 //    ActionContainer *mqmljstools = ActionManager::createMenu(Constants::M_TOOLS_QMLJS);//#720 ROOPAK - START
 //    QMenu *menu = mqmljstools->menu();
 //    menu->setTitle(tr("&QML/JS"));

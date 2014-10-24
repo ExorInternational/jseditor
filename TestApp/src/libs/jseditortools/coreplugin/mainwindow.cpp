@@ -493,9 +493,9 @@ void MainWindow::registerDefaultContainers()
 //    medit->appendGroup(Constants::G_EDIT_OTHER);//#720 ROOPAK - END
 
     // Tools Menu
-    ActionContainer *ac = ActionManager::createMenu(Constants::M_TOOLS);
-    menubar->addMenu(ac, Constants::G_TOOLS);
-    ac->menu()->setTitle(tr("&Tools"));
+//    ActionContainer *ac = ActionManager::createMenu(Constants::M_TOOLS);//#720 ROOPAK - START
+//    menubar->addMenu(ac, Constants::G_TOOLS);
+//    ac->menu()->setTitle(tr("&Tools"));//#720 ROOPAK - END
 
     // Window Menu
     ActionContainer *mwindow = ActionManager::createMenu(Constants::M_WINDOW);
@@ -509,7 +509,7 @@ void MainWindow::registerDefaultContainers()
     mwindow->appendGroup(Constants::G_WINDOW_OTHER);
 
     // Help Menu
-    ac = ActionManager::createMenu(Constants::M_HELP);
+    ActionContainer *ac = ActionManager::createMenu(Constants::M_HELP);
     menubar->addMenu(ac, Constants::G_HELP);
     ac->menu()->setTitle(tr("&Help"));
     ac->appendGroup(Constants::G_HELP_HELP);
@@ -521,7 +521,7 @@ void MainWindow::registerDefaultActions()
 {
 //    ActionContainer *mfile = ActionManager::actionContainer(Constants::M_FILE);
 //    ActionContainer *medit = ActionManager::actionContainer(Constants::M_EDIT);//#720 ROOPAK
-    ActionContainer *mtools = ActionManager::actionContainer(Constants::M_TOOLS);
+//    ActionContainer *mtools = ActionManager::actionContainer(Constants::M_TOOLS);//#720 ROOPAK
     ActionContainer *mwindow = ActionManager::actionContainer(Constants::M_WINDOW);
     ActionContainer *mhelp = ActionManager::actionContainer(Constants::M_HELP);
 
@@ -677,15 +677,15 @@ void MainWindow::registerDefaultActions()
     tmpaction->setEnabled(false);
 
     // Options Action
-    mtools->appendGroup(Constants::G_TOOLS_OPTIONS);
-    mtools->addSeparator(globalContext, Constants::G_TOOLS_OPTIONS);
+//    mtools->appendGroup(Constants::G_TOOLS_OPTIONS);//#720 ROOPAK - START
+//    mtools->addSeparator(globalContext, Constants::G_TOOLS_OPTIONS);//#720 ROOPAK - END
     m_optionsAction = new QAction(tr("&Options..."), this);
     cmd = ActionManager::registerAction(m_optionsAction, Constants::OPTIONS, globalContext);
     if (UseMacShortcuts) {
         cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+,")));
         cmd->action()->setMenuRole(QAction::PreferencesRole);
     }
-    mtools->addAction(cmd, Constants::G_TOOLS_OPTIONS);
+//    mtools->addAction(cmd, Constants::G_TOOLS_OPTIONS);//#720 ROOPAK
     connect(m_optionsAction, SIGNAL(triggered()), this, SLOT(showOptionsDialog()));
 
     if (UseMacShortcuts) {
