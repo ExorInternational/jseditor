@@ -188,18 +188,18 @@ void FindPlugin::openFindDialog(IFindFilter *filter)
 
 void FindPlugin::setupMenu()
 {
-    Core::ActionContainer *medit = Core::ActionManager::actionContainer(Core::Constants::M_EDIT);
-    Core::ActionContainer *mfind = Core::ActionManager::createMenu(Constants::M_FIND);
-    medit->addMenu(mfind, Core::Constants::G_EDIT_FIND);
-    mfind->menu()->setTitle(tr("&Find/Replace"));
-    mfind->appendGroup(Constants::G_FIND_CURRENTDOCUMENT);
-    mfind->appendGroup(Constants::G_FIND_FILTERS);
-    mfind->appendGroup(Constants::G_FIND_FLAGS);
-    mfind->appendGroup(Constants::G_FIND_ACTIONS);
+//    Core::ActionContainer *medit = Core::ActionManager::actionContainer(Core::Constants::M_EDIT);//#720 ROOPAK
+//    Core::ActionContainer *mfind = Core::ActionManager::createMenu(Constants::M_FIND);
+//    medit->addMenu(mfind, Core::Constants::G_EDIT_FIND);
+//    mfind->menu()->setTitle(tr("&Find/Replace"));
+//    mfind->appendGroup(Constants::G_FIND_CURRENTDOCUMENT);
+//    mfind->appendGroup(Constants::G_FIND_FILTERS);
+//    mfind->appendGroup(Constants::G_FIND_FLAGS);
+//    mfind->appendGroup(Constants::G_FIND_ACTIONS);//#720 ROOPAK
     Core::Context globalcontext(Core::Constants::C_GLOBAL);
     Core::Command *cmd;
-    mfind->addSeparator(globalcontext, Constants::G_FIND_FLAGS);
-    mfind->addSeparator(globalcontext, Constants::G_FIND_ACTIONS);
+//    mfind->addSeparator(globalcontext, Constants::G_FIND_FLAGS);//#720 ROOPAK
+//    mfind->addSeparator(globalcontext, Constants::G_FIND_ACTIONS);//#720 ROOPAK - END
 
 //    Core::ActionContainer *mfindadvanced = Core::ActionManager::createMenu(Constants::M_FIND_ADVANCED);//#720 ROOPAK - START
 //    mfindadvanced->menu()->setTitle(tr("Advanced Find"));

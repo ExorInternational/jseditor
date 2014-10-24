@@ -482,15 +482,15 @@ void MainWindow::registerDefaultContainers()
 
 
     // Edit Menu
-    ActionContainer *medit = ActionManager::createMenu(Constants::M_EDIT);
-    menubar->addMenu(medit, Constants::G_EDIT);
-    medit->menu()->setTitle(tr("&Edit"));
-    medit->appendGroup(Constants::G_EDIT_UNDOREDO);
-    medit->appendGroup(Constants::G_EDIT_COPYPASTE);
-    medit->appendGroup(Constants::G_EDIT_SELECTALL);
-    medit->appendGroup(Constants::G_EDIT_ADVANCED);
-    medit->appendGroup(Constants::G_EDIT_FIND);
-    medit->appendGroup(Constants::G_EDIT_OTHER);
+//    ActionContainer *medit = ActionManager::createMenu(Constants::M_EDIT);//#720 ROOPAK - START
+//    menubar->addMenu(medit, Constants::G_EDIT);
+//    medit->menu()->setTitle(tr("&Edit"));
+//    medit->appendGroup(Constants::G_EDIT_UNDOREDO);
+//    medit->appendGroup(Constants::G_EDIT_COPYPASTE);
+//    medit->appendGroup(Constants::G_EDIT_SELECTALL);
+//    medit->appendGroup(Constants::G_EDIT_ADVANCED);
+//    medit->appendGroup(Constants::G_EDIT_FIND);
+//    medit->appendGroup(Constants::G_EDIT_OTHER);//#720 ROOPAK - END
 
     // Tools Menu
     ActionContainer *ac = ActionManager::createMenu(Constants::M_TOOLS);
@@ -520,7 +520,7 @@ void MainWindow::registerDefaultContainers()
 void MainWindow::registerDefaultActions()
 {
 //    ActionContainer *mfile = ActionManager::actionContainer(Constants::M_FILE);
-    ActionContainer *medit = ActionManager::actionContainer(Constants::M_EDIT);
+//    ActionContainer *medit = ActionManager::actionContainer(Constants::M_EDIT);//#720 ROOPAK
     ActionContainer *mtools = ActionManager::actionContainer(Constants::M_TOOLS);
     ActionContainer *mwindow = ActionManager::actionContainer(Constants::M_WINDOW);
     ActionContainer *mhelp = ActionManager::actionContainer(Constants::M_HELP);
@@ -533,10 +533,10 @@ void MainWindow::registerDefaultActions()
 //    mfile->addSeparator(globalContext, Constants::G_FILE_CLOSE);
 //    mfile->addSeparator(globalContext, Constants::G_FILE_OTHER);
     // Edit menu separators
-    medit->addSeparator(globalContext, Constants::G_EDIT_COPYPASTE);
-    medit->addSeparator(globalContext, Constants::G_EDIT_SELECTALL);
-    medit->addSeparator(globalContext, Constants::G_EDIT_FIND);
-    medit->addSeparator(globalContext, Constants::G_EDIT_ADVANCED);
+//    medit->addSeparator(globalContext, Constants::G_EDIT_COPYPASTE);//#720 ROOPAK - START
+//    medit->addSeparator(globalContext, Constants::G_EDIT_SELECTALL);
+//    medit->addSeparator(globalContext, Constants::G_EDIT_FIND);
+//    medit->addSeparator(globalContext, Constants::G_EDIT_ADVANCED);//#720 ROOPAK - END
 
     // Return to editor shortcut: Note this requires Qt to fix up
     // handling of shortcut overrides in menus, item views, combos....
