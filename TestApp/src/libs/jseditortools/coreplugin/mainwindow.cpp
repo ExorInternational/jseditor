@@ -509,12 +509,12 @@ void MainWindow::registerDefaultContainers()
     mwindow->appendGroup(Constants::G_WINDOW_OTHER);
 
     // Help Menu
-    ActionContainer *ac = ActionManager::createMenu(Constants::M_HELP);
-    menubar->addMenu(ac, Constants::G_HELP);
-    ac->menu()->setTitle(tr("&Help"));
-    ac->appendGroup(Constants::G_HELP_HELP);
-    ac->appendGroup(Constants::G_HELP_SUPPORT);
-    ac->appendGroup(Constants::G_HELP_ABOUT);
+//    ActionContainer *ac = ActionManager::createMenu(Constants::M_HELP);//#720 ROOPAK - START
+//    menubar->addMenu(ac, Constants::G_HELP);
+//    ac->menu()->setTitle(tr("&Help"));
+//    ac->appendGroup(Constants::G_HELP_HELP);
+//    ac->appendGroup(Constants::G_HELP_SUPPORT);
+//    ac->appendGroup(Constants::G_HELP_ABOUT);//#720 ROOPAK - END
 }
 
 void MainWindow::registerDefaultActions()
@@ -523,7 +523,7 @@ void MainWindow::registerDefaultActions()
 //    ActionContainer *medit = ActionManager::actionContainer(Constants::M_EDIT);//#720 ROOPAK
 //    ActionContainer *mtools = ActionManager::actionContainer(Constants::M_TOOLS);//#720 ROOPAK
     ActionContainer *mwindow = ActionManager::actionContainer(Constants::M_WINDOW);
-    ActionContainer *mhelp = ActionManager::actionContainer(Constants::M_HELP);
+//    ActionContainer *mhelp = ActionManager::actionContainer(Constants::M_HELP);//#720 ROOPAK
 
     Context globalContext(Constants::C_GLOBAL);
 
@@ -750,9 +750,9 @@ void MainWindow::registerDefaultActions()
     mviews->menu()->setTitle(tr("&Views"));
 
     // "Help" separators
-    mhelp->addSeparator(globalContext, Constants::G_HELP_SUPPORT);
-    if (!Utils::HostOsInfo::isMacHost())
-        mhelp->addSeparator(globalContext, Constants::G_HELP_ABOUT);
+//    mhelp->addSeparator(globalContext, Constants::G_HELP_SUPPORT);//#720 ROOPAK - START
+//    if (!Utils::HostOsInfo::isMacHost())
+//        mhelp->addSeparator(globalContext, Constants::G_HELP_ABOUT);//#720 ROOPAK - END
 
     // About IDE Action
 //    icon = QIcon::fromTheme(QLatin1String("help-about"));//#720 ROOPAK - START
@@ -768,13 +768,13 @@ void MainWindow::registerDefaultActions()
 //    connect(tmpaction, SIGNAL(triggered()), this,  SLOT(aboutQtCreator()));//#720 ROOPAK - END
 
     //About Plugins Action
-    tmpaction = new QAction(tr("About &Plugins..."), this);
-    cmd = ActionManager::registerAction(tmpaction, Constants::ABOUT_PLUGINS, globalContext);
-    if (Utils::HostOsInfo::isMacHost())
-        cmd->action()->setMenuRole(QAction::ApplicationSpecificRole);
-    mhelp->addAction(cmd, Constants::G_HELP_ABOUT);
-    tmpaction->setEnabled(true);
-    connect(tmpaction, SIGNAL(triggered()), this,  SLOT(aboutPlugins()));
+//    tmpaction = new QAction(tr("About &Plugins..."), this);//#720 ROOPAK - START
+//    cmd = ActionManager::registerAction(tmpaction, Constants::ABOUT_PLUGINS, globalContext);
+//    if (Utils::HostOsInfo::isMacHost())
+//        cmd->action()->setMenuRole(QAction::ApplicationSpecificRole);
+//    mhelp->addAction(cmd, Constants::G_HELP_ABOUT);
+//    tmpaction->setEnabled(true);
+//    connect(tmpaction, SIGNAL(triggered()), this,  SLOT(aboutPlugins()));//#720 ROOPAK - END
     // About Qt Action
 //    tmpaction = new QAction(tr("About &Qt..."), this);
 //    cmd = ActionManager::registerAction(tmpaction, Constants:: ABOUT_QT, globalContext);
@@ -782,12 +782,12 @@ void MainWindow::registerDefaultActions()
 //    tmpaction->setEnabled(true);
 //    connect(tmpaction, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
     // About sep
-    if (!Utils::HostOsInfo::isMacHost()) { // doesn't have the "About" actions in the Help menu
-        tmpaction = new QAction(this);
-        tmpaction->setSeparator(true);
-        cmd = ActionManager::registerAction(tmpaction, "QtCreator.Help.Sep.About", globalContext);
-        mhelp->addAction(cmd, Constants::G_HELP_ABOUT);
-    }
+//    if (!Utils::HostOsInfo::isMacHost()) { // doesn't have the "About" actions in the Help menu//#720 ROOPAK - START
+//        tmpaction = new QAction(this);
+//        tmpaction->setSeparator(true);
+//        cmd = ActionManager::registerAction(tmpaction, "QtCreator.Help.Sep.About", globalContext);
+//        mhelp->addAction(cmd, Constants::G_HELP_ABOUT);
+//    }//#720 ROOPAK - END
 }
 
 void MainWindow::newFile()
