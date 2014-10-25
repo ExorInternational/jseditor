@@ -115,7 +115,7 @@ public slots:
     void newFile();//ROOPAK
 //    void openFileWith();//#720 ROOPAK
     void exit();
-    void setFullScreen(bool on);
+//    void setFullScreen(bool on);//#720 ROOPAK
 
 //    void showNewItemDialog(const QString &title,//#720 ROOPAK - START
 //                           const QList<IWizard *> &wizards,
@@ -201,9 +201,9 @@ private:
     QAction *m_saveAllAction;
     QAction *m_exitAction;
     QAction *m_optionsAction;
-    QAction *m_toggleSideBarAction;
+//    QAction *m_toggleSideBarAction;//#720 ROOPAK
     QAction *m_toggleModeSelectorAction;
-    QAction *m_toggleFullScreenAction;
+//    QAction *m_toggleFullScreenAction;//#720 ROOPAK
     QAction *m_minimizeAction;
     QAction *m_zoomAction;
 

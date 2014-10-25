@@ -145,8 +145,8 @@ MainWindow::MainWindow(QMainWindow *mainWindow) :
     m_saveAllAction(0),
     m_exitAction(0),
     m_optionsAction(0),
-    m_toggleSideBarAction(0),
-    m_toggleFullScreenAction(0),
+//    m_toggleSideBarAction(0),//#720 ROOPAK
+//    m_toggleFullScreenAction(0),//#720 ROOPAK
     m_minimizeAction(0),
     m_zoomAction(0),
     m_toggleSideBarButton(new QToolButton)
@@ -224,7 +224,7 @@ MainWindow::MainWindow(QMainWindow *mainWindow) :
 #endif
 }
 
-void MainWindow::setSidebarVisible(bool visible)
+void MainWindow::setSidebarVisible(bool /*visible*/)
 {
 //    if (NavigationWidgetPlaceHolder::current()) {//#720 ROOPAK - START
 //        if (m_navigationWidget->isSuppressed() && visible) {
@@ -236,7 +236,7 @@ void MainWindow::setSidebarVisible(bool visible)
 //    }//#720 ROOPAK - END
 }
 
-void MainWindow::setSuppressNavigationWidget(bool suppress)
+void MainWindow::setSuppressNavigationWidget(bool /*suppress*/)
 {
 //    if (NavigationWidgetPlaceHolder::current())//#720 ROOPAK - START
 //        m_navigationWidget->setSuppressed(suppress);//#720 ROOPAK - END
@@ -247,12 +247,12 @@ void MainWindow::setOverrideColor(const QColor &color)
     m_overrideColor = color;
 }
 
-void MainWindow::setIsFullScreen(bool fullScreen)
+void MainWindow::setIsFullScreen(bool /*fullScreen*/)
 {
-    if (fullScreen)
-        m_toggleFullScreenAction->setText(tr("Exit Full Screen"));
-    else
-        m_toggleFullScreenAction->setText(tr("Enter Full Screen"));
+//    if (fullScreen)//#720 ROOPAK - START
+//        m_toggleFullScreenAction->setText(tr("Exit Full Screen"));
+//    else
+//        m_toggleFullScreenAction->setText(tr("Enter Full Screen"));//#720 ROOPAK - END
 }
 
 MainWindow::~MainWindow()
@@ -669,12 +669,12 @@ void MainWindow::registerDefaultActions()
 //    tmpaction->setEnabled(false);
 
     // Goto Action
-    icon = QIcon::fromTheme(QLatin1String("go-jump"));
-    QAction *tmpaction = new QAction(icon, tr("&Go to Line..."), this);
-    cmd = ActionManager::registerAction(tmpaction, Constants::GOTO, globalContext);
-    cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+L")));
-//    medit->addAction(cmd, Constants::G_EDIT_OTHER);//#720 ROOPAK
-    tmpaction->setEnabled(false);
+//    icon = QIcon::fromTheme(QLatin1String("go-jump"));//#720 ROOPAK - START
+//    QAction *tmpaction = new QAction(icon, tr("&Go to Line..."), this);
+//    cmd = ActionManager::registerAction(tmpaction, Constants::GOTO, globalContext);
+//    cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+L")));
+////    medit->addAction(cmd, Constants::G_EDIT_OTHER);//#720 ROOPAK
+//    tmpaction->setEnabled(false);//#720 ROOPAK - END
 
     // Options Action
 //    mtools->appendGroup(Constants::G_TOOLS_OPTIONS);//#720 ROOPAK - START
@@ -707,16 +707,16 @@ void MainWindow::registerDefaultActions()
     }
 
     // Show Sidebar Action
-    m_toggleSideBarAction = new QAction(QIcon(QLatin1String(Constants::ICON_TOGGLE_SIDEBAR)),
-                                        tr("Show Sidebar"), this);
-    m_toggleSideBarAction->setCheckable(true);
-    cmd = ActionManager::registerAction(m_toggleSideBarAction, Constants::TOGGLE_SIDEBAR, globalContext);
-    cmd->setAttribute(Command::CA_UpdateText);
-    cmd->setDefaultKeySequence(QKeySequence(UseMacShortcuts ? tr("Ctrl+0") : tr("Alt+0")));
-    connect(m_toggleSideBarAction, SIGNAL(triggered(bool)), this, SLOT(setSidebarVisible(bool)));
-    m_toggleSideBarButton->setDefaultAction(cmd->action());
-    mwindow->addAction(cmd, Constants::G_WINDOW_VIEWS);
-    m_toggleSideBarAction->setEnabled(false);
+//    m_toggleSideBarAction = new QAction(QIcon(QLatin1String(Constants::ICON_TOGGLE_SIDEBAR)),//#720 ROOPAK - START
+//                                        tr("Show Sidebar"), this);
+//    m_toggleSideBarAction->setCheckable(true);
+//    cmd = ActionManager::registerAction(m_toggleSideBarAction, Constants::TOGGLE_SIDEBAR, globalContext);
+//    cmd->setAttribute(Command::CA_UpdateText);
+//    cmd->setDefaultKeySequence(QKeySequence(UseMacShortcuts ? tr("Ctrl+0") : tr("Alt+0")));
+//    connect(m_toggleSideBarAction, SIGNAL(triggered(bool)), this, SLOT(setSidebarVisible(bool)));
+//    m_toggleSideBarButton->setDefaultAction(cmd->action());
+//    mwindow->addAction(cmd, Constants::G_WINDOW_VIEWS);
+//    m_toggleSideBarAction->setEnabled(false);//#720 ROOPAK - END
 
     // Show Mode Selector Action
     m_toggleModeSelectorAction = new QAction(tr("Show Mode Selector"), this);
@@ -725,29 +725,29 @@ void MainWindow::registerDefaultActions()
     connect(m_toggleModeSelectorAction, SIGNAL(triggered(bool)), ModeManager::instance(), SLOT(setModeSelectorVisible(bool)));
     mwindow->addAction(cmd, Constants::G_WINDOW_VIEWS);
 
-#if defined(Q_OS_MAC)
-    const QString fullScreenActionText(tr("Enter Full Screen"));
-    bool supportsFullScreen = MacFullScreen::supportsFullScreen();
-#else
-    const QString fullScreenActionText(tr("Full Screen"));
-    bool supportsFullScreen = true;
-#endif
-    if (supportsFullScreen) {
-        // Full Screen Action
-        m_toggleFullScreenAction = new QAction(fullScreenActionText, this);
-        m_toggleFullScreenAction->setMenuRole(QAction::NoRole);
-        m_toggleFullScreenAction->setCheckable(!Utils::HostOsInfo::isMacHost());
-        cmd = ActionManager::registerAction(m_toggleFullScreenAction, Constants::TOGGLE_FULLSCREEN, globalContext);
-        cmd->setDefaultKeySequence(QKeySequence(UseMacShortcuts ? tr("Ctrl+Meta+F") : tr("Ctrl+Shift+F11")));
-        cmd->setAttribute(Command::CA_UpdateText); /* for Mac */
-        mwindow->addAction(cmd, Constants::G_WINDOW_SIZE);
-        connect(m_toggleFullScreenAction, SIGNAL(triggered(bool)), this, SLOT(setFullScreen(bool)));
-    }
+//#if defined(Q_OS_MAC)//#720 ROOPAK - START
+//    const QString fullScreenActionText(tr("Enter Full Screen"));
+//    bool supportsFullScreen = MacFullScreen::supportsFullScreen();
+//#else
+//    const QString fullScreenActionText(tr("Full Screen"));
+//    bool supportsFullScreen = true;
+//#endif
+//    if (supportsFullScreen) {
+//        // Full Screen Action
+//        m_toggleFullScreenAction = new QAction(fullScreenActionText, this);
+//        m_toggleFullScreenAction->setMenuRole(QAction::NoRole);
+//        m_toggleFullScreenAction->setCheckable(!Utils::HostOsInfo::isMacHost());
+//        cmd = ActionManager::registerAction(m_toggleFullScreenAction, Constants::TOGGLE_FULLSCREEN, globalContext);
+//        cmd->setDefaultKeySequence(QKeySequence(UseMacShortcuts ? tr("Ctrl+Meta+F") : tr("Ctrl+Shift+F11")));
+//        cmd->setAttribute(Command::CA_UpdateText); /* for Mac */
+//        mwindow->addAction(cmd, Constants::G_WINDOW_SIZE);
+//        connect(m_toggleFullScreenAction, SIGNAL(triggered(bool)), this, SLOT(setFullScreen(bool)));
+//    }//#720 ROOPAK - END
 
     // Window->Views
-    ActionContainer *mviews = ActionManager::createMenu(Constants::M_WINDOW_VIEWS);
-    mwindow->addMenu(mviews, Constants::G_WINDOW_VIEWS);
-    mviews->menu()->setTitle(tr("&Views"));
+//    ActionContainer *mviews = ActionManager::createMenu(Constants::M_WINDOW_VIEWS);//#720 ROOPAK - START
+//    mwindow->addMenu(mviews, Constants::G_WINDOW_VIEWS);
+//    mviews->menu()->setTitle(tr("&Views"));//#720 ROOPAK - END
 
     // "Help" separators
 //    mhelp->addSeparator(globalContext, Constants::G_HELP_SUPPORT);//#720 ROOPAK - START
@@ -848,7 +848,7 @@ void MainWindow::openFile()
  *
  *  \sa IPlugin::remoteArguments()
  */
-IDocument *MainWindow::openFiles(const QStringList &fileNames, ICore::OpenFilesFlags flags)
+IDocument *MainWindow::openFiles(const QStringList &/*fileNames*/, ICore::OpenFilesFlags /*flags*/)
 {
 //    QList<IDocumentFactory*> nonEditorFileFactories = getNonEditorDocumentFactories();
 //    IDocument *res = 0;
@@ -1037,8 +1037,8 @@ void MainWindow::changeEvent(QEvent *e)
             m_minimizeAction->setEnabled(!minimized);
             m_zoomAction->setEnabled(!minimized);
         } else {
-            bool isFullScreen = (mainwindow()->windowState() & Qt::WindowFullScreen) != 0;
-            m_toggleFullScreenAction->setChecked(isFullScreen);
+//            bool isFullScreen = (mainwindow()->windowState() & Qt::WindowFullScreen) != 0;//#720 ROOPAK - START
+//            m_toggleFullScreenAction->setChecked(isFullScreen);//#720 ROOPAK - END
         }
     }
 }
@@ -1245,26 +1245,26 @@ QPrinter *MainWindow::printer() const
     return m_printer;
 }
 
-void MainWindow::setFullScreen(bool on)
-{
-#if defined(Q_OS_MAC)
-    Q_UNUSED(on)
-    MacFullScreen::toggleFullScreen(this);
-#else
-    if (bool(mainwindow()->windowState() & Qt::WindowFullScreen) == on)
-        return;
+//void MainWindow::setFullScreen(bool on)//#720 ROOPAK - START
+//{
+//#if defined(Q_OS_MAC)
+//    Q_UNUSED(on)
+//    MacFullScreen::toggleFullScreen(this);
+//#else
+//    if (bool(mainwindow()->windowState() & Qt::WindowFullScreen) == on)
+//        return;
 
-    if (on) {
-        mainwindow()->setWindowState(mainwindow()->windowState() | Qt::WindowFullScreen);
-        //statusBar()->hide();
-        //menuBar()->hide();
-    } else {
-        mainwindow()->setWindowState(mainwindow()->windowState() & ~Qt::WindowFullScreen);
-        //menuBar()->show();
-        //statusBar()->show();
-    }
-#endif
-}
+//    if (on) {
+//        mainwindow()->setWindowState(mainwindow()->windowState() | Qt::WindowFullScreen);
+//        //statusBar()->hide();
+//        //menuBar()->hide();
+//    } else {
+//        mainwindow()->setWindowState(mainwindow()->windowState() & ~Qt::WindowFullScreen);
+//        //menuBar()->show();
+//        //statusBar()->show();
+//    }
+//#endif
+//}//#720 ROOPAK - END
 
 // Display a warning with an additional button to open
 // the debugger settings dialog if settingsId is nonempty.
