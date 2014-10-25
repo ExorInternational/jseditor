@@ -456,16 +456,16 @@ IContext *MainWindow::currentContextObject() const
 
 void MainWindow::registerDefaultContainers()
 {
-    ActionContainer *menubar = ActionManager::createMenuBar(Constants::MENU_BAR);
+//    ActionContainer *menubar = ActionManager::createMenuBar(Constants::MENU_BAR);//#720 ROOPAK
 
-    if (!Utils::HostOsInfo::isMacHost()) // System menu bar on Mac
-        mainwindow()->setMenuBar(menubar->menuBar());
+//    if (!Utils::HostOsInfo::isMacHost()) // System menu bar on Mac
+//        mainwindow()->setMenuBar(menubar->menuBar());
 //    menubar->appendGroup(Constants::G_FILE);
-    menubar->appendGroup(Constants::G_EDIT);
-    menubar->appendGroup(Constants::G_VIEW);
-    menubar->appendGroup(Constants::G_TOOLS);
-    menubar->appendGroup(Constants::G_WINDOW);
-    menubar->appendGroup(Constants::G_HELP);
+//    menubar->appendGroup(Constants::G_EDIT);
+//    menubar->appendGroup(Constants::G_VIEW);
+//    menubar->appendGroup(Constants::G_TOOLS);
+//    menubar->appendGroup(Constants::G_WINDOW);
+//    menubar->appendGroup(Constants::G_HELP);//#720 ROOPAK - END
 
     // File Menu
 //    ActionContainer *filemenu = ActionManager::createMenu(Constants::M_FILE);
