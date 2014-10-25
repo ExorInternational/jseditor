@@ -723,7 +723,7 @@ void MainWindow::registerDefaultActions()
     m_toggleModeSelectorAction->setCheckable(true);
     cmd = ActionManager::registerAction(m_toggleModeSelectorAction, Constants::TOGGLE_MODE_SELECTOR, globalContext);
     connect(m_toggleModeSelectorAction, SIGNAL(triggered(bool)), ModeManager::instance(), SLOT(setModeSelectorVisible(bool)));
-    mwindow->addAction(cmd, Constants::G_WINDOW_VIEWS);
+//    mwindow->addAction(cmd, Constants::G_WINDOW_VIEWS);//#720 ROOPAK
 
 //#if defined(Q_OS_MAC)//#720 ROOPAK - START
 //    const QString fullScreenActionText(tr("Enter Full Screen"));

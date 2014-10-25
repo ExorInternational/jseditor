@@ -203,37 +203,37 @@ void OutputPaneManager::init()
     const Context globalContext(Constants::C_GLOBAL);
 
     // Window->Output Panes
-    ActionContainer *mpanes = ActionManager::createMenu(Constants::M_WINDOW_PANES);
-    mwindow->addMenu(mpanes, Constants::G_WINDOW_PANES);
-    mpanes->menu()->setTitle(tr("Output &Panes"));
-    mpanes->appendGroup("Coreplugin.OutputPane.ActionsGroup");
-    mpanes->appendGroup("Coreplugin.OutputPane.PanesGroup");
+//    ActionContainer *mpanes = ActionManager::createMenu(Constants::M_WINDOW_PANES);//#720 ROOPAK - START
+//    mwindow->addMenu(mpanes, Constants::G_WINDOW_PANES);
+//    mpanes->menu()->setTitle(tr("Output &Panes"));
+//    mpanes->appendGroup("Coreplugin.OutputPane.ActionsGroup");
+//    mpanes->appendGroup("Coreplugin.OutputPane.PanesGroup");//#720 ROOPAK - END
 
     Command *cmd;
 
     cmd = ActionManager::registerAction(m_clearAction, "Coreplugin.OutputPane.clear", globalContext);
     m_clearButton->setDefaultAction(cmd->action());
-    mpanes->addAction(cmd, "Coreplugin.OutputPane.ActionsGroup");
+//    mpanes->addAction(cmd, "Coreplugin.OutputPane.ActionsGroup");//#720 ROOPAK
 
     cmd = ActionManager::registerAction(m_prevAction, "Coreplugin.OutputPane.previtem", globalContext);
     cmd->setDefaultKeySequence(QKeySequence(tr("Shift+F6")));
     m_prevToolButton->setDefaultAction(cmd->action());
-    mpanes->addAction(cmd, "Coreplugin.OutputPane.ActionsGroup");
+//    mpanes->addAction(cmd, "Coreplugin.OutputPane.ActionsGroup");//#720 ROOPAK
 
     cmd = ActionManager::registerAction(m_nextAction, "Coreplugin.OutputPane.nextitem", globalContext);
     m_nextToolButton->setDefaultAction(cmd->action());
     cmd->setDefaultKeySequence(QKeySequence(tr("F6")));
-    mpanes->addAction(cmd, "Coreplugin.OutputPane.ActionsGroup");
+//    mpanes->addAction(cmd, "Coreplugin.OutputPane.ActionsGroup");//#720 ROOPAK
 
     cmd = ActionManager::registerAction(m_minMaxAction, "Coreplugin.OutputPane.minmax", globalContext);
     cmd->setDefaultKeySequence(QKeySequence(UseMacShortcuts ? tr("Ctrl+9") : tr("Alt+9")));
     cmd->setAttribute(Command::CA_UpdateText);
     cmd->setAttribute(Command::CA_UpdateIcon);
-    mpanes->addAction(cmd, "Coreplugin.OutputPane.ActionsGroup");
+//    mpanes->addAction(cmd, "Coreplugin.OutputPane.ActionsGroup");//#720 ROOPAK
     connect(m_minMaxAction, SIGNAL(triggered()), this, SLOT(slotMinMax()));
     m_minMaxButton->setDefaultAction(cmd->action());
 
-    mpanes->addSeparator(globalContext, "Coreplugin.OutputPane.ActionsGroup");
+//    mpanes->addSeparator(globalContext, "Coreplugin.OutputPane.ActionsGroup");//#720 ROOPAK
 
     QFontMetrics titleFm = m_titleLabel->fontMetrics();
     int minTitleWidth = 0;
@@ -275,7 +275,7 @@ void OutputPaneManager::init()
         QAction *action = new QAction(outPane->displayName(), this);
         Command *cmd = ActionManager::registerAction(action, id, globalContext);
 
-        mpanes->addAction(cmd, "Coreplugin.OutputPane.PanesGroup");
+//        mpanes->addAction(cmd, "Coreplugin.OutputPane.PanesGroup");//#720 ROOPAK
         m_actions.append(action);
         m_ids.append(id);
 

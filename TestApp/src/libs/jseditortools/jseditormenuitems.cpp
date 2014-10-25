@@ -40,6 +40,7 @@ JSEditorMenuItems::JSEditorMenuItems(QObject *parent) :
     m_pToolsQMLJSMenu = NULL;
 
     m_pWindowMenu = NULL;
+    m_pWindowOutputPanesMenu = NULL;
     createActionGroups();
 }
 
@@ -529,5 +530,37 @@ void JSEditorMenuItems::createWindowMenu()
     if(m_pWindowMenu == NULL)
     {
         m_pWindowMenu = new QMenu(QLatin1String("&Window"), NULL);
+
+        QAction *pToggleModeSelectorAction = ActionManager::command(Constants::TOGGLE_MODE_SELECTOR)->action();
+        m_pWindowMenu->addAction(pToggleModeSelectorAction);
+
+        createWindowOutputPanesMenu();
+        m_pWindowMenu->addMenu(m_pWindowOutputPanesMenu);
+    }
+}
+void JSEditorMenuItems::createWindowOutputPanesMenu()
+{
+    if(m_pWindowOutputPanesMenu == NULL)
+    {
+        m_pWindowOutputPanesMenu  = new QMenu(QLatin1String("Output &Panes"), NULL);
+
+        QAction *pOutputPaneClear = ActionManager::command("Coreplugin.OutputPane.clear")->action();
+        m_pWindowOutputPanesMenu->addAction(pOutputPaneClear);
+
+        QAction *pOutputPanePrevItem = ActionManager::command("Coreplugin.OutputPane.previtem")->action();
+        m_pWindowOutputPanesMenu->addAction(pOutputPanePrevItem);
+
+        QAction *pOutputPaneNextItem = ActionManager::command("Coreplugin.OutputPane.nextitem")->action();
+        m_pWindowOutputPanesMenu->addAction(pOutputPaneNextItem);
+
+        QAction *pOutputPaneMaximize = ActionManager::command("Coreplugin.OutputPane.minmax")->action();
+        m_pWindowOutputPanesMenu->addAction(pOutputPaneMaximize);
+
+        m_pWindowOutputPanesMenu->addSeparator();
+
+        QAction *pOutputPaneSearchResults = ActionManager::command("QtCreator.Pane.SearchResults")->action();
+        m_pWindowOutputPanesMenu->addAction(pOutputPaneSearchResults);
+
+
     }
 }

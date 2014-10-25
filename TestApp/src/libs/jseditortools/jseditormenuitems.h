@@ -54,6 +54,8 @@ private:
 
     void createWindowMenu();
     QMenu *m_pWindowMenu;
+    void createWindowOutputPanesMenu();
+    QMenu *m_pWindowOutputPanesMenu;
 };
 
 }// namespace JsEditorTools
