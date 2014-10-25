@@ -38,6 +38,8 @@ JSEditorMenuItems::JSEditorMenuItems(QObject *parent) :
 
     m_pToolsMenu = NULL;
     m_pToolsQMLJSMenu = NULL;
+
+    m_pWindowMenu = NULL;
     createActionGroups();
 }
 
@@ -127,6 +129,7 @@ void JSEditorMenuItems::createActionGroups()
     createFileMenuItems();
     createEditMenuItems();
     createToolsMenuItems();
+    createWindowMenu();
 }
 
 void JSEditorMenuItems::createFileMenuItems()
@@ -518,5 +521,13 @@ void JSEditorMenuItems::createToolsQMLJSMenu()
 
         QAction *pReformatFileAction = ActionManager::command(QmlJSEditor::Constants::REFORMAT_FILE)->action();
         m_pToolsQMLJSMenu->addAction(pReformatFileAction);
+    }
+}
+
+void JSEditorMenuItems::createWindowMenu()
+{
+    if(m_pWindowMenu == NULL)
+    {
+        m_pWindowMenu = new QMenu(QLatin1String("&Window"), NULL);
     }
 }

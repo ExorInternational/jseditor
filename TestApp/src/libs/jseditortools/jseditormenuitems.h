@@ -21,6 +21,7 @@ public:
     QMenu *getFileMenu(){ return m_pFileMenu; }
     QMenu *getEditMenu(){ return m_pEditMenu; }
     QMenu *getToolsMenu(){ return m_pToolsMenu; }
+    QMenu *getWindowMenu(){ return m_pWindowMenu; }
 signals:
 
 public slots:
@@ -50,6 +51,9 @@ private:
     QMenu *m_pToolsMenu;
     void createToolsQMLJSMenu();
     QMenu *m_pToolsQMLJSMenu;
+
+    void createWindowMenu();
+    QMenu *m_pWindowMenu;
 };
 
 }// namespace JsEditorTools
