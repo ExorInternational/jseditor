@@ -294,11 +294,11 @@ EditorManager::EditorManager(QWidget *parent) :
     connect(d->m_saveAsAction, SIGNAL(triggered()), this, SLOT(saveDocumentAs()));
 
     // Window Menu
-    ActionContainer *mwindow = ActionManager::actionContainer(Constants::M_WINDOW);
+//    ActionContainer *mwindow = ActionManager::actionContainer(Constants::M_WINDOW);//#720 ROOPAK
 
     // Window menu separators
-    mwindow->addSeparator(editManagerContext, Constants::G_WINDOW_SPLIT);
-    mwindow->addSeparator(editManagerContext, Constants::G_WINDOW_NAVIGATE);
+//    mwindow->addSeparator(editManagerContext, Constants::G_WINDOW_SPLIT);//#720 ROOPAK - START
+//    mwindow->addSeparator(editManagerContext, Constants::G_WINDOW_NAVIGATE);//#720 ROOPAK - END
 
     // Close Action
     cmd = ActionManager::registerAction(d->m_closeCurrentEditorAction, Constants::CLOSE, editManagerContext, true);
@@ -352,61 +352,61 @@ EditorManager::EditorManager(QWidget *parent) :
     // Goto Previous In History Action
     cmd = ActionManager::registerAction(d->m_gotoPreviousDocHistoryAction, Constants::GOTOPREVINHISTORY, editDesignContext);
     cmd->setDefaultKeySequence(QKeySequence(UseMacShortcuts ? tr("Alt+Tab") : tr("Ctrl+Tab")));
-    mwindow->addAction(cmd, Constants::G_WINDOW_NAVIGATE);
+//    mwindow->addAction(cmd, Constants::G_WINDOW_NAVIGATE);//#720 ROOPAK
     connect(d->m_gotoPreviousDocHistoryAction, SIGNAL(triggered()), this, SLOT(gotoPreviousDocHistory()));
 
     // Goto Next In History Action
     cmd = ActionManager::registerAction(d->m_gotoNextDocHistoryAction, Constants::GOTONEXTINHISTORY, editDesignContext);
     cmd->setDefaultKeySequence(QKeySequence(UseMacShortcuts ? tr("Alt+Shift+Tab") : tr("Ctrl+Shift+Tab")));
-    mwindow->addAction(cmd, Constants::G_WINDOW_NAVIGATE);
+//    mwindow->addAction(cmd, Constants::G_WINDOW_NAVIGATE);//#720 ROOPAK
     connect(d->m_gotoNextDocHistoryAction, SIGNAL(triggered()), this, SLOT(gotoNextDocHistory()));
 
     // Go back in navigation history
     cmd = ActionManager::registerAction(d->m_goBackAction, Constants::GO_BACK, editDesignContext);
     cmd->setDefaultKeySequence(QKeySequence(UseMacShortcuts ? tr("Ctrl+Alt+Left") : tr("Alt+Left")));
-    mwindow->addAction(cmd, Constants::G_WINDOW_NAVIGATE);
+//    mwindow->addAction(cmd, Constants::G_WINDOW_NAVIGATE);//#720 ROOPAK
     connect(d->m_goBackAction, SIGNAL(triggered()), this, SLOT(goBackInNavigationHistory()));
 
     // Go forward in navigation history
     cmd = ActionManager::registerAction(d->m_goForwardAction, Constants::GO_FORWARD, editDesignContext);
     cmd->setDefaultKeySequence(QKeySequence(UseMacShortcuts ? tr("Ctrl+Alt+Right") : tr("Alt+Right")));
-    mwindow->addAction(cmd, Constants::G_WINDOW_NAVIGATE);
+//    mwindow->addAction(cmd, Constants::G_WINDOW_NAVIGATE);//#720 ROOPAK
     connect(d->m_goForwardAction, SIGNAL(triggered()), this, SLOT(goForwardInNavigationHistory()));
 
     d->m_splitAction = new QAction(tr("Split"), this);
     cmd = ActionManager::registerAction(d->m_splitAction, Constants::SPLIT, editManagerContext);
     cmd->setDefaultKeySequence(QKeySequence(UseMacShortcuts ? tr("Meta+E,2") : tr("Ctrl+E,2")));
-    mwindow->addAction(cmd, Constants::G_WINDOW_SPLIT);
+//    mwindow->addAction(cmd, Constants::G_WINDOW_SPLIT);//#720 ROOPAK
     connect(d->m_splitAction, SIGNAL(triggered()), this, SLOT(split()));
 
     d->m_splitSideBySideAction = new QAction(tr("Split Side by Side"), this);
     cmd = ActionManager::registerAction(d->m_splitSideBySideAction, Constants::SPLIT_SIDE_BY_SIDE, editManagerContext);
     cmd->setDefaultKeySequence(QKeySequence(UseMacShortcuts ? tr("Meta+E,3") : tr("Ctrl+E,3")));
-    mwindow->addAction(cmd, Constants::G_WINDOW_SPLIT);
+//    mwindow->addAction(cmd, Constants::G_WINDOW_SPLIT);//#720 ROOPAK
     connect(d->m_splitSideBySideAction, SIGNAL(triggered()), this, SLOT(splitSideBySide()));
 
     d->m_splitNewWindowAction = new QAction(tr("Open in New Window"), this);
     cmd = ActionManager::registerAction(d->m_splitNewWindowAction, Constants::SPLIT_NEW_WINDOW, editManagerContext);
     cmd->setDefaultKeySequence(QKeySequence(UseMacShortcuts ? tr("Meta+E,4") : tr("Ctrl+E,4")));
-    mwindow->addAction(cmd, Constants::G_WINDOW_SPLIT);
+//    mwindow->addAction(cmd, Constants::G_WINDOW_SPLIT);//#720 ROOPAK
     connect(d->m_splitNewWindowAction, SIGNAL(triggered()), this, SLOT(splitNewWindow()));
 
     d->m_removeCurrentSplitAction = new QAction(tr("Remove Current Split"), this);
     cmd = ActionManager::registerAction(d->m_removeCurrentSplitAction, Constants::REMOVE_CURRENT_SPLIT, editManagerContext);
     cmd->setDefaultKeySequence(QKeySequence(UseMacShortcuts ? tr("Meta+E,0") : tr("Ctrl+E,0")));
-    mwindow->addAction(cmd, Constants::G_WINDOW_SPLIT);
+//    mwindow->addAction(cmd, Constants::G_WINDOW_SPLIT);//#720 ROOPAK
     connect(d->m_removeCurrentSplitAction, SIGNAL(triggered()), this, SLOT(removeCurrentSplit()));
 
     d->m_removeAllSplitsAction = new QAction(tr("Remove All Splits"), this);
     cmd = ActionManager::registerAction(d->m_removeAllSplitsAction, Constants::REMOVE_ALL_SPLITS, editManagerContext);
     cmd->setDefaultKeySequence(QKeySequence(UseMacShortcuts ? tr("Meta+E,1") : tr("Ctrl+E,1")));
-    mwindow->addAction(cmd, Constants::G_WINDOW_SPLIT);
+//    mwindow->addAction(cmd, Constants::G_WINDOW_SPLIT);//#720 ROOPAK
     connect(d->m_removeAllSplitsAction, SIGNAL(triggered()), this, SLOT(removeAllSplits()));
 
     d->m_gotoNextSplitAction = new QAction(tr("Go to Next Split or Window"), this);
     cmd = ActionManager::registerAction(d->m_gotoNextSplitAction, Constants::GOTO_NEXT_SPLIT, editManagerContext);
     cmd->setDefaultKeySequence(QKeySequence(UseMacShortcuts ? tr("Meta+E,o") : tr("Ctrl+E,o")));
-    mwindow->addAction(cmd, Constants::G_WINDOW_SPLIT);
+//    mwindow->addAction(cmd, Constants::G_WINDOW_SPLIT);//#720 ROOPAK
     connect(d->m_gotoNextSplitAction, SIGNAL(triggered()), this, SLOT(gotoNextSplit()));
 
 //    ActionContainer *medit = ActionManager::actionContainer(Constants::M_EDIT);//#720 ROOPAK - START

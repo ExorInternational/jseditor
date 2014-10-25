@@ -199,7 +199,7 @@ static inline int paneShortCut(int number)
 
 void OutputPaneManager::init()
 {
-    ActionContainer *mwindow = ActionManager::actionContainer(Constants::M_WINDOW);
+//    ActionContainer *mwindow = ActionManager::actionContainer(Constants::M_WINDOW);//#720 ROOPAK
     const Context globalContext(Constants::C_GLOBAL);
 
     // Window->Output Panes

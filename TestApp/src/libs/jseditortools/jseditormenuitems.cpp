@@ -536,6 +536,40 @@ void JSEditorMenuItems::createWindowMenu()
 
         createWindowOutputPanesMenu();
         m_pWindowMenu->addMenu(m_pWindowOutputPanesMenu);
+
+        m_pWindowMenu->addSeparator();
+
+        QAction *pWidowSplit = ActionManager::command(Constants::SPLIT)->action();
+        m_pWindowMenu->addAction(pWidowSplit);
+
+        QAction *pWidowSplitSideBySide = ActionManager::command(Constants::SPLIT_SIDE_BY_SIDE)->action();
+        m_pWindowMenu->addAction(pWidowSplitSideBySide);
+
+        QAction *pWidowSplitNewWindow = ActionManager::command(Constants::SPLIT_NEW_WINDOW)->action();
+        m_pWindowMenu->addAction(pWidowSplitNewWindow);
+
+        QAction *pWidowRemoveCurrentSplit = ActionManager::command(Constants::REMOVE_CURRENT_SPLIT)->action();
+        m_pWindowMenu->addAction(pWidowRemoveCurrentSplit);
+
+        QAction *pWidowRemoveAllSplits = ActionManager::command(Constants::REMOVE_ALL_SPLITS)->action();
+        m_pWindowMenu->addAction(pWidowRemoveAllSplits);
+
+        QAction *pWidowGotoNextSplit = ActionManager::command(Constants::GOTO_NEXT_SPLIT)->action();
+        m_pWindowMenu->addAction(pWidowGotoNextSplit);
+
+        m_pWindowMenu->addSeparator();
+
+        QAction *pWidowGoBack = ActionManager::command(Constants::GO_BACK)->action();
+        m_pWindowMenu->addAction(pWidowGoBack);
+
+        QAction *pWidowGoForward = ActionManager::command(Constants::GO_FORWARD)->action();
+        m_pWindowMenu->addAction(pWidowGoForward);
+
+        QAction *pWidowGoToPrevInHistory = ActionManager::command(Constants::GOTOPREVINHISTORY)->action();
+        m_pWindowMenu->addAction(pWidowGoToPrevInHistory);
+
+        QAction *pWidowGoToNextInHistory = ActionManager::command(Constants::GOTONEXTINHISTORY)->action();
+        m_pWindowMenu->addAction(pWidowGoToNextInHistory);
     }
 }
 void JSEditorMenuItems::createWindowOutputPanesMenu()
@@ -560,7 +594,5 @@ void JSEditorMenuItems::createWindowOutputPanesMenu()
 
         QAction *pOutputPaneSearchResults = ActionManager::command("QtCreator.Pane.SearchResults")->action();
         m_pWindowOutputPanesMenu->addAction(pOutputPaneSearchResults);
-
-
     }
 }

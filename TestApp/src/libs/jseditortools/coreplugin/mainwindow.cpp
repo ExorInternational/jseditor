@@ -498,15 +498,15 @@ void MainWindow::registerDefaultContainers()
 //    ac->menu()->setTitle(tr("&Tools"));//#720 ROOPAK - END
 
     // Window Menu
-    ActionContainer *mwindow = ActionManager::createMenu(Constants::M_WINDOW);
-    menubar->addMenu(mwindow, Constants::G_WINDOW);
-    mwindow->menu()->setTitle(tr("&Window"));
-    mwindow->appendGroup(Constants::G_WINDOW_SIZE);
-    mwindow->appendGroup(Constants::G_WINDOW_VIEWS);
-    mwindow->appendGroup(Constants::G_WINDOW_PANES);
-    mwindow->appendGroup(Constants::G_WINDOW_SPLIT);
-    mwindow->appendGroup(Constants::G_WINDOW_NAVIGATE);
-    mwindow->appendGroup(Constants::G_WINDOW_OTHER);
+//    ActionContainer *mwindow = ActionManager::createMenu(Constants::M_WINDOW);//#720 ROOPAK
+//    menubar->addMenu(mwindow, Constants::G_WINDOW);
+//    mwindow->menu()->setTitle(tr("&Window"));
+//    mwindow->appendGroup(Constants::G_WINDOW_SIZE);
+//    mwindow->appendGroup(Constants::G_WINDOW_VIEWS);
+//    mwindow->appendGroup(Constants::G_WINDOW_PANES);
+//    mwindow->appendGroup(Constants::G_WINDOW_SPLIT);
+//    mwindow->appendGroup(Constants::G_WINDOW_NAVIGATE);
+//    mwindow->appendGroup(Constants::G_WINDOW_OTHER);//#720 ROOPAK - END
 
     // Help Menu
 //    ActionContainer *ac = ActionManager::createMenu(Constants::M_HELP);//#720 ROOPAK - START
@@ -522,7 +522,7 @@ void MainWindow::registerDefaultActions()
 //    ActionContainer *mfile = ActionManager::actionContainer(Constants::M_FILE);
 //    ActionContainer *medit = ActionManager::actionContainer(Constants::M_EDIT);//#720 ROOPAK
 //    ActionContainer *mtools = ActionManager::actionContainer(Constants::M_TOOLS);//#720 ROOPAK
-    ActionContainer *mwindow = ActionManager::actionContainer(Constants::M_WINDOW);
+//    ActionContainer *mwindow = ActionManager::actionContainer(Constants::M_WINDOW);//#720 ROOPAK
 //    ActionContainer *mhelp = ActionManager::actionContainer(Constants::M_HELP);//#720 ROOPAK
 
     Context globalContext(Constants::C_GLOBAL);
@@ -690,20 +690,20 @@ void MainWindow::registerDefaultActions()
 
     if (UseMacShortcuts) {
         // Minimize Action
-        m_minimizeAction = new QAction(tr("Minimize"), this);
-        cmd = ActionManager::registerAction(m_minimizeAction, Constants::MINIMIZE_WINDOW, globalContext);
-        cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+M")));
-        mwindow->addAction(cmd, Constants::G_WINDOW_SIZE);
-        connect(m_minimizeAction, SIGNAL(triggered()), this, SLOT(showMinimized()));
+//        m_minimizeAction = new QAction(tr("Minimize"), this);//#720 ROOPAK
+//        cmd = ActionManager::registerAction(m_minimizeAction, Constants::MINIMIZE_WINDOW, globalContext);
+//        cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+M")));
+//        mwindow->addAction(cmd, Constants::G_WINDOW_SIZE);
+//        connect(m_minimizeAction, SIGNAL(triggered()), this, SLOT(showMinimized()));
 
-        // Zoom Action
-        m_zoomAction = new QAction(tr("Zoom"), this);
-        cmd = ActionManager::registerAction(m_zoomAction, Constants::ZOOM_WINDOW, globalContext);
-        mwindow->addAction(cmd, Constants::G_WINDOW_SIZE);
-        connect(m_zoomAction, SIGNAL(triggered()), this, SLOT(showMaximized()));
+//        // Zoom Action
+//        m_zoomAction = new QAction(tr("Zoom"), this);
+//        cmd = ActionManager::registerAction(m_zoomAction, Constants::ZOOM_WINDOW, globalContext);
+//        mwindow->addAction(cmd, Constants::G_WINDOW_SIZE);
+//        connect(m_zoomAction, SIGNAL(triggered()), this, SLOT(showMaximized()));
 
-        // Window separator
-        mwindow->addSeparator(globalContext, Constants::G_WINDOW_SIZE);
+//        // Window separator
+//        mwindow->addSeparator(globalContext, Constants::G_WINDOW_SIZE);//#720 ROOPAK - END
     }
 
     // Show Sidebar Action
