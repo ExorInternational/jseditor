@@ -3,6 +3,7 @@
 
 #include <QFileDialog>
 #include <QMenuBar>
+#include <QGridLayout>
 
 #include <jseditortools/jseditortools.h>
 #include <jseditortools/jseditormenuitems.h>
@@ -15,7 +16,12 @@ MainWindowApp::MainWindowApp(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowState(Qt::WindowMaximized);
 
-    m_pJsEditorTools = new JsEditorTools::JsEditorToolsLib(this);
+    m_pCentralWidget = new QWidget(this);
+    QGridLayout *gridLayout = new QGridLayout(m_pCentralWidget);
+    gridLayout->setMargin(0);
+    setCentralWidget(m_pCentralWidget);
+
+    m_pJsEditorTools = new JsEditorTools::JsEditorToolsLib(m_pCentralWidget);
     createMenus();
 }
 

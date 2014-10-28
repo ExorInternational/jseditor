@@ -44,12 +44,12 @@ class JSEditorMenuItems;
 class JSEDITORTOOLS_EXPORT JsEditorToolsLib : public QObject {
     Q_OBJECT
 public:
-    JsEditorToolsLib(QMainWindow *mainWindow);
+    JsEditorToolsLib(QWidget *mainWindow);
     ~JsEditorToolsLib();
 
     JSEditorMenuItems *getJSEditorMenuItems() { return m_pJSEditorMenuItems; }
 private:
-    QMainWindow *m_MainWindow;
+    QWidget *m_MainWindow;
 
     ExtensionSystem::PluginManager *m_pPluginManager;
     Core::Internal::CorePlugin *m_pCorePlugin;

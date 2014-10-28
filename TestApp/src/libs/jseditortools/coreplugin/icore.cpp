@@ -476,7 +476,7 @@ QWidget *ICore::dialogParent()
 
 QStatusBar *ICore::statusBar()
 {
-    return m_mainwindow->mainwindow()->statusBar();
+    return NULL;//m_mainwindow->mainwindow()->statusBar();//#720 ROOPAK
 }
 
 void ICore::raiseWindow(QWidget *widget)

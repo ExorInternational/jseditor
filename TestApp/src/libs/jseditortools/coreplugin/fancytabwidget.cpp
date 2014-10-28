@@ -377,6 +377,7 @@ private:
 FancyTabWidget::FancyTabWidget(QWidget *parent)
     : QWidget(parent)
 {
+    parent->layout()->addWidget(this);
     m_tabBar = new FancyTabBar(this);
 
     m_selectionWidget = new QWidget(this);

@@ -51,7 +51,7 @@
 using namespace Core;
 using namespace Core::Internal;
 
-CorePlugin::CorePlugin(QMainWindow *mainWindow) : m_editMode(0)/*, m_designMode(0)*/ //ROOPAK
+CorePlugin::CorePlugin(QWidget *mainWindow) : m_editMode(0)/*, m_designMode(0)*/ //ROOPAK
 {
     qRegisterMetaType<Core::Id>();
     m_mainWindow = new MainWindow(mainWindow);//#720 ROOPAK

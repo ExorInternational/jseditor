@@ -53,7 +53,7 @@ class CORE_EXPORT CorePlugin : public ExtensionSystem::IPlugin
 //    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "Core.json")
 
 public:
-    CorePlugin(QMainWindow *mainWindow);
+    CorePlugin(QWidget *mainWindow);
     ~CorePlugin();
 
     bool initialize(const QStringList &arguments, QString *errorMessage = 0);

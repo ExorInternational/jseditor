@@ -25,6 +25,7 @@ private:
 
     Ui::MainWindowApp *ui;
     JsEditorTools::JsEditorToolsLib *m_pJsEditorTools;
+    QWidget *m_pCentralWidget;
 };
 
 #endif // MAINWINDOW_APP_H

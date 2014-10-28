@@ -52,7 +52,7 @@ public:
     explicit DeviceNotifyEvent(int id) : QEvent(static_cast<QEvent::Type>(id)) {}
 };
 
-AppMainWindow::AppMainWindow(QMainWindow *mainWindow)/* :
+AppMainWindow::AppMainWindow(QWidget *mainWindow)/* :
         m_deviceEventId(QEvent::registerEventType(QEvent::User + 2))*/
 {
     m_mainWindow = mainWindow;

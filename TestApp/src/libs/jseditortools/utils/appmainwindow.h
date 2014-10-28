@@ -39,8 +39,8 @@ class QTCREATOR_UTILS_EXPORT AppMainWindow : public QObject/*QMainWindow*/
 {
     Q_OBJECT
 public:
-    AppMainWindow(QMainWindow *mainWindow);
-    QMainWindow *mainwindow() { return m_mainWindow; }
+    AppMainWindow(QWidget *mainWindow);
+    QWidget *mainwindow() { return m_mainWindow; }
 public slots:
     void raiseWindow();
 
@@ -56,7 +56,7 @@ protected:
 private:
 //    const int m_deviceEventId;
 protected:
-    QMainWindow *m_mainWindow;
+    QWidget *m_mainWindow;
 };
 
 } // Utils

@@ -91,7 +91,7 @@ static inline QSettings *userSettings()
     return createUserSettings();
 }
 
-JsEditorToolsLib::JsEditorToolsLib(QMainWindow *mainWindow)
+JsEditorToolsLib::JsEditorToolsLib(QWidget *mainWindow)
 {
     m_MainWindow = mainWindow;
 

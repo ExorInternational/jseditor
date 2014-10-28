@@ -111,7 +111,7 @@ namespace Internal {
 
 enum { debugMainWindow = 0 };
 
-MainWindow::MainWindow(QMainWindow *mainWindow) :
+MainWindow::MainWindow(QWidget *mainWindow) :
     Utils::AppMainWindow(mainWindow),
     m_coreImpl(new ICore(this)),
     m_additionalContexts(Constants::C_GLOBAL),
@@ -184,10 +184,10 @@ MainWindow::MainWindow(QMainWindow *mainWindow) :
     }
 //    qApp->setStyle(new ManhattanStyle(baseName));//#720 ROOPAK
 
-    mainwindow()->setDockNestingEnabled(true);
+//    mainwindow()->setDockNestingEnabled(true);//#720 ROOPAK - START
 
-    mainwindow()->setCorner(Qt::BottomLeftCorner, Qt::LeftDockWidgetArea);
-    mainwindow()->setCorner(Qt::BottomRightCorner, Qt::BottomDockWidgetArea);
+//    mainwindow()->setCorner(Qt::BottomLeftCorner, Qt::LeftDockWidgetArea);
+//    mainwindow()->setCorner(Qt::BottomRightCorner, Qt::BottomDockWidgetArea);//#720 ROOPAK - END
 
     m_modeManager = new ModeManager(this, m_modeStack);
 
@@ -202,7 +202,7 @@ MainWindow::MainWindow(QMainWindow *mainWindow) :
     m_editorManager = new EditorManager(this->mainwindow());
     m_editorManager->hide();
 //    m_externalToolManager = new ExternalToolManager();//ROOPAK
-    mainwindow()->setCentralWidget(m_modeStack);
+//    mainwindow()->setCentralWidget(m_modeStack);//#720 ROOPAK
 
     m_progressManager->progressView()->setParent(this->mainwindow());
     m_progressManager->progressView()->setReferenceWidget(/*m_modeStack->statusBar()*/NULL);
@@ -1128,7 +1128,7 @@ void MainWindow::writeSettings()
         settings->setValue(QLatin1String(colorKey), Utils::StyleHelper::requestedBaseColor());
 
     settings->setValue(QLatin1String(windowGeometryKey), mainwindow()->saveGeometry());
-    settings->setValue(QLatin1String(windowStateKey), mainwindow()->saveState());
+//    settings->setValue(QLatin1String(windowStateKey), mainwindow()->saveState());//#720 ROOPAK
     settings->setValue(QLatin1String(modeSelectorVisibleKey), ModeManager::isModeSelectorVisible());
 
     settings->endGroup();
@@ -1297,7 +1297,7 @@ void MainWindow::restoreWindowState()
     settings->beginGroup(QLatin1String(settingsGroup));
     if (!mainwindow()->restoreGeometry(settings->value(QLatin1String(windowGeometryKey)).toByteArray()))
         mainwindow()->resize(1008, 700); // size without window decoration
-    mainwindow()->restoreState(settings->value(QLatin1String(windowStateKey)).toByteArray());
+//    mainwindow()->restoreState(settings->value(QLatin1String(windowStateKey)).toByteArray());//#720 ROOPAK
     settings->endGroup();
     mainwindow()->show();
 }

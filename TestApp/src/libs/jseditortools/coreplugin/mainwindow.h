@@ -83,7 +83,7 @@ class MainWindow : public Utils::AppMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QMainWindow *mainWindow);
+    MainWindow(QWidget *mainWindow);
     ~MainWindow();
 
     bool init(QString *errorMessage);
