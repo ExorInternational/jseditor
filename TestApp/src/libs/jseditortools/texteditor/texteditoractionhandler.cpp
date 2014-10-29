@@ -45,6 +45,8 @@
 
 #include <QDebug>
 #include <QAction>
+#include <QInputDialog>//#720 ROOPAK - START
+#include <QTextBlock>//#720 ROOPAK - END
 
 using namespace TextEditor;
 using namespace TextEditor::Internal;
@@ -426,6 +428,15 @@ void TextEditorActionHandler::gotoAction()
 //    const int selectionStart = locatorString.size();
 //    locatorString += tr("<line>:<column>");
 //    Core::LocatorManager::show(locatorString, selectionStart, locatorString.size() - selectionStart);//#720 ROOPAK - END
+
+    bool ok;//#720 ADDED BY ROOPAK - START
+    QTextBlock block = m_currentEditorWidget->textCursor().block();
+     int i = QInputDialog::getInt(m_currentEditorWidget, QLatin1String("Go To Line:"),
+                                  QLatin1String("Line Number:"), block.fragmentIndex(), 0, m_currentEditorWidget->blockCount(), 1, &ok);
+     if (ok)
+     {
+         m_currentEditorWidget->gotoLine(i, 0);
+     }//#720 ROOPAK - END
 }
 
 void TextEditorActionHandler::printAction()

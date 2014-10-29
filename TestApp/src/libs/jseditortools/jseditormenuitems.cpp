@@ -339,6 +339,7 @@ void JSEditorMenuItems::createEditMenuItems()
          m_pEditMenu->addMenu(m_pEditFindReplaceMenu);
 
          QAction *pGotoLineAction = ActionManager::command(Constants::GOTO)->action();
+         pGotoLineAction->setText(QLatin1String("&Go to Line..."));//Otherwise initially the action loads with empty string
          m_pEditMenu->addAction(pGotoLineAction);
 
          QAction *pSelectEncodingAction = ActionManager::command(TextEditor::Constants::SELECT_ENCODING)->action();
