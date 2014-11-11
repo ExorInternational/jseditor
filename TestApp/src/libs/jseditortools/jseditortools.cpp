@@ -93,39 +93,47 @@ static inline QSettings *userSettings()
 
 JsEditorToolsLib::JsEditorToolsLib(QWidget *mainWindow)
 {
-    m_MainWindow = mainWindow;
-
-    QString err;
-    QStringList arguments;
-
-    QSettings *settings = userSettings();
-    QSettings *globalSettings = new QSettings(QSettings::IniFormat, QSettings::SystemScope,
-                                              QLatin1String(Core::Constants::IDE_SETTINGSVARIANT_STR),
-                                              QLatin1String(Core::Constants::IDE_APPNAME_STR));
-    m_pPluginManager = new ExtensionSystem::PluginManager();
-    PluginManager::setFileExtension(QLatin1String("pluginspec"));
-    PluginManager::setGlobalSettings(globalSettings);
-    PluginManager::setSettings(settings);
-
-    m_pCorePlugin = new Core::Internal::CorePlugin(m_MainWindow);
-    m_pCorePlugin->initialize(arguments, &err);
-
-    m_pTextEditorPlugin = new TextEditor::Internal::TextEditorPlugin();
-    m_pTextEditorPlugin->initialize(arguments, &err);
-    m_pTextEditorPlugin->extensionsInitialized();
-
-    m_pQmlJSToolsPlugin = new QmlJSTools::Internal::QmlJSToolsPlugin();
-    m_pQmlJSToolsPlugin->initialize(arguments, &err);
-    m_pQmlJSToolsPlugin->extensionsInitialized();
-
-    m_pQmlJSEditorPlugin = new QmlJSEditor::Internal::QmlJSEditorPlugin();
-    m_pQmlJSEditorPlugin->initialize(arguments, &err);
-    m_pQmlJSEditorPlugin->extensionsInitialized();
-
-    m_pCorePlugin->extensionsInitialized();//this should be called only in the final step(after the other plugins are loaded).
-
-    m_pJSEditorMenuItems = new JSEditorMenuItems(this);
+    setParentWidget(mainWindow);
 }
+void JsEditorToolsLib::setParentWidget(QWidget *mainWindow)
+{
+    if(m_MainWindow== NULL && mainWindow)
+    {
+        m_MainWindow = mainWindow;
+        
+        QString err;
+        QStringList arguments;
+    
+        QSettings *settings = userSettings();
+        QSettings *globalSettings = new QSettings(QSettings::IniFormat, QSettings::SystemScope,
+                                                  QLatin1String(Core::Constants::IDE_SETTINGSVARIANT_STR),
+                                                  QLatin1String(Core::Constants::IDE_APPNAME_STR));
+        m_pPluginManager = new ExtensionSystem::PluginManager();
+        PluginManager::setFileExtension(QLatin1String("pluginspec"));
+        PluginManager::setGlobalSettings(globalSettings);
+        PluginManager::setSettings(settings);
+    
+        m_pCorePlugin = new Core::Internal::CorePlugin(m_MainWindow);
+        m_pCorePlugin->initialize(arguments, &err);
+    
+        m_pTextEditorPlugin = new TextEditor::Internal::TextEditorPlugin();
+        m_pTextEditorPlugin->initialize(arguments, &err);
+        m_pTextEditorPlugin->extensionsInitialized();
+    
+        m_pQmlJSToolsPlugin = new QmlJSTools::Internal::QmlJSToolsPlugin();
+        m_pQmlJSToolsPlugin->initialize(arguments, &err);
+        m_pQmlJSToolsPlugin->extensionsInitialized();
+    
+        m_pQmlJSEditorPlugin = new QmlJSEditor::Internal::QmlJSEditorPlugin();
+        m_pQmlJSEditorPlugin->initialize(arguments, &err);
+        m_pQmlJSEditorPlugin->extensionsInitialized();
+    
+        m_pCorePlugin->extensionsInitialized();//this should be called only in the final step(after the other plugins are loaded).
+    
+        m_pJSEditorMenuItems = new JSEditorMenuItems(this);
+    }
+}
+
 JsEditorToolsLib::~JsEditorToolsLib()
 {
     m_pQmlJSEditorPlugin->aboutToShutdown();
@@ -159,3 +167,8 @@ JsEditorToolsLib::~JsEditorToolsLib()
 
 ////////////////////////////////////////ADDITIONAL SLOTS ADDED BY ROOPAK/////////#720 ROOPAK
 
+//non-class function to return pointer to class
+extern "C" Q_DECL_EXPORT JsEditorTools::JsEditorToolsLib* create()
+{
+   return new JsEditorTools::JsEditorToolsLib(NULL);
+}

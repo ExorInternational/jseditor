@@ -19,7 +19,7 @@ LIBS *= \
 #        -l$$qtLibraryName(LanguageUtils) \//#720 ROOPAK
 #        -l$$qtLibraryName(CPlusPlus) \//#720 ROOPAK
 #        -l$$qtLibraryName(QmlJS) \//#720 ROOPAK
-        -l$$qtLibraryName(JsEditorTools) \
+#        -l$$qtLibraryName(JsEditorTools) \ #720 - COMMENTED BY ROOPAK - USED QLIBRARY TO LOAD THE DLL
 #        -l$$qtLibraryName(Aggregation) \//#720 ROOPAK
 #        -l$$qtLibraryName(ExtensionSystem) \//#720 ROOPAK
 #        -l$$qtLibraryName(QmlEditorWidgets) \//#720 ROOPAK

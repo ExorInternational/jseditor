@@ -4,6 +4,9 @@
 #include <QFileDialog>
 #include <QMenuBar>
 #include <QGridLayout>
+#include <QLibrary>
+
+#define USE_QLIBRARY_IMPORT true
 
 #include <jseditortools/jseditortools.h>
 #include <jseditortools/jseditormenuitems.h>
@@ -20,9 +23,8 @@ MainWindowApp::MainWindowApp(QWidget *parent) :
     QGridLayout *gridLayout = new QGridLayout(m_pCentralWidget);
     gridLayout->setMargin(0);
     setCentralWidget(m_pCentralWidget);
-
-    m_pJsEditorTools = new JsEditorTools::JsEditorToolsLib(m_pCentralWidget);
-    createMenus();
+    
+    loadLibrary();
 }
 
 MainWindowApp::~MainWindowApp()
@@ -33,14 +35,41 @@ MainWindowApp::~MainWindowApp()
         delete m_pJsEditorTools;
     m_pJsEditorTools = 0;
 }
-
+void MainWindowApp::loadLibrary()
+{
+#ifdef USE_QLIBRARY_IMPORT
+    QLibrary jsEditorLibrary;
+#if defined(Q_OS_WIN32) 
+    jsEditorLibrary.setFileName("../lib/TestApp/JsEditorTools.dll");
+#else defined(Q_OS_MAC || Q_OS_LINUX)
+    jsEditorLibrary.setFileName("../lib/TestApp/libJsEditorTools.so");
+#endif
+    if(jsEditorLibrary.load())
+    {
+        typedef QObject* (*getJSEditorLibrary)();
+        getJSEditorLibrary library=(getJSEditorLibrary)jsEditorLibrary.resolve("create");
+        if (library)
+        {
+            m_pJsEditorTools = (JsEditorTools::JsEditorToolsLib *)library();
+            m_pJsEditorTools->setParentWidget(m_pCentralWidget);
+        }
+    }
+    
+#else   //default C++ way of linking DLL
+    m_pJsEditorTools = new JsEditorTools::JsEditorToolsLib(m_pCentralWidget);
+#endif
+    createMenus();
+}
 void MainWindowApp::createMenus()
 {
-    QMenuBar *menuBar = new QMenuBar(this);
-    this->setMenuBar(menuBar);
-    menuBar->addMenu(m_pJsEditorTools->getJSEditorMenuItems()->getFileMenu());
-    menuBar->addMenu(m_pJsEditorTools->getJSEditorMenuItems()->getEditMenu());
-    menuBar->addMenu(m_pJsEditorTools->getJSEditorMenuItems()->getToolsMenu());
-    menuBar->addMenu(m_pJsEditorTools->getJSEditorMenuItems()->getWindowMenu());
+    if(m_pJsEditorTools)
+    {
+        QMenuBar *menuBar = new QMenuBar(this);
+        this->setMenuBar(menuBar);
+        menuBar->addMenu(m_pJsEditorTools->getJSEditorMenuItems()->getFileMenu());
+        menuBar->addMenu(m_pJsEditorTools->getJSEditorMenuItems()->getEditMenu());
+        menuBar->addMenu(m_pJsEditorTools->getJSEditorMenuItems()->getToolsMenu());
+        menuBar->addMenu(m_pJsEditorTools->getJSEditorMenuItems()->getWindowMenu());
+    }
 }
 

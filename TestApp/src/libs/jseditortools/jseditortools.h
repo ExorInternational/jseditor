@@ -47,6 +47,7 @@ public:
     JsEditorToolsLib(QWidget *mainWindow);
     ~JsEditorToolsLib();
 
+    void setParentWidget(QWidget *mainWIndow);
     JSEditorMenuItems *getJSEditorMenuItems() { return m_pJSEditorMenuItems; }
 private:
     QWidget *m_MainWindow;

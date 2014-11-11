@@ -21,6 +21,7 @@ public:
 private slots:
 
 private:
+    void loadLibrary();
     void createMenus();
 
     Ui::MainWindowApp *ui;
