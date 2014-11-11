@@ -168,7 +168,7 @@ JsEditorToolsLib::~JsEditorToolsLib()
 ////////////////////////////////////////ADDITIONAL SLOTS ADDED BY ROOPAK/////////#720 ROOPAK
 
 //non-class function to return pointer to class
-extern "C" Q_DECL_EXPORT JsEditorTools::JsEditorToolsLib* create()
+extern "C" Q_DECL_EXPORT JsEditorTools::JsEditorToolsLib* create(QWidget *pWidget)
 {
-   return new JsEditorTools::JsEditorToolsLib(NULL);
+   return new JsEditorTools::JsEditorToolsLib(pWidget);
 }

@@ -46,12 +46,11 @@ void MainWindowApp::loadLibrary()
 #endif
     if(jsEditorLibrary.load())
     {
-        typedef QObject* (*getJSEditorLibrary)();
+        typedef QObject* (*getJSEditorLibrary)(QWidget *);
         getJSEditorLibrary library=(getJSEditorLibrary)jsEditorLibrary.resolve("create");
         if (library)
         {
-            m_pJsEditorTools = (JsEditorTools::JsEditorToolsLib *)library();
-            m_pJsEditorTools->setParentWidget(m_pCentralWidget);
+            m_pJsEditorTools = (JsEditorTools::JsEditorToolsLib *)library(m_pCentralWidget);
         }
     }
     
