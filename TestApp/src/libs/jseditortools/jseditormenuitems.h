@@ -12,7 +12,7 @@ class IDocument;
 
 namespace JsEditorTools {
 
-class JSEditorMenuItems : public QObject
+class JSEDITORTOOLS_EXPORT JSEditorMenuItems : public QObject
 {
     Q_OBJECT
 public:

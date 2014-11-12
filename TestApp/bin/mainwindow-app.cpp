@@ -42,7 +42,11 @@ void MainWindowApp::loadLibrary()
 #ifdef USE_QLIBRARY_IMPORT
     QLibrary jsEditorLibrary;
 #if defined(Q_OS_WIN32) 
+#ifdef QT_DEBUG
+    jsEditorLibrary.setFileName("../lib/TestApp/JsEditorToolsd.dll");
+#else
     jsEditorLibrary.setFileName("../lib/TestApp/JsEditorTools.dll");
+#endif
 #else defined(Q_OS_MAC || Q_OS_LINUX)
     jsEditorLibrary.setFileName("../lib/TestApp/libJsEditorTools");
 #endif
@@ -54,11 +58,31 @@ void MainWindowApp::loadLibrary()
         {
             m_pJsEditorTools = (JsEditorTools::JsEditorToolsLib *)library(m_pCentralWidget);
         }
+
+        if(m_pJsEditorTools)
+        {
+            typedef QMenu* (*getJSEditorMenu)(QString);
+            getJSEditorMenu menu=(getJSEditorMenu)jsEditorLibrary.resolve("getMenu");
+            if(menu)
+            {
+                m_pFileMenu = (QMenu*)menu(QLatin1String("File"));
+                m_pEditMenu = (QMenu*)menu(QLatin1String("Edit"));
+                m_pToolsMenu = (QMenu*)menu(QLatin1String("Tools"));
+                m_pWindowMenu = (QMenu*)menu(QLatin1String("Window"));
+            }
+        }
     }
     else
         qDebug() << jsEditorLibrary.errorString();
 #else   //default C++ way of linking DLL
     m_pJsEditorTools = new JsEditorTools::JsEditorToolsLib(m_pCentralWidget);
+    if(m_pJsEditorTools)
+    {
+        m_pFileMenu = m_pJsEditorTools->getJSEditorMenuItems()->getFileMenu();
+        m_pEditMenu = m_pJsEditorTools->getJSEditorMenuItems()->getEditMenu();
+        m_pToolsMenu = m_pJsEditorTools->getJSEditorMenuItems()->getToolsMenu();
+        m_pWindowMenu = m_pJsEditorTools->getJSEditorMenuItems()->getWindowMenu();
+    }
 #endif
     createMenus();
 }
@@ -68,10 +92,14 @@ void MainWindowApp::createMenus()
     {
         QMenuBar *menuBar = new QMenuBar(this);
         this->setMenuBar(menuBar);
-        menuBar->addMenu(m_pJsEditorTools->getJSEditorMenuItems()->getFileMenu());
-        menuBar->addMenu(m_pJsEditorTools->getJSEditorMenuItems()->getEditMenu());
-        menuBar->addMenu(m_pJsEditorTools->getJSEditorMenuItems()->getToolsMenu());
-        menuBar->addMenu(m_pJsEditorTools->getJSEditorMenuItems()->getWindowMenu());
+        if(m_pFileMenu)
+            menuBar->addMenu(m_pFileMenu);
+        if(m_pEditMenu)
+            menuBar->addMenu(m_pEditMenu);
+        if(m_pToolsMenu)
+            menuBar->addMenu(m_pToolsMenu);
+        if(m_pWindowMenu)
+            menuBar->addMenu(m_pWindowMenu);
     }
 }
 

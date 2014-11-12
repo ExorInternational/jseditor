@@ -9,6 +9,7 @@ class MainWindowApp;
 
 namespace JsEditorTools {
 class JsEditorToolsLib;
+class JSEditorMenuItems;
 }
 
 class MainWindowApp : public QMainWindow
@@ -26,6 +27,10 @@ private:
 
     Ui::MainWindowApp *ui;
     JsEditorTools::JsEditorToolsLib *m_pJsEditorTools;
+    QMenu *m_pFileMenu;
+    QMenu *m_pEditMenu;
+    QMenu *m_pToolsMenu;
+    QMenu *m_pWindowMenu;
     QWidget *m_pCentralWidget;
 };
 

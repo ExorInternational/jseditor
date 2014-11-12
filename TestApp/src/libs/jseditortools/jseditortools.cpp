@@ -93,6 +93,7 @@ static inline QSettings *userSettings()
 
 JsEditorToolsLib::JsEditorToolsLib(QWidget *mainWindow)
 {
+    m_MainWindow = NULL;
     setParentWidget(mainWindow);
 }
 void JsEditorToolsLib::setParentWidget(QWidget *mainWindow)
@@ -167,8 +168,27 @@ JsEditorToolsLib::~JsEditorToolsLib()
 
 ////////////////////////////////////////ADDITIONAL SLOTS ADDED BY ROOPAK/////////#720 ROOPAK
 
+static JsEditorTools::JsEditorToolsLib *globalObject = NULL;
+
 //non-class function to return pointer to class
 extern "C" Q_DECL_EXPORT JsEditorTools::JsEditorToolsLib* create(QWidget *pWidget)
 {
-   return new JsEditorTools::JsEditorToolsLib(pWidget);
+    if(globalObject == NULL) {
+        globalObject = new JsEditorTools::JsEditorToolsLib(pWidget);
+    }
+   return globalObject;
+}
+
+extern "C" Q_DECL_EXPORT QMenu* getMenu(QString strMenuName)
+{
+    if(strMenuName.compare(QLatin1String("File")) == 0)
+        return globalObject->getJSEditorMenuItems()->getFileMenu();
+    else if(strMenuName.compare(QLatin1String("Edit")) == 0)
+        return globalObject->getJSEditorMenuItems()->getEditMenu();
+    else if(strMenuName.compare(QLatin1String("Tools")) == 0)
+        return globalObject->getJSEditorMenuItems()->getToolsMenu();
+    else if(strMenuName.compare(QLatin1String("Window")) == 0)
+        return globalObject->getJSEditorMenuItems()->getWindowMenu();
+    else
+        return NULL;
 }
