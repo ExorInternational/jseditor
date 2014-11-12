@@ -5,6 +5,7 @@
 #include <QMenuBar>
 #include <QGridLayout>
 #include <QLibrary>
+#include <QDebug>
 
 #define USE_QLIBRARY_IMPORT true
 
@@ -24,6 +25,7 @@ MainWindowApp::MainWindowApp(QWidget *parent) :
     gridLayout->setMargin(0);
     setCentralWidget(m_pCentralWidget);
     
+    m_pJsEditorTools = NULL;
     loadLibrary();
 }
 
@@ -42,7 +44,7 @@ void MainWindowApp::loadLibrary()
 #if defined(Q_OS_WIN32) 
     jsEditorLibrary.setFileName("../lib/TestApp/JsEditorTools.dll");
 #else defined(Q_OS_MAC || Q_OS_LINUX)
-    jsEditorLibrary.setFileName("../lib/TestApp/libJsEditorTools.so");
+    jsEditorLibrary.setFileName("../lib/TestApp/libJsEditorTools");
 #endif
     if(jsEditorLibrary.load())
     {
@@ -53,7 +55,8 @@ void MainWindowApp::loadLibrary()
             m_pJsEditorTools = (JsEditorTools::JsEditorToolsLib *)library(m_pCentralWidget);
         }
     }
-    
+    else
+        qDebug() << jsEditorLibrary.errorString();
 #else   //default C++ way of linking DLL
     m_pJsEditorTools = new JsEditorTools::JsEditorToolsLib(m_pCentralWidget);
 #endif
