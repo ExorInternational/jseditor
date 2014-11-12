@@ -7,7 +7,7 @@
 #include <QLibrary>
 #include <QDebug>
 
-#define USE_QLIBRARY_IMPORT true
+//#define USE_QLIBRARY_IMPORT true
 
 #include <jseditortools/jseditortools.h>
 #include <jseditortools/jseditormenuitems.h>
