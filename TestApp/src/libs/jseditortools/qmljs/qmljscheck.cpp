@@ -1426,7 +1426,8 @@ bool Check::visit(CallExpression *ast)
             && name != QLatin1String("Boolean")
             && name != QLatin1String("Date")
             && name != QLatin1String("Number")
-            && name != QLatin1String("Object")) {
+            && name != QLatin1String("Object")
+            && name != QLatin1String("Page") ) {//#720 ROOPAK 
         addMessage(WarnExpectedNewWithUppercaseFunction, location);
     }
     if (cast<IdentifierExpression *>(ast->base) && name == QLatin1String("eval"))

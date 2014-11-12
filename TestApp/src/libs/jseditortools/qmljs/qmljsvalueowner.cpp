@@ -105,6 +105,9 @@ public:
     ObjectValue *_qmlVector4DObject;
     ObjectValue *_qmlQuaternionObject;
     ObjectValue *_qmlMatrix4x4Object;
+    
+    ObjectValue *_pagePrototype;//#720 ROOPAK - START
+    Function *_pageCtor;//#720 ROOPAK - END
 
     NullValue _nullValue;
     UndefinedValue _undefinedValue;
@@ -117,6 +120,8 @@ public:
     UrlValue _urlValue;
     ColorValue _colorValue;
     AnchorLineValue _anchorLineValue;
+    
+    void addJSMobileCustomTypes();//#720 ROOPAK 
 };
 
 SharedValueOwner *ValueOwner::sharedValueOwner(QString kind)
@@ -633,9 +638,36 @@ SharedValueOwner::SharedValueOwner(SharedValueOwnerKind kind)
     addFunction(_globalObject, QLatin1String("QT_TRANSLATE_NOOP"), 2);
     addFunction(_globalObject, QLatin1String("qsTrId"), 2);
     addFunction(_globalObject, QLatin1String("QT_TRID_NOOP"), 1);
+    
+    addJSMobileCustomTypes();//#720 ROOPAK
 }
 
-
+void SharedValueOwner::addJSMobileCustomTypes()//#720 ROOPAK - START
+{
+    _pagePrototype     = newObject(_objectPrototype);
+    
+    ObjectValue *pageInstance = newObject(_pagePrototype);
+    pageInstance->setClassName(QLatin1String("Page"));
+    _pageCtor = new Function(this);
+    _pageCtor->setMember(QLatin1String("prototype"), _pagePrototype);
+    _pageCtor->setReturnValue(pageInstance);
+    _pageCtor->setVariadic(true);
+    
+    addFunction(_pagePrototype, QLatin1String("pageFunction1"), numberValue(), 1);
+    addFunction(_pagePrototype, QLatin1String("pageFunction2"), numberValue(), 1);
+    addFunction(_pagePrototype, QLatin1String("pageFunction3"), numberValue(), 1);
+    
+    // fill the Global object
+    _globalObject->setMember(QLatin1String("Page"), pageCtor());
+}
+const FunctionValue *ValueOwner::pageCtor() const
+{
+    return _shared->_pageCtor;
+}
+const ObjectValue *ValueOwner::pagePrototype() const
+{
+    return _shared->_pagePrototype;
+}//#720 ROOPAK - END
 ValueOwner::ValueOwner(const SharedValueOwner *shared)
     : _convertToNumber(this)
     , _convertToString(this)
@@ -933,6 +965,8 @@ const Value *ValueOwner::defaultValueForBuiltinType(const QString &name) const
         return colorValue();
     } else if (name == QLatin1String("date")) {
         return datePrototype();
+    } else if (name == QLatin1String("page")) {//#720 ROOPAK - END
+        return pagePrototype();//#720 ROOPAK - END
     } else if (name == QLatin1String("var")
                || name == QLatin1String("variant")) {
         return unknownValue();

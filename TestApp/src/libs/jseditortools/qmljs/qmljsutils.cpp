@@ -69,6 +69,8 @@ public:
         validBuiltinPropertyNames.insert(QLatin1String("quaternion"));
         validBuiltinPropertyNames.insert(QLatin1String("matrix4x4"));
         validBuiltinPropertyNames.insert(QLatin1String("alias"));
+        
+        validBuiltinPropertyNames.insert(QLatin1String("page"));//#720 ROOPAK 
     }
 
     QSet<QString> validBuiltinPropertyNames;

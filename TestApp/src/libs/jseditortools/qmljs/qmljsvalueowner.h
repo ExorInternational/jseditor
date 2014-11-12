@@ -124,6 +124,10 @@ public:
     const FunctionValue *numberCtor() const;
     const FunctionValue *dateCtor() const;
     const FunctionValue *regexpCtor() const;
+    
+    //ctors - JSMobile - //#720 ROOPAK - START
+    const FunctionValue *pageCtor() const;
+    const ObjectValue *pagePrototype() const;//#720 ROOPAK - END
 
     // operators
     const Value *convertToBoolean(const Value *value);

@@ -279,6 +279,8 @@ bool Highlighter::maybeQmlBuiltinType(const QStringRef &text) const
         return true;
     else if (ch == QLatin1Char('v') && text == QLatin1String("vector4d"))
         return true;
+    else if (ch == QLatin1Char('p') && text == QLatin1String("page"))//#720 ROOPAK - START
+        return true;//#720 ROOPAK - END
     else
         return false;
 }
