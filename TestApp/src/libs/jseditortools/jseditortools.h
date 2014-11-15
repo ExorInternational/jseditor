@@ -4,6 +4,7 @@
 #include "jseditortools_global.h"
 
 #include <QObject>
+#include <QHash>//#720 ROOPAK 
 
 class QMainWindow;
 class QStringList;
@@ -39,6 +40,31 @@ class QmlJSEditorPlugin;
 
 namespace JsEditorTools {
 
+class JSEDITORTOOLS_EXPORT JSCustomBuiltinKey//#720 ROOPAK - START
+{
+public:
+    JSCustomBuiltinKey() {}
+    JSCustomBuiltinKey(const JSCustomBuiltinKey &other)
+    {
+        this->m_strClassName = other.m_strClassName;
+    }
+    JSCustomBuiltinKey &operator=(const JSCustomBuiltinKey &other)
+    {
+        if (this != &other)
+            this->m_strClassName = other.m_strClassName;
+        return *this;
+    }
+    bool operator==(const JSCustomBuiltinKey &other) const 
+    { 
+        return this->m_strClassName == other.m_strClassName; 
+    }
+    bool operator< (const JSCustomBuiltinKey &other) const 
+    {
+        return m_strClassName < other.m_strClassName;
+    }
+    QString m_strClassName;
+    
+};//#720 ROOPAK - END
 class JSEditorMenuItems;
 
 class JSEDITORTOOLS_EXPORT JsEditorToolsLib : public QObject {
@@ -48,6 +74,7 @@ public:
     ~JsEditorToolsLib();
 
     void setParentWidget(QWidget *mainWIndow);
+    void setCustomBuiltinTypes(QMap<JsEditorTools::JSCustomBuiltinKey, QObject *> oCustomClassTypesList);//#720 ROOPAK 
     JSEditorMenuItems *getJSEditorMenuItems() { return m_pJSEditorMenuItems; }
 private:
     QWidget *m_MainWindow;

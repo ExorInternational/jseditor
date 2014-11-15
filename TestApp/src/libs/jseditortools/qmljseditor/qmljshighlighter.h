@@ -74,6 +74,7 @@ protected:
 
     bool maybeQmlKeyword(const QStringRef &text) const;
     bool maybeQmlBuiltinType(const QStringRef &text) const;
+    bool maybeCustomBuiltinType(const QStringRef &text) const;//#720 ROOPAK 
 
 private:
     typedef TextEditor::Parenthesis Parenthesis;

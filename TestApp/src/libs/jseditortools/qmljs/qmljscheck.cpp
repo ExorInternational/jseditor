@@ -32,6 +32,7 @@
 #include "qmljsevaluate.h"
 #include "qmljsutils.h"
 #include "parser/qmljsast_p.h"
+#include "jseditortools/coreplugin/documentmanager.h"//#720 ADDED BY ROOPAK 
 
 #include <utils/qtcassert.h>
 
@@ -1421,13 +1422,17 @@ bool Check::visit(CallExpression *ast)
     // check for capitalized function name being called
     SourceLocation location;
     const QString name = functionName(ast->base, &location);
+    
+    JsEditorTools::JSCustomBuiltinKey thisKey;//#720 ROOPAK - START
+    thisKey.m_strClassName = name;//#720 ROOPAK - END
+    
     if (!name.isEmpty() && name.at(0).isUpper()
             && name != QLatin1String("String")
             && name != QLatin1String("Boolean")
             && name != QLatin1String("Date")
             && name != QLatin1String("Number")
             && name != QLatin1String("Object")
-            && name != QLatin1String("Page") ) {//#720 ROOPAK 
+            && !Core::DocumentManager::m_oCustomClassTypesList.contains(thisKey) ) {//#720 ROOPAK 
         addMessage(WarnExpectedNewWithUppercaseFunction, location);
     }
     if (cast<IdentifierExpression *>(ast->base) && name == QLatin1String("eval"))

@@ -32,6 +32,7 @@
 
 #include "qmljs_global.h"
 #include "qmljsinterpreter_renamed.h"
+#include "jseditortools/coreplugin/documentmanager.h"//#720 ADDED BY ROOPAK 
 
 #include <QList>
 
@@ -60,6 +61,13 @@ class TypeScope;
 class JSImportScope;
 class Function;
 class SharedValueOwner;
+
+typedef struct QMLJS_EXPORT sCustomBuiltinValue//#720 ROOPAK - START
+{
+    ObjectValue *_customTypePrototype;
+    Function *_customTypeCtor;
+    
+} sCustomBuiltinValue;//#720 ROOPAK - END
 
 class QMLJS_EXPORT ValueOwner
 {
@@ -126,9 +134,10 @@ public:
     const FunctionValue *regexpCtor() const;
     
     //ctors - JSMobile - //#720 ROOPAK - START
-    const FunctionValue *pageCtor() const;
-    const ObjectValue *pagePrototype() const;//#720 ROOPAK - END
-
+    const FunctionValue *customCtor(JsEditorTools::JSCustomBuiltinKey customKey) const;
+    bool isEqualToCustomClassNameInLowerCase(const QString &strClassNameLowerCase) const;
+    const ObjectValue *customPrototype(const QString &QstrClassNameLowerCase) const;//#720 ROOPAK - END
+    
     // operators
     const Value *convertToBoolean(const Value *value);
     const Value *convertToNumber(const Value *value);

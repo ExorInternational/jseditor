@@ -1,5 +1,6 @@
 #include "jseditortools.h"
 #include <jseditortools/coreplugin/coreplugin.h>
+#include <jseditortools/coreplugin/documentmanager.h>
 #include <jseditortools/texteditor/texteditorplugin.h>
 #include <jseditortools/qmljstools/qmljstoolsplugin.h>
 #include <jseditortools/qmljseditor/qmljseditorplugin.h>
@@ -133,6 +134,12 @@ void JsEditorToolsLib::setParentWidget(QWidget *mainWindow)
     
         m_pJSEditorMenuItems = new JSEditorMenuItems(this);
     }
+}
+
+void JsEditorToolsLib::setCustomBuiltinTypes(QMap<JsEditorTools::JSCustomBuiltinKey, QObject *> oCustomClassTypesList)
+{
+    if(Core::DocumentManager::instance())
+        Core::DocumentManager::m_oCustomClassTypesList = oCustomClassTypesList;
 }
 
 JsEditorToolsLib::~JsEditorToolsLib()

@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+class CWidget;
+
 namespace Ui {
 class MainWindowApp;
 }
@@ -23,6 +25,7 @@ private slots:
 
 private:
     void loadLibrary();
+    void createCustomBuiltinTypes();
     void createMenus();
 
     Ui::MainWindowApp *ui;
@@ -32,6 +35,9 @@ private:
     QMenu *m_pToolsMenu;
     QMenu *m_pWindowMenu;
     QWidget *m_pCentralWidget;
+    
+    //Built-in Types
+    CWidget *m_pWidgetObject;
 };
 
 #endif // MAINWINDOW_APP_H

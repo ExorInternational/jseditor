@@ -28,6 +28,7 @@
 ****************************************************************************/
 
 #include "qmljshighlighter.h"
+#include "jseditortools/coreplugin/documentmanager.h"//#720 ADDED BY ROOPAK 
 
 #include <QSet>
 #include <QtAlgorithms>
@@ -279,12 +280,30 @@ bool Highlighter::maybeQmlBuiltinType(const QStringRef &text) const
         return true;
     else if (ch == QLatin1Char('v') && text == QLatin1String("vector4d"))
         return true;
-    else if (ch == QLatin1Char('p') && text == QLatin1String("page"))//#720 ROOPAK - START
+    else if (maybeCustomBuiltinType(text))//#720 ROOPAK - START
         return true;//#720 ROOPAK - END
     else
         return false;
 }
 
+bool Highlighter::maybeCustomBuiltinType(const QStringRef &text) const//#720 ROOPAK - START
+{
+    if (text.isEmpty())
+        return false;
+
+    const QChar ch = text.at(0);
+    
+    QMapIterator<JsEditorTools::JSCustomBuiltinKey, QObject *> i(Core::DocumentManager::m_oCustomClassTypesList);
+    while (i.hasNext()) {
+        i.next();
+        QString strKeyLowerCase = i.key().m_strClassName.toLower();
+        QChar keyFirstLetter = strKeyLowerCase.at(0);
+        if (ch == keyFirstLetter && text == strKeyLowerCase)
+                return true;
+    }
+
+    return false;
+}//#720 ROOPAK - END
 int Highlighter::onBlockStart()
 {
     m_currentBlockParentheses.clear();

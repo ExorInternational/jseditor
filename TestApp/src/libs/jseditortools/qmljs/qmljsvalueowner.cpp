@@ -62,7 +62,6 @@ private:
 
 } // end of anonymous namespace
 
-
 // globally shared data
 class QmlJS::SharedValueOwner : public ValueOwner
 {
@@ -106,8 +105,7 @@ public:
     ObjectValue *_qmlQuaternionObject;
     ObjectValue *_qmlMatrix4x4Object;
     
-    ObjectValue *_pagePrototype;//#720 ROOPAK - START
-    Function *_pageCtor;//#720 ROOPAK - END
+    QMap<JsEditorTools::JSCustomBuiltinKey, sCustomBuiltinValue> m_oCustomObjectValuesList;//#720 ROOPAK 
 
     NullValue _nullValue;
     UndefinedValue _undefinedValue;
@@ -644,30 +642,71 @@ SharedValueOwner::SharedValueOwner(SharedValueOwnerKind kind)
 
 void SharedValueOwner::addJSMobileCustomTypes()//#720 ROOPAK - START
 {
-    _pagePrototype     = newObject(_objectPrototype);
-    
-    ObjectValue *pageInstance = newObject(_pagePrototype);
-    pageInstance->setClassName(QLatin1String("Page"));
-    _pageCtor = new Function(this);
-    _pageCtor->setMember(QLatin1String("prototype"), _pagePrototype);
-    _pageCtor->setReturnValue(pageInstance);
-    _pageCtor->setVariadic(true);
-    
-    addFunction(_pagePrototype, QLatin1String("pageFunction1"), numberValue(), 1);
-    addFunction(_pagePrototype, QLatin1String("pageFunction2"), numberValue(), 1);
-    addFunction(_pagePrototype, QLatin1String("pageFunction3"), numberValue(), 1);
-    
-    // fill the Global object
-    _globalObject->setMember(QLatin1String("Page"), pageCtor());
+    QMapIterator<JsEditorTools::JSCustomBuiltinKey, QObject *> i(Core::DocumentManager::m_oCustomClassTypesList);
+    while (i.hasNext()) {
+        i.next();
+//        qDebug() << i.key().m_strClassName << ": " << i.value();
+        sCustomBuiltinValue newValue;
+        newValue._customTypePrototype     = newObject(_objectPrototype);
+        
+        ObjectValue *customTypeInstance = newObject(newValue._customTypePrototype);
+        customTypeInstance->setClassName(i.key().m_strClassName);
+        newValue._customTypeCtor = new Function(this);
+        newValue._customTypeCtor->setMember(QLatin1String("prototype"), newValue._customTypePrototype);
+        newValue._customTypeCtor->setReturnValue(customTypeInstance);
+        newValue._customTypeCtor->setVariadic(true);
+        
+         newValue._customTypePrototype->setMember(QLatin1String("property1"), numberValue());
+         newValue._customTypePrototype->setMember(QLatin1String("property2"), numberValue());
+         newValue._customTypePrototype->setMember(QLatin1String("property3"), numberValue());
+         
+         addFunction(newValue._customTypePrototype, QLatin1String("pageFunction1"), numberValue(), 1);
+         addFunction(newValue._customTypePrototype, QLatin1String("pageFunction2"), numberValue(), 1);
+         addFunction(newValue._customTypePrototype, QLatin1String("pageFunction3"), numberValue(), 1);
+         
+         m_oCustomObjectValuesList.insert(i.key(), newValue);
+         
+         // fill the Global object
+         _globalObject->setMember(i.key().m_strClassName, customCtor(i.key()));
+    }
 }
-const FunctionValue *ValueOwner::pageCtor() const
+const FunctionValue *ValueOwner::customCtor(JsEditorTools::JSCustomBuiltinKey customKey) const
 {
-    return _shared->_pageCtor;
+    sCustomBuiltinValue newValue = _shared->m_oCustomObjectValuesList.value(customKey);
+    return newValue._customTypeCtor;
 }
-const ObjectValue *ValueOwner::pagePrototype() const
+bool ValueOwner::isEqualToCustomClassNameInLowerCase(const QString &strClassNameLowerCase) const
 {
-    return _shared->_pagePrototype;
-}//#720 ROOPAK - END
+    QMapIterator<JsEditorTools::JSCustomBuiltinKey, sCustomBuiltinValue> i(_shared->m_oCustomObjectValuesList);
+    while (i.hasNext()) {
+        i.next();
+        QString strKeyLowerCase = i.key().m_strClassName.toLower();
+        if(strKeyLowerCase == strClassNameLowerCase)
+        {
+            return true;
+        }
+    }
+    
+    return false;
+}
+
+const ObjectValue *ValueOwner::customPrototype(const QString &strClassNameLowerCase) const
+{
+    QMapIterator<JsEditorTools::JSCustomBuiltinKey, sCustomBuiltinValue> i(_shared->m_oCustomObjectValuesList);
+    while (i.hasNext()) {
+        i.next();
+        QString strKeyLowerCase = i.key().m_strClassName.toLower();
+        if(strKeyLowerCase == strClassNameLowerCase)
+        {
+            sCustomBuiltinValue newValue = _shared->m_oCustomObjectValuesList.value(i.key());
+            return newValue._customTypePrototype;
+        }
+    }
+    
+//    qDebug() << "Custom prototype not found";
+    return NULL;
+}
+//#720 ROOPAK - END
 ValueOwner::ValueOwner(const SharedValueOwner *shared)
     : _convertToNumber(this)
     , _convertToString(this)
@@ -965,8 +1004,8 @@ const Value *ValueOwner::defaultValueForBuiltinType(const QString &name) const
         return colorValue();
     } else if (name == QLatin1String("date")) {
         return datePrototype();
-    } else if (name == QLatin1String("page")) {//#720 ROOPAK - END
-        return pagePrototype();//#720 ROOPAK - END
+    } else if (isEqualToCustomClassNameInLowerCase(name)) {//#720 ROOPAK - END
+        return customPrototype(name);//#720 ROOPAK - END
     } else if (name == QLatin1String("var")
                || name == QLatin1String("variant")) {
         return unknownValue();

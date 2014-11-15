@@ -1,4 +1,4 @@
-QT += network
+QT += network script
 include(../TestApp.pri)
 
 TEMPLATE = app
@@ -9,6 +9,16 @@ HEADERS       = mainwindow-app.h
 SOURCES       = main.cpp \
                 mainwindow-app.cpp
 FORMS         = mainwindow-app.ui
+
+HEADERS      += CustomTypes/JSObjects.h     \
+                CustomTypes/PageWgt.h       \
+                CustomTypes/ProjectWgt.h    \
+                CustomTypes/Widget.h
+
+SOURCES      += CustomTypes/JSObjects.cpp     \
+                CustomTypes/PageWgt.cpp       \
+                CustomTypes/ProjectWgt.cpp    \
+                CustomTypes/Widget.cpp
 
 #! [0]
 #RESOURCES     = application.qrc
@@ -45,7 +55,8 @@ LIBS *= \
 
 #This is a temp fix for QString error("QString::QString(const char*)' is privateQString(const char *ch)").
 DEFINES -= QT_NO_CAST_TO_ASCII QT_NO_CAST_FROM_ASCII
-
+#This removes the unused parameter warnings
+QMAKE_CXXFLAGS_WARN_OFF -= -Wunused-parameter
 
 INCLUDEPATH += $$PWD/../src/libs/jseditortools
 #LIBS *= -l$$qtLibraryName(JsEditorTools) \

@@ -31,6 +31,7 @@
 #define DOCUMENTMANAGER_H
 
 #include <coreplugin/id.h>
+#include "jseditortools/jseditortools.h"
 
 #include <QObject>
 #include <QPair>
@@ -140,6 +141,9 @@ public:
     /* Used to notify e.g. the code model to update the given files. Does *not*
        lead to any editors to reload or any other editor manager actions. */
     static void notifyFilesChangedInternally(const QStringList &files);
+    
+    //for adding custom built-in types
+    static QMap<JsEditorTools::JSCustomBuiltinKey, QObject *> m_oCustomClassTypesList;
 
 public slots:
     static void executeOpenWithMenuAction(QAction *action);

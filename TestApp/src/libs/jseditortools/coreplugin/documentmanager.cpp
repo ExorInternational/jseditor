@@ -213,6 +213,8 @@ namespace Core {
 
 using namespace Internal;
 
+QMap<JsEditorTools::JSCustomBuiltinKey, QObject *> DocumentManager::m_oCustomClassTypesList;//#720 ROOPAK 
+
 DocumentManager::DocumentManager(QObject *parent)
   : QObject(parent)
 {

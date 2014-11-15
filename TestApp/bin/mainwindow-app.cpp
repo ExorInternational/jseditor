@@ -12,6 +12,16 @@
 #include <jseditortools/jseditortools.h>
 #include <jseditortools/jseditormenuitems.h>
 
+//builtin-types
+#include "CustomTypes/Widget.h"
+
+template< class T > void SafeDelete( T*& pVal )
+{
+    delete pVal;
+    pVal = NULL;
+}
+
+
 MainWindowApp::MainWindowApp(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindowApp)
@@ -26,6 +36,7 @@ MainWindowApp::MainWindowApp(QWidget *parent) :
     setCentralWidget(m_pCentralWidget);
     
     m_pJsEditorTools = NULL;
+    m_pWidgetObject = NULL;
     loadLibrary();
 }
 
@@ -33,9 +44,8 @@ MainWindowApp::~MainWindowApp()
 {
     delete ui;
 
-    if(m_pJsEditorTools)
-        delete m_pJsEditorTools;
-    m_pJsEditorTools = 0;
+    SafeDelete(m_pWidgetObject);
+    SafeDelete(m_pJsEditorTools);
 }
 void MainWindowApp::loadLibrary()
 {
@@ -78,6 +88,8 @@ void MainWindowApp::loadLibrary()
     m_pJsEditorTools = new JsEditorTools::JsEditorToolsLib(m_pCentralWidget);
     if(m_pJsEditorTools)
     {
+        createCustomBuiltinTypes();
+        
         m_pFileMenu = m_pJsEditorTools->getJSEditorMenuItems()->getFileMenu();
         m_pEditMenu = m_pJsEditorTools->getJSEditorMenuItems()->getEditMenu();
         m_pToolsMenu = m_pJsEditorTools->getJSEditorMenuItems()->getToolsMenu();
@@ -86,6 +98,23 @@ void MainWindowApp::loadLibrary()
 #endif
     createMenus();
 }
+void MainWindowApp::createCustomBuiltinTypes()
+{
+#ifndef USE_QLIBRARY_IMPORT
+    if(m_pJsEditorTools)
+    {
+        if(m_pWidgetObject == NULL)
+            m_pWidgetObject = new CWidget();
+        
+        QMap<JsEditorTools::JSCustomBuiltinKey, QObject *> oCustomClassTypesList;
+        JsEditorTools::JSCustomBuiltinKey key;
+        key.m_strClassName = "Widget";
+        oCustomClassTypesList.insert(key, m_pWidgetObject);
+        m_pJsEditorTools->setCustomBuiltinTypes(oCustomClassTypesList);
+    }
+#endif
+}
+
 void MainWindowApp::createMenus()
 {
     if(m_pJsEditorTools)

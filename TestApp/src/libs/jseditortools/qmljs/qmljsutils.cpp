@@ -30,6 +30,7 @@
 #include "qmljsutils.h"
 
 #include "parser/qmljsast_p.h"
+#include "jseditortools/coreplugin/documentmanager.h"//#720 ADDED BY ROOPAK 
 
 using namespace QmlJS;
 using namespace QmlJS::AST;
@@ -70,7 +71,12 @@ public:
         validBuiltinPropertyNames.insert(QLatin1String("matrix4x4"));
         validBuiltinPropertyNames.insert(QLatin1String("alias"));
         
-        validBuiltinPropertyNames.insert(QLatin1String("page"));//#720 ROOPAK 
+        QMapIterator<JsEditorTools::JSCustomBuiltinKey, QObject *> i(Core::DocumentManager::m_oCustomClassTypesList);//#720 ROOPAK - START
+        while (i.hasNext()) {
+            i.next();
+            QString strKeyLowerCase = i.key().m_strClassName.toLower();
+            validBuiltinPropertyNames.insert(strKeyLowerCase);
+        }//#720 ROOPAK - END
     }
 
     QSet<QString> validBuiltinPropertyNames;
