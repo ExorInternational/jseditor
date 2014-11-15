@@ -31,6 +31,8 @@
 
 #include "qmljscontext.h"
 
+#include <QMetaProperty>//#720 ROOPAK 
+
 using namespace QmlJS;
 
 /*!
@@ -656,9 +658,44 @@ void SharedValueOwner::addJSMobileCustomTypes()//#720 ROOPAK - START
         newValue._customTypeCtor->setReturnValue(customTypeInstance);
         newValue._customTypeCtor->setVariadic(true);
         
-         newValue._customTypePrototype->setMember(QLatin1String("property1"), numberValue());
-         newValue._customTypePrototype->setMember(QLatin1String("property2"), numberValue());
-         newValue._customTypePrototype->setMember(QLatin1String("property3"), numberValue());
+        QObject *pObject = i.value();
+        const QMetaObject* metaObject = pObject->metaObject();
+        for(int i = metaObject->propertyOffset(); i < metaObject->propertyCount(); ++i){
+            QString propertyName = QString::fromLatin1(metaObject->property(i).name());
+            QVariant::Type type = metaObject->property(i).type();
+            switch (type) {
+            case QMetaType::Bool:
+                    newValue._customTypePrototype->setMember(propertyName, booleanValue());
+                break;
+            case QMetaType::Int:
+                    newValue._customTypePrototype->setMember(propertyName, intValue());
+                break;
+            case QMetaType::Float:
+                    newValue._customTypePrototype->setMember(propertyName, realValue());
+                break;
+            case QVariant::String :
+                    newValue._customTypePrototype->setMember(propertyName, stringValue());
+                break;
+            case QVariant::Url :
+                    newValue._customTypePrototype->setMember(propertyName, urlValue());
+                break;
+            case QVariant::Color :
+                    newValue._customTypePrototype->setMember(propertyName, colorValue());
+                break;
+            case QMetaType::QVariant:
+            case QVariant::LastType:
+//                    newValue._customTypePrototype->setMember(propertyName, intValue());
+                qDebug() << QString(QLatin1String("%1")).arg(type);
+                break;
+            default:
+                qDebug() << QString(QLatin1String("%1")).arg(type);
+                break;
+            }
+        }
+        
+//         newValue._customTypePrototype->setMember(QLatin1String("property1"), numberValue());
+//         newValue._customTypePrototype->setMember(QLatin1String("property2"), numberValue());
+//         newValue._customTypePrototype->setMember(QLatin1String("property3"), numberValue());
          
          addFunction(newValue._customTypePrototype, QLatin1String("pageFunction1"), numberValue(), 1);
          addFunction(newValue._customTypePrototype, QLatin1String("pageFunction2"), numberValue(), 1);
