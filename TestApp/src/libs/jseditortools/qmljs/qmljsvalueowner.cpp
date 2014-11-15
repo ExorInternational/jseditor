@@ -697,24 +697,24 @@ void SharedValueOwner::addJSMobileCustomTypes()//#720 ROOPAK - START
         //Add properties
         QObject *pObject = i.value();
         const QMetaObject* metaObject = pObject->metaObject();
-        for(int i = metaObject->propertyOffset(); i < metaObject->propertyCount(); ++i){
-            QString propertyName = QString::fromLatin1(metaObject->property(i).name());
-            QVariant::Type type = metaObject->property(i).type();
+        for(int index = metaObject->propertyOffset(); index < metaObject->propertyCount(); ++index){
+            QString propertyName = QString::fromLatin1(metaObject->property(index).name());
+            QVariant::Type type = metaObject->property(index).type();
             const Value *value = getValueForType(type);
             if(value)
                 newValue._customTypePrototype->setMember(propertyName, value);
         }
 
         //Add methods
-        for(int i = metaObject->methodOffset(); i < metaObject->methodCount(); ++i)
+        for(int index = metaObject->methodOffset(); index < metaObject->methodCount(); ++index)
         {
-            QString strMethodName = QString(QLatin1String(metaObject->method(i).signature()));
+            QString strMethodName = QString(QLatin1String(metaObject->method(index).signature()));
             int nIndexOfOpenBracket = strMethodName.indexOf(QLatin1Char('('));
             strMethodName.chop(strMethodName.length() - nIndexOfOpenBracket);
             
-            QVariant::Type type = QVariant::nameToType(metaObject->method(i).typeName());
+            QVariant::Type type = QVariant::nameToType(metaObject->method(index).typeName());
             
-            int nNumParams = metaObject->method(i).parameterNames().count();
+            int nNumParams = metaObject->method(index).parameterNames().count();
             
             if(type == QMetaType::Void)
                 addFunction(newValue._customTypePrototype, strMethodName, nNumParams, 0, true);
