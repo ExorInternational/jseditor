@@ -121,7 +121,8 @@ public:
     ColorValue _colorValue;
     AnchorLineValue _anchorLineValue;
     
-    void addJSMobileCustomTypes();//#720 ROOPAK 
+    void addJSMobileCustomTypes();//#720 ROOPAK -START
+    const Value *getValueForType(QVariant::Type type);//#720 ROOPAK - END
 };
 
 SharedValueOwner *ValueOwner::sharedValueOwner(QString kind)
@@ -642,12 +643,47 @@ SharedValueOwner::SharedValueOwner(SharedValueOwnerKind kind)
     addJSMobileCustomTypes();//#720 ROOPAK
 }
 
+const Value *SharedValueOwner::getValueForType(QVariant::Type type)
+{
+    const Value *ret = NULL;
+    
+    switch (type) {
+    case QMetaType::Bool:
+            ret = booleanValue();
+        break;
+    case QMetaType::Int:
+            ret = intValue();
+        break;
+    case QMetaType::Float:
+            ret = realValue();
+        break;
+    case QVariant::String :
+            ret = stringValue();
+        break;
+    case QVariant::Url :
+            ret = urlValue();
+        break;
+    case QVariant::Color :
+            ret = colorValue();
+        break;
+    case QMetaType::QVariant:
+    case QVariant::LastType:
+//                    newValue._customTypePrototype->setMember(propertyName, intValue());
+        qDebug() << "///TO DO:" << QString(QLatin1String("%1")).arg(type);
+        break;
+    default:
+        qDebug() << "Unknown type: " << QString(QLatin1String("%1")).arg(type);
+        break;
+    }
+    
+    return ret;
+}
+
 void SharedValueOwner::addJSMobileCustomTypes()//#720 ROOPAK - START
 {
     QMapIterator<JsEditorTools::JSCustomBuiltinKey, QObject *> i(Core::DocumentManager::m_oCustomClassTypesList);
     while (i.hasNext()) {
         i.next();
-//        qDebug() << i.key().m_strClassName << ": " << i.value();
         sCustomBuiltinValue newValue;
         newValue._customTypePrototype     = newObject(_objectPrototype);
         
@@ -658,53 +694,42 @@ void SharedValueOwner::addJSMobileCustomTypes()//#720 ROOPAK - START
         newValue._customTypeCtor->setReturnValue(customTypeInstance);
         newValue._customTypeCtor->setVariadic(true);
         
+        //Add properties
         QObject *pObject = i.value();
         const QMetaObject* metaObject = pObject->metaObject();
         for(int i = metaObject->propertyOffset(); i < metaObject->propertyCount(); ++i){
             QString propertyName = QString::fromLatin1(metaObject->property(i).name());
             QVariant::Type type = metaObject->property(i).type();
-            switch (type) {
-            case QMetaType::Bool:
-                    newValue._customTypePrototype->setMember(propertyName, booleanValue());
-                break;
-            case QMetaType::Int:
-                    newValue._customTypePrototype->setMember(propertyName, intValue());
-                break;
-            case QMetaType::Float:
-                    newValue._customTypePrototype->setMember(propertyName, realValue());
-                break;
-            case QVariant::String :
-                    newValue._customTypePrototype->setMember(propertyName, stringValue());
-                break;
-            case QVariant::Url :
-                    newValue._customTypePrototype->setMember(propertyName, urlValue());
-                break;
-            case QVariant::Color :
-                    newValue._customTypePrototype->setMember(propertyName, colorValue());
-                break;
-            case QMetaType::QVariant:
-            case QVariant::LastType:
-//                    newValue._customTypePrototype->setMember(propertyName, intValue());
-                qDebug() << QString(QLatin1String("%1")).arg(type);
-                break;
-            default:
-                qDebug() << QString(QLatin1String("%1")).arg(type);
-                break;
+            const Value *value = getValueForType(type);
+            if(value)
+                newValue._customTypePrototype->setMember(propertyName, value);
+        }
+
+        //Add methods
+        for(int i = metaObject->methodOffset(); i < metaObject->methodCount(); ++i)
+        {
+            QString strMethodName = QString(QLatin1String(metaObject->method(i).signature()));
+            int nIndexOfOpenBracket = strMethodName.indexOf(QLatin1Char('('));
+            strMethodName.chop(strMethodName.length() - nIndexOfOpenBracket);
+            
+            QVariant::Type type = QVariant::nameToType(metaObject->method(i).typeName());
+            
+            int nNumParams = metaObject->method(i).parameterNames().count();
+            
+            if(type == QMetaType::Void)
+                addFunction(newValue._customTypePrototype, strMethodName, nNumParams, 0, true);
+            else 
+            {
+                const Value *value = getValueForType(type);
+                if(value)
+                    addFunction(newValue._customTypePrototype, strMethodName, value, nNumParams);
             }
         }
         
-//         newValue._customTypePrototype->setMember(QLatin1String("property1"), numberValue());
-//         newValue._customTypePrototype->setMember(QLatin1String("property2"), numberValue());
-//         newValue._customTypePrototype->setMember(QLatin1String("property3"), numberValue());
+        m_oCustomObjectValuesList.insert(i.key(), newValue);
          
-         addFunction(newValue._customTypePrototype, QLatin1String("pageFunction1"), numberValue(), 1);
-         addFunction(newValue._customTypePrototype, QLatin1String("pageFunction2"), numberValue(), 1);
-         addFunction(newValue._customTypePrototype, QLatin1String("pageFunction3"), numberValue(), 1);
-         
-         m_oCustomObjectValuesList.insert(i.key(), newValue);
-         
-         // fill the Global object
-         _globalObject->setMember(i.key().m_strClassName, customCtor(i.key()));
+        // fill the Global object
+        _globalObject->setMember(i.key().m_strClassName, customCtor(i.key()));
     }
 }
 const FunctionValue *ValueOwner::customCtor(JsEditorTools::JSCustomBuiltinKey customKey) const
