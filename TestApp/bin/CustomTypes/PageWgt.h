@@ -12,8 +12,6 @@
 
 #include "Widget.h"
 #include <QScriptValue>
-#include <QScriptEngine>
-#include <QElapsedTimer>
 #include <QMutex>
 
 
@@ -150,9 +148,9 @@ public:
 public:	// these functions can be accessed from ascript
 	Q_INVOKABLE QObject* getWidget(const QString& wgtName){return NULL;};
 	Q_INVOKABLE QObject* getProject(){return NULL;};
-	//Q_INVOKABLE int setTimeout(QScriptValue function, int delay);
+	Q_INVOKABLE int setTimeout(QScriptValue function, int delay);
 	Q_INVOKABLE void clearTimeout(int timerID){return ;};
-	//Q_INVOKABLE int setInterval(QScriptValue function, int interval);
+	Q_INVOKABLE int setInterval(QScriptValue function, int interval);
 	Q_INVOKABLE void clearInterval(int intervalID){return ;};
 	Q_INVOKABLE void clearAllTimeouts(){return ;};
 	Q_INVOKABLE void beginDataEntry(const QString& widgetName){return ;};

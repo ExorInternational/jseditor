@@ -9,22 +9,23 @@
 #include "ProjectWgt.h"
 #include "PageWgt.h"
 #include "JSObjects.h"
+#include "FileSystemObj.h"
 
 int main(int argc, char *argv[])
 {
-	Q_INIT_RESOURCE(dataTransferWnd);
+	/*Q_INIT_RESOURCE(dataTransferWnd);
     QApplication app(argc, argv);
-    QGroupsSel window;
+    QGroupsSel window;*/
 
-	CProjectWgt* pProjectWgt = new CProjectWgt();
-	CPageWgt* pPage = new CPageWgt();
-	CStateObj* pState = new CStateObj();
-	CWidget* pWgt = new CWidget();
-	CGroupObj* pGroup = new CGroupObj();
-	CJSTagObj* pTag = new CJSTagObj();
-
+	CProjectWgt* pProjectWgt = new CProjectWgt();// js object name = "project"
+	CPageWgt* pPage = new CPageWgt();// js object name = "page"
+	CStateObj* pState = new CStateObj();// js object name = "State"
+	CWidget* pWgt = new CWidget();// doesn't seem to have any global js object
+	CGroupObj* pGroup = new CGroupObj();// js object name = "Group"
+	CJSTagObj* pTag = new CJSTagObj();// doesn't seem to have any global js object
+	CFileSystemObj* fs = new CFileSystemObj();// js object name = "js"
 	
 
-    window.show();
-    return app.exec();
+    //window.show();
+    //return app.exec();
 }

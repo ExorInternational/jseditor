@@ -5,9 +5,11 @@ TEMPLATE = app
 TARGET = $$IDE_APP_TARGET
 DESTDIR = $$IDE_APP_PATH
 
-HEADERS       = mainwindow-app.h
+HEADERS       = mainwindow-app.h \
+    CustomTypes/FileSystemObj.h
 SOURCES       = main.cpp \
-                mainwindow-app.cpp
+                mainwindow-app.cpp \
+    CustomTypes/FileSystemObj.cpp
 FORMS         = mainwindow-app.ui
 
 HEADERS      += CustomTypes/JSObjects.h     \

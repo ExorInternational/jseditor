@@ -18,12 +18,12 @@ CPageWgt::~CPageWgt()
 {
 }
 
-//int CPageWgt::setTimeout(QScriptValue s, int delay)
-//{
-//	return 0;
-//}
-//
-//int CPageWgt::setInterval(QScriptValue function, int interval)
-//{
-//	return 0;
-//}
+int CPageWgt::setTimeout(QScriptValue s, int delay)
+{
+	return 0;
+}
+
+int CPageWgt::setInterval(QScriptValue function, int interval)
+{
+	return 0;
+}
