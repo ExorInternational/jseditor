@@ -657,6 +657,10 @@ const Value *SharedValueOwner::getValueForType(QVariant::Type type)
     case QMetaType::Float:
             ret = realValue();
         break;
+    case QMetaType::UInt:
+    case QMetaType::LongLong:
+            ret = numberValue();
+        break;
     case QVariant::String :
             ret = stringValue();
         break;

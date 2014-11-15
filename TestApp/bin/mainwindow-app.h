@@ -4,6 +4,12 @@
 #include <QMainWindow>
 
 class CWidget;
+class CProjectWgt;
+class CPageWgt;
+class CStateObj;
+class CGroupObj;
+class CJSTagObj;
+class CFileSystemObj;
 
 namespace Ui {
 class MainWindowApp;
@@ -37,7 +43,13 @@ private:
     QWidget *m_pCentralWidget;
     
     //Built-in Types
+    CProjectWgt *m_pProjectWgt;
+    CPageWgt* m_pPageObject;
+    CStateObj* m_pStateObject;
     CWidget *m_pWidgetObject;
+    CGroupObj* m_pGroupObject;
+    CJSTagObj* m_pTagObject;
+    CFileSystemObj* m_pFileSystemObject;
 };
 
 #endif // MAINWINDOW_APP_H

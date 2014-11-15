@@ -14,6 +14,10 @@
 
 //builtin-types
 #include "CustomTypes/Widget.h"
+#include "CustomTypes/ProjectWgt.h"
+#include "CustomTypes/PageWgt.h"
+#include "CustomTypes/JSObjects.h"
+#include "CustomTypes/FileSystemObj.h"
 
 template< class T > void SafeDelete( T*& pVal )
 {
@@ -36,7 +40,15 @@ MainWindowApp::MainWindowApp(QWidget *parent) :
     setCentralWidget(m_pCentralWidget);
     
     m_pJsEditorTools = NULL;
+    
+    //custom builtin types
+    m_pProjectWgt = NULL;
+    m_pPageObject = NULL;
+    m_pStateObject = NULL;
     m_pWidgetObject = NULL;
+    m_pGroupObject = NULL;
+    m_pTagObject = NULL;
+    m_pFileSystemObject = NULL;
     loadLibrary();
 }
 
@@ -44,7 +56,14 @@ MainWindowApp::~MainWindowApp()
 {
     delete ui;
 
+    SafeDelete(m_pProjectWgt);
+    SafeDelete(m_pPageObject);
+    SafeDelete(m_pStateObject);
     SafeDelete(m_pWidgetObject);
+    SafeDelete(m_pGroupObject);
+    SafeDelete(m_pTagObject);
+    SafeDelete(m_pFileSystemObject);
+    
     SafeDelete(m_pJsEditorTools);
 }
 void MainWindowApp::loadLibrary()
@@ -103,13 +122,57 @@ void MainWindowApp::createCustomBuiltinTypes()
 #ifndef USE_QLIBRARY_IMPORT
     if(m_pJsEditorTools)
     {
+        QMap<JsEditorTools::JSCustomBuiltinKey, QObject *> oCustomClassTypesList;
+        
+        //Widget Object
         if(m_pWidgetObject == NULL)
             m_pWidgetObject = new CWidget();
+        JsEditorTools::JSCustomBuiltinKey widgetKey;
+        widgetKey.m_strClassName = "Widget";
+        oCustomClassTypesList.insert(widgetKey, m_pWidgetObject);
         
-        QMap<JsEditorTools::JSCustomBuiltinKey, QObject *> oCustomClassTypesList;
-        JsEditorTools::JSCustomBuiltinKey key;
-        key.m_strClassName = "Widget";
-        oCustomClassTypesList.insert(key, m_pWidgetObject);
+        //Project Widget
+        if(m_pProjectWgt == NULL)
+            m_pProjectWgt = new CProjectWgt();
+        JsEditorTools::JSCustomBuiltinKey prjKey;
+        prjKey.m_strClassName = "Project";
+        oCustomClassTypesList.insert(prjKey, m_pProjectWgt);
+        
+        //Page Widget
+        if(m_pPageObject == NULL)
+            m_pPageObject = new CPageWgt();
+        JsEditorTools::JSCustomBuiltinKey pageKey;
+        pageKey.m_strClassName = "Page";
+        oCustomClassTypesList.insert(pageKey, m_pPageObject);
+        
+        //State Widget
+        if(m_pStateObject == NULL)
+            m_pStateObject = new CStateObj();
+        JsEditorTools::JSCustomBuiltinKey stateKey;
+        stateKey.m_strClassName = "State";
+        oCustomClassTypesList.insert(stateKey, m_pStateObject);
+        
+        //Group Object
+        if(m_pGroupObject == NULL)
+            m_pGroupObject = new CGroupObj();
+        JsEditorTools::JSCustomBuiltinKey groupKey;
+        groupKey.m_strClassName = "Group";
+        oCustomClassTypesList.insert(groupKey, m_pGroupObject);
+        
+        //Tag Object
+        if(m_pTagObject == NULL)
+            m_pTagObject = new CJSTagObj();
+        JsEditorTools::JSCustomBuiltinKey tagKey;
+        tagKey.m_strClassName = "Tag";
+        oCustomClassTypesList.insert(tagKey, m_pTagObject);
+        
+        //File System Object
+        if(m_pFileSystemObject == NULL)
+            m_pFileSystemObject = new CFileSystemObj();
+        JsEditorTools::JSCustomBuiltinKey fsKey;
+        fsKey.m_strClassName = "js";
+        oCustomClassTypesList.insert(fsKey, m_pFileSystemObject);
+        
         m_pJsEditorTools->setCustomBuiltinTypes(oCustomClassTypesList);
     }
 #endif
