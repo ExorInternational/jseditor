@@ -672,11 +672,11 @@ const Value *SharedValueOwner::getValueForType(QVariant::Type type)
         break;
     case QMetaType::QVariant:
     case QVariant::LastType:
-//                    newValue._customTypePrototype->setMember(propertyName, intValue());
-        qDebug() << "///TO DO:" << QString(QLatin1String("%1")).arg(type);
+        ret = unknownValue();
         break;
     default:
-        qDebug() << "Unknown type: " << QString(QLatin1String("%1")).arg(type);
+//        qDebug() << "Unknown type: " << QString(QLatin1String("%1")).arg(type);
+        ret = unknownValue();
         break;
     }
     
