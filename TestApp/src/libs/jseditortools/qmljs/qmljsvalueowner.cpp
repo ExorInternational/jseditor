@@ -705,8 +705,10 @@ void SharedValueOwner::addJSMobileCustomTypes()//#720 ROOPAK - START
             QString propertyName = QString::fromLatin1(metaObject->property(index).name());
             QVariant::Type type = metaObject->property(index).type();
             const Value *value = getValueForType(type);
-            if(value)
+            if(value){
                 newValue._customTypePrototype->setMember(propertyName, value);
+                newValue._customTypeCtor->setMember(propertyName, value);//Custom builtin type properties needs to be accessed wihtout the prototype call.
+            }
         }
 
         //Add methods
@@ -721,12 +723,18 @@ void SharedValueOwner::addJSMobileCustomTypes()//#720 ROOPAK - START
             int nNumParams = metaObject->method(index).parameterNames().count();
             
             if(type == QMetaType::Void)
+            {
                 addFunction(newValue._customTypePrototype, strMethodName, nNumParams, 0, true);
+                addFunction(newValue._customTypeCtor, strMethodName, nNumParams, 0, true);//Custom builtin type methods needs to be accessed wihtout the prototype call.
+            }
             else 
             {
                 const Value *value = getValueForType(type);
                 if(value)
+                {
                     addFunction(newValue._customTypePrototype, strMethodName, value, nNumParams);
+                    addFunction(newValue._customTypeCtor, strMethodName, value, nNumParams);//Custom builtin type methods needs to be accessed wihtout the prototype call.
+                }
             }
         }
         
