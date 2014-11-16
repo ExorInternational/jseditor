@@ -135,14 +135,14 @@ void MainWindowApp::createCustomBuiltinTypes()
         if(m_pProjectWgt == NULL)
             m_pProjectWgt = new CProjectWgt();
         JsEditorTools::JSCustomBuiltinKey prjKey;
-        prjKey.m_strClassName = "Project";
+        prjKey.m_strClassName = "project";
         oCustomClassTypesList.insert(prjKey, m_pProjectWgt);
         
         //Page Widget
         if(m_pPageObject == NULL)
             m_pPageObject = new CPageWgt();
         JsEditorTools::JSCustomBuiltinKey pageKey;
-        pageKey.m_strClassName = "Page";
+        pageKey.m_strClassName = "page";
         oCustomClassTypesList.insert(pageKey, m_pPageObject);
         
         //State Widget
@@ -170,7 +170,7 @@ void MainWindowApp::createCustomBuiltinTypes()
         if(m_pFileSystemObject == NULL)
             m_pFileSystemObject = new CFileSystemObj();
         JsEditorTools::JSCustomBuiltinKey fsKey;
-        fsKey.m_strClassName = "js";
+        fsKey.m_strClassName = "fs";
         oCustomClassTypesList.insert(fsKey, m_pFileSystemObject);
         
         m_pJsEditorTools->setCustomBuiltinTypes(oCustomClassTypesList);
