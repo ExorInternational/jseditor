@@ -144,6 +144,9 @@ void JsEditorToolsLib::setCustomBuiltinTypes(QMap<JsEditorTools::JSCustomBuiltin
 
 JsEditorToolsLib::~JsEditorToolsLib()
 {
+    if(m_MainWindow)
+        m_MainWindow->close();//Sending close-event here is important for showing message box for unsaved changes in the editor and fixing a crash.
+
     m_pQmlJSEditorPlugin->aboutToShutdown();
     if(m_pQmlJSEditorPlugin)
         delete m_pQmlJSEditorPlugin;
