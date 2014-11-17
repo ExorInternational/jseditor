@@ -688,11 +688,19 @@ void SharedValueOwner::addJSMobileCustomTypes()//#720 ROOPAK - START
     QMapIterator<JsEditorTools::JSCustomBuiltinKey, QObject *> i(Core::DocumentManager::m_oCustomClassTypesList);
     while (i.hasNext()) {
         i.next();
+        
+        JsEditorTools::JSCustomBuiltinKey key = i.key();
+        
+        //global object
+        ObjectValue *globObject = NULL;
+        if(key.m_bDeclareGlobalObject)
+            globObject = newObject(/*prototype */ 0);
+        
         sCustomBuiltinValue newValue;
         newValue._customTypePrototype     = newObject(_objectPrototype);
         
         ObjectValue *customTypeInstance = newObject(newValue._customTypePrototype);
-        customTypeInstance->setClassName(i.key().m_strClassName);
+        customTypeInstance->setClassName(key.m_strClassName);
         newValue._customTypeCtor = new Function(this);
         newValue._customTypeCtor->setMember(QLatin1String("prototype"), newValue._customTypePrototype);
         newValue._customTypeCtor->setReturnValue(customTypeInstance);
@@ -707,7 +715,8 @@ void SharedValueOwner::addJSMobileCustomTypes()//#720 ROOPAK - START
             const Value *value = getValueForType(type);
             if(value){
                 newValue._customTypePrototype->setMember(propertyName, value);
-                newValue._customTypeCtor->setMember(propertyName, value);//Custom builtin type properties needs to be accessed wihtout the prototype call.
+                if(key.m_bDeclareGlobalObject)
+                    globObject->setMember(propertyName, value);//Custom builtin type properties needs to be accessed wihtout the prototype call.
             }
         }
 
@@ -725,7 +734,8 @@ void SharedValueOwner::addJSMobileCustomTypes()//#720 ROOPAK - START
             if(type == QMetaType::Void)
             {
                 addFunction(newValue._customTypePrototype, strMethodName, nNumParams, 0, true);
-                addFunction(newValue._customTypeCtor, strMethodName, nNumParams, 0, true);//Custom builtin type methods needs to be accessed wihtout the prototype call.
+                if(key.m_bDeclareGlobalObject)
+                    addFunction(globObject, strMethodName, nNumParams, 0, true);//Custom builtin type methods needs to be accessed wihtout the prototype call.
             }
             else 
             {
@@ -733,15 +743,18 @@ void SharedValueOwner::addJSMobileCustomTypes()//#720 ROOPAK - START
                 if(value)
                 {
                     addFunction(newValue._customTypePrototype, strMethodName, value, nNumParams);
-                    addFunction(newValue._customTypeCtor, strMethodName, value, nNumParams);//Custom builtin type methods needs to be accessed wihtout the prototype call.
+                    if(key.m_bDeclareGlobalObject)
+                        addFunction(globObject, strMethodName, value, nNumParams);//Custom builtin type methods needs to be accessed wihtout the prototype call.
                 }
             }
         }
         
-        m_oCustomObjectValuesList.insert(i.key(), newValue);
+        m_oCustomObjectValuesList.insert(key, newValue);
          
         // fill the Global object
-        _globalObject->setMember(i.key().m_strClassName, customCtor(i.key()));
+        _globalObject->setMember(key.m_strClassName, customCtor(key));
+        if(key.m_bDeclareGlobalObject)
+            _globalObject->setMember(key.m_strObjectName, globObject);
     }
 }
 const FunctionValue *ValueOwner::customCtor(JsEditorTools::JSCustomBuiltinKey customKey) const

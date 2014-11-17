@@ -135,14 +135,18 @@ void MainWindowApp::createCustomBuiltinTypes()
         if(m_pProjectWgt == NULL)
             m_pProjectWgt = new CProjectWgt();
         JsEditorTools::JSCustomBuiltinKey prjKey;
-        prjKey.m_strClassName = "project";
+        prjKey.m_strClassName = "Project";
+        prjKey.m_bDeclareGlobalObject = true;
+        prjKey.m_strObjectName = "project";
         oCustomClassTypesList.insert(prjKey, m_pProjectWgt);
         
         //Page Widget
         if(m_pPageObject == NULL)
             m_pPageObject = new CPageWgt();
         JsEditorTools::JSCustomBuiltinKey pageKey;
-        pageKey.m_strClassName = "page";
+        pageKey.m_strClassName = "Page";
+        pageKey.m_bDeclareGlobalObject = true;
+        pageKey.m_strObjectName = "page";
         oCustomClassTypesList.insert(pageKey, m_pPageObject);
         
         //State Widget
@@ -170,7 +174,9 @@ void MainWindowApp::createCustomBuiltinTypes()
         if(m_pFileSystemObject == NULL)
             m_pFileSystemObject = new CFileSystemObj();
         JsEditorTools::JSCustomBuiltinKey fsKey;
-        fsKey.m_strClassName = "fs";
+        fsKey.m_strClassName = "FileSystem";
+        fsKey.m_bDeclareGlobalObject = true;
+        fsKey.m_strObjectName = "fs";
         oCustomClassTypesList.insert(fsKey, m_pFileSystemObject);
         
         m_pJsEditorTools->setCustomBuiltinTypes(oCustomClassTypesList);

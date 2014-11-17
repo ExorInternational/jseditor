@@ -43,26 +43,40 @@ namespace JsEditorTools {
 class JSEDITORTOOLS_EXPORT JSCustomBuiltinKey//#720 ROOPAK - START
 {
 public:
-    JSCustomBuiltinKey() {}
+    JSCustomBuiltinKey() 
+    {
+        m_bDeclareGlobalObject = false;
+    }
     JSCustomBuiltinKey(const JSCustomBuiltinKey &other)
     {
         this->m_strClassName = other.m_strClassName;
+        this->m_bDeclareGlobalObject = other.m_bDeclareGlobalObject;
+        this->m_strObjectName = other.m_strObjectName;
     }
     JSCustomBuiltinKey &operator=(const JSCustomBuiltinKey &other)
     {
         if (this != &other)
+        {
             this->m_strClassName = other.m_strClassName;
+            this->m_bDeclareGlobalObject = other.m_bDeclareGlobalObject;
+            this->m_strObjectName = other.m_strObjectName;
+        }
         return *this;
     }
     bool operator==(const JSCustomBuiltinKey &other) const 
     { 
-        return this->m_strClassName == other.m_strClassName; 
+        bool bRet = (this->m_strClassName == other.m_strClassName) &&
+                    (this->m_bDeclareGlobalObject == other.m_bDeclareGlobalObject) &&
+                    (this->m_strObjectName == other.m_strObjectName);
+        return bRet; 
     }
     bool operator< (const JSCustomBuiltinKey &other) const 
     {
         return m_strClassName < other.m_strClassName;
     }
     QString m_strClassName;
+    bool m_bDeclareGlobalObject;
+    QString m_strObjectName;
     
 };//#720 ROOPAK - END
 class JSEditorMenuItems;
