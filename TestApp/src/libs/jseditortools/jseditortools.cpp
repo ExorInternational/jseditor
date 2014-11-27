@@ -1,12 +1,12 @@
 #include "jseditortools.h"
-#include <jseditortools/coreplugin/coreplugin.h>
-#include <jseditortools/coreplugin/documentmanager.h>
-#include <jseditortools/texteditor/texteditorplugin.h>
-#include <jseditortools/qmljstools/qmljstoolsplugin.h>
-#include <jseditortools/qmljseditor/qmljseditorplugin.h>
+#include <coreplugin/coreplugin.h>
+#include <coreplugin/documentmanager.h>
+#include <texteditor/texteditorplugin.h>
+#include <qmljstools/qmljstoolsplugin.h>
+#include <qmljseditor/qmljseditorplugin.h>
 #include <extensionsystem/pluginmanager.h>
 //#include <app/app_version.h>//#720 - ROOPAK
-#include <jseditortools/jseditormenuitems.h>
+#include <jseditormenuitems.h>
 
 #include <QStringList>
 #include <QSettings>

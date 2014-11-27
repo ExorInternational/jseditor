@@ -28,7 +28,7 @@
 ****************************************************************************/
 
 #include "qmljshighlighter.h"
-#include "jseditortools/coreplugin/documentmanager.h"//#720 ADDED BY ROOPAK 
+#include "coreplugin/documentmanager.h"//#720 ADDED BY ROOPAK 
 
 #include <QSet>
 #include <QtAlgorithms>

@@ -1,24 +1,24 @@
 #include "jseditormenuitems.h"
 
 //#720 ROOPAK - START
-#include <jseditortools/coreplugin/idocument.h>
-#include <jseditortools/coreplugin/idocumentfactory.h>
-#include <jseditortools/coreplugin/editormanager/ieditorfactory.h>
-#include <jseditortools/coreplugin/mimedatabase.h>
-#include <jseditortools/coreplugin/modemanager.h>
-#include <jseditortools/coreplugin/coreconstants.h>
-#include <jseditortools/coreplugin/editormanager/editormanager.h>
-#include <jseditortools/coreplugin/editormanager/ieditor.h>
-#include <jseditortools/extensionsystem/pluginmanager.h>
-#include <jseditortools/coreplugin/actionmanager/command.h>
-#include <jseditortools/coreplugin/actionmanager/actionmanager.h>
-#include <jseditortools/coreplugin/actionmanager/actioncontainer_p.h>
-#include <jseditortools/coreplugin/documentmanager.h>
-#include <jseditortools/texteditor/texteditorconstants.h>
-#include <jseditortools/coreplugin/find/textfindconstants.h>
-#include <jseditortools/coreplugin/find/ifindfilter.h>
-#include <jseditortools/qmljstools/qmljstoolsconstants.h>
-#include <jseditortools/qmljseditor/qmljseditorconstants.h>
+#include <coreplugin/idocument.h>
+#include <coreplugin/idocumentfactory.h>
+#include <coreplugin/editormanager/ieditorfactory.h>
+#include <coreplugin/mimedatabase.h>
+#include <coreplugin/modemanager.h>
+#include <coreplugin/coreconstants.h>
+#include <coreplugin/editormanager/editormanager.h>
+#include <coreplugin/editormanager/ieditor.h>
+#include <extensionsystem/pluginmanager.h>
+#include <coreplugin/actionmanager/command.h>
+#include <coreplugin/actionmanager/actionmanager.h>
+#include <coreplugin/actionmanager/actioncontainer_p.h>
+#include <coreplugin/documentmanager.h>
+#include <texteditor/texteditorconstants.h>
+#include <coreplugin/find/textfindconstants.h>
+#include <coreplugin/find/ifindfilter.h>
+#include <qmljstools/qmljstoolsconstants.h>
+#include <qmljseditor/qmljseditorconstants.h>
 
 #include <QFileDialog>
 

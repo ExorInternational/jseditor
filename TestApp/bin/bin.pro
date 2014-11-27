@@ -1,5 +1,20 @@
-QT += network script
-include(../TestApp.pri)
+QT += script
+#include(../TestApp.pri)
+
+defineReplace(qtLibraryName) {
+   unset(LIBRARY_NAME)
+   LIBRARY_NAME = $$1
+   CONFIG(debug, debug|release) {
+      !debug_and_release|build_pass {
+          mac:RET = $$member(LIBRARY_NAME, 0)_debug
+              else:win32:RET = $$member(LIBRARY_NAME, 0)d
+      }
+   }
+   isEmpty(RET):RET = $$LIBRARY_NAME
+   return($$RET)
+}
+IDE_APP_PATH = $$IDE_BUILD_TREE
+IDE_APP_TARGET   = TestApp
 
 TEMPLATE = app
 TARGET = $$IDE_APP_TARGET
@@ -26,16 +41,18 @@ SOURCES      += CustomTypes/JSObjects.cpp     \
 #RESOURCES     = application.qrc
 
 
-LIBS *= \
-#        -l$$qtLibraryName(Utils) \//#720 ROOPAK
-#        -l$$qtLibraryName(LanguageUtils) \//#720 ROOPAK
-#        -l$$qtLibraryName(CPlusPlus) \//#720 ROOPAK
-#        -l$$qtLibraryName(QmlJS) \//#720 ROOPAK
-        -l$$qtLibraryName(JsEditorTools) \ #720 - COMMENTED BY ROOPAK - USED QLIBRARY TO LOAD THE DLL
-#        -l$$qtLibraryName(Aggregation) \//#720 ROOPAK
-#        -l$$qtLibraryName(ExtensionSystem) \//#720 ROOPAK
-#        -l$$qtLibraryName(QmlEditorWidgets) \//#720 ROOPAK
-#        -l$$qtLibraryName(QtcSsh) \
+#LIBS *= \
+##        -l$$qtLibraryName(Utils) \//#720 ROOPAK
+##        -l$$qtLibraryName(LanguageUtils) \//#720 ROOPAK
+##        -l$$qtLibraryName(CPlusPlus) \//#720 ROOPAK
+##        -l$$qtLibraryName(QmlJS) \//#720 ROOPAK
+#        -l$$qtLibraryName(JsEditorTools) \ #720 - COMMENTED BY ROOPAK - USED QLIBRARY TO LOAD THE DLL
+##        -l$$qtLibraryName(Aggregation) \//#720 ROOPAK
+##        -l$$qtLibraryName(ExtensionSystem) \//#720 ROOPAK
+##        -l$$qtLibraryName(QmlEditorWidgets) \//#720 ROOPAK
+##        -l$$qtLibraryName(QtcSsh) \
+
+LIBS += -L../src/libs/jseditortools/lib -l$$qtLibraryName(JsEditorTools)
 
 #win32 {
 #    RC_FILE = qtcreator.rc
@@ -55,10 +72,10 @@ LIBS *= \
 #    INSTALLS    += target
 #}
 
-#This is a temp fix for QString error("QString::QString(const char*)' is privateQString(const char *ch)").
-DEFINES -= QT_NO_CAST_TO_ASCII QT_NO_CAST_FROM_ASCII
-#This removes the unused parameter warnings
-QMAKE_CXXFLAGS_WARN_OFF -= -Wunused-parameter
+##This is a temp fix for QString error("QString::QString(const char*)' is privateQString(const char *ch)").
+#DEFINES -= QT_NO_CAST_TO_ASCII QT_NO_CAST_FROM_ASCII
+##This removes the unused parameter warnings
+#QMAKE_CXXFLAGS_WARN_OFF -= -Wunused-parameter
 
 INCLUDEPATH += $$PWD/../src/libs/jseditortools
 #LIBS *= -l$$qtLibraryName(JsEditorTools) \

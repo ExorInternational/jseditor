@@ -30,7 +30,7 @@
 #include "qmljsutils.h"
 
 #include "parser/qmljsast_p.h"
-#include "jseditortools/coreplugin/documentmanager.h"//#720 ADDED BY ROOPAK 
+#include "coreplugin/documentmanager.h"//#720 ADDED BY ROOPAK 
 
 using namespace QmlJS;
 using namespace QmlJS::AST;

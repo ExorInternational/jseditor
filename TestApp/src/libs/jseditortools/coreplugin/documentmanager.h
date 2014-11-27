@@ -31,7 +31,7 @@
 #define DOCUMENTMANAGER_H
 
 #include <coreplugin/id.h>
-#include "jseditortools/jseditortools.h"
+#include "jseditortools.h"
 
 #include <QObject>
 #include <QPair>

@@ -10,12 +10,12 @@ SUBDIRS   = \
 #    qmleditorwidgets \//#720 ROOPAK
     jseditortools #//#720 ADDED BY ROOPAK
 
-for(l, SUBDIRS) {
-    QTC_LIB_DEPENDS =
-    include($$l/$${l}_dependencies.pri)
-    lv = $${l}.depends
-    $$lv = $$QTC_LIB_DEPENDS
-}
+#for(l, SUBDIRS) {
+#    QTC_LIB_DEPENDS =
+#    include($$l/$${l}_dependencies.pri)
+#    lv = $${l}.depends
+#    $$lv = $$QTC_LIB_DEPENDS
+#}
 
 #SUBDIRS += \               #ROOPAK
 #    utils/process_stub.pro

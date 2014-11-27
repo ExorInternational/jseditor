@@ -1,4 +1,4 @@
-include(TestApp.pri)
+#include(TestApp.pri)
 
 
 #! [0]

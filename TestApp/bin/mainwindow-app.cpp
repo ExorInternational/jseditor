@@ -9,8 +9,8 @@
 
 //#define USE_QLIBRARY_IMPORT true
 
-#include <jseditortools/jseditortools.h>
-#include <jseditortools/jseditormenuitems.h>
+#include <jseditortools.h>
+#include <jseditormenuitems.h>
 
 //builtin-types
 #include "CustomTypes/Widget.h"
