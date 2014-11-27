@@ -1,6 +1,16 @@
 !isEmpty(JSEDITORTOOLS_LIB_PRI_INCLUDED):error("JsEditorTools-Lib.pri already included")
 JSEDITORTOOLS_LIB_PRI_INCLUDED = 1
 
+#TestApp.pro ----------------------------------------------------------------------- END
+contains(QT_ARCH, i386): ARCHITECTURE = x86
+else: ARCHITECTURE = $$QT_ARCH
+
+macx: PLATFORM = "mac"
+else:win32: PLATFORM = "windows"
+else:linux-*: PLATFORM = "linux-$${ARCHITECTURE}"
+else: PLATFORM = "unknown"
+#TestApp.pro ----------------------------------------------------------------------- END
+
 #bin.pro ----------------------------------------------------------------------- START
 QT += network script
 #This is a temp fix for QString error("QString::QString(const char*)' is privateQString(const char *ch)").
@@ -140,6 +150,7 @@ QTCREATOR_VERSION = 3.1.2
 QTCREATOR_COMPAT_VERSION = 3.1.0
 
 #TestApp.pri ----------------------------------------------------------------------- END
+
 #qtcreatorlibrar.pri ----------------------------------------------------------------------- START
 include($$replace(_PRO_FILE_PWD_, ([^/]+$), \\1/\\1_dependencies.pri))
 TARGET = $$QTC_LIB_NAME
