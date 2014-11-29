@@ -58,9 +58,7 @@ phony.c
 *.idb
 *.ilk
 *.pdb
-*.sln
 *.suo
-*.vcproj
 *vcproj.*.*.user
 *.ncb
 *.sdf
