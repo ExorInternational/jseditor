@@ -4,6 +4,7 @@
 	Version="9.00"
 	Name="JsEditorTools"
 	ProjectGUID="{669F6D4F-41EA-3E72-B50D-89753C96FAFD}"
+	RootNamespace="JsEditorTools"
 	Keyword="Qt4VSv1.0"
 	TargetFrameworkVersion="0"
 	>
@@ -17,8 +18,8 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="lib\"
-			IntermediateDirectory="debug\"
+			OutputDirectory="$(SolutionDir)..\QtHmi-$(PlatformName)-$(ConfigurationName)\"
+			IntermediateDirectory="$(SolutionDir)..\QtHmi-$(PlatformName)-$(ConfigurationName)\obj\$(ProjectName)"
 			ConfigurationType="2"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="false"
@@ -53,9 +54,9 @@
 				BufferSecurityCheck="false"
 				TreatWChar_tAsBuiltInType="false"
 				RuntimeTypeInfo="true"
-				AssemblerListingLocation="debug\"
-				ObjectFile="debug\"
-				ProgramDataBaseFileName=".\"
+				AssemblerListingLocation="$(IntDir)\"
+				ObjectFile="$(IntDir)\"
+				ProgramDataBaseFileName="$(IntDir)\vc80.pdb"
 				WarningLevel="3"
 				SuppressStartupBanner="true"
 				DebugInformationFormat="3"
@@ -75,13 +76,15 @@
 				Name="VCLinkerTool"
 				IgnoreImportLibrary="true"
 				AdditionalDependencies="user32.lib shell32.lib iphlpapi.lib ws2_32.lib ole32.lib QtScriptd4.lib QtSqld4.lib QtXmld4.lib QtGuid4.lib QtNetworkd4.lib QtCored4.lib"
-				OutputFile="$(OutDir)\JsEditorToolsd.dll"
+				OutputFile="$(OutDir)\bin\$(ProjectName).dll"
 				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="$(QTDIR)\lib,G:/Ubuntu-Build/New-repo/exorint_jseditor/TestApp/src/libs/jseditortools/lib"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile=""
 				SubSystem="0"
 				LinkTimeCodeGeneration="0"
+				ImportLibrary="$(OutDir)lib\$(ProjectName).lib"
+				TargetMachine="1"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -107,8 +110,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="lib\"
-			IntermediateDirectory="release\"
+			OutputDirectory="$(SolutionDir)..\QtHmi-$(PlatformName)-$(ConfigurationName)\"
+			IntermediateDirectory="$(SolutionDir)..\QtHmi-$(PlatformName)-$(ConfigurationName)\obj\$(ProjectName)"
 			ConfigurationType="2"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="false"
@@ -143,9 +146,9 @@
 				BufferSecurityCheck="false"
 				TreatWChar_tAsBuiltInType="false"
 				RuntimeTypeInfo="true"
-				AssemblerListingLocation="release\"
-				ObjectFile="release\"
-				ProgramDataBaseFileName=".\"
+				AssemblerListingLocation="$(IntDir)\"
+				ObjectFile="$(IntDir)\"
+				ProgramDataBaseFileName="$(IntDir)\vc80.pdb"
 				WarningLevel="3"
 				SuppressStartupBanner="true"
 				DebugInformationFormat="3"
@@ -165,7 +168,7 @@
 				Name="VCLinkerTool"
 				IgnoreImportLibrary="true"
 				AdditionalDependencies="user32.lib shell32.lib iphlpapi.lib ws2_32.lib ole32.lib QtScript4.lib QtSql4.lib QtXml4.lib QtGui4.lib QtNetwork4.lib QtCore4.lib"
-				OutputFile="$(OutDir)\JsEditorTools.dll"
+				OutputFile="$(OutDir)\bin\$(ProjectName).dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="$(QTDIR)\lib,G:/Ubuntu-Build/New-repo/exorint_jseditor/TestApp/src/libs/jseditortools/lib"
@@ -174,6 +177,8 @@
 				SubSystem="0"
 				OptimizeReferences="2"
 				LinkTimeCodeGeneration="0"
+				ImportLibrary="$(OutDir)lib\$(ProjectName).lib"
+				TargetMachine="1"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -9663,32 +9668,6 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="texteditor\snippets\reuse.h"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Performing Custom Build Step"
-						CommandLine=""
-						AdditionalDependencies=""
-						Outputs=""
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Performing Custom Build Step"
-						CommandLine=""
-						AdditionalDependencies=""
-						Outputs=""
-					/>
-				</FileConfiguration>
-			</File>
-			<File
 				RelativePath="utils\tooltip\reuse.h"
 				>
 				<FileConfiguration
@@ -9716,6 +9695,32 @@
 			</File>
 			<File
 				RelativePath="texteditor\generichighlighter\reuse.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step"
+						CommandLine=""
+						AdditionalDependencies=""
+						Outputs=""
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step"
+						CommandLine=""
+						AdditionalDependencies=""
+						Outputs=""
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="texteditor\snippets\reuse.h"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -18601,26 +18606,6 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\extensionsystem\images\error.png"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
 				RelativePath=".\qmljstools\images\error.png"
 				>
 				<FileConfiguration
@@ -18641,7 +18626,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\qmljstools\images\expand.png"
+				RelativePath=".\extensionsystem\images\error.png"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -18662,6 +18647,26 @@
 			</File>
 			<File
 				RelativePath=".\coreplugin\find\images\expand.png"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\qmljstools\images\expand.png"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -19631,7 +19636,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\coreplugin\images\logo\32\QtProject-qtcreator.png"
+				RelativePath=".\coreplugin\images\logo\128\QtProject-qtcreator.png"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -19651,7 +19656,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\coreplugin\images\logo\128\QtProject-qtcreator.png"
+				RelativePath=".\coreplugin\images\logo\32\QtProject-qtcreator.png"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
