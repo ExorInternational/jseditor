@@ -68,7 +68,7 @@ MainWindowApp::~MainWindowApp()
 }
 void MainWindowApp::loadLibrary()
 {
-#ifdef USE_QLIBRARY_IMPORT
+/*#ifdef USE_QLIBRARY_IMPORT
     QLibrary jsEditorLibrary;
 #if defined(Q_OS_WIN32) 
 #ifdef QT_DEBUG
@@ -103,7 +103,7 @@ void MainWindowApp::loadLibrary()
     }
     else
         qDebug() << jsEditorLibrary.errorString();
-#else   //default C++ way of linking DLL
+#else*/   //default C++ way of linking DLL
     m_pJsEditorTools = new JsEditorTools::JsEditorToolsLib(m_pCentralWidget);
     if(m_pJsEditorTools)
     {
@@ -114,7 +114,7 @@ void MainWindowApp::loadLibrary()
         m_pToolsMenu = m_pJsEditorTools->getJSEditorMenuItems()->getToolsMenu();
         m_pWindowMenu = m_pJsEditorTools->getJSEditorMenuItems()->getWindowMenu();
     }
-#endif
+//#endif
     createMenus();
 }
 void MainWindowApp::createCustomBuiltinTypes()
