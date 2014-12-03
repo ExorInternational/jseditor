@@ -19,6 +19,7 @@
 #include <coreplugin/find/ifindfilter.h>
 #include <qmljstools/qmljstoolsconstants.h>
 #include <qmljseditor/qmljseditorconstants.h>
+#include <coreplugin/icore.h>
 
 #include <QFileDialog>
 
@@ -68,8 +69,9 @@ static IDocumentFactory *findDocumentFactory(const QList<IDocumentFactory*> &fil
     return 0;
 }
 
-IDocument *JSEditorMenuItems::openFiles(const QStringList &fileNames, ICore::OpenFilesFlags flags)
+void JSEditorMenuItems::openFiles(const QStringList &fileNames)
 {
+    ICore::OpenFilesFlags flags = ICore::SwitchMode;
     QList<IDocumentFactory*> nonEditorFileFactories = getNonEditorDocumentFactories();
     IDocument *res = 0;
 
@@ -80,7 +82,7 @@ IDocument *JSEditorMenuItems::openFiles(const QStringList &fileNames, ICore::Ope
             IDocument *document = documentFactory->open(absoluteFilePath);
             if (!document) {
                 if (flags & ICore::StopOnLoadFail)
-                    return res;
+                    return /*res*/;
             } else {
                 if (!res)
                     res = document;
@@ -94,13 +96,13 @@ IDocument *JSEditorMenuItems::openFiles(const QStringList &fileNames, ICore::Ope
             IEditor *editor = EditorManager::openEditor(absoluteFilePath, Id(), emFlags);
             if (!editor) {
                 if (flags & ICore::StopOnLoadFail)
-                    return res;
+                    return /*res*/;
             } else if (!res) {
                 res = editor->document();
             }
         }
     }
-    return res;
+//    return res;
 }
 void JSEditorMenuItems::newFileInEditor()
 {
@@ -114,12 +116,12 @@ void JSEditorMenuItems::newFileInEditor()
 
         QStringList filesList;
         filesList.append(fileNew.fileName());
-        openFiles(filesList, ICore::SwitchMode);
+        openFiles(filesList);
     }//#720 ROOPAK - END
 }
 void JSEditorMenuItems::openFileInEditor()
 {
-     openFiles(EditorManager::getOpenFileNames(), ICore::SwitchMode);
+     openFiles(EditorManager::getOpenFileNames());
 }
 void JSEditorMenuItems::saveAll()
 {

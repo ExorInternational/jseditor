@@ -1,14 +1,15 @@
 #ifndef JSEDITORMENUITEMS_H
 #define JSEDITORMENUITEMS_H
 
-#include <coreplugin/icore.h>
+//#include <coreplugin/icore.h>
+#include "jseditortools_global.h"
 
 #include <QObject>
 #include <QActionGroup>
 
-namespace Core {
-class IDocument;
-}
+//namespace Core {
+//class IDocument;
+//}
 
 namespace JsEditorTools {
 
@@ -30,7 +31,7 @@ public slots:
     void saveAll();
 
 private:
-    Core::IDocument *openFiles(const QStringList &fileNames, Core::ICore::OpenFilesFlags flags);
+    void openFiles(const QStringList &fileNames);
 
     //Menu groups
     void createActionGroups();
