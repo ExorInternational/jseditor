@@ -90,6 +90,7 @@ public:
     void setParentWidget(QWidget *mainWIndow);
     void setCustomBuiltinTypes(QMap<JsEditorTools::JSCustomBuiltinKey, QObject *> oCustomClassTypesList);//#720 ROOPAK 
     JSEditorMenuItems *getJSEditorMenuItems() { return m_pJSEditorMenuItems; }
+    bool openFile(QString strFilePath);
 private:
     QWidget *m_MainWindow;
 

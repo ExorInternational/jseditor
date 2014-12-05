@@ -7,6 +7,8 @@
 #include <extensionsystem/pluginmanager.h>
 //#include <app/app_version.h>//#720 - ROOPAK
 #include <jseditormenuitems.h>
+#include <coreplugin/icore.h>
+#include <coreplugin/editormanager/editormanager.h>
 
 #include <QStringList>
 #include <QSettings>
@@ -174,6 +176,21 @@ JsEditorToolsLib::~JsEditorToolsLib()
     if(m_pJSEditorMenuItems)
         delete m_pJSEditorMenuItems;
     m_pJSEditorMenuItems = 0;
+}
+bool JsEditorToolsLib::openFile(QString strFilePath)
+{
+    bool bRet = false;
+
+    Core::ICore::OpenFilesFlags flags = Core::ICore::SwitchMode;
+    QFlags<Core::EditorManager::OpenEditorFlag> emFlags;
+    if (flags & Core::ICore::CanContainLineNumbers)
+        emFlags |=  Core::EditorManager::CanContainLineNumber;
+
+    Core::IEditor *editor = Core::EditorManager::openEditor(strFilePath, Core::Id(), emFlags);
+    if(editor)
+        bRet = true;
+
+    return bRet;
 }
 
 ////////////////////////////////////////ADDITIONAL SLOTS ADDED BY ROOPAK/////////#720 ROOPAK
