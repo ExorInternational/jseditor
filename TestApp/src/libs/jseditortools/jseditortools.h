@@ -91,6 +91,8 @@ public:
     void setCustomBuiltinTypes(QMap<JsEditorTools::JSCustomBuiltinKey, QObject *> oCustomClassTypesList);//#720 ROOPAK 
     JSEditorMenuItems *getJSEditorMenuItems() { return m_pJSEditorMenuItems; }
     bool openFile(QString strFilePath);
+signals:
+    void currentDocumentChanged();
 private:
     QWidget *m_MainWindow;
 

@@ -9,6 +9,7 @@
 #include <jseditormenuitems.h>
 #include <coreplugin/icore.h>
 #include <coreplugin/editormanager/editormanager.h>
+#include <coreplugin/editormanager/ieditor.h>
 
 #include <QStringList>
 #include <QSettings>
@@ -187,8 +188,10 @@ bool JsEditorToolsLib::openFile(QString strFilePath)
         emFlags |=  Core::EditorManager::CanContainLineNumber;
 
     Core::IEditor *editor = Core::EditorManager::openEditor(strFilePath, Core::Id(), emFlags);
-    if(editor)
+    if(editor) {
+        QObject::connect(editor->document(), SIGNAL(changed()), this, SIGNAL(currentDocumentChanged()));
         bRet = true;
+    }
 
     return bRet;
 }
