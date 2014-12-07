@@ -10,6 +10,7 @@
 #include <coreplugin/icore.h>
 #include <coreplugin/editormanager/editormanager.h>
 #include <coreplugin/editormanager/ieditor.h>
+#include <texteditor/itexteditor.h>
 
 #include <QStringList>
 #include <QSettings>
@@ -194,6 +195,22 @@ bool JsEditorToolsLib::openFile(QString strFilePath)
     }
 
     return bRet;
+}
+QString JsEditorToolsLib::getCurrentDocumentText()
+{
+    QString retStr;
+
+    if(Core::EditorManager::currentDocument()) {
+        Core::IDocument *document = Core::EditorManager::currentDocument();
+        if(document){
+            TextEditor::ITextEditorDocument *textEditorDocument = qobject_cast<TextEditor::ITextEditorDocument *>(document);
+            if (textEditorDocument){
+                retStr = textEditorDocument->plainText();
+            }
+        }
+    }
+
+    return retStr;
 }
 
 ////////////////////////////////////////ADDITIONAL SLOTS ADDED BY ROOPAK/////////#720 ROOPAK
