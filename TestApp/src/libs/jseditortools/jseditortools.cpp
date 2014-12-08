@@ -11,6 +11,8 @@
 #include <coreplugin/editormanager/editormanager.h>
 #include <coreplugin/editormanager/ieditor.h>
 #include <texteditor/itexteditor.h>
+#include <coreplugin/actionmanager/actionmanager.h>
+#include <coreplugin/coreconstants.h>
 
 #include <QStringList>
 #include <QSettings>
@@ -136,10 +138,16 @@ void JsEditorToolsLib::setParentWidget(QWidget *mainWindow)
     
         m_pCorePlugin->extensionsInitialized();//this should be called only in the final step(after the other plugins are loaded).
     
+        m_pJSEditorMenuItems = NULL;
         m_pJSEditorMenuItems = new JSEditorMenuItems(this);
     }
 }
-
+JSEditorMenuItems *JsEditorToolsLib::getJSEditorMenuItems()
+{
+    if(m_pJSEditorMenuItems == NULL)
+        m_pJSEditorMenuItems = new JSEditorMenuItems(this);
+    return m_pJSEditorMenuItems;
+}
 void JsEditorToolsLib::setCustomBuiltinTypes(QMap<JsEditorTools::JSCustomBuiltinKey, QObject *> oCustomClassTypesList)
 {
     if(Core::DocumentManager::instance())
@@ -211,6 +219,34 @@ QString JsEditorToolsLib::getCurrentDocumentText()
     }
 
     return retStr;
+}
+void JsEditorToolsLib::undo()
+{
+    QAction *pUndoAction = Core::ActionManager::command(Core::Constants::UNDO)->action();
+    if(pUndoAction)
+        pUndoAction->trigger();
+}
+bool JsEditorToolsLib::isUndoEnabled()
+{
+    bool bRet = false;
+
+    bRet = Core::ActionManager::command(Core::Constants::UNDO)->isActive();
+
+    return bRet;
+}
+void JsEditorToolsLib::redo()
+{
+    QAction *pRedoAction = Core::ActionManager::command(Core::Constants::REDO)->action();
+    if(pRedoAction)
+        pRedoAction->trigger();
+}
+bool JsEditorToolsLib::isRedoEnabled()
+{
+    bool bRet = false;
+
+    bRet = Core::ActionManager::command(Core::Constants::REDO)->isActive();
+
+    return bRet;
 }
 
 ////////////////////////////////////////ADDITIONAL SLOTS ADDED BY ROOPAK/////////#720 ROOPAK

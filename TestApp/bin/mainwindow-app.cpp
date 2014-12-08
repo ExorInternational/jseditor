@@ -109,10 +109,17 @@ void MainWindowApp::loadLibrary()
     {
         createCustomBuiltinTypes();
         
-        m_pFileMenu = m_pJsEditorTools->getJSEditorMenuItems()->getFileMenu();
-        m_pEditMenu = m_pJsEditorTools->getJSEditorMenuItems()->getEditMenu();
-        m_pToolsMenu = m_pJsEditorTools->getJSEditorMenuItems()->getToolsMenu();
-        m_pWindowMenu = m_pJsEditorTools->getJSEditorMenuItems()->getWindowMenu();
+        m_pFileMenu = NULL;
+        m_pEditMenu = NULL;
+        m_pToolsMenu = NULL;
+        m_pWindowMenu = NULL;
+
+        if(m_pJsEditorTools->getJSEditorMenuItems()) {
+            m_pFileMenu = m_pJsEditorTools->getJSEditorMenuItems()->getFileMenu();
+            m_pEditMenu = m_pJsEditorTools->getJSEditorMenuItems()->getEditMenu();
+            m_pToolsMenu = m_pJsEditorTools->getJSEditorMenuItems()->getToolsMenu();
+            m_pWindowMenu = m_pJsEditorTools->getJSEditorMenuItems()->getWindowMenu();
+        }
     }
 //#endif
     createMenus();

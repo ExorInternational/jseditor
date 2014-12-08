@@ -89,10 +89,14 @@ public:
 
     void setParentWidget(QWidget *mainWIndow);
     void setCustomBuiltinTypes(QMap<JsEditorTools::JSCustomBuiltinKey, QObject *> oCustomClassTypesList);//#720 ROOPAK 
-    JSEditorMenuItems *getJSEditorMenuItems() { return m_pJSEditorMenuItems; }
+    JSEditorMenuItems *getJSEditorMenuItems();
 
     bool openFile(QString strFilePath);
     QString getCurrentDocumentText();
+    void undo();
+    bool isUndoEnabled();
+    void redo();
+    bool isRedoEnabled();
 signals:
     void currentDocumentChanged();
 private:
