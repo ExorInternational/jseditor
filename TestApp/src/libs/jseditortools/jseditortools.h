@@ -97,6 +97,11 @@ public:
     bool isUndoEnabled();
     void redo();
     bool isRedoEnabled();
+    void doCopy();
+    void doCut();
+    bool isPasteEnabled();
+    void doPaste();
+    void doSelectAll();
 signals:
     void currentDocumentChanged();
 private:

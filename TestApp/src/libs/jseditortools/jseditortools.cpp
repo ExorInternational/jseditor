@@ -248,6 +248,41 @@ bool JsEditorToolsLib::isRedoEnabled()
 
     return bRet;
 }
+void JsEditorToolsLib::doCopy()
+{
+    QAction *pCopyAction = Core::ActionManager::command(Core::Constants::COPY)->action();
+    if(pCopyAction)
+        pCopyAction->trigger();
+}
+
+void JsEditorToolsLib::doCut()
+{
+    QAction *pCutAction = Core::ActionManager::command(Core::Constants::CUT)->action();
+    if(pCutAction)
+        pCutAction->trigger();
+}
+
+bool JsEditorToolsLib::isPasteEnabled()
+{
+    bool bRet = false;
+
+    bRet = Core::ActionManager::command(Core::Constants::PASTE)->isActive();
+
+    return bRet;
+}
+
+void JsEditorToolsLib::doPaste()
+{
+    QAction *pPasteAction = Core::ActionManager::command(Core::Constants::PASTE)->action();
+    if(pPasteAction)
+        pPasteAction->trigger();
+}
+void JsEditorToolsLib::doSelectAll()
+{
+    QAction *pSelectAllAction = Core::ActionManager::command(Core::Constants::SELECTALL)->action();
+    if(pSelectAllAction)
+        pSelectAllAction->trigger();
+}
 
 ////////////////////////////////////////ADDITIONAL SLOTS ADDED BY ROOPAK/////////#720 ROOPAK
 
