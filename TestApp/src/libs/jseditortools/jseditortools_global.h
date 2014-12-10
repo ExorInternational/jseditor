@@ -9,6 +9,13 @@
 #  define JSEDITORTOOLS_EXPORT Q_DECL_IMPORT
 #endif
 
-#include <app_version_new.h>
+namespace Core {
+namespace Constants {
+    const char * const IDE_VERSION_LONG      = "1.0.0";
+    const char * const IDE_SETTINGSVARIANT_STR      = "JsEditorTools";
+    const char * const IDE_APPNAME_STR      = "JsEditor";
+    const char * const IDE_COPY_SETTINGS_FROM_VARIANT_STR = "Dummy";
+}
+}
 
 #endif // JSEDITORTOOLS_GLOBAL_H
