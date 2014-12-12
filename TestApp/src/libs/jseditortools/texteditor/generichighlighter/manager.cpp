@@ -310,7 +310,7 @@ void Manager::registerMimeTypes()
         connect(&m_registeringWatcher, SIGNAL(finished()), processor, SLOT(deleteLater()));
         m_registeringWatcher.setFuture(future);
 
-        ProgressManager::addTask(future, tr("Registering definitions"), "TextEditor.Task.Register");
+//        ProgressManager::addTask(future, tr("Registering definitions"), "TextEditor.Task.Register");
     } else {
         m_hasQueuedRegistration = true;
         m_registeringWatcher.cancel();
