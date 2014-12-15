@@ -88,7 +88,7 @@ public:
     ~JsEditorToolsLib();
 
     void setParentWidget(QWidget *mainWIndow);
-    void setCustomBuiltinTypes(QMap<JsEditorTools::JSCustomBuiltinKey, QObject *> oCustomClassTypesList);//#720 ROOPAK 
+    void setCustomBuiltinTypes(QMap<JsEditorTools::JSCustomBuiltinKey, QMetaObject> oCustomClassTypesList);//#720 ROOPAK
     JSEditorMenuItems *getJSEditorMenuItems();
 
     bool openFile(QString strFilePath);

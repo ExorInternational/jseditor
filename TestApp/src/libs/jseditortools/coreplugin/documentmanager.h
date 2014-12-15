@@ -143,7 +143,7 @@ public:
     static void notifyFilesChangedInternally(const QStringList &files);
     
     //for adding custom built-in types
-    static QMap<JsEditorTools::JSCustomBuiltinKey, QObject *> m_oCustomClassTypesList;
+    static QMap<JsEditorTools::JSCustomBuiltinKey, QMetaObject> m_oCustomClassTypesList;
 
 public slots:
     static void executeOpenWithMenuAction(QAction *action);

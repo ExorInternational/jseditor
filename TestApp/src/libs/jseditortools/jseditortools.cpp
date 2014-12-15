@@ -148,7 +148,7 @@ JSEditorMenuItems *JsEditorToolsLib::getJSEditorMenuItems()
         m_pJSEditorMenuItems = new JSEditorMenuItems(this);
     return m_pJSEditorMenuItems;
 }
-void JsEditorToolsLib::setCustomBuiltinTypes(QMap<JsEditorTools::JSCustomBuiltinKey, QObject *> oCustomClassTypesList)
+void JsEditorToolsLib::setCustomBuiltinTypes(QMap<JsEditorTools::JSCustomBuiltinKey, QMetaObject> oCustomClassTypesList)
 {
     if(Core::DocumentManager::instance())
         Core::DocumentManager::m_oCustomClassTypesList = oCustomClassTypesList;

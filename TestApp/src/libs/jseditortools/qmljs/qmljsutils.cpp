@@ -71,7 +71,7 @@ public:
         validBuiltinPropertyNames.insert(QLatin1String("matrix4x4"));
         validBuiltinPropertyNames.insert(QLatin1String("alias"));
         
-        QMapIterator<JsEditorTools::JSCustomBuiltinKey, QObject *> i(Core::DocumentManager::m_oCustomClassTypesList);//#720 ROOPAK - START
+        QMapIterator<JsEditorTools::JSCustomBuiltinKey, QMetaObject> i(Core::DocumentManager::m_oCustomClassTypesList);//#720 ROOPAK - START
         while (i.hasNext()) {
             i.next();
             QString strKeyLowerCase = i.key().m_strClassName.toLower();

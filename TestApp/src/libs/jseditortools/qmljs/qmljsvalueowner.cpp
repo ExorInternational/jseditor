@@ -685,7 +685,7 @@ const Value *SharedValueOwner::getValueForType(QVariant::Type type)
 
 void SharedValueOwner::addJSMobileCustomTypes()//#720 ROOPAK - START
 {
-    QMapIterator<JsEditorTools::JSCustomBuiltinKey, QObject *> i(Core::DocumentManager::m_oCustomClassTypesList);
+    QMapIterator<JsEditorTools::JSCustomBuiltinKey, QMetaObject> i(Core::DocumentManager::m_oCustomClassTypesList);
     while (i.hasNext()) {
         i.next();
         
@@ -707,11 +707,11 @@ void SharedValueOwner::addJSMobileCustomTypes()//#720 ROOPAK - START
         newValue._customTypeCtor->setVariadic(true);
         
         //Add properties
-        QObject *pObject = i.value();
-        const QMetaObject* metaObject = pObject->metaObject();
-        for(int index = metaObject->propertyOffset(); index < metaObject->propertyCount(); ++index){
-            QString propertyName = QString::fromLatin1(metaObject->property(index).name());
-            QVariant::Type type = metaObject->property(index).type();
+        QMetaObject metaObject = i.value();
+//        const QMetaObject* metaObject = pObject->metaObject();
+        for(int index = metaObject.propertyOffset(); index < metaObject.propertyCount(); ++index){
+            QString propertyName = QString::fromLatin1(metaObject.property(index).name());
+            QVariant::Type type = metaObject.property(index).type();
             const Value *value = getValueForType(type);
             if(value){
                 newValue._customTypePrototype->setMember(propertyName, value);
@@ -721,15 +721,15 @@ void SharedValueOwner::addJSMobileCustomTypes()//#720 ROOPAK - START
         }
 
         //Add methods
-        for(int index = metaObject->methodOffset(); index < metaObject->methodCount(); ++index)
+        for(int index = metaObject.methodOffset(); index < metaObject.methodCount(); ++index)
         {
-            QString strMethodName = QString(QLatin1String(metaObject->method(index).signature()));
+            QString strMethodName = QString(QLatin1String(metaObject.method(index).signature()));
             int nIndexOfOpenBracket = strMethodName.indexOf(QLatin1Char('('));
             strMethodName.chop(strMethodName.length() - nIndexOfOpenBracket);
             
-            QVariant::Type type = QVariant::nameToType(metaObject->method(index).typeName());
+            QVariant::Type type = QVariant::nameToType(metaObject.method(index).typeName());
             
-            int nNumParams = metaObject->method(index).parameterNames().count();
+            int nNumParams = metaObject.method(index).parameterNames().count();
             
             if(type == QMetaType::Void)
             {

@@ -293,7 +293,7 @@ bool Highlighter::maybeCustomBuiltinType(const QStringRef &text) const//#720 ROO
 
     const QChar ch = text.at(0);
     
-    QMapIterator<JsEditorTools::JSCustomBuiltinKey, QObject *> i(Core::DocumentManager::m_oCustomClassTypesList);
+    QMapIterator<JsEditorTools::JSCustomBuiltinKey, QMetaObject> i(Core::DocumentManager::m_oCustomClassTypesList);
     while (i.hasNext()) {
         i.next();
         QString strKeyLowerCase = i.key().m_strClassName.toLower();

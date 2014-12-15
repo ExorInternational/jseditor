@@ -129,14 +129,14 @@ void MainWindowApp::createCustomBuiltinTypes()
 #ifndef USE_QLIBRARY_IMPORT
     if(m_pJsEditorTools)
     {
-        QMap<JsEditorTools::JSCustomBuiltinKey, QObject *> oCustomClassTypesList;
+        QMap<JsEditorTools::JSCustomBuiltinKey, QMetaObject> oCustomClassTypesList;
         
         //Widget Object
         if(m_pWidgetObject == NULL)
             m_pWidgetObject = new CWidget();
         JsEditorTools::JSCustomBuiltinKey widgetKey;
         widgetKey.m_strClassName = "Widget";
-        oCustomClassTypesList.insert(widgetKey, m_pWidgetObject);
+        oCustomClassTypesList.insert(widgetKey, *(m_pWidgetObject->metaObject()));
         
         //Project Widget
         if(m_pProjectWgt == NULL)
@@ -145,7 +145,7 @@ void MainWindowApp::createCustomBuiltinTypes()
         prjKey.m_strClassName = "Project";
         prjKey.m_bDeclareGlobalObject = true;
         prjKey.m_strObjectName = "project";
-        oCustomClassTypesList.insert(prjKey, m_pProjectWgt);
+        oCustomClassTypesList.insert(prjKey, *(m_pProjectWgt->metaObject()));
         
         //Page Widget
         if(m_pPageObject == NULL)
@@ -154,28 +154,28 @@ void MainWindowApp::createCustomBuiltinTypes()
         pageKey.m_strClassName = "Page";
         pageKey.m_bDeclareGlobalObject = true;
         pageKey.m_strObjectName = "page";
-        oCustomClassTypesList.insert(pageKey, m_pPageObject);
+        oCustomClassTypesList.insert(pageKey, *(m_pPageObject->metaObject()));
         
         //State Widget
         if(m_pStateObject == NULL)
             m_pStateObject = new CStateObj();
         JsEditorTools::JSCustomBuiltinKey stateKey;
         stateKey.m_strClassName = "State";
-        oCustomClassTypesList.insert(stateKey, m_pStateObject);
+        oCustomClassTypesList.insert(stateKey, *(m_pStateObject->metaObject()));
         
         //Group Object
         if(m_pGroupObject == NULL)
             m_pGroupObject = new CGroupObj();
         JsEditorTools::JSCustomBuiltinKey groupKey;
         groupKey.m_strClassName = "Group";
-        oCustomClassTypesList.insert(groupKey, m_pGroupObject);
+        oCustomClassTypesList.insert(groupKey, *(m_pGroupObject->metaObject()));
         
         //Tag Object
         if(m_pTagObject == NULL)
             m_pTagObject = new CJSTagObj();
         JsEditorTools::JSCustomBuiltinKey tagKey;
         tagKey.m_strClassName = "Tag";
-        oCustomClassTypesList.insert(tagKey, m_pTagObject);
+        oCustomClassTypesList.insert(tagKey, *(m_pTagObject->metaObject()));
         
         //File System Object
         if(m_pFileSystemObject == NULL)
@@ -184,7 +184,7 @@ void MainWindowApp::createCustomBuiltinTypes()
         fsKey.m_strClassName = "FileSystem";
         fsKey.m_bDeclareGlobalObject = true;
         fsKey.m_strObjectName = "fs";
-        oCustomClassTypesList.insert(fsKey, m_pFileSystemObject);
+        oCustomClassTypesList.insert(fsKey, *(m_pFileSystemObject->metaObject()));
         
         m_pJsEditorTools->setCustomBuiltinTypes(oCustomClassTypesList);
     }
