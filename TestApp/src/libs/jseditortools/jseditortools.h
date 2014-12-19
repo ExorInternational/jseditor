@@ -6,6 +6,7 @@
 #include <QObject>
 #include <QHash>//#720 ROOPAK 
 #include <QLayout>
+#include <QPlainTextEdit>
 
 class QMainWindow;
 class QStringList;
@@ -93,7 +94,8 @@ public:
     JSEditorMenuItems *getJSEditorMenuItems();
     void setLayout(QLayout *pLayout);
 
-    bool openFile(QString strFilePath);
+    QPlainTextEdit *openFile(QString strFilePath);
+    QPlainTextEdit *openNewEditorWidget(QString strContentTitle);
     QString getCurrentDocumentText();
     void undo();
     bool isUndoEnabled();

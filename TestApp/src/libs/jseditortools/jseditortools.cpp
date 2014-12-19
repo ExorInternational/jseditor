@@ -14,6 +14,7 @@
 #include <coreplugin/actionmanager/actionmanager.h>
 #include <coreplugin/coreconstants.h>
 #include <coreplugin/fancytabwidget.h>
+#include <qmljseditor/qmljseditorconstants.h>
 
 #include <QStringList>
 #include <QSettings>
@@ -194,9 +195,9 @@ JsEditorToolsLib::~JsEditorToolsLib()
         delete m_pJSEditorMenuItems;
     m_pJSEditorMenuItems = 0;
 }
-bool JsEditorToolsLib::openFile(QString strFilePath)
+QPlainTextEdit *JsEditorToolsLib::openFile(QString strFilePath)
 {
-    bool bRet = false;
+    QPlainTextEdit *pTextEditor = NULL;
 
     Core::ICore::OpenFilesFlags flags = Core::ICore::SwitchMode;
     QFlags<Core::EditorManager::OpenEditorFlag> emFlags;
@@ -206,11 +207,30 @@ bool JsEditorToolsLib::openFile(QString strFilePath)
     Core::IEditor *editor = Core::EditorManager::openEditor(strFilePath, Core::Id(), emFlags);
     if(editor) {
         QObject::connect(editor->document(), SIGNAL(changed()), this, SIGNAL(currentDocumentChanged()));
-        bRet = true;
+        pTextEditor = qobject_cast<QPlainTextEdit *>(editor->widget());
     }
 
-    return bRet;
+    return pTextEditor;
 }
+QPlainTextEdit *JsEditorToolsLib::openNewEditorWidget(QString strContentTitle)
+{
+    QPlainTextEdit *pTextEditor = NULL;
+
+    Core::ICore::OpenFilesFlags flags = Core::ICore::SwitchMode;
+    QFlags<Core::EditorManager::OpenEditorFlag> emFlags;
+    if (flags & Core::ICore::CanContainLineNumbers)
+        emFlags |=  Core::EditorManager::CanContainLineNumber;
+    QByteArray contents("");
+    //QString title = QLatin1String("Untitled.js");
+    Core::IEditor *editor = Core::EditorManager::openEditorWithContents(Core::Id(QmlJSEditor::Constants::C_QMLJSEDITOR_ID), &strContentTitle,contents, emFlags);
+    if(editor) {
+        QObject::connect(editor->document(), SIGNAL(changed()), this, SIGNAL(currentDocumentChanged()));
+        pTextEditor = qobject_cast<QPlainTextEdit *>(editor->widget());
+    }
+
+    return pTextEditor;
+}
+
 QString JsEditorToolsLib::getCurrentDocumentText()
 {
     QString retStr;
