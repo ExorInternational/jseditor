@@ -13,6 +13,7 @@
 #include <texteditor/itexteditor.h>
 #include <coreplugin/actionmanager/actionmanager.h>
 #include <coreplugin/coreconstants.h>
+#include <coreplugin/fancytabwidget.h>
 
 #include <QStringList>
 #include <QSettings>
@@ -148,6 +149,12 @@ JSEditorMenuItems *JsEditorToolsLib::getJSEditorMenuItems()
         m_pJSEditorMenuItems = new JSEditorMenuItems(this);
     return m_pJSEditorMenuItems;
 }
+void JsEditorToolsLib::setLayout(QLayout *pLayout)
+{
+    if(m_pCorePlugin && m_pCorePlugin->getModeStack())
+        pLayout->addWidget(m_pCorePlugin->getModeStack());
+}
+
 void JsEditorToolsLib::setCustomBuiltinTypes(QMap<JsEditorTools::JSCustomBuiltinKey, QMetaObject> oCustomClassTypesList)
 {
     if(Core::DocumentManager::instance())

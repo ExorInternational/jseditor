@@ -108,6 +108,7 @@ public:
     void setOverrideColor(const QColor &color);
 
     void setIsFullScreen(bool fullScreen);
+    FancyTabWidget *getModeStack() { return m_modeStack; }
 signals:
     void windowActivated();
 

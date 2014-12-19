@@ -107,6 +107,7 @@ void MainWindowApp::loadLibrary()
     m_pJsEditorTools = new JsEditorTools::JsEditorToolsLib(m_pCentralWidget);
     if(m_pJsEditorTools)
     {
+        m_pJsEditorTools->setLayout(m_pCentralWidget->layout());
         createCustomBuiltinTypes();
         
         m_pFileMenu = NULL;

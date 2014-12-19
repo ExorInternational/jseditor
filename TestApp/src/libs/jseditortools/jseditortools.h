@@ -5,6 +5,7 @@
 
 #include <QObject>
 #include <QHash>//#720 ROOPAK 
+#include <QLayout>
 
 class QMainWindow;
 class QStringList;
@@ -90,6 +91,7 @@ public:
     void setParentWidget(QWidget *mainWIndow);
     void setCustomBuiltinTypes(QMap<JsEditorTools::JSCustomBuiltinKey, QMetaObject> oCustomClassTypesList);//#720 ROOPAK
     JSEditorMenuItems *getJSEditorMenuItems();
+    void setLayout(QLayout *pLayout);
 
     bool openFile(QString strFilePath);
     QString getCurrentDocumentText();

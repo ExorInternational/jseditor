@@ -77,7 +77,13 @@ CorePlugin::~CorePlugin()
 
     delete m_mainWindow;
 }
-
+FancyTabWidget *CorePlugin::getModeStack()
+{
+    if(m_mainWindow)
+        return m_mainWindow->getModeStack();
+    else
+        return NULL;
+}
 void CorePlugin::parseArguments(const QStringList &arguments)
 {
     for (int i = 0; i < arguments.size(); ++i) {

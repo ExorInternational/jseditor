@@ -44,6 +44,7 @@ namespace Internal {
 
 class EditMode;
 class MainWindow;
+class FancyTabWidget;
 //class Locator;//#720 ROOPAK
 
 
@@ -62,6 +63,7 @@ public:
     ShutdownFlag aboutToShutdown();
     QObject *remoteCommand(const QStringList & /* options */, const QStringList &args);
 
+    FancyTabWidget *getModeStack();
 public slots:
     void fileOpenRequest(const QString&);
 

@@ -245,7 +245,7 @@ EditorManagerPrivate::EditorManagerPrivate(QWidget *parent) :
     m_windowPopup(0),
     m_coreListener(0),
     m_reloadSetting(IDocument::AlwaysAsk),
-    m_autoSaveEnabled(true),
+    m_autoSaveEnabled(false),
     m_autoSaveInterval(5)
 {
     m_documentModel = new DocumentModel(parent);
