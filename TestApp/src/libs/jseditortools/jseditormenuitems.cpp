@@ -106,18 +106,26 @@ void JSEditorMenuItems::openFiles(const QStringList &fileNames)
 }
 void JSEditorMenuItems::newFileInEditor()
 {
-    QString fileName = QFileDialog::getSaveFileName(NULL, QString(QLatin1String("New File")),
-                                QString(QLatin1String("%1/Untitled.js")).arg(QDir::homePath()),
-                                QString(QLatin1String("Javascript Files(*.js)")) );
-
-    if(!fileName.isEmpty()) {
-        QFile fileNew(QDir::toNativeSeparators(fileName));
-        fileNew.open(QIODevice::WriteOnly);
-
-        QStringList filesList;
-        filesList.append(fileNew.fileName());
-        openFiles(filesList);
-    }//#720 ROOPAK - END
+//    QString fileName = QFileDialog::getSaveFileName(NULL, QString(QLatin1String("New File")),
+//                                QString(QLatin1String("%1/Untitled.js")).arg(QDir::homePath()),
+//                                QString(QLatin1String("Javascript Files(*.js)")) );
+//
+//    if(!fileName.isEmpty()) {
+//        QFile fileNew(QDir::toNativeSeparators(fileName));
+//        fileNew.open(QIODevice::WriteOnly);
+//
+//        QStringList filesList;
+//        filesList.append(fileNew.fileName());
+//        openFiles(filesList);
+//    }//#720 ROOPAK - END
+//
+    Core::ICore::OpenFilesFlags flags = Core::ICore::SwitchMode;
+    QFlags<Core::EditorManager::OpenEditorFlag> emFlags;
+    if (flags & Core::ICore::CanContainLineNumbers)
+        emFlags |=  Core::EditorManager::CanContainLineNumber;
+    QByteArray contents("");
+    QString title = QLatin1String("Untitled.js");
+    IEditor *pEditor = EditorManager::openEditorWithContents(Id(QmlJSEditor::Constants::C_QMLJSEDITOR_ID), &title,contents, emFlags);
 }
 void JSEditorMenuItems::openFileInEditor()
 {
