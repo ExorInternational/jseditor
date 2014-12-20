@@ -195,7 +195,7 @@ JsEditorToolsLib::~JsEditorToolsLib()
         delete m_pJSEditorMenuItems;
     m_pJSEditorMenuItems = 0;
 }
-QPlainTextEdit *JsEditorToolsLib::openFile(QString strFilePath)
+QWidget *JsEditorToolsLib::openFile(QString strFilePath)
 {
     QPlainTextEdit *pTextEditor = NULL;
 
@@ -210,9 +210,9 @@ QPlainTextEdit *JsEditorToolsLib::openFile(QString strFilePath)
         pTextEditor = qobject_cast<QPlainTextEdit *>(editor->widget());
     }
 
-    return pTextEditor;
+    return Core::EditorManager::getCurrentEditorViewInNewWidget();
 }
-QPlainTextEdit *JsEditorToolsLib::openNewEditorWidget(QString strContentTitle)
+QWidget *JsEditorToolsLib::openNewEditorWidget(QString strContentTitle)
 {
     QPlainTextEdit *pTextEditor = NULL;
 
@@ -228,7 +228,7 @@ QPlainTextEdit *JsEditorToolsLib::openNewEditorWidget(QString strContentTitle)
         pTextEditor = qobject_cast<QPlainTextEdit *>(editor->widget());
     }
 
-    return pTextEditor;
+    return Core::EditorManager::getCurrentEditorViewInNewWidget();
 }
 
 QString JsEditorToolsLib::getCurrentDocumentText()
@@ -247,6 +247,19 @@ QString JsEditorToolsLib::getCurrentDocumentText()
 
     return retStr;
 }
+void JsEditorToolsLib::setTextToCurrentDocument(QString strText)
+{
+    if(Core::EditorManager::currentDocument()) {
+        Core::IDocument *document = Core::EditorManager::currentDocument();
+        if(document){
+            TextEditor::ITextEditorDocument *textEditorDocument = qobject_cast<TextEditor::ITextEditorDocument *>(document);
+            if (textEditorDocument){
+                textEditorDocument->setContents(strText.toAscii());
+            }
+        }
+    }
+}
+
 void JsEditorToolsLib::undo()
 {
     QAction *pUndoAction = Core::ActionManager::command(Core::Constants::UNDO)->action();

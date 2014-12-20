@@ -695,6 +695,33 @@ void EditorManager::splitNewWindow(Internal::EditorView *view)
         splitter->view()->setFocus();
     m_instance->updateActions();
 }
+QWidget *EditorManager::getCurrentEditorViewInNewWidget()
+{
+    SplitterOrView *splitter;
+    IEditor *editor = currentEditorView()->currentEditor();
+    IEditor *newEditor = 0;
+    if (editor && editor->duplicateSupported())
+        newEditor = m_instance->duplicateEditor(editor);
+    else
+        newEditor = editor; // move to the new view
+    splitter = new SplitterOrView;
+    splitter->setAttribute(Qt::WA_DeleteOnClose);
+    splitter->setAttribute(Qt::WA_QuitOnClose, false); // don't prevent Qt Creator from closing
+    splitter->resize(QSize(800, 600));
+    IContext *context = new IContext;
+    context->setContext(Context(Constants::C_EDITORMANAGER));
+    context->setWidget(splitter);
+    ICore::addContextObject(context);
+    d->m_root.append(splitter);
+    d->m_rootContext.append(context);
+    connect(splitter, SIGNAL(destroyed(QObject*)), m_instance, SLOT(rootDestroyed(QObject*)));
+    if (newEditor)
+        m_instance->activateEditor(splitter->view(), newEditor, IgnoreNavigationHistory);
+    else
+        splitter->view()->setFocus();
+
+    return splitter;
+}
 
 void EditorManager::closeView(Core::Internal::EditorView *view)
 {

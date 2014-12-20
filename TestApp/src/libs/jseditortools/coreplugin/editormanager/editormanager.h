@@ -119,6 +119,7 @@ public:
                                            OpenEditorFlags flags = NoFlags);
 
     static bool openExternalEditor(const QString &fileName, const Id &editorId);
+    static QWidget *getCurrentEditorViewInNewWidget();
 
     static QStringList getOpenFileNames();
     static Id getOpenWithEditorId(const QString &fileName, bool *isExternalEditor = 0);

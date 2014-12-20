@@ -18,4 +18,7 @@ namespace Constants {
 }
 }
 
+//comment this to enable reload message, when the document is changed out the jseditortools
+#define SUPPRESS_DOC_MODIFIED_PROMPT_MSG  1
+
 #endif // JSEDITORTOOLS_GLOBAL_H

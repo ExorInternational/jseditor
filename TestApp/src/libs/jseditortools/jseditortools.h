@@ -94,9 +94,10 @@ public:
     JSEditorMenuItems *getJSEditorMenuItems();
     void setLayout(QLayout *pLayout);
 
-    QPlainTextEdit *openFile(QString strFilePath);
-    QPlainTextEdit *openNewEditorWidget(QString strContentTitle);
+    QWidget *openFile(QString strFilePath);
+    QWidget *openNewEditorWidget(QString strContentTitle);
     QString getCurrentDocumentText();
+    void setTextToCurrentDocument(QString strText);
     void undo();
     bool isUndoEnabled();
     void redo();

@@ -1051,8 +1051,12 @@ void DocumentManager::checkForReload()
                     success = document->reload(&errorString, IDocument::FlagReload, IDocument::TypeContents);
                 } else {
                     // Ask about content change
+#ifdef SUPPRESS_DOC_MODIFIED_PROMPT_MSG
+                    previousReloadAnswer = Utils::ReloadCurrent;
+#elif
                     previousReloadAnswer = Utils::reloadPrompt(document->filePath(), document->isModified(),
                                                                ICore::dialogParent());
+#endif
                     switch (previousReloadAnswer) {
                     case Utils::ReloadAll:
                     case Utils::ReloadCurrent:
@@ -1073,10 +1077,13 @@ void DocumentManager::checkForReload()
                 bool unhandled = true;
                 while (unhandled) {
                     if (previousDeletedAnswer != Utils::FileDeletedCloseAll) {
-                        previousDeletedAnswer =
-                                Utils::fileDeletedPrompt(document->filePath(),
-                                                         trigger == IDocument::TriggerExternal,
-                                                         QApplication::activeWindow());
+#ifdef SUPPRESS_DOC_MODIFIED_PROMPT_MSG
+                        previousDeletedAnswer = Utils::FileDeletedClose;
+#elif
+                        previousDeletedAnswer = Utils::fileDeletedPrompt(document->filePath(),
+                                                trigger == IDocument::TriggerExternal,
+                                                QApplication::activeWindow());
+#endif
                     }
                     switch (previousDeletedAnswer) {
                     case Utils::FileDeletedSave:
