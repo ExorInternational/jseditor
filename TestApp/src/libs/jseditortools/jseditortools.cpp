@@ -210,7 +210,7 @@ QWidget *JsEditorToolsLib::openFile(QString strFilePath)
         pTextEditor = qobject_cast<QPlainTextEdit *>(editor->widget());
     }
 
-    return Core::EditorManager::getCurrentEditorViewInNewWidget();
+    return pTextEditor;//Core::EditorManager::getCurrentEditorViewInNewWidget();
 }
 QWidget *JsEditorToolsLib::openNewEditorWidget(QString strContentTitle)
 {
@@ -228,7 +228,7 @@ QWidget *JsEditorToolsLib::openNewEditorWidget(QString strContentTitle)
         pTextEditor = qobject_cast<QPlainTextEdit *>(editor->widget());
     }
 
-    return Core::EditorManager::getCurrentEditorViewInNewWidget();
+    return pTextEditor;//Core::EditorManager::getCurrentEditorViewInNewWidget();
 }
 
 QString JsEditorToolsLib::getCurrentDocumentText()
