@@ -94,8 +94,8 @@ public:
     JSEditorMenuItems *getJSEditorMenuItems();
     void setLayout(QLayout *pLayout);
 
-    QWidget *openFile(QString strFilePath);
-    QWidget *openNewEditorWidget(QString strContentTitle);
+    QPlainTextEdit *openFile(QString strFilePath);
+    QPlainTextEdit *openNewEditorWidget(QString strContentTitle);
     QString getCurrentDocumentText();
     void setTextToCurrentDocument(QString strText);
     void undo();

@@ -195,7 +195,7 @@ JsEditorToolsLib::~JsEditorToolsLib()
         delete m_pJSEditorMenuItems;
     m_pJSEditorMenuItems = 0;
 }
-QWidget *JsEditorToolsLib::openFile(QString strFilePath)
+QPlainTextEdit *JsEditorToolsLib::openFile(QString strFilePath)
 {
     QPlainTextEdit *pTextEditor = NULL;
 
@@ -210,9 +210,9 @@ QWidget *JsEditorToolsLib::openFile(QString strFilePath)
         pTextEditor = qobject_cast<QPlainTextEdit *>(editor->widget());
     }
 
-    return pTextEditor;//Core::EditorManager::getCurrentEditorViewInNewWidget();
+    return pTextEditor;
 }
-QWidget *JsEditorToolsLib::openNewEditorWidget(QString strContentTitle)
+QPlainTextEdit *JsEditorToolsLib::openNewEditorWidget(QString strContentTitle)
 {
     QPlainTextEdit *pTextEditor = NULL;
 
@@ -228,7 +228,7 @@ QWidget *JsEditorToolsLib::openNewEditorWidget(QString strContentTitle)
         pTextEditor = qobject_cast<QPlainTextEdit *>(editor->widget());
     }
 
-    return pTextEditor;//Core::EditorManager::getCurrentEditorViewInNewWidget();
+    return pTextEditor;
 }
 
 QString JsEditorToolsLib::getCurrentDocumentText()
