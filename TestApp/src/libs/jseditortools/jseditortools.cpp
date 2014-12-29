@@ -103,14 +103,21 @@ static inline QSettings *userSettings()
 JsEditorToolsLib::JsEditorToolsLib(QWidget *mainWindow)
 {
     m_MainWindow = NULL;
+    m_pDummyMainWidget = new QWidget(mainWindow);
+    m_MainWindow = m_pDummyMainWidget;
     setParentWidget(mainWindow);
 }
 void JsEditorToolsLib::setParentWidget(QWidget *mainWindow)
 {
-    if(m_MainWindow== NULL && mainWindow)
+    if(mainWindow)
     {
         m_MainWindow = mainWindow;
-        
+        if(m_pDummyMainWidget && m_pDummyMainWidget!= m_MainWindow)//no need for this variable if parent widget is set separately
+        {
+            delete m_pDummyMainWidget;
+            m_pDummyMainWidget = 0;
+        }
+
         QString err;
         QStringList arguments;
     

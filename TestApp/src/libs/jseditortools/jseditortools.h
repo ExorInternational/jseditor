@@ -111,6 +111,7 @@ signals:
     void currentDocumentChanged();
 private:
     QWidget *m_MainWindow;
+    QWidget *m_pDummyMainWidget;
 
     ExtensionSystem::PluginManager *m_pPluginManager;
     Core::Internal::CorePlugin *m_pCorePlugin;
