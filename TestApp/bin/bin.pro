@@ -21,21 +21,23 @@ TARGET = $$IDE_APP_TARGET
 DESTDIR = $$IDE_APP_PATH
 
 HEADERS       = mainwindow-app.h \
-    CustomTypes/FileSystemObj.h
+
 SOURCES       = main.cpp \
                 mainwindow-app.cpp \
-    CustomTypes/FileSystemObj.cpp
+
 FORMS         = mainwindow-app.ui
 
 HEADERS      += CustomTypes/JSObjects.h     \
                 CustomTypes/PageWgt.h       \
                 CustomTypes/ProjectWgt.h    \
-                CustomTypes/Widget.h
+                CustomTypes/Widget.h        \
+                CustomTypes/FileSystemObj.h
 
 SOURCES      += CustomTypes/JSObjects.cpp     \
                 CustomTypes/PageWgt.cpp       \
                 CustomTypes/ProjectWgt.cpp    \
-                CustomTypes/Widget.cpp
+                CustomTypes/Widget.cpp          \
+                CustomTypes/FileSystemObj.cpp
 
 #! [0]
 #RESOURCES     = application.qrc

@@ -3,6 +3,10 @@
 
 #include <QMainWindow>
 
+#define USE_MDI_AND_TEXTEDIT_CONTROLS
+
+class QMdiArea;
+
 class CWidget;
 class CProjectWgt;
 class CPageWgt;
@@ -28,7 +32,10 @@ public:
     explicit MainWindowApp(QWidget *parent = 0);
     ~MainWindowApp();
 private slots:
-
+#ifdef USE_MDI_AND_TEXTEDIT_CONTROLS
+    void onFileNewClicked();
+    void onFileOpenClicked();
+#endif
 private:
     void loadLibrary();
     void createCustomBuiltinTypes();
@@ -40,7 +47,11 @@ private:
     QMenu *m_pEditMenu;
     QMenu *m_pToolsMenu;
     QMenu *m_pWindowMenu;
+#ifdef USE_MDI_AND_TEXTEDIT_CONTROLS
+    QMdiArea *m_mdiArea;
+#else
     QWidget *m_pCentralWidget;
+#endif
     
     //Built-in Types
     CProjectWgt *m_pProjectWgt;
