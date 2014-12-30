@@ -40,6 +40,11 @@ MainWindowApp::MainWindowApp(QWidget *parent) :
     m_mdiArea = new QMdiArea(this);
     m_mdiArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     m_mdiArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+
+    //to test the appearance by showing if jseditortools internal widgets are overlapping
+    QColor backColor;backColor.setNamedColor("LightBlue");
+    m_mdiArea->setBackground(backColor);
+
     setCentralWidget(m_mdiArea);
 #else
     m_pCentralWidget = new QWidget(this);
