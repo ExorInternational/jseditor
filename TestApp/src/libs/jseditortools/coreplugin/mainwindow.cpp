@@ -151,7 +151,8 @@ MainWindow::MainWindow(QWidget *mainWindow) :
     m_zoomAction(0),
     m_toggleSideBarButton(new QToolButton)
 {
-    m_mainWindow->installEventFilter(this);
+    if(m_mainWindow)
+        m_mainWindow->installEventFilter(this);
 
     ActionManager::initialize(); // must be done before registering any actions
 
@@ -342,7 +343,7 @@ bool MainWindow::init(QString *errorMessage)
     return true;
 }
 
-void MainWindow::extensionsInitialized()
+void MainWindow::extensionsInitialized(bool bRestoreMainWindow)
 {
     m_editorManager->init();
 //    m_statusBarManager->extensionsInitalized();//#720 ROOPAK
@@ -355,6 +356,7 @@ void MainWindow::extensionsInitialized()
 
     emit m_coreImpl->coreAboutToOpen();
     // Delay restoreWindowState, since it is overridden by LayoutRequest event
+    if(bRestoreMainWindow)
     QTimer::singleShot(0, this, SLOT(restoreWindowState()));
     QTimer::singleShot(0, m_coreImpl, SIGNAL(coreOpened()));
 }

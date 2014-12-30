@@ -64,6 +64,7 @@ public:
     QObject *remoteCommand(const QStringList & /* options */, const QStringList &args);
 
     FancyTabWidget *getModeStack();
+    void setEnableRestoreMainwindowState(bool bRestoreMainwindowState){ m_bRestoreMainwindowState = bRestoreMainwindowState; }
 public slots:
     void fileOpenRequest(const QString&);
 
@@ -84,6 +85,7 @@ private:
 //    DesignMode *m_designMode; //ROOPAK
     FindPlugin *m_findPlugin;
 //    Locator *m_locator;//#720 ROOPAK
+    bool m_bRestoreMainwindowState;
 };
 
 } // namespace Internal

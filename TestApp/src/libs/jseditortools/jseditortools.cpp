@@ -105,18 +105,23 @@ JsEditorToolsLib::JsEditorToolsLib(QWidget *mainWindow)
     m_MainWindow = NULL;
     m_pDummyMainWidget = new QWidget(mainWindow);
     m_MainWindow = m_pDummyMainWidget;
-    setParentWidget(mainWindow);
+    setParentWidget(m_MainWindow);
 }
 void JsEditorToolsLib::setParentWidget(QWidget *mainWindow)
 {
-    if(mainWindow)
+    if(mainWindow != NULL)
     {
-        m_MainWindow = mainWindow;
         if(m_pDummyMainWidget && m_pDummyMainWidget!= m_MainWindow)//no need for this variable if parent widget is set separately
         {
             delete m_pDummyMainWidget;
             m_pDummyMainWidget = 0;
         }
+        else if(m_pDummyMainWidget)
+        {
+            m_pDummyMainWidget->hide();
+        }
+
+        m_MainWindow = mainWindow;
 
         QString err;
         QStringList arguments;
@@ -145,6 +150,7 @@ void JsEditorToolsLib::setParentWidget(QWidget *mainWindow)
         m_pQmlJSEditorPlugin->initialize(arguments, &err);
         m_pQmlJSEditorPlugin->extensionsInitialized();
     
+        m_pCorePlugin->setEnableRestoreMainwindowState(false);
         m_pCorePlugin->extensionsInitialized();//this should be called only in the final step(after the other plugins are loaded).
     
         m_pJSEditorMenuItems = NULL;

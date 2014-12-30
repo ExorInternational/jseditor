@@ -57,6 +57,7 @@ CorePlugin::CorePlugin(QWidget *mainWindow) : m_editMode(0)/*, m_designMode(0)*/
     m_mainWindow = new MainWindow(mainWindow);//#720 ROOPAK
     m_findPlugin = new FindPlugin;
 //    m_locator = new Locator;//#720 ROOPAK
+    m_bRestoreMainwindowState = true;
 }
 
 CorePlugin::~CorePlugin()
@@ -126,7 +127,7 @@ void CorePlugin::extensionsInitialized()
 //        addObject(m_designMode);              //ROOPAK
     m_findPlugin->extensionsInitialized();
 //    m_locator->extensionsInitialized();//#720 ROOPAK
-    m_mainWindow->extensionsInitialized();
+    m_mainWindow->extensionsInitialized(m_bRestoreMainwindowState);
 }
 
 bool CorePlugin::delayedInitialize()

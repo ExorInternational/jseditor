@@ -87,7 +87,7 @@ public:
     ~MainWindow();
 
     bool init(QString *errorMessage);
-    void extensionsInitialized();
+    void extensionsInitialized(bool bRestoreMainWindow);
     void aboutToShutdown();
 
     IContext *contextObject(QWidget *widget);
