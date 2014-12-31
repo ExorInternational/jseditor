@@ -15,6 +15,7 @@
 #include <coreplugin/coreconstants.h>
 #include <coreplugin/fancytabwidget.h>
 #include <qmljseditor/qmljseditorconstants.h>
+#include <coreplugin/editormanager/editorview.h>
 
 #include <QStringList>
 #include <QSettings>
@@ -210,7 +211,7 @@ JsEditorToolsLib::~JsEditorToolsLib()
 }
 QPlainTextEdit *JsEditorToolsLib::openFile(QString strFilePath)
 {
-    QPlainTextEdit *pTextEditor = NULL;
+    QPointer<QPlainTextEdit>pTextEditor = NULL;
 
     Core::ICore::OpenFilesFlags flags = Core::ICore::SwitchMode;
     QFlags<Core::EditorManager::OpenEditorFlag> emFlags;
@@ -221,6 +222,10 @@ QPlainTextEdit *JsEditorToolsLib::openFile(QString strFilePath)
     if(editor) {
         QObject::connect(editor->document(), SIGNAL(changed()), this, SIGNAL(currentDocumentChanged()));
         pTextEditor = qobject_cast<QPlainTextEdit *>(editor->widget());
+        QPointer<Core::Internal::EditorView> pEditorView = qobject_cast<Core::Internal::EditorView *>(Core::EditorManager::viewForEditor(editor));
+        if(pEditorView){
+            pEditorView->removeEditor(editor);
+        }
     }
 
     return pTextEditor;
