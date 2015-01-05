@@ -117,10 +117,10 @@ void JsEditorToolsLib::setParentWidget(QWidget *mainWindow)
             delete m_pDummyMainWidget;
             m_pDummyMainWidget = 0;
         }
-        else if(m_pDummyMainWidget)
-        {
-            m_pDummyMainWidget->hide();
-        }
+//        else if(m_pDummyMainWidget)
+//        {
+//            m_pDummyMainWidget->hide();
+//        }
 
         m_MainWindow = mainWindow;
 

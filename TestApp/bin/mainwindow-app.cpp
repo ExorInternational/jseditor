@@ -83,7 +83,10 @@ MainWindowApp::~MainWindowApp()
 void MainWindowApp::loadLibrary()
 {
 #ifdef USE_MDI_AND_TEXTEDIT_CONTROLS
-    m_pJsEditorTools = new JsEditorTools::JsEditorToolsLib(m_mdiArea);
+    QWidget *pHiddenWidget = new QWidget(m_mdiArea);
+    pHiddenWidget->hide();//comment it and it will enable auto-completion by Ctrl+Space
+    m_pJsEditorTools = new JsEditorTools::JsEditorToolsLib(pHiddenWidget);
+
     createCustomBuiltinTypes();
 #else
     m_pJsEditorTools = new JsEditorTools::JsEditorToolsLib(m_pCentralWidget);
