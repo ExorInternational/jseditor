@@ -1011,16 +1011,28 @@ bool MainWindow::eventFilter( QObject *dist, QEvent *event )
     if(dist == m_mainWindow)
     {
         if( event->type() == QEvent::ActivationChange ||  event->type() == QEvent::WindowStateChange)
+        {
             changeEvent(event);
+            return true;
+        }
         else if(event->type() == QEvent::Close)
+        {
             closeEvent((QCloseEvent *)event);
+            return true;
+        }
         else if(event->type() == QEvent::DragEnter)
+        {
             dragEnterEvent((QDragEnterEvent *)event);
+            return true;
+        }
         else if(event->type() == QEvent::Drop)
+        {
             dropEvent((QDropEvent *)event);
+            return true;
+        }
     }
 
-    return false;
+    return QObject::eventFilter(dist, event);
 }
 void MainWindow::changeEvent(QEvent *e)
 {

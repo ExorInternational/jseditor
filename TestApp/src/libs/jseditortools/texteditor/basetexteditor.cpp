@@ -1531,6 +1531,9 @@ void BaseTextEditorWidget::keyPressEvent(QKeyEvent *e)
         }
     }
 
+    if(e->modifiers() == Qt::ControlModifier && e->key() == Qt::Key_Space)
+        invokeAssist(Completion);
+
     bool ro = isReadOnly();
     const bool inOverwriteMode = overwriteMode();
 
