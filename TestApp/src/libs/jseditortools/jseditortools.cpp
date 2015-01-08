@@ -217,6 +217,7 @@ QPlainTextEdit *JsEditorToolsLib::openFile(QString strFilePath)
     QFlags<Core::EditorManager::OpenEditorFlag> emFlags;
     if (flags & Core::ICore::CanContainLineNumbers)
         emFlags |=  Core::EditorManager::CanContainLineNumber;
+    emFlags |= Core::EditorManager::DoNotChangeCurrentEditor;
 
     Core::IEditor *editor = Core::EditorManager::openEditor(strFilePath, Core::Id(), emFlags);
     if(editor) {
@@ -225,6 +226,8 @@ QPlainTextEdit *JsEditorToolsLib::openFile(QString strFilePath)
         QPointer<Core::Internal::EditorView> pEditorView = qobject_cast<Core::Internal::EditorView *>(Core::EditorManager::viewForEditor(editor));
         if(pEditorView){
             pEditorView->removeEditor(editor);
+            disconnect(Core::ICore::instance(), SIGNAL(contextAboutToChange(QList<Core::IContext*>)),
+                    Core::EditorManager::instance(), SLOT(handleContextChange(QList<Core::IContext*>)));
         }
     }
 
