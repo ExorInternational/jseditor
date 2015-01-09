@@ -122,7 +122,8 @@ public:
     AnchorLineValue _anchorLineValue;
     
     void addJSMobileCustomTypes();//#720 ROOPAK -START
-    const Value *getValueForType(QVariant::Type type);//#720 ROOPAK - END
+    const Value *getValueForType(QVariant::Type type);
+    void addArguments(Function *pFunc, const QMetaMethod &method);//#720 ROOPAK - END
 };
 
 SharedValueOwner *ValueOwner::sharedValueOwner(QString kind)
@@ -682,6 +683,17 @@ const Value *SharedValueOwner::getValueForType(QVariant::Type type)
     
     return ret;
 }
+void SharedValueOwner::addArguments(Function *pFunc, const QMetaMethod &method)
+{
+    if(pFunc)
+    {
+        QList<QByteArray> parameters = method.parameterNames();
+        for(int n=0; n<parameters.count(); n++){
+            QLatin1String str = QLatin1String(parameters.at(n));
+            pFunc->addArgument(unknownValue(), QLatin1String(parameters.at(n)));
+        }
+    }
+}
 
 void SharedValueOwner::addJSMobileCustomTypes()//#720 ROOPAK - START
 {
@@ -733,18 +745,26 @@ void SharedValueOwner::addJSMobileCustomTypes()//#720 ROOPAK - START
             
             if(type == QMetaType::Void)
             {
-                addFunction(newValue._customTypePrototype, strMethodName, nNumParams, 0, true);
+                Function *pFunc1 = addFunction(newValue._customTypePrototype, strMethodName, nNumParams, 0, true);
+                addArguments(pFunc1, metaObject.method(index));
                 if(key.m_bDeclareGlobalObject)
-                    addFunction(globObject, strMethodName, nNumParams, 0, true);//Custom builtin type methods needs to be accessed wihtout the prototype call.
+                {
+                    Function *pFunc2 = addFunction(globObject, strMethodName, 0, 0, false);//Custom builtin type methods needs to be accessed wihtout the prototype call.
+                    addArguments(pFunc2, metaObject.method(index));
+                }
             }
             else 
             {
                 const Value *value = getValueForType(type);
                 if(value)
                 {
-                    addFunction(newValue._customTypePrototype, strMethodName, value, nNumParams);
+                    Function *pFunc1 = addFunction(newValue._customTypePrototype, strMethodName, value, nNumParams);
+                    addArguments(pFunc1, metaObject.method(index));
                     if(key.m_bDeclareGlobalObject)
-                        addFunction(globObject, strMethodName, value, nNumParams);//Custom builtin type methods needs to be accessed wihtout the prototype call.
+                    {
+                        Function *pFunc2 = addFunction(globObject, strMethodName, value, 0);//Custom builtin type methods needs to be accessed wihtout the prototype call.
+                        addArguments(pFunc2, metaObject.method(index));
+                    }
                 }
             }
         }
