@@ -16,6 +16,7 @@
 #include <coreplugin/fancytabwidget.h>
 #include <qmljseditor/qmljseditorconstants.h>
 #include <coreplugin/editormanager/editorview.h>
+#include <qmljseditor/qmljseditor.h>
 
 #include <QStringList>
 #include <QSettings>
@@ -211,7 +212,7 @@ JsEditorToolsLib::~JsEditorToolsLib()
 }
 QPlainTextEdit *JsEditorToolsLib::openFile(QString strFilePath)
 {
-    QPointer<QPlainTextEdit>pTextEditor = NULL;
+    QPointer<QmlJSEditor::Internal::QmlJSTextEditorWidget>pTextEditor = NULL;
 
     Core::ICore::OpenFilesFlags flags = Core::ICore::SwitchMode;
     QFlags<Core::EditorManager::OpenEditorFlag> emFlags;
@@ -222,17 +223,67 @@ QPlainTextEdit *JsEditorToolsLib::openFile(QString strFilePath)
     Core::IEditor *editor = Core::EditorManager::openEditor(strFilePath, Core::Id(), emFlags);
     if(editor) {
         QObject::connect(editor->document(), SIGNAL(changed()), this, SIGNAL(currentDocumentChanged()));
-        pTextEditor = qobject_cast<QPlainTextEdit *>(editor->widget());
+        pTextEditor = qobject_cast<QmlJSEditor::Internal::QmlJSTextEditorWidget *>(editor->widget());
         QPointer<Core::Internal::EditorView> pEditorView = qobject_cast<Core::Internal::EditorView *>(Core::EditorManager::viewForEditor(editor));
         if(pEditorView){
             pEditorView->removeEditor(editor);
             disconnect(Core::ICore::instance(), SIGNAL(contextAboutToChange(QList<Core::IContext*>)),
                     Core::EditorManager::instance(), SLOT(handleContextChange(QList<Core::IContext*>)));
+
+            //set contect menu
+            QMenu *pMenu = new QMenu(pTextEditor);
+            pTextEditor->setAlternateMenu(pMenu);
+            pTextEditor->setEnableAlternateContextMenu(true);
+            populateAlternateContextMenu(pTextEditor, pMenu);
         }
     }
 
     return pTextEditor;
 }
+void JsEditorToolsLib::populateAlternateContextMenu(QPlainTextEdit *pTextEdit, QMenu *pMenu)
+{
+    QPointer<QmlJSEditor::Internal::QmlJSTextEditorWidget> pBaseTextEdit = qobject_cast<QmlJSEditor::Internal::QmlJSTextEditorWidget *>(pTextEdit);
+    if(pBaseTextEdit && pMenu)
+    {
+        pMenu->addAction(tr("Cut"), pBaseTextEdit, SLOT(cut()));
+        pMenu->addAction(tr("Copy"), pBaseTextEdit, SLOT(copy()));
+        pMenu->addAction(tr("Paste"), pBaseTextEdit, SLOT(paste()));
+        pMenu->addAction(tr("Select All"), pBaseTextEdit, SLOT(selectAll()) );
+        pMenu->addSeparator();
+
+        QMenu *pAdvancedMenu = pMenu->addMenu(tr("Advanced"));
+        pAdvancedMenu->addAction(tr("Auto-indent Selection"), pBaseTextEdit, SLOT(format()) );
+        pAdvancedMenu->addAction(tr("Rewrap Paragraph"), pBaseTextEdit, SLOT(rewrapParagraph()) );
+        pAdvancedMenu->addAction(tr("Clean Whitespace"), pBaseTextEdit, SLOT(cleanWhitespace()) );
+        pAdvancedMenu->addAction(tr("Toggle Comment Selection"), pBaseTextEdit, SLOT(unCommentSelection()) );
+
+        pAdvancedMenu->addSeparator();
+        pAdvancedMenu->addAction(tr("Cut Line"), pBaseTextEdit, SLOT(cutLine()) );
+        pAdvancedMenu->addAction(tr("Copy Line"), pBaseTextEdit, SLOT(copyLine()) );
+        pAdvancedMenu->addAction(tr("Uppercase Selection"), pBaseTextEdit, SLOT(uppercaseSelection()) );
+        pAdvancedMenu->addAction(tr("Lowercase Selection"), pBaseTextEdit, SLOT(lowercaseSelection()) );
+
+        pAdvancedMenu->addSeparator();
+        pAdvancedMenu->addAction(tr("Fold"), pBaseTextEdit, SLOT(fold()) );
+        pAdvancedMenu->addAction(tr("Unfold"), pBaseTextEdit, SLOT(unfold()) );
+        pAdvancedMenu->addAction(tr("Toggle Fold All"), pBaseTextEdit, SLOT(unfoldAll()) );
+
+        pAdvancedMenu->addSeparator();
+        pAdvancedMenu->addAction(tr("Go to Block Start"), pBaseTextEdit, SLOT(gotoBlockStart()) );
+        pAdvancedMenu->addAction(tr("Go to Block End"), pBaseTextEdit, SLOT(gotoBlockEnd()) );
+        pAdvancedMenu->addAction(tr("Go to Block Up"), pBaseTextEdit, SLOT(gotoBlockUp()) );
+        pAdvancedMenu->addAction(tr("Go to Block Down"), pBaseTextEdit, SLOT(gotoBlockDown()) );
+
+        pAdvancedMenu->addSeparator();
+        pAdvancedMenu->addAction(tr("Increase Font Size"), pBaseTextEdit, SLOT(zoomIn()) );
+        pAdvancedMenu->addAction(tr("Decrease Font Size"), pBaseTextEdit, SLOT(zoomOut()) );
+        pAdvancedMenu->addAction(tr("Reset Font Size"), pBaseTextEdit, SLOT(zoomReset()) );
+
+        QMenu *pFindReplaceMenu = pMenu->addMenu(tr("Find/Replace"));
+        //pMenu->addAction(tr("Go To Line..."), pBaseTextEdit, SLOT(selectAll()) );
+    }
+}
+
 QPlainTextEdit *JsEditorToolsLib::openNewEditorWidget(QString strContentTitle)
 {
     QPlainTextEdit *pTextEditor = NULL;

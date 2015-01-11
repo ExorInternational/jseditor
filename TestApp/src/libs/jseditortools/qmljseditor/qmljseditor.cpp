@@ -116,6 +116,8 @@ void QmlJSTextEditorWidget::ctor()
     m_outlineCombo = 0;
     m_contextPane = 0;
     m_findReferences = new FindReferences(this);
+    m_pAlternateContextMenu = NULL;//#720
+    m_bShowAlternateContextMenu = false;//#720
 
     setParenthesesMatchingEnabled(true);
     setMarksVisible(true);
@@ -698,6 +700,13 @@ void QmlJSTextEditorWidget::performQuickFix(int index)
 
 void QmlJSTextEditorWidget::contextMenuEvent(QContextMenuEvent *e)
 {
+    if(m_bShowAlternateContextMenu && m_pAlternateContextMenu)
+    {
+        m_pAlternateContextMenu->exec(e->globalPos());
+        e->accept();
+        return;
+    }
+
     QPointer<QMenu> menu(new QMenu(this));
 
     QMenu *refactoringMenu = new QMenu(tr("Refactoring"), menu);

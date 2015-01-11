@@ -110,6 +110,7 @@ public:
 signals:
     void currentDocumentChanged();
 private:
+    void populateAlternateContextMenu(QPlainTextEdit *pTextEdit, QMenu *pMenu);
     QWidget *m_MainWindow;
     QWidget *m_pDummyMainWidget;
 

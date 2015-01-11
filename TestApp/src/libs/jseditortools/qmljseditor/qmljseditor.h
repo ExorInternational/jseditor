@@ -86,6 +86,14 @@ public:
 
     TextEditor::IAssistInterface *createAssistInterface(TextEditor::AssistKind assistKind,
                                                         TextEditor::AssistReason reason) const;
+
+    void setAlternateMenu(QMenu *pAlternateMenu){//#720 - START
+        m_pAlternateContextMenu = pAlternateMenu;
+    }
+    void setEnableAlternateContextMenu(bool bEnableAlternateMenu)
+    {
+        m_bShowAlternateContextMenu = bEnableAlternateMenu;
+    }//#720 - END
 public slots:
     void findUsages();
     void renameUsages();
@@ -150,6 +158,8 @@ private:
     int m_oldCursorPosition;
 
     FindReferences *m_findReferences;
+    QMenu *m_pAlternateContextMenu;//#720 - START
+    bool m_bShowAlternateContextMenu;//#720 - END
 };
 
 } // namespace Internal
