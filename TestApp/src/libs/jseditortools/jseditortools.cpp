@@ -271,8 +271,8 @@ void JsEditorToolsLib::populateAlternateContextMenu(QPlainTextEdit *pTextEdit, Q
         pAdvancedMenu->addSeparator();
         pAdvancedMenu->addAction(tr("Go to Block Start"), pBaseTextEdit, SLOT(gotoBlockStart()) );
         pAdvancedMenu->addAction(tr("Go to Block End"), pBaseTextEdit, SLOT(gotoBlockEnd()) );
-        pAdvancedMenu->addAction(tr("Go to Block Up"), pBaseTextEdit, SLOT(gotoBlockUp()) );
-        pAdvancedMenu->addAction(tr("Go to Block Down"), pBaseTextEdit, SLOT(gotoBlockDown()) );
+        pAdvancedMenu->addAction(tr("Select Block Up"), pBaseTextEdit, SLOT(selectBlockUp()) );
+        pAdvancedMenu->addAction(tr("Select Block Down"), pBaseTextEdit, SLOT(selectBlockDown()) );
 
         pAdvancedMenu->addSeparator();
         pAdvancedMenu->addAction(tr("Increase Font Size"), pBaseTextEdit, SLOT(zoomIn()) );

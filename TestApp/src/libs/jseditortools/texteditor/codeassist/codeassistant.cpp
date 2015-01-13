@@ -387,6 +387,8 @@ void CodeAssistantPrivate::finalizeProposal()
     m_proposalWidget = 0;
     if (m_receivedContentWhileWaiting)
         m_receivedContentWhileWaiting = false;
+
+    m_textEditor->widget()->setFocus();//#720 - ADDED BY ROOPAK
 }
 
 bool CodeAssistantPrivate::isDisplayingProposal() const
@@ -490,6 +492,8 @@ void CodeAssistantPrivate::explicitlyAborted()
 {
     QTC_ASSERT(m_proposal, return);
     m_abortedBasePosition = m_proposal->basePosition();
+
+    m_textEditor->widget()->setFocus();//#720 - ADDED BY ROOPAK
 }
 
 void CodeAssistantPrivate::clearAbortedPosition()
