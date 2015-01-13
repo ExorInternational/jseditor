@@ -90,6 +90,8 @@
 #include <QMessageBox>
 #include <QClipboard>
 
+#include <QInputDialog>//#720 - ADDED BY ROOPAK
+
 //#define DO_FOO
 
 /*!
@@ -1154,7 +1156,17 @@ static QTextLine currentTextLine(const QTextCursor &cursor)
     const int relativePos = cursor.position() - block.position();
     return layout->lineForTextPosition(relativePos);
 }
-
+void BaseTextEditorWidget::showGoToLineDialog()//#720 - START -ADDED BY ROOPAK
+{
+    bool ok;
+    QTextBlock block = textCursor().block();
+    int nLineNumber = QInputDialog::getInt(this, QLatin1String("Go To Line:"),
+                                  QLatin1String("Line Number:"), block.fragmentIndex(), 0, blockCount(), 1, &ok);
+    if (ok)
+    {
+        gotoLine(nLineNumber);
+    }
+}//#720 - END
 bool BaseTextEditorWidget::camelCaseLeft(QTextCursor &cursor, QTextCursor::MoveMode mode)
 {
     int state = 0;

@@ -312,6 +312,7 @@ public slots:
     /// Abort code assistant if it is running.
     void abortAssist();
 
+    void showGoToLineDialog();//#720 - ADDED BY ROOPAK
 signals:
     void assistFinished();
     void readOnlyChanged();

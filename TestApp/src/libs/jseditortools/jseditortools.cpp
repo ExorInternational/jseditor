@@ -280,7 +280,7 @@ void JsEditorToolsLib::populateAlternateContextMenu(QPlainTextEdit *pTextEdit, Q
         pAdvancedMenu->addAction(tr("Reset Font Size"), pBaseTextEdit, SLOT(zoomReset()) );
 
         QMenu *pFindReplaceMenu = pMenu->addMenu(tr("Find/Replace"));
-        //pMenu->addAction(tr("Go To Line..."), pBaseTextEdit, SLOT(selectAll()) );
+        pMenu->addAction(tr("Go To Line..."), pBaseTextEdit, SLOT(showGoToLineDialog()) );
     }
 }
 
