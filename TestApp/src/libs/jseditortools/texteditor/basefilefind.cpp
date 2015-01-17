@@ -142,7 +142,10 @@ void BaseFileFind::runNewSearch(const QString &txt, Core::FindFlags findFlags,
     parameters.nameFilters = fileNameFilters();
     parameters.additionalParameters = additionalParameters();
     search->setUserData(qVariantFromValue(parameters));
-    connect(search, SIGNAL(activated(Core::SearchResultItem)), this, SLOT(openEditor(Core::SearchResultItem)));
+    if(!Core::SearchResultWindow::instance()->areSearchResultItemsDisconnected())
+        connect(search, SIGNAL(activated(Core::SearchResultItem)), this, SLOT(openEditor(Core::SearchResultItem)));
+    else
+        connect(search, SIGNAL(activated(Core::SearchResultItem)), Core::SearchResultWindow::instance(), SLOT(onDisconnectedSearchItemSelected(Core::SearchResultItem)));
     if (searchMode == SearchResultWindow::SearchAndReplace) {
         connect(search, SIGNAL(replaceButtonClicked(QString,QList<Core::SearchResultItem>,bool)),
                 this, SLOT(doReplace(QString,QList<Core::SearchResultItem>,bool)));

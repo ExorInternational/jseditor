@@ -46,6 +46,8 @@
 #include <QScrollArea>
 #include <QStackedWidget>
 
+#include <QDir>//#720 - ADDED BY ROOPAK
+
 static const char SETTINGSKEYSECTIONNAME[] = "SearchResults";
 static const char SETTINGSKEYEXPANDRESULTS[] = "ExpandResults";
 static const int MAX_SEARCH_HISTORY = 12;
@@ -273,6 +275,7 @@ SearchResultWindow::SearchResultWindow(QWidget *newSearchPanel)
     : d(new SearchResultWindowPrivate(this))
 {
     m_instance = this;
+    m_bDisconnectSearchResultItems = false;//#720 - ADDED BY ROOPAK
 
     d->m_spacer = new QWidget;
     d->m_spacer->setMinimumWidth(30);
@@ -506,7 +509,13 @@ void SearchResultWindow::handleExpandCollapseToolButton(bool checked)
         d->m_searchResultWidgets.at(d->visibleSearchIndex())->collapseAll();
     }
 }
-
+void SearchResultWindow::onDisconnectedSearchItemSelected(const Core::SearchResultItem &item)//#720 - ADDED BY ROOPAK
+{
+    if (item.path.size() > 0)
+    {
+        emit searchItemSelected(QDir::fromNativeSeparators(item.path.first()), item.lineNumber);
+    }
+}//END - #720
 /*!
     \internal
 */

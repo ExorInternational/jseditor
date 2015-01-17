@@ -87,6 +87,7 @@ void MainWindowApp::loadLibrary()
     pHiddenWidget->hide();//comment it and it will enable auto-completion by Ctrl+Space
     m_pJsEditorTools = new JsEditorTools::JsEditorToolsLib(pHiddenWidget);
 
+    connect(m_pJsEditorTools, SIGNAL(searchResultItemSelected(QString, int)), this, SLOT(onSearchResultItemSelected(QString, int) ) );
     createCustomBuiltinTypes();
 #else
     m_pJsEditorTools = new JsEditorTools::JsEditorToolsLib(m_pCentralWidget);
@@ -220,10 +221,27 @@ void MainWindowApp::onFileOpenClicked()
             QPlainTextEdit *pTextEdit = m_pJsEditorTools->openFile(fileName);
             if(pTextEdit)
             {
+                m_oTextEditFileNameMap[fileName] = pTextEdit;
                 QMdiSubWindow *subWindow1 = m_mdiArea->addSubWindow(pTextEdit, Qt::WindowMinimizeButtonHint|Qt::WindowMaximizeButtonHint|Qt::WindowCloseButtonHint);
                 pTextEdit->show();
                 subWindow1->setAttribute(Qt::WA_DeleteOnClose);
 
+            }
+        }
+    }
+}
+void MainWindowApp::onSearchResultItemSelected(QString filename, int lineNumber)
+{
+    if(!filename.isEmpty() && m_oTextEditFileNameMap.contains(filename))
+    {
+        QList<QMdiSubWindow *>list = m_mdiArea->subWindowList();
+        for(int i=0;i<list.count();i++) {
+            if(list[i]->widget() == m_oTextEditFileNameMap[filename])
+            {
+                m_mdiArea->setActiveSubWindow(list[i]);
+                list[i]->widget()->setFocus();
+                m_pJsEditorTools->goToLine(m_oTextEditFileNameMap[filename], lineNumber);
+                break;
             }
         }
     }

@@ -181,12 +181,15 @@ public:
                                  PreserveCaseMode preserveCaseMode = PreserveCaseEnabled,
                                  const QString &cfgGroup = QString());
 
+    void setDisconnectSearchResultItems(bool bDisconnectSearchResultItems) { m_bDisconnectSearchResultItems = bDisconnectSearchResultItems; }//#720 - ADDED BY ROOPAK
+    bool areSearchResultItemsDisconnected(){ return m_bDisconnectSearchResultItems; }//#720 - END
 public slots:
     void clearContents();
-
+    void onDisconnectedSearchItemSelected(const Core::SearchResultItem &item);//#720 - ADDED BY ROOPAK
+signals:
+    void searchItemSelected(QString strFileName, int lineNumber);//#720 - ADDED BY ROOPAK
 private slots:
     void handleExpandCollapseToolButton(bool checked);
-
 public: // Used by plugin, do not use
     void writeSettings();
 
@@ -195,6 +198,7 @@ private:
 
     Internal::SearchResultWindowPrivate *d;
     static SearchResultWindow *m_instance;
+    bool m_bDisconnectSearchResultItems;//#720 - ADDED BY ROOPAK
 };
 
 } // namespace Core

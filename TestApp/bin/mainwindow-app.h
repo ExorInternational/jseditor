@@ -2,6 +2,7 @@
 #define MAINWINDOW_APP_H
 
 #include <QMainWindow>
+#include <QPlainTextEdit>
 
 #define USE_MDI_AND_TEXTEDIT_CONTROLS
 
@@ -35,6 +36,7 @@ private slots:
 #ifdef USE_MDI_AND_TEXTEDIT_CONTROLS
     void onFileNewClicked();
     void onFileOpenClicked();
+    void onSearchResultItemSelected(QString filename, int lineNumber);
 #endif
 private:
     void loadLibrary();
@@ -61,6 +63,7 @@ private:
     CGroupObj* m_pGroupObject;
     CJSTagObj* m_pTagObject;
     CFileSystemObj* m_pFileSystemObject;
+    QMap<QString, QPlainTextEdit *> m_oTextEditFileNameMap;
 };
 
 #endif // MAINWINDOW_APP_H

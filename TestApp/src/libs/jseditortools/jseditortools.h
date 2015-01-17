@@ -107,8 +107,12 @@ public:
     bool isPasteEnabled();
     void doPaste();
     void doSelectAll();
+    void goToLine(QPlainTextEdit *pTextEdit, int lineNumber);
+private slots:
+    void openDetatchedFindDialog();
 signals:
     void currentDocumentChanged();
+    void searchResultItemSelected(QString strFileName, int lineNumber);
 private:
     void populateAlternateContextMenu(QPlainTextEdit *pTextEdit, QMenu *pMenu);
     QWidget *m_MainWindow;
@@ -121,6 +125,7 @@ private:
     QmlJSEditor::Internal::QmlJSEditorPlugin *m_pQmlJSEditorPlugin;
 
     JSEditorMenuItems *m_pJSEditorMenuItems;
+    QWidget *m_pDetachedFindWindow;
 };
 
 }// namespace JsEditorTools

@@ -223,7 +223,7 @@ void TextEditorPlugin::extensionsInitialized()
 
     updateSearchResultsFont(m_settings->fontSettings());
 
-    addAutoReleasedObject(new FindInFiles);
+//    addAutoReleasedObject(new FindInFiles);#720 - COMMENTED BY ROOPAK - 'FIND IN FILESYSTEM IS NOT NEEDED'
     addAutoReleasedObject(new FindInCurrentFile);
     addAutoReleasedObject(new FindInOpenFiles);
 

@@ -17,6 +17,8 @@
 #include <qmljseditor/qmljseditorconstants.h>
 #include <coreplugin/editormanager/editorview.h>
 #include <qmljseditor/qmljseditor.h>
+#include <coreplugin/outputpanemanager.h>
+#include <coreplugin/find/searchresultwindow.h>
 
 #include <QStringList>
 #include <QSettings>
@@ -104,6 +106,7 @@ static inline QSettings *userSettings()
 
 JsEditorToolsLib::JsEditorToolsLib(QWidget *mainWindow)
 {
+    m_pDetachedFindWindow = NULL;
     m_MainWindow = NULL;
     m_pDummyMainWidget = new QWidget(mainWindow);
     m_MainWindow = m_pDummyMainWidget;
@@ -279,9 +282,26 @@ void JsEditorToolsLib::populateAlternateContextMenu(QPlainTextEdit *pTextEdit, Q
         pAdvancedMenu->addAction(tr("Decrease Font Size"), pBaseTextEdit, SLOT(zoomOut()) );
         pAdvancedMenu->addAction(tr("Reset Font Size"), pBaseTextEdit, SLOT(zoomReset()) );
 
-        QMenu *pFindReplaceMenu = pMenu->addMenu(tr("Find/Replace"));
+        pMenu->addAction(tr("Open Find Dialog"), this, SLOT(openDetatchedFindDialog()) );
         pMenu->addAction(tr("Go To Line..."), pBaseTextEdit, SLOT(showGoToLineDialog()) );
     }
+}
+
+void JsEditorToolsLib::openDetatchedFindDialog()
+{
+    if(m_pDetachedFindWindow == NULL)
+    {
+        m_pDetachedFindWindow = Core::Internal::OutputPaneManager::instance();
+        m_pDetachedFindWindow->setParent(NULL);
+        m_pDetachedFindWindow->setWindowModality(Qt::WindowModal);
+        Core::SearchResultWindow::instance()->setDisconnectSearchResultItems(true);
+        connect(Core::SearchResultWindow::instance(), SIGNAL(searchItemSelected(QString, int)), this, SIGNAL(searchResultItemSelected(QString, int)));
+    }
+
+    if(m_pDetachedFindWindow->isHidden())
+        m_pDetachedFindWindow->show();
+    else
+        m_pDetachedFindWindow->hide();
 }
 
 QPlainTextEdit *JsEditorToolsLib::openNewEditorWidget(QString strContentTitle)
@@ -394,6 +414,14 @@ void JsEditorToolsLib::doSelectAll()
     QAction *pSelectAllAction = Core::ActionManager::command(Core::Constants::SELECTALL)->action();
     if(pSelectAllAction)
         pSelectAllAction->trigger();
+}
+void JsEditorToolsLib::goToLine(QPlainTextEdit *pTextEdit, int lineNumber)
+{
+    QmlJSEditor::Internal::QmlJSTextEditorWidget *pQMLJSTextEdit = qobject_cast<QmlJSEditor::Internal::QmlJSTextEditorWidget *>(pTextEdit);
+    if(pQMLJSTextEdit)
+    {
+        pQMLJSTextEdit->gotoLine(lineNumber);
+    }
 }
 
 ////////////////////////////////////////ADDITIONAL SLOTS ADDED BY ROOPAK/////////#720 ROOPAK
