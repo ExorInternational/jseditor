@@ -54,7 +54,7 @@ public:
     bool isEnabled() const;
     void writeSettings(QSettings *settings);
     void readSettings(QSettings *settings);
-
+    void setCurrentDocument(Core::IDocument *currentDocument);//#720
 protected:
     Utils::FileIterator *files(const QStringList &nameFilters,
                                const QVariant &additionalParameters) const;

@@ -122,3 +122,7 @@ void FindInCurrentFile::readSettings(QSettings *settings)
     readCommonSettings(settings, QLatin1String("*"));
     settings->endGroup();
 }
+void FindInCurrentFile::setCurrentDocument(Core::IDocument *currentDocument)//#720 - START
+{
+    m_currentDocument = currentDocument;
+}//#720- END

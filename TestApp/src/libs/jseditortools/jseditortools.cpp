@@ -19,6 +19,8 @@
 #include <qmljseditor/qmljseditor.h>
 #include <coreplugin/outputpanemanager.h>
 #include <coreplugin/find/searchresultwindow.h>
+#include <texteditor/findincurrentfile.h>
+#include <coreplugin/find/findtoolwindow.h>
 
 #include <QStringList>
 #include <QSettings>
@@ -296,6 +298,7 @@ void JsEditorToolsLib::openDetatchedFindDialog()
         m_pDetachedFindWindow->setWindowModality(Qt::WindowModal);
         Core::SearchResultWindow::instance()->setDisconnectSearchResultItems(true);
         connect(Core::SearchResultWindow::instance(), SIGNAL(searchItemSelected(QString, int)), this, SIGNAL(searchResultItemSelected(QString, int)));
+        m_pDetachedFindWindow->setWindowTitle(tr("Find"));
     }
 
     if(m_pDetachedFindWindow->isHidden())
@@ -348,6 +351,10 @@ void JsEditorToolsLib::setTextToCurrentDocument(QString strText)
             if (textEditorDocument){
                 textEditorDocument->setContents(strText.toAscii());
             }
+        }
+        else
+        {
+            qDebug() << QLatin1String("Cannot set text to current document.");
         }
     }
 }
@@ -423,7 +430,20 @@ void JsEditorToolsLib::goToLine(QPlainTextEdit *pTextEdit, int lineNumber)
         pQMLJSTextEdit->gotoLine(lineNumber);
     }
 }
-
+void JsEditorToolsLib::setCurrentEditorForFindDialog(QPlainTextEdit *pTextEdit)
+{
+    QmlJSEditor::Internal::QmlJSTextEditorWidget *pQMLJSTextEdit = qobject_cast<QmlJSEditor::Internal::QmlJSTextEditorWidget *>(pTextEdit);
+    if(pQMLJSTextEdit)
+    {
+        //pQMLJSTextEdit->gotoLine(lineNumber);
+        TextEditor::Internal::FindInCurrentFile *pFindCurrent = PluginManager::getObject<TextEditor::Internal::FindInCurrentFile>();
+        if(pFindCurrent)
+        {
+            Core::Internal::FindToolWindow::instance()->setCurrentFilter(Core::Internal::FindToolWindow::instance()->getCurrentFilter());
+            pFindCurrent->setCurrentDocument((Core::IDocument *)pQMLJSTextEdit->qmlJsEditorDocument());
+        }
+    }
+}
 ////////////////////////////////////////ADDITIONAL SLOTS ADDED BY ROOPAK/////////#720 ROOPAK
 
 //static JsEditorTools::JsEditorToolsLib *globalObject = NULL;

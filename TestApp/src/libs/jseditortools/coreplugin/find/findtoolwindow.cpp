@@ -173,7 +173,10 @@ void FindToolWindow::setCurrentFilter(IFindFilter *filter)
     m_ui.searchTerm->setFocus();
     m_ui.searchTerm->selectAll();
 }
-
+IFindFilter *FindToolWindow::getCurrentFilter()
+{
+    return m_currentFilter;
+}
 void FindToolWindow::setCurrentFilter(int index)
 {
     m_ui.filterList->setCurrentIndex(index);

@@ -55,6 +55,7 @@ public:
 
     void setFindText(const QString &text);
     void setCurrentFilter(IFindFilter *filter);
+    IFindFilter *getCurrentFilter();
     void readSettings();
     void writeSettings();
 
