@@ -458,27 +458,15 @@ void JsEditorToolsLib::goToLine(QPlainTextEdit *pTextEdit, int lineNumber)
         pQMLJSTextEdit->gotoLine(lineNumber);
     }
 }
-void JsEditorToolsLib::setCurrentEditorForFindDialog(QPlainTextEdit *pTextEdit)
+void JsEditorToolsLib::setCurrentEditor(QPlainTextEdit *pTextEdit)
 {
-//    QmlJSEditor::Internal::QmlJSTextEditorWidget *pQMLJSTextEdit = qobject_cast<QmlJSEditor::Internal::QmlJSTextEditorWidget *>(pTextEdit);
-//    if(pQMLJSTextEdit)
-//    {
-//        //pQMLJSTextEdit->gotoLine(lineNumber);
-//        TextEditor::Internal::FindInCurrentFile *pFindCurrent = PluginManager::getObject<TextEditor::Internal::FindInCurrentFile>();
-//        if(pFindCurrent)
-//        {
-//            Core::Internal::FindToolWindow::instance()->setCurrentFilter(Core::Internal::FindToolWindow::instance()->getCurrentFilter());
-//            pFindCurrent->setCurrentDocument((Core::IDocument *)pQMLJSTextEdit->qmlJsEditorDocument());
-//        }
-//    }
-
     QmlJSEditor::Internal::QmlJSTextEditorWidget *pQMLJSTextEdit = qobject_cast<QmlJSEditor::Internal::QmlJSTextEditorWidget *>(pTextEdit);
     if(pQMLJSTextEdit)
     {
         foreach (Core::IEditor *pEditor, m_pDetatchedEditors) {
             if(pEditor->document() == pQMLJSTextEdit->qmlJsEditorDocument())
             {
-                Core::EditorManager::setCurrentEditor(pEditor);
+                Core::EditorManager::setCurrentEditorWithEditorViewIgnored(pEditor);
                 break;
             }
         }

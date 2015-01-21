@@ -109,7 +109,7 @@ public:
     void doPaste();
     void doSelectAll();
     void goToLine(QPlainTextEdit *pTextEdit, int lineNumber);
-    void setCurrentEditorForFindDialog(QPlainTextEdit *pTextEdit);
+    void setCurrentEditor(QPlainTextEdit *pTextEdit);
 private slots:
     void openDetatchedFindDialog();
 signals:

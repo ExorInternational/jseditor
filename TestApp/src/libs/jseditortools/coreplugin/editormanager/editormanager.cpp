@@ -557,6 +557,21 @@ void EditorManager::setCurrentEditor(IEditor *editor, bool ignoreNavigationHisto
     emit m_instance->currentEditorChanged(editor);
 }
 
+void EditorManager::setCurrentEditorWithEditorViewIgnored(IEditor *editor)
+{
+    if (d->m_currentEditor == editor)
+        return;
+    if (d->m_currentEditor)
+        addCurrentPositionToNavigationHistory();
+
+    d->m_currentEditor = editor;
+    if (editor) {
+        // update global history
+        EditorView::updateEditorHistory(editor, d->m_globalHistory);
+    }
+
+    emit m_instance->currentEditorChanged(editor);
+}
 
 void EditorManager::setCurrentView(Internal::EditorView *view)
 {

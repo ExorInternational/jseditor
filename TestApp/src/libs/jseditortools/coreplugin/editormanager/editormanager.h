@@ -191,7 +191,7 @@ public:
     static void addNativeDirActions(QMenu *contextMenu, DocumentModel::Entry *entry);
 
     static Internal::EditorView *viewForEditor(IEditor *editor);//#720 moved from private to here - ROOPAK
-    static void setCurrentEditor(IEditor *editor, bool ignoreNavigationHistory = false);//#720 moved from private to here - ROOPAK
+    static void setCurrentEditorWithEditorViewIgnored(IEditor *editor);//#720 - ADDED BY ROOPAK
 signals:
     void currentEditorChanged(Core::IEditor *editor);
     void currentDocumentStateChanged();
@@ -273,6 +273,7 @@ private:
         const Id &id = Id(), OpenEditorFlags flags = NoFlags, bool *newEditor = 0);
     static int visibleDocumentsCount();
 
+    static void setCurrentEditor(IEditor *editor, bool ignoreNavigationHistory = false);
     static void setCurrentView(Internal::EditorView *view);
     static Internal::EditorView *currentEditorView();
     //static Internal::EditorView *viewForEditor(IEditor *editor);//#720 moved to public by ROOPAK
