@@ -286,6 +286,31 @@ void JsEditorToolsLib::populateAlternateContextMenu(QPlainTextEdit *pTextEdit, Q
 
         pMenu->addAction(tr("Open Find Dialog"), this, SLOT(openDetatchedFindDialog()) );
         pMenu->addAction(tr("Go To Line..."), pBaseTextEdit, SLOT(showGoToLineDialog()) );
+
+        QMenu *pToolsMenu = pMenu->addMenu(tr("Tools"));
+        QMenu *pJavascriptMenu = pToolsMenu->addMenu(tr("Javascript"));
+//        QAction *pResetCodeModelAction = ActionManager::command(QmlJSTools::Constants::RESET_CODEMODEL)->action();
+//        pJavascriptMenu->addAction(pResetCodeModelAction);
+
+//        pJavascriptMenu->addSeparator();
+
+//        QAction *pSollowSymbolUnderCursorAction = ActionManager::command(TextEditor::Constants::FOLLOW_SYMBOL_UNDER_CURSOR)->action();
+//        pJavascriptMenu->addAction(pSollowSymbolUnderCursorAction);
+
+//        QAction *pFindUsagesAction = ActionManager::command(QmlJSEditor::Constants::FIND_USAGES)->action();
+//        pJavascriptMenu->addAction(pFindUsagesAction);
+
+//        QAction *pRenameUsagesAction = ActionManager::command(QmlJSEditor::Constants::RENAME_USAGES)->action();
+//        pJavascriptMenu->addAction(pRenameUsagesAction);
+
+//        QAction *pRunSemanticAction = ActionManager::command(QmlJSEditor::Constants::RUN_SEMANTIC_SCAN)->action();
+//        pJavascriptMenu->addAction(pRunSemanticAction);
+
+//        QAction *pReformatFileAction = ActionManager::command(QmlJSEditor::Constants::REFORMAT_FILE)->action();
+//        pJavascriptMenu->addAction(pReformatFileAction);
+
+        QAction *pOptionsAction = Core::ActionManager::command(Core::Constants::OPTIONS)->action();
+        pToolsMenu->addAction(pOptionsAction);
     }
 }
 
