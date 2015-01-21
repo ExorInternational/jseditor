@@ -20,6 +20,7 @@ namespace Internal {
 class CorePlugin;
 }
 //class IDocument;
+class IEditor;
 }
 
 namespace TextEditor {
@@ -127,6 +128,7 @@ private:
 
     JSEditorMenuItems *m_pJSEditorMenuItems;
     QWidget *m_pDetachedFindWindow;
+    QList<Core::IEditor *> m_pDetatchedEditors;
 };
 
 }// namespace JsEditorTools

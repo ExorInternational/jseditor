@@ -21,6 +21,8 @@
 #include <coreplugin/find/searchresultwindow.h>
 #include <texteditor/findincurrentfile.h>
 #include <coreplugin/find/findtoolwindow.h>
+#include <qmljseditor/qmljseditordocument.h>
+#include <qmljstools/qmljstoolsconstants.h>
 
 #include <QStringList>
 #include <QSettings>
@@ -234,6 +236,7 @@ QPlainTextEdit *JsEditorToolsLib::openFile(QString strFilePath)
             pEditorView->removeEditor(editor);
             disconnect(Core::ICore::instance(), SIGNAL(contextAboutToChange(QList<Core::IContext*>)),
                     Core::EditorManager::instance(), SLOT(handleContextChange(QList<Core::IContext*>)));
+            m_pDetatchedEditors.append(editor);
 
             //set contect menu
             QMenu *pMenu = new QMenu(pTextEditor);
@@ -289,25 +292,25 @@ void JsEditorToolsLib::populateAlternateContextMenu(QPlainTextEdit *pTextEdit, Q
 
         QMenu *pToolsMenu = pMenu->addMenu(tr("Tools"));
         QMenu *pJavascriptMenu = pToolsMenu->addMenu(tr("Javascript"));
-//        QAction *pResetCodeModelAction = ActionManager::command(QmlJSTools::Constants::RESET_CODEMODEL)->action();
-//        pJavascriptMenu->addAction(pResetCodeModelAction);
+        QAction *pResetCodeModelAction = Core::ActionManager::command(QmlJSTools::Constants::RESET_CODEMODEL)->action();
+        pJavascriptMenu->addAction(pResetCodeModelAction);
 
-//        pJavascriptMenu->addSeparator();
+        pJavascriptMenu->addSeparator();
 
-//        QAction *pSollowSymbolUnderCursorAction = ActionManager::command(TextEditor::Constants::FOLLOW_SYMBOL_UNDER_CURSOR)->action();
-//        pJavascriptMenu->addAction(pSollowSymbolUnderCursorAction);
+        QAction *pSollowSymbolUnderCursorAction = Core::ActionManager::command(TextEditor::Constants::FOLLOW_SYMBOL_UNDER_CURSOR)->action();
+        pJavascriptMenu->addAction(pSollowSymbolUnderCursorAction);
 
-//        QAction *pFindUsagesAction = ActionManager::command(QmlJSEditor::Constants::FIND_USAGES)->action();
-//        pJavascriptMenu->addAction(pFindUsagesAction);
+        QAction *pFindUsagesAction = Core::ActionManager::command(QmlJSEditor::Constants::FIND_USAGES)->action();
+        pJavascriptMenu->addAction(pFindUsagesAction);
 
-//        QAction *pRenameUsagesAction = ActionManager::command(QmlJSEditor::Constants::RENAME_USAGES)->action();
-//        pJavascriptMenu->addAction(pRenameUsagesAction);
+        QAction *pRenameUsagesAction = Core::ActionManager::command(QmlJSEditor::Constants::RENAME_USAGES)->action();
+        pJavascriptMenu->addAction(pRenameUsagesAction);
 
-//        QAction *pRunSemanticAction = ActionManager::command(QmlJSEditor::Constants::RUN_SEMANTIC_SCAN)->action();
-//        pJavascriptMenu->addAction(pRunSemanticAction);
+        QAction *pRunSemanticAction = Core::ActionManager::command(QmlJSEditor::Constants::RUN_SEMANTIC_SCAN)->action();
+        pJavascriptMenu->addAction(pRunSemanticAction);
 
-//        QAction *pReformatFileAction = ActionManager::command(QmlJSEditor::Constants::REFORMAT_FILE)->action();
-//        pJavascriptMenu->addAction(pReformatFileAction);
+        QAction *pReformatFileAction = Core::ActionManager::command(QmlJSEditor::Constants::REFORMAT_FILE)->action();
+        pJavascriptMenu->addAction(pReformatFileAction);
 
         QAction *pOptionsAction = Core::ActionManager::command(Core::Constants::OPTIONS)->action();
         pToolsMenu->addAction(pOptionsAction);
@@ -457,15 +460,27 @@ void JsEditorToolsLib::goToLine(QPlainTextEdit *pTextEdit, int lineNumber)
 }
 void JsEditorToolsLib::setCurrentEditorForFindDialog(QPlainTextEdit *pTextEdit)
 {
+//    QmlJSEditor::Internal::QmlJSTextEditorWidget *pQMLJSTextEdit = qobject_cast<QmlJSEditor::Internal::QmlJSTextEditorWidget *>(pTextEdit);
+//    if(pQMLJSTextEdit)
+//    {
+//        //pQMLJSTextEdit->gotoLine(lineNumber);
+//        TextEditor::Internal::FindInCurrentFile *pFindCurrent = PluginManager::getObject<TextEditor::Internal::FindInCurrentFile>();
+//        if(pFindCurrent)
+//        {
+//            Core::Internal::FindToolWindow::instance()->setCurrentFilter(Core::Internal::FindToolWindow::instance()->getCurrentFilter());
+//            pFindCurrent->setCurrentDocument((Core::IDocument *)pQMLJSTextEdit->qmlJsEditorDocument());
+//        }
+//    }
+
     QmlJSEditor::Internal::QmlJSTextEditorWidget *pQMLJSTextEdit = qobject_cast<QmlJSEditor::Internal::QmlJSTextEditorWidget *>(pTextEdit);
     if(pQMLJSTextEdit)
     {
-        //pQMLJSTextEdit->gotoLine(lineNumber);
-        TextEditor::Internal::FindInCurrentFile *pFindCurrent = PluginManager::getObject<TextEditor::Internal::FindInCurrentFile>();
-        if(pFindCurrent)
-        {
-            Core::Internal::FindToolWindow::instance()->setCurrentFilter(Core::Internal::FindToolWindow::instance()->getCurrentFilter());
-            pFindCurrent->setCurrentDocument((Core::IDocument *)pQMLJSTextEdit->qmlJsEditorDocument());
+        foreach (Core::IEditor *pEditor, m_pDetatchedEditors) {
+            if(pEditor->document() == pQMLJSTextEdit->qmlJsEditorDocument())
+            {
+                Core::EditorManager::setCurrentEditor(pEditor);
+                break;
+            }
         }
     }
 }
