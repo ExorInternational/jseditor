@@ -37,6 +37,7 @@ private slots:
     void onFileNewClicked();
     void onFileOpenClicked();
     void onSearchResultItemSelected(QString filename, int lineNumber);
+    void onSubWindowAboutToBeActivated();
 #endif
 private:
     void loadLibrary();

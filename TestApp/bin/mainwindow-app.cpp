@@ -223,6 +223,7 @@ void MainWindowApp::onFileOpenClicked()
             {
                 m_oTextEditFileNameMap[fileName] = pTextEdit;
                 QMdiSubWindow *subWindow1 = m_mdiArea->addSubWindow(pTextEdit, Qt::WindowMinimizeButtonHint|Qt::WindowMaximizeButtonHint|Qt::WindowCloseButtonHint);
+                connect(subWindow1, SIGNAL(aboutToActivate()), this, SLOT(onSubWindowAboutToBeActivated()));
                 pTextEdit->show();
                 subWindow1->setAttribute(Qt::WA_DeleteOnClose);
 
@@ -241,6 +242,20 @@ void MainWindowApp::onSearchResultItemSelected(QString filename, int lineNumber)
                 m_mdiArea->setActiveSubWindow(list[i]);
                 list[i]->widget()->setFocus();
                 m_pJsEditorTools->goToLine(m_oTextEditFileNameMap[filename], lineNumber);
+                break;
+            }
+        }
+    }
+}
+void MainWindowApp::onSubWindowAboutToBeActivated()
+{
+    QMdiSubWindow *pSubWindow = qobject_cast<QMdiSubWindow *>(sender());
+    if(pSubWindow)
+    {
+        QList<QPlainTextEdit *>list = m_oTextEditFileNameMap.values();
+        for(int i=0;i<list.count();i++) {
+            if(list[i] == pSubWindow->widget()) {
+                m_pJsEditorTools->setCurrentEditorForFindDialog(list[i]);
                 break;
             }
         }
