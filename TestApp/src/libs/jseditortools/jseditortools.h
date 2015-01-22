@@ -109,9 +109,10 @@ public:
     void doPaste();
     void doSelectAll();
     void goToLine(QPlainTextEdit *pTextEdit, int lineNumber);
-    void setCurrentEditor(QPlainTextEdit *pTextEdit);
+    QWidget *getFindDialog();
 private slots:
     void openDetatchedFindDialog();
+    void onTextEditorFocused();
 signals:
     void currentDocumentChanged();
     void searchResultItemSelected(QString strFileName, int lineNumber);

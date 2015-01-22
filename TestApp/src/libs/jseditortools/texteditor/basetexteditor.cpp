@@ -5030,6 +5030,7 @@ void BaseTextEditorWidget::focusInEvent(QFocusEvent *e)
 {
     QPlainTextEdit::focusInEvent(e);
     updateHighlights();
+    emit gotFocusIn();
 }
 
 void BaseTextEditorWidget::focusOutEvent(QFocusEvent *e)

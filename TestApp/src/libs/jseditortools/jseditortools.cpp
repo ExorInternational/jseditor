@@ -243,6 +243,7 @@ QPlainTextEdit *JsEditorToolsLib::openFile(QString strFilePath)
             pTextEditor->setAlternateMenu(pMenu);
             pTextEditor->setEnableAlternateContextMenu(true);
             populateAlternateContextMenu(pTextEditor, pMenu);
+            connect(pTextEditor, SIGNAL(gotFocusIn()), this, SLOT(onTextEditorFocused()));
         }
     }
 
@@ -319,20 +320,13 @@ void JsEditorToolsLib::populateAlternateContextMenu(QPlainTextEdit *pTextEdit, Q
 
 void JsEditorToolsLib::openDetatchedFindDialog()
 {
-    if(m_pDetachedFindWindow == NULL)
+    if(getFindDialog())
     {
-        m_pDetachedFindWindow = Core::Internal::OutputPaneManager::instance();
-        m_pDetachedFindWindow->setParent(NULL);
-        m_pDetachedFindWindow->setWindowModality(Qt::WindowModal);
-        Core::SearchResultWindow::instance()->setDisconnectSearchResultItems(true);
-        connect(Core::SearchResultWindow::instance(), SIGNAL(searchItemSelected(QString, int)), this, SIGNAL(searchResultItemSelected(QString, int)));
-        m_pDetachedFindWindow->setWindowTitle(tr("Find"));
+        if(m_pDetachedFindWindow->isHidden())
+            m_pDetachedFindWindow->show();
+        else
+            m_pDetachedFindWindow->hide();
     }
-
-    if(m_pDetachedFindWindow->isHidden())
-        m_pDetachedFindWindow->show();
-    else
-        m_pDetachedFindWindow->hide();
 }
 
 QPlainTextEdit *JsEditorToolsLib::openNewEditorWidget(QString strContentTitle)
@@ -458,9 +452,23 @@ void JsEditorToolsLib::goToLine(QPlainTextEdit *pTextEdit, int lineNumber)
         pQMLJSTextEdit->gotoLine(lineNumber);
     }
 }
-void JsEditorToolsLib::setCurrentEditor(QPlainTextEdit *pTextEdit)
+QWidget *JsEditorToolsLib::getFindDialog()
 {
-    QmlJSEditor::Internal::QmlJSTextEditorWidget *pQMLJSTextEdit = qobject_cast<QmlJSEditor::Internal::QmlJSTextEditorWidget *>(pTextEdit);
+    if(m_pDetachedFindWindow == NULL)
+    {
+        m_pDetachedFindWindow = Core::Internal::OutputPaneManager::instance();
+        m_pDetachedFindWindow->setParent(NULL);
+        m_pDetachedFindWindow->setWindowModality(Qt::WindowModal);
+        Core::SearchResultWindow::instance()->setDisconnectSearchResultItems(true);
+        connect(Core::SearchResultWindow::instance(), SIGNAL(searchItemSelected(QString, int)), this, SIGNAL(searchResultItemSelected(QString, int)));
+        m_pDetachedFindWindow->setWindowTitle(tr("Find"));
+    }
+
+    return m_pDetachedFindWindow;
+}
+void JsEditorToolsLib::onTextEditorFocused()
+{
+    QmlJSEditor::Internal::QmlJSTextEditorWidget *pQMLJSTextEdit = qobject_cast<QmlJSEditor::Internal::QmlJSTextEditorWidget *>(sender());
     if(pQMLJSTextEdit)
     {
         foreach (Core::IEditor *pEditor, m_pDetatchedEditors) {

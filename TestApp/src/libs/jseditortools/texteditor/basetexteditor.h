@@ -316,7 +316,7 @@ public slots:
 signals:
     void assistFinished();
     void readOnlyChanged();
-
+    void gotFocusIn();
 protected:
     bool event(QEvent *e);
     void keyPressEvent(QKeyEvent *e);

@@ -255,7 +255,8 @@ void MainWindowApp::onSubWindowAboutToBeActivated()
         QList<QPlainTextEdit *>list = m_oTextEditFileNameMap.values();
         for(int i=0;i<list.count();i++) {
             if(list[i] == pSubWindow->widget()) {
-                m_pJsEditorTools->setCurrentEditorForFindDialog(list[i]);
+                //m_pJsEditorTools->setCurrentEditorForFindDialog(list[i]);
+                pSubWindow->widget()->setFocus();
                 break;
             }
         }
