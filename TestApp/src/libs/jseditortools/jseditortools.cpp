@@ -300,7 +300,7 @@ void JsEditorToolsLib::populateAlternateContextMenu(QPlainTextEdit *pTextEdit, Q
         pAdvancedMenu->addAction(tr("Decrease Font Size"), pBaseTextEdit, SLOT(zoomOut()) );
         pAdvancedMenu->addAction(tr("Reset Font Size"), pBaseTextEdit, SLOT(zoomReset()) );
 
-        pMenu->addAction(tr("Open Find Dialog"), this, SLOT(openDetatchedFindDialog()) );
+        pMenu->addAction(tr("Find"), this, SLOT(openDetatchedFindDialog()) );
         pMenu->addAction(tr("Go To Line..."), pBaseTextEdit, SLOT(showGoToLineDialog()) );
 
         QMenu *pToolsMenu = pMenu->addMenu(tr("Tools"));
