@@ -266,39 +266,39 @@ void JsEditorToolsLib::populateAlternateContextMenu(QPlainTextEdit *pTextEdit, Q
     QPointer<QmlJSEditor::Internal::QmlJSTextEditorWidget> pBaseTextEdit = qobject_cast<QmlJSEditor::Internal::QmlJSTextEditorWidget *>(pTextEdit);
     if(pBaseTextEdit && pMenu)
     {
-        pMenu->addAction(tr("Cut"), pBaseTextEdit, SLOT(cut()));
-        pMenu->addAction(tr("Copy"), pBaseTextEdit, SLOT(copy()));
-        pMenu->addAction(tr("Paste"), pBaseTextEdit, SLOT(paste()));
-        pMenu->addAction(tr("Select All"), pBaseTextEdit, SLOT(selectAll()) );
+        pMenu->addAction(Core::ActionManager::command(Core::Constants::CUT)->action());
+        pMenu->addAction(Core::ActionManager::command(Core::Constants::COPY)->action());
+        pMenu->addAction(Core::ActionManager::command(Core::Constants::PASTE)->action());
+        pMenu->addAction(Core::ActionManager::command(Core::Constants::SELECTALL)->action());
         pMenu->addSeparator();
 
         QMenu *pAdvancedMenu = pMenu->addMenu(tr("Advanced"));
-        pAdvancedMenu->addAction(tr("Auto-indent Selection"), pBaseTextEdit, SLOT(format()) );
-        pAdvancedMenu->addAction(tr("Rewrap Paragraph"), pBaseTextEdit, SLOT(rewrapParagraph()) );
-        pAdvancedMenu->addAction(tr("Clean Whitespace"), pBaseTextEdit, SLOT(cleanWhitespace()) );
-        pAdvancedMenu->addAction(tr("Toggle Comment Selection"), pBaseTextEdit, SLOT(unCommentSelection()) );
+        pAdvancedMenu->addAction(Core::ActionManager::command(TextEditor::Constants::AUTO_INDENT_SELECTION)->action());
+        pAdvancedMenu->addAction(Core::ActionManager::command(TextEditor::Constants::REWRAP_PARAGRAPH)->action());
+        pAdvancedMenu->addAction(Core::ActionManager::command(TextEditor::Constants::CLEAN_WHITESPACE)->action());
+        pAdvancedMenu->addAction(Core::ActionManager::command(TextEditor::Constants::UN_COMMENT_SELECTION)->action());
 
         pAdvancedMenu->addSeparator();
-        pAdvancedMenu->addAction(tr("Cut Line"), pBaseTextEdit, SLOT(cutLine()) );
-        pAdvancedMenu->addAction(tr("Copy Line"), pBaseTextEdit, SLOT(copyLine()) );
-        pAdvancedMenu->addAction(tr("Uppercase Selection"), pBaseTextEdit, SLOT(uppercaseSelection()) );
-        pAdvancedMenu->addAction(tr("Lowercase Selection"), pBaseTextEdit, SLOT(lowercaseSelection()) );
+        pAdvancedMenu->addAction(Core::ActionManager::command(TextEditor::Constants::CUT_LINE)->action());
+        pAdvancedMenu->addAction(Core::ActionManager::command(TextEditor::Constants::COPY_LINE)->action());
+        pAdvancedMenu->addAction(Core::ActionManager::command(TextEditor::Constants::UPPERCASE_SELECTION)->action());
+        pAdvancedMenu->addAction(Core::ActionManager::command(TextEditor::Constants::LOWERCASE_SELECTION)->action());
 
         pAdvancedMenu->addSeparator();
-        pAdvancedMenu->addAction(tr("Fold"), pBaseTextEdit, SLOT(fold()) );
-        pAdvancedMenu->addAction(tr("Unfold"), pBaseTextEdit, SLOT(unfold()) );
-        pAdvancedMenu->addAction(tr("Toggle Fold All"), pBaseTextEdit, SLOT(unfoldAll()) );
+        pAdvancedMenu->addAction(Core::ActionManager::command(TextEditor::Constants::FOLD)->action());
+        pAdvancedMenu->addAction(Core::ActionManager::command(TextEditor::Constants::UNFOLD)->action());
+        pAdvancedMenu->addAction(Core::ActionManager::command(TextEditor::Constants::UNFOLD_ALL)->action());
 
         pAdvancedMenu->addSeparator();
-        pAdvancedMenu->addAction(tr("Go to Block Start"), pBaseTextEdit, SLOT(gotoBlockStart()) );
-        pAdvancedMenu->addAction(tr("Go to Block End"), pBaseTextEdit, SLOT(gotoBlockEnd()) );
-        pAdvancedMenu->addAction(tr("Select Block Up"), pBaseTextEdit, SLOT(selectBlockUp()) );
-        pAdvancedMenu->addAction(tr("Select Block Down"), pBaseTextEdit, SLOT(selectBlockDown()) );
+        pAdvancedMenu->addAction(Core::ActionManager::command(TextEditor::Constants::GOTO_BLOCK_START)->action());
+        pAdvancedMenu->addAction(Core::ActionManager::command(TextEditor::Constants::GOTO_BLOCK_END)->action());
+        pAdvancedMenu->addAction(Core::ActionManager::command(TextEditor::Constants::SELECT_BLOCK_UP)->action());
+        pAdvancedMenu->addAction(Core::ActionManager::command(TextEditor::Constants::SELECT_BLOCK_DOWN)->action());
 
         pAdvancedMenu->addSeparator();
-        pAdvancedMenu->addAction(tr("Increase Font Size"), pBaseTextEdit, SLOT(zoomIn()) );
-        pAdvancedMenu->addAction(tr("Decrease Font Size"), pBaseTextEdit, SLOT(zoomOut()) );
-        pAdvancedMenu->addAction(tr("Reset Font Size"), pBaseTextEdit, SLOT(zoomReset()) );
+        pAdvancedMenu->addAction(Core::ActionManager::command(TextEditor::Constants::INCREASE_FONT_SIZE)->action());
+        pAdvancedMenu->addAction(Core::ActionManager::command(TextEditor::Constants::DECREASE_FONT_SIZE)->action());
+        pAdvancedMenu->addAction(Core::ActionManager::command(TextEditor::Constants::RESET_FONT_SIZE)->action());
 
         pMenu->addAction(tr("Find"), this, SLOT(openDetatchedFindDialog()) );
         pMenu->addAction(tr("Go To Line..."), pBaseTextEdit, SLOT(showGoToLineDialog()) );
