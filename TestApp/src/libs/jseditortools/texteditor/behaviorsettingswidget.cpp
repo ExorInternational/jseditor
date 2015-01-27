@@ -36,12 +36,15 @@
 #include <texteditor/storagesettings.h>
 #include <texteditor/behaviorsettings.h>
 #include <texteditor/extraencodingsettings.h>
+#include <coreplugin/icore.h>//#720 - ADDED BY ROOPAK
 
 #include <QList>
 #include <QString>
 #include <QByteArray>
 #include <QTextCodec>
 #include <QTextStream>
+#include <QDir>//#720 START
+#include <QMessageBox>//#720 END
 
 #include <algorithm>
 #include <functional>
@@ -114,6 +117,9 @@ BehaviorSettingsWidget::BehaviorSettingsWidget(QWidget *parent)
             this, SLOT(slotBehaviorSettingsChanged()));
     connect(d->m_ui.keyboardTooltips, SIGNAL(clicked()),
             this, SLOT(slotBehaviorSettingsChanged()));
+
+    //Languages
+    fillLanguageBox();
 }
 
 BehaviorSettingsWidget::~BehaviorSettingsWidget()
@@ -266,4 +272,60 @@ void BehaviorSettingsWidget::slotEncodingBoxChanged(int index)
     emit textCodecChanged(d->m_codecs.at(index));
 }
 
-} // TextEditor
+void BehaviorSettingsWidget::fillLanguageBox() const
+{
+    const QString currentLocale = language();
+
+    d->m_ui.languageBox->addItem(tr("<System Language>"), QString());
+    // need to add this explicitly, since there is no qm file for English
+    d->m_ui.languageBox->addItem(QLatin1String("English"), QLatin1String("C"));
+    if (currentLocale == QLatin1String("C"))
+        d->m_ui.languageBox->setCurrentIndex(d->m_ui.languageBox->count() - 1);
+
+    const QString creatorTrPath =
+            Core::ICore::resourcePath() + QLatin1String("/translations");
+    const QStringList languageFiles = QDir(creatorTrPath).entryList(QStringList(QLatin1String("qtcreator*.qm")));
+
+    Q_FOREACH(const QString &languageFile, languageFiles)
+    {
+        int start = languageFile.indexOf(QLatin1Char('_'))+1;
+        int end = languageFile.lastIndexOf(QLatin1Char('.'));
+        const QString locale = languageFile.mid(start, end-start);
+        // no need to show a language that creator will not load anyway
+        /*if (hasQmFilesForLocale(locale, creatorTrPath))*/ {
+            QLocale tmpLocale(locale);
+            QString languageItem = QLocale::languageToString(tmpLocale.language()) + QLatin1String(" (")
+                                   + QLocale::countryToString(tmpLocale.country()) + QLatin1Char(')');
+            d->m_ui.languageBox->addItem(languageItem, locale);
+            if (locale == currentLocale)
+                d->m_ui.languageBox->setCurrentIndex(d->m_ui.languageBox->count() - 1);
+        }
+    }
+}
+void BehaviorSettingsWidget::resetLanguage()
+{
+    // system language is default
+    d->m_ui.languageBox->setCurrentIndex(0);
+}
+
+QString BehaviorSettingsWidget::language() const
+{
+    QSettings* settings = Core::ICore::settings();
+    return settings->value(QLatin1String("General/OverrideLanguage")).toString();
+}
+
+void BehaviorSettingsWidget::setLanguage(const QString &locale)
+{
+    QSettings* settings = Core::ICore::settings();
+    if (settings->value(QLatin1String("General/OverrideLanguage")).toString() != locale)
+    {
+        QMessageBox::information(Core::ICore::mainWindow(), tr("Restart required"),
+                                 tr("The language change will take effect after a restart of Qt Creator."));
+    }
+    if (locale.isEmpty())
+        settings->remove(QLatin1String("General/OverrideLanguage"));
+    else
+        settings->setValue(QLatin1String("General/OverrideLanguage"), locale);
+}
+
+}// TextEditor

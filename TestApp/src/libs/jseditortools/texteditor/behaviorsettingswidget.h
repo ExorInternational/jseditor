@@ -94,6 +94,10 @@ private slots:
 
 private:
     void updateConstrainTooltipsBoxTooltip() const;
+    void fillLanguageBox() const;
+    void resetLanguage();
+    QString language() const;
+    void setLanguage(const QString &locale);
 
     BehaviorSettingsWidgetPrivate *d;
 };
