@@ -236,7 +236,8 @@ QPlainTextEdit *JsEditorToolsLib::openFile(QString strFilePath)
             pEditorView->removeEditor(editor);
             disconnect(Core::ICore::instance(), SIGNAL(contextAboutToChange(QList<Core::IContext*>)),
                     Core::EditorManager::instance(), SLOT(handleContextChange(QList<Core::IContext*>)));
-            m_pDetatchedEditors.append(editor);
+            if(!m_pDetatchedEditors.contains(editor))
+                m_pDetatchedEditors.append(editor);
 
             //set contect menu
             QMenu *pMenu = new QMenu(pTextEditor);
@@ -481,6 +482,24 @@ void JsEditorToolsLib::onTextEditorFocused()
             }
         }
     }
+}
+void JsEditorToolsLib::removeEditor(QPlainTextEdit *pTextEdit)
+{
+    QmlJSEditor::Internal::QmlJSTextEditorWidget *pQMLJSTextEdit = qobject_cast<QmlJSEditor::Internal::QmlJSTextEditorWidget *>(pTextEdit);
+    if(pQMLJSTextEdit)
+    {
+        foreach (Core::IEditor *pEditor, m_pDetatchedEditors) {
+            if(pEditor->document() == pQMLJSTextEdit->qmlJsEditorDocument())
+            {
+                m_pDetatchedEditors.removeAll(pEditor);
+                Core::EditorManager::closeEditor(pEditor, false);
+                break;
+            }
+        }
+    }
+
+    if(m_pDetatchedEditors.count() == 0)
+        m_pDetachedFindWindow->hide();
 }
 ////////////////////////////////////////ADDITIONAL SLOTS ADDED BY ROOPAK/////////#720 ROOPAK
 
