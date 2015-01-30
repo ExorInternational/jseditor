@@ -114,6 +114,8 @@ public:
 private slots:
     void openDetatchedFindDialog();
     void onTextEditorFocused();
+    void showGoToLineDialog();
+    bool showOptionsDialog();
 signals:
     void currentDocumentChanged();
     void searchResultItemSelected(QString strFileName, int lineNumber);

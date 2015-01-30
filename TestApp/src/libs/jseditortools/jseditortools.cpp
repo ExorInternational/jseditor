@@ -23,11 +23,14 @@
 #include <coreplugin/find/findtoolwindow.h>
 #include <qmljseditor/qmljseditordocument.h>
 #include <qmljstools/qmljstoolsconstants.h>
+#include <coreplugin/dialogs/settingsdialog.h>
 
 #include <QStringList>
 #include <QSettings>
 #include <QFileInfo>
 #include <QDir>
+#include <QInputDialog>
+#include <QTextBlock>
 
 using namespace JsEditorTools;
 using namespace ExtensionSystem;
@@ -302,7 +305,7 @@ void JsEditorToolsLib::populateAlternateContextMenu(QPlainTextEdit *pTextEdit, Q
         pAdvancedMenu->addAction(Core::ActionManager::command(TextEditor::Constants::RESET_FONT_SIZE)->action());
 
         pMenu->addAction(tr("Find"), this, SLOT(openDetatchedFindDialog()) );
-        pMenu->addAction(tr("Go To Line..."), pBaseTextEdit, SLOT(showGoToLineDialog()) );
+        pMenu->addAction(tr("Go To Line..."), this, SLOT(showGoToLineDialog()) );
 
         QMenu *pToolsMenu = pMenu->addMenu(tr("Tools"));
         QMenu *pJavascriptMenu = pToolsMenu->addMenu(tr("Javascript"));
@@ -326,8 +329,9 @@ void JsEditorToolsLib::populateAlternateContextMenu(QPlainTextEdit *pTextEdit, Q
         QAction *pReformatFileAction = Core::ActionManager::command(QmlJSEditor::Constants::REFORMAT_FILE)->action();
         pJavascriptMenu->addAction(pReformatFileAction);
 
-        QAction *pOptionsAction = Core::ActionManager::command(Core::Constants::OPTIONS)->action();
-        pToolsMenu->addAction(pOptionsAction);
+        //QAction *pOptionsAction = Core::ActionManager::command(Core::Constants::OPTIONS)->action();
+//        pToolsMenu->addAction(pOptionsAction);
+        pToolsMenu->addAction(tr("Options"), this, SLOT(showOptionsDialog()) );
     }
 }
 
@@ -500,6 +504,28 @@ void JsEditorToolsLib::removeEditor(QPlainTextEdit *pTextEdit)
 
     if(m_pDetatchedEditors.count() == 0)
         m_pDetachedFindWindow->hide();
+}
+void JsEditorToolsLib::showGoToLineDialog()
+{
+    bool ok;
+    QmlJSEditor::Internal::QmlJSTextEditorWidget *pQMLJSTextEdit = qobject_cast<QmlJSEditor::Internal::QmlJSTextEditorWidget *>(Core::EditorManager::currentEditor()->widget());
+    if(pQMLJSTextEdit)
+    {
+        QTextBlock block = pQMLJSTextEdit->textCursor().block();
+        QWidget *pParent = qobject_cast<QWidget *>(m_pDummyMainWidget->parent());
+        int nLineNumber = QInputDialog::getInt(pParent, QLatin1String("Go To Line:"),
+                                      QLatin1String("Line Number:"), block.fragmentIndex(), 0, pQMLJSTextEdit->blockCount(), 1, &ok);
+        if (ok)
+        {
+            pQMLJSTextEdit->gotoLine(nLineNumber);
+        }
+    }
+}
+bool JsEditorToolsLib::showOptionsDialog()
+{
+    QWidget *pParent = qobject_cast<QWidget *>(m_pDummyMainWidget->parent());
+    Core::Internal::SettingsDialog *dialog = Core::Internal::SettingsDialog::getSettingsDialog(pParent, Core::Id(), Core::Id());
+    return dialog->execDialog();
 }
 ////////////////////////////////////////ADDITIONAL SLOTS ADDED BY ROOPAK/////////#720 ROOPAK
 
