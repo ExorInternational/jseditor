@@ -149,6 +149,7 @@ OutputPaneManager::OutputPaneManager(QWidget *parent) :
 
     m_closeButton->setIcon(QIcon(QLatin1String(Constants::ICON_CLOSE_DOCUMENT)));
     connect(m_closeButton, SIGNAL(clicked()), this, SLOT(slotHide()));
+    m_closeButton->hide();//#720 - ADDED BY ROOPAK
 
     connect(ICore::instance(), SIGNAL(saveSettingsRequested()), this, SLOT(saveSettings()));
 
@@ -232,6 +233,7 @@ void OutputPaneManager::init()
 //    mpanes->addAction(cmd, "Coreplugin.OutputPane.ActionsGroup");//#720 ROOPAK
     connect(m_minMaxAction, SIGNAL(triggered()), this, SLOT(slotMinMax()));
     m_minMaxButton->setDefaultAction(cmd->action());
+    m_minMaxButton->hide();//#720 - ADDED BY ROOPAK
 
 //    mpanes->addSeparator(globalContext, "Coreplugin.OutputPane.ActionsGroup");//#720 ROOPAK
 
