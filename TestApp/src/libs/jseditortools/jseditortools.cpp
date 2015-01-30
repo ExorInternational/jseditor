@@ -517,7 +517,13 @@ void JsEditorToolsLib::showGoToLineDialog()
                                       QLatin1String("Line Number:"), block.fragmentIndex(), 0, pQMLJSTextEdit->blockCount(), 1, &ok);
         if (ok)
         {
-            pQMLJSTextEdit->gotoLine(nLineNumber);
+            foreach (Core::IEditor *pEditor, m_pDetatchedEditors) {
+                if(pEditor->document() == pQMLJSTextEdit->qmlJsEditorDocument())
+                {
+                    emit searchResultItemSelected(pEditor->document()->filePath(), nLineNumber);
+                    break;
+                }
+            }
         }
     }
 }
