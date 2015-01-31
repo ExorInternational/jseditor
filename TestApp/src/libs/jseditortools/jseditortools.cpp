@@ -505,6 +505,35 @@ void JsEditorToolsLib::removeEditor(QPlainTextEdit *pTextEdit)
     if(m_pDetatchedEditors.count() == 0)
         m_pDetachedFindWindow->hide();
 }
+QString JsEditorToolsLib::getTextWithNewLine(QPlainTextEdit *pTextEdit)
+{
+    QString ret;
+    QmlJSEditor::Internal::QmlJSTextEditorWidget *pQMLJSTextEdit = qobject_cast<QmlJSEditor::Internal::QmlJSTextEditorWidget *>(pTextEdit);
+    if(pQMLJSTextEdit)
+    {
+        QString txt = pQMLJSTextEdit->toPlainText();
+        ret = txt;
+        QChar *uc = ret.data();
+        QChar *e = uc + ret.size();
+
+        for (; uc != e; ++uc) {
+            switch (uc->unicode()) {
+            case 0xfdd0: // QTextBeginningOfFrame
+            case 0xfdd1: // QTextEndOfFrame
+            case QChar::ParagraphSeparator:
+            case QChar::LineSeparator:
+                *uc = QLatin1Char('\n');
+                break;
+            case QChar::Nbsp:
+                *uc = QLatin1Char(' ');
+                break;
+            default:
+                ;
+            }
+        }
+    }
+    return ret;
+}
 void JsEditorToolsLib::showGoToLineDialog()
 {
     bool ok;

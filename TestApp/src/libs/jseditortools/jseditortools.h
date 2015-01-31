@@ -111,6 +111,7 @@ public:
     void goToLine(QPlainTextEdit *pTextEdit, int lineNumber);
     QWidget *getFindDialog();
     void removeEditor(QPlainTextEdit *pTextEdit);
+    QString getTextWithNewLine(QPlainTextEdit *pTextEdit);
 private slots:
     void openDetatchedFindDialog();
     void onTextEditorFocused();
