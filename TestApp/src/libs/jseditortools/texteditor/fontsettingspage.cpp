@@ -553,8 +553,8 @@ void FontSettingsPage::refreshColorSchemeList()
 {
     QList<ColorSchemeEntry> colorSchemes;
 
-    QString resourcePath = Core::ICore::resourcePath();
-    QDir styleDir(resourcePath + QLatin1String("/styles"));
+    QString resourcePath = Core::ICore::userResourcePath();//Core::ICore::resourcePath();//#720 - ROOPAK
+    QDir styleDir(resourcePath + QLatin1String("/styles/default"));//#720 - ROOPAK
     styleDir.setNameFilters(QStringList() << QLatin1String("*.xml"));
     styleDir.setFilter(QDir::Files);
 

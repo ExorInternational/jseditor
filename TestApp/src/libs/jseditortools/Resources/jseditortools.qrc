@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/Resources">
+        <file>styles/darkvim.xml</file>
+        <file>styles/default.xml</file>
+        <file>styles/grayscale.xml</file>
+        <file>styles/inkpot.xml</file>
+        <file>styles/intellij.xml</file>
+    </qresource>
+</RCC>

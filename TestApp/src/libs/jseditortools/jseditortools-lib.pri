@@ -197,4 +197,7 @@ HEADERS += jseditortools.h \
 SOURCES += jseditortools.cpp \
     jseditormenuitems.cpp
 
+RESOURCES += \
+    $$PWD/Resources/jseditortools.qrc
+
 

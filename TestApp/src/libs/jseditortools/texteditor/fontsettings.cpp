@@ -383,8 +383,8 @@ int FontSettings::defaultFontSize()
  */
 QString FontSettings::defaultSchemeFileName(const QString &fileName)
 {
-    QString defaultScheme = Core::ICore::resourcePath();
-    defaultScheme += QLatin1String("/styles/");
+    QString defaultScheme = Core::ICore::userResourcePath();//Core::ICore::resourcePath();
+    defaultScheme += QLatin1String("/styles/default/");
 
     if (!fileName.isEmpty() && QFile::exists(defaultScheme + fileName))
         defaultScheme += fileName;

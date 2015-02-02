@@ -119,6 +119,37 @@ JsEditorToolsLib::JsEditorToolsLib(QWidget *mainWindow)
     m_MainWindow = m_pDummyMainWidget;
     setParentWidget(m_MainWindow);
 }
+void copyResourceFilesFromResource(QSettings *settings)
+{
+    QString strFileName = settings->fileName();
+    if(true)
+    {
+        QFileInfo file1(strFileName);
+        QString strFilePath = file1.path();
+        QString userStylePath = strFilePath + QLatin1String("/JsEditor/styles/default/");
+        if(!QDir(userStylePath).exists())
+            QDir().mkdir(userStylePath);
+
+        QStringList strStylesList = QStringList() <<    QLatin1String(":/Resources/styles/default.xml")
+                                                  <<    QLatin1String(":/Resources/styles/grayscale.xml")
+                                                  <<    QLatin1String(":/Resources/styles/darkvim.xml")
+                                                  <<    QLatin1String(":/Resources/styles/inkpot.xml")
+                                                  <<    QLatin1String(":/Resources/styles/intellij.xml");
+
+        foreach(QString strStyleFileName, strStylesList){
+            QFile file2(strStyleFileName);
+            if(!file2.open(QFile::ReadOnly | QFile::Text)){
+                    qDebug() << "could not open file for read";
+            }
+            else
+            {
+                QFileInfo info(file2);
+                QString ss = userStylePath + info.fileName();
+                bool copied = QFile::copy(strStyleFileName, ss);
+            }
+        }
+    }
+}
 void JsEditorToolsLib::setParentWidget(QWidget *mainWindow)
 {
     if(mainWindow != NULL)
@@ -142,6 +173,7 @@ void JsEditorToolsLib::setParentWidget(QWidget *mainWindow)
         QSettings *globalSettings = new QSettings(QSettings::IniFormat, QSettings::SystemScope,
                                                   QLatin1String(Core::Constants::IDE_SETTINGSVARIANT_STR),
                                                   QLatin1String(Core::Constants::IDE_APPNAME_STR));
+        copyResourceFilesFromResource(settings);
         m_pPluginManager = new ExtensionSystem::PluginManager();
         PluginManager::setFileExtension(QLatin1String("pluginspec"));
         PluginManager::setGlobalSettings(globalSettings);
