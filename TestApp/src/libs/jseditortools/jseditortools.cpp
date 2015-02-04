@@ -119,16 +119,16 @@ JsEditorToolsLib::JsEditorToolsLib(QWidget *mainWindow)
     m_MainWindow = m_pDummyMainWidget;
     setParentWidget(m_MainWindow);
 }
-void copyResourceFilesFromResource(QSettings *settings)
+void copyDefaultFontSettingsFilesFromResource(QSettings *settings)
 {
     QString strFileName = settings->fileName();
-    if(true)
+    if(!strFileName.isEmpty())
     {
         QFileInfo file1(strFileName);
         QString strFilePath = file1.path();
         QString userStylePath = strFilePath + QLatin1String("/JsEditor/styles/default/");
         if(!QDir(userStylePath).exists())
-            QDir().mkdir(userStylePath);
+            QDir().mkpath(userStylePath);
 
         QStringList strStylesList = QStringList() <<    QLatin1String(":/Resources/styles/default.xml")
                                                   <<    QLatin1String(":/Resources/styles/grayscale.xml")
@@ -173,7 +173,7 @@ void JsEditorToolsLib::setParentWidget(QWidget *mainWindow)
         QSettings *globalSettings = new QSettings(QSettings::IniFormat, QSettings::SystemScope,
                                                   QLatin1String(Core::Constants::IDE_SETTINGSVARIANT_STR),
                                                   QLatin1String(Core::Constants::IDE_APPNAME_STR));
-        copyResourceFilesFromResource(settings);
+        copyDefaultFontSettingsFilesFromResource(settings);
         m_pPluginManager = new ExtensionSystem::PluginManager();
         PluginManager::setFileExtension(QLatin1String("pluginspec"));
         PluginManager::setGlobalSettings(globalSettings);
