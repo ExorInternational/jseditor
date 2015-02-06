@@ -935,8 +935,11 @@ void FindReferences::displayResults(int first, int last)
             connect(m_currentSearch, SIGNAL(replaceButtonClicked(QString,QList<Core::SearchResultItem>,bool)),
                     SLOT(onReplaceButtonClicked(QString,QList<Core::SearchResultItem>,bool)));
         }
-        connect(m_currentSearch, SIGNAL(activated(Core::SearchResultItem)),
+        if(!Core::SearchResultWindow::instance()->areSearchResultItemsDisconnected())
+            connect(m_currentSearch, SIGNAL(activated(Core::SearchResultItem)),
                 this, SLOT(openEditor(Core::SearchResultItem)));
+        else
+            connect(m_currentSearch, SIGNAL(activated(Core::SearchResultItem)), Core::SearchResultWindow::instance(), SLOT(onDisconnectedSearchItemSelected(Core::SearchResultItem)));
         connect(m_currentSearch, SIGNAL(cancelled()), this, SLOT(cancel()));
         connect(m_currentSearch, SIGNAL(paused(bool)), this, SLOT(setPaused(bool)));
         Core::SearchResultWindow::instance()->popup(IOutputPane::Flags(IOutputPane::ModeSwitch | IOutputPane::WithFocus));
