@@ -299,11 +299,11 @@ TextEditorSettings::TextEditorSettings(QObject *parent)
 
     d->m_highlighterSettingsPage =
         new HighlighterSettingsPage(Constants::TEXT_EDITOR_HIGHLIGHTER_SETTINGS, this);
-    ExtensionSystem::PluginManager::addObject(d->m_highlighterSettingsPage);
+//    ExtensionSystem::PluginManager::addObject(d->m_highlighterSettingsPage);
 
     d->m_snippetsSettingsPage =
         new SnippetsSettingsPage(Constants::TEXT_EDITOR_SNIPPETS_SETTINGS, this);
-    ExtensionSystem::PluginManager::addObject(d->m_snippetsSettingsPage);
+//    ExtensionSystem::PluginManager::addObject(d->m_snippetsSettingsPage);
 
     connect(d->m_fontSettingsPage, SIGNAL(changed(TextEditor::FontSettings)),
             this, SIGNAL(fontSettingsChanged(TextEditor::FontSettings)));
@@ -327,8 +327,8 @@ TextEditorSettings::~TextEditorSettings()
     ExtensionSystem::PluginManager::removeObject(d->m_fontSettingsPage);
     ExtensionSystem::PluginManager::removeObject(d->m_behaviorSettingsPage);
     ExtensionSystem::PluginManager::removeObject(d->m_displaySettingsPage);
-    ExtensionSystem::PluginManager::removeObject(d->m_highlighterSettingsPage);
-    ExtensionSystem::PluginManager::removeObject(d->m_snippetsSettingsPage);
+//    ExtensionSystem::PluginManager::removeObject(d->m_highlighterSettingsPage);
+//    ExtensionSystem::PluginManager::removeObject(d->m_snippetsSettingsPage);
 
     ExtensionSystem::PluginManager::removeObject(d->m_completionSettingsPage);//#720 ROOPAK
 
