@@ -144,7 +144,7 @@ Specifies how backspace interacts with indentation.
       </widget>
      </item>
      <item>
-      <widget class="QGroupBox" name="groupBox">
+      <widget class="QGroupBox" name="userInterfaceGroupbox">
        <property name="title">
         <string>User Interface</string>
        </property>

@@ -119,7 +119,8 @@ BehaviorSettingsWidget::BehaviorSettingsWidget(QWidget *parent)
             this, SLOT(slotBehaviorSettingsChanged()));
 
     //Languages
-    fillLanguageBox();
+    //fillLanguageBox();
+    d->m_ui.userInterfaceGroupbox->hide();
 }
 
 BehaviorSettingsWidget::~BehaviorSettingsWidget()
