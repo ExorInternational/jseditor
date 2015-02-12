@@ -85,7 +85,7 @@ void MainWindowApp::loadLibrary()
 #ifdef USE_MDI_AND_TEXTEDIT_CONTROLS
     QWidget *pHiddenWidget = new QWidget(m_mdiArea);
     pHiddenWidget->hide();//comment it and it will enable auto-completion by Ctrl+Space
-    m_pJsEditorTools = new JsEditorTools::JsEditorToolsLib(pHiddenWidget);
+    m_pJsEditorTools = new JsEditorTools::JsEditorToolsLib(pHiddenWidget, QLatin1String("de"));
 
     connect(m_pJsEditorTools, SIGNAL(searchResultItemSelected(QString, int)), this, SLOT(onSearchResultItemSelected(QString, int) ) );
     createCustomBuiltinTypes();

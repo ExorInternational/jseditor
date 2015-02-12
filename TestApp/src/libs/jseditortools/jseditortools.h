@@ -89,10 +89,10 @@ class JSEditorMenuItems;
 class JSEDITORTOOLS_EXPORT JsEditorToolsLib : public QObject {
     Q_OBJECT
 public:
-    JsEditorToolsLib(QWidget *mainWindow);
+    JsEditorToolsLib(QWidget *mainWindow, QString strLocale=QString());
     ~JsEditorToolsLib();
 
-    void setParentWidget(QWidget *mainWIndow);
+    void setParentWidget(QWidget *mainWIndow, QString strLocale);
     void setCustomBuiltinTypes(QMap<JsEditorTools::JSCustomBuiltinKey, QMetaObject> oCustomClassTypesList);//#720 ROOPAK
     JSEditorMenuItems *getJSEditorMenuItems();
     void setLayout(QLayout *pLayout);

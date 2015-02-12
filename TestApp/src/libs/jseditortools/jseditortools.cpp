@@ -114,13 +114,13 @@ static inline QSettings *userSettings()
     return createUserSettings();
 }
 
-JsEditorToolsLib::JsEditorToolsLib(QWidget *mainWindow)
+JsEditorToolsLib::JsEditorToolsLib(QWidget *mainWindow, QString strLocale)
 {
     m_pDetachedFindWindow = NULL;
     m_MainWindow = NULL;
     m_pDummyMainWidget = new QWidget(mainWindow);
     m_MainWindow = m_pDummyMainWidget;
-    setParentWidget(m_MainWindow);
+    setParentWidget(m_MainWindow, strLocale);
 }
 void copyDefaultFontSettingsFilesFromResource(QSettings *settings)
 {
@@ -258,7 +258,7 @@ void JsEditorToolsLib::loadTranslator(QSettings *settings)
 
 
 }
-void JsEditorToolsLib::setParentWidget(QWidget *mainWindow)
+void JsEditorToolsLib::setParentWidget(QWidget *mainWindow, QString strLocale)
 {
     if(mainWindow != NULL)
     {
@@ -283,7 +283,7 @@ void JsEditorToolsLib::setParentWidget(QWidget *mainWindow)
                                                   QLatin1String(Core::Constants::IDE_APPNAME_STR));
         copyDefaultFontSettingsFilesFromResource(settings);
 
-        setLanguage(QLatin1String("de"), settings);//testing
+        setLanguage(strLocale, settings);//testing
         loadTranslator(settings);
 
         m_pPluginManager = new ExtensionSystem::PluginManager();
