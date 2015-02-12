@@ -688,7 +688,7 @@ void MainWindow::registerDefaultActions()
         cmd->action()->setMenuRole(QAction::PreferencesRole);
     }
 //    mtools->addAction(cmd, Constants::G_TOOLS_OPTIONS);//#720 ROOPAK
-    connect(m_optionsAction, SIGNAL(triggered()), this, SLOT(showOptionsDialog()));
+//    connect(m_optionsAction, SIGNAL(triggered()), this, SLOT(showOptionsDialog()));
 
     //ADDED BY ROOPAK
     tmpaction = new QAction(tr("&Tools"), this);

@@ -409,6 +409,11 @@ EditorManager::EditorManager(QWidget *parent) :
 //    mwindow->addAction(cmd, Constants::G_WINDOW_SPLIT);//#720 ROOPAK
     connect(d->m_gotoNextSplitAction, SIGNAL(triggered()), this, SLOT(gotoNextSplit()));
 
+    //ADDED BY ROOPAK
+    QAction *tmpaction = new QAction(tr("Ad&vanced"), this);
+    cmd = ActionManager::registerAction(tmpaction, Constants::G_EDIT_ADVANCED, editManagerContext);
+    //END - ROOPAK
+
 //    ActionContainer *medit = ActionManager::actionContainer(Constants::M_EDIT);//#720 ROOPAK - START
 //    ActionContainer *advancedMenu = ActionManager::createMenu(Constants::M_EDIT_ADVANCED);
 //    medit->addMenu(advancedMenu, Constants::G_EDIT_ADVANCED);

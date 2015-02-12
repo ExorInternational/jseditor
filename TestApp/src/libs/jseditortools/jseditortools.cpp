@@ -420,7 +420,11 @@ void JsEditorToolsLib::populateAlternateContextMenu(QPlainTextEdit *pTextEdit, Q
         pMenu->addAction(Core::ActionManager::command(Core::Constants::SELECTALL)->action());
         pMenu->addSeparator();
 
-        QMenu *pAdvancedMenu = pMenu->addMenu(tr("Advanced"));
+        QMenu *pAdvancedMenu = new QMenu(pMenu);//pMenu->addMenu(tr("Advanced"));
+        QAction *pAdvancedAction = Core::ActionManager::command(Core::Constants::G_EDIT_ADVANCED)->action();
+        pMenu->addAction(pAdvancedAction);
+        pAdvancedAction->setMenu(pAdvancedMenu);
+
         pAdvancedMenu->addAction(Core::ActionManager::command(TextEditor::Constants::AUTO_INDENT_SELECTION)->action());
         pAdvancedMenu->addAction(Core::ActionManager::command(TextEditor::Constants::REWRAP_PARAGRAPH)->action());
         pAdvancedMenu->addAction(Core::ActionManager::command(TextEditor::Constants::CLEAN_WHITESPACE)->action());
@@ -484,9 +488,10 @@ void JsEditorToolsLib::populateAlternateContextMenu(QPlainTextEdit *pTextEdit, Q
         QAction *pReformatFileAction = Core::ActionManager::command(QmlJSEditor::Constants::REFORMAT_FILE)->action();
         pJavascriptMenu->addAction(pReformatFileAction);
 
-        //QAction *pOptionsAction = Core::ActionManager::command(Core::Constants::OPTIONS)->action();
-//        pToolsMenu->addAction(pOptionsAction);
-        pToolsMenu->addAction(tr("Options"), this, SLOT(showOptionsDialog()) );
+        QAction *pOptionsAction = Core::ActionManager::command(Core::Constants::OPTIONS)->action();
+        pToolsMenu->addAction(pOptionsAction);
+        connect(pOptionsAction, SIGNAL(triggered(bool)), this, SLOT(showOptionsDialog()));
+//        pToolsMenu->addAction(tr("Options"), this, SLOT(showOptionsDialog()) );
     }
 }
 
