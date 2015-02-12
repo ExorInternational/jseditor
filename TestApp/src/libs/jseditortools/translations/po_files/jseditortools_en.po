@@ -1,0 +1,5920 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Language: en_US\n"
+"X-Qt-Contexts: true\n"
+
+#: ../coreplugin/coreconstants.h:219
+msgctxt "Core|"
+msgid "Qt"
+msgstr ""
+
+#: ../coreplugin/coreconstants.h:223
+msgctxt "Core|"
+msgid "Environment"
+msgstr ""
+
+#: ../coreplugin/coreconstants.h:231
+msgctxt "Core|"
+msgid "All Files (*)"
+msgstr ""
+
+#: ../coreplugin/coreconstants.h:233
+msgctxt "Core|"
+msgid "Clear Menu"
+msgstr ""
+
+#: ../coreplugin/icore.cpp:344
+msgctxt "Core|msgShowOptionsDialog"
+msgid "Configure..."
+msgstr ""
+
+#: ../coreplugin/documentmanager.cpp:653 ../coreplugin/documentmanager.cpp:1124
+msgctxt "Core::DocumentManager|"
+msgid "File Error"
+msgstr ""
+
+#: ../coreplugin/documentmanager.cpp:654
+#, qt-format
+msgctxt "Core::DocumentManager|"
+msgid "Error while saving file: %1"
+msgstr ""
+
+#: ../coreplugin/documentmanager.cpp:697
+msgctxt "Core::DocumentManager|"
+msgid "Overwrite?"
+msgstr ""
+
+#: ../coreplugin/documentmanager.cpp:698
+#, qt-format
+msgctxt "Core::DocumentManager|"
+msgid ""
+"An item named '%1' already exists at this location. Do you want to overwrite "
+"it?"
+msgstr ""
+
+#: ../coreplugin/documentmanager.cpp:745
+msgctxt "Core::DocumentManager|"
+msgid "Save File As"
+msgstr ""
+
+#: ../coreplugin/documentmanager.cpp:883
+msgctxt "Core::DocumentManager|"
+msgid "Open File"
+msgstr ""
+
+#: ../coreplugin/documentmanager.cpp:1113
+#, qt-format
+msgctxt "Core::DocumentManager|"
+msgid "Cannot reload %1"
+msgstr ""
+
+#: ../coreplugin/editormanager/documentmodel.cpp:342
+msgctxt "Core::DocumentModel|"
+msgid "<no document>"
+msgstr ""
+
+#: ../coreplugin/editormanager/documentmodel.cpp:344
+msgctxt "Core::DocumentModel|"
+msgid "No document is selected."
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:224
+#: ../coreplugin/editormanager/editormanager.cpp:237
+#: ../coreplugin/editormanager/editormanager.cpp:2409
+msgctxt "Core::EditorManager|"
+msgid "Revert to Saved"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:227
+#: ../coreplugin/editormanager/editormanager.cpp:238
+#: ../coreplugin/editormanager/editormanager.cpp:316
+msgctxt "Core::EditorManager|"
+msgid "Close"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:228
+#: ../coreplugin/editormanager/editormanager.cpp:239
+msgctxt "Core::EditorManager|"
+msgid "Close All"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:229
+#: ../coreplugin/editormanager/editormanager.cpp:240
+#: ../coreplugin/editormanager/editormanager.cpp:2104
+msgctxt "Core::EditorManager|"
+msgid "Close Others"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:230
+#: ../coreplugin/editormanager/editormanager.cpp:241
+msgctxt "Core::EditorManager|"
+msgid "Close All Except Visible"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:231
+msgctxt "Core::EditorManager|"
+msgid "Next Open Document in History"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:232
+msgctxt "Core::EditorManager|"
+msgid "Previous Open Document in History"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:233
+msgctxt "Core::EditorManager|"
+msgid "Go Back"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:234
+msgctxt "Core::EditorManager|"
+msgid "Go Forward"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:235
+msgctxt "Core::EditorManager|"
+msgid "&Save"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:236
+msgctxt "Core::EditorManager|"
+msgid "Save &As..."
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:284
+msgctxt "Core::EditorManager|"
+msgid "Revert File to Saved"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:305
+msgctxt "Core::EditorManager|"
+msgid "Ctrl+W"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:315
+msgctxt "Core::EditorManager|"
+msgid "Ctrl+F4"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:322
+msgctxt "Core::EditorManager|"
+msgid "Ctrl+Shift+W"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:354
+msgctxt "Core::EditorManager|"
+msgid "Alt+Tab"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:354
+msgctxt "Core::EditorManager|"
+msgid "Ctrl+Tab"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:360
+msgctxt "Core::EditorManager|"
+msgid "Alt+Shift+Tab"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:360
+msgctxt "Core::EditorManager|"
+msgid "Ctrl+Shift+Tab"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:366
+msgctxt "Core::EditorManager|"
+msgid "Ctrl+Alt+Left"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:366
+msgctxt "Core::EditorManager|"
+msgid "Alt+Left"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:372
+msgctxt "Core::EditorManager|"
+msgid "Ctrl+Alt+Right"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:372
+msgctxt "Core::EditorManager|"
+msgid "Alt+Right"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:376
+msgctxt "Core::EditorManager|"
+msgid "Split"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:378
+msgctxt "Core::EditorManager|"
+msgid "Meta+E,2"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:378
+msgctxt "Core::EditorManager|"
+msgid "Ctrl+E,2"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:382
+msgctxt "Core::EditorManager|"
+msgid "Split Side by Side"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:384
+msgctxt "Core::EditorManager|"
+msgid "Meta+E,3"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:384
+msgctxt "Core::EditorManager|"
+msgid "Ctrl+E,3"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:388
+msgctxt "Core::EditorManager|"
+msgid "Open in New Window"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:390
+msgctxt "Core::EditorManager|"
+msgid "Meta+E,4"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:390
+msgctxt "Core::EditorManager|"
+msgid "Ctrl+E,4"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:394
+msgctxt "Core::EditorManager|"
+msgid "Remove Current Split"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:396
+msgctxt "Core::EditorManager|"
+msgid "Meta+E,0"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:396
+msgctxt "Core::EditorManager|"
+msgid "Ctrl+E,0"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:400
+msgctxt "Core::EditorManager|"
+msgid "Remove All Splits"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:402
+msgctxt "Core::EditorManager|"
+msgid "Meta+E,1"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:402
+msgctxt "Core::EditorManager|"
+msgid "Ctrl+E,1"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:406
+msgctxt "Core::EditorManager|"
+msgid "Go to Next Split or Window"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:408
+msgctxt "Core::EditorManager|"
+msgid "Meta+E,o"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:408
+msgctxt "Core::EditorManager|"
+msgid "Ctrl+E,o"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:413
+msgctxt "Core::EditorManager|"
+msgid "Ad&vanced"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:488
+msgctxt "Core::EditorManager|"
+msgid "Current document"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:490
+msgctxt "Core::EditorManager|"
+msgid ""
+"X-coordinate of the current editor's upper left corner, relative to screen."
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:492
+msgctxt "Core::EditorManager|"
+msgid ""
+"Y-coordinate of the current editor's upper left corner, relative to screen."
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:846
+#, qt-format
+msgctxt "Core::EditorManager|"
+msgid "Close \"%1\""
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:847
+msgctxt "Core::EditorManager|"
+msgid "Close Editor"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:849
+#, qt-format
+msgctxt "Core::EditorManager|"
+msgid "Close All Except \"%1\""
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:850
+msgctxt "Core::EditorManager|"
+msgid "Close Other Editors"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:1676
+#: ../coreplugin/editormanager/editormanager.cpp:1856
+#: ../coreplugin/editormanager/editormanager.cpp:2422
+msgctxt "Core::EditorManager|"
+msgid "File Error"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:1980
+msgctxt "Core::EditorManager|"
+msgid "Qt Creator"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:2050
+msgctxt "Core::EditorManager|"
+msgid "<b>Warning:</b> You are changing a read-only file."
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:2051
+msgctxt "Core::EditorManager|"
+msgid "Make Writable"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:2071
+#, qt-format
+msgctxt "Core::EditorManager|"
+msgid "&Save %1"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:2072
+#, qt-format
+msgctxt "Core::EditorManager|"
+msgid "Save %1 &As..."
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:2074
+#, qt-format
+msgctxt "Core::EditorManager|"
+msgid "Revert %1 to Saved"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:2075
+#, qt-format
+msgctxt "Core::EditorManager|"
+msgid "Reload %1"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:2101
+#, qt-format
+msgctxt "Core::EditorManager|"
+msgid "Close %1"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:2104
+#, qt-format
+msgctxt "Core::EditorManager|"
+msgid "Close All Except %1"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:2410
+#, qt-format
+msgctxt "Core::EditorManager|"
+msgid "You will lose your current changes if you proceed reverting %1."
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:2412
+msgctxt "Core::EditorManager|"
+msgid "Proceed"
+msgstr ""
+
+#: ../coreplugin/editormanager/editormanager.cpp:2413
+msgctxt "Core::EditorManager|"
+msgid "Cancel"
+msgstr ""
+
+#: ../coreplugin/find/findplugin.cpp:207
+msgctxt "Core::FindPlugin|"
+msgid "Open Advanced Find..."
+msgstr ""
+
+#: ../coreplugin/find/findplugin.cpp:208
+msgctxt "Core::FindPlugin|"
+msgid "Advanced..."
+msgstr ""
+
+#: ../coreplugin/find/findplugin.cpp:210
+msgctxt "Core::FindPlugin|"
+msgid "Ctrl+Shift+F"
+msgstr ""
+
+#: ../coreplugin/icore.cpp:447
+#, qt-format
+msgctxt "Core::ICore|"
+msgid " (%1)"
+msgstr ""
+
+#: ../coreplugin/icore.cpp:449
+#, qt-format
+msgctxt "Core::ICore|"
+msgid "Qt Creator %1%2"
+msgstr ""
+
+#: ../coreplugin/icore.cpp:455
+#, qt-format
+msgctxt "Core::ICore|"
+msgid "Based on Qt %1 (%2, %3 bit)"
+msgstr ""
+
+#: ../coreplugin/idocument.cpp:147
+msgctxt "Core::IDocument|"
+msgid ""
+"File was restored from auto-saved copy. Select Save to confirm or Revert to "
+"Saved to discard changes."
+msgstr ""
+
+#: ../coreplugin/find/ifindfilter.cpp:270
+msgctxt "Core::IFindFilter|"
+msgid "Case sensitive"
+msgstr ""
+
+#: ../coreplugin/find/ifindfilter.cpp:272
+msgctxt "Core::IFindFilter|"
+msgid "Whole words"
+msgstr ""
+
+#: ../coreplugin/find/ifindfilter.cpp:274
+msgctxt "Core::IFindFilter|"
+msgid "Regular expressions"
+msgstr ""
+
+#: ../coreplugin/find/ifindfilter.cpp:276
+msgctxt "Core::IFindFilter|"
+msgid "Preserve case"
+msgstr ""
+
+#: ../coreplugin/find/ifindfilter.cpp:277
+#, qt-format
+msgctxt "Core::IFindFilter|"
+msgid "Flags: %1"
+msgstr ""
+
+#: ../coreplugin/find/ifindfilter.cpp:279
+msgctxt "Core::IFindFilter|"
+msgid "None"
+msgstr ""
+
+#: ../coreplugin/find/ifindfilter.cpp:281
+msgctxt "Core::IFindFilter|"
+msgid ", "
+msgstr ""
+
+#: ../coreplugin/infobar.cpp:238
+msgctxt "Core::InfoBarDisplay|"
+msgid "Do Not Show Again"
+msgstr ""
+
+#: ../coreplugin/infobar.cpp:255
+msgctxt "Core::InfoBarDisplay|"
+msgid "Close"
+msgstr ""
+
+#: ../coreplugin/fileutils.cpp:61
+msgctxt "Core::Internal|"
+msgid "Launching a file browser failed"
+msgstr ""
+
+#: ../coreplugin/fileutils.cpp:63
+#, qt-format
+msgctxt "Core::Internal|"
+msgid ""
+"Unable to start the file manager:\n"
+"\n"
+"%1\n"
+"\n"
+msgstr ""
+
+#: ../coreplugin/fileutils.cpp:67
+#, qt-format
+msgctxt "Core::Internal|"
+msgid ""
+"'%1' returned the following error:\n"
+"\n"
+"%2"
+msgstr ""
+
+#: ../coreplugin/fileutils.cpp:83
+msgctxt "Core::Internal|"
+msgid "Launching Windows Explorer Failed"
+msgstr ""
+
+#: ../coreplugin/fileutils.cpp:85
+msgctxt "Core::Internal|"
+msgid "Could not find explorer.exe in path to launch Windows Explorer."
+msgstr ""
+
+#: ../coreplugin/fileutils.cpp:146
+msgctxt "Core::Internal|"
+msgid "Find in This Directory..."
+msgstr ""
+
+#: ../coreplugin/fileutils.cpp:152
+msgctxt "Core::Internal|"
+msgid "Show in Explorer"
+msgstr ""
+
+#: ../coreplugin/fileutils.cpp:154
+msgctxt "Core::Internal|"
+msgid "Show in Finder"
+msgstr ""
+
+#: ../coreplugin/fileutils.cpp:155
+msgctxt "Core::Internal|"
+msgid "Show Containing Folder"
+msgstr ""
+
+#: ../coreplugin/fileutils.cpp:161
+msgctxt "Core::Internal|"
+msgid "Open Command Prompt Here"
+msgstr ""
+
+#: ../coreplugin/fileutils.cpp:162
+msgctxt "Core::Internal|"
+msgid "Open Terminal Here"
+msgstr ""
+
+#: ../coreplugin/fileutils.cpp:178
+msgctxt "Core::Internal|"
+msgid "Deleting File Failed"
+msgstr ""
+
+#: ../coreplugin/fileutils.cpp:179
+#, qt-format
+msgctxt "Core::Internal|"
+msgid "Could not delete file %1."
+msgstr ""
+
+#: ../coreplugin/editmode.cpp:55
+msgctxt "Core::Internal::EditMode|"
+msgid "Edit"
+msgstr ""
+
+#: ../coreplugin/find/finddialog.ui:41
+msgctxt "Core::Internal::FindDialog|"
+msgid "&Search"
+msgstr ""
+
+#: ../coreplugin/find/finddialog.ui:51
+msgctxt "Core::Internal::FindDialog|"
+msgid "Search && &Replace"
+msgstr ""
+
+#: ../coreplugin/find/finddialog.ui:60
+msgctxt "Core::Internal::FindDialog|"
+msgid "Sear&ch for:"
+msgstr ""
+
+#: ../coreplugin/find/finddialog.ui:114
+msgctxt "Core::Internal::FindDialog|"
+msgid "Case sensiti&ve"
+msgstr ""
+
+#: ../coreplugin/find/finddialog.ui:121
+msgctxt "Core::Internal::FindDialog|"
+msgid "Whole words o&nly"
+msgstr ""
+
+#: ../coreplugin/find/finddialog.ui:128
+msgctxt "Core::Internal::FindDialog|"
+msgid "Use re&gular expressions"
+msgstr ""
+
+#: ../coreplugin/find/finddialog.ui:163
+msgctxt "Core::Internal::FindDialog|"
+msgid "Sco&pe:"
+msgstr ""
+
+#: ../coreplugin/find/findtoolbar.cpp:121 ../coreplugin/find/findtoolbar.cpp:132
+msgctxt "Core::Internal::FindToolBar|"
+msgid "Shift+Enter"
+msgstr ""
+
+#: ../coreplugin/find/findtoolbar.cpp:126 ../coreplugin/find/findtoolbar.cpp:137
+msgctxt "Core::Internal::FindToolBar|"
+msgid "Shift+Return"
+msgstr ""
+
+#: ../coreplugin/find/findtoolbar.cpp:153
+msgctxt "Core::Internal::FindToolBar|"
+msgid "Find/Replace"
+msgstr ""
+
+#: ../coreplugin/find/findtoolbar.cpp:160
+msgctxt "Core::Internal::FindToolBar|"
+msgid "Enter Find String"
+msgstr ""
+
+#: ../coreplugin/find/findtoolbar.cpp:162
+msgctxt "Core::Internal::FindToolBar|"
+msgid "Ctrl+E"
+msgstr ""
+
+#: ../coreplugin/find/findtoolbar.cpp:168
+msgctxt "Core::Internal::FindToolBar|"
+msgid "Find Next"
+msgstr ""
+
+#: ../coreplugin/find/findtoolbar.cpp:175
+msgctxt "Core::Internal::FindToolBar|"
+msgid "Find Previous"
+msgstr ""
+
+#: ../coreplugin/find/findtoolbar.cpp:182
+msgctxt "Core::Internal::FindToolBar|"
+msgid "Find Next (Selected)"
+msgstr ""
+
+#: ../coreplugin/find/findtoolbar.cpp:184
+msgctxt "Core::Internal::FindToolBar|"
+msgid "Ctrl+F3"
+msgstr ""
+
+#: ../coreplugin/find/findtoolbar.cpp:188
+msgctxt "Core::Internal::FindToolBar|"
+msgid "Find Previous (Selected)"
+msgstr ""
+
+#: ../coreplugin/find/findtoolbar.cpp:190
+msgctxt "Core::Internal::FindToolBar|"
+msgid "Ctrl+Shift+F3"
+msgstr ""
+
+#: ../coreplugin/find/findtoolbar.cpp:194
+msgctxt "Core::Internal::FindToolBar|"
+msgid "Replace"
+msgstr ""
+
+#: ../coreplugin/find/findtoolbar.cpp:201 ../coreplugin/find/findtoolbar.cpp:202
+msgctxt "Core::Internal::FindToolBar|"
+msgid "Replace && Find"
+msgstr ""
+
+#: ../coreplugin/find/findtoolbar.cpp:204
+msgctxt "Core::Internal::FindToolBar|"
+msgid "Ctrl+="
+msgstr ""
+
+#: ../coreplugin/find/findtoolbar.cpp:209
+msgctxt "Core::Internal::FindToolBar|"
+msgid "Replace && Find Previous"
+msgstr ""
+
+#: ../coreplugin/find/findtoolbar.cpp:216
+msgctxt "Core::Internal::FindToolBar|"
+msgid "Replace All"
+msgstr ""
+
+#: ../coreplugin/find/findtoolbar.cpp:222
+msgctxt "Core::Internal::FindToolBar|"
+msgid "Case Sensitive"
+msgstr ""
+
+#: ../coreplugin/find/findtoolbar.cpp:230
+msgctxt "Core::Internal::FindToolBar|"
+msgid "Whole Words Only"
+msgstr ""
+
+#: ../coreplugin/find/findtoolbar.cpp:238
+msgctxt "Core::Internal::FindToolBar|"
+msgid "Use Regular Expressions"
+msgstr ""
+
+#: ../coreplugin/find/findtoolbar.cpp:246
+msgctxt "Core::Internal::FindToolBar|"
+msgid "Preserve Case when Replacing"
+msgstr ""
+
+#: ../coreplugin/find/findwidget.ui:14
+msgctxt "Core::Internal::FindWidget|"
+msgid "Find"
+msgstr ""
+
+#: ../coreplugin/find/findwidget.ui:38
+msgctxt "Core::Internal::FindWidget|"
+msgid "Find:"
+msgstr ""
+
+#: ../coreplugin/find/findwidget.ui:103
+msgctxt "Core::Internal::FindWidget|"
+msgid "..."
+msgstr ""
+
+#: ../coreplugin/find/findwidget.ui:118
+msgctxt "Core::Internal::FindWidget|"
+msgid "Replace with:"
+msgstr ""
+
+#: ../coreplugin/find/findwidget.ui:202
+msgctxt "Core::Internal::FindWidget|"
+msgid "Replace"
+msgstr ""
+
+#: ../coreplugin/find/findwidget.ui:218
+msgctxt "Core::Internal::FindWidget|"
+msgid "Replace && Find"
+msgstr ""
+
+#: ../coreplugin/find/findwidget.ui:234
+msgctxt "Core::Internal::FindWidget|"
+msgid "Replace All"
+msgstr ""
+
+#: ../coreplugin/find/findwidget.ui:252
+msgctxt "Core::Internal::FindWidget|"
+msgid "Advanced..."
+msgstr ""
+
+#: ../coreplugin/mainwindow.cpp:643
+msgctxt "Core::Internal::MainWindow|"
+msgid "Cu&t"
+msgstr ""
+
+#: ../coreplugin/mainwindow.cpp:651
+msgctxt "Core::Internal::MainWindow|"
+msgid "&Copy"
+msgstr ""
+
+#: ../coreplugin/mainwindow.cpp:659
+msgctxt "Core::Internal::MainWindow|"
+msgid "&Paste"
+msgstr ""
+
+#: ../coreplugin/mainwindow.cpp:667
+msgctxt "Core::Internal::MainWindow|"
+msgid "Select &All"
+msgstr ""
+
+#: ../coreplugin/mainwindow.cpp:675
+msgctxt "Core::Internal::MainWindow|"
+msgid "&Go to Line..."
+msgstr ""
+
+#: ../coreplugin/mainwindow.cpp:684
+msgctxt "Core::Internal::MainWindow|"
+msgid "&Options..."
+msgstr ""
+
+#: ../coreplugin/mainwindow.cpp:687
+msgctxt "Core::Internal::MainWindow|"
+msgid "Ctrl+,"
+msgstr ""
+
+#: ../coreplugin/mainwindow.cpp:694
+msgctxt "Core::Internal::MainWindow|"
+msgid "&Tools"
+msgstr ""
+
+#: ../coreplugin/mainwindow.cpp:729
+msgctxt "Core::Internal::MainWindow|"
+msgid "Show Mode Selector"
+msgstr ""
+
+#: ../coreplugin/mainwindow.cpp:1306
+msgctxt "Core::Internal::MainWindow|"
+msgid "Settings..."
+msgstr ""
+
+#: ../coreplugin/editormanager/openeditorswindow.cpp:262
+msgctxt "Core::Internal::OpenEditorsWindow|"
+msgid "*"
+msgstr ""
+
+#: ../coreplugin/outputpanemanager.cpp:127
+msgctxt "Core::Internal::OutputPaneManager|"
+msgid "Output"
+msgstr ""
+
+#: ../coreplugin/outputpanemanager.cpp:133
+msgctxt "Core::Internal::OutputPaneManager|"
+msgid "Clear"
+msgstr ""
+
+#: ../coreplugin/outputpanemanager.cpp:138
+msgctxt "Core::Internal::OutputPaneManager|"
+msgid "Next Item"
+msgstr ""
+
+#: ../coreplugin/outputpanemanager.cpp:143
+msgctxt "Core::Internal::OutputPaneManager|"
+msgid "Previous Item"
+msgstr ""
+
+#: ../coreplugin/outputpanemanager.cpp:148
+#: ../coreplugin/outputpanemanager.cpp:347
+msgctxt "Core::Internal::OutputPaneManager|"
+msgid "Maximize Output Pane"
+msgstr ""
+
+#: ../coreplugin/outputpanemanager.cpp:220
+msgctxt "Core::Internal::OutputPaneManager|"
+msgid "Shift+F6"
+msgstr ""
+
+#: ../coreplugin/outputpanemanager.cpp:226
+msgctxt "Core::Internal::OutputPaneManager|"
+msgid "F6"
+msgstr ""
+
+#: ../coreplugin/outputpanemanager.cpp:230
+msgctxt "Core::Internal::OutputPaneManager|"
+msgid "Ctrl+9"
+msgstr ""
+
+#: ../coreplugin/outputpanemanager.cpp:230
+msgctxt "Core::Internal::OutputPaneManager|"
+msgid "Alt+9"
+msgstr ""
+
+#: ../coreplugin/outputpanemanager.cpp:346
+msgctxt "Core::Internal::OutputPaneManager|"
+msgid "Minimize Output Pane"
+msgstr ""
+
+#: ../coreplugin/plugindialog.cpp:57
+msgctxt "Core::Internal::PluginDialog|"
+msgid "Details"
+msgstr ""
+
+#: ../coreplugin/plugindialog.cpp:58
+msgctxt "Core::Internal::PluginDialog|"
+msgid "Error Details"
+msgstr ""
+
+#: ../coreplugin/plugindialog.cpp:59
+msgctxt "Core::Internal::PluginDialog|"
+msgid "Close"
+msgstr ""
+
+#: ../coreplugin/plugindialog.cpp:65
+msgctxt "Core::Internal::PluginDialog|"
+msgid "Restart required."
+msgstr ""
+
+#: ../coreplugin/plugindialog.cpp:81
+msgctxt "Core::Internal::PluginDialog|"
+msgid "Installed Plugins"
+msgstr ""
+
+#: ../coreplugin/plugindialog.cpp:131
+#, qt-format
+msgctxt "Core::Internal::PluginDialog|"
+msgid "Plugin Details of %1"
+msgstr ""
+
+#: ../coreplugin/plugindialog.cpp:151
+#, qt-format
+msgctxt "Core::Internal::PluginDialog|"
+msgid "Plugin Errors of %1"
+msgstr ""
+
+#: ../coreplugin/progressmanager/progressmanager.cpp:326
+msgctxt "Core::Internal::ProgressManagerPrivate|"
+msgid "Toggle Progress Details"
+msgstr ""
+
+#: ../coreplugin/progressmanager/progressmanager.cpp:337
+msgctxt "Core::Internal::ProgressManagerPrivate|"
+msgid "Ctrl+Shift+0"
+msgstr ""
+
+#: ../coreplugin/progressmanager/progressmanager.cpp:338
+msgctxt "Core::Internal::ProgressManagerPrivate|"
+msgid "Alt+Shift+0"
+msgstr ""
+
+#: ../coreplugin/progressmanager/progressview.cpp:46
+msgctxt "Core::Internal::ProgressView|"
+msgid "Processes"
+msgstr ""
+
+#: ../coreplugin/find/searchresultwidget.cpp:115
+msgctxt "Core::Internal::SearchResultWidget|"
+msgid "Search was canceled."
+msgstr ""
+
+#: ../coreplugin/find/searchresultwidget.cpp:146
+#: ../coreplugin/find/searchresultwidget.cpp:263
+msgctxt "Core::Internal::SearchResultWidget|"
+msgid "Cancel"
+msgstr ""
+
+#: ../coreplugin/find/searchresultwidget.cpp:150
+msgctxt "Core::Internal::SearchResultWidget|"
+msgid "Repeat the search with same parameters."
+msgstr ""
+
+#: ../coreplugin/find/searchresultwidget.cpp:151
+msgctxt "Core::Internal::SearchResultWidget|"
+msgid "Search again"
+msgstr ""
+
+#: ../coreplugin/find/searchresultwidget.cpp:156
+msgctxt "Core::Internal::SearchResultWidget|"
+msgid "Replace with:"
+msgstr ""
+
+#: ../coreplugin/find/searchresultwidget.cpp:162
+msgctxt "Core::Internal::SearchResultWidget|"
+msgid "Replace all occurrences."
+msgstr ""
+
+#: ../coreplugin/find/searchresultwidget.cpp:163
+msgctxt "Core::Internal::SearchResultWidget|"
+msgid "Replace"
+msgstr ""
+
+#: ../coreplugin/find/searchresultwidget.cpp:167
+msgctxt "Core::Internal::SearchResultWidget|"
+msgid "Preserve case"
+msgstr ""
+
+#: ../coreplugin/find/searchresultwidget.cpp:237
+msgctxt "Core::Internal::SearchResultWidget|"
+msgid "This change cannot be undone."
+msgstr ""
+
+#: ../coreplugin/find/searchresultwidget.cpp:261
+#, qt-format
+msgctxt "Core::Internal::SearchResultWidget|"
+msgid ""
+"The search resulted in more than %n items, do you still want to continue?"
+msgid_plural ""
+"The search resulted in more than %n items, do you still want to continue?"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../coreplugin/find/searchresultwidget.cpp:264
+msgctxt "Core::Internal::SearchResultWidget|"
+msgid "Continue"
+msgstr ""
+
+#: ../coreplugin/find/searchresultwidget.cpp:496
+msgctxt "Core::Internal::SearchResultWidget|"
+msgid "No matches found."
+msgstr ""
+
+#: ../coreplugin/find/searchresultwidget.cpp:498
+#, qt-format
+msgctxt "Core::Internal::SearchResultWidget|"
+msgid "%n matches found."
+msgid_plural "%n matches found."
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../coreplugin/dialogs/settingsdialog.cpp:320
+msgctxt "Core::Internal::SettingsDialog|"
+msgid "Preferences"
+msgstr ""
+
+#: ../coreplugin/dialogs/settingsdialog.cpp:322
+msgctxt "Core::Internal::SettingsDialog|"
+msgid "Options"
+msgstr ""
+
+#: ../coreplugin/modemanager.cpp:183
+#, qt-format
+msgctxt "Core::ModeManager|"
+msgid "Switch to <b>%1</b> mode"
+msgstr ""
+
+#: ../coreplugin/find/searchresultwindow.cpp:284
+msgctxt "Core::SearchResultWindow|"
+msgid "New Search"
+msgstr ""
+
+#: ../coreplugin/find/searchresultwindow.cpp:299
+#: ../coreplugin/find/searchresultwindow.cpp:508
+msgctxt "Core::SearchResultWindow|"
+msgid "Expand All"
+msgstr ""
+
+#: ../coreplugin/find/searchresultwindow.cpp:410
+#, qt-format
+msgctxt "Core::SearchResultWindow|"
+msgid "%1 %2"
+msgstr ""
+
+#: ../coreplugin/find/searchresultwindow.cpp:505
+msgctxt "Core::SearchResultWindow|"
+msgid "Collapse All"
+msgstr ""
+
+#: ../coreplugin/find/searchresultwindow.h:153
+msgctxt "Core::SearchResultWindow|"
+msgid "Search Results"
+msgstr ""
+
+#: ../coreplugin/variablemanager.cpp:309
+#, qt-format
+msgctxt "Core::VariableManager|"
+msgid "%1: Full path including file name."
+msgstr ""
+
+#: ../coreplugin/variablemanager.cpp:310
+#, qt-format
+msgctxt "Core::VariableManager|"
+msgid "%1: Full path excluding file name."
+msgstr ""
+
+#: ../coreplugin/variablemanager.cpp:311
+#, qt-format
+msgctxt "Core::VariableManager|"
+msgid "%1: File name without path."
+msgstr ""
+
+#: ../coreplugin/variablemanager.cpp:312
+#, qt-format
+msgctxt "Core::VariableManager|"
+msgid "%1: File base name without path and suffix."
+msgstr ""
+
+#: ../qmljs/qmljsinterpreter_renamed.cpp:1294
+#, qt-format
+msgctxt "CppQmlTypesLoader|"
+msgid "%1 seems not to be encoded in UTF8 or has a BOM."
+msgstr ""
+
+#: ../extensionsystem/plugindetailsview.ui:34
+msgctxt "ExtensionSystem::Internal::PluginDetailsView|"
+msgid "Description:"
+msgstr ""
+
+#: ../extensionsystem/plugindetailsview.ui:69
+msgctxt "ExtensionSystem::Internal::PluginDetailsView|"
+msgid "Name:"
+msgstr ""
+
+#: ../extensionsystem/plugindetailsview.ui:82
+msgctxt "ExtensionSystem::Internal::PluginDetailsView|"
+msgid "Compatibility version:"
+msgstr ""
+
+#: ../extensionsystem/plugindetailsview.ui:107
+msgctxt "ExtensionSystem::Internal::PluginDetailsView|"
+msgid "Dependencies:"
+msgstr ""
+
+#: ../extensionsystem/plugindetailsview.ui:142
+msgctxt "ExtensionSystem::Internal::PluginDetailsView|"
+msgid "Version:"
+msgstr ""
+
+#: ../extensionsystem/plugindetailsview.ui:155
+msgctxt "ExtensionSystem::Internal::PluginDetailsView|"
+msgid "Vendor:"
+msgstr ""
+
+#: ../extensionsystem/plugindetailsview.ui:171
+msgctxt "ExtensionSystem::Internal::PluginDetailsView|"
+msgid "Location:"
+msgstr ""
+
+#: ../extensionsystem/plugindetailsview.ui:194
+msgctxt "ExtensionSystem::Internal::PluginDetailsView|"
+msgid "Platforms:"
+msgstr ""
+
+#: ../extensionsystem/plugindetailsview.ui:204
+msgctxt "ExtensionSystem::Internal::PluginDetailsView|"
+msgid "URL:"
+msgstr ""
+
+#: ../extensionsystem/plugindetailsview.ui:234
+msgctxt "ExtensionSystem::Internal::PluginDetailsView|"
+msgid "Group:"
+msgstr ""
+
+#: ../extensionsystem/plugindetailsview.ui:264
+msgctxt "ExtensionSystem::Internal::PluginDetailsView|"
+msgid "Copyright:"
+msgstr ""
+
+#: ../extensionsystem/plugindetailsview.ui:286
+msgctxt "ExtensionSystem::Internal::PluginDetailsView|"
+msgid "License:"
+msgstr ""
+
+#: ../extensionsystem/pluginerroroverview.ui:14
+msgctxt "ExtensionSystem::Internal::PluginErrorOverview|"
+msgid "Qt Creator - Plugin loader messages"
+msgstr ""
+
+#: ../extensionsystem/pluginerroroverview.ui:20
+msgctxt "ExtensionSystem::Internal::PluginErrorOverview|"
+msgid "The following plugins have errors and cannot be loaded:"
+msgstr ""
+
+#: ../extensionsystem/pluginerroroverview.ui:33
+msgctxt "ExtensionSystem::Internal::PluginErrorOverview|"
+msgid "Details:"
+msgstr ""
+
+#: ../extensionsystem/pluginerrorview.ui:19
+msgctxt "ExtensionSystem::Internal::PluginErrorView|"
+msgid "State:"
+msgstr ""
+
+#: ../extensionsystem/pluginerrorview.ui:35
+msgctxt "ExtensionSystem::Internal::PluginErrorView|"
+msgid "Error message:"
+msgstr ""
+
+#: ../extensionsystem/pluginspec.cpp:524
+#, qt-format
+msgctxt "ExtensionSystem::Internal::PluginSpecPrivate|"
+msgid "Cannot open file %1 for reading: %2"
+msgstr ""
+
+#: ../extensionsystem/pluginspec.cpp:541
+#, qt-format
+msgctxt "ExtensionSystem::Internal::PluginSpecPrivate|"
+msgid "Error parsing file %1: %2, at line %3, column %4"
+msgstr ""
+
+#: ../extensionsystem/plugindetailsview.cpp:80
+msgctxt "ExtensionSystem::PluginDetailsView|"
+msgid "None"
+msgstr ""
+
+#: ../extensionsystem/plugindetailsview.cpp:89
+msgctxt "ExtensionSystem::PluginDetailsView|"
+msgid "All"
+msgstr ""
+
+#: ../extensionsystem/pluginerroroverview.cpp:44
+msgctxt "ExtensionSystem::PluginErrorOverview|"
+msgid "Continue"
+msgstr ""
+
+#: ../extensionsystem/pluginerrorview.cpp:77
+msgctxt "ExtensionSystem::PluginErrorView|"
+msgid "Invalid"
+msgstr ""
+
+#: ../extensionsystem/pluginerrorview.cpp:78
+msgctxt "ExtensionSystem::PluginErrorView|"
+msgid "Description file found, but error on read."
+msgstr ""
+
+#: ../extensionsystem/pluginerrorview.cpp:81
+msgctxt "ExtensionSystem::PluginErrorView|"
+msgid "Read"
+msgstr ""
+
+#: ../extensionsystem/pluginerrorview.cpp:82
+msgctxt "ExtensionSystem::PluginErrorView|"
+msgid "Description successfully read."
+msgstr ""
+
+#: ../extensionsystem/pluginerrorview.cpp:85
+msgctxt "ExtensionSystem::PluginErrorView|"
+msgid "Resolved"
+msgstr ""
+
+#: ../extensionsystem/pluginerrorview.cpp:86
+msgctxt "ExtensionSystem::PluginErrorView|"
+msgid "Dependencies are successfully resolved."
+msgstr ""
+
+#: ../extensionsystem/pluginerrorview.cpp:89
+msgctxt "ExtensionSystem::PluginErrorView|"
+msgid "Loaded"
+msgstr ""
+
+#: ../extensionsystem/pluginerrorview.cpp:90
+msgctxt "ExtensionSystem::PluginErrorView|"
+msgid "Library is loaded."
+msgstr ""
+
+#: ../extensionsystem/pluginerrorview.cpp:93
+msgctxt "ExtensionSystem::PluginErrorView|"
+msgid "Initialized"
+msgstr ""
+
+#: ../extensionsystem/pluginerrorview.cpp:94
+msgctxt "ExtensionSystem::PluginErrorView|"
+msgid "Plugin's initialization function succeeded."
+msgstr ""
+
+#: ../extensionsystem/pluginerrorview.cpp:97
+msgctxt "ExtensionSystem::PluginErrorView|"
+msgid "Running"
+msgstr ""
+
+#: ../extensionsystem/pluginerrorview.cpp:98
+msgctxt "ExtensionSystem::PluginErrorView|"
+msgid "Plugin successfully loaded and running."
+msgstr ""
+
+#: ../extensionsystem/pluginerrorview.cpp:101
+msgctxt "ExtensionSystem::PluginErrorView|"
+msgid "Stopped"
+msgstr ""
+
+#: ../extensionsystem/pluginerrorview.cpp:102
+msgctxt "ExtensionSystem::PluginErrorView|"
+msgid "Plugin was shut down."
+msgstr ""
+
+#: ../extensionsystem/pluginerrorview.cpp:105
+msgctxt "ExtensionSystem::PluginErrorView|"
+msgid "Deleted"
+msgstr ""
+
+#: ../extensionsystem/pluginerrorview.cpp:106
+msgctxt "ExtensionSystem::PluginErrorView|"
+msgid "Plugin ended its life cycle and was deleted."
+msgstr ""
+
+#: ../extensionsystem/pluginmanager.cpp:1084
+msgctxt "ExtensionSystem::PluginManager|"
+msgid "Circular dependency detected:"
+msgstr ""
+
+#: ../extensionsystem/pluginmanager.cpp:1088
+#, qt-format
+msgctxt "ExtensionSystem::PluginManager|"
+msgid "%1(%2) depends on"
+msgstr ""
+
+#: ../extensionsystem/pluginmanager.cpp:1092
+#, qt-format
+msgctxt "ExtensionSystem::PluginManager|"
+msgid "%1(%2)"
+msgstr ""
+
+#: ../extensionsystem/pluginmanager.cpp:1107
+#: ../extensionsystem/pluginmanager.cpp:1153
+#, qt-format
+msgctxt "ExtensionSystem::PluginManager|"
+msgid ""
+"Cannot load plugin because dependency failed to load: %1(%2)\n"
+"Reason: %3"
+msgstr ""
+
+#: ../extensionsystem/pluginview.cpp:92
+msgctxt "ExtensionSystem::PluginView|"
+msgid "Name"
+msgstr ""
+
+#: ../extensionsystem/pluginview.cpp:93
+msgctxt "ExtensionSystem::PluginView|"
+msgid "Load"
+msgstr ""
+
+#: ../extensionsystem/pluginview.cpp:94
+msgctxt "ExtensionSystem::PluginView|"
+msgid "Version"
+msgstr ""
+
+#: ../extensionsystem/pluginview.cpp:95
+msgctxt "ExtensionSystem::PluginView|"
+msgid "Vendor"
+msgstr ""
+
+#: ../extensionsystem/pluginview.cpp:166 ../extensionsystem/pluginview.cpp:187
+#: ../extensionsystem/pluginview.cpp:242
+msgctxt "ExtensionSystem::PluginView|"
+msgid "Load on Startup"
+msgstr ""
+
+#: ../extensionsystem/pluginview.cpp:175
+msgctxt "ExtensionSystem::PluginView|"
+msgid "Utilities"
+msgstr ""
+
+#: ../texteditor/fontsettings.cpp:174
+msgctxt "FontSettings_C_OCCURRENCES_UNUSED|"
+msgid "Unused variable"
+msgstr ""
+
+#: ../jseditormenuitems.cpp:162
+msgctxt "JsEditorTools::JSEditorMenuItems|"
+msgid "&New File"
+msgstr ""
+
+#: ../jseditormenuitems.cpp:171
+msgctxt "JsEditorTools::JSEditorMenuItems|"
+msgid "&Open File"
+msgstr ""
+
+#: ../jseditormenuitems.cpp:182
+msgctxt "JsEditorTools::JSEditorMenuItems|"
+msgid "&Save"
+msgstr ""
+
+#: ../jseditormenuitems.cpp:187
+msgctxt "JsEditorTools::JSEditorMenuItems|"
+msgid "Save"
+msgstr ""
+
+#: ../jseditormenuitems.cpp:195
+msgctxt "JsEditorTools::JSEditorMenuItems|"
+msgid "Save &As..."
+msgstr ""
+
+#: ../jseditormenuitems.cpp:198 ../jseditormenuitems.cpp:208
+msgctxt "JsEditorTools::JSEditorMenuItems|"
+msgid "Ctrl+Shift+S"
+msgstr ""
+
+#: ../jseditormenuitems.cpp:200
+msgctxt "JsEditorTools::JSEditorMenuItems|"
+msgid "Save As..."
+msgstr ""
+
+#: ../jseditormenuitems.cpp:206
+msgctxt "JsEditorTools::JSEditorMenuItems|"
+msgid "Save A&ll"
+msgstr ""
+
+#: ../jseditormenuitems.cpp:266
+msgctxt "JsEditorTools::JSEditorMenuItems|"
+msgid "&Undo"
+msgstr ""
+
+#: ../jseditormenuitems.cpp:270
+msgctxt "JsEditorTools::JSEditorMenuItems|"
+msgid "Undo"
+msgstr ""
+
+#: ../jseditormenuitems.cpp:279
+msgctxt "JsEditorTools::JSEditorMenuItems|"
+msgid "&Redo"
+msgstr ""
+
+#: ../jseditormenuitems.cpp:283
+msgctxt "JsEditorTools::JSEditorMenuItems|"
+msgid "Redo"
+msgstr ""
+
+#: ../jseditormenuitems.cpp:294
+msgctxt "JsEditorTools::JSEditorMenuItems|"
+msgid "Cu&t"
+msgstr ""
+
+#: ../jseditormenuitems.cpp:305
+msgctxt "JsEditorTools::JSEditorMenuItems|"
+msgid "&Copy"
+msgstr ""
+
+#: ../jseditormenuitems.cpp:316
+msgctxt "JsEditorTools::JSEditorMenuItems|"
+msgid "&Paste"
+msgstr ""
+
+#: ../jseditormenuitems.cpp:332
+msgctxt "JsEditorTools::JSEditorMenuItems|"
+msgid "Select &All"
+msgstr ""
+
+#: ../jseditortools.cpp:405
+msgctxt "JsEditorTools::JsEditorToolsLib|"
+msgid "Find"
+msgstr ""
+
+#: ../jseditortools.cpp:470
+msgctxt "JsEditorTools::JsEditorToolsLib|"
+msgid "Javascript"
+msgstr ""
+
+#: ../coreplugin/coreconstants.h:75
+msgctxt "OpenWith::Editors|"
+msgid "Plain Text Editor"
+msgstr ""
+
+#: ../qmljseditor/qmljseditorconstants.h:43
+msgctxt "OpenWith::Editors|"
+msgid "QMLJS Editor"
+msgstr ""
+
+#: ../extensionsystem/optionsparser.cpp:122
+#, qt-format
+msgctxt "PluginManager|"
+msgid "The plugin '%1' is specified twice for testing."
+msgstr ""
+
+#: ../extensionsystem/optionsparser.cpp:130
+#: ../extensionsystem/optionsparser.cpp:147
+#: ../extensionsystem/optionsparser.cpp:167
+#, qt-format
+msgctxt "PluginManager|"
+msgid "The plugin '%1' does not exist."
+msgstr ""
+
+#: ../extensionsystem/optionsparser.cpp:218
+#, qt-format
+msgctxt "PluginManager|"
+msgid "Unknown option %1"
+msgstr ""
+
+#: ../extensionsystem/optionsparser.cpp:230
+#, qt-format
+msgctxt "PluginManager|"
+msgid "The option %1 requires an argument."
+msgstr ""
+
+#: ../extensionsystem/pluginspec.cpp:591
+#, qt-format
+msgctxt "PluginSpec|"
+msgid "'%1' misses attribute '%2'"
+msgstr ""
+
+#: ../extensionsystem/pluginspec.cpp:596
+#, qt-format
+msgctxt "PluginSpec|"
+msgid "'%1' has invalid format"
+msgstr ""
+
+#: ../extensionsystem/pluginspec.cpp:601
+#, qt-format
+msgctxt "PluginSpec|"
+msgid "Invalid element '%1'"
+msgstr ""
+
+#: ../extensionsystem/pluginspec.cpp:606
+#, qt-format
+msgctxt "PluginSpec|"
+msgid "Unexpected closing element '%1'"
+msgstr ""
+
+#: ../extensionsystem/pluginspec.cpp:611
+msgctxt "PluginSpec|"
+msgid "Unexpected token"
+msgstr ""
+
+#: ../extensionsystem/pluginspec.cpp:620
+#, qt-format
+msgctxt "PluginSpec|"
+msgid "Expected element '%1' as top level element"
+msgstr ""
+
+#: ../extensionsystem/pluginspec.cpp:879
+msgctxt "PluginSpec|"
+msgid "Resolving dependencies failed because state != Read"
+msgstr ""
+
+#: ../extensionsystem/pluginspec.cpp:898
+#, qt-format
+msgctxt "PluginSpec|"
+msgid "Could not resolve dependency '%1(%2)'"
+msgstr ""
+
+#: ../extensionsystem/pluginspec.cpp:946
+msgctxt "PluginSpec|"
+msgid "Loading the library failed because state != Resolved"
+msgstr ""
+
+#: ../extensionsystem/pluginspec.cpp:982
+msgctxt "PluginSpec|"
+msgid "Plugin is not valid (does not derive from IPlugin)"
+msgstr ""
+
+#: ../extensionsystem/pluginspec.cpp:1002
+msgctxt "PluginSpec|"
+msgid "Initializing the plugin failed because state != Loaded"
+msgstr ""
+
+#: ../extensionsystem/pluginspec.cpp:1007
+msgctxt "PluginSpec|"
+msgid "Internal error: have no plugin instance to initialize"
+msgstr ""
+
+#: ../extensionsystem/pluginspec.cpp:1013
+#, qt-format
+msgctxt "PluginSpec|"
+msgid "Plugin initialization failed: %1"
+msgstr ""
+
+#: ../extensionsystem/pluginspec.cpp:1031
+msgctxt "PluginSpec|"
+msgid "Cannot perform extensionsInitialized because state != Initialized"
+msgstr ""
+
+#: ../extensionsystem/pluginspec.cpp:1036
+msgctxt "PluginSpec|"
+msgid ""
+"Internal error: have no plugin instance to perform extensionsInitialized"
+msgstr ""
+
+#: ../extensionsystem/pluginspec.cpp:1055
+msgctxt "PluginSpec|"
+msgid "Internal error: have no plugin instance to perform delayedInitialize"
+msgstr ""
+
+#: ../utils/buildablehelperlibrary.cpp:202
+#, qt-format
+msgctxt "ProjectExplorer::BuildableHelperLibrary|"
+msgid "Cannot start process: %1"
+msgstr ""
+
+#: ../utils/buildablehelperlibrary.cpp:211
+#, qt-format
+msgctxt "ProjectExplorer::BuildableHelperLibrary|"
+msgid "Timeout after %1s."
+msgstr ""
+
+#: ../utils/buildablehelperlibrary.cpp:218
+msgctxt "ProjectExplorer::BuildableHelperLibrary|"
+msgid "The process crashed."
+msgstr ""
+
+#: ../utils/buildablehelperlibrary.cpp:224
+#, qt-format
+msgctxt "ProjectExplorer::BuildableHelperLibrary|"
+msgid ""
+"The process returned exit code %1:\n"
+"%2"
+msgstr ""
+
+#: ../utils/buildablehelperlibrary.cpp:250
+#, qt-format
+msgctxt "ProjectExplorer::BuildableHelperLibrary|"
+msgid "Error running '%1' in %2: %3"
+msgstr ""
+
+#: ../utils/buildablehelperlibrary.cpp:269
+#, qt-format
+msgctxt "ProjectExplorer::BuildableHelperLibrary|"
+msgid "Building helper '%1' in %2\n"
+msgstr ""
+
+#: ../utils/buildablehelperlibrary.cpp:282
+#, qt-format
+msgctxt "ProjectExplorer::BuildableHelperLibrary|"
+msgid "Running %1 %2...\n"
+msgstr ""
+
+#: ../utils/buildablehelperlibrary.cpp:296
+#: ../utils/buildablehelperlibrary.cpp:308
+#, qt-format
+msgctxt "ProjectExplorer::BuildableHelperLibrary|"
+msgid "Running %1 %2 ...\n"
+msgstr ""
+
+#: ../utils/buildablehelperlibrary.cpp:304
+#, qt-format
+msgctxt "ProjectExplorer::BuildableHelperLibrary|"
+msgid "%1 not found in PATH\n"
+msgstr ""
+
+#: ../utils/buildablehelperlibrary.cpp:166
+#, qt-format
+msgctxt "ProjectExplorer::DebuggingHelperLibrary|"
+msgid "The target directory %1 could not be created."
+msgstr ""
+
+#: ../utils/buildablehelperlibrary.cpp:177
+#, qt-format
+msgctxt "ProjectExplorer::DebuggingHelperLibrary|"
+msgid "The existing file %1 could not be removed."
+msgstr ""
+
+#: ../utils/buildablehelperlibrary.cpp:185
+#, qt-format
+msgctxt "ProjectExplorer::DebuggingHelperLibrary|"
+msgid "The file %1 could not be copied to %2."
+msgstr ""
+
+#: ../utils/buildablehelperlibrary.cpp:277
+#, qt-format
+msgctxt "ProjectExplorer::DebuggingHelperLibrary|"
+msgid "%1 not found in PATH\n"
+msgstr ""
+
+#: ../qmljs/qmljsbind.cpp:195
+msgctxt "QmlJS::Bind|"
+msgid "expected two numbers separated by a dot"
+msgstr ""
+
+#: ../qmljs/qmljsbind.cpp:202
+msgctxt "QmlJS::Bind|"
+msgid "package import requires a version number"
+msgstr ""
+
+#: ../qmljs/qmljscheck.cpp:891
+msgctxt "QmlJS::Check|"
+msgid "'int' or 'real'"
+msgstr ""
+
+#: ../qmljs/qmljslink.cpp:263
+msgctxt "QmlJS::Link|"
+msgid "file or directory not found"
+msgstr ""
+
+#: ../qmljs/qmljslink.cpp:425
+#, qt-format
+msgctxt "QmlJS::Link|"
+msgid ""
+"QML module not found\n"
+"\n"
+"Import paths:\n"
+"%1\n"
+"\n"
+"For qmake projects, use the QML_IMPORT_PATH variable to add import paths.\n"
+"For qmlproject projects, use the importPaths property to add import paths."
+msgstr ""
+
+#: ../qmljs/qmljslink.cpp:474
+msgctxt "QmlJS::Link|"
+msgid "QML module contains C++ plugins, currently reading type information..."
+msgstr ""
+
+#: ../qmljs/qmljsmodelmanagerinterface.cpp:301
+msgctxt "QmlJS::ModelManagerInterface|"
+msgid "Indexing"
+msgstr ""
+
+#: ../qmljs/qmljsmodelmanagerinterface.cpp:1007
+msgctxt "QmlJS::ModelManagerInterface|"
+msgid "QML import scan"
+msgstr ""
+
+#: ../qmljs/qmljsplugindumper.cpp:228
+#, qt-format
+msgctxt "QmlJS::PluginDumper|"
+msgid ""
+"QML module does not contain information about components contained in "
+"plugins.\n"
+"\n"
+"Module path: %1\n"
+"See \"Using QML Modules with Plugins\" in the documentation."
+msgstr ""
+
+#: ../qmljs/qmljsplugindumper.cpp:237
+#, qt-format
+msgctxt "QmlJS::PluginDumper|"
+msgid ""
+"Automatic type dump of QML module failed.\n"
+"Errors:\n"
+"%1"
+msgstr ""
+
+#: ../qmljs/qmljsplugindumper.cpp:246
+#, qt-format
+msgctxt "QmlJS::PluginDumper|"
+msgid ""
+"Automatic type dump of QML module failed.\n"
+"First 10 lines or errors:\n"
+"\n"
+"%1\n"
+"Check 'General Messages' output pane for details."
+msgstr ""
+
+#: ../qmljs/qmljsplugindumper.cpp:258
+#, qt-format
+msgctxt "QmlJS::PluginDumper|"
+msgid ""
+"Warnings while parsing QML type information of %1:\n"
+"%2"
+msgstr ""
+
+#: ../qmljs/qmljsplugindumper.cpp:272
+#, qt-format
+msgctxt "QmlJS::PluginDumper|"
+msgid "\"%1\" failed to start: %2"
+msgstr ""
+
+#: ../qmljs/qmljsplugindumper.cpp:275
+#, qt-format
+msgctxt "QmlJS::PluginDumper|"
+msgid "\"%1\" crashed."
+msgstr ""
+
+#: ../qmljs/qmljsplugindumper.cpp:278
+#, qt-format
+msgctxt "QmlJS::PluginDumper|"
+msgid "\"%1\" timed out."
+msgstr ""
+
+#: ../qmljs/qmljsplugindumper.cpp:282
+#, qt-format
+msgctxt "QmlJS::PluginDumper|"
+msgid "I/O error running \"%1\"."
+msgstr ""
+
+#: ../qmljs/qmljsplugindumper.cpp:286
+#, qt-format
+msgctxt "QmlJS::PluginDumper|"
+msgid "\"%1\" returned exit code %2."
+msgstr ""
+
+#: ../qmljs/qmljsplugindumper.cpp:290
+#, qt-format
+msgctxt "QmlJS::PluginDumper|"
+msgid "Arguments: %1"
+msgstr ""
+
+#: ../qmljs/qmljsplugindumper.cpp:401
+#, qt-format
+msgctxt "QmlJS::PluginDumper|"
+msgid ""
+"Failed to parse '%1'.\n"
+"Error: %2"
+msgstr ""
+
+#: ../qmljs/qmljsplugindumper.cpp:416
+msgctxt "QmlJS::PluginDumper|"
+msgid "Errors while reading typeinfo files:"
+msgstr ""
+
+#: ../qmljs/qmljsplugindumper.cpp:453
+msgctxt "QmlJS::PluginDumper|"
+msgid ""
+"Could not locate the helper application for dumping type information from "
+"C++ plugins.\n"
+"Please build the qmldump application on the Qt version options page."
+msgstr ""
+
+#: ../qmljs/qmljsqrcparser.cpp:274
+#, qt-format
+msgctxt "QmlJS::QrcParser|"
+msgid "XML error on line %1, col %2: %3"
+msgstr ""
+
+#: ../qmljs/qmljsqrcparser.cpp:281
+msgctxt "QmlJS::QrcParser|"
+msgid "The <RCC> root element is missing."
+msgstr ""
+
+#: ../qmljs/qmljssimplereader.cpp:127
+#, qt-format
+msgctxt "QmlJS::SimpleAbstractStreamReader|"
+msgid "Cannot find file %1."
+msgstr ""
+
+#: ../qmljs/qmljssimplereader.cpp:174
+msgctxt "QmlJS::SimpleAbstractStreamReader|"
+msgid "Could not parse document."
+msgstr ""
+
+#: ../qmljs/qmljssimplereader.cpp:180
+msgctxt "QmlJS::SimpleAbstractStreamReader|"
+msgid "Expected document to contain a single object definition."
+msgstr ""
+
+#: ../qmljs/qmljssimplereader.cpp:244
+msgctxt "QmlJS::SimpleAbstractStreamReader|"
+msgid "Expected expression statement after colon."
+msgstr ""
+
+#: ../qmljs/qmljssimplereader.cpp:280
+msgctxt "QmlJS::SimpleAbstractStreamReader|"
+msgid "Expected expression statement to be a literal."
+msgstr ""
+
+#: ../qmljs/qmljssimplereader.cpp:338
+msgctxt "QmlJS::SimpleReader|"
+msgid "Property is defined twice."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:66
+#, qt-format
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Do not use '%1' as a constructor."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:74
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Invalid value for enum."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:76
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Enum value must be a string or a number."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:78
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Number value expected."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:80
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Boolean value expected."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:82
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "String value expected."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:84
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Invalid URL."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:86
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "File or directory does not exist."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:88
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Invalid color."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:90
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Anchor line expected."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:92
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Duplicate property binding."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:94
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Id expected."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:96
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Invalid id."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:98
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Duplicate id."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:100
+#, qt-format
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Invalid property name '%1'."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:102
+#, qt-format
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "'%1' does not have members."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:104
+#, qt-format
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "'%1' is not a member of '%2'."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:106
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Assignment in condition."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:108
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Unterminated non-empty case block."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:110
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Do not use 'eval'."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:112
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Unreachable."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:114
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Do not use 'with'."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:116
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Do not use comma expressions."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:118
+#, qt-format
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "'%1' already is a formal parameter."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:120
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Unnecessary message suppression."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:122
+#, qt-format
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "'%1' already is a function."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:124
+#, qt-format
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "var '%1' is used before its declaration."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:126
+#, qt-format
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "'%1' already is a var."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:128
+#, qt-format
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "'%1' is declared more than once."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:130
+#, qt-format
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Function '%1' is used before its declaration."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:142
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid ""
+"The 'function' keyword and the opening parenthesis should be separated by a "
+"single space."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:144
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Do not use stand-alone blocks."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:146
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Do not use void expressions."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:148
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Confusing pluses."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:150
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Confusing minuses."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:152
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Declare all function vars on a single line."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:154
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Unnecessary parentheses."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:156
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "== and != may perform type coercion, use === or !== to avoid it."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:158
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid ""
+"Expression statements should be assignments, calls or delete expressions "
+"only."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:160
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Place var declarations at the start of a function."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:162
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Use only one statement per line."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:164
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Unknown component."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:166
+#, qt-format
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Could not resolve the prototype '%1' of '%2'."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:168
+#, qt-format
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Could not resolve the prototype '%1'."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:170
+#, qt-format
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Prototype cycle, the last non-repeated component is '%1'."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:172
+#, qt-format
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Invalid property type '%1'."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:174
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "== and != perform type coercion, use === or !== to avoid it."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:176
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid ""
+"Calls of functions that start with an uppercase letter should use 'new'."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:178
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Use 'new' only with functions that start with an uppercase letter."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:182
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Use spaces around binary operators."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:184
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Unintentional empty block, use ({}) for empty object literal."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:186
+#, qt-format
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Use %1 instead of 'var' or 'variant' to improve performance."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:188
+#, qt-format
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Missing property '%1'."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:190
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Object value expected."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:192
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Array value expected."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:194
+#, qt-format
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "%1 value expected."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:196
+#, qt-format
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Maximum number value is %1."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:198
+#, qt-format
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Minimum number value is %1."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:200
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Maximum number value is exclusive."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:202
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Minimum number value is exclusive."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:204
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "String value does not match required pattern."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:206
+#, qt-format
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Minimum string value length is %1."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:208
+#, qt-format
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Maximum string value length is %1."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:210
+#, qt-format
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "%1 elements expected in array value."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:212
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Imperative code is not supported in the Qt Quick Designer."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:214
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "This type is not supported in the Qt Quick Designer."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:216
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid ""
+"Reference to parent item cannot be resolved correctly by the Qt Quick "
+"Designer."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:218
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid ""
+"This visual property binding cannot be evaluated in the local context and "
+"might not show up in Qt Quick Designer as expected."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:221
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Qt Quick Designer only supports states in the root item."
+msgstr ""
+
+#: ../qmljs/qmljsstaticanalysismessage.cpp:223
+msgctxt "QmlJS::StaticAnalysisMessages|"
+msgid "Using Qt Quick 1 code model instead of Qt Quick 2."
+msgstr ""
+
+#: ../qmljs/qmljsinterpreter_renamed.cpp:1266
+#, qt-format
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid ""
+"Errors while loading qmltypes from %1:\n"
+"%2"
+msgstr ""
+
+#: ../qmljs/qmljsinterpreter_renamed.cpp:1271
+#, qt-format
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid ""
+"Warnings while loading qmltypes from %1:\n"
+"%2"
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:93
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid "Could not parse document."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:98
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid "Expected a single import."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:104
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid "Expected import of QtQuick.tooling."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:116
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid "Major version different from 1 not supported."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:120
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid "Reading only version 1.1 parts."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:123
+#: ../qmljs/qmljstypedescriptionreader.cpp:129
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid "Expected document to contain a single object definition."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:134
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid "Expected document to contain a Module {} member."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:153
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid "Expected only Component and ModuleApi object definitions."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:200
+#, qt-format
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid ""
+"Expected only Property, Method, Signal and Enum object definitions, not '%1'."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:224
+#, qt-format
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid ""
+"Expected only name, prototype, defaultProperty, attachedType, exports "
+"isSingleton, isCreatable, isComposite and exportMetaObjectRevisions script "
+"bindings, not '%1'."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:229
+#: ../qmljs/qmljstypedescriptionreader.cpp:309
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid "Expected only script bindings and object definitions."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:234
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid "Component definition is missing a name binding."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:262
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid "Expected only uri, version and name script bindings."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:265
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid "Expected only script bindings."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:270
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid "ModuleApi definition has no or invalid version binding."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:296
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid "Expected only Parameter object definitions."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:306
+#: ../qmljs/qmljstypedescriptionreader.cpp:412
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid "Expected only name and type script bindings."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:314
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid "Method or signal is missing a name script binding."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:334
+#: ../qmljs/qmljstypedescriptionreader.cpp:371
+#: ../qmljs/qmljstypedescriptionreader.cpp:396
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid "Expected script binding."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:352
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid ""
+"Expected only type, name, revision, isPointer, isReadonly and isList script "
+"bindings."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:356
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid "Property object is missing a name or type script binding."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:381
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid "Expected only name and values script bindings."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:422
+#: ../qmljs/qmljstypedescriptionreader.cpp:428
+#: ../qmljs/qmljstypedescriptionreader.cpp:434
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid "Expected string after colon."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:444
+#: ../qmljs/qmljstypedescriptionreader.cpp:450
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid "Expected boolean after colon."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:457
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid "Expected true or false after colon."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:467
+#: ../qmljs/qmljstypedescriptionreader.cpp:473
+#: ../qmljs/qmljstypedescriptionreader.cpp:479
+#: ../qmljs/qmljstypedescriptionreader.cpp:491
+#: ../qmljs/qmljstypedescriptionreader.cpp:497
+#: ../qmljs/qmljstypedescriptionreader.cpp:503
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid "Expected numeric literal after colon."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:516
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid "Expected integer after colon."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:526
+#: ../qmljs/qmljstypedescriptionreader.cpp:532
+#: ../qmljs/qmljstypedescriptionreader.cpp:538
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid "Expected array of strings after colon."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:545
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid "Expected array literal with only string literal members."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:554
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid ""
+"Expected string literal to contain 'Package/Name major.minor' or 'Name "
+"major.minor'."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:570
+#: ../qmljs/qmljstypedescriptionreader.cpp:576
+#: ../qmljs/qmljstypedescriptionreader.cpp:582
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid "Expected array of numbers after colon."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:591
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid "Expected array literal with only number literal members."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:596
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid "Meta object revision without matching export."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:603
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid "Expected integer."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:614
+#: ../qmljs/qmljstypedescriptionreader.cpp:620
+#: ../qmljs/qmljstypedescriptionreader.cpp:626
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid "Expected object literal after colon."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:639
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid "Expected object literal to contain only 'string: number' elements."
+msgstr ""
+
+#: ../qmljs/qmljstypedescriptionreader.cpp:651
+msgctxt "QmlJS::TypeDescriptionReader|"
+msgid ""
+"Enum should not contain getter and setters, but only 'string: number' "
+"elements."
+msgstr ""
+
+#: ../qmljseditor/qmljseditorconstants.h:46
+msgctxt "QmlJSEditor|"
+msgid "Qt Quick"
+msgstr ""
+
+#: ../qmljseditor/qmljsquickfixes.cpp:159
+msgctxt "QmlJSEditor::AddAnalysisMessageSuppressionComment|"
+msgid "Add a Comment to Suppress This Message"
+msgstr ""
+
+#: ../qmljseditor/qmljscomponentfromobjectdef.cpp:80
+msgctxt "QmlJSEditor::ComponentFromObjectDef|"
+msgid "Move Component into Separate File"
+msgstr ""
+
+#: ../qmljseditor/qmljsfindreferences.cpp:925
+msgctxt "QmlJSEditor::FindReferences|"
+msgid "QML/JS Usages:"
+msgstr ""
+
+#: ../qmljseditor/qmljsfindreferences.cpp:948
+msgctxt "QmlJSEditor::FindReferences|"
+msgid "Searching"
+msgstr ""
+
+#: ../qmljseditor/qmljscomponentnamedialog.ui:14
+msgctxt "QmlJSEditor::Internal::ComponentNameDialog|"
+msgid "Move Component into Separate File"
+msgstr ""
+
+#: ../qmljseditor/qmljscomponentnamedialog.ui:41
+msgctxt "QmlJSEditor::Internal::ComponentNameDialog|"
+msgid "Path:"
+msgstr ""
+
+#: ../qmljseditor/qmljscomponentnamedialog.ui:48
+msgctxt "QmlJSEditor::Internal::ComponentNameDialog|"
+msgid "Component name:"
+msgstr ""
+
+#: ../qmljseditor/qmljscomponentnamedialog.cpp:80
+msgctxt "QmlJSEditor::Internal::ComponentNameDialog|"
+msgid "Choose a path"
+msgstr ""
+
+#: ../qmljseditor/qmljscomponentnamedialog.cpp:100
+msgctxt "QmlJSEditor::Internal::ComponentNameDialog|"
+msgid "Invalid component name"
+msgstr ""
+
+#: ../qmljseditor/qmljscomponentnamedialog.cpp:103
+msgctxt "QmlJSEditor::Internal::ComponentNameDialog|"
+msgid "Invalid path"
+msgstr ""
+
+#: ../qmljseditor/qmljshoverhandler.cpp:357
+#, qt-format
+msgctxt "QmlJSEditor::Internal::HoverHandler|"
+msgid "Library at %1"
+msgstr ""
+
+#: ../qmljseditor/qmljshoverhandler.cpp:361
+msgctxt "QmlJSEditor::Internal::HoverHandler|"
+msgid "Dumped plugins successfully."
+msgstr ""
+
+#: ../qmljseditor/qmljshoverhandler.cpp:364
+msgctxt "QmlJSEditor::Internal::HoverHandler|"
+msgid "Read typeinfo files successfully."
+msgstr ""
+
+#: ../qmljseditor/qmljswrapinloader.cpp:94
+msgctxt "QmlJSEditor::Internal::Operation|"
+msgid "Wrap Component in Loader"
+msgstr ""
+
+#: ../qmljseditor/qmljswrapinloader.cpp:134
+msgctxt "QmlJSEditor::Internal::Operation|"
+msgid ""
+"// TODO: Move position bindings from the component to the Loader.\n"
+"//       Check all uses of 'parent' inside the root element of the component."
+msgstr ""
+
+#: ../qmljseditor/qmljswrapinloader.cpp:138
+#, qt-format
+msgctxt "QmlJSEditor::Internal::Operation|"
+msgid "//       Rename all outer uses of the id '%1' to '%2.item'."
+msgstr ""
+
+#: ../qmljseditor/qmljswrapinloader.cpp:148
+#, qt-format
+msgctxt "QmlJSEditor::Internal::Operation|"
+msgid "//       Rename all outer uses of the id '%1' to '%2.item.%1'.\n"
+msgstr ""
+
+#: ../qmljseditor/qmljseditorplugin.cpp:177
+msgctxt "QmlJSEditor::Internal::QmlJSEditorPlugin|"
+msgid "Find Usages"
+msgstr ""
+
+#: ../qmljseditor/qmljseditorplugin.cpp:179
+msgctxt "QmlJSEditor::Internal::QmlJSEditorPlugin|"
+msgid "Ctrl+Shift+U"
+msgstr ""
+
+#: ../qmljseditor/qmljseditorplugin.cpp:184
+msgctxt "QmlJSEditor::Internal::QmlJSEditorPlugin|"
+msgid "Rename Symbol Under Cursor"
+msgstr ""
+
+#: ../qmljseditor/qmljseditorplugin.cpp:186
+msgctxt "QmlJSEditor::Internal::QmlJSEditorPlugin|"
+msgid "Ctrl+Shift+R"
+msgstr ""
+
+#: ../qmljseditor/qmljseditorplugin.cpp:191
+msgctxt "QmlJSEditor::Internal::QmlJSEditorPlugin|"
+msgid "Run Checks"
+msgstr ""
+
+#: ../qmljseditor/qmljseditorplugin.cpp:193
+msgctxt "QmlJSEditor::Internal::QmlJSEditorPlugin|"
+msgid "Ctrl+Shift+C"
+msgstr ""
+
+#: ../qmljseditor/qmljseditorplugin.cpp:197
+msgctxt "QmlJSEditor::Internal::QmlJSEditorPlugin|"
+msgid "Reformat File"
+msgstr ""
+
+#: ../qmljseditor/qmljsoutlinetreeview.cpp:66
+msgctxt "QmlJSEditor::Internal::QmlJSOutlineTreeView|"
+msgid "Expand All"
+msgstr ""
+
+#: ../qmljseditor/qmljsoutlinetreeview.cpp:67
+msgctxt "QmlJSEditor::Internal::QmlJSOutlineTreeView|"
+msgid "Collapse All"
+msgstr ""
+
+#: ../qmljseditor/qmljsoutline.cpp:115
+msgctxt "QmlJSEditor::Internal::QmlJSOutlineWidget|"
+msgid "Show All Bindings"
+msgstr ""
+
+#: ../qmljseditor/qmljssnippetprovider.cpp:62
+msgctxt "QmlJSEditor::Internal::QmlJSSnippetProvider|"
+msgid "QML"
+msgstr ""
+
+#: ../qmljseditor/qmljseditor.cpp:339
+msgctxt "QmlJSEditor::Internal::QmlJSTextEditorWidget|"
+msgid "Show Qt Quick ToolBar"
+msgstr ""
+
+#: ../qmljseditor/qmljseditor.cpp:712
+msgctxt "QmlJSEditor::Internal::QmlJSTextEditorWidget|"
+msgid "Refactoring"
+msgstr ""
+
+#: ../qmljseditor/qmljsquickfixes.cpp:97
+msgctxt "QmlJSEditor::QuickFix|"
+msgid "Split Initializer"
+msgstr ""
+
+#: ../qmljstools/qmljstoolsconstants.h:46
+msgctxt "QmlJSTools|"
+msgid "Code Style"
+msgstr ""
+
+#: ../qmljstools/qmljstoolsconstants.h:49
+msgctxt "QmlJSTools|"
+msgid "Qt Quick"
+msgstr ""
+
+#: ../qmljstools/qmljstoolsplugin.cpp:107
+msgctxt "QmlJSTools::Internal::QmlJSToolsPlugin|"
+msgid "Reset Code Model"
+msgstr ""
+
+#: ../qmljstools/qmljstoolssettings.cpp:69
+msgctxt "QmlJSTools::QmlJSToolsSettings|Settings"
+msgid "Global"
+msgstr ""
+
+#: ../qmljstools/qmljstoolssettings.cpp:78
+msgctxt "QmlJSTools::QmlJSToolsSettings|"
+msgid "Qt"
+msgstr ""
+
+#: ../qmljs/parser/qmljslexer.cpp:588 ../qmljs/parser/qmljslexer.cpp:1005
+msgctxt "QmlParser|"
+msgid "Illegal syntax for exponential number"
+msgstr ""
+
+#: ../qmljs/parser/qmljslexer.cpp:681
+msgctxt "QmlParser|"
+msgid "Stray newline in string literal"
+msgstr ""
+
+#: ../qmljs/parser/qmljslexer.cpp:727 ../qmljs/parser/qmljslexer.cpp:819
+#: ../qmljs/parser/qmljslexer.cpp:844
+msgctxt "QmlParser|"
+msgid "Illegal unicode escape sequence"
+msgstr ""
+
+#: ../qmljs/parser/qmljslexer.cpp:738
+msgctxt "QmlParser|"
+msgid "Illegal hexadecimal escape sequence"
+msgstr ""
+
+#: ../qmljs/parser/qmljslexer.cpp:771
+msgctxt "QmlParser|"
+msgid "Octal escape sequences are not allowed"
+msgstr ""
+
+#: ../qmljs/parser/qmljslexer.cpp:795
+msgctxt "QmlParser|"
+msgid "Unclosed string at end of line"
+msgstr ""
+
+#: ../qmljs/parser/qmljslexer.cpp:908
+msgctxt "QmlParser|"
+msgid "Decimal numbers can't start with '0'"
+msgstr ""
+
+#: ../qmljs/parser/qmljslexer.cpp:929
+#, qt-format
+msgctxt "QmlParser|"
+msgid "At least one hexadecimal digit is required after '0%1'"
+msgstr ""
+
+#: ../qmljs/parser/qmljslexer.cpp:1031
+#, qt-format
+msgctxt "QmlParser|"
+msgid "Invalid regular expression flag '%0'"
+msgstr ""
+
+#: ../qmljs/parser/qmljslexer.cpp:1048 ../qmljs/parser/qmljslexer.cpp:1070
+msgctxt "QmlParser|"
+msgid "Unterminated regular expression backslash sequence"
+msgstr ""
+
+#: ../qmljs/parser/qmljslexer.cpp:1083
+msgctxt "QmlParser|"
+msgid "Unterminated regular expression class"
+msgstr ""
+
+#: ../qmljs/parser/qmljslexer.cpp:1093
+msgctxt "QmlParser|"
+msgid "Unterminated regular expression literal"
+msgstr ""
+
+#: ../qmljs/parser/qmljsparser.cpp:1810 ../qmljs/parser/qmljsparser.cpp:1877
+msgctxt "QmlParser|"
+msgid "Syntax error"
+msgstr ""
+
+#: ../qmljs/parser/qmljsparser.cpp:1812
+#, qt-format
+msgctxt "QmlParser|"
+msgid "Unexpected token `%1'"
+msgstr ""
+
+#: ../qmljs/parser/qmljsparser.cpp:1840 ../qmljs/parser/qmljsparser.cpp:1864
+#, qt-format
+msgctxt "QmlParser|"
+msgid "Expected token `%1'"
+msgstr ""
+
+#: ../texteditor/texteditorconstants.h:177
+msgctxt "TextEditor|"
+msgid "Text Editor"
+msgstr ""
+
+#: ../texteditor/basefilefind.cpp:188
+msgctxt "TextEditor::BaseFileFind|"
+msgid "Search"
+msgstr ""
+
+#: ../texteditor/basefilefind.cpp:253
+msgctxt "TextEditor::BaseFileFind|"
+msgid "List of comma separated wildcard filters"
+msgstr ""
+
+#: ../texteditor/basetextdocument.cpp:554
+msgctxt "TextEditor::BaseTextDocument|"
+msgid "Opening file"
+msgstr ""
+
+#: ../texteditor/basetexteditor.cpp:6079
+#, qt-format
+msgctxt "TextEditor::BaseTextEditor|"
+msgid "Line: %1, Col: %2"
+msgstr ""
+
+#: ../texteditor/basetexteditor.cpp:6082
+msgctxt "TextEditor::BaseTextEditor|"
+msgid "Line: 9999, Col: 999"
+msgstr ""
+
+#: ../texteditor/basetexteditor.cpp:260
+msgctxt "TextEditor::BaseTextEditorWidget|"
+msgid "CTRL+D"
+msgstr ""
+
+#: ../texteditor/basetexteditor.cpp:297
+msgctxt "TextEditor::BaseTextEditorWidget|"
+msgid "Print Document"
+msgstr ""
+
+#: ../texteditor/basetexteditor.cpp:520
+msgctxt "TextEditor::BaseTextEditorWidget|"
+msgid "File Error"
+msgstr ""
+
+#: ../texteditor/basetexteditor.cpp:541
+#, qt-format
+msgctxt "TextEditor::BaseTextEditorWidget|"
+msgid "The text is too large to be displayed (%1 MB)."
+msgstr ""
+
+#: ../texteditor/basetexteditor.cpp:554
+#, qt-format
+msgctxt "TextEditor::BaseTextEditorWidget|"
+msgid ""
+"<b>Error:</b> Could not decode \"%1\" with \"%2\"-encoding. Editing not "
+"possible."
+msgstr ""
+
+#: ../texteditor/basetexteditor.cpp:556
+msgctxt "TextEditor::BaseTextEditorWidget|"
+msgid "Select Encoding"
+msgstr ""
+
+#: ../texteditor/basetexteditor.cpp:5922
+msgctxt "TextEditor::BaseTextEditorWidget|"
+msgid "Delete UTF-8 BOM on Save"
+msgstr ""
+
+#: ../texteditor/basetexteditor.cpp:5923
+msgctxt "TextEditor::BaseTextEditorWidget|"
+msgid "Add UTF-8 BOM on Save"
+msgstr ""
+
+#: ../texteditor/behaviorsettingspage.cpp:100
+msgctxt "TextEditor::BehaviorSettingsPage|Settings"
+msgid "Global"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.cpp:196
+msgctxt "TextEditor::BehaviorSettingsWidget|"
+msgid "Displays context-sensitive help or type information on mouseover."
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.cpp:199
+msgctxt "TextEditor::BehaviorSettingsWidget|"
+msgid "Displays context-sensitive help or type information on Shift+Mouseover."
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.cpp:280
+msgctxt "TextEditor::BehaviorSettingsWidget|"
+msgid "<System Language>"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.cpp:323
+msgctxt "TextEditor::BehaviorSettingsWidget|"
+msgid "Restart required"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.cpp:324
+msgctxt "TextEditor::BehaviorSettingsWidget|"
+msgid "The language change will take effect after a restart of Qt Creator."
+msgstr ""
+
+#: ../texteditor/codestyleeditor.cpp:65
+msgctxt "TextEditor::CodeStyleEditor|"
+msgid ""
+"Edit preview contents to see how the current settings are applied to custom "
+"code snippets. Changes in the preview do not affect the current settings."
+msgstr ""
+
+#: ../texteditor/codestyleselectorwidget.cpp:274
+msgctxt "TextEditor::CodeStyleSelectorWidget|"
+msgid "Copy Code Style"
+msgstr ""
+
+#: ../texteditor/codestyleselectorwidget.cpp:275
+msgctxt "TextEditor::CodeStyleSelectorWidget|"
+msgid "Code style name:"
+msgstr ""
+
+#: ../texteditor/codestyleselectorwidget.cpp:277
+#, qt-format
+msgctxt "TextEditor::CodeStyleSelectorWidget|"
+msgid "%1 (Copy)"
+msgstr ""
+
+#: ../texteditor/codestyleselectorwidget.cpp:321
+msgctxt "TextEditor::CodeStyleSelectorWidget|"
+msgid "Delete Code Style"
+msgstr ""
+
+#: ../texteditor/codestyleselectorwidget.cpp:322
+msgctxt "TextEditor::CodeStyleSelectorWidget|"
+msgid "Are you sure you want to delete this code style permanently?"
+msgstr ""
+
+#: ../texteditor/codestyleselectorwidget.cpp:328
+msgctxt "TextEditor::CodeStyleSelectorWidget|"
+msgid "Delete"
+msgstr ""
+
+#: ../texteditor/codestyleselectorwidget.cpp:340
+#: ../texteditor/codestyleselectorwidget.cpp:348
+msgctxt "TextEditor::CodeStyleSelectorWidget|"
+msgid "Import Code Style"
+msgstr ""
+
+#: ../texteditor/codestyleselectorwidget.cpp:341
+#: ../texteditor/codestyleselectorwidget.cpp:358
+msgctxt "TextEditor::CodeStyleSelectorWidget|"
+msgid "Code styles (*.xml);;All files (*)"
+msgstr ""
+
+#: ../texteditor/codestyleselectorwidget.cpp:349
+#, qt-format
+msgctxt "TextEditor::CodeStyleSelectorWidget|"
+msgid "Cannot import code style from %1"
+msgstr ""
+
+#: ../texteditor/codestyleselectorwidget.cpp:356
+msgctxt "TextEditor::CodeStyleSelectorWidget|"
+msgid "Export Code Style"
+msgstr ""
+
+#: ../texteditor/codestyleselectorwidget.cpp:429
+#, qt-format
+msgctxt "TextEditor::CodeStyleSelectorWidget|"
+msgid "%1 [proxy: %2]"
+msgstr ""
+
+#: ../texteditor/codestyleselectorwidget.cpp:431
+#, qt-format
+msgctxt "TextEditor::CodeStyleSelectorWidget|"
+msgid "%1 [built-in]"
+msgstr ""
+
+#: ../texteditor/findinfiles.cpp:72
+msgctxt "TextEditor::FindInFiles|"
+msgid "Files on File System"
+msgstr ""
+
+#: ../texteditor/findinfiles.cpp:99
+#, qt-format
+msgctxt "TextEditor::FindInFiles|"
+msgid "Directory '%1':"
+msgstr ""
+
+#. %3 is filled by BaseFileFind::runNewSearch
+#: ../texteditor/findinfiles.cpp:105
+#, qt-format
+msgctxt "TextEditor::FindInFiles|"
+msgid ""
+"Path: %1\n"
+"Filter: %2\n"
+"%3"
+msgstr ""
+
+#: ../texteditor/findinfiles.cpp:118
+msgctxt "TextEditor::FindInFiles|"
+msgid "Director&y:"
+msgstr ""
+
+#: ../texteditor/findinfiles.cpp:131
+msgctxt "TextEditor::FindInFiles|"
+msgid "&Browse..."
+msgstr ""
+
+#: ../texteditor/findinfiles.cpp:135
+msgctxt "TextEditor::FindInFiles|"
+msgid "Fi&le pattern:"
+msgstr ""
+
+#: ../texteditor/findinfiles.cpp:156
+msgctxt "TextEditor::FindInFiles|"
+msgid "Directory to search"
+msgstr ""
+
+#: ../texteditor/fontsettingspage.cpp:319
+msgctxt "TextEditor::FontSettingsPage|"
+msgid "Font && Colors"
+msgstr ""
+
+#: ../texteditor/fontsettingspage.cpp:452
+msgctxt "TextEditor::FontSettingsPage|"
+msgid "Copy Color Scheme"
+msgstr ""
+
+#: ../texteditor/fontsettingspage.cpp:453
+msgctxt "TextEditor::FontSettingsPage|"
+msgid "Color scheme name:"
+msgstr ""
+
+#: ../texteditor/fontsettingspage.cpp:454
+#, qt-format
+msgctxt "TextEditor::FontSettingsPage|"
+msgid "%1 (copy)"
+msgstr ""
+
+#: ../texteditor/fontsettingspage.cpp:499
+msgctxt "TextEditor::FontSettingsPage|"
+msgid "Delete Color Scheme"
+msgstr ""
+
+#: ../texteditor/fontsettingspage.cpp:500
+msgctxt "TextEditor::FontSettingsPage|"
+msgid "Are you sure you want to delete this color scheme permanently?"
+msgstr ""
+
+#: ../texteditor/fontsettingspage.cpp:506
+msgctxt "TextEditor::FontSettingsPage|"
+msgid "Delete"
+msgstr ""
+
+#: ../texteditor/fontsettingspage.cpp:534
+msgctxt "TextEditor::FontSettingsPage|"
+msgid "Color Scheme Changed"
+msgstr ""
+
+#: ../texteditor/fontsettingspage.cpp:535
+#, qt-format
+msgctxt "TextEditor::FontSettingsPage|"
+msgid "The color scheme \"%1\" was modified, do you want to save the changes?"
+msgstr ""
+
+#: ../texteditor/fontsettingspage.cpp:542
+msgctxt "TextEditor::FontSettingsPage|"
+msgid "Discard"
+msgstr ""
+
+#: ../texteditor/codeassist/functionhintproposalwidget.cpp:288
+#, qt-format
+msgctxt "TextEditor::FunctionHintProposalWidget|"
+msgid "%1 of %2"
+msgstr ""
+
+#: ../texteditor/generichighlighter/highlightersettingspage.cpp:64
+msgctxt "TextEditor::HighlighterSettingsPage|"
+msgid "Generic Highlighter"
+msgstr ""
+
+#: ../texteditor/generichighlighter/highlightersettingspage.cpp:99
+msgctxt "TextEditor::HighlighterSettingsPage|"
+msgid "Download Definitions..."
+msgstr ""
+
+#: ../texteditor/generichighlighter/highlightersettingspage.cpp:103
+msgctxt "TextEditor::HighlighterSettingsPage|"
+msgid "Autodetect"
+msgstr ""
+
+#: ../texteditor/generichighlighter/highlightersettingspage.cpp:179
+msgctxt "TextEditor::HighlighterSettingsPage|"
+msgid "Autodetect Definitions"
+msgstr ""
+
+#: ../texteditor/generichighlighter/highlightersettingspage.cpp:180
+msgctxt "TextEditor::HighlighterSettingsPage|"
+msgid "No pre-installed definitions could be found."
+msgstr ""
+
+#: ../texteditor/generichighlighter/highlightersettingspage.cpp:222
+msgctxt "TextEditor::HighlighterSettingsPage|"
+msgid "Error connecting to server."
+msgstr ""
+
+#: ../texteditor/generichighlighter/highlightersettingspage.cpp:223
+msgctxt "TextEditor::HighlighterSettingsPage|"
+msgid "Not possible to retrieve data."
+msgstr ""
+
+#: ../texteditor/behaviorsettingspage.ui:14
+msgctxt "TextEditor::Internal::BehaviorSettingsPage|"
+msgid "Form"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:34
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "Typing"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:43
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "Enable automatic &indentation"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:50
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "Backspace indentation:"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:63
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid ""
+"<html><head/><body>\n"
+"Specifies how backspace interacts with indentation.\n"
+"\n"
+"<ul>\n"
+"<li>None: No interaction at all. Regular plain backspace behavior.\n"
+"</li>\n"
+"\n"
+"<li>Follows Previous Indents: In leading white space it will take the cursor "
+"back to the nearest indentation level used in previous lines.\n"
+"</li>\n"
+"\n"
+"<li>Unindents: If the character behind the cursor is a space it behaves as a "
+"backtab.\n"
+"</li>\n"
+"</ul></body></html>\n"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:80
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "None"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:85
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "Follows Previous Indents"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:90
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "Unindents"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:98
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "Tab key performs auto-indent:"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:128
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "Never"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:133
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "Always"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:138
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "In Leading White Space"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:149
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "User Interface"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:202
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid ""
+"Cleanup actions which are automatically performed right before the file is "
+"saved to disk."
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:205
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "Cleanups Upon Saving"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:211
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "Removes trailing whitespace upon saving."
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:214
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "&Clean whitespace"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:246
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "Cleans whitespace in entire document instead of only for changed parts."
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:249
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "In entire &document"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:259
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "Corrects leading whitespace according to tab settings."
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:262
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "Clean indentation"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:269
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "Always writes a newline character at the end of the file."
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:272
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "&Ensure newline at end of file"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:282
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "File Encodings"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:288
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "Default encoding: "
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:327
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid ""
+"<html><head/><body>\n"
+"<p>How text editors should deal with UTF-8 Byte Order Marks. The options "
+"are:</p>\n"
+"<ul ><li><i>Add If Encoding Is UTF-8:</i> always add a BOM when saving a "
+"file in UTF-8 encoding. Note that this will not work if the encoding is "
+"<i>System</i>, as Qt Creator does not know what it actually is.</li>\n"
+"<li><i>Keep If Already Present: </i>save the file with a BOM if it already "
+"had one when it was loaded.</li>\n"
+"<li><i>Always Delete:</i> never write an UTF-8 BOM, possibly deleting a "
+"pre-existing one.</li></ul>\n"
+"<p>Note that UTF-8 BOMs are uncommon and treated incorrectly by some "
+"editors, so it usually makes little sense to add any.</p>\n"
+"<p>This setting does <b>not</b> influence the use of UTF-16 and UTF-32 "
+"BOMs.</p></body></html>"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:337
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "Add If Encoding Is UTF-8"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:342
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "Keep If Already Present"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:347
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "Always Delete"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:355
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "UTF-8 BOM:"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:365
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "Mouse and Keyboard"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:371
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "Hide mouse cursor while typing"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:378
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "Enable &mouse navigation"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:385
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "Enable scroll &wheel zooming"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:392
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "Enable built-in camel case &navigation"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:399
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid ""
+"Pressing Alt displays context-sensitive help or type information as tooltips."
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:402
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "Show help tooltips using keyboard shortcut (Alt)"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:409
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "Show help tooltips using the mouse:"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:435
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "On Mouseover"
+msgstr ""
+
+#: ../texteditor/behaviorsettingswidget.ui:440
+msgctxt "TextEditor::Internal::BehaviorSettingsWidget|"
+msgid "On Shift+Mouseover"
+msgstr ""
+
+#: ../texteditor/codestyleselectorwidget.cpp:80
+msgctxt "TextEditor::Internal::CodeStyleDialog|"
+msgid "Edit Code Style"
+msgstr ""
+
+#: ../texteditor/codestyleselectorwidget.cpp:82
+msgctxt "TextEditor::Internal::CodeStyleDialog|"
+msgid "Code style name:"
+msgstr ""
+
+#: ../texteditor/codestyleselectorwidget.cpp:92
+msgctxt "TextEditor::Internal::CodeStyleDialog|"
+msgid ""
+"You cannot save changes to a built-in code style. Copy it first to create "
+"your own version."
+msgstr ""
+
+#: ../texteditor/codestyleselectorwidget.cpp:98
+msgctxt "TextEditor::Internal::CodeStyleDialog|"
+msgid "Copy Built-in Code Style"
+msgstr ""
+
+#: ../texteditor/codestyleselectorwidget.cpp:145
+#, qt-format
+msgctxt "TextEditor::Internal::CodeStyleDialog|"
+msgid "%1 (Copy)"
+msgstr ""
+
+#: ../texteditor/codestyleselectorwidget.ui:14
+msgctxt "TextEditor::Internal::CodeStyleSelectorWidget|"
+msgid "Form"
+msgstr ""
+
+#: ../texteditor/codestyleselectorwidget.ui:25
+msgctxt "TextEditor::Internal::CodeStyleSelectorWidget|"
+msgid "Current settings:"
+msgstr ""
+
+#: ../texteditor/codestyleselectorwidget.ui:44
+msgctxt "TextEditor::Internal::CodeStyleSelectorWidget|"
+msgid "Copy..."
+msgstr ""
+
+#: ../texteditor/codestyleselectorwidget.ui:51
+msgctxt "TextEditor::Internal::CodeStyleSelectorWidget|"
+msgid "Edit..."
+msgstr ""
+
+#: ../texteditor/codestyleselectorwidget.ui:58
+msgctxt "TextEditor::Internal::CodeStyleSelectorWidget|"
+msgid "Remove"
+msgstr ""
+
+#: ../texteditor/codestyleselectorwidget.ui:65
+msgctxt "TextEditor::Internal::CodeStyleSelectorWidget|"
+msgid "Export..."
+msgstr ""
+
+#: ../texteditor/codestyleselectorwidget.ui:72
+msgctxt "TextEditor::Internal::CodeStyleSelectorWidget|"
+msgid "Import..."
+msgstr ""
+
+#: ../texteditor/codecselector.cpp:72
+msgctxt "TextEditor::Internal::CodecSelector|"
+msgid "Text Encoding"
+msgstr ""
+
+#: ../texteditor/codecselector.cpp:76
+msgctxt "TextEditor::Internal::CodecSelector|"
+msgid "The following encodings are likely to fit:"
+msgstr ""
+
+#: ../texteditor/codecselector.cpp:77
+#, qt-format
+msgctxt "TextEditor::Internal::CodecSelector|"
+msgid "Select encoding for \"%1\".%2"
+msgstr ""
+
+#: ../texteditor/codecselector.cpp:121
+msgctxt "TextEditor::Internal::CodecSelector|"
+msgid "Reload with Encoding"
+msgstr ""
+
+#: ../texteditor/codecselector.cpp:122
+msgctxt "TextEditor::Internal::CodecSelector|"
+msgid "Save with Encoding"
+msgstr ""
+
+#: ../texteditor/colorscheme.cpp:218
+msgctxt "TextEditor::Internal::ColorScheme|"
+msgid "Not a color scheme file."
+msgstr ""
+
+#: ../texteditor/colorschemeedit.ui:39
+msgctxt "TextEditor::Internal::ColorSchemeEdit|"
+msgid "Foreground:"
+msgstr ""
+
+#: ../texteditor/colorschemeedit.ui:64
+msgctxt "TextEditor::Internal::ColorSchemeEdit|"
+msgid "Erase foreground."
+msgstr ""
+
+#: ../texteditor/colorschemeedit.ui:67 ../texteditor/colorschemeedit.ui:113
+msgctxt "TextEditor::Internal::ColorSchemeEdit|"
+msgid "x"
+msgstr ""
+
+#: ../texteditor/colorschemeedit.ui:85
+msgctxt "TextEditor::Internal::ColorSchemeEdit|"
+msgid "Background:"
+msgstr ""
+
+#: ../texteditor/colorschemeedit.ui:110
+msgctxt "TextEditor::Internal::ColorSchemeEdit|"
+msgid "Erase background."
+msgstr ""
+
+#: ../texteditor/colorschemeedit.ui:125
+msgctxt "TextEditor::Internal::ColorSchemeEdit|"
+msgid "Bold"
+msgstr ""
+
+#: ../texteditor/colorschemeedit.ui:132
+msgctxt "TextEditor::Internal::ColorSchemeEdit|"
+msgid "Italic"
+msgstr ""
+
+#: ../texteditor/cpptools-completionsettingspage.ui:17
+msgctxt "TextEditor::Internal::CompletionSettingsPage|"
+msgid "Behavior"
+msgstr ""
+
+#: ../texteditor/cpptools-completionsettingspage.ui:23
+msgctxt "TextEditor::Internal::CompletionSettingsPage|"
+msgid "&Case-sensitivity:"
+msgstr ""
+
+#: ../texteditor/cpptools-completionsettingspage.ui:40
+msgctxt "TextEditor::Internal::CompletionSettingsPage|"
+msgid "Full"
+msgstr ""
+
+#: ../texteditor/cpptools-completionsettingspage.ui:45
+msgctxt "TextEditor::Internal::CompletionSettingsPage|"
+msgid "None"
+msgstr ""
+
+#: ../texteditor/cpptools-completionsettingspage.ui:50
+msgctxt "TextEditor::Internal::CompletionSettingsPage|"
+msgid "First Letter"
+msgstr ""
+
+#: ../texteditor/cpptools-completionsettingspage.ui:71
+msgctxt "TextEditor::Internal::CompletionSettingsPage|"
+msgid "Activate completion:"
+msgstr ""
+
+#: ../texteditor/cpptools-completionsettingspage.ui:79
+msgctxt "TextEditor::Internal::CompletionSettingsPage|"
+msgid "Manually"
+msgstr ""
+
+#: ../texteditor/cpptools-completionsettingspage.ui:84
+msgctxt "TextEditor::Internal::CompletionSettingsPage|"
+msgid "When Triggered"
+msgstr ""
+
+#: ../texteditor/cpptools-completionsettingspage.ui:89
+msgctxt "TextEditor::Internal::CompletionSettingsPage|"
+msgid "Always"
+msgstr ""
+
+#: ../texteditor/cpptools-completionsettingspage.ui:110
+msgctxt "TextEditor::Internal::CompletionSettingsPage|"
+msgid "Inserts the common prefix of available completion items."
+msgstr ""
+
+#: ../texteditor/cpptools-completionsettingspage.ui:113
+msgctxt "TextEditor::Internal::CompletionSettingsPage|"
+msgid "Autocomplete common &prefix"
+msgstr ""
+
+#: ../texteditor/cpptools-completionsettingspage.ui:123
+msgctxt "TextEditor::Internal::CompletionSettingsPage|"
+msgid ""
+"Automatically inserts semicolons and closing brackets, parentheses, curly "
+"braces, and quotes when appropriate."
+msgstr ""
+
+#: ../texteditor/cpptools-completionsettingspage.ui:126
+msgctxt "TextEditor::Internal::CompletionSettingsPage|"
+msgid "&Automatically insert matching characters"
+msgstr ""
+
+#: ../texteditor/cpptools-completionsettingspage.ui:154
+msgctxt "TextEditor::Internal::CompletionSettingsPage|"
+msgid ""
+"When typing a matching character and there is a text selection, instead of "
+"removing the selection, surrounds it with the corresponding characters."
+msgstr ""
+
+#: ../texteditor/cpptools-completionsettingspage.ui:157
+msgctxt "TextEditor::Internal::CompletionSettingsPage|"
+msgid "Surround &text selections"
+msgstr ""
+
+#: ../texteditor/cpptools-completionsettingspage.ui:190
+msgctxt "TextEditor::Internal::CompletionSettingsPage|"
+msgid "Insert &space after function name"
+msgstr ""
+
+#: ../texteditor/cpptools-completionsettingspage.ui:202
+msgctxt "TextEditor::Internal::CompletionSettingsPage|"
+msgid "Documentation Comments"
+msgstr ""
+
+#: ../texteditor/cpptools-completionsettingspage.ui:208
+msgctxt "TextEditor::Internal::CompletionSettingsPage|"
+msgid ""
+"Automatically creates a Doxygen comment upon pressing enter after a '/**', "
+"'/*!', '//!' or '///'."
+msgstr ""
+
+#: ../texteditor/cpptools-completionsettingspage.ui:211
+msgctxt "TextEditor::Internal::CompletionSettingsPage|"
+msgid "Enable Doxygen blocks"
+msgstr ""
+
+#: ../texteditor/cpptools-completionsettingspage.ui:236
+msgctxt "TextEditor::Internal::CompletionSettingsPage|"
+msgid ""
+"Generates a <i>brief</i> command with an initial description for the "
+"corresponding declaration."
+msgstr ""
+
+#: ../texteditor/cpptools-completionsettingspage.ui:239
+msgctxt "TextEditor::Internal::CompletionSettingsPage|"
+msgid "Generate brief description"
+msgstr ""
+
+#: ../texteditor/cpptools-completionsettingspage.ui:248
+msgctxt "TextEditor::Internal::CompletionSettingsPage|"
+msgid ""
+"Adds leading asterisks when continuing Qt '/*!' and Java '/**' style "
+"comments on new lines."
+msgstr ""
+
+#: ../texteditor/cpptools-completionsettingspage.ui:251
+msgctxt "TextEditor::Internal::CompletionSettingsPage|"
+msgid "Add leading asterisks"
+msgstr ""
+
+#: ../texteditor/cpptools-completionsettingspage.cpp:53
+msgctxt "TextEditor::Internal::CompletionSettingsPage|"
+msgid "Completion"
+msgstr ""
+
+#: ../texteditor/basefilefind.cpp:445
+#, qt-format
+msgctxt "TextEditor::Internal::CountingLabel|"
+msgid "%1 found"
+msgstr ""
+
+#: ../texteditor/displaysettingspage.ui:17
+msgctxt "TextEditor::Internal::DisplaySettingsPage|"
+msgid "Text Wrapping"
+msgstr ""
+
+#: ../texteditor/displaysettingspage.ui:23
+msgctxt "TextEditor::Internal::DisplaySettingsPage|"
+msgid "Enable text &wrapping"
+msgstr ""
+
+#: ../texteditor/displaysettingspage.ui:32
+msgctxt "TextEditor::Internal::DisplaySettingsPage|"
+msgid "Display right &margin at column:"
+msgstr ""
+
+#: ../texteditor/displaysettingspage.ui:80
+msgctxt "TextEditor::Internal::DisplaySettingsPage|"
+msgid "Display"
+msgstr ""
+
+#: ../texteditor/displaysettingspage.ui:86
+msgctxt "TextEditor::Internal::DisplaySettingsPage|"
+msgid "&Highlight matching parentheses"
+msgstr ""
+
+#: ../texteditor/displaysettingspage.ui:93
+msgctxt "TextEditor::Internal::DisplaySettingsPage|"
+msgid "Mark &text changes"
+msgstr ""
+
+#: ../texteditor/displaysettingspage.ui:100
+msgctxt "TextEditor::Internal::DisplaySettingsPage|"
+msgid "Shows tabs and spaces."
+msgstr ""
+
+#: ../texteditor/displaysettingspage.ui:103
+msgctxt "TextEditor::Internal::DisplaySettingsPage|"
+msgid "&Visualize whitespace"
+msgstr ""
+
+#: ../texteditor/displaysettingspage.ui:110
+msgctxt "TextEditor::Internal::DisplaySettingsPage|"
+msgid "Highlight &blocks"
+msgstr ""
+
+#: ../texteditor/displaysettingspage.ui:117
+msgctxt "TextEditor::Internal::DisplaySettingsPage|"
+msgid "Center &cursor on scroll"
+msgstr ""
+
+#: ../texteditor/displaysettingspage.ui:124
+msgctxt "TextEditor::Internal::DisplaySettingsPage|"
+msgid "Display &folding markers"
+msgstr ""
+
+#: ../texteditor/displaysettingspage.ui:131
+msgctxt "TextEditor::Internal::DisplaySettingsPage|"
+msgid "Highlight current &line"
+msgstr ""
+
+#: ../texteditor/displaysettingspage.ui:138
+msgctxt "TextEditor::Internal::DisplaySettingsPage|"
+msgid "&Animate matching parentheses"
+msgstr ""
+
+#: ../texteditor/displaysettingspage.ui:145
+msgctxt "TextEditor::Internal::DisplaySettingsPage|"
+msgid "Display line &numbers"
+msgstr ""
+
+#: ../texteditor/displaysettingspage.ui:152
+msgctxt "TextEditor::Internal::DisplaySettingsPage|"
+msgid "Auto-fold first &comment"
+msgstr ""
+
+#: ../texteditor/displaysettingspage.ui:159
+msgctxt "TextEditor::Internal::DisplaySettingsPage|"
+msgid "Always open links in another split"
+msgstr ""
+
+#: ../texteditor/displaysettingspage.ui:166
+msgctxt "TextEditor::Internal::DisplaySettingsPage|"
+msgid "Display file encoding"
+msgstr ""
+
+#: ../texteditor/findincurrentfile.cpp:58
+msgctxt "TextEditor::Internal::FindInCurrentFile|"
+msgid "Current File"
+msgstr ""
+
+#: ../texteditor/findincurrentfile.cpp:81
+#, qt-format
+msgctxt "TextEditor::Internal::FindInCurrentFile|"
+msgid "File '%1':"
+msgstr ""
+
+#: ../texteditor/findincurrentfile.cpp:87
+#, qt-format
+msgctxt "TextEditor::Internal::FindInCurrentFile|"
+msgid ""
+"File path: %1\n"
+"%2"
+msgstr ""
+
+#: ../texteditor/findinopenfiles.cpp:58
+msgctxt "TextEditor::Internal::FindInOpenFiles|"
+msgid "Open Documents"
+msgstr ""
+
+#: ../texteditor/findinopenfiles.cpp:92
+msgctxt "TextEditor::Internal::FindInOpenFiles|"
+msgid "Open documents:"
+msgstr ""
+
+#: ../texteditor/findinopenfiles.cpp:98
+#, qt-format
+msgctxt "TextEditor::Internal::FindInOpenFiles|"
+msgid ""
+"Open Documents\n"
+"%1"
+msgstr ""
+
+#: ../texteditor/fontsettings.cpp:138
+msgctxt "TextEditor::Internal::FontSettings|"
+msgid "Customized"
+msgstr ""
+
+#: ../texteditor/fontsettingspage.ui:17
+msgctxt "TextEditor::Internal::FontSettingsPage|"
+msgid "Font"
+msgstr ""
+
+#: ../texteditor/fontsettingspage.ui:29
+msgctxt "TextEditor::Internal::FontSettingsPage|"
+msgid "Family:"
+msgstr ""
+
+#: ../texteditor/fontsettingspage.ui:68
+msgctxt "TextEditor::Internal::FontSettingsPage|"
+msgid "Size:"
+msgstr ""
+
+#: ../texteditor/fontsettingspage.ui:101
+msgctxt "TextEditor::Internal::FontSettingsPage|"
+msgid "Antialias"
+msgstr ""
+
+#: ../texteditor/fontsettingspage.ui:108
+msgctxt "TextEditor::Internal::FontSettingsPage|"
+msgid "%"
+msgstr ""
+
+#: ../texteditor/fontsettingspage.ui:140
+msgctxt "TextEditor::Internal::FontSettingsPage|"
+msgid "Zoom:"
+msgstr ""
+
+#: ../texteditor/fontsettingspage.ui:150
+msgctxt "TextEditor::Internal::FontSettingsPage|"
+msgid "Color Scheme"
+msgstr ""
+
+#: ../texteditor/fontsettingspage.ui:168
+msgctxt "TextEditor::Internal::FontSettingsPage|"
+msgid "Copy..."
+msgstr ""
+
+#: ../texteditor/fontsettingspage.ui:178
+msgctxt "TextEditor::Internal::FontSettingsPage|"
+msgid "Delete"
+msgstr ""
+
+#: ../texteditor/generichighlighter/highlightersettingspage.ui:14
+msgctxt "TextEditor::Internal::HighlighterSettingsPage|"
+msgid "Form"
+msgstr ""
+
+#: ../texteditor/generichighlighter/highlightersettingspage.ui:26
+msgctxt "TextEditor::Internal::HighlighterSettingsPage|"
+msgid ""
+"<html><head/><body>\n"
+"<p>Highlight definitions are provided by the <a "
+"href=\"http://kate-editor.org/\">Kate Text Editor</a>.</p></body></html>"
+msgstr ""
+
+#: ../texteditor/generichighlighter/highlightersettingspage.ui:62
+msgctxt "TextEditor::Internal::HighlighterSettingsPage|"
+msgid "Syntax Highlight Definition Files"
+msgstr ""
+
+#: ../texteditor/generichighlighter/highlightersettingspage.ui:72
+msgctxt "TextEditor::Internal::HighlighterSettingsPage|"
+msgid "Location:"
+msgstr ""
+
+#: ../texteditor/generichighlighter/highlightersettingspage.ui:91
+msgctxt "TextEditor::Internal::HighlighterSettingsPage|"
+msgid "Use fallback location"
+msgstr ""
+
+#: ../texteditor/generichighlighter/highlightersettingspage.ui:106
+msgctxt "TextEditor::Internal::HighlighterSettingsPage|"
+msgid "Behavior"
+msgstr ""
+
+#: ../texteditor/generichighlighter/highlightersettingspage.ui:114
+msgctxt "TextEditor::Internal::HighlighterSettingsPage|"
+msgid "Ignored file patterns:"
+msgstr ""
+
+#: ../texteditor/generichighlighter/managedefinitionsdialog.ui:14
+msgctxt "TextEditor::Internal::ManageDefinitionsDialog|"
+msgid "Dialog"
+msgstr ""
+
+#: ../texteditor/generichighlighter/managedefinitionsdialog.ui:20
+msgctxt "TextEditor::Internal::ManageDefinitionsDialog|"
+msgid "Definitions"
+msgstr ""
+
+#: ../texteditor/generichighlighter/managedefinitionsdialog.ui:72
+msgctxt "TextEditor::Internal::ManageDefinitionsDialog|"
+msgid "Select All"
+msgstr ""
+
+#: ../texteditor/generichighlighter/managedefinitionsdialog.ui:79
+msgctxt "TextEditor::Internal::ManageDefinitionsDialog|"
+msgid "Clear Selection"
+msgstr ""
+
+#: ../texteditor/generichighlighter/managedefinitionsdialog.ui:86
+msgctxt "TextEditor::Internal::ManageDefinitionsDialog|"
+msgid "Invert Selection"
+msgstr ""
+
+#: ../texteditor/generichighlighter/managedefinitionsdialog.ui:108
+msgctxt "TextEditor::Internal::ManageDefinitionsDialog|"
+msgid "Download Selected Definitions"
+msgstr ""
+
+#: ../texteditor/generichighlighter/managedefinitionsdialog.cpp:54
+msgctxt "TextEditor::Internal::ManageDefinitionsDialog|"
+msgid "Name"
+msgstr ""
+
+#: ../texteditor/generichighlighter/managedefinitionsdialog.cpp:54
+msgctxt "TextEditor::Internal::ManageDefinitionsDialog|"
+msgid "Installed"
+msgstr ""
+
+#: ../texteditor/generichighlighter/managedefinitionsdialog.cpp:54
+msgctxt "TextEditor::Internal::ManageDefinitionsDialog|"
+msgid "Available"
+msgstr ""
+
+#: ../texteditor/generichighlighter/managedefinitionsdialog.cpp:57
+msgctxt "TextEditor::Internal::ManageDefinitionsDialog|"
+msgid "Download Definitions"
+msgstr ""
+
+#: ../texteditor/generichighlighter/managedefinitionsdialog.cpp:106
+msgctxt "TextEditor::Internal::ManageDefinitionsDialog|"
+msgid "Download Information"
+msgstr ""
+
+#: ../texteditor/generichighlighter/managedefinitionsdialog.cpp:107
+msgctxt "TextEditor::Internal::ManageDefinitionsDialog|"
+msgid ""
+"There is already one download in progress. Please wait until it is finished."
+msgstr ""
+
+#: ../texteditor/generichighlighter/manager.cpp:446
+msgctxt "TextEditor::Internal::Manager|"
+msgid "Downloading definitions"
+msgstr ""
+
+#: ../texteditor/generichighlighter/manager.cpp:466
+msgctxt "TextEditor::Internal::Manager|"
+msgid "Error downloading selected definition(s)."
+msgstr ""
+
+#: ../texteditor/generichighlighter/manager.cpp:468
+msgctxt "TextEditor::Internal::Manager|"
+msgid "Error downloading one or more definitions."
+msgstr ""
+
+#: ../texteditor/generichighlighter/manager.cpp:470
+msgctxt "TextEditor::Internal::Manager|"
+msgid "Please check the directory's access rights."
+msgstr ""
+
+#: ../texteditor/generichighlighter/manager.cpp:471
+msgctxt "TextEditor::Internal::Manager|"
+msgid "Download Error"
+msgstr ""
+
+#: ../texteditor/plaintexteditorfactory.cpp:89
+msgctxt "TextEditor::Internal::PlainTextEditorFactory|"
+msgid ""
+"A highlight definition was not found for this file. Would you like to try to "
+"find one?"
+msgstr ""
+
+#: ../texteditor/plaintexteditorfactory.cpp:92
+msgctxt "TextEditor::Internal::PlainTextEditorFactory|"
+msgid "Show Highlighter Options..."
+msgstr ""
+
+#: ../texteditor/snippets/plaintextsnippetprovider.cpp:53
+msgctxt "TextEditor::Internal::PlainTextSnippetProvider|"
+msgid "Text"
+msgstr ""
+
+#: ../texteditor/snippets/snippetscollection.cpp:316
+#, qt-format
+msgctxt "TextEditor::Internal::SnippetsCollection|"
+msgid "Cannot create user snippet directory %1"
+msgstr ""
+
+#: ../texteditor/snippets/snippetssettingspage.ui:14
+msgctxt "TextEditor::Internal::SnippetsSettingsPage|"
+msgid "Form"
+msgstr ""
+
+#: ../texteditor/snippets/snippetssettingspage.ui:22
+msgctxt "TextEditor::Internal::SnippetsSettingsPage|"
+msgid "Group: "
+msgstr ""
+
+#: ../texteditor/snippets/snippetssettingspage.ui:77
+msgctxt "TextEditor::Internal::SnippetsSettingsPage|"
+msgid "Add"
+msgstr ""
+
+#: ../texteditor/snippets/snippetssettingspage.ui:84
+msgctxt "TextEditor::Internal::SnippetsSettingsPage|"
+msgid "Remove"
+msgstr ""
+
+#: ../texteditor/snippets/snippetssettingspage.ui:91
+msgctxt "TextEditor::Internal::SnippetsSettingsPage|"
+msgid "Revert Built-in"
+msgstr ""
+
+#: ../texteditor/snippets/snippetssettingspage.ui:98
+msgctxt "TextEditor::Internal::SnippetsSettingsPage|"
+msgid "Restore Removed Built-ins"
+msgstr ""
+
+#: ../texteditor/snippets/snippetssettingspage.ui:105
+msgctxt "TextEditor::Internal::SnippetsSettingsPage|"
+msgid "Reset All"
+msgstr ""
+
+#: ../texteditor/snippets/snippetssettingspage.cpp:313
+msgctxt "TextEditor::Internal::SnippetsSettingsPagePrivate|"
+msgid "Snippets"
+msgstr ""
+
+#: ../texteditor/snippets/snippetssettingspage.cpp:400
+msgctxt "TextEditor::Internal::SnippetsSettingsPagePrivate|"
+msgid "Error While Saving Snippet Collection"
+msgstr ""
+
+#: ../texteditor/snippets/snippetssettingspage.cpp:471
+msgctxt "TextEditor::Internal::SnippetsSettingsPagePrivate|"
+msgid "Error"
+msgstr ""
+
+#: ../texteditor/snippets/snippetssettingspage.cpp:471
+msgctxt "TextEditor::Internal::SnippetsSettingsPagePrivate|"
+msgid "No snippet selected."
+msgstr ""
+
+#: ../texteditor/snippets/snippetssettingspage.cpp:135
+#: ../texteditor/snippets/snippetssettingspage.cpp:211
+msgctxt "TextEditor::Internal::SnippetsTableModel|"
+msgid "Error"
+msgstr ""
+
+#: ../texteditor/snippets/snippetssettingspage.cpp:135
+msgctxt "TextEditor::Internal::SnippetsTableModel|"
+msgid "Not a valid trigger."
+msgstr ""
+
+#: ../texteditor/snippets/snippetssettingspage.cpp:157
+msgctxt "TextEditor::Internal::SnippetsTableModel|"
+msgid "Trigger"
+msgstr ""
+
+#: ../texteditor/snippets/snippetssettingspage.cpp:159
+msgctxt "TextEditor::Internal::SnippetsTableModel|"
+msgid "Trigger Variant"
+msgstr ""
+
+#: ../texteditor/snippets/snippetssettingspage.cpp:211
+msgctxt "TextEditor::Internal::SnippetsTableModel|"
+msgid "Error reverting snippet."
+msgstr ""
+
+#: ../texteditor/tabsettingswidget.ui:14
+msgctxt "TextEditor::Internal::TabSettingsWidget|"
+msgid "Form"
+msgstr ""
+
+#: ../texteditor/tabsettingswidget.ui:23
+msgctxt "TextEditor::Internal::TabSettingsWidget|"
+msgid "Tabs And Indentation"
+msgstr ""
+
+#: ../texteditor/tabsettingswidget.ui:52
+msgctxt "TextEditor::Internal::TabSettingsWidget|"
+msgid "Spaces Only"
+msgstr ""
+
+#: ../texteditor/tabsettingswidget.ui:57
+msgctxt "TextEditor::Internal::TabSettingsWidget|"
+msgid "Tabs Only"
+msgstr ""
+
+#: ../texteditor/tabsettingswidget.ui:62
+msgctxt "TextEditor::Internal::TabSettingsWidget|"
+msgid "Mixed"
+msgstr ""
+
+#: ../texteditor/tabsettingswidget.ui:78
+msgctxt "TextEditor::Internal::TabSettingsWidget|"
+msgid "Ta&b size:"
+msgstr ""
+
+#: ../texteditor/tabsettingswidget.ui:110
+msgctxt "TextEditor::Internal::TabSettingsWidget|"
+msgid "&Indent size:"
+msgstr ""
+
+#: ../texteditor/tabsettingswidget.ui:157
+msgctxt "TextEditor::Internal::TabSettingsWidget|"
+msgid ""
+"<html><head/><body>\n"
+"Influences the indentation of continuation lines.\n"
+"\n"
+"<ul>\n"
+"<li>Not At All: Do not align at all. Lines will only be indented to the "
+"current logical indentation depth.\n"
+"<pre>\n"
+"(tab)int i = foo(a, b\n"
+"(tab)c, d);\n"
+"</pre>\n"
+"</li>\n"
+"\n"
+"<li>With Spaces: Always use spaces for alignment, regardless of the other "
+"indentation settings.\n"
+"<pre>\n"
+"(tab)int i = foo(a, b\n"
+"(tab)            c, d);\n"
+"</pre>\n"
+"</li>\n"
+"\n"
+"<li>With Regular Indent: Use tabs and/or spaces for alignment, as configured "
+"above.\n"
+"<pre>\n"
+"(tab)int i = foo(a, b\n"
+"(tab)(tab)(tab)  c, d);\n"
+"</pre>\n"
+"</li>\n"
+"</ul></body></html>"
+msgstr ""
+
+#: ../texteditor/tabsettingswidget.ui:185
+msgctxt "TextEditor::Internal::TabSettingsWidget|"
+msgid "Not At All"
+msgstr ""
+
+#: ../texteditor/tabsettingswidget.ui:190
+msgctxt "TextEditor::Internal::TabSettingsWidget|"
+msgid "With Spaces"
+msgstr ""
+
+#: ../texteditor/tabsettingswidget.ui:195
+msgctxt "TextEditor::Internal::TabSettingsWidget|"
+msgid "With Regular Indent"
+msgstr ""
+
+#: ../texteditor/tabsettingswidget.ui:203
+msgctxt "TextEditor::Internal::TabSettingsWidget|"
+msgid "Tab policy:"
+msgstr ""
+
+#: ../texteditor/tabsettingswidget.ui:210
+msgctxt "TextEditor::Internal::TabSettingsWidget|"
+msgid "Align continuation lines:"
+msgstr ""
+
+#: ../texteditor/tabsettingswidget.ui:217
+msgctxt "TextEditor::Internal::TabSettingsWidget|"
+msgid ""
+"The text editor indentation setting is used for non-code files only. See the "
+"C++ and Qt Quick coding style settings to configure indentation for code "
+"files."
+msgstr ""
+
+#: ../texteditor/tabsettingswidget.ui:220
+msgctxt "TextEditor::Internal::TabSettingsWidget|"
+msgid ""
+"<i>Code indentation is configured in <a href=\"C++\">C++</a> and <a "
+"href=\"QtQuick\">Qt Quick</a> settings.</i>"
+msgstr ""
+
+#: ../texteditor/texteditorplugin.cpp:99
+msgctxt "TextEditor::Internal::TextEditorPlugin|"
+msgid "General"
+msgstr ""
+
+#: ../texteditor/texteditorplugin.cpp:177
+msgctxt "TextEditor::Internal::TextEditorPlugin|"
+msgid "Triggers a completion in this scope"
+msgstr ""
+
+#: ../texteditor/texteditorplugin.cpp:181
+msgctxt "TextEditor::Internal::TextEditorPlugin|"
+msgid "Meta+Space"
+msgstr ""
+
+#: ../texteditor/texteditorplugin.cpp:181
+msgctxt "TextEditor::Internal::TextEditorPlugin|"
+msgid "Ctrl+Space"
+msgstr ""
+
+#: ../texteditor/texteditorplugin.cpp:186
+msgctxt "TextEditor::Internal::TextEditorPlugin|"
+msgid "Triggers a quick fix in this scope"
+msgstr ""
+
+#: ../texteditor/texteditorplugin.cpp:190
+msgctxt "TextEditor::Internal::TextEditorPlugin|"
+msgid "Alt+Return"
+msgstr ""
+
+#: ../texteditor/texteditorplugin.cpp:195
+msgctxt "TextEditor::Internal::TextEditorPlugin|"
+msgid "Creates a scratch buffer using a temporary file."
+msgstr ""
+
+#: ../texteditor/texteditorplugin.cpp:231
+msgctxt "TextEditor::Internal::TextEditorPlugin|"
+msgid "Selected text within the current document."
+msgstr ""
+
+#: ../texteditor/texteditorplugin.cpp:233
+msgctxt "TextEditor::Internal::TextEditorPlugin|"
+msgid ""
+"Line number of the text cursor position in current document (starts with 1)."
+msgstr ""
+
+#: ../texteditor/texteditorplugin.cpp:235
+msgctxt "TextEditor::Internal::TextEditorPlugin|"
+msgid ""
+"Column number of the text cursor position in current document (starts with "
+"0)."
+msgstr ""
+
+#: ../texteditor/texteditorplugin.cpp:237
+msgctxt "TextEditor::Internal::TextEditorPlugin|"
+msgid "Number of lines visible in current document."
+msgstr ""
+
+#: ../texteditor/texteditorplugin.cpp:239
+msgctxt "TextEditor::Internal::TextEditorPlugin|"
+msgid "Number of columns visible in current document."
+msgstr ""
+
+#: ../texteditor/texteditorplugin.cpp:241
+msgctxt "TextEditor::Internal::TextEditorPlugin|"
+msgid "Current document's font size in points."
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:126
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "&Undo"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:128
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "&Redo"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:142
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Cut &Line"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:143
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Shift+Del"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:145
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Copy &Line"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:146
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Ctrl+Ins"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:148
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Delete &Line"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:150
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Delete Word from Cursor On"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:152
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Delete Word Camel Case from Cursor On"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:154
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Delete Word up to Cursor"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:156
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Delete Word Camel Case up to Cursor"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:158
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Go to Block Start with Selection"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:159
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Ctrl+{"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:161
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Go to Block End with Selection"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:162
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Ctrl+}"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:164
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Move Line Up"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:165
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Ctrl+Shift+Up"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:167
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Move Line Down"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:168
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Ctrl+Shift+Down"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:170
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Copy Line Up"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:171
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Ctrl+Alt+Up"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:173
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Copy Line Down"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:174
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Ctrl+Alt+Down"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:176
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Join Lines"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:177
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Ctrl+J"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:179
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Insert Line Above Current Line"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:180
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Ctrl+Shift+Return"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:182
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Insert Line Below Current Line"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:183
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Ctrl+Return"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:185
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Uppercase Selection"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:186
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Meta+Shift+U"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:186
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Alt+Shift+U"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:188
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Lowercase Selection"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:189
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Meta+U"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:189
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Alt+U"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:193
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Indent"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:195
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Unindent"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:197
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Follow Symbol Under Cursor"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:200
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Follow Symbol Under Cursor in Next Split"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:201
+#: ../texteditor/texteditoractionhandler.cpp:207
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Meta+E, F2"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:201
+#: ../texteditor/texteditoractionhandler.cpp:207
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Ctrl+E, F2"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:203
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Jump To File Under Cursor"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:212
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Select Encoding..."
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:215
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Paste from Clipboard History"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:216
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Ctrl+Shift+V"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:221
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Auto-&indent Selection"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:222
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Ctrl+I"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:225
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "&Rewrap Paragraph"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:226
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Meta+E, R"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:226
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Ctrl+E, R"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:229
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "&Visualize Whitespace"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:230
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Meta+E, Meta+V"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:230
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Ctrl+E, Ctrl+V"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:234
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Clean Whitespace"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:238
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Enable Text &Wrapping"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:239
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Meta+E, Meta+W"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:239
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Ctrl+E, Ctrl+W"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:243
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Toggle Comment &Selection"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:244
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Ctrl+/"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:247
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Fold"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:248
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Ctrl+<"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:251
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Unfold"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:252
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Ctrl+>"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:255
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Toggle &Fold All"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:259
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Increase Font Size"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:260
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Ctrl++"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:263
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Decrease Font Size"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:264
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Ctrl+-"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:267
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Reset Font Size"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:268
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Meta+0"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:268
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Ctrl+0"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:271
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Go to Block Start"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:272
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Ctrl+["
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:275
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Go to Block End"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:276
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Ctrl+]"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:279
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Select Block Up"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:280
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Ctrl+U"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:283
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Select Block Down"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:289
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Go to Line Start"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:291
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Go to Line End"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:293
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Go to Next Line"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:295
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Go to Previous Line"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:297
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Go to Previous Character"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:299
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Go to Next Character"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:301
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Go to Previous Word"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:303
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Go to Next Word"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:305
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Go to Previous Word Camel Case"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:307
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Go to Next Word Camel Case"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:311
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Go to Line Start with Selection"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:313
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Go to Line End with Selection"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:315
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Go to Next Line with Selection"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:317
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Go to Previous Line with Selection"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:319
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Go to Previous Character with Selection"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:321
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Go to Next Character with Selection"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:323
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Go to Previous Word with Selection"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:325
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Go to Next Word with Selection"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:327
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Go to Previous Word Camel Case with Selection"
+msgstr ""
+
+#: ../texteditor/texteditoractionhandler.cpp:329
+msgctxt "TextEditor::TextEditorActionHandler|"
+msgid "Go to Next Word Camel Case with Selection"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:111
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Text"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:111
+msgctxt "TextEditor::TextEditorSettings|"
+msgid ""
+"Generic text.\n"
+"Applied to text, if no other rules matching."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:117
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Link"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:118
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Links that follow symbol under cursor."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:119
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Selection"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:119
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Selected text."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:121
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Line Number"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:122
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Line numbers located on the left side of the editor."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:124
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Search Result"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:125
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Highlighted search results inside the editor."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:126
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Search Scope"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:127
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Section where the pattern is searched in."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:128
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Parentheses"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:129
+msgctxt "TextEditor::TextEditorSettings|"
+msgid ""
+"Displayed when matching parentheses, square brackets or curly brackets are "
+"found."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:131
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Current Line"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:132
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Line where the cursor is placed in."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:135
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Current Line Number"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:136
+msgctxt "TextEditor::TextEditorSettings|"
+msgid ""
+"Line number located on the left side of the editor where the cursor is "
+"placed in."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:142
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Occurrences"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:143
+msgctxt "TextEditor::TextEditorSettings|"
+msgid ""
+"Occurrences of the symbol under the cursor.\n"
+"(Only the background will be applied.)"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:145
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Unused Occurrence"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:146
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Occurrences of unused variables."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:147
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Renaming Occurrence"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:148
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Occurrences of a symbol that will be renamed."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:151
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Number"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:151
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Number literal."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:153
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "String"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:154
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Character and string literals."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:155
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Type"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:155
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Name of a type."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:157
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Local"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:157
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Local variables."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:158
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Field"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:159
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Class' data members."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:160
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Enumeration"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:161
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Applied to enumeration items."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:164
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Function"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:164
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Name of a function."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:167
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Virtual Function"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:168
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Name of function declared as virtual."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:171
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "QML Binding"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:172
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "QML item property, that allows a binding to another property."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:178
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "QML Local Id"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:179
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "QML item id within a QML file."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:181
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "QML Root Object Property"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:182
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "QML property of a parent item."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:184
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "QML Scope Object Property"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:185
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Property of the same QML item."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:186
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "QML State Name"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:187
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Name of a QML state."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:189
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "QML Type Name"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:190
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Name of a QML type."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:194
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "QML External Id"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:195
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "QML id defined in another QML file."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:198
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "QML External Object Property"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:199
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "QML property defined in another QML file."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:205
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "JavaScript Scope Var"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:206
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Variables defined inside the JavaScript file."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:212
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "JavaScript Import"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:213
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Name of a JavaScript import inside a QML file."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:215
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "JavaScript Global Variable"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:216
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Variables defined outside the script."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:219
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Keyword"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:220
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Reserved keywords of the programming language."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:222
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Operator"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:223
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Operators (for example operator++ or operator-=)."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:224
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Preprocessor"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:225
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Preprocessor directives."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:226
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Label"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:226
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Labels for goto statements."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:228
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Comment"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:229
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "All style of comments except Doxygen comments."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:231
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Doxygen Comment"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:232
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Doxygen comments."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:233
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Doxygen Tag"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:233
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Doxygen tags."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:235
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Visual Whitespace"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:236
+msgctxt "TextEditor::TextEditorSettings|"
+msgid ""
+"Whitespace.\n"
+"Will not be applied to whitespace in comments and strings."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:238
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Disabled Code"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:239
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Code disabled by preprocessor directives."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:242
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Added Line"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:243
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Applied to added lines in differences (in diff editor)."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:245
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Removed Line"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:246
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Applied to removed lines in differences (in diff editor)."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:248
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Diff File"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:249
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Compared files (in diff editor)."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:250
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Diff Location"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:251
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Location in the files where the difference is (in diff editor)."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:255
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Diff File Line"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:256
+msgctxt "TextEditor::TextEditorSettings|"
+msgid ""
+"Applied to lines with file information in differences (in side-by-side diff "
+"editor)."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:259
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Diff Context Line"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:260
+msgctxt "TextEditor::TextEditorSettings|"
+msgid ""
+"Applied to lines describing hidden context in differences (in side-by-side "
+"diff editor)."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:263
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Diff Source Line"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:264
+msgctxt "TextEditor::TextEditorSettings|"
+msgid ""
+"Applied to source lines with changes in differences (in side-by-side diff "
+"editor)."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:267
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Diff Source Character"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:268
+msgctxt "TextEditor::TextEditorSettings|"
+msgid ""
+"Applied to removed characters in differences (in side-by-side diff editor)."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:271
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Diff Destination Line"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:272
+msgctxt "TextEditor::TextEditorSettings|"
+msgid ""
+"Applied to destination lines with changes in differences (in side-by-side "
+"diff editor)."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:275
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Diff Destination Character"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:276
+msgctxt "TextEditor::TextEditorSettings|"
+msgid ""
+"Applied to added characters in differences (in side-by-side diff editor)."
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:288
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Behavior"
+msgstr ""
+
+#: ../texteditor/texteditorsettings.cpp:295
+msgctxt "TextEditor::TextEditorSettings|"
+msgid "Display"
+msgstr ""
+
+#: ../utils/basetreeview.cpp:78
+msgctxt "Utils::BaseTreeView|"
+msgid "Adjust Column Widths to Contents"
+msgstr ""
+
+#: ../utils/checkablemessagebox.cpp:85
+msgctxt "Utils::CheckableMessageBox|"
+msgid "Do not ask again"
+msgstr ""
+
+#: ../utils/checkablemessagebox.cpp:376
+msgctxt "Utils::CheckableMessageBox|"
+msgid "Do not &ask again"
+msgstr ""
+
+#: ../utils/classnamevalidatinglineedit.cpp:112
+msgctxt "Utils::ClassNameValidatingLineEdit|"
+msgid "The class name must not contain namespace delimiters."
+msgstr ""
+
+#: ../utils/classnamevalidatinglineedit.cpp:116
+msgctxt "Utils::ClassNameValidatingLineEdit|"
+msgid "Please enter a class name."
+msgstr ""
+
+#: ../utils/classnamevalidatinglineedit.cpp:120
+msgctxt "Utils::ClassNameValidatingLineEdit|"
+msgid "The class name contains invalid characters."
+msgstr ""
+
+#: ../utils/consoleprocess.cpp:102
+#, qt-format
+msgctxt "Utils::ConsoleProcess|"
+msgid "Cannot set up communication channel: %1"
+msgstr ""
+
+#: ../utils/consoleprocess.cpp:109
+msgctxt "Utils::ConsoleProcess|"
+msgid "Press <RETURN> to close this window..."
+msgstr ""
+
+#: ../utils/consoleprocess.cpp:114
+#, qt-format
+msgctxt "Utils::ConsoleProcess|"
+msgid "Cannot create temporary file: %1"
+msgstr ""
+
+#: ../utils/consoleprocess.cpp:119
+msgctxt "Utils::ConsoleProcess|"
+msgid "Cannot write temporary file. Disk full?"
+msgstr ""
+
+#: ../utils/consoleprocess.cpp:124
+#, qt-format
+msgctxt "Utils::ConsoleProcess|"
+msgid "Cannot create temporary directory '%1': %2"
+msgstr ""
+
+#: ../utils/consoleprocess.cpp:129
+#, qt-format
+msgctxt "Utils::ConsoleProcess|"
+msgid "Unexpected output from helper program (%1)."
+msgstr ""
+
+#: ../utils/consoleprocess.cpp:134
+#, qt-format
+msgctxt "Utils::ConsoleProcess|"
+msgid "Cannot change to working directory '%1': %2"
+msgstr ""
+
+#: ../utils/consoleprocess.cpp:139
+#, qt-format
+msgctxt "Utils::ConsoleProcess|"
+msgid "Cannot execute '%1': %2"
+msgstr ""
+
+#: ../utils/consoleprocess_unix.cpp:91
+msgctxt "Utils::ConsoleProcess|"
+msgid "Quoting error in command."
+msgstr ""
+
+#: ../utils/consoleprocess_unix.cpp:96
+msgctxt "Utils::ConsoleProcess|"
+msgid ""
+"Debugging complex shell commands in a terminal is currently not supported."
+msgstr ""
+
+#: ../utils/consoleprocess_unix.cpp:112
+msgctxt "Utils::ConsoleProcess|"
+msgid "Quoting error in terminal command."
+msgstr ""
+
+#: ../utils/consoleprocess_unix.cpp:113
+msgctxt "Utils::ConsoleProcess|"
+msgid "Terminal command may not be a shell command."
+msgstr ""
+
+#: ../utils/consoleprocess_unix.cpp:166
+#, qt-format
+msgctxt "Utils::ConsoleProcess|"
+msgid ""
+"Cannot start the terminal emulator '%1', change the setting in the "
+"Environment options."
+msgstr ""
+
+#: ../utils/consoleprocess_unix.cpp:250
+#, qt-format
+msgctxt "Utils::ConsoleProcess|"
+msgid "Cannot create socket '%1': %2"
+msgstr ""
+
+#: ../utils/consoleprocess_win.cpp:149
+#, qt-format
+msgctxt "Utils::ConsoleProcess|"
+msgid "The process '%1' could not be started: %2"
+msgstr ""
+
+#: ../utils/consoleprocess_win.cpp:232
+#, qt-format
+msgctxt "Utils::ConsoleProcess|"
+msgid "Cannot obtain a handle to the inferior: %1"
+msgstr ""
+
+#: ../utils/consoleprocess_win.cpp:262
+#, qt-format
+msgctxt "Utils::ConsoleProcess|"
+msgid "Cannot obtain exit status from inferior: %1"
+msgstr ""
+
+#: ../utils/detailsbutton.cpp:83
+msgctxt "Utils::DetailsButton|"
+msgid "Details"
+msgstr ""
+
+#: ../utils/elfreader.cpp:145
+#, qt-format
+msgctxt "Utils::ElfReader|"
+msgid "'%1' is an invalid ELF object (%2)"
+msgstr ""
+
+#: ../utils/elfreader.cpp:163
+#, qt-format
+msgctxt "Utils::ElfReader|"
+msgid "'%1' is not an ELF object (file too small)"
+msgstr ""
+
+#: ../utils/elfreader.cpp:168
+#, qt-format
+msgctxt "Utils::ElfReader|"
+msgid "'%1' is not an ELF object"
+msgstr ""
+
+#: ../utils/elfreader.cpp:176
+msgctxt "Utils::ElfReader|"
+msgid "odd cpu architecture"
+msgstr ""
+
+#: ../utils/elfreader.cpp:195
+msgctxt "Utils::ElfReader|"
+msgid "odd endianness"
+msgstr ""
+
+#: ../utils/elfreader.cpp:212
+msgctxt "Utils::ElfReader|"
+msgid "unexpected e_shsize"
+msgstr ""
+
+#: ../utils/elfreader.cpp:223
+msgctxt "Utils::ElfReader|"
+msgid "unexpected e_shentsize"
+msgstr ""
+
+#: ../utils/elfreader.cpp:232
+#, qt-format
+msgctxt "Utils::ElfReader|"
+msgid "announced %n sections, each %1 bytes, exceed file size"
+msgid_plural "announced %n sections, each %1 bytes, exceed file size"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../utils/elfreader.cpp:255
+#, qt-format
+msgctxt "Utils::ElfReader|"
+msgid "string table seems to be at 0x%1"
+msgstr ""
+
+#: ../utils/elfreader.cpp:266
+#, qt-format
+msgctxt "Utils::ElfReader|"
+msgid "section name %1 of %2 behind end of file"
+msgstr ""
+
+#: ../utils/environmentmodel.cpp:52
+msgctxt "Utils::EnvironmentModel|"
+msgid "<UNSET>"
+msgstr ""
+
+#: ../utils/environmentmodel.cpp:183
+msgctxt "Utils::EnvironmentModel|"
+msgid "Variable"
+msgstr ""
+
+#: ../utils/environmentmodel.cpp:183
+msgctxt "Utils::EnvironmentModel|"
+msgid "Value"
+msgstr ""
+
+#. Name when inserting a new variable
+#: ../utils/environmentmodel.cpp:254
+msgctxt "Utils::EnvironmentModel|"
+msgid "<VARIABLE>"
+msgstr ""
+
+#. Value when inserting a new variable
+#: ../utils/environmentmodel.cpp:256
+msgctxt "Utils::EnvironmentModel|"
+msgid "<VALUE>"
+msgstr ""
+
+#: ../utils/fancylineedit.cpp:349
+msgctxt "Utils::FancyLineEdit|"
+msgid "Filter"
+msgstr ""
+
+#: ../utils/fancylineedit.cpp:350
+msgctxt "Utils::FancyLineEdit|"
+msgid "Clear text"
+msgstr ""
+
+#: ../utils/fancymainwindow.cpp:74
+msgctxt "Utils::FancyMainWindow|"
+msgid "Locked"
+msgstr ""
+
+#: ../utils/fancymainwindow.cpp:76
+msgctxt "Utils::FancyMainWindow|"
+msgid "Reset to Default Layout"
+msgstr ""
+
+#: ../utils/filenamevalidatinglineedit.cpp:111
+msgctxt "Utils::FileNameValidatingLineEdit|"
+msgid "Name is empty."
+msgstr ""
+
+#: ../utils/filenamevalidatinglineedit.cpp:121
+msgctxt "Utils::FileNameValidatingLineEdit|"
+msgid "Name contains white space."
+msgstr ""
+
+#: ../utils/filenamevalidatinglineedit.cpp:123
+#, qt-format
+msgctxt "Utils::FileNameValidatingLineEdit|"
+msgid "Invalid character '%1'."
+msgstr ""
+
+#: ../utils/filenamevalidatinglineedit.cpp:133
+#, qt-format
+msgctxt "Utils::FileNameValidatingLineEdit|"
+msgid "Invalid characters '%1'."
+msgstr ""
+
+#: ../utils/filenamevalidatinglineedit.cpp:143
+#, qt-format
+msgctxt "Utils::FileNameValidatingLineEdit|"
+msgid "Name matches MS Windows device. (%1)."
+msgstr ""
+
+#: ../utils/filenamevalidatinglineedit.cpp:182
+#, qt-format
+msgctxt "Utils::FileNameValidatingLineEdit|"
+msgid "File extension %1 is required:"
+msgstr ""
+
+#: ../utils/filenamevalidatinglineedit.cpp:184
+#, qt-format
+msgctxt "Utils::FileNameValidatingLineEdit|"
+msgid "File extensions %1 are required:"
+msgstr ""
+
+#: ../utils/filesearch.cpp:43
+#, qt-format
+msgctxt "Utils::FileSearch|"
+msgid "%1: canceled. %n occurrences found in %2 files."
+msgid_plural "%1: canceled. %n occurrences found in %2 files."
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../utils/filesearch.cpp:51
+#, qt-format
+msgctxt "Utils::FileSearch|"
+msgid "%1: %n occurrences found in %2 files."
+msgid_plural "%1: %n occurrences found in %2 files."
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../utils/fileutils_renamed.cpp:81
+msgctxt "Utils::FileUtils|"
+msgid "Refusing to remove root directory."
+msgstr ""
+
+#: ../utils/fileutils_renamed.cpp:88
+msgctxt "Utils::FileUtils|"
+msgid "Refusing to remove your home directory."
+msgstr ""
+
+#: ../utils/fileutils_renamed.cpp:102
+#, qt-format
+msgctxt "Utils::FileUtils|"
+msgid "Failed to remove directory '%1'."
+msgstr ""
+
+#: ../utils/fileutils_renamed.cpp:110
+#, qt-format
+msgctxt "Utils::FileUtils|"
+msgid "Failed to remove file '%1'."
+msgstr ""
+
+#: ../utils/fileutils_renamed.cpp:145
+#, qt-format
+msgctxt "Utils::FileUtils|"
+msgid "Failed to create directory '%1'."
+msgstr ""
+
+#: ../utils/fileutils_renamed.cpp:164
+#, qt-format
+msgctxt "Utils::FileUtils|"
+msgid "Could not copy file '%1' to '%2'."
+msgstr ""
+
+#: ../utils/fileutils_renamed.cpp:307
+#, qt-format
+msgctxt "Utils::FileUtils|"
+msgid "Cannot open %1 for reading: %2"
+msgstr ""
+
+#: ../utils/fileutils_renamed.cpp:313
+#, qt-format
+msgctxt "Utils::FileUtils|"
+msgid "Cannot read %1: %2"
+msgstr ""
+
+#: ../utils/fileutils_renamed.cpp:334 ../utils/fileutils_renamed.cpp:372
+msgctxt "Utils::FileUtils|"
+msgid "File Error"
+msgstr ""
+
+#: ../utils/fileutils_renamed.cpp:393
+#, qt-format
+msgctxt "Utils::FileUtils|"
+msgid "Cannot write file %1. Disk full?"
+msgstr ""
+
+#: ../utils/fileutils_renamed.cpp:429
+#, qt-format
+msgctxt "Utils::FileUtils|"
+msgid "Cannot overwrite file %1: %2"
+msgstr ""
+
+#: ../utils/fileutils_renamed.cpp:429
+#, qt-format
+msgctxt "Utils::FileUtils|"
+msgid "Cannot create file %1: %2"
+msgstr ""
+
+#: ../utils/fileutils_renamed.cpp:460
+#, qt-format
+msgctxt "Utils::FileUtils|"
+msgid "Cannot create temporary file in %1: %2"
+msgstr ""
+
+#: ../utils/filewizarddialog.cpp:51
+msgctxt "Utils::FileWizardDialog|"
+msgid "Location"
+msgstr ""
+
+#: ../utils/ipaddresslineedit.cpp:85
+msgctxt "Utils::IpAddressLineEdit|"
+msgid "The IP address is not valid."
+msgstr ""
+
+#: ../utils/wizard.cpp:135
+msgctxt "Utils::LinearProgressWidget|"
+msgid "..."
+msgstr ""
+
+#: ../utils/newclasswidget.ui:15
+msgctxt "Utils::NewClassWidget|"
+msgid "&Class name:"
+msgstr ""
+
+#: ../utils/newclasswidget.ui:28
+msgctxt "Utils::NewClassWidget|"
+msgid "&Base class:"
+msgstr ""
+
+#: ../utils/newclasswidget.ui:48
+msgctxt "Utils::NewClassWidget|"
+msgid "&Type information:"
+msgstr ""
+
+#: ../utils/newclasswidget.ui:59
+msgctxt "Utils::NewClassWidget|"
+msgid "None"
+msgstr ""
+
+#: ../utils/newclasswidget.ui:64
+msgctxt "Utils::NewClassWidget|"
+msgid "Inherits QObject"
+msgstr ""
+
+#: ../utils/newclasswidget.ui:69
+msgctxt "Utils::NewClassWidget|"
+msgid "Inherits QWidget"
+msgstr ""
+
+#: ../utils/newclasswidget.ui:74
+msgctxt "Utils::NewClassWidget|"
+msgid "Inherits QDeclarativeItem - Qt Quick 1"
+msgstr ""
+
+#: ../utils/newclasswidget.ui:79
+msgctxt "Utils::NewClassWidget|"
+msgid "Inherits QQuickItem - Qt Quick 2"
+msgstr ""
+
+#: ../utils/newclasswidget.ui:84
+msgctxt "Utils::NewClassWidget|"
+msgid "Based on QSharedData"
+msgstr ""
+
+#: ../utils/newclasswidget.ui:124
+msgctxt "Utils::NewClassWidget|"
+msgid "&Header file:"
+msgstr ""
+
+#: ../utils/newclasswidget.ui:137
+msgctxt "Utils::NewClassWidget|"
+msgid "&Source file:"
+msgstr ""
+
+#: ../utils/newclasswidget.ui:150
+msgctxt "Utils::NewClassWidget|"
+msgid "&Generate form:"
+msgstr ""
+
+#: ../utils/newclasswidget.ui:167
+msgctxt "Utils::NewClassWidget|"
+msgid "&Form file:"
+msgstr ""
+
+#: ../utils/newclasswidget.ui:180
+msgctxt "Utils::NewClassWidget|"
+msgid "&Path:"
+msgstr ""
+
+#: ../utils/newclasswidget.cpp:498
+msgctxt "Utils::NewClassWidget|"
+msgid "Invalid base class name"
+msgstr ""
+
+#: ../utils/newclasswidget.cpp:505
+#, qt-format
+msgctxt "Utils::NewClassWidget|"
+msgid "Invalid header file name: '%1'"
+msgstr ""
+
+#: ../utils/newclasswidget.cpp:511
+#, qt-format
+msgctxt "Utils::NewClassWidget|"
+msgid "Invalid source file name: '%1'"
+msgstr ""
+
+#: ../utils/newclasswidget.cpp:519
+#, qt-format
+msgctxt "Utils::NewClassWidget|"
+msgid "Invalid form file name: '%1'"
+msgstr ""
+
+#: ../utils/pathchooser.cpp:276
+msgctxt "Utils::PathChooser|"
+msgid "Choose..."
+msgstr ""
+
+#: ../utils/pathchooser.cpp:276
+msgctxt "Utils::PathChooser|"
+msgid "Browse..."
+msgstr ""
+
+#: ../utils/pathchooser.cpp:383
+msgctxt "Utils::PathChooser|"
+msgid "Choose Directory"
+msgstr ""
+
+#: ../utils/pathchooser.cpp:388
+msgctxt "Utils::PathChooser|"
+msgid "Choose Executable"
+msgstr ""
+
+#: ../utils/pathchooser.cpp:402 ../utils/pathchooser.cpp:407
+#: ../utils/pathchooser.cpp:413
+msgctxt "Utils::PathChooser|"
+msgid "Choose File"
+msgstr ""
+
+#: ../utils/pathchooser.cpp:469
+msgctxt "Utils::PathChooser|"
+msgid "The path must not be empty."
+msgstr ""
+
+#: ../utils/pathchooser.cpp:475
+#, qt-format
+msgctxt "Utils::PathChooser|"
+msgid "The path '%1' expanded to an empty string."
+msgstr ""
+
+#: ../utils/pathchooser.cpp:485 ../utils/pathchooser.cpp:497
+#: ../utils/pathchooser.cpp:511
+#, qt-format
+msgctxt "Utils::PathChooser|"
+msgid "The path '%1' does not exist."
+msgstr ""
+
+#: ../utils/pathchooser.cpp:490 ../utils/pathchooser.cpp:523
+#, qt-format
+msgctxt "Utils::PathChooser|"
+msgid "The path '%1' is not a directory."
+msgstr ""
+
+#: ../utils/pathchooser.cpp:504
+#, qt-format
+msgctxt "Utils::PathChooser|"
+msgid "The directory '%1' does not exist."
+msgstr ""
+
+#: ../utils/pathchooser.cpp:516 ../utils/pathchooser.cpp:530
+#, qt-format
+msgctxt "Utils::PathChooser|"
+msgid "Cannot execute '%1'."
+msgstr ""
+
+#: ../utils/pathchooser.cpp:544
+#, qt-format
+msgctxt "Utils::PathChooser|"
+msgid "The path <b>%1</b> is not a directory."
+msgstr ""
+
+#: ../utils/pathchooser.cpp:552 ../utils/pathchooser.cpp:560
+#, qt-format
+msgctxt "Utils::PathChooser|"
+msgid "The path <b>%1</b> is not a file."
+msgstr ""
+
+#: ../utils/pathchooser.cpp:568
+#, qt-format
+msgctxt "Utils::PathChooser|"
+msgid "The path <b>%1</b> is not an executable file."
+msgstr ""
+
+#: ../utils/pathchooser.cpp:582
+#, qt-format
+msgctxt "Utils::PathChooser|"
+msgid "Full path: <b>%1</b>"
+msgstr ""
+
+#: ../utils/pathchooser.cpp:588
+msgctxt "Utils::PathChooser|"
+msgid "Path:"
+msgstr ""
+
+#: ../utils/pathlisteditor.cpp:135
+msgctxt "Utils::PathListEditor|"
+msgid "Insert..."
+msgstr ""
+
+#: ../utils/pathlisteditor.cpp:139
+msgctxt "Utils::PathListEditor|"
+msgid "Add..."
+msgstr ""
+
+#: ../utils/pathlisteditor.cpp:140
+msgctxt "Utils::PathListEditor|"
+msgid "Delete Line"
+msgstr ""
+
+#: ../utils/pathlisteditor.cpp:141
+msgctxt "Utils::PathListEditor|"
+msgid "Clear"
+msgstr ""
+
+#: ../utils/pathlisteditor.cpp:261
+#, qt-format
+msgctxt "Utils::PathListEditor|"
+msgid "From \"%1\""
+msgstr ""
+
+#: ../utils/projectintropage.ui:14
+msgctxt "Utils::ProjectIntroPage|"
+msgid "Introduction and Project Location"
+msgstr ""
+
+#: ../utils/projectintropage.ui:55
+msgctxt "Utils::ProjectIntroPage|"
+msgid "Name:"
+msgstr ""
+
+#: ../utils/projectintropage.ui:65
+msgctxt "Utils::ProjectIntroPage|"
+msgid "Create in:"
+msgstr ""
+
+#: ../utils/projectintropage.ui:91
+msgctxt "Utils::ProjectIntroPage|"
+msgid "Use as default project location"
+msgstr ""
+
+#: ../utils/projectintropage.ui:98
+msgctxt "Utils::ProjectIntroPage|"
+msgid "Project:"
+msgstr ""
+
+#: ../utils/projectintropage.cpp:87
+msgctxt "Utils::ProjectIntroPage|"
+msgid "<Enter_Name>"
+msgstr ""
+
+#: ../utils/projectintropage.cpp:185
+msgctxt "Utils::ProjectIntroPage|"
+msgid "The project already exists."
+msgstr ""
+
+#: ../utils/projectintropage.cpp:189
+msgctxt "Utils::ProjectIntroPage|"
+msgid "A file with that name already exists."
+msgstr ""
+
+#: ../utils/projectnamevalidatinglineedit.cpp:51
+#, qt-format
+msgctxt "Utils::ProjectNameValidatingLineEdit|"
+msgid "Invalid character '%1' found!"
+msgstr ""
+
+#: ../utils/projectnamevalidatinglineedit.cpp:56
+msgctxt "Utils::ProjectNameValidatingLineEdit|"
+msgid "Invalid character '.'."
+msgstr ""
+
+#: ../utils/qtcprocess.cpp:717
+msgctxt "Utils::QtcProcess|"
+msgid "Error in command line."
+msgstr ""
+
+#: ../utils/settingsselector.cpp:56
+msgctxt "Utils::SettingsSelector|"
+msgid "Add"
+msgstr ""
+
+#: ../utils/settingsselector.cpp:57 ../utils/settingsselector.cpp:137
+msgctxt "Utils::SettingsSelector|"
+msgid "Remove"
+msgstr ""
+
+#: ../utils/settingsselector.cpp:58
+msgctxt "Utils::SettingsSelector|"
+msgid "Rename"
+msgstr ""
+
+#: ../utils/settingsselector.cpp:138
+#, qt-format
+msgctxt "Utils::SettingsSelector|"
+msgid "Do you really want to delete the configuration <b>%1</b>?"
+msgstr ""
+
+#: ../utils/settingsselector.cpp:161
+#, qt-format
+msgctxt "Utils::SettingsSelector|"
+msgid "New name for configuration <b>%1</b>:"
+msgstr ""
+
+#: ../utils/settingsselector.cpp:163
+msgctxt "Utils::SettingsSelector|"
+msgid "Rename..."
+msgstr ""
+
+#: ../utils/synchronousprocess.cpp:130
+#, qt-format
+msgctxt "Utils::SynchronousProcess|"
+msgid "The command '%1' finished successfully."
+msgstr ""
+
+#: ../utils/synchronousprocess.cpp:132
+#, qt-format
+msgctxt "Utils::SynchronousProcess|"
+msgid "The command '%1' terminated with exit code %2."
+msgstr ""
+
+#: ../utils/synchronousprocess.cpp:134
+#, qt-format
+msgctxt "Utils::SynchronousProcess|"
+msgid "The command '%1' terminated abnormally."
+msgstr ""
+
+#: ../utils/synchronousprocess.cpp:136
+#, qt-format
+msgctxt "Utils::SynchronousProcess|"
+msgid "The command '%1' could not be started."
+msgstr ""
+
+#: ../utils/synchronousprocess.cpp:138
+#, qt-format
+msgctxt "Utils::SynchronousProcess|"
+msgid "The command '%1' did not respond within the timeout limit (%2 ms)."
+msgstr ""
+
+#: ../utils/synchronousprocess.cpp:432
+msgctxt "Utils::SynchronousProcess|"
+msgid "Process not Responding"
+msgstr ""
+
+#: ../utils/synchronousprocess.cpp:434
+msgctxt "Utils::SynchronousProcess|"
+msgid "The process is not responding."
+msgstr ""
+
+#: ../utils/synchronousprocess.cpp:435
+#, qt-format
+msgctxt "Utils::SynchronousProcess|"
+msgid "The process '%1' is not responding."
+msgstr ""
+
+#: ../utils/synchronousprocess.cpp:437
+msgctxt "Utils::SynchronousProcess|"
+msgid "Would you like to terminate it?"
+msgstr ""
+
+#: ../utils/textfileformat.cpp:221 ../utils/textfileformat.cpp:285
+msgctxt "Utils::TextFileFormat|"
+msgid "Out of memory."
+msgstr ""
+
+#: ../utils/textfileformat.cpp:230
+msgctxt "Utils::TextFileFormat|"
+msgid "An encoding error was encountered."
+msgstr ""
+
+#: ../utils/unixutils.cpp:59
+#, qt-format
+msgctxt "Utils::UnixTools|"
+msgid ""
+"<table border=1 cellspacing=0 cellpadding=3><tr><th>Variable</th><th>Expands "
+"to</th></tr><tr><td>%d</td><td>directory of current "
+"file</td></tr><tr><td>%f</td><td>file name (with full "
+"path)</td></tr><tr><td>%n</td><td>file name (without "
+"path)</td></tr><tr><td>%%</td><td>%</td></tr></table>"
+msgstr ""
+
+#: ../utils/filewizardpage.ui:14
+msgctxt "Utils::WizardPage|"
+msgid "Choose the Location"
+msgstr ""
+
+#: ../utils/filewizardpage.ui:20
+msgctxt "Utils::WizardPage|"
+msgid "Name:"
+msgstr ""
+
+#: ../utils/filewizardpage.ui:30
+msgctxt "Utils::WizardPage|"
+msgid "Path:"
+msgstr ""
+
+#: ../utils/reloadpromptutils.cpp:90
+msgctxt "Utils::fileDeletedPrompt|"
+msgid "File has been removed"
+msgstr ""
+
+#: ../utils/reloadpromptutils.cpp:94
+#, qt-format
+msgctxt "Utils::fileDeletedPrompt|"
+msgid ""
+"The file %1 has been removed outside Qt Creator. Do you want to save it "
+"under a different name, or close the editor?"
+msgstr ""
+
+#: ../utils/reloadpromptutils.cpp:99
+#, qt-format
+msgctxt "Utils::fileDeletedPrompt|"
+msgid ""
+"The file %1 was removed. Do you want to save it under a different name, or "
+"close the editor?"
+msgstr ""
+
+#: ../utils/reloadpromptutils.cpp:106
+msgctxt "Utils::fileDeletedPrompt|"
+msgid "&Close"
+msgstr ""
+
+#: ../utils/reloadpromptutils.cpp:109
+msgctxt "Utils::fileDeletedPrompt|"
+msgid "C&lose All"
+msgstr ""
+
+#: ../utils/reloadpromptutils.cpp:112
+msgctxt "Utils::fileDeletedPrompt|"
+msgid "Save &as..."
+msgstr ""
+
+#: ../utils/reloadpromptutils.cpp:115
+msgctxt "Utils::fileDeletedPrompt|"
+msgid "&Save"
+msgstr ""
+
+#: ../utils/reloadpromptutils.cpp:44
+msgctxt "Utils::reloadPrompt|"
+msgid "File Changed"
+msgstr ""
+
+#: ../utils/reloadpromptutils.cpp:48
+#, qt-format
+msgctxt "Utils::reloadPrompt|"
+msgid ""
+"The unsaved file <i>%1</i> has changed outside Qt Creator. Do you want to "
+"reload it and discard your changes?"
+msgstr ""
+
+#: ../utils/reloadpromptutils.cpp:52
+#, qt-format
+msgctxt "Utils::reloadPrompt|"
+msgid ""
+"The file <i>%1</i> has changed outside Qt Creator. Do you want to reload it?"
+msgstr ""

@@ -5,14 +5,9 @@
         <file>styles/grayscale.xml</file>
         <file>styles/inkpot.xml</file>
         <file>styles/intellij.xml</file>
-        <file>translations/qtcreator_cs.qm</file>
-        <file>translations/qtcreator_de.qm</file>
-        <file>translations/qtcreator_fr.qm</file>
-        <file>translations/qtcreator_ja.qm</file>
-        <file>translations/qtcreator_pl.qm</file>
-        <file>translations/qtcreator_ru.qm</file>
-        <file>translations/qtcreator_sl.qm</file>
-        <file>translations/qtcreator_zh_CN.qm</file>
-        <file>translations/qtcreator_zh_TW.qm</file>
+        <file>translations/jseditortools_de.qm</file>
+        <file>translations/jseditortools_es.qm</file>
+        <file>translations/jseditortools_fr.qm</file>
+        <file>translations/jseditortools_it.qm</file>
     </qresource>
 </RCC>

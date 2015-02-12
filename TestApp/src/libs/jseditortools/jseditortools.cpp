@@ -164,15 +164,10 @@ void copyDefaultTranslationFilesFromResource(QSettings *settings)
         if(!QDir(userTranslationsPath).exists())
             QDir().mkpath(userTranslationsPath);
 
-        QStringList strTranslationsList = QStringList() <<    QLatin1String(":/Resources/translations/qtcreator_cs.qm")
-                                                  <<    QLatin1String(":/Resources/translations/qtcreator_de.qm")
-                                                  <<    QLatin1String(":/Resources/translations/qtcreator_fr.qm")
-                                                  <<    QLatin1String(":/Resources/translations/qtcreator_ja.qm")
-                                                  <<    QLatin1String(":/Resources/translations/qtcreator_pl.qm")
-                                                  <<    QLatin1String(":/Resources/translations/qtcreator_ru.qm")
-                                                  <<    QLatin1String(":/Resources/translations/qtcreator_sl.qm")
-                                                  <<    QLatin1String(":/Resources/translations/qtcreator_zh_CN.qm")
-                                                  <<    QLatin1String(":/Resources/translations/qtcreator_zh_TW.qm");
+        QStringList strTranslationsList = QStringList() <<    QLatin1String(":/Resources/translations/jseditortools_de.qm")
+                                                  <<    QLatin1String(":/Resources/translations/jseditortools_fr.qm")
+                                                  <<    QLatin1String(":/Resources/translations/jseditortools_es.qm")
+                                                  <<    QLatin1String(":/Resources/translations/jseditortools_it.qm");
 
         foreach(QString strTranslationsFileName, strTranslationsList){
             QFile file2(strTranslationsFileName);
@@ -234,7 +229,7 @@ void JsEditorToolsLib::loadTranslator(QSettings *settings)
     #else
             locale.replace(QLatin1Char('-'), QLatin1Char('_')); // work around QTBUG-25973
     #endif
-            if (m_oTranslator.load(QLatin1String("qtcreator_") + locale, creatorTrPath)) {
+            if (m_oTranslator.load(QLatin1String("jseditortools_") + locale, creatorTrPath)) {
                 const QString &qtTrPath = QLibraryInfo::location(QLibraryInfo::TranslationsPath);
                 const QString &qtTrFile = QLatin1String("qt_") + locale;
                 // Binary installer puts Qt tr files into creatorTrPath
