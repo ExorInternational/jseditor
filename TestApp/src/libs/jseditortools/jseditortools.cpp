@@ -283,7 +283,7 @@ void JsEditorToolsLib::setParentWidget(QWidget *mainWindow)
                                                   QLatin1String(Core::Constants::IDE_APPNAME_STR));
         copyDefaultFontSettingsFilesFromResource(settings);
 
-        setLanguage(QLatin1String("en"), settings);//testing
+        setLanguage(QLatin1String("de"), settings);//testing
         loadTranslator(settings);
 
         m_pPluginManager = new ExtensionSystem::PluginManager();
