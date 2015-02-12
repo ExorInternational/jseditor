@@ -78,6 +78,7 @@ QWidget *DisplaySettingsPage::widget()
         d->m_widget = new QWidget;
         d->m_page = new Internal::Ui::DisplaySettingsPage;
         d->m_page->setupUi(d->m_widget);
+        d->m_page->openLinksInNextSplit->setEnabled(false);
         settingsToUI();
     }
     return d->m_widget;
@@ -119,7 +120,7 @@ void DisplaySettingsPage::settingsFromUI(DisplaySettings &displaySettings,
     displaySettings.m_markTextChanges = d->m_page->markTextChanges->isChecked();
     displaySettings.m_autoFoldFirstComment = d->m_page->autoFoldFirstComment->isChecked();
     displaySettings.m_centerCursorOnScroll = d->m_page->centerOnScroll->isChecked();
-    displaySettings.m_openLinksInNextSplit = d->m_page->openLinksInNextSplit->isChecked();
+    displaySettings.m_openLinksInNextSplit = false;//d->m_page->openLinksInNextSplit->isChecked();
     displaySettings.m_displayFileEncoding = d->m_page->displayFileEncoding->isChecked();
 }
 
@@ -140,7 +141,7 @@ void DisplaySettingsPage::settingsToUI()
     d->m_page->markTextChanges->setChecked(displaySettings.m_markTextChanges);
     d->m_page->autoFoldFirstComment->setChecked(displaySettings.m_autoFoldFirstComment);
     d->m_page->centerOnScroll->setChecked(displaySettings.m_centerCursorOnScroll);
-    d->m_page->openLinksInNextSplit->setChecked(displaySettings.m_openLinksInNextSplit);
+    d->m_page->openLinksInNextSplit->setChecked(false/*displaySettings.m_openLinksInNextSplit*/);
     d->m_page->displayFileEncoding->setChecked(displaySettings.m_displayFileEncoding);
 }
 
