@@ -24,6 +24,7 @@
 #include <qmljseditor/qmljseditordocument.h>
 #include <qmljstools/qmljstoolsconstants.h>
 #include <coreplugin/dialogs/settingsdialog.h>
+#include <coreplugin/icontext.h>
 
 #include <QStringList>
 #include <QSettings>
@@ -31,6 +32,8 @@
 #include <QDir>
 #include <QInputDialog>
 #include <QTextBlock>
+#include <QTranslator>
+#include <QLibraryInfo>
 
 using namespace JsEditorTools;
 using namespace ExtensionSystem;
@@ -150,6 +153,111 @@ void copyDefaultFontSettingsFilesFromResource(QSettings *settings)
         }
     }
 }
+void copyDefaultTranslationFilesFromResource(QSettings *settings)
+{
+    QString strFileName = settings->fileName();
+    if(!strFileName.isEmpty())
+    {
+        QFileInfo file1(strFileName);
+        QString strFilePath = file1.path();
+        QString userTranslationsPath = strFilePath + QLatin1String("/JsEditor/translations/");
+        if(!QDir(userTranslationsPath).exists())
+            QDir().mkpath(userTranslationsPath);
+
+        QStringList strTranslationsList = QStringList() <<    QLatin1String(":/Resources/translations/qtcreator_cs.qm")
+                                                  <<    QLatin1String(":/Resources/translations/qtcreator_de.qm")
+                                                  <<    QLatin1String(":/Resources/translations/qtcreator_fr.qm")
+                                                  <<    QLatin1String(":/Resources/translations/qtcreator_ja.qm")
+                                                  <<    QLatin1String(":/Resources/translations/qtcreator_pl.qm")
+                                                  <<    QLatin1String(":/Resources/translations/qtcreator_ru.qm")
+                                                  <<    QLatin1String(":/Resources/translations/qtcreator_sl.qm")
+                                                  <<    QLatin1String(":/Resources/translations/qtcreator_zh_CN.qm")
+                                                  <<    QLatin1String(":/Resources/translations/qtcreator_zh_TW.qm");
+
+        foreach(QString strTranslationsFileName, strTranslationsList){
+            QFile file2(strTranslationsFileName);
+            if(!file2.open(QFile::ReadOnly | QFile::Text)){
+                    qDebug() << "could not open file for read";
+            }
+            else
+            {
+                QFileInfo info(file2);
+                QString ss = userTranslationsPath + info.fileName();
+                bool copied = QFile::copy(strTranslationsFileName, ss);
+            }
+        }
+    }
+}
+
+void setLanguage(const QString &locale, QSettings* settings)
+{
+    if (settings->value(QLatin1String("General/OverrideLanguage")).toString() != locale)
+    {
+//        QMessageBox::information(Core::ICore::mainWindow(), tr("Restart required"),
+//                                 tr("The language change will take effect after a restart of Qt Creator."));
+    }
+    if (locale.isEmpty())
+        settings->remove(QLatin1String("General/OverrideLanguage"));
+    else
+        settings->setValue(QLatin1String("General/OverrideLanguage"), locale);
+}
+
+void JsEditorToolsLib::loadTranslator(QSettings *settings)
+{
+    copyDefaultTranslationFilesFromResource(settings);
+
+    QString strFileName = settings->fileName();
+    if(!strFileName.isEmpty())
+    {
+        QFileInfo file1(strFileName);
+        QString strFilePath = file1.path();
+        QString userTranslationsPath = strFilePath + QLatin1String("/JsEditor/translations/");
+        const QString &creatorTrPath = userTranslationsPath;
+
+//        QTranslator translator;
+        QTranslator qtTranslator;
+        QStringList uiLanguages;
+    // uiLanguages crashes on Windows with 4.8.0 release builds
+    #if (QT_VERSION >= 0x040801) || (QT_VERSION >= 0x040800 && !defined(Q_OS_WIN))
+        uiLanguages = QLocale::system().uiLanguages();
+    #else
+        uiLanguages << QLocale::system().name();
+    #endif
+        QString overrideLanguage = settings->value(QLatin1String("General/OverrideLanguage")).toString();
+        if (!overrideLanguage.isEmpty())
+            uiLanguages.prepend(overrideLanguage);
+//        const QString &creatorTrPath = QCoreApplication::applicationDirPath()
+//                + QLatin1String(SHARE_PATH "/translations");
+        foreach (QString locale, uiLanguages) {
+    #if (QT_VERSION >= 0x050000)
+            locale = QLocale(locale).name();
+    #else
+            locale.replace(QLatin1Char('-'), QLatin1Char('_')); // work around QTBUG-25973
+    #endif
+            if (m_oTranslator.load(QLatin1String("qtcreator_") + locale, creatorTrPath)) {
+                const QString &qtTrPath = QLibraryInfo::location(QLibraryInfo::TranslationsPath);
+                const QString &qtTrFile = QLatin1String("qt_") + locale;
+                // Binary installer puts Qt tr files into creatorTrPath
+                //if (qtTranslator.load(qtTrFile, qtTrPath) || qtTranslator.load(qtTrFile, creatorTrPath)) {
+                    qApp->installTranslator(&m_oTranslator);
+                //    qApp->installTranslator(&qtTranslator);
+                    qApp->setProperty("qtc_locale", locale);
+                    break;
+                //}
+//                m_oTranslator.load(QString()); // unload()
+            } else if (locale == QLatin1String("C") /* overrideLanguage == "English" */) {
+                // use built-in
+                break;
+            } else if (locale.startsWith(QLatin1String("en")) /* "English" is built-in */) {
+                // use built-in
+                break;
+            }
+        }
+
+    }
+
+
+}
 void JsEditorToolsLib::setParentWidget(QWidget *mainWindow)
 {
     if(mainWindow != NULL)
@@ -174,6 +282,10 @@ void JsEditorToolsLib::setParentWidget(QWidget *mainWindow)
                                                   QLatin1String(Core::Constants::IDE_SETTINGSVARIANT_STR),
                                                   QLatin1String(Core::Constants::IDE_APPNAME_STR));
         copyDefaultFontSettingsFilesFromResource(settings);
+
+        setLanguage(QLatin1String("de"), settings);//testing
+        loadTranslator(settings);
+
         m_pPluginManager = new ExtensionSystem::PluginManager();
         PluginManager::setFileExtension(QLatin1String("pluginspec"));
         PluginManager::setGlobalSettings(globalSettings);
@@ -198,7 +310,7 @@ void JsEditorToolsLib::setParentWidget(QWidget *mainWindow)
         m_pCorePlugin->extensionsInitialized();//this should be called only in the final step(after the other plugins are loaded).
     
         m_pJSEditorMenuItems = NULL;
-        m_pJSEditorMenuItems = new JSEditorMenuItems(this);
+//        m_pJSEditorMenuItems = new JSEditorMenuItems(this);
     }
 }
 JSEditorMenuItems *JsEditorToolsLib::getJSEditorMenuItems()
@@ -336,10 +448,21 @@ void JsEditorToolsLib::populateAlternateContextMenu(QPlainTextEdit *pTextEdit, Q
         pAdvancedMenu->addAction(Core::ActionManager::command(TextEditor::Constants::DECREASE_FONT_SIZE)->action());
         pAdvancedMenu->addAction(Core::ActionManager::command(TextEditor::Constants::RESET_FONT_SIZE)->action());
 
-        pMenu->addAction(tr("Find"), this, SLOT(openDetatchedFindDialog()) );
-        pMenu->addAction(tr("Go To Line..."), this, SLOT(showGoToLineDialog()) );
+        //pMenu->addAction(Core::ActionManager::command(Core::Constants::FIND_IN_DOCUMENT)->action(), this, SLOT(openDetatchedFindDialog()) );
+        QAction *pFindAction = Core::ActionManager::command(Core::Constants::FIND_IN_DOCUMENT)->action();
+        pMenu->addAction(pFindAction);
+        connect(pFindAction, SIGNAL(triggered(bool)), this, SLOT(openDetatchedFindDialog()));
 
-        QMenu *pToolsMenu = pMenu->addMenu(tr("Tools"));
+//        pMenu->addAction(tr("Go To Line..."), this, SLOT(showGoToLineDialog()) );
+        QAction *pGoToAction = Core::ActionManager::command(Core::Constants::GOTO)->action();
+        pMenu->addAction(pGoToAction);
+        connect(pGoToAction, SIGNAL(triggered(bool)), this, SLOT(showGoToLineDialog()));
+
+        QMenu *pToolsMenu = new QMenu(pMenu);//pMenu->addMenu(tr("&Tools"));
+        QAction *pToolsAction = Core::ActionManager::command(Core::Constants::G_TOOLS)->action();
+        pMenu->addAction(pToolsAction);
+        pToolsAction->setMenu(pToolsMenu);
+
         QMenu *pJavascriptMenu = pToolsMenu->addMenu(tr("Javascript"));
         QAction *pResetCodeModelAction = Core::ActionManager::command(QmlJSTools::Constants::RESET_CODEMODEL)->action();
         pJavascriptMenu->addAction(pResetCodeModelAction);

@@ -640,43 +640,43 @@ void MainWindow::registerDefaultActions()
 
 //    // Cut Action
 //    icon = QIcon::fromTheme(QLatin1String("edit-cut"), QIcon(QLatin1String(Constants::ICON_CUT)));
-//    QAction *tmpaction = new QAction(icon, tr("Cu&t"), this);
-//    cmd = ActionManager::registerAction(tmpaction, Constants::CUT, globalContext);
+    QAction *tmpaction = new QAction(tr("Cu&t"), this);
+    cmd = ActionManager::registerAction(tmpaction, Constants::CUT, globalContext);
 //    cmd->setDefaultKeySequence(QKeySequence::Cut);
 //    medit->addAction(cmd, Constants::G_EDIT_COPYPASTE);
-//    tmpaction->setEnabled(false);
+    tmpaction->setEnabled(false);
 
 //    // Copy Action
 //    icon = QIcon::fromTheme(QLatin1String("edit-copy"), QIcon(QLatin1String(Constants::ICON_COPY)));
-//    tmpaction = new QAction(icon, tr("&Copy"), this);
-//    cmd = ActionManager::registerAction(tmpaction, Constants::COPY, globalContext);
+    tmpaction = new QAction(tr("&Copy"), this);
+    cmd = ActionManager::registerAction(tmpaction, Constants::COPY, globalContext);
 //    cmd->setDefaultKeySequence(QKeySequence::Copy);
 //    medit->addAction(cmd, Constants::G_EDIT_COPYPASTE);
-//    tmpaction->setEnabled(false);
+    tmpaction->setEnabled(false);
 
 //    // Paste Action
 //    icon = QIcon::fromTheme(QLatin1String("edit-paste"), QIcon(QLatin1String(Constants::ICON_PASTE)));
-//    tmpaction = new QAction(icon, tr("&Paste"), this);
-//    cmd = ActionManager::registerAction(tmpaction, Constants::PASTE, globalContext);
+    tmpaction = new QAction(tr("&Paste"), this);
+    cmd = ActionManager::registerAction(tmpaction, Constants::PASTE, globalContext);
 //    cmd->setDefaultKeySequence(QKeySequence::Paste);
 //    medit->addAction(cmd, Constants::G_EDIT_COPYPASTE);
-//    tmpaction->setEnabled(false);
+    tmpaction->setEnabled(false);
 
 //    // Select All
 //    icon = QIcon::fromTheme(QLatin1String("edit-select-all"));
-//    tmpaction = new QAction(icon, tr("Select &All"), this);
-//    cmd = ActionManager::registerAction(tmpaction, Constants::SELECTALL, globalContext);
+    tmpaction = new QAction(tr("Select &All"), this);
+    cmd = ActionManager::registerAction(tmpaction, Constants::SELECTALL, globalContext);
 //    cmd->setDefaultKeySequence(QKeySequence::SelectAll);
 //    medit->addAction(cmd, Constants::G_EDIT_SELECTALL);
-//    tmpaction->setEnabled(false);
+    tmpaction->setEnabled(false);
 
     // Goto Action
 //    icon = QIcon::fromTheme(QLatin1String("go-jump"));//#720 ROOPAK - START
-//    QAction *tmpaction = new QAction(icon, tr("&Go to Line..."), this);
-//    cmd = ActionManager::registerAction(tmpaction, Constants::GOTO, globalContext);
+    tmpaction = new QAction(tr("&Go to Line..."), this);
+    cmd = ActionManager::registerAction(tmpaction, Constants::GOTO, globalContext);
 //    cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+L")));
 ////    medit->addAction(cmd, Constants::G_EDIT_OTHER);//#720 ROOPAK
-//    tmpaction->setEnabled(false);//#720 ROOPAK - END
+    tmpaction->setEnabled(false);//#720 ROOPAK - END
 
     // Options Action
 //    mtools->appendGroup(Constants::G_TOOLS_OPTIONS);//#720 ROOPAK - START
@@ -689,6 +689,11 @@ void MainWindow::registerDefaultActions()
     }
 //    mtools->addAction(cmd, Constants::G_TOOLS_OPTIONS);//#720 ROOPAK
     connect(m_optionsAction, SIGNAL(triggered()), this, SLOT(showOptionsDialog()));
+
+    //ADDED BY ROOPAK
+    tmpaction = new QAction(tr("&Tools"), this);
+    cmd = ActionManager::registerAction(tmpaction, Constants::G_TOOLS, globalContext);
+    //END - ROOPAK
 
     if (UseMacShortcuts) {
         // Minimize Action

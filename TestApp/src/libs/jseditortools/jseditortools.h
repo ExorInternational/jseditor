@@ -7,9 +7,11 @@
 #include <QHash>//#720 ROOPAK 
 #include <QLayout>
 #include <QPlainTextEdit>
+#include <QTranslator>
 
 class QMainWindow;
 class QStringList;
+class QSettings;
 
 namespace ExtensionSystem {
 class PluginManager;
@@ -122,6 +124,8 @@ signals:
     void searchResultItemSelected(QString strFileName, int lineNumber);
 private:
     void populateAlternateContextMenu(QPlainTextEdit *pTextEdit, QMenu *pMenu);
+    void loadTranslator(QSettings *settings);
+
     QWidget *m_MainWindow;
     QWidget *m_pDummyMainWidget;
 
@@ -134,6 +138,7 @@ private:
     JSEditorMenuItems *m_pJSEditorMenuItems;
     QWidget *m_pDetachedFindWindow;
     QList<Core::IEditor *> m_pDetatchedEditors;
+    QTranslator m_oTranslator;
 };
 
 }// namespace JsEditorTools
