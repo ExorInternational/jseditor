@@ -149,6 +149,8 @@ void copyDefaultFontSettingsFilesFromResource(QSettings *settings)
                 QFileInfo info(file2);
                 QString ss = userStylePath + info.fileName();
                 bool copied = QFile::copy(strStyleFileName, ss);
+                if(!copied)
+                    qDebug() << "could not copy file";
             }
         }
     }
@@ -179,6 +181,8 @@ void copyDefaultTranslationFilesFromResource(QSettings *settings)
                 QFileInfo info(file2);
                 QString ss = userTranslationsPath + info.fileName();
                 bool copied = QFile::copy(strTranslationsFileName, ss);
+                if(!copied)
+                    qDebug() << "could not copy file";
             }
         }
     }
@@ -199,15 +203,15 @@ void setLanguage(const QString &locale, QSettings* settings)
 
 void JsEditorToolsLib::loadTranslator(QSettings *settings)
 {
-    copyDefaultTranslationFilesFromResource(settings);
+//    copyDefaultTranslationFilesFromResource(settings);
 
     QString strFileName = settings->fileName();
     if(!strFileName.isEmpty())
     {
         QFileInfo file1(strFileName);
         QString strFilePath = file1.path();
-        QString userTranslationsPath = strFilePath + QLatin1String("/JsEditor/translations/");
-        const QString &creatorTrPath = userTranslationsPath;
+        //QString userTranslationsPath = strFilePath + QLatin1String("/JsEditor/translations/");
+        const QString &creatorTrPath = QLatin1String(":/Resources/translations/");//userTranslationsPath;
 
 //        QTranslator translator;
         QTranslator qtTranslator;
@@ -221,8 +225,7 @@ void JsEditorToolsLib::loadTranslator(QSettings *settings)
         QString overrideLanguage = settings->value(QLatin1String("General/OverrideLanguage")).toString();
         if (!overrideLanguage.isEmpty())
             uiLanguages.prepend(overrideLanguage);
-//        const QString &creatorTrPath = QCoreApplication::applicationDirPath()
-//                + QLatin1String(SHARE_PATH "/translations");
+
         foreach (QString locale, uiLanguages) {
     #if (QT_VERSION >= 0x050000)
             locale = QLocale(locale).name();
@@ -230,8 +233,8 @@ void JsEditorToolsLib::loadTranslator(QSettings *settings)
             locale.replace(QLatin1Char('-'), QLatin1Char('_')); // work around QTBUG-25973
     #endif
             if (m_oTranslator.load(QLatin1String("jseditortools_") + locale, creatorTrPath)) {
-                const QString &qtTrPath = QLibraryInfo::location(QLibraryInfo::TranslationsPath);
-                const QString &qtTrFile = QLatin1String("qt_") + locale;
+//                const QString &qtTrPath = QLibraryInfo::location(QLibraryInfo::TranslationsPath);
+//                const QString &qtTrFile = QLatin1String("qt_") + locale;
                 // Binary installer puts Qt tr files into creatorTrPath
                 //if (qtTranslator.load(qtTrFile, qtTrPath) || qtTranslator.load(qtTrFile, creatorTrPath)) {
                     qApp->installTranslator(&m_oTranslator);
