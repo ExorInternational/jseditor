@@ -450,6 +450,8 @@ void JsEditorToolsLib::populateAlternateContextMenu(QPlainTextEdit *pTextEdit, Q
         pAdvancedMenu->addAction(Core::ActionManager::command(TextEditor::Constants::DECREASE_FONT_SIZE)->action());
         pAdvancedMenu->addAction(Core::ActionManager::command(TextEditor::Constants::RESET_FONT_SIZE)->action());
 
+        pTextEdit->addActions(pAdvancedMenu->actions());
+
         //pMenu->addAction(Core::ActionManager::command(Core::Constants::FIND_IN_DOCUMENT)->action(), this, SLOT(openDetatchedFindDialog()) );
         QAction *pFindAction = Core::ActionManager::command(Core::Constants::FIND_IN_DOCUMENT)->action();
         pMenu->addAction(pFindAction);
@@ -486,10 +488,14 @@ void JsEditorToolsLib::populateAlternateContextMenu(QPlainTextEdit *pTextEdit, Q
         QAction *pReformatFileAction = Core::ActionManager::command(QmlJSEditor::Constants::REFORMAT_FILE)->action();
         pJavascriptMenu->addAction(pReformatFileAction);
 
+        pTextEdit->addActions(pJavascriptMenu->actions());
+
         QAction *pOptionsAction = Core::ActionManager::command(Core::Constants::OPTIONS)->action();
         pToolsMenu->addAction(pOptionsAction);
         connect(pOptionsAction, SIGNAL(triggered(bool)), this, SLOT(showOptionsDialog()));
 //        pToolsMenu->addAction(tr("Options"), this, SLOT(showOptionsDialog()) );
+
+        pTextEdit->addActions(pMenu->actions());
     }
 }
 

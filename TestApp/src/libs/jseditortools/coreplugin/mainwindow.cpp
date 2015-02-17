@@ -674,7 +674,7 @@ void MainWindow::registerDefaultActions()
 //    icon = QIcon::fromTheme(QLatin1String("go-jump"));//#720 ROOPAK - START
     tmpaction = new QAction(tr("&Go to Line..."), this);
     cmd = ActionManager::registerAction(tmpaction, Constants::GOTO, globalContext);
-//    cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+L")));
+    cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+L")));
 ////    medit->addAction(cmd, Constants::G_EDIT_OTHER);//#720 ROOPAK
     tmpaction->setEnabled(false);//#720 ROOPAK - END
 
