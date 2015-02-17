@@ -482,8 +482,8 @@ void JsEditorToolsLib::populateAlternateContextMenu(QPlainTextEdit *pTextEdit, Q
         QAction *pRenameUsagesAction = Core::ActionManager::command(QmlJSEditor::Constants::RENAME_USAGES)->action();
         pJavascriptMenu->addAction(pRenameUsagesAction);
 
-        QAction *pRunSemanticAction = Core::ActionManager::command(QmlJSEditor::Constants::RUN_SEMANTIC_SCAN)->action();
-        pJavascriptMenu->addAction(pRunSemanticAction);
+//        QAction *pRunSemanticAction = Core::ActionManager::command(QmlJSEditor::Constants::RUN_SEMANTIC_SCAN)->action();
+//        pJavascriptMenu->addAction(pRunSemanticAction);
 
         QAction *pReformatFileAction = Core::ActionManager::command(QmlJSEditor::Constants::REFORMAT_FILE)->action();
         pJavascriptMenu->addAction(pReformatFileAction);
