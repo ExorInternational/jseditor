@@ -455,12 +455,12 @@ void JsEditorToolsLib::populateAlternateContextMenu(QPlainTextEdit *pTextEdit, Q
         //pMenu->addAction(Core::ActionManager::command(Core::Constants::FIND_IN_DOCUMENT)->action(), this, SLOT(openDetatchedFindDialog()) );
         QAction *pFindAction = Core::ActionManager::command(Core::Constants::FIND_IN_DOCUMENT)->action();
         pMenu->addAction(pFindAction);
-        connect(pFindAction, SIGNAL(triggered(bool)), this, SLOT(openDetatchedFindDialog()));
+        connect(pFindAction, SIGNAL(triggered(bool)), this, SLOT(openDetatchedFindDialog()), Qt::UniqueConnection);
 
 //        pMenu->addAction(tr("Go To Line..."), this, SLOT(showGoToLineDialog()) );
         QAction *pGoToAction = Core::ActionManager::command(Core::Constants::GOTO)->action();
         pMenu->addAction(pGoToAction);
-        connect(pGoToAction, SIGNAL(triggered(bool)), this, SLOT(showGoToLineDialog()));
+        connect(pGoToAction, SIGNAL(triggered(bool)), this, SLOT(showGoToLineDialog()), Qt::UniqueConnection);
 
         QMenu *pToolsMenu = new QMenu(pMenu);//pMenu->addMenu(tr("&Tools"));
         QAction *pToolsAction = Core::ActionManager::command(Core::Constants::G_TOOLS)->action();
@@ -492,7 +492,7 @@ void JsEditorToolsLib::populateAlternateContextMenu(QPlainTextEdit *pTextEdit, Q
 
         QAction *pOptionsAction = Core::ActionManager::command(Core::Constants::OPTIONS)->action();
         pToolsMenu->addAction(pOptionsAction);
-        connect(pOptionsAction, SIGNAL(triggered(bool)), this, SLOT(showOptionsDialog()));
+        connect(pOptionsAction, SIGNAL(triggered(bool)), this, SLOT(showOptionsDialog()), Qt::UniqueConnection);
 //        pToolsMenu->addAction(tr("Options"), this, SLOT(showOptionsDialog()) );
 
         pTextEdit->addActions(pMenu->actions());
