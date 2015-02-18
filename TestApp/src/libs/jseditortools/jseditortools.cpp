@@ -475,12 +475,15 @@ void JsEditorToolsLib::populateAlternateContextMenu(QPlainTextEdit *pTextEdit, Q
 
         QAction *pSollowSymbolUnderCursorAction = Core::ActionManager::command(TextEditor::Constants::FOLLOW_SYMBOL_UNDER_CURSOR)->action();
         pJavascriptMenu->addAction(pSollowSymbolUnderCursorAction);
+        pTextEdit->addAction(pSollowSymbolUnderCursorAction);
 
         QAction *pFindUsagesAction = Core::ActionManager::command(QmlJSEditor::Constants::FIND_USAGES)->action();
         pJavascriptMenu->addAction(pFindUsagesAction);
+        pTextEdit->addAction(pFindUsagesAction);
 
         QAction *pRenameUsagesAction = Core::ActionManager::command(QmlJSEditor::Constants::RENAME_USAGES)->action();
         pJavascriptMenu->addAction(pRenameUsagesAction);
+        pTextEdit->addAction(pRenameUsagesAction);
 
 //        QAction *pRunSemanticAction = Core::ActionManager::command(QmlJSEditor::Constants::RUN_SEMANTIC_SCAN)->action();
 //        pJavascriptMenu->addAction(pRunSemanticAction);
@@ -488,7 +491,7 @@ void JsEditorToolsLib::populateAlternateContextMenu(QPlainTextEdit *pTextEdit, Q
         QAction *pReformatFileAction = Core::ActionManager::command(QmlJSEditor::Constants::REFORMAT_FILE)->action();
         pJavascriptMenu->addAction(pReformatFileAction);
 
-        pTextEdit->addActions(pJavascriptMenu->actions());
+//        pTextEdit->addActions(pJavascriptMenu->actions());//THIS IS COMMENTED SINCE AUTO-COMPLETION STOPS WORKING IF 'pReformatFileAction' is added to the pTextEdit.
 
         QAction *pOptionsAction = Core::ActionManager::command(Core::Constants::OPTIONS)->action();
         pToolsMenu->addAction(pOptionsAction);
