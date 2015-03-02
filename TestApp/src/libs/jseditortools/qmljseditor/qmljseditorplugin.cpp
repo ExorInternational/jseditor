@@ -100,7 +100,7 @@ QmlJSEditorPlugin::QmlJSEditorPlugin() :
     m_currentDocument(0),
     m_jsonManager(new Utils::JsonSchemaManager(
             QStringList() << Core::ICore::userResourcePath() + QLatin1String("/json/")
-                          << Core::ICore::resourcePath() + QLatin1String("/json/")))
+                          /*<< Core::ICore::resourcePath() + QLatin1String("/json/")*/))
 {
     m_instance = this;
 }
