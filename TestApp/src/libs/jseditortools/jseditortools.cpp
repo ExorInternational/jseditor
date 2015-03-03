@@ -399,7 +399,7 @@ QPlainTextEdit *JsEditorToolsLib::openFile(QString strFilePath)
                 m_pDetachedFindWindow->setWindowModality(Qt::WindowModal);
                 Core::SearchResultWindow::instance()->setDisconnectSearchResultItems(true);
                 connect(Core::SearchResultWindow::instance(), SIGNAL(searchItemSelected(QString, int)), this, SIGNAL(searchResultItemSelected(QString, int)));
-                connect(Core::SearchResultWindow::instance(), SIGNAL(showPage(int)), this, SLOT(show()));
+                connect(Core::SearchResultWindow::instance(), SIGNAL(showPage(int)), m_pDetachedFindWindow, SLOT(show()));
                 connect(Core::SearchResultWindow::instance(), SIGNAL(showPage(int)), this, SIGNAL(showFindDialog()));
                 m_pDetachedFindWindow->setWindowTitle(tr("Find"));
                 m_pDetachedFindWindow->hide();
