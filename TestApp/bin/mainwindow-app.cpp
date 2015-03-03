@@ -228,7 +228,7 @@ void MainWindowApp::onFileOpenClicked()
                 subWindow1->setAttribute(Qt::WA_DeleteOnClose);
 
                 QMdiSubWindow *subWindow2 = m_mdiArea->addSubWindow(m_pJsEditorTools->getFindDialog(), Qt::SubWindow | Qt::WindowMinimizeButtonHint|Qt::WindowMaximizeButtonHint|Qt::WindowCloseButtonHint);
-                subWindow2->adjustSize();
+                subWindow2->resize(QSize(673, 240));
                 connect(m_pJsEditorTools, SIGNAL(showFindDialog()), subWindow2, SLOT(show()));
                 connect(m_pJsEditorTools, SIGNAL(hideFindDialog()), subWindow2, SLOT(hide()));
             }
