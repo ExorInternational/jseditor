@@ -233,9 +233,9 @@ SharedValueOwner::SharedValueOwner(SharedValueOwnerKind kind)
     addFunction(_objectCtor, QLatin1String("isExtensible"), booleanValue(), 1);
     addFunction(_objectCtor, QLatin1String("keys"), arrayInstance, 1);
 
-    addFunction(_objectPrototype, QLatin1String("toString"), stringValue(), 0);
-    addFunction(_objectPrototype, QLatin1String("toLocaleString"), stringValue(), 0);
-    addFunction(_objectPrototype, QLatin1String("valueOf"), 0); // ### FIXME it should return thisObject
+//    addFunction(_objectPrototype, QLatin1String("toString"), stringValue(), 0);//#720 - COMMENTED BY ROOPAK
+//    addFunction(_objectPrototype, QLatin1String("toLocaleString"), stringValue(), 0);
+//    addFunction(_objectPrototype, QLatin1String("valueOf"), 0); // ### FIXME it should return thisObject//#720 - END
     addFunction(_objectPrototype, QLatin1String("hasOwnProperty"), booleanValue(), 1);
     addFunction(_objectPrototype, QLatin1String("isPrototypeOf"), booleanValue(), 1);
     addFunction(_objectPrototype, QLatin1String("propertyIsEnumerable"), booleanValue(), 1);
