@@ -399,8 +399,10 @@ QPlainTextEdit *JsEditorToolsLib::openFile(QString strFilePath)
                 m_pDetachedFindWindow->setWindowModality(Qt::WindowModal);
                 Core::SearchResultWindow::instance()->setDisconnectSearchResultItems(true);
                 connect(Core::SearchResultWindow::instance(), SIGNAL(searchItemSelected(QString, int)), this, SIGNAL(searchResultItemSelected(QString, int)));
-                connect(Core::SearchResultWindow::instance(), SIGNAL(showPage(int)), m_pDetachedFindWindow, SLOT(show()));
+                connect(Core::SearchResultWindow::instance(), SIGNAL(showPage(int)), this, SLOT(show()));
+                connect(Core::SearchResultWindow::instance(), SIGNAL(showPage(int)), this, SIGNAL(showFindDialog()));
                 m_pDetachedFindWindow->setWindowTitle(tr("Find"));
+                m_pDetachedFindWindow->hide();
             }
         }
     }
@@ -507,9 +509,15 @@ void JsEditorToolsLib::openDetatchedFindDialog()
     if(getFindDialog())
     {
         if(m_pDetachedFindWindow->isHidden())
+        {
             m_pDetachedFindWindow->show();
+            emit showFindDialog();
+        }
         else
+        {
             m_pDetachedFindWindow->hide();
+            emit hideFindDialog();
+        }
     }
 }
 
@@ -670,7 +678,10 @@ void JsEditorToolsLib::removeEditor(QPlainTextEdit *pTextEdit)
     }
 
     if(m_pDetatchedEditors.count() == 0)
+    {
         m_pDetachedFindWindow->hide();
+        emit hideFindDialog();
+    }
 }
 QString JsEditorToolsLib::getTextWithNewLine(QPlainTextEdit *pTextEdit)
 {

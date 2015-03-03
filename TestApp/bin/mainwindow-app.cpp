@@ -85,7 +85,7 @@ void MainWindowApp::loadLibrary()
 #ifdef USE_MDI_AND_TEXTEDIT_CONTROLS
     QWidget *pHiddenWidget = new QWidget(m_mdiArea);
     pHiddenWidget->hide();//comment it and it will enable auto-completion by Ctrl+Space
-    m_pJsEditorTools = new JsEditorTools::JsEditorToolsLib(pHiddenWidget, QLatin1String("de"));
+    m_pJsEditorTools = new JsEditorTools::JsEditorToolsLib(pHiddenWidget, QLatin1String("en"));
 
     connect(m_pJsEditorTools, SIGNAL(searchResultItemSelected(QString, int)), this, SLOT(onSearchResultItemSelected(QString, int) ) );
     createCustomBuiltinTypes();
@@ -227,6 +227,10 @@ void MainWindowApp::onFileOpenClicked()
                 pTextEdit->show();
                 subWindow1->setAttribute(Qt::WA_DeleteOnClose);
 
+                QMdiSubWindow *subWindow2 = m_mdiArea->addSubWindow(m_pJsEditorTools->getFindDialog(), Qt::SubWindow | Qt::WindowMinimizeButtonHint|Qt::WindowMaximizeButtonHint|Qt::WindowCloseButtonHint);
+                subWindow2->adjustSize();
+                connect(m_pJsEditorTools, SIGNAL(showFindDialog()), subWindow2, SLOT(show()));
+                connect(m_pJsEditorTools, SIGNAL(hideFindDialog()), subWindow2, SLOT(hide()));
             }
         }
     }

@@ -122,6 +122,8 @@ private slots:
 signals:
     void currentDocumentChanged();
     void searchResultItemSelected(QString strFileName, int lineNumber);
+    void showFindDialog();
+    void hideFindDialog();
 private:
     void populateAlternateContextMenu(QPlainTextEdit *pTextEdit, QMenu *pMenu);
     void loadTranslator(QSettings *settings);
