@@ -309,6 +309,20 @@ void JsEditorToolsLib::setParentWidget(QWidget *mainWindow, QString strLocale)
     
         m_pJSEditorMenuItems = NULL;
 //        m_pJSEditorMenuItems = new JSEditorMenuItems(this);
+
+        //find dialog
+        if(m_pDetachedFindWindow == NULL)
+        {
+            m_pDetachedFindWindow = Core::Internal::OutputPaneManager::instance();
+            m_pDetachedFindWindow->setParent(NULL);
+            m_pDetachedFindWindow->setWindowModality(Qt::WindowModal);
+            Core::SearchResultWindow::instance()->setDisconnectSearchResultItems(true);
+            connect(Core::SearchResultWindow::instance(), SIGNAL(searchItemSelected(QString, int)), this, SIGNAL(searchResultItemSelected(QString, int)));
+            connect(Core::SearchResultWindow::instance(), SIGNAL(showPage(int)), m_pDetachedFindWindow, SLOT(show()));
+            connect(Core::SearchResultWindow::instance(), SIGNAL(showPage(int)), this, SIGNAL(showFindDialog()));
+            m_pDetachedFindWindow->setWindowTitle(tr("Find"));
+            m_pDetachedFindWindow->hide();
+        }
     }
 }
 JSEditorMenuItems *JsEditorToolsLib::getJSEditorMenuItems()
@@ -390,20 +404,6 @@ QPlainTextEdit *JsEditorToolsLib::openFile(QString strFilePath)
             pTextEditor->setEnableAlternateContextMenu(true);
             populateAlternateContextMenu(pTextEditor, pMenu);
             connect(pTextEditor, SIGNAL(gotFocusIn()), this, SLOT(onTextEditorFocused()));
-
-            //find dialog
-            if(m_pDetachedFindWindow == NULL)
-            {
-                m_pDetachedFindWindow = Core::Internal::OutputPaneManager::instance();
-                m_pDetachedFindWindow->setParent(NULL);
-                m_pDetachedFindWindow->setWindowModality(Qt::WindowModal);
-                Core::SearchResultWindow::instance()->setDisconnectSearchResultItems(true);
-                connect(Core::SearchResultWindow::instance(), SIGNAL(searchItemSelected(QString, int)), this, SIGNAL(searchResultItemSelected(QString, int)));
-                connect(Core::SearchResultWindow::instance(), SIGNAL(showPage(int)), m_pDetachedFindWindow, SLOT(show()));
-                connect(Core::SearchResultWindow::instance(), SIGNAL(showPage(int)), this, SIGNAL(showFindDialog()));
-                m_pDetachedFindWindow->setWindowTitle(tr("Find"));
-                m_pDetachedFindWindow->hide();
-            }
         }
     }
 
