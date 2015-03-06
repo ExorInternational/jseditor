@@ -25,6 +25,7 @@
 #include <qmljstools/qmljstoolsconstants.h>
 #include <coreplugin/dialogs/settingsdialog.h>
 #include <coreplugin/icontext.h>
+#include <coreplugin/find/findplugin.h>
 
 #include <QStringList>
 #include <QSettings>
@@ -511,6 +512,8 @@ void JsEditorToolsLib::openDetatchedFindDialog()
         if(m_pDetachedFindWindow->isHidden())
         {
             m_pDetachedFindWindow->show();
+            Core::FindPlugin::instance()->openFindDialog(NULL);
+
             emit showFindDialog();
         }
         else
