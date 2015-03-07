@@ -316,7 +316,7 @@ void JsEditorToolsLib::setParentWidget(QWidget *mainWindow, QString strLocale)
         {
             m_pDetachedFindWindow = Core::Internal::OutputPaneManager::instance();
             m_pDetachedFindWindow->setParent(NULL);
-            m_pDetachedFindWindow->setWindowModality(Qt::WindowModal);
+//            m_pDetachedFindWindow->setWindowModality(Qt::WindowModal);
             Core::SearchResultWindow::instance()->setDisconnectSearchResultItems(true);
             connect(Core::SearchResultWindow::instance(), SIGNAL(searchItemSelected(QString, int)), this, SIGNAL(searchResultItemSelected(QString, int)));
             connect(Core::SearchResultWindow::instance(), SIGNAL(showPage(int)), m_pDetachedFindWindow, SLOT(show()));
