@@ -8,6 +8,7 @@
 #include <QLayout>
 #include <QPlainTextEdit>
 #include <QTranslator>
+#include <QDialog>
 
 class QMainWindow;
 class QStringList;
@@ -44,6 +45,17 @@ class QmlJSEditorPlugin;
 }
 
 namespace JsEditorTools {
+
+
+class JSEDITORTOOLS_EXPORT FindDialog : public QDialog {
+    Q_OBJECT
+public:
+    explicit FindDialog(QWidget *parent = 0, Qt::WindowFlags f = 0): QDialog(parent, f){  }
+signals:
+    void isClosing();
+protected:
+    void closeEvent(QCloseEvent * e){ emit isClosing(); QDialog::closeEvent(e); }
+};
 
 class JSEDITORTOOLS_EXPORT JSCustomBuiltinKey//#720 ROOPAK - START
 {
