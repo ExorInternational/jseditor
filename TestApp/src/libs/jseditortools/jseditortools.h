@@ -126,6 +126,7 @@ public:
     QWidget *getFindDialog();
     void removeEditor(QPlainTextEdit *pTextEdit);
     QString getTextWithNewLine(QPlainTextEdit *pTextEdit);
+    void clearSearchResults();
 private slots:
     void openDetatchedFindDialog();
     void onTextEditorFocused();

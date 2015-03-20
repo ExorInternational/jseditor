@@ -715,6 +715,11 @@ QString JsEditorToolsLib::getTextWithNewLine(QPlainTextEdit *pTextEdit)
     }
     return ret;
 }
+void JsEditorToolsLib::clearSearchResults()
+{
+    Core::SearchResultWindow::instance()->clearContents();
+}
+
 void JsEditorToolsLib::showGoToLineDialog()
 {
     bool ok;
